@@ -29,8 +29,7 @@ jobs:
             - uses: php-actions/composer@v6 # or alternative dependency management
             - uses: php-actions/phpstan@v3
               with:
-                  path: src/
-                  level: 9
+                  configuration: tools/phpstan/phpstan.neon
     
     phpunit:
         runs-on: ubuntu-latest

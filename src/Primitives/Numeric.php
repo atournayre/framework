@@ -12,6 +12,7 @@ final class Numeric
 
     /**
      * @param int|float|string $value
+     *
      * @throws \InvalidArgumentException
      */
     public static function of($value, int $precision = 0): self
@@ -21,6 +22,7 @@ final class Numeric
 
     /**
      * @param int|float|string $value
+     *
      * @throws \InvalidArgumentException
      */
     private function __construct($value, int $precision)
@@ -76,6 +78,7 @@ final class Numeric
 
     /**
      * @api
+     *
      * @throws \RuntimeException
      */
     public function format(Locale $locale): string
@@ -111,74 +114,88 @@ final class Numeric
 
     /**
      * @api
+     *
      * @param int|Numeric $numeric
      */
     public function greaterThan($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $greaterThan = $this->value > $that->intValue();
+
         return BoolEnum::fromBool($greaterThan);
     }
 
     /**
      * @api
+     *
      * @param int|Numeric $numeric
      */
     public function greaterThanOrEqual($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $greaterThanOrEqual = $this->value() >= $that->value();
+
         return BoolEnum::fromBool($greaterThanOrEqual);
     }
 
     /**
      * @api
+     *
      * @param int|Numeric $numeric
      */
     public function lessThan($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $lessThan = $this->value() < $that->value();
+
         return BoolEnum::fromBool($lessThan);
     }
 
     /**
      * @api
+     *
      * @param int|Numeric $numeric
      */
     public function lessThanOrEqual($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $lessThanOrEqual = $this->value() <= $that->value();
+
         return BoolEnum::fromBool($lessThanOrEqual);
     }
 
     /**
      * @api
+     *
      * @param int|Numeric $numeric
      */
     public function equalTo($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $equalTo = $this->value() === $that->value();
+
         return BoolEnum::fromBool($equalTo);
     }
 
     /**
      * @api
+     *
      * @param int|Numeric $numeric
      */
     public function notEqualTo($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $equalTo = $this->value() !== $that->value();
+
         return BoolEnum::fromBool($equalTo);
     }
 
     /**
      * @api
+     *
      * @param int|Numeric $min
      * @param int|Numeric $max
+     *
      * @throws \Exception
      */
     public function between($min, $max): BoolEnum
@@ -196,8 +213,10 @@ final class Numeric
 
     /**
      * @api
+     *
      * @param int|Numeric $min
      * @param int|Numeric $max
+     *
      * @throws \Exception
      */
     public function betweenOrEqual($min, $max): BoolEnum

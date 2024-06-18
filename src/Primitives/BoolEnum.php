@@ -21,7 +21,7 @@ final class BoolEnum
 
     public static function fromBool(bool $value): self
     {
-        return $value ? self::TRUE() : self::FALSE();
+        return $value ? self::true() : self::false();
     }
 
     /**
@@ -37,7 +37,7 @@ final class BoolEnum
      */
     public function asInt(): int
     {
-        return $this->value === self::TRUE ? 1 : 0;
+        return self::TRUE === $this->value ? 1 : 0;
     }
 
     /**
@@ -45,7 +45,7 @@ final class BoolEnum
      */
     public function asBool(): bool
     {
-        return $this->value === self::TRUE;
+        return self::TRUE === $this->value;
     }
 
     /**
@@ -53,7 +53,7 @@ final class BoolEnum
      */
     public function isTrue(): bool
     {
-        return $this->value === self::TRUE;
+        return self::TRUE === $this->value;
     }
 
     /**
@@ -61,7 +61,7 @@ final class BoolEnum
      */
     public function isFalse(): bool
     {
-        return $this->value === self::FALSE;
+        return self::FALSE === $this->value;
     }
 
     /**
@@ -80,19 +80,21 @@ final class BoolEnum
         return $this->isFalse();
     }
 
-    private static function TRUE(): self
+    private static function true(): self
     {
         return new self(self::TRUE);
     }
 
-    private static function FALSE(): self
+    private static function false(): self
     {
         return new self(self::FALSE);
     }
 
     /**
      * @api
+     *
      * @param string|\Exception $message
+     *
      * @throws \Exception
      */
     public function throwIfFalse($message): void
@@ -110,7 +112,9 @@ final class BoolEnum
 
     /**
      * @api
+     *
      * @param string|\Exception $message
+     *
      * @throws \Exception
      */
     public function throwIfTrue($message): void

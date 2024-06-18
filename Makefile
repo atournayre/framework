@@ -19,7 +19,7 @@ vendor: c=install --prefer-dist --no-dev --no-progress --no-scripts --no-interac
 vendor: composer
 
 ## —— QA ———————————————————————————————————————————————————————————————————————
-qa: tests rector quality phpstan ## Run all QA tools
+qa: fix rector quality phpstan tests ## Run all QA tools
 
 tests: ## Run tests
 	@$(PHP) vendor/bin/phpunit
