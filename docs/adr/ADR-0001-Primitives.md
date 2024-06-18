@@ -1,4 +1,7 @@
-# ADR 0001: Primitives 
+# ADR 0001: Primitives
+
+## Status
+Accepted
 
 ## Context
 We need to have a consistent way to handle primitive types in our application. This library provides types for handling booleans, numerics, and strings. We need to decide on the implementation of these primitives to ensure compatibility and consistency across the application.
