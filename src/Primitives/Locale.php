@@ -6,155 +6,445 @@ namespace Atournayre\Primitives;
 
 use Webmozart\Assert\Assert;
 
-class Locale
+final class Locale
 {
+    /** @api */
     public const AF_ZA = 'af_ZA';
+
+    /** @api */
     public const AM_ET = 'am_ET';
+
+    /** @api */
     public const AR_AE = 'ar_AE';
+
+    /** @api */
     public const AR_BH = 'ar_BH';
+
+    /** @api */
     public const AR_DZ = 'ar_DZ';
+
+    /** @api */
     public const AR_EG = 'ar_EG';
+
+    /** @api */
     public const AR_IQ = 'ar_IQ';
+
+    /** @api */
     public const AR_JO = 'ar_JO';
+
+    /** @api */
     public const AR_KW = 'ar_KW';
+
+    /** @api */
     public const AR_LB = 'ar_LB';
+
+    /** @api */
     public const AR_LY = 'ar_LY';
+
+    /** @api */
     public const AR_MA = 'ar_MA';
+
+    /** @api */
     public const AR_OM = 'ar_OM';
+
+    /** @api */
     public const AR_QA = 'ar_QA';
+
+    /** @api */
     public const AR_SA = 'ar_SA';
+
+    /** @api */
     public const AR_SD = 'ar_SD';
+
+    /** @api */
     public const AR_SY = 'ar_SY';
+
+    /** @api */
     public const AR_TN = 'ar_TN';
+
+    /** @api */
     public const AR_YE = 'ar_YE';
+
+    /** @api */
     public const BE_BY = 'be_BY';
+
+    /** @api */
     public const BG_BG = 'bg_BG';
+
+    /** @api */
     public const BN_BD = 'bn_BD';
+
+    /** @api */
     public const BN_IN = 'bn_IN';
+
+    /** @api */
     public const CA_ES = 'ca_ES';
+
+    /** @api */
     public const CS_CZ = 'cs_CZ';
+
+    /** @api */
     public const CY_GB = 'cy_GB';
+
+    /** @api */
     public const DA_DK = 'da_DK';
+
+    /** @api */
     public const DE_AT = 'de_AT';
+
+    /** @api */
     public const DE_BE = 'de_BE';
+
+    /** @api */
     public const DE_CH = 'de_CH';
+
+    /** @api */
     public const DE_DE = 'de_DE';
+
+    /** @api */
     public const DE_LI = 'de_LI';
+
+    /** @api */
     public const DE_LU = 'de_LU';
+
+    /** @api */
     public const EL_CY = 'el_CY';
+
+    /** @api */
     public const EL_GR = 'el_GR';
+
+    /** @api */
     public const EN_AU = 'en_AU';
+
+    /** @api */
     public const EN_BW = 'en_BW';
+
+    /** @api */
     public const EN_CA = 'en_CA';
+
+    /** @api */
     public const EN_GB = 'en_GB';
+
+    /** @api */
     public const EN_HK = 'en_HK';
+
+    /** @api */
     public const EN_IE = 'en_IE';
+
+    /** @api */
     public const EN_IN = 'en_IN';
+
+    /** @api */
     public const EN_JM = 'en_JM';
+
+    /** @api */
     public const EN_MH = 'en_MH';
+
+    /** @api */
     public const EN_MT = 'en_MT';
+
+    /** @api */
     public const EN_NA = 'en_NA';
+
+    /** @api */
     public const EN_NZ = 'en_NZ';
+
+    /** @api */
     public const EN_PH = 'en_PH';
+
+    /** @api */
     public const EN_PK = 'en_PK';
+
+    /** @api */
     public const EN_SG = 'en_SG';
+
+    /** @api */
     public const EN_TT = 'en_TT';
+
+    /** @api */
     public const EN_US = 'en_US';
+
+    /** @api */
     public const EN_ZA = 'en_ZA';
+
+    /** @api */
     public const EN_ZW = 'en_ZW';
+
+    /** @api */
     public const ES_AR = 'es_AR';
+
+    /** @api */
     public const ES_BO = 'es_BO';
+
+    /** @api */
     public const ES_CL = 'es_CL';
+
+    /** @api */
     public const ES_CO = 'es_CO';
+
+    /** @api */
     public const ES_CR = 'es_CR';
+
+    /** @api */
     public const ES_DO = 'es_DO';
+
+    /** @api */
     public const ES_EC = 'es_EC';
+
+    /** @api */
     public const ES_ES = 'es_ES';
+
+    /** @api */
     public const ES_GT = 'es_GT';
+
+    /** @api */
     public const ES_HN = 'es_HN';
+
+    /** @api */
     public const ES_MX = 'es_MX';
+
+    /** @api */
     public const ES_NI = 'es_NI';
+
+    /** @api */
     public const ES_PA = 'es_PA';
+
+    /** @api */
     public const ES_PE = 'es_PE';
+
+    /** @api */
     public const ES_PR = 'es_PR';
+
+    /** @api */
     public const ES_PY = 'es_PY';
+
+    /** @api */
     public const ES_SV = 'es_SV';
+
+    /** @api */
     public const ES_US = 'es_US';
+
+    /** @api */
     public const ES_UY = 'es_UY';
+
+    /** @api */
     public const ES_VE = 'es_VE';
+
+    /** @api */
     public const ET_EE = 'et_EE';
+
+    /** @api */
     public const EU_ES = 'eu_ES';
+
+    /** @api */
     public const FA_IR = 'fa_IR';
+
+    /** @api */
     public const FI_FI = 'fi_FI';
+
+    /** @api */
     public const FO_FO = 'fo_FO';
+
+    /** @api */
     public const FR_BE = 'fr_BE';
+
+    /** @api */
     public const FR_CA = 'fr_CA';
+
+    /** @api */
     public const FR_CH = 'fr_CH';
+
+    /** @api */
     public const FR_FR = 'fr_FR';
+
+    /** @api */
     public const FR_LU = 'fr_LU';
+
+    /** @api */
     public const GA_IE = 'ga_IE';
+
+    /** @api */
     public const GL_ES = 'gl_ES';
+
+    /** @api */
     public const HE_IL = 'he_IL';
+
+    /** @api */
     public const HI_IN = 'hi_IN';
+
+    /** @api */
     public const HR_HR = 'hr_HR';
+
+    /** @api */
     public const HU_HU = 'hu_HU';
+
+    /** @api */
     public const HY_AM = 'hy_AM';
+
+    /** @api */
     public const ID_ID = 'id_ID';
+
+    /** @api */
     public const IS_IS = 'is_IS';
+
+    /** @api */
     public const IT_CH = 'it_CH';
+
+    /** @api */
     public const IT_IT = 'it_IT';
+
+    /** @api */
     public const JA_JP = 'ja_JP';
+
+    /** @api */
     public const KA_GE = 'ka_GE';
+
+    /** @api */
     public const KK_KZ = 'kk_KZ';
+
+    /** @api */
     public const KM_KH = 'km_KH';
+
+    /** @api */
     public const KN_IN = 'kn_IN';
+
+    /** @api */
     public const KO_KR = 'ko_KR';
+
+    /** @api */
     public const KY_KG = 'ky_KG';
+
+    /** @api */
     public const LO_LA = 'lo_LA';
+
+    /** @api */
     public const LT_LT = 'lt_LT';
+
+    /** @api */
     public const LV_LV = 'lv_LV';
+
+    /** @api */
     public const MI_NZ = 'mi_NZ';
+
+    /** @api */
     public const MK_MK = 'mk_MK';
+
+    /** @api */
     public const MN_MN = 'mn_MN';
+
+    /** @api */
     public const MR_IN = 'mr_IN';
+
+    /** @api */
     public const MS_BN = 'ms_BN';
+
+    /** @api */
     public const MS_MY = 'ms_MY';
+
+    /** @api */
     public const MT_MT = 'mt_MT';
+
+    /** @api */
     public const NB_NO = 'nb_NO';
+
+    /** @api */
     public const NE_NP = 'ne_NP';
+
+    /** @api */
     public const NL_BE = 'nl_BE';
+
+    /** @api */
     public const NL_NL = 'nl_NL';
+
+    /** @api */
     public const NN_NO = 'nn_NO';
+
+    /** @api */
     public const OR_IN = 'or_IN';
+
+    /** @api */
     public const PA_IN = 'pa_IN';
+
+    /** @api */
     public const PL_PL = 'pl_PL';
+
+    /** @api */
     public const PS_AF = 'ps_AF';
+
+    /** @api */
     public const PT_BR = 'pt_BR';
+
+    /** @api */
     public const PT_PT = 'pt_PT';
+
+    /** @api */
     public const RO_RO = 'ro_RO';
+
+    /** @api */
     public const RU_RU = 'ru_RU';
+
+    /** @api */
     public const RW_RW = 'rw_RW';
+
+    /** @api */
     public const SI_LK = 'si_LK';
+
+    /** @api */
     public const SK_SK = 'sk_SK';
+
+    /** @api */
     public const SL_SI = 'sl_SI';
+
+    /** @api */
     public const SQ_AL = 'sq_AL';
+
+    /** @api */
     public const SR_RS = 'sr_RS';
+
+    /** @api */
     public const SV_SE = 'sv_SE';
+
+    /** @api */
     public const SW_KE = 'sw_KE';
+
+    /** @api */
     public const TA_IN = 'ta_IN';
+
+    /** @api */
     public const TE_IN = 'te_IN';
+
+    /** @api */
     public const TH_TH = 'th_TH';
+
+    /** @api */
     public const TI_ET = 'ti_ET';
+
+    /** @api */
     public const TR_TR = 'tr_TR';
+
+    /** @api */
     public const UK_UA = 'uk_UA';
+
+    /** @api */
     public const UR_PK = 'ur_PK';
+
+    /** @api */
     public const VI_VN = 'vi_VN';
+
+    /** @api */
     public const ZH_CN = 'zh_CN';
+
+    /** @api */
     public const ZH_HK = 'zh_HK';
+
+    /** @api */
     public const ZH_TW = 'zh_TW';
 
     private string $value;
 
+    /**
+     * @var string[] The list of all available locales
+     */
     private static array $NAMES = [
         self::AF_ZA => 'Afrikaans (South Africa)',
         self::AM_ET => 'Amharic (Ethiopia)',
@@ -307,16 +597,25 @@ class Locale
         $this->value = $value;
     }
 
+    /**
+     * @api
+     */
     public static function of(string $value): self
     {
         return new self($value);
     }
 
+    /**
+     * @api
+     */
     public function code(): string
     {
         return $this->value;
     }
 
+    /**
+     * @api
+     */
     public function fullName(): string
     {
         Assert::notNull(self::$NAMES[$this->value] ?? null, 'Invalid locale');

@@ -6,7 +6,7 @@ namespace Atournayre\Primitives\Tests\Primitives;
 use Atournayre\Primitives\StringType;
 use PHPUnit\Framework\TestCase;
 
-class StringTypeTest extends TestCase
+final class StringTypeTest extends TestCase
 {
     public function testAppendAddsSuffixToString(): void
     {
@@ -815,11 +815,5 @@ class StringTypeTest extends TestCase
         $string = StringType::of('Hello');
         $string->width();
         self::assertEquals('Hello', $string->value());
-    }
-
-    public function testOfCreatesString(): void
-    {
-        $string = StringType::of('Hello');
-        self::assertInstanceOf(StringType::class, $string);
     }
 }

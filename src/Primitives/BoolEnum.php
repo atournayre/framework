@@ -6,9 +6,10 @@ namespace Atournayre\Primitives;
 
 use function Symfony\Component\String\u;
 
-class BoolEnum
+final class BoolEnum
 {
     private const TRUE = 'true';
+
     private const FALSE = 'false';
 
     private string $value;
@@ -23,36 +24,57 @@ class BoolEnum
         return $value ? self::TRUE() : self::FALSE();
     }
 
+    /**
+     * @api
+     */
     public function asString(): string
     {
         return u($this->value)->lower()->toString();
     }
 
+    /**
+     * @api
+     */
     public function asInt(): int
     {
         return $this->value === self::TRUE ? 1 : 0;
     }
 
+    /**
+     * @api
+     */
     public function asBool(): bool
     {
         return $this->value === self::TRUE;
     }
 
+    /**
+     * @api
+     */
     public function isTrue(): bool
     {
         return $this->value === self::TRUE;
     }
 
+    /**
+     * @api
+     */
     public function isFalse(): bool
     {
         return $this->value === self::FALSE;
     }
 
+    /**
+     * @api
+     */
     public function yes(): bool
     {
         return $this->isTrue();
     }
 
+    /**
+     * @api
+     */
     public function no(): bool
     {
         return $this->isFalse();
@@ -69,6 +91,8 @@ class BoolEnum
     }
 
     /**
+     * @api
+     * @param string|\Exception $message
      * @throws \Exception
      */
     public function throwIfFalse($message): void
@@ -85,6 +109,8 @@ class BoolEnum
     }
 
     /**
+     * @api
+     * @param string|\Exception $message
      * @throws \Exception
      */
     public function throwIfTrue($message): void

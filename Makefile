@@ -31,7 +31,7 @@ rector: ## Run Rector
 	@$(PHP) vendor/bin/rector process src --config=tools/rector.php
 
 quality: ## Run Swiss Knife
-	@$(PHP) vendor/bin/swiss-knife privatize-constants src tests
+	@$(PHP) vendor/bin/swiss-knife privatize-constants src tests --exclude-path=src/Primitives/Locale.php --exclude-path=src/Primitives/StringType.php
 	@$(PHP) vendor/bin/swiss-knife finalize-classes src tests --skip-mocked
 	@$(PHP) vendor/bin/swiss-knife check-conflicts .
 	@$(PHP) vendor/bin/swiss-knife check-commented-code src --line-limit 5

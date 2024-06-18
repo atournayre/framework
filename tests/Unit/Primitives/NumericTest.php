@@ -8,7 +8,7 @@ use Atournayre\Primitives\Locale;
 use Atournayre\Primitives\Numeric;
 use PHPUnit\Framework\TestCase;
 
-class NumericTest extends TestCase
+final class NumericTest extends TestCase
 {
     public function testOfWithInteger(): void
     {

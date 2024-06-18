@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
-class Numeric
+final class Numeric
 {
     private int $value;
+
     private int $precision;
 
     /**
      * @param int|float|string $value
-     * @param int $precision
-     * @return Numeric
      * @throws \InvalidArgumentException
      */
     public static function of($value, int $precision = 0): self
@@ -22,7 +21,6 @@ class Numeric
 
     /**
      * @param int|float|string $value
-     * @param int $precision
      * @throws \InvalidArgumentException
      */
     private function __construct($value, int $precision)
@@ -41,33 +39,43 @@ class Numeric
             throw new \InvalidArgumentException('The value is out of range for floating point numbers.');
         }
 
-        $multiplier = pow(10, $precision);
+        $multiplier = 10 ** $precision;
         $intValue = intval(round($numericValue * $multiplier));
 
         if ($intValue < PHP_INT_MIN || $intValue > PHP_INT_MAX) {
-            throw new \InvalidArgumentException("The value $intValue exceeds the allowed limits.");
+            throw new \InvalidArgumentException(sprintf('The value %s exceeds the allowed limits.', $intValue));
         }
 
         $this->value = $intValue;
         $this->precision = $precision;
     }
 
+    /**
+     * @api
+     */
     public function value(): float
     {
-        return $this->value / pow(10, $this->precision);
+        return $this->value / 10 ** $this->precision;
     }
 
+    /**
+     * @api
+     */
     public function intValue(): int
     {
         return $this->value;
     }
 
+    /**
+     * @api
+     */
     public function precision(): int
     {
         return $this->precision;
     }
 
     /**
+     * @api
      * @throws \RuntimeException
      */
     public function format(Locale $locale): string
@@ -82,36 +90,39 @@ class Numeric
         return $format;
     }
 
+    /**
+     * @api
+     */
     public function round(int $mode = PHP_ROUND_HALF_UP): self
     {
         switch ($mode) {
             case PHP_ROUND_HALF_UP:
-                return new self(round($this->value(), $this->precision()), $this->precision);
+                return new self(round($this->value(), $this->precision), $this->precision);
             case PHP_ROUND_HALF_DOWN:
-                return new self(round($this->value(), $this->precision(), PHP_ROUND_HALF_DOWN), $this->precision);
+                return new self(round($this->value(), $this->precision, PHP_ROUND_HALF_DOWN), $this->precision);
             case PHP_ROUND_HALF_EVEN:
-                return new self(round($this->value(), $this->precision(), PHP_ROUND_HALF_EVEN), $this->precision);
+                return new self(round($this->value(), $this->precision, PHP_ROUND_HALF_EVEN), $this->precision);
             case PHP_ROUND_HALF_ODD:
-                return new self(round($this->value(), $this->precision(), PHP_ROUND_HALF_ODD), $this->precision);
+                return new self(round($this->value(), $this->precision, PHP_ROUND_HALF_ODD), $this->precision);
             default:
                 throw new \InvalidArgumentException('Invalid rounding mode provided.');
         }
     }
 
     /**
+     * @api
      * @param int|Numeric $numeric
-     * @return BoolEnum
      */
     public function greaterThan($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
-        $greaterThan = $this->intValue() > $that->intValue();
+        $greaterThan = $this->value > $that->intValue();
         return BoolEnum::fromBool($greaterThan);
     }
 
     /**
+     * @api
      * @param int|Numeric $numeric
-     * @return BoolEnum
      */
     public function greaterThanOrEqual($numeric): BoolEnum
     {
@@ -121,8 +132,8 @@ class Numeric
     }
 
     /**
+     * @api
      * @param int|Numeric $numeric
-     * @return BoolEnum
      */
     public function lessThan($numeric): BoolEnum
     {
@@ -132,8 +143,8 @@ class Numeric
     }
 
     /**
+     * @api
      * @param int|Numeric $numeric
-     * @return BoolEnum
      */
     public function lessThanOrEqual($numeric): BoolEnum
     {
@@ -143,8 +154,8 @@ class Numeric
     }
 
     /**
+     * @api
      * @param int|Numeric $numeric
-     * @return BoolEnum
      */
     public function equalTo($numeric): BoolEnum
     {
@@ -154,8 +165,8 @@ class Numeric
     }
 
     /**
+     * @api
      * @param int|Numeric $numeric
-     * @return BoolEnum
      */
     public function notEqualTo($numeric): BoolEnum
     {
@@ -165,9 +176,9 @@ class Numeric
     }
 
     /**
+     * @api
      * @param int|Numeric $min
      * @param int|Numeric $max
-     * @return BoolEnum
      * @throws \Exception
      */
     public function between($min, $max): BoolEnum
@@ -184,9 +195,9 @@ class Numeric
     }
 
     /**
+     * @api
      * @param int|Numeric $min
      * @param int|Numeric $max
-     * @return BoolEnum
      * @throws \Exception
      */
     public function betweenOrEqual($min, $max): BoolEnum
