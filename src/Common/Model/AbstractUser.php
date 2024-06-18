@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Model;
 
-use Atournayre\Common\VO\PlainPassword;
+use Atournayre\Common\VO\Security\PlainPassword;
 use Atournayre\Contracts\Security\UserInterface;
 use Atournayre\Null\NullTrait;
 

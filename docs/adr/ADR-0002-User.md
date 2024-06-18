@@ -17,6 +17,13 @@ It also extends the `NullableInterface` to handle nullable values consistently.
     - Provides methods for setting and getting user attributes.
     - Extends the `NullableInterface` to handle nullable values consistently.
     - Requires implementing classes to provide methods for handling user attributes.
+2. **AbstractUser**:
+    - Provides a base implementation of the `UserInterface`.
+    - Implements the `NullableInterface` methods for handling nullable values.
+    - Requires extending classes to implement the `UserInterface` methods for handling user attributes.
+3. **PlainPassword**:
+    - Represents the plain password of a user.
+    - Extends the `NullableInterface` to handle nullable values consistently.
 
 ## Consequences
 - **Benefits**:

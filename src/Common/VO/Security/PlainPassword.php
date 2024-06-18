@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Common\VO;
+namespace Atournayre\Common\VO\Security;
 
 use Atournayre\Contracts\Null\NullableInterface;
 use Atournayre\Null\NullTrait;
