@@ -11,10 +11,10 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": ">=7.4 || ^8.0",
         "symfony/string": "^5.4",
         "webmozart/assert": "^1.11",
-        "nesbot/carbon": "^3.5"
+        "nesbot/carbon": "^2.72"
     },
     "autoload": {
         "psr-4": {
