@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Component\Null\Tests;
+namespace Atournayre\Tests\Unit\Null;
 
 use Atournayre\Tests\Fixtures\Title;
 use PHPUnit\Framework\TestCase;

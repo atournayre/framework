@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Primitives\Tests\Primitives;
+namespace Atournayre\Tests\Primitives;
 
 use Atournayre\Primitives\Locale;
 use Atournayre\Primitives\Numeric;

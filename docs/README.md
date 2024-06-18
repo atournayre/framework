@@ -10,3 +10,6 @@ Primitives are the basic building blocks of the project. They are the smallest u
 
 ## Handling nullable values using the Null Object Pattern
 In this project, we use the Null Object Pattern to handle nullable values. You can read more about it [here](doc/null-object-pattern.md).
+
+## DateTimeInterface
+Use the `Atournayre\Contracts\DateTimeInterface` instead of the `\DateTimeInterface` class to represent dates and times.
