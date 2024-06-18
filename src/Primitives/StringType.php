@@ -48,6 +48,7 @@ final class StringType
      * Install the intl extension for best results.
      *
      * @api
+     *
      * @param string[]|\Transliterator[]|\Closure[] $rules See "*-Latin" rules from Transliterator::listIDs()
      */
     public function ascii(array $rules = []): self
@@ -69,17 +70,19 @@ final class StringType
 
     /**
      * @api
+     *
      * @return self[]
      */
     public function chunk(int $length = 1): array
     {
         $chunks = u($this->value)->chunk($length);
 
-        return array_map(static fn($chunk) => StringType::of($chunk->toString()), $chunks);
+        return array_map(static fn ($chunk) => StringType::of($chunk->toString()), $chunks);
     }
 
     /**
      * @api
+     *
      * @return int[]
      */
     public function codePointsAt(int $offset): array
@@ -89,6 +92,7 @@ final class StringType
 
     /**
      * @api
+     *
      * @param string|string[] $needle
      */
     public function containsAny($needle): BoolEnum
@@ -100,6 +104,7 @@ final class StringType
 
     /**
      * @api
+     *
      * @param string|string[] $suffix
      */
     public function endsWith($suffix): BoolEnum
@@ -111,6 +116,7 @@ final class StringType
 
     /**
      * @api
+     *
      * @param string|string[] $string
      */
     public function equalsTo($string): BoolEnum
@@ -155,6 +161,7 @@ final class StringType
 
     /**
      * @api
+     *
      * @param string|string[] $needle
      */
     public function indexOf($needle, int $offset = 0): ?int
@@ -164,6 +171,7 @@ final class StringType
 
     /**
      * @api
+     *
      * @param string|string[] $needle
      */
     public function indexOfLast($needle, int $offset = 0): ?int
@@ -204,6 +212,7 @@ final class StringType
 
     /**
      * @api
+     *
      * @throws \Exception
      */
     public function lengthIsBetween(int $start, int $end): BoolEnum
@@ -211,7 +220,7 @@ final class StringType
         return self::of($this->value)
             ->length()
             ->betweenOrEqual($start, $end)
-            ;
+        ;
     }
 
     /**
@@ -305,6 +314,7 @@ final class StringType
 
     /**
      * @api
+     *
      * @param string|callable $to
      */
     public function replaceMatches(string $fromRegexp, $to): self
@@ -372,17 +382,19 @@ final class StringType
 
     /**
      * @api
+     *
      * @return self[]
      */
     public function split(string $delimiter, ?int $limit = null, ?int $flags = null): array
     {
         $splits = u($this->value)->split($delimiter, $limit, $flags);
 
-        return array_map(static fn($chunk) => StringType::of($chunk->toString()), $splits);
+        return array_map(static fn ($chunk) => StringType::of($chunk->toString()), $splits);
     }
 
     /**
      * @api
+     *
      * @param string|string[] $prefix
      */
     public function startsWith($prefix): BoolEnum
@@ -424,6 +436,7 @@ final class StringType
 
     /**
      * @api
+     *
      * @param string|string[] $prefix
      */
     public function trimPrefix($prefix): self
@@ -445,6 +458,7 @@ final class StringType
 
     /**
      * @api
+     *
      * @param string|string[] $suffix
      */
     public function trimSuffix($suffix): self
