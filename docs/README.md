@@ -7,3 +7,6 @@ Architecture Decision Records (ADRs) are a way to document the architectural dec
 
 ## Primitives
 Primitives are the basic building blocks of the project. They are the smallest units of the project that can be used to build more complex structures. List of primitives can be found [here](doc/primitives.md).
+
+## Handling nullable values using the Null Object Pattern
+In this project, we use the Null Object Pattern to handle nullable values. You can read more about it [here](doc/null-object-pattern.md).
