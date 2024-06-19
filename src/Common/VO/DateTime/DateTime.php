@@ -19,6 +19,13 @@ final class DateTime implements DateTimeInterface
         $this->datetime = $datetime;
     }
 
+    public static function asNull(): self
+    {
+        return (new self(new \DateTimeImmutable('1970-01-01')))
+            ->toNullable()
+        ;
+    }
+
     /**
      * @api
      *

@@ -13,3 +13,6 @@ In this project, we use the Null Object Pattern to handle nullable values. You c
 
 ## DateTimeInterface
 Use the `Atournayre\Contracts\DateTimeInterface` instead of the `\DateTimeInterface` class to represent dates and times.
+
+## Logging
+Use the `Atournayre\Contracts\LoggerInterface` to log messages in the project.

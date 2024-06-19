@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Primitives\Enum;
-
-use Atournayre\Primitives\StringType;
+namespace Atournayre\Primitives;
 
 trait StringTypeTrait
 {
