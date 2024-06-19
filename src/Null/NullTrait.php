@@ -83,14 +83,14 @@ trait NullTrait
      */
     public function orThrow($throwable): self
     {
-        if ($this->null->isNull()) {
-            if ($throwable instanceof \Throwable) {
-                throw $throwable;
-            }
-
-            throw $throwable();
+        if ($this->null->isNotNull()) {
+            return $this;
         }
 
-        return $this;
+        if ($throwable instanceof \Throwable) {
+            throw $throwable;
+        }
+
+        throw $throwable();
     }
 }
