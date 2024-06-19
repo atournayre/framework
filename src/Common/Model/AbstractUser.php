@@ -6,14 +6,12 @@ namespace Atournayre\Common\Model;
 
 use Atournayre\Common\VO\Security\PlainPassword;
 use Atournayre\Contracts\Security\UserInterface;
-use Atournayre\Null\NullTrait;
 
 abstract class AbstractUser implements UserInterface
 {
-    use NullTrait;
-
     protected PlainPassword $plainPassword;
 
+    // @phpstan-ignore-next-line
     abstract public function getRoles(): array;
 
     abstract public function getPassword(): string;
