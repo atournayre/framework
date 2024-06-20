@@ -32,7 +32,7 @@ rector: ## Run Rector
 
 quality: ## Run Swiss Knife
 	@$(PHP) vendor/bin/swiss-knife privatize-constants src tests --exclude-path=src/Primitives/Locale.php --exclude-path=src/Primitives/StringType.php
-	@$(PHP) vendor/bin/swiss-knife finalize-classes src tests --skip-mocked
+#	@$(PHP) vendor/bin/swiss-knife finalize-classes src tests --skip-mocked
 	@$(PHP) vendor/bin/swiss-knife check-conflicts .
 	@$(PHP) vendor/bin/swiss-knife check-commented-code src --line-limit 5
 	@$(PHP) vendor/bin/swiss-knife find-multi-classes src

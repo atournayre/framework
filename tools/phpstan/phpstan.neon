@@ -2,6 +2,7 @@ includes:
     - ../../tools/phpstan/disallowed-calls.neon
 
 parameters:
+    phpVersion: 70400
     level: 6
     paths:
         - ../../src/

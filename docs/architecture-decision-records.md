@@ -8,3 +8,4 @@
 | [ADR 0004](adr/ADR-0004-DateTimeInterface.md) | DateTimeInterface | 2024-06-18 | Accepted | DateTimeInterface                                      |
 | [ADR 0005](adr/ADR-0005-Log.md)               | Log               | 2024-06-19 | Accepted | Log                                                    |
 | [ADR 0006](adr/ADR-0006-Context.md)           | Context           | 2024-06-19 | Accepted | Context                                                |
+| [ADR 0007](adr/ADR-0007-Collection.md)        | Collection        | 2024-06-20 | Accepted | Collection                                             |

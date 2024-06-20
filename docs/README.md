@@ -16,3 +16,6 @@ Use the `Atournayre\Contracts\DateTimeInterface` instead of the `\DateTimeInterf
 
 ## Logging
 Use the `Atournayre\Contracts\LoggerInterface` to log messages in the project.
+
+## Collections
+Usage or arrays is discouraged in the project. Use Collections instead. You can read more about it [here](doc/collections.md).
