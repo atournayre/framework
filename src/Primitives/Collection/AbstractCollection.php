@@ -64,6 +64,8 @@ abstract class AbstractCollection implements \ArrayAccess, \Countable
      * @api
      *
      * @param string|int $offset
+     *
+     * @return T
      */
     public function offsetGet($offset)
     {
