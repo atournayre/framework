@@ -6,7 +6,9 @@ namespace Atournayre\Primitives;
 
 final class Numeric
 {
-    private int $value;
+    private float $value;
+
+    private int $intValue;
 
     private int $precision;
 
@@ -37,7 +39,7 @@ final class Numeric
 
         $numericValue = (float) $value;
 
-        if ($numericValue < PHP_FLOAT_MIN || $numericValue > PHP_FLOAT_MAX) {
+        if (($numericValue < PHP_FLOAT_MIN || $numericValue > PHP_FLOAT_MAX) && 0.0 !== $numericValue) {
             throw new \InvalidArgumentException('The value is out of range for floating point numbers.');
         }
 
@@ -48,7 +50,8 @@ final class Numeric
             throw new \InvalidArgumentException(sprintf('The value %s exceeds the allowed limits.', $intValue));
         }
 
-        $this->value = $intValue;
+        $this->value = $numericValue;
+        $this->intValue = $intValue;
         $this->precision = $precision;
     }
 
@@ -57,7 +60,7 @@ final class Numeric
      */
     public function value(): float
     {
-        return $this->value / 10 ** $this->precision;
+        return $this->value;
     }
 
     /**
@@ -65,7 +68,7 @@ final class Numeric
      */
     public function intValue(): int
     {
-        return $this->value;
+        return $this->intValue;
     }
 
     /**
@@ -85,7 +88,7 @@ final class Numeric
     {
         $fmt = new \NumberFormatter($locale->code(), \NumberFormatter::DECIMAL);
 
-        $format = $fmt->format($this->value());
+        $format = $fmt->format($this->value);
         if (false === $format) {
             throw new \RuntimeException('Failed to format the number.');
         }
@@ -100,13 +103,13 @@ final class Numeric
     {
         switch ($mode) {
             case PHP_ROUND_HALF_UP:
-                return new self(round($this->value(), $this->precision), $this->precision);
+                return new self(round($this->value, $this->precision), $this->precision);
             case PHP_ROUND_HALF_DOWN:
-                return new self(round($this->value(), $this->precision, PHP_ROUND_HALF_DOWN), $this->precision);
+                return new self(round($this->value, $this->precision, PHP_ROUND_HALF_DOWN), $this->precision);
             case PHP_ROUND_HALF_EVEN:
-                return new self(round($this->value(), $this->precision, PHP_ROUND_HALF_EVEN), $this->precision);
+                return new self(round($this->value, $this->precision, PHP_ROUND_HALF_EVEN), $this->precision);
             case PHP_ROUND_HALF_ODD:
-                return new self(round($this->value(), $this->precision, PHP_ROUND_HALF_ODD), $this->precision);
+                return new self(round($this->value, $this->precision, PHP_ROUND_HALF_ODD), $this->precision);
             default:
                 throw new \InvalidArgumentException('Invalid rounding mode provided.');
         }
@@ -133,7 +136,7 @@ final class Numeric
     public function greaterThanOrEqual($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
-        $greaterThanOrEqual = $this->value() >= $that->value();
+        $greaterThanOrEqual = $this->value >= $that->value();
 
         return BoolEnum::fromBool($greaterThanOrEqual);
     }
@@ -146,7 +149,7 @@ final class Numeric
     public function lessThan($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
-        $lessThan = $this->value() < $that->value();
+        $lessThan = $this->value < $that->value();
 
         return BoolEnum::fromBool($lessThan);
     }
@@ -159,7 +162,7 @@ final class Numeric
     public function lessThanOrEqual($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
-        $lessThanOrEqual = $this->value() <= $that->value();
+        $lessThanOrEqual = $this->value <= $that->value();
 
         return BoolEnum::fromBool($lessThanOrEqual);
     }
@@ -172,7 +175,7 @@ final class Numeric
     public function equalTo($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
-        $equalTo = $this->value() === $that->value();
+        $equalTo = $this->value === $that->value();
 
         return BoolEnum::fromBool($equalTo);
     }
@@ -185,7 +188,7 @@ final class Numeric
     public function notEqualTo($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
-        $equalTo = $this->value() !== $that->value();
+        $equalTo = $this->value !== $that->value();
 
         return BoolEnum::fromBool($equalTo);
     }
@@ -230,5 +233,10 @@ final class Numeric
             && $this->lessThanOrEqual($max)->isTrue();
 
         return BoolEnum::fromBool($between);
+    }
+
+    public static function fromInt(int $value, int $precision): Numeric
+    {
+        return Numeric::of($value / (10 ** $precision), $precision);
     }
 }

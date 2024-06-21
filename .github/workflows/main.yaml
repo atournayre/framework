@@ -7,6 +7,10 @@ on:
 jobs:
     php-cs-fixer:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php-versions: ['7.4', '8.0']
+            fail-fast: false
         name: Coding Standards
         steps:
             - name: Checkout
@@ -23,6 +27,10 @@ jobs:
     
     php-stan:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php-versions: ['7.4', '8.0']
+            fail-fast: false
         name: PHPStan
         steps:
             - uses: actions/checkout@v2

@@ -71,21 +71,21 @@ final class NumericTest extends TestCase
     {
         $number = Numeric::of(1.235, 2);
         $roundedNumber = $number->round(PHP_ROUND_HALF_DOWN);
-        self::assertEquals(1.24, $roundedNumber->value());
+        self::assertEquals(1.23, $roundedNumber->value());
     }
 
     public function testRoundWithPHPRoundHalfEven(): void
     {
         $number = Numeric::of(1.245, 2);
         $roundedNumber = $number->round(PHP_ROUND_HALF_EVEN);
-        self::assertEquals(1.25, $roundedNumber->value());
+        self::assertEquals(1.24, $roundedNumber->value());
     }
 
     public function testRoundWithPHPRoundHalfOdd(): void
     {
         $number = Numeric::of(1.255, 2);
         $roundedNumber = $number->round(PHP_ROUND_HALF_ODD);
-        self::assertEquals(1.26, $roundedNumber->value());
+        self::assertEquals(1.25, $roundedNumber->value());
     }
 
     public function testGreaterThan(): void

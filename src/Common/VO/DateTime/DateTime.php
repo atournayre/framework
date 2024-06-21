@@ -31,9 +31,19 @@ final class DateTime implements DateTimeInterface
      *
      * @throws \Exception
      */
+    public static function of(string $datetime = 'now', ?\DateTimeZone $timezone = null): self
+    {
+        return new self(new \DateTime($datetime, $timezone));
+    }
+
+    /**
+     * @api
+     *
+     * @throws \Exception
+     */
     public static function fromInterface(\DateTimeInterface $datetime): self
     {
-        return new self($datetime);
+        return DateTime::of($datetime->format('Y-m-d H:i:s'), $datetime->getTimezone());
     }
 
     /**
