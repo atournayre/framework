@@ -34,14 +34,18 @@ rector-no-cache: ## Run Rector
 	@$(PHP) vendor/bin/rector process src --config=tools/rector.php --clear-cache
 
 quality: ## Run Swiss Knife
-	@$(PHP) vendor/bin/swiss-knife privatize-constants src tests --exclude-path=src/Primitives/Locale.php --exclude-path=src/Primitives/StringType.php
+	@$(PHP) vendor/bin/swiss-knife privatize-constants src tests \
+		--exclude-path=src/Primitives/Locale.php \
+		--exclude-path=src/Primitives/StringType.php \
+		--exclude-path=src/Contracts/Session/FlashBagInterface.php \
+		--exclude-path=src/Contracts/Routing/RoutingInterface.php
 #	@$(PHP) vendor/bin/swiss-knife finalize-classes src tests --skip-mocked
 	@$(PHP) vendor/bin/swiss-knife check-conflicts .
 	@$(PHP) vendor/bin/swiss-knife check-commented-code src --line-limit 5
 	@$(PHP) vendor/bin/swiss-knife find-multi-classes src
 
 fix: ## Run PHP-CS-Fixer
-	@$(PHP) vendor/bin/php-cs-fixer fix
+	@$(PHP) vendor/bin/php-cs-fixer fix --config=tools/phpcsfixer/php-cs-fixer.php
 
 #architecture: ## Run PHParkitect
 #	@$(PHP) vendor/bin/phparkitect check --config=tools/phparkitect/phparkitect.php

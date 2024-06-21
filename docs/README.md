@@ -19,3 +19,7 @@ Use the `Atournayre\Contracts\LoggerInterface` to log messages in the project.
 
 ## Collections
 Usage or arrays is discouraged in the project. Use Collections instead. You can read more about it [here](doc/collections.md).
+
+## HTTP/Session/Templating
+Use the `Atournayre\Contracts\HttpInterface`, `Atournayre\Contracts\SessionInterface`, and `Atournayre\Contracts\TemplatingInterface` to interact with the HTTP protocol, manage sessions, and render templates.
+

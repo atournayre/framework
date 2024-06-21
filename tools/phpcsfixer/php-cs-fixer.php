@@ -1,7 +1,10 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__.'/{src,tests}')
+    ->in(__DIR__.'/../../{src,tests}')
+    ->notPath([
+        __DIR__.'/../../src/Contracts/Response/ResponseInterface.php',
+    ])
 ;
 
 $config = new PhpCsFixer\Config();

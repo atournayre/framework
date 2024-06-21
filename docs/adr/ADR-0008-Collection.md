@@ -1,4 +1,4 @@
-# ADR 0007: Collection
+# ADR 0008: Collection
 
 ## Status
 Accepted
