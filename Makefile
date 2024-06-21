@@ -42,3 +42,6 @@ quality: ## Run Swiss Knife
 
 fix: ## Run PHP-CS-Fixer
 	@$(PHP) vendor/bin/php-cs-fixer fix
+
+#architecture: ## Run PHParkitect
+#	@$(PHP) vendor/bin/phparkitect check --config=tools/phparkitect/phparkitect.php

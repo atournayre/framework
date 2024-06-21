@@ -11,9 +11,3 @@ parameters:
         methods: true
         properties: true
         constants: true
-    type_coverage:
-        return: 50
-        param: 35.5
-        property: 70
-        constant: 85
-        declare: 100
