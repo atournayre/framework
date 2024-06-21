@@ -7,8 +7,14 @@ namespace Atournayre\Contracts\Filesystem;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\FileCollection;
 
+/**
+ * @template T
+ */
 interface FilesystemInterface
 {
+    /**
+     * @return self<T>
+     */
     public static function from(string $directoryOrFile): self;
 
     public function createDirectory(string $directory): void;
@@ -43,10 +49,16 @@ interface FilesystemInterface
 
     public function countFiles(): int;
 
+    /**
+     * @return FileCollection<T>
+     */
     public function listFiles(): FileCollection;
 
     public function countDirectories(): int;
 
+    /**
+     * @return FileCollection<T>
+     */
     public function listDirectories(): FileCollection;
 
     public function isReadable(): BoolEnum;

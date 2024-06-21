@@ -501,6 +501,9 @@ final class StringType
         return $this->value;
     }
 
+    /**
+     * @api
+     */
     public function ensureEnd(string $string): self
     {
         $u = u($this->value)->ensureEnd($string);
@@ -508,6 +511,9 @@ final class StringType
         return self::of($u->toString());
     }
 
+    /**
+     * @api
+     */
     public function ensureStart(string $string): self
     {
         $u = u($this->value)->ensureStart($string);

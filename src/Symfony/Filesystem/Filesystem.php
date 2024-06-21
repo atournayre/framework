@@ -11,12 +11,20 @@ use Atournayre\Primitives\Collection\FileCollection;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
 
+/**
+ * @template T
+ *
+ * @implements FilesystemInterface<T>
+ */
 final class Filesystem implements FilesystemInterface
 {
+    /** @api */
     public Finder $finder;
 
+    /** @api */
     public SymfonyFilesystem $symfonyFilesystem;
 
+    /** @api */
     public DirectoryOrFile $directoryOrFile;
 
     private function __construct(
@@ -27,6 +35,9 @@ final class Filesystem implements FilesystemInterface
         $this->symfonyFilesystem = new SymfonyFilesystem();
     }
 
+    /**
+     * @return self<T>
+     */
     public static function from(string $directoryOrFile): self
     {
         return new self($directoryOrFile);
@@ -148,7 +159,7 @@ final class Filesystem implements FilesystemInterface
     public function exists(): BoolEnum
     {
         $exists = $this->symfonyFilesystem
-            ->exists($this->directoryOrFile)
+            ->exists($this->directoryOrFile->toString())
         ;
 
         return BoolEnum::fromBool($exists);
@@ -204,17 +215,19 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
+     * @return FileCollection<T>
+     *
      * @throws \Exception
      */
     public function listFiles(): FileCollection
     {
         $finder = $this->finder
             ->files()
-            ->in($this->directoryOrFile)
+            ->in($this->directoryOrFile->toString())
         ;
         $files = iterator_to_array($finder);
 
-        return FileCollection::asList($files);
+        return FileCollection::asMap($files);
     }
 
     /**
@@ -228,17 +241,19 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
+     * @return FileCollection<T>
+     *
      * @throws \Exception
      */
     public function listDirectories(): FileCollection
     {
         $finder = $this->finder
             ->directories()
-            ->in($this->directoryOrFile)
+            ->in($this->directoryOrFile->toString())
         ;
         $files = iterator_to_array($finder);
 
-        return FileCollection::asList($files);
+        return FileCollection::asMap($files);
     }
 
     public function isReadable(): BoolEnum

@@ -19,6 +19,9 @@ final class DirectoryOrFile
         return new self(StringType::of($value));
     }
 
+    /**
+     * @api
+     */
     public function suffixWith(string $suffix): self
     {
         $suffixString = StringType::of($suffix)
@@ -36,6 +39,9 @@ final class DirectoryOrFile
         return new self($newPath);
     }
 
+    /**
+     * @api
+     */
     public function prefixWith(string $prefix): self
     {
         $prefixString = StringType::of($prefix)
