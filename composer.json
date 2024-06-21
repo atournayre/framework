@@ -59,7 +59,6 @@
         "tomasvotruba/lines": "^0.5.1",
         "phpstan/extension-installer": "^1.4",
         "phparkitect/phparkitect": "^0.3.33",
-        "atournayre/phparkitect-rules": "^0.1.0",
         "friendsofphp/php-cs-fixer": "^3.59"
     },
     "config": {
