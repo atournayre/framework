@@ -44,7 +44,8 @@
         "spaze/phpstan-disallowed-calls": "^3.4",
         "tomasvotruba/unused-public": "^0.3.9",
         "tomasvotruba/lines": "^0.5.1",
-        "phpstan/extension-installer": "^1.4"
+        "phpstan/extension-installer": "^1.4",
+        "tomasvotruba/type-coverage": "^0.3.1"
     },
     "config": {
         "allow-plugins": {

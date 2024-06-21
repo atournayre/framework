@@ -30,6 +30,9 @@ phpstan: ## Run PHPStan
 rector: ## Run Rector
 	@$(PHP) vendor/bin/rector process src --config=tools/rector.php
 
+rector-no-cache: ## Run Rector
+	@$(PHP) vendor/bin/rector process src --config=tools/rector.php --clear-cache
+
 quality: ## Run Swiss Knife
 	@$(PHP) vendor/bin/swiss-knife privatize-constants src tests --exclude-path=src/Primitives/Locale.php --exclude-path=src/Primitives/StringType.php
 #	@$(PHP) vendor/bin/swiss-knife finalize-classes src tests --skip-mocked

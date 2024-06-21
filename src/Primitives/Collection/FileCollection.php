@@ -25,8 +25,8 @@ final class FileCollection extends TypedCollection
 
     /**
      * @return FileCollection<T>
-     * @api
      *
+     * @api
      */
     public static function asList(array $collection): self
     {
@@ -37,8 +37,8 @@ final class FileCollection extends TypedCollection
 
     /**
      * @return FileCollection<T>
-     * @api
      *
+     * @api
      */
     public static function asMap(array $collection): self
     {
@@ -49,8 +49,8 @@ final class FileCollection extends TypedCollection
 
     /**
      * @return FileCollection<T>
-     * @api
      *
+     * @api
      */
     public function filterByExtension(string $extension): self
     {
@@ -65,8 +65,8 @@ final class FileCollection extends TypedCollection
 
     /**
      * @return FileCollection<T>
-     * @api
      *
+     * @api
      */
     public function filterBySize(int $size): self
     {
@@ -81,8 +81,8 @@ final class FileCollection extends TypedCollection
 
     /**
      * @return FileCollection<T>
-     * @api
      *
+     * @api
      */
     public function filterByContent(string $content): FileCollection
     {
