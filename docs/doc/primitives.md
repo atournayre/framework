@@ -10,6 +10,8 @@ This library provides a `StringType` class to manipulate strings.
 - `codePointsAt(offset: int): int[]`
 - `containsAny(needle: string|string[]): BoolEnum`
 - `endsWith(suffix: iterable|string|string[]): BoolEnum`
+- `ensureEnd(string $string): self`
+- `ensureStart(string $string): self`
 - `equalsTo(string: iterable|string|string[]): BoolEnum`
 - `filterVar([filter: int = FILTER_DEFAULT], [options: mixed|null = null]): StringType`
 - `folded([compat: bool = true]): StringType`
@@ -44,7 +46,7 @@ This library provides a `StringType` class to manipulate strings.
 - `trimStart([chars: string = " \t\n\r\0\x0B\x0C\u...]): StringType`
 - `trimSuffix(suffix: string|string[]): StringType`
 - `upper(): StringType`
-- `value(): string`
+- `string(): string`
 - `width([ignoreAnsiDecoration: bool = true]): Numeric`
 - `__toString(): string`
 

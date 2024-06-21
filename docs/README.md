@@ -23,3 +23,5 @@ Usage or arrays is discouraged in the project. Use Collections instead. You can 
 ## HTTP/Session/Templating
 Use the `Atournayre\Contracts\HttpInterface`, `Atournayre\Contracts\SessionInterface`, and `Atournayre\Contracts\TemplatingInterface` to interact with the HTTP protocol, manage sessions, and render templates.
 
+## Filesystem
+Use the `Atournayre\Contracts\FilesystemInterface` to interact with the filesystem.
