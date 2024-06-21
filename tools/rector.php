@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\TypeDeclaration\Rector\StmtsAwareInterface\IncreaseDeclareStrictTypesRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -43,4 +44,7 @@ return RectorConfig::configure()
         \true
     )
     ->withRootFiles()
+    ->withConfiguredRule(IncreaseDeclareStrictTypesRector::class, [
+        'limit' => 10,
+    ])
     ;
