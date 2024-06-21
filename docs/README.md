@@ -16,3 +16,7 @@ Use the `Atournayre\Contracts\DateTimeInterface` instead of the `\DateTimeInterf
 
 ## Logging
 Use the `Atournayre\Contracts\LoggerInterface` to log messages in the project.
+
+## HTTP/Session/Templating
+Use the `Atournayre\Contracts\HttpInterface`, `Atournayre\Contracts\SessionInterface`, and `Atournayre\Contracts\TemplatingInterface` to interact with the HTTP protocol, manage sessions, and render templates.
+
