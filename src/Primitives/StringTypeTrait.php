@@ -6,7 +6,7 @@ namespace Atournayre\Primitives;
 
 trait StringTypeTrait
 {
-    private StringType $value;
+    protected StringType $value;
 
     private function __construct(StringType $value)
     {
@@ -18,13 +18,13 @@ trait StringTypeTrait
         return new self(StringType::of($value));
     }
 
-    public function value(): string
+    public function toString(): string
     {
-        return $this->value->value();
+        return $this->value->toString();
     }
 
     public function __toString(): string
     {
-        return $this->value->value();
+        return $this->toString();
     }
 }

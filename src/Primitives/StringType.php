@@ -481,7 +481,7 @@ final class StringType
     /**
      * @api
      */
-    public function value(): string
+    public function toString(): string
     {
         return $this->value;
     }
@@ -499,5 +499,19 @@ final class StringType
     public function __toString(): string
     {
         return $this->value;
+    }
+
+    public function ensureEnd(string $string): self
+    {
+        $u = u($this->value)->ensureEnd($string);
+
+        return self::of($u->toString());
+    }
+
+    public function ensureStart(string $string): self
+    {
+        $u = u($this->value)->ensureStart($string);
+
+        return self::of($u->toString());
     }
 }
