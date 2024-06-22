@@ -12,7 +12,8 @@ use Atournayre\Common\VO\DateTime\DateTime;
  *
  * @extends TypedCollection<T>
  *
- * @method DateTimeCollection add(DateTime $value)
+ * @method DateTimeCollection add(DateTime $value, ?\Closure $callback = null)
+ * @method DateTimeCollection set($key, DateTime $value, ?\Closure $callback = null)
  * @method DateTime[]         values()
  * @method DateTime           first()
  * @method DateTime           last()

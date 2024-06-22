@@ -73,11 +73,13 @@ class NumericCollection extends AbstractCollection
             return;
         }
 
-        $avgPrecision = (int) Map::from($collection)
-            ->map(static fn (Numeric $value) => $value->precision())
-            ->avg();
-
-        Assert::true($avgPrecision === $precision, 'All elements must have the same precision as the collection.');
+        Assert::allSame(
+            Map::from($collection)
+                ->map(static fn (Numeric $value) => $value->precision())
+                ->toArray(),
+            $precision,
+            'All elements must have the same precision as the collection.'
+        );
     }
 
     public function offsetSet($offset, $value): void
@@ -87,19 +89,38 @@ class NumericCollection extends AbstractCollection
     }
 
     /**
-     * @api
-     *
      * @param T $value
      *
      * @return self<T>
+     *
+     *@api
      */
-    public function add($value): self
+    public function add($value, ?\Closure $callback = null): self
     {
         Assert::isInstanceOf($value, self::$type, 'Value must be an instance of '.self::$type);
         Assert::eq($value->precision(), $this->precision, 'Value must have the same precision as the collection');
 
+        if ($callback instanceof \Closure && !$callback($value)) {
+            return new self($this->collection, $this->precision);
+        }
+
         $values = $this->collection;
         $values[] = $value;
+
+        return new self($values, $this->precision);
+    }
+
+    public function set($key, $value, ?\Closure $callback = null): AbstractCollection
+    {
+        Assert::isInstanceOf($value, self::$type, 'Value must be an instance of '.self::$type);
+        Assert::eq($value->precision(), $this->precision, 'Value must have the same precision as the collection');
+
+        if ($callback instanceof \Closure && !$callback($key, $value)) {
+            return new self($this->collection, $this->precision);
+        }
+
+        $values = $this->collection;
+        $values[$key] = $value;
 
         return new self($values, $this->precision);
     }

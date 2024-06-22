@@ -27,4 +27,14 @@ trait StringTypeTrait
     {
         return $this->toString();
     }
+
+    /**
+     * @param string|self $value
+     */
+    public function equalsTo($value): BoolEnum
+    {
+        $valueToCheck = $value instanceof self ? $value->toString() : $value;
+
+        return $this->value->equalsTo($valueToCheck);
+    }
 }

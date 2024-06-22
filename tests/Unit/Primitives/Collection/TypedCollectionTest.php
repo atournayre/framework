@@ -238,4 +238,20 @@ final class TypedCollectionTest extends TestCase
 
         self::assertCount(1, $people);
     }
+
+    public function testAddConditionallyToCollection(): void
+    {
+        $people = People::asList([]);
+        $people = $people->add(new Person('Taylor'), fn () => false);
+
+        self::assertCount(0, $people);
+    }
+
+    public function testSetConditionallyToCollection(): void
+    {
+        $people = People::asMap([]);
+        $people = $people->set('taylor', new Person('Taylor'), fn () => false);
+
+        self::assertCount(0, $people);
+    }
 }

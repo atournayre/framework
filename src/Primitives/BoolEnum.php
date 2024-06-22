@@ -95,7 +95,7 @@ final class BoolEnum
      *
      * @param string|\Exception $message
      *
-     * @throws \Exception
+     * @throws \Exception|\InvalidArgumentException
      */
     public function throwIfFalse($message): void
     {
