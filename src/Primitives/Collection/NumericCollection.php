@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Collection;
 
+use Aimeos\Map;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Primitives\Numeric;
 
@@ -72,7 +73,10 @@ class NumericCollection extends AbstractCollection
             return;
         }
 
-        $avgPrecision = array_sum(array_map(static fn (Numeric $value) => $value->precision(), $collection)) / count($collection);
+        $avgPrecision = (int) Map::from($collection)
+            ->map(static fn (Numeric $value) => $value->precision())
+            ->avg();
+
         Assert::true($avgPrecision === $precision, 'All elements must have the same precision as the collection.');
     }
 

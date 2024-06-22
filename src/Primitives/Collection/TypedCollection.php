@@ -54,7 +54,7 @@ class TypedCollection extends AbstractCollection
      */
     public static function fromArrayCollectionToMap(ArrayCollection $collection): Map
     {
-        $firstKey = current($collection->getKeys());
+        $firstKey = $collection->key();
 
         if (is_string($firstKey)) {
             return self::asMap($collection->toArray())
@@ -116,7 +116,7 @@ class TypedCollection extends AbstractCollection
      */
     public function firstKey()
     {
-        return current($this->getKeys());
+        return $this->toArrayCollection()->key();
     }
 
     /**
@@ -126,7 +126,7 @@ class TypedCollection extends AbstractCollection
      */
     public function getKeys(): array
     {
-        return array_keys($this->collection);
+        return $this->toArrayCollection()->getKeys();
     }
 
     /**

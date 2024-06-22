@@ -120,7 +120,7 @@ final class TypedCollectionTest extends TestCase
         $arrayCollection = new Map(['a', 'b']);
         $map = TypedCollection::fromMapToArrayCollection($arrayCollection);
         self::assertEquals('a', $map->first());
-        self::assertEquals(0, current($map->getKeys()));
+        self::assertEquals(0, $map->key());
     }
 
     public function testFromMapToArrayCollectionUsingMap(): void
@@ -128,7 +128,7 @@ final class TypedCollectionTest extends TestCase
         $arrayCollection = new Map(['a' => 'a', 'b' => 'b']);
         $map = TypedCollection::fromMapToArrayCollection($arrayCollection);
         self::assertEquals('a', $map->first());
-        self::assertEquals('a', current($map->getKeys()));
+        self::assertEquals('a', $map->key());
     }
 
     public function testCreateCollectionOfPerson(): void

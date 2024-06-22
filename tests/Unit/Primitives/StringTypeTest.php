@@ -55,26 +55,27 @@ final class StringTypeTest extends TestCase
     {
         $string = StringType::of('Hello');
         $result = $string->chunk(2);
-        self::assertEquals(
-            array_map(
-                fn ($chunk) => StringType::of($chunk),
-                ['He', 'll', 'o']
-            ),
-            $result
-        );
+
+        $results = [
+            StringType::of('He'),
+            StringType::of('ll'),
+            StringType::of('o'),
+        ];
+        self::assertEquals($results, $result);
     }
 
     public function testChunkSplitsStringIntoChunksOfOneByDefault(): void
     {
         $string = StringType::of('Hello');
         $result = $string->chunk();
-        self::assertEquals(
-            array_map(
-                fn ($chunk) => StringType::of($chunk),
-                ['H', 'e', 'l', 'l', 'o']
-            ),
-            $result
-        );
+        $results = [
+            StringType::of('H'),
+            StringType::of('e'),
+            StringType::of('l'),
+            StringType::of('l'),
+            StringType::of('o'),
+        ];
+        self::assertEquals($results, $result);
     }
 
     public function testChunkDoesNotChangeOriginalString(): void
@@ -594,26 +595,22 @@ final class StringTypeTest extends TestCase
     {
         $string = StringType::of('Hello World');
         $result = $string->split(' ');
-        self::assertEquals(
-            array_map(
-                fn ($chunk) => StringType::of($chunk),
-                ['Hello', 'World']
-            ),
-            $result
-        );
+        $results = [
+            StringType::of('Hello'),
+            StringType::of('World'),
+        ];
+        self::assertEquals($results, $result);
     }
 
     public function testSplitSplitsStringWithLimit(): void
     {
         $string = StringType::of('Hello World');
         $result = $string->split(' ', 2);
-        self::assertEquals(
-            array_map(
-                fn ($chunk) => StringType::of($chunk),
-                ['Hello', 'World']
-            ),
-            $result
-        );
+        $results = [
+            StringType::of('Hello'),
+            StringType::of('World'),
+        ];
+        self::assertEquals($results, $result);
     }
 
     public function testSplitDoesNotChangeOriginalString(): void

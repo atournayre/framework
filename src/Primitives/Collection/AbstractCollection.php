@@ -247,4 +247,14 @@ abstract class AbstractCollection implements \ArrayAccess, \Countable
     {
         return end($this->collection);
     }
+
+    /**
+     * @api
+     *
+     * @return T
+     */
+    public function current()
+    {
+        return current($this->collection);
+    }
 }
