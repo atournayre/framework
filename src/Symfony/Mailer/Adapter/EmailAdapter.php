@@ -65,7 +65,7 @@ class EmailAdapter
 
         return $emailContactCollection
             ->toMap()
-            ->map(static fn(EmailContact $emailContact): Address => new Address(
+            ->map(static fn (EmailContact $emailContact): Address => new Address(
                 $emailContact->email()->toString(),
                 $emailContact->name()->toString()
             ))

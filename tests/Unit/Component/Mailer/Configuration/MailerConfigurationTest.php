@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Component\Mailer\Configuration;
+namespace Atournayre\Tests\Unit\Component\Mailer\Configuration;
 
 use Atournayre\Component\Mailer\Collection\EmailContactCollection;
 use Atournayre\Component\Mailer\Configuration\MailerConfiguration;

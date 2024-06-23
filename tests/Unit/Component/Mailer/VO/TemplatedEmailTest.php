@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Component\Mailer\VO;
+namespace Atournayre\Tests\Unit\Component\Mailer\VO;
 
 use Atournayre\Common\Collection\TemplateContextCollection;
 use Atournayre\Common\Types\HtmlTemplatePath;

@@ -16,6 +16,7 @@ return $config
         'multiline_whitespace_before_semicolons' => ['strategy' => 'new_line_for_chained_calls'],
         'array_syntax' => ['syntax' => 'short'],
         'ordered_imports' => ['sort_algorithm' => 'alpha'],
+        'clean_namespace' => true,
     ])
     ->setRiskyAllowed(true)
     ->setLineEnding("\n")
