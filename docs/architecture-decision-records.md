@@ -9,5 +9,6 @@
 | [ADR 0005](adr/ADR-0005-Log.md)               | Log                     | 2024-06-19 | Accepted | Log                                                    |
 | [ADR 0006](adr/ADR-0006-Context.md)           | Context                 | 2024-06-19 | Accepted | Context                                                |
 | [ADR 0007](adr/ADR-0007-Http.md)              | HTTP/Session/Templating | 2024-06-21 | Accepted | HTTP/Session/Templating                                |
-| [ADR 0008](adr/ADR-0008-Collection.md)        | Collection        | 2024-06-20 | Accepted | Collection                                             |
-| [ADR 0009](adr/ADR-0009-Filesystem.md)        | Filesystem | 2024-06-21 | Accepted | Filesystem                                |
+| [ADR 0008](adr/ADR-0008-Collection.md)        | Collection              | 2024-06-20 | Accepted | Collection                                             |
+| [ADR 0009](adr/ADR-0009-Filesystem.md)        | Filesystem              | 2024-06-21 | Accepted | Filesystem                                             |
+| [ADR 0010](adr/ADR-0010-Mailer.md)            | Mailer                  | 2024-06-22 | Accepted | Mailer                                                 |

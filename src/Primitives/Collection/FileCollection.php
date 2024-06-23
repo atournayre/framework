@@ -6,6 +6,7 @@ namespace Atournayre\Primitives\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Memory;
+use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\StringType;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -14,12 +15,13 @@ use Symfony\Component\Finder\SplFileInfo;
  *
  * @extends TypedCollection<SplFileInfo>
  *
- * @method FileCollection add(SplFileInfo $value)
+ * @method FileCollection add(SplFileInfo $value, ?\Closure $callback = null)
+ * @method FileCollection set($key, SplFileInfo $value, ?\Closure $callback = null)
  * @method SplFileInfo[]  values()
  * @method SplFileInfo    first()
  * @method SplFileInfo    last()
  */
-final class FileCollection extends TypedCollection
+final class FileCollection extends TypedCollection implements LoggableInterface
 {
     protected static string $type = SplFileInfo::class;
 
@@ -107,5 +109,19 @@ final class FileCollection extends TypedCollection
         ;
 
         return Memory::fromBytes((int) $sizeInBytes);
+    }
+
+    /**
+     * @return array<array<string, mixed>>
+     */
+    public function toLog(): array
+    {
+        return $this->toMap()
+            ->map(static fn (SplFileInfo $file): array => [
+                'name' => $file->getFilename(),
+                'size' => $file->getSize(),
+            ])
+            ->toArray()
+        ;
     }
 }

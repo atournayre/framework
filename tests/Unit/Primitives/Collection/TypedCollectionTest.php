@@ -120,7 +120,7 @@ final class TypedCollectionTest extends TestCase
         $arrayCollection = new Map(['a', 'b']);
         $map = TypedCollection::fromMapToArrayCollection($arrayCollection);
         self::assertEquals('a', $map->first());
-        self::assertEquals(0, current($map->getKeys()));
+        self::assertEquals(0, $map->key());
     }
 
     public function testFromMapToArrayCollectionUsingMap(): void
@@ -128,7 +128,7 @@ final class TypedCollectionTest extends TestCase
         $arrayCollection = new Map(['a' => 'a', 'b' => 'b']);
         $map = TypedCollection::fromMapToArrayCollection($arrayCollection);
         self::assertEquals('a', $map->first());
-        self::assertEquals('a', current($map->getKeys()));
+        self::assertEquals('a', $map->key());
     }
 
     public function testCreateCollectionOfPerson(): void
@@ -237,5 +237,21 @@ final class TypedCollectionTest extends TestCase
         $people[] = (new Person('Taylor'));
 
         self::assertCount(1, $people);
+    }
+
+    public function testAddConditionallyToCollection(): void
+    {
+        $people = People::asList([]);
+        $people = $people->add(new Person('Taylor'), fn () => false);
+
+        self::assertCount(0, $people);
+    }
+
+    public function testSetConditionallyToCollection(): void
+    {
+        $people = People::asMap([]);
+        $people = $people->set('taylor', new Person('Taylor'), fn () => false);
+
+        self::assertCount(0, $people);
     }
 }

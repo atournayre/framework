@@ -25,6 +25,8 @@ final class Assert extends \Webmozart\Assert\Assert
 
     private const TYPE_OBJECT = 'object';
 
+    private const TYPE_MIXED = 'mixed';
+
     /**
      * @var array|string[]
      */
@@ -51,6 +53,10 @@ final class Assert extends \Webmozart\Assert\Assert
 
         Assert::isList($array, $message);
 
+        if (self::TYPE_MIXED === $classOrType) {
+            return;
+        }
+
         if (in_array($classOrType, self::$primitiveTypes, true)) {
             Assert::allIsType($array, $classOrType, $message);
 
@@ -72,6 +78,10 @@ final class Assert extends \Webmozart\Assert\Assert
         }
 
         Assert::isMap($array, $message);
+
+        if (self::TYPE_MIXED === $classOrType) {
+            return;
+        }
 
         if (in_array($classOrType, self::$primitiveTypes, true)) {
             Assert::allIsType($array, $classOrType, $message);

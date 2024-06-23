@@ -113,14 +113,43 @@ abstract class AbstractCollection implements \ArrayAccess, \Countable
     /**
      * @api
      *
-     * @param T $value
+     * @param T             $value
+     * @param \Closure|null $callback If the callback returns false, the value is not added
      *
      * @return static<T>
      */
-    public function add($value): self
+    public function add($value, ?\Closure $callback = null): self
     {
+        if ($callback instanceof \Closure && !$callback($value)) {
+            // @phpstan-ignore-next-line
+            return new static($this->collection);
+        }
+
         $values = $this->collection;
         $values[] = $value;
+
+        // @phpstan-ignore-next-line
+        return new static($values);
+    }
+
+    /**
+     * @api
+     *
+     * @param array-key     $key
+     * @param T             $value
+     * @param \Closure|null $callback If the callback returns false, the value is not added
+     *
+     * @return static<T>
+     */
+    public function set($key, $value, ?\Closure $callback = null): self
+    {
+        if ($callback instanceof \Closure && !$callback($key, $value)) {
+            // @phpstan-ignore-next-line
+            return new static($this->collection);
+        }
+
+        $values = $this->collection;
+        $values[$key] = $value;
 
         // @phpstan-ignore-next-line
         return new static($values);
@@ -246,5 +275,15 @@ abstract class AbstractCollection implements \ArrayAccess, \Countable
     public function last()
     {
         return end($this->collection);
+    }
+
+    /**
+     * @api
+     *
+     * @return T
+     */
+    public function current()
+    {
+        return current($this->collection);
     }
 }

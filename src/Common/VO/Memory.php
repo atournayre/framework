@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
 
+use Aimeos\Map;
+
 final class Memory
 {
     private const KB = 1024;
@@ -68,11 +70,11 @@ final class Memory
      */
     public function humanReadable(): string
     {
-        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+        $units = Map::from(['B', 'KB', 'MB', 'GB', 'TB']);
         $value = $this->bytes;
         $unit = 0;
 
-        while ($value >= self::KB && $unit < count($units) - 1) {
+        while ($value >= self::KB && $unit < $units->count() - 1) {
             $value /= self::KB;
             ++$unit;
         }

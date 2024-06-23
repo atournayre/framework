@@ -10,7 +10,7 @@ use Webmozart\Assert\Assert;
 /**
  * @extends TypedCollection<Person>
  *
- * @method PeopleMustBeMap add(Person $value)
+ * @method PeopleMustBeMap add(Person $value, ?\Closure $callback = null)
  * @method Person[]        values()
  * @method Person          first()
  * @method Person          last()

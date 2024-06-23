@@ -1,3 +1,7 @@
+> **Warning**: This documentation is a work in progress.
+>
+> Currently, it is compatible with PHP 7.4 ans Symfony 5.4.
+
 # Documentation
 
 This is the documentation for the project.
