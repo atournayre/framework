@@ -29,3 +29,7 @@ Use the `Atournayre\Contracts\HttpInterface`, `Atournayre\Contracts\SessionInter
 
 ## Filesystem
 Use the `Atournayre\Contracts\FilesystemInterface` to interact with the filesystem.
+
+## Events
+Add the `HasEventsInterface` to an object to allow it to dispatch events and add the `EventsTrait` to add events to an object.
+Implement missing methods from the `HasEventsInterface` in the object.

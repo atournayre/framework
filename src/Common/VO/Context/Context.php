@@ -9,11 +9,10 @@ use Atournayre\Common\VO\DateTime\DateTime;
 use Atournayre\Contracts\Context\ContextInterface;
 use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
-use Atournayre\Contracts\Null\NullableInterface;
 use Atournayre\Contracts\Security\UserInterface;
 use Atournayre\Null\NullTrait;
 
-final class Context implements ContextInterface, LoggableInterface, NullableInterface
+final class Context implements ContextInterface, LoggableInterface
 {
     use NullTrait;
 
