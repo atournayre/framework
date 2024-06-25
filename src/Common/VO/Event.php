@@ -41,6 +41,9 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
         return \get_class($this);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toLog(): array
     {
         return [
