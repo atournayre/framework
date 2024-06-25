@@ -13,4 +13,9 @@ interface ContextInterface extends NullableInterface
     public function user(): UserInterface;
 
     public function createdAt(): DateTimeInterface;
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function toLog(): array;
 }

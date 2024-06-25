@@ -10,9 +10,6 @@ trait ContextTrait
 {
     private ContextInterface $context;
 
-    /**
-     * @throws \Exception
-     */
     public function getContext(): ContextInterface
     {
         return $this->context;
