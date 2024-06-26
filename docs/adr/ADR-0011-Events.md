@@ -1,4 +1,4 @@
-# ADR 0010: Events
+# ADR 0011: Events
 
 ## Status
 Accepted

@@ -13,3 +13,4 @@
 | [ADR 0009](adr/ADR-0009-Filesystem.md)        | Filesystem              | 2024-06-21 | Accepted | Filesystem                                             |
 | [ADR 0010](adr/ADR-0010-Mailer.md)            | Mailer                  | 2024-06-22 | Accepted | Mailer                                                 |
 | [ADR 0011](adr/ADR-0011-Events.md)            | Events                  | 2024-06-24 | Accepted | Events                                                 |
+| [ADR 0012](adr/ADR-0012-Wrappers.md)          | Wrappers                  | 2024-06-26 | Accepted | Wrappers                                                 |

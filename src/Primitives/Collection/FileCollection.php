@@ -7,8 +7,7 @@ namespace Atournayre\Primitives\Collection;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Memory;
 use Atournayre\Contracts\Log\LoggableInterface;
-use Atournayre\Primitives\StringType;
-use Symfony\Component\Finder\SplFileInfo;
+use Atournayre\Wrapper\SplFileInfo;
 
 /**
  * @template T
@@ -58,7 +57,7 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     {
         $array = $this
             ->toMap()
-            ->filter(static fn (SplFileInfo $file): bool => $file->getExtension() === $extension)
+            ->filter(static fn (SplFileInfo $file): bool => $file->getExtension()->equalsTo($extension)->isTrue())
             ->toArray()
         ;
 
@@ -74,7 +73,7 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     {
         $array = $this
             ->toMap()
-            ->filter(static fn (SplFileInfo $file): bool => $file->getSize() === $size)
+            ->filter(static fn (SplFileInfo $file): bool => $file->getSize()->equalsTo($size)->isTrue())
             ->toArray()
         ;
 
@@ -90,7 +89,7 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     {
         $array = $this
             ->toMap()
-            ->filter(static fn (SplFileInfo $file): bool => StringType::of($file->getContents())->containsAny($content)->isTrue())
+            ->filter(static fn (SplFileInfo $file): bool => $file->getContents()->containsAny($content)->isTrue())
             ->toArray()
         ;
 
@@ -104,7 +103,7 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     {
         $sizeInBytes = $this
             ->toMap()
-            ->map(static fn (SplFileInfo $file) => $file->getSize())
+            ->map(static fn (SplFileInfo $file) => $file->getSize()->asIs())
             ->sum()
         ;
 
@@ -117,10 +116,7 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     public function toLog(): array
     {
         return $this->toMap()
-            ->map(static fn (SplFileInfo $file): array => [
-                'name' => $file->getFilename(),
-                'size' => $file->getSize(),
-            ])
+            ->map(static fn (SplFileInfo $file): array => $file->toLog())
             ->toArray()
         ;
     }
