@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace Atournayre\Component\Mailer\Collection;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Primitives\Collection\CollectionTrait;
 
-/**
- * @extends TypedCollection<string>
- *
- * @method TagCollection add(string $value, ?\Closure $callback = null)
- * @method TagCollection set($key, string $value, ?\Closure $callback = null)
- * @method string[]      values()
- * @method string        first()
- * @method string        last()
- */
-final class TagCollection extends TypedCollection implements LoggableInterface
+final class TagCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
+    public static function elementType(): string
+    {
+        return 'string';
+    }
+
+    use CollectionTrait;
+
     private const TAG_MIN_LENGTH = 3;
 
     private const TAG_MAX_LENGTH = 5;
@@ -26,16 +25,9 @@ final class TagCollection extends TypedCollection implements LoggableInterface
     /**
      * @throws \RuntimeException
      */
-    public static function asList(array $collection): self
+    public static function asList($elements = []): self
     {
         throw new \RuntimeException(sprintf('Use %s::asMap() instead.', self::class));
-    }
-
-    public static function asMap(array $collection): self
-    {
-        Assert::isMapOf($collection, TagCollection::$type);
-
-        return new self($collection);
     }
 
     protected function validateElement($value): void

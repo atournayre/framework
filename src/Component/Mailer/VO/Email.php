@@ -87,7 +87,7 @@ class Email implements LoggableInterface
     public function validate(): ValidationCollection
     {
         return ValidationCollection::asMap([])
-            ->set('to', 'validation.email.to.empty', fn () => $this->to->hasNoElement())
+            ->set('to', 'validation.email.to.empty', fn () => $this->to->hasNoElement()->isTrue())
         ;
     }
 

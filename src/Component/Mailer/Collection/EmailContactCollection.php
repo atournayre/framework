@@ -4,38 +4,20 @@ declare(strict_types=1);
 
 namespace Atournayre\Component\Mailer\Collection;
 
-use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\VO\EmailContact;
+use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Primitives\Collection\CollectionTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<EmailContact>
- *
- * @method EmailContactCollection add(EmailContact $value, ?\Closure $callback = null)
- * @method EmailContactCollection set($key, EmailContact $value, ?\Closure $callback = null)
- * @method EmailContact[]         values()
- * @method EmailContact           first()
- * @method EmailContact           last()
- */
-final class EmailContactCollection extends TypedCollection implements LoggableInterface
+final class EmailContactCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
-    protected static string $type = EmailContact::class;
-
-    /**
-     * @param array<EmailContact> $collection
-     *
-     * @return self<T>
-     */
-    public static function asList(array $collection): self
+    public static function elementType(): string
     {
-        Assert::isListOf($collection, EmailContactCollection::$type);
-
-        return new self($collection);
+        return EmailContact::class;
     }
+
+    use CollectionTrait;
 
     /**
      * @api

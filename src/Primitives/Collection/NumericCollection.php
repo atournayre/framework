@@ -6,62 +6,58 @@ namespace Atournayre\Primitives\Collection;
 
 use Aimeos\Map;
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\CollectionInterface;
+use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Numeric;
 
-/**
- * @template T
- *
- * @extends AbstractCollection<T>
- */
-class NumericCollection extends AbstractCollection
+class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
-    protected const DEFAULT_PRECISION = 0;
+    const DEFAULT_PRECISION = 0;
 
-    protected static string $type = Numeric::class;
+    private int $precision;
 
-    /** @api */
-    public int $precision;
-
-    protected array $collection = [];
-
-    protected function __construct(
-        array $collection = [],
-        int $precision = self::DEFAULT_PRECISION
-    ) {
-        Assert::allIsInstanceOf($collection, Numeric::class);
-
-        parent::__construct($collection);
-        $this->precision = $precision;
+    public static function elementType(): string
+    {
+        return Numeric::class;
     }
 
-    /**
-     * @api
-     *
-     * @param array<int, T> $collection
-     *
-     * @return self<T>
-     */
-    public static function asList(array $collection, int $precision = self::DEFAULT_PRECISION): self
-    {
-        Assert::isListOf($collection, NumericCollection::$type);
-        self::assertSamePrecision($collection, $precision);
+    use CollectionTrait;
 
-        return new self($collection, $precision);
+    public static function asList($elements = [], int $precision = self::DEFAULT_PRECISION): self
+    {
+        $collection = (new self(
+            $elements,
+            self::$COLLECTION_TYPE_LIST,
+            self::elementType()
+        ))
+            ->withPrecision($precision)
+        ;
+
+        self::assertSamePrecision($elements, $precision);
+
+        return $collection;
     }
 
-    /**
-     * @api
-     *
-     * @param array<string, T> $collection
-     *
-     * @return self<T>
-     */
-    public static function asMap(array $collection, int $precision = self::DEFAULT_PRECISION): self
+    public static function asMap($elements = [], int $precision = self::DEFAULT_PRECISION): self
     {
-        Assert::isMapOf($collection, NumericCollection::$type);
-        self::assertSamePrecision($collection, $precision);
+        $collection = (new self(
+            $elements,
+            self::$COLLECTION_TYPE_MAP,
+            self::elementType()
+        ))
+            ->withPrecision($precision)
+        ;
 
-        return new self($collection, $precision);
+        self::assertSamePrecision($elements, $precision);
+
+        return $collection;
+    }
+
+    private function withPrecision(int $precision): self
+    {
+        $clone = clone $this;
+        $clone->precision = $precision;
+        return $clone;
     }
 
     /**
@@ -82,63 +78,12 @@ class NumericCollection extends AbstractCollection
         );
     }
 
-    public function offsetSet($offset, $value): void
-    {
-        $this->offsetSetAssertion($offset, $value);
-        $this->collection[$offset] = Numeric::of($value, $this->precision);
-    }
-
-    /**
-     * @param T $value
-     *
-     * @return self<T>
-     *
-     *@api
-     */
-    public function add($value, ?\Closure $callback = null): self
-    {
-        Assert::isInstanceOf($value, self::$type, 'Value must be an instance of '.self::$type);
-        Assert::eq($value->precision(), $this->precision, 'Value must have the same precision as the collection');
-
-        if ($callback instanceof \Closure && !$callback($value)) {
-            return new self($this->collection, $this->precision);
-        }
-
-        $values = $this->collection;
-        $values[] = $value;
-
-        return new self($values, $this->precision);
-    }
-
-    public function set($key, $value, ?\Closure $callback = null): AbstractCollection
-    {
-        Assert::isInstanceOf($value, self::$type, 'Value must be an instance of '.self::$type);
-        Assert::eq($value->precision(), $this->precision, 'Value must have the same precision as the collection');
-
-        if ($callback instanceof \Closure && !$callback($key, $value)) {
-            return new self($this->collection, $this->precision);
-        }
-
-        $values = $this->collection;
-        $values[$key] = $value;
-
-        return new self($values, $this->precision);
-    }
-
-    /**
-     * @return Numeric[]
-     */
-    public function values(): array
-    {
-        return $this->collection;
-    }
-
     /**
      * @api
      */
     public function sum(): Numeric
     {
-        if ($this->hasNoElement()) {
+        if ($this->hasNoElement()->isTrue()) {
             return Numeric::of(0, $this->precision);
         }
 
@@ -153,26 +98,9 @@ class NumericCollection extends AbstractCollection
     /**
      * @api
      */
-    public function avg(): Numeric
-    {
-        if ($this->hasNoElement()) {
-            return Numeric::of(0, $this->precision);
-        }
-
-        $avg = $this->toMap()
-            ->map(static fn (Numeric $value) => $value->intValue())
-            ->avg()
-        ;
-
-        return Numeric::fromInt((int) $avg, $this->precision);
-    }
-
-    /**
-     * @api
-     */
     public function min(): Numeric
     {
-        if ($this->hasNoElement()) {
+        if ($this->hasNoElement()->isTrue()) {
             return Numeric::of(0, $this->precision);
         }
 
@@ -189,7 +117,7 @@ class NumericCollection extends AbstractCollection
      */
     public function max(): Numeric
     {
-        if ($this->hasNoElement()) {
+        if ($this->hasNoElement()->isTrue()) {
             return Numeric::of(0, $this->precision);
         }
 
@@ -199,5 +127,30 @@ class NumericCollection extends AbstractCollection
         ;
 
         return Numeric::fromInt((int) $max, $this->precision);
+    }
+
+    /**
+     * @api
+     */
+    public function avg(): Numeric
+    {
+        if ($this->hasNoElement()->isTrue()) {
+            return Numeric::of(0, $this->precision);
+        }
+
+        $avg = $this->toMap()
+            ->map(static fn (Numeric $value) => $value->intValue())
+            ->avg()
+        ;
+
+        return Numeric::fromInt((int) $avg, $this->precision);
+    }
+
+    public function toLog(): array
+    {
+        return $this->toMap()
+            ->map(static fn (Numeric $value): array => $value->toLog())
+            ->toArray()
+        ;
     }
 }

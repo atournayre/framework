@@ -6,22 +6,19 @@ namespace Atournayre\Common\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Event;
+use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Context\HasContextInterface;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Contracts\Log\LoggableInterface;
+use Atournayre\Primitives\Collection\CollectionTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<T>
- *
- * @method EventCollection set($key, string $value, ?\Closure $callback = null)
- * @method Event[]         values()
- * @method Event           first()
- * @method Event           last()
- */
-final class EventCollection extends TypedCollection
+final class EventCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
-    protected static string $type = Event::class;
+    public static function elementType(): string
+    {
+        return Event::class;
+    }
+
+    use CollectionTrait;
 
     /**
      * @return self<T>
@@ -31,26 +28,9 @@ final class EventCollection extends TypedCollection
         return EventCollection::asMap([]);
     }
 
-    /**
-     * @param array<T> $collection
-     *
-     * @return self<T>
-     */
-    public static function asList(array $collection): self
+    public static function asList($elements = []): self
     {
         throw new \RuntimeException('Use empty() instead.');
-    }
-
-    /**
-     * @param array<T> $collection
-     *
-     * @return self<T>
-     */
-    public static function asMap(array $collection): self
-    {
-        Assert::isMapOf($collection, Event::class);
-
-        return new self($collection);
     }
 
     /**
@@ -76,20 +56,25 @@ final class EventCollection extends TypedCollection
 
     /**
      * @api
-     *
-     * @param T|Event $value
-     *
-     * @return EventCollection<T>
      */
-    public function add($value, ?\Closure $callback = null): self
+    public function add($value, $condition = null): self
     {
         $key = $value->_identifier();
 
-        return parent::set($key, $value, $callback);
+        return $this
+            ->set($key, $value, $condition);
     }
 
     protected function validateElement($value): void
     {
         Assert::implementsInterface($value, HasContextInterface::class, 'All events must implement HasContextInterface');
+    }
+
+    public function toLog(): array
+    {
+        return $this->toMap()
+            ->map(static fn (Event $event): array => $event->toLog())
+            ->toArray()
+        ;
     }
 }

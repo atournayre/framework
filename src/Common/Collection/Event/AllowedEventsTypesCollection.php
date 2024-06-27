@@ -4,34 +4,22 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Collection\Event;
 
-use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\CollectionInterface;
+use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Primitives\Collection\CollectionTrait;
 
 /**
  * @template T
- *
- * @extends TypedCollection<T>
- *
- * @method AllowedEventsTypesCollection add(string $value, ?\Closure $callback = null)
- * @method AllowedEventsTypesCollection set($key, string $value, ?\Closure $callback = null)
- * @method string[]                     values()
- * @method string                       first()
- * @method string                       last()
  */
-final class AllowedEventsTypesCollection extends TypedCollection
+final class AllowedEventsTypesCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
-    /**
-     * @param array<T> $collection
-     *
-     * @return AllowedEventsTypesCollection<T>
-     */
-    public static function asList(array $collection): self
+    public static function elementType(): string
     {
-        Assert::isListOf($collection, TypedCollection::$type);
-
-        return new self($collection);
+        return 'string';
     }
+
+    use CollectionTrait;
 
     public function contains(string $type): BoolEnum
     {
@@ -40,5 +28,10 @@ final class AllowedEventsTypesCollection extends TypedCollection
         ;
 
         return BoolEnum::fromBool($contains);
+    }
+
+    public function toLog(): array
+    {
+        return $this->values();
     }
 }

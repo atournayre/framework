@@ -4,62 +4,21 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Collection;
 
-use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\DateTime\DateTime;
+use Atournayre\Contracts\Collection\CollectionInterface;
+use Atournayre\Contracts\Log\LoggableInterface;
 
-/**
- * @template T
- *
- * @extends TypedCollection<T>
- *
- * @method DateTimeCollection add(DateTime $value, ?\Closure $callback = null)
- * @method DateTimeCollection set($key, DateTime $value, ?\Closure $callback = null)
- * @method DateTime[]         values()
- * @method DateTime           first()
- * @method DateTime           last()
- */
-class DateTimeCollection extends TypedCollection
+class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
-    protected static string $type = DateTime::class;
-
-    /**
-     * @api
-     *
-     * @return DateTimeCollection<T>
-     */
-    public static function asList(array $collection): self
+    public static function elementType(): string
     {
-        Assert::isListOf($collection, static::$type);
-
-        return new self($collection);
+        return DateTime::class;
     }
 
-    /**
-     * @api
-     *
-     * @return DateTimeCollection<T>
-     */
-    public static function asMap(array $collection): self
-    {
-        Assert::isMapOf($collection, static::$type);
-
-        return new self($collection);
-    }
+    use CollectionTrait;
 
     /**
      * @api
-     *
-     * @return array<DateTime>
-     */
-    public function dates(): array
-    {
-        return $this->values();
-    }
-
-    /**
-     * @api
-     *
-     * @return DateTimeCollection<T>
      */
     public function sortAsc(): self
     {
@@ -71,13 +30,11 @@ class DateTimeCollection extends TypedCollection
             ->toArray()
         ;
 
-        return DateTimeCollection::asList($values);
+        return DateTimeCollection::from($values);
     }
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<T>
      */
     public function sortDesc(): self
     {
@@ -111,7 +68,7 @@ class DateTimeCollection extends TypedCollection
     /**
      * @api
      *
-     * @return DateTimeCollection<T>
+     * @return \Atournayre\Primitives\Collection\DateTimeCollection<T>
      */
     public function between(DateTime $start, DateTime $end): self
     {
@@ -160,5 +117,12 @@ class DateTimeCollection extends TypedCollection
         ;
 
         return DateTimeCollection::asList($map);
+    }
+
+    public function toLog(): array
+    {
+        return $this->toMap()
+            ->map(static fn (DateTime $date) => $date->toLog())
+            ->toArray();
     }
 }

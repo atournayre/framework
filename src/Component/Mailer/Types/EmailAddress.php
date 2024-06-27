@@ -6,6 +6,7 @@ namespace Atournayre\Component\Mailer\Types;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\Types\Domain;
+use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\StringTypeTrait;
@@ -13,7 +14,7 @@ use Atournayre\Primitives\StringTypeTrait;
 /**
  * Represents an e-mail address.
  */
-final class EmailAddress
+final class EmailAddress implements LoggableInterface
 {
     use StringTypeTrait;
 
@@ -103,5 +104,12 @@ final class EmailAddress
         ;
 
         return new self($stringEmail);
+    }
+
+    public function toLog(): array
+    {
+        return [
+            'email' => $this->value->toString(),
+        ];
     }
 }

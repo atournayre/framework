@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
-final class Numeric
+use Atournayre\Contracts\Log\LoggableInterface;
+
+final class Numeric implements LoggableInterface
 {
     private float $value;
 
@@ -238,5 +240,14 @@ final class Numeric
     public static function fromInt(int $value, int $precision): Numeric
     {
         return Numeric::of($value / (10 ** $precision), $precision);
+    }
+
+    public function toLog(): array
+    {
+        return [
+            'value' => $this->value,
+            'intValue' => $this->intValue,
+            'precision' => $this->precision,
+        ];
     }
 }

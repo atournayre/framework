@@ -4,45 +4,31 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Collection;
 
-use Atournayre\Common\Assert\Assert;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Contracts\Collection\CollectionInterface;
+use Atournayre\Contracts\Log\LoggableInterface;
+use Atournayre\Primitives\Collection\CollectionTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<T>
- *
- * @method TemplateContextCollection add(string $value, ?\Closure $callback = null)
- * @method TemplateContextCollection set($key, string $value, ?\Closure $callback = null)
- * @method mixed[]                   values()
- * @method mixed                     first()
- * @method mixed                     last()
- */
-final class TemplateContextCollection extends TypedCollection
+final class TemplateContextCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
-    protected static string $type = 'mixed';
+    public static function elementType(): string
+    {
+        return 'mixed';
+    }
+
+    use CollectionTrait;
 
     /**
-     * @param array<T> $collection
-     *
      * @return self<T>
      *
      * @throws \RuntimeException
      */
-    public static function asList(array $collection): self
+    public static function asList($elements = []): self
     {
         throw new \RuntimeException(sprintf('Use %s::asMap() instead.', self::class));
     }
 
-    /**
-     * @param array<T> $collection
-     *
-     * @return self<T>
-     */
-    public static function asMap(array $collection): self
+    public function toLog(): array
     {
-        Assert::isMapOf($collection, TemplateContextCollection::$type);
-
-        return new self($collection);
+        return $this->toMap()->toArray();
     }
 }

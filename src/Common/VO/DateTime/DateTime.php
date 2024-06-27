@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Atournayre\Common\VO\DateTime;
 
 use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Null\NullTrait;
 use Carbon\Carbon;
 
-final class DateTime implements DateTimeInterface
+final class DateTime implements DateTimeInterface, LoggableInterface
 {
     use NullTrait;
 
@@ -51,63 +52,94 @@ final class DateTime implements DateTimeInterface
      */
     public function isAM(): bool
     {
-        $noon = Carbon::parse($this->datetime)->setTime(12, 0);
+        $noon = Carbon::parse($this->datetime)
+            ->setTime(12, 0);
 
         return $this->toCarbon()->lt($noon);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime
      */
-    public function isAfter(\DateTimeInterface $datetime): bool
+    public function isAfter($datetime): bool
     {
-        return $this->toCarbon()->gt($datetime);
+        $datetime = $this->toInterface($datetime);
+
+        return $this->toCarbon()
+            ->gt($datetime);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime
      */
-    public function isAfterOrEqual(\DateTimeInterface $datetime): bool
+    public function isAfterOrEqual($datetime): bool
     {
-        return $this->toCarbon()->gte($datetime);
+        $datetime = $this->toInterface($datetime);
+
+        return $this->toCarbon()
+            ->gte($datetime);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime
      */
-    public function isBefore(\DateTimeInterface $datetime): bool
+    public function isBefore($datetime): bool
     {
-        return $this->toCarbon()->lt($datetime);
+        $datetime = $this->toInterface($datetime);
+
+        return $this->toCarbon()
+            ->lt($datetime);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime
      */
-    public function isBeforeOrEqual(\DateTimeInterface $datetime): bool
+    public function isBeforeOrEqual($datetime): bool
     {
-        return $this->toCarbon()->lte($datetime);
+        $datetime = $this->toInterface($datetime);
+
+        return $this->toCarbon()
+            ->lte($datetime);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime1
+     * @param \DateTimeInterface|DateTime $datetime2
      */
-    public function isBetween(\DateTimeInterface $datetime1, \DateTimeInterface $datetime2): bool
+    public function isBetween($datetime1, $datetime2): bool
     {
-        return $this->toCarbon()->between($datetime1, $datetime2, false);
+        $datetime1 = $this->toInterface($datetime1);
+        $datetime2 = $this->toInterface($datetime2);
+
+        return $this->toCarbon()
+            ->between($datetime1, $datetime2, false);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime1
+     * @param \DateTimeInterface|DateTime $datetime2
      */
-    public function isBetweenOrEqual(\DateTimeInterface $datetime1, \DateTimeInterface $datetime2): bool
+    public function isBetweenOrEqual($datetime1, $datetime2): bool
     {
-        return $this->toCarbon()->between($datetime1, $datetime2);
+        $datetime1 = $this->toInterface($datetime1);
+        $datetime2 = $this->toInterface($datetime2);
+
+        return $this->toCarbon()
+            ->between($datetime1, $datetime2);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime1
+     * @param \DateTimeInterface|DateTime $datetime2
      */
-    public function isNotBetween(\DateTimeInterface $datetime1, \DateTimeInterface $datetime2): bool
+    public function isNotBetween($datetime1, $datetime2): bool
     {
         return !$this->isBetween($datetime1, $datetime2);
     }
@@ -122,34 +154,52 @@ final class DateTime implements DateTimeInterface
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime
      */
-    public function isSame(\DateTimeInterface $datetime): bool
+    public function isSame($datetime): bool
     {
-        return $this->toCarbon()->eq($datetime);
+        $datetime = $this->toInterface($datetime);
+
+        return $this->toCarbon()
+            ->eq($datetime);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime
      */
-    public function isSameOrAfter(\DateTimeInterface $datetime): bool
+    public function isSameOrAfter($datetime): bool
     {
-        return $this->toCarbon()->gte($datetime);
+        $datetime = $this->toInterface($datetime);
+
+        return $this->toCarbon()
+            ->gte($datetime);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime
      */
-    public function isSameOrBefore(\DateTimeInterface $datetime): bool
+    public function isSameOrBefore($datetime): bool
     {
-        return $this->toCarbon()->lte($datetime);
+        $datetime = $this->toInterface($datetime);
+
+        return $this->toCarbon()
+            ->lte($datetime);
     }
 
     /**
      * @api
+     * @param \DateTimeInterface|DateTime $datetime1
+     * @param \DateTimeInterface|DateTime $datetime2
      */
-    public function isSameOrBetween(\DateTimeInterface $datetime1, \DateTimeInterface $datetime2): bool
+    public function isSameOrBetween($datetime1, $datetime2): bool
     {
-        return $this->toCarbon()->between($datetime1, $datetime2);
+        $datetime1 = $this->toInterface($datetime1);
+        $datetime2 = $this->toInterface($datetime2);
+
+        return $this->toCarbon()
+            ->between($datetime1, $datetime2);
     }
 
     /**
@@ -165,7 +215,8 @@ final class DateTime implements DateTimeInterface
      */
     public function isWeekend(): bool
     {
-        return $this->toCarbon()->isWeekend();
+        return $this->toCarbon()
+            ->isWeekend();
     }
 
     private function toCarbon(): Carbon
@@ -179,5 +230,20 @@ final class DateTime implements DateTimeInterface
     public function toDateTime(): \DateTimeInterface
     {
         return $this->datetime;
+    }
+
+    private function toInterface($datetime): \DateTimeInterface
+    {
+        return $datetime instanceof self
+            ? $datetime->toDateTime()
+            : $datetime
+        ;
+    }
+
+    public function toLog(): array
+    {
+        return [
+            'datetime' => $this->datetime->format('Y-m-d H:i:s'),
+        ];
     }
 }

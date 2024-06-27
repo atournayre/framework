@@ -5,36 +5,19 @@ declare(strict_types=1);
 namespace Atournayre\Component\Mailer\Collection;
 
 use Aimeos\Map;
-use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\Types\EmailAddress;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Contracts\Collection\CollectionInterface;
+use Atournayre\Contracts\Log\LoggableInterface;
+use Atournayre\Primitives\Collection\CollectionTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<EmailAddress>
- *
- * @method EmailAddressCollection add(EmailAddress $value, ?\Closure $callback = null)
- * @method EmailAddressCollection set($key, EmailAddress $value, ?\Closure $callback = null)
- * @method EmailAddress[]         values()
- * @method EmailAddress           first()
- * @method EmailAddress           last()
- */
-final class EmailAddressCollection extends TypedCollection
+final class EmailAddressCollection  implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
-    protected static string $type = EmailAddress::class;
-
-    /**
-     * @param array<EmailAddress> $collection
-     *
-     * @return self<T>
-     */
-    public static function asList(array $collection): self
+    public static function elementType(): string
     {
-        Assert::isListOf($collection, EmailAddressCollection::$type);
-
-        return new self($collection);
+        return EmailAddress::class;
     }
+
+    use CollectionTrait;
 
     /**
      * @api
@@ -51,5 +34,13 @@ final class EmailAddressCollection extends TypedCollection
         ;
 
         return EmailAddressCollection::asList($map);
+    }
+
+    public function toLog(): array
+    {
+        return $this->toMap()
+            ->map(fn (EmailAddress $email) => $email->toLog())
+            ->toArray()
+        ;
     }
 }

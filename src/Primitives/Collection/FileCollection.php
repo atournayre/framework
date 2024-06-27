@@ -4,54 +4,22 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Collection;
 
-use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Memory;
+use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\StringType;
 use Symfony\Component\Finder\SplFileInfo;
 
-/**
- * @template T
- *
- * @extends TypedCollection<SplFileInfo>
- *
- * @method FileCollection add(SplFileInfo $value, ?\Closure $callback = null)
- * @method FileCollection set($key, SplFileInfo $value, ?\Closure $callback = null)
- * @method SplFileInfo[]  values()
- * @method SplFileInfo    first()
- * @method SplFileInfo    last()
- */
-final class FileCollection extends TypedCollection implements LoggableInterface
+final class FileCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
-    protected static string $type = SplFileInfo::class;
-
-    /**
-     * @return FileCollection<T>
-     *
-     * @api
-     */
-    public static function asList(array $collection): self
+    public static function elementType(): string
     {
-        Assert::isListOf($collection, FileCollection::$type);
-
-        return new self($collection);
+        return SplFileInfo::class;
     }
 
-    /**
-     * @return FileCollection<T>
-     *
-     * @api
-     */
-    public static function asMap(array $collection): self
-    {
-        Assert::isMapOf($collection, FileCollection::$type);
-
-        return new self($collection);
-    }
+    use CollectionTrait;
 
     /**
-     * @return FileCollection<T>
-     *
      * @api
      */
     public function filterByExtension(string $extension): self
@@ -66,8 +34,6 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @api
      */
     public function filterBySize(int $size): self
@@ -82,8 +48,6 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @api
      */
     public function filterByContent(string $content): FileCollection

@@ -15,6 +15,7 @@ final class DateTimeTest extends TestCase
     public function testIsAM(): void
     {
         $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
+
         self::assertTrue($dateTime->isAM());
     }
 
@@ -23,8 +24,17 @@ final class DateTimeTest extends TestCase
      */
     public function testIsAfter(): void
     {
-        $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isAfter(new \DateTime('2024-06-17')));
+        $splDatetime = new \DateTime('2024-06-18');
+        $dateTime = DateTime::fromInterface($splDatetime);
+
+        $expected = [
+            new \DateTime('2024-06-17'),
+            DateTime::fromInterface(new \DateTime('2024-06-17')),
+        ];
+
+        foreach ($expected as $date) {
+            self::assertTrue($dateTime->isAfter($date));
+        }
     }
 
     /**
@@ -32,8 +42,17 @@ final class DateTimeTest extends TestCase
      */
     public function testIsAfterOrEqual(): void
     {
-        $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isAfterOrEqual(new \DateTime('2024-06-18')));
+        $splDatetime = new \DateTime('2024-06-18');
+        $dateTime = DateTime::fromInterface($splDatetime);
+
+        $expected = [
+            new \DateTime('2024-06-18'),
+            DateTime::fromInterface(new \DateTime('2024-06-18')),
+        ];
+
+        foreach ($expected as $date) {
+            self::assertTrue($dateTime->isAfterOrEqual($date));
+        }
     }
 
     /**
@@ -41,8 +60,17 @@ final class DateTimeTest extends TestCase
      */
     public function testIsBefore(): void
     {
-        $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isBefore(new \DateTime('2024-06-19')));
+        $splDatetime = new \DateTime('2024-06-18');
+        $dateTime = DateTime::fromInterface($splDatetime);
+
+        $expected = [
+            new \DateTime('2024-06-19'),
+            DateTime::fromInterface(new \DateTime('2024-06-19')),
+        ];
+
+        foreach ($expected as $date) {
+            self::assertTrue($dateTime->isBefore($date));
+        }
     }
 
     /**
@@ -50,8 +78,17 @@ final class DateTimeTest extends TestCase
      */
     public function testIsBeforeOrEqual(): void
     {
-        $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isBeforeOrEqual(new \DateTime('2024-06-18')));
+        $splDatetime = new \DateTime('2024-06-18');
+        $dateTime = DateTime::fromInterface($splDatetime);
+
+        $expected = [
+            new \DateTime('2024-06-18'),
+            DateTime::fromInterface(new \DateTime('2024-06-18')),
+        ];
+
+        foreach ($expected as $date) {
+            self::assertTrue($dateTime->isBeforeOrEqual($date));
+        }
     }
 
     /**
@@ -59,8 +96,17 @@ final class DateTimeTest extends TestCase
      */
     public function testIsBetween(): void
     {
-        $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isBetween(new \DateTime('2024-06-17'), new \DateTime('2024-06-19')));
+        $splDatetime = new \DateTime('2024-06-18');
+        $dateTime = DateTime::fromInterface($splDatetime);
+
+        $expected = [
+            [new \DateTime('2024-06-17'), new \DateTime('2024-06-19')],
+            [DateTime::fromInterface(new \DateTime('2024-06-17')), DateTime::fromInterface(new \DateTime('2024-06-19'))],
+        ];
+
+        foreach ($expected as $dates) {
+            self::assertTrue($dateTime->isBetween($dates[0], $dates[1]));
+        }
     }
 
     /**
@@ -68,8 +114,17 @@ final class DateTimeTest extends TestCase
      */
     public function testIsBetweenOrEqual(): void
     {
-        $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isBetweenOrEqual(new \DateTime('2024-06-18'), new \DateTime('2024-06-19')));
+        $splDatetime = new \DateTime('2024-06-18');
+        $dateTime = DateTime::fromInterface($splDatetime);
+
+        $expected = [
+            [new \DateTime('2024-06-18'), new \DateTime('2024-06-19')],
+            [DateTime::fromInterface(new \DateTime('2024-06-18')), DateTime::fromInterface(new \DateTime('2024-06-19'))],
+        ];
+
+        foreach ($expected as $dates) {
+            self::assertTrue($dateTime->isBetweenOrEqual($dates[0], $dates[1]));
+        }
     }
 
     /**
@@ -78,7 +133,15 @@ final class DateTimeTest extends TestCase
     public function testIsNotBetween(): void
     {
         $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isNotBetween(new \DateTime('2024-06-16'), new \DateTime('2024-06-17')));
+
+        $expected = [
+            [new \DateTime('2024-06-16'), new \DateTime('2024-06-17')],
+            [DateTime::fromInterface(new \DateTime('2024-06-16')), DateTime::fromInterface(new \DateTime('2024-06-17'))],
+        ];
+
+        foreach ($expected as $dates) {
+            self::assertTrue($dateTime->isNotBetween($dates[0], $dates[1]));
+        }
     }
 
     /**
@@ -97,6 +160,7 @@ final class DateTimeTest extends TestCase
     public function testIsWeekday(): void
     {
         $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
+
         self::assertTrue($dateTime->isWeekday());
     }
 
@@ -106,6 +170,7 @@ final class DateTimeTest extends TestCase
     public function testIsWeekend(): void
     {
         $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
+
         self::assertFalse($dateTime->isWeekend());
     }
 
@@ -115,6 +180,7 @@ final class DateTimeTest extends TestCase
     public function testIsPM(): void
     {
         $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18 12:00:00'));
+
         self::assertTrue($dateTime->isPM());
     }
 
@@ -123,8 +189,17 @@ final class DateTimeTest extends TestCase
      */
     public function testIsSame(): void
     {
-        $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isSame(new \DateTime('2024-06-18')));
+        $splDatetime = new \DateTime('2024-06-18');
+        $dateTime = DateTime::fromInterface($splDatetime);
+
+        $expected = [
+            new \DateTime('2024-06-18'),
+            DateTime::fromInterface(new \DateTime('2024-06-18')),
+        ];
+
+        foreach ($expected as $date) {
+            self::assertTrue($dateTime->isSame($date));
+        }
     }
 
     /**
@@ -133,7 +208,15 @@ final class DateTimeTest extends TestCase
     public function testIsSameOrAfter(): void
     {
         $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isSameOrAfter(new \DateTime('2024-06-17')));
+
+        $expected = [
+            new \DateTime('2024-06-17'),
+            DateTime::fromInterface(new \DateTime('2024-06-17')),
+        ];
+
+        foreach ($expected as $date) {
+            self::assertTrue($dateTime->isSameOrAfter($date));
+        }
     }
 
     /**
@@ -142,7 +225,15 @@ final class DateTimeTest extends TestCase
     public function testIsSameOrBefore(): void
     {
         $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isSameOrBefore(new \DateTime('2024-06-19')));
+
+        $expected = [
+            new \DateTime('2024-06-19'),
+            DateTime::fromInterface(new \DateTime('2024-06-19')),
+        ];
+
+        foreach ($expected as $date) {
+            self::assertTrue($dateTime->isSameOrBefore($date));
+        }
     }
 
     /**
@@ -151,6 +242,14 @@ final class DateTimeTest extends TestCase
     public function testIsSameOrBetween(): void
     {
         $dateTime = DateTime::fromInterface(new \DateTime('2024-06-18'));
-        self::assertTrue($dateTime->isSameOrBetween(new \DateTime('2024-06-17'), new \DateTime('2024-06-19')));
+
+        $expected = [
+            [new \DateTime('2024-06-17'), new \DateTime('2024-06-19')],
+            [DateTime::fromInterface(new \DateTime('2024-06-17')), DateTime::fromInterface(new \DateTime('2024-06-19'))],
+        ];
+
+        foreach ($expected as $dates) {
+            self::assertTrue($dateTime->isSameOrBetween($dates[0], $dates[1]));
+        }
     }
 }
