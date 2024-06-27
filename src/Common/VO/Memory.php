@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
 
-use Aimeos\Map;
 use Atournayre\Primitives\BoolEnum;
+use Atournayre\Wrapper\Map;
 
 final class Memory
 {

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Atournayre\Symfony\Filesystem;
 
-use Aimeos\Map;
 use Atournayre\Common\Types\DirectoryOrFile;
 use Atournayre\Contracts\Filesystem\FilesystemInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\FileCollection;
+use Atournayre\Wrapper\Map;
 use Atournayre\Wrapper\SplFileInfo;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;

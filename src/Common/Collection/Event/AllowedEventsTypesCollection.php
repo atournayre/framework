@@ -35,10 +35,8 @@ final class AllowedEventsTypesCollection extends TypedCollection
 
     public function contains(string $type): BoolEnum
     {
-        $contains = $this->toMap()
+        return $this->toMap()
             ->contains($type)
         ;
-
-        return BoolEnum::fromBool($contains);
     }
 }
