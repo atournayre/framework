@@ -14,12 +14,12 @@ use Atournayre\Primitives\Collection\CollectionTrait;
  */
 final class AllowedEventsTypesCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
+    use CollectionTrait;
+
     public static function elementType(): string
     {
         return 'string';
     }
-
-    use CollectionTrait;
 
     public function contains(string $type): BoolEnum
     {

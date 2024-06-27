@@ -53,13 +53,15 @@ final class DateTime implements DateTimeInterface, LoggableInterface
     public function isAM(): bool
     {
         $noon = Carbon::parse($this->datetime)
-            ->setTime(12, 0);
+            ->setTime(12, 0)
+        ;
 
         return $this->toCarbon()->lt($noon);
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime
      */
     public function isAfter($datetime): bool
@@ -67,11 +69,13 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime = $this->toInterface($datetime);
 
         return $this->toCarbon()
-            ->gt($datetime);
+            ->gt($datetime)
+        ;
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime
      */
     public function isAfterOrEqual($datetime): bool
@@ -79,11 +83,13 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime = $this->toInterface($datetime);
 
         return $this->toCarbon()
-            ->gte($datetime);
+            ->gte($datetime)
+        ;
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime
      */
     public function isBefore($datetime): bool
@@ -91,11 +97,13 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime = $this->toInterface($datetime);
 
         return $this->toCarbon()
-            ->lt($datetime);
+            ->lt($datetime)
+        ;
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime
      */
     public function isBeforeOrEqual($datetime): bool
@@ -103,11 +111,13 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime = $this->toInterface($datetime);
 
         return $this->toCarbon()
-            ->lte($datetime);
+            ->lte($datetime)
+        ;
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime1
      * @param \DateTimeInterface|DateTime $datetime2
      */
@@ -117,11 +127,13 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime2 = $this->toInterface($datetime2);
 
         return $this->toCarbon()
-            ->between($datetime1, $datetime2, false);
+            ->between($datetime1, $datetime2, false)
+        ;
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime1
      * @param \DateTimeInterface|DateTime $datetime2
      */
@@ -131,11 +143,13 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime2 = $this->toInterface($datetime2);
 
         return $this->toCarbon()
-            ->between($datetime1, $datetime2);
+            ->between($datetime1, $datetime2)
+        ;
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime1
      * @param \DateTimeInterface|DateTime $datetime2
      */
@@ -154,6 +168,7 @@ final class DateTime implements DateTimeInterface, LoggableInterface
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime
      */
     public function isSame($datetime): bool
@@ -161,11 +176,13 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime = $this->toInterface($datetime);
 
         return $this->toCarbon()
-            ->eq($datetime);
+            ->eq($datetime)
+        ;
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime
      */
     public function isSameOrAfter($datetime): bool
@@ -173,11 +190,13 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime = $this->toInterface($datetime);
 
         return $this->toCarbon()
-            ->gte($datetime);
+            ->gte($datetime)
+        ;
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime
      */
     public function isSameOrBefore($datetime): bool
@@ -185,11 +204,13 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime = $this->toInterface($datetime);
 
         return $this->toCarbon()
-            ->lte($datetime);
+            ->lte($datetime)
+        ;
     }
 
     /**
      * @api
+     *
      * @param \DateTimeInterface|DateTime $datetime1
      * @param \DateTimeInterface|DateTime $datetime2
      */
@@ -199,7 +220,8 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         $datetime2 = $this->toInterface($datetime2);
 
         return $this->toCarbon()
-            ->between($datetime1, $datetime2);
+            ->between($datetime1, $datetime2)
+        ;
     }
 
     /**
@@ -216,7 +238,8 @@ final class DateTime implements DateTimeInterface, LoggableInterface
     public function isWeekend(): bool
     {
         return $this->toCarbon()
-            ->isWeekend();
+            ->isWeekend()
+        ;
     }
 
     private function toCarbon(): Carbon
@@ -236,8 +259,7 @@ final class DateTime implements DateTimeInterface, LoggableInterface
     {
         return $datetime instanceof self
             ? $datetime->toDateTime()
-            : $datetime
-        ;
+            : $datetime;
     }
 
     public function toLog(): array

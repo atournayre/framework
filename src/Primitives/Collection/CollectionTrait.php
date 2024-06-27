@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\Collection;
 trait CollectionTrait
 {
     private static string $COLLECTION_TYPE_LIST = 'list';
+
     private static string $COLLECTION_TYPE_MAP = 'map';
 
     private string $collectionType;
@@ -25,8 +26,7 @@ trait CollectionTrait
         array $elements,
         string $collectionType,
         string $objectType
-    )
-    {
+    ) {
         $this->elements = $elements;
         $this->collectionType = $collectionType;
         $this->objectType = $objectType;
@@ -48,7 +48,7 @@ trait CollectionTrait
             is_object($element) ? get_class($element) : null,
         ]);
 
-        Assert::inArray($this->objectType, $types, 'All elements must be of type ' . $this->objectType . '.');
+        Assert::inArray($this->objectType, $types, 'All elements must be of type '.$this->objectType.'.');
     }
 
     private static function getElementType(): string
@@ -128,10 +128,6 @@ trait CollectionTrait
         return array_key_exists($offset, $this->elements);
     }
 
-    /**
-     * @param mixed $offset
-     * @return mixed
-     */
     public function offsetGet($offset)
     {
         return $this->elements[$offset];
@@ -187,14 +183,14 @@ trait CollectionTrait
 
     public function hasNoElement(): BoolEnum
     {
-        $hasNoElement = $this->count() === 0;
+        $hasNoElement = 0 === $this->count();
 
         return BoolEnum::fromBool($hasNoElement);
     }
 
     public function hasOneElement(): BoolEnum
     {
-        $hasOneElement = $this->count() === 1;
+        $hasOneElement = 1 === $this->count();
 
         return BoolEnum::fromBool($hasOneElement);
     }
@@ -205,7 +201,6 @@ trait CollectionTrait
 
         return BoolEnum::fromBool($hasXElements);
     }
-
 
     public function offsetUnset($offset): void
     {
@@ -224,7 +219,6 @@ trait CollectionTrait
 
     /**
      * @param array-key $key
-     * @return mixed
      */
     public function get($key)
     {
@@ -237,30 +231,24 @@ trait CollectionTrait
     }
 
     /**
-     * @param $value
      * @param bool|BoolEnum|callable|null $condition
-     * @return void
      */
     public function add(
         $value,
         $condition = null
-    ): self
-    {
+    ): self {
         return $this->set(null, $value, $condition);
     }
 
     /**
-     * @param array-key $key
-     * @param $value
+     * @param array-key                   $key
      * @param bool|BoolEnum|callable|null $condition
-     * @return void
      */
     public function set($key, $value, $condition = null): self
     {
         $conditionIsFalse = !$condition
             || ($condition instanceof BoolEnum && $condition->isFalse())
-            || (is_callable($condition) && !$condition($value))
-        ;
+            || (is_callable($condition) && !$condition($value));
 
         if (is_null($condition)) {
             $conditionIsFalse = false;

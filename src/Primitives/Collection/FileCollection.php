@@ -12,12 +12,12 @@ use Symfony\Component\Finder\SplFileInfo;
 
 final class FileCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
+    use CollectionTrait;
+
     public static function elementType(): string
     {
         return SplFileInfo::class;
     }
-
-    use CollectionTrait;
 
     /**
      * @api

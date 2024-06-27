@@ -9,12 +9,12 @@ use Atournayre\Contracts\Log\LoggableInterface;
 
 class TypedCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
+    use CollectionTrait;
+
     public static function elementType(): string
     {
         return 'string';
     }
-
-    use CollectionTrait;
 
     public function toLog(): array
     {

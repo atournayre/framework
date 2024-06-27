@@ -12,7 +12,8 @@ use Atournayre\Primitives\Numeric;
 
 class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
-    const DEFAULT_PRECISION = 0;
+    use CollectionTrait;
+    private const DEFAULT_PRECISION = 0;
 
     private int $precision;
 
@@ -20,8 +21,6 @@ class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface
     {
         return Numeric::class;
     }
-
-    use CollectionTrait;
 
     public static function asList($elements = [], int $precision = self::DEFAULT_PRECISION): self
     {
@@ -57,6 +56,7 @@ class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface
     {
         $clone = clone $this;
         $clone->precision = $precision;
+
         return $clone;
     }
 

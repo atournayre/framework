@@ -10,14 +10,14 @@ use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
-final class EmailAddressCollection  implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
+final class EmailAddressCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
+    use CollectionTrait;
+
     public static function elementType(): string
     {
         return EmailAddress::class;
     }
-
-    use CollectionTrait;
 
     /**
      * @api

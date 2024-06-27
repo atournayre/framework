@@ -76,6 +76,7 @@ final class DateTimeCollectionTest extends TestCase
 
         self::assertCount(6, $dateTimeCollection);
     }
+
     /**
      * @throws \Exception
      */
@@ -164,6 +165,7 @@ final class DateTimeCollectionTest extends TestCase
         self::assertEquals(DateTime::of('2021-01-03'), $dates[1]);
         self::assertEquals(DateTime::of('2021-01-04'), $dates[2]);
     }
+
     /**
      * @throws \Exception
      */

@@ -71,7 +71,6 @@ final class NumericCollectionTest extends TestCase
             ->set(3, Numeric::of(123, 2), fn () => true)
             ->set(4, Numeric::of(123, 2), fn (Numeric $numeric) => $numeric->greaterThan(Numeric::of(100)))
             ->set(5, Numeric::of(123, 2), fn (Numeric $numeric) => $numeric->greaterThan(100))
-
         ;
 
         self::assertCount(6, $dateTimeCollection);
@@ -86,10 +85,8 @@ final class NumericCollectionTest extends TestCase
             [
                 Numeric::of(1, 2),
                 Numeric::of(2, 3),
-            ]
-        , 2);
+            ], 2);
     }
-
 
     public function testSumWithEmptyCollection(): void
     {
@@ -97,10 +94,9 @@ final class NumericCollectionTest extends TestCase
         self::assertSame(0, $collection->sum()->intValue());
     }
 
-
     public function testSumWithOneElement(): void
     {
-        $collection = \Atournayre\Primitives\Collection\NumericCollection::asList([Numeric::of(1, 2)], 2);
+        $collection = NumericCollection::asList([Numeric::of(1, 2)], 2);
         self::assertSame(100, $collection->sum()->intValue());
         self::assertSame(1.00, $collection->sum()->value());
         self::assertSame(2, $collection->sum()->precision());

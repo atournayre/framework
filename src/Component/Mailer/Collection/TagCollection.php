@@ -11,12 +11,12 @@ use Atournayre\Primitives\Collection\CollectionTrait;
 
 final class TagCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
+    use CollectionTrait;
+
     public static function elementType(): string
     {
         return 'string';
     }
-
-    use CollectionTrait;
 
     private const TAG_MIN_LENGTH = 3;
 

@@ -13,12 +13,12 @@ use Atournayre\Primitives\Collection\CollectionTrait;
 
 final class EventCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
+    use CollectionTrait;
+
     public static function elementType(): string
     {
         return Event::class;
     }
-
-    use CollectionTrait;
 
     /**
      * @return self<T>
@@ -62,7 +62,8 @@ final class EventCollection implements \Countable, \ArrayAccess, CollectionInter
         $key = $value->_identifier();
 
         return $this
-            ->set($key, $value, $condition);
+            ->set($key, $value, $condition)
+        ;
     }
 
     protected function validateElement($value): void

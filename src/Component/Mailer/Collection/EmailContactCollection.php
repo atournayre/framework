@@ -12,12 +12,12 @@ use Atournayre\Primitives\Collection\CollectionTrait;
 
 final class EmailContactCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
+    use CollectionTrait;
+
     public static function elementType(): string
     {
         return EmailContact::class;
     }
-
-    use CollectionTrait;
 
     /**
      * @api

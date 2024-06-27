@@ -10,12 +10,12 @@ use Atournayre\Contracts\Log\LoggableInterface;
 
 class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
+    use CollectionTrait;
+
     public static function elementType(): string
     {
         return DateTime::class;
     }
-
-    use CollectionTrait;
 
     /**
      * @api
@@ -123,6 +123,7 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
     {
         return $this->toMap()
             ->map(static fn (DateTime $date) => $date->toLog())
-            ->toArray();
+            ->toArray()
+        ;
     }
 }
