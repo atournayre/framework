@@ -6,6 +6,11 @@ namespace Atournayre\Contracts\Collection;
 
 use Atournayre\Primitives\BoolEnum;
 
+/**
+ * @template T
+ * @template TKey of array-key
+ * @template TValue of T
+ */
 interface CollectionInterface
 {
     public static function elementType(): string;
@@ -24,10 +29,16 @@ interface CollectionInterface
 
     public function offsetExists($offset): bool;
 
+    /**
+     * @return TValue
+     */
     public function offsetGet($offset);
 
     public function offsetSet($offset, $value): void;
 
+    /**
+     * @return array<TKey, TValue>
+     */
     public function values(): array;
 
     public function toArray(): array;
@@ -44,11 +55,23 @@ interface CollectionInterface
 
     public function offsetUnset($offset): void;
 
+    /**
+     * @return TValue
+     */
     public function first();
 
+    /**
+     * @return TValue
+     */
     public function last();
 
+    /**
+     * @return TValue
+     */
     public function get($key);
 
+    /**
+     * @return TValue
+     */
     public function current();
 }

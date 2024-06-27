@@ -11,6 +11,11 @@ use Atournayre\Primitives\Collection\CollectionTrait;
 
 /**
  * @template T
+ * @template TKey of int
+ * @template TValue of string
+ *
+ * @implements CollectionInterface<TKey, TValue>
+ * @implements \ArrayAccess<TKey, TValue>
  */
 final class AllowedEventsTypesCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
@@ -30,6 +35,9 @@ final class AllowedEventsTypesCollection implements \Countable, \ArrayAccess, Co
         return BoolEnum::fromBool($contains);
     }
 
+    /**
+     * @return array<string>
+     */
     public function toLog(): array
     {
         return $this->values();

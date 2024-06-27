@@ -59,7 +59,7 @@ class EmailAdapter
      */
     private static function collectionToAddresses(EmailContactCollection $emailContactCollection): array
     {
-        if ($emailContactCollection->hasNoElement()) {
+        if ($emailContactCollection->hasNoElement()->isTrue()) {
             return [];
         }
 

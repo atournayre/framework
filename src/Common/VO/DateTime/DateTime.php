@@ -255,6 +255,11 @@ final class DateTime implements DateTimeInterface, LoggableInterface
         return $this->datetime;
     }
 
+    /**
+     * @api
+     *
+     * @param \DateTimeInterface|DateTime $datetime
+     */
     private function toInterface($datetime): \DateTimeInterface
     {
         return $datetime instanceof self
@@ -262,6 +267,9 @@ final class DateTime implements DateTimeInterface, LoggableInterface
             : $datetime;
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function toLog(): array
     {
         return [

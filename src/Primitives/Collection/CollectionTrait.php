@@ -20,8 +20,14 @@ trait CollectionTrait
 
     private string $objectType;
 
+    /**
+     * @var array<array-key, mixed>
+     */
     protected array $elements;
 
+    /**
+     * @param array<array-key, mixed> $elements
+     */
     private function __construct(
         array $elements,
         string $collectionType,
@@ -54,12 +60,16 @@ trait CollectionTrait
     private static function getElementType(): string
     {
         if (method_exists(static::class, 'elementType')) {
+            // @phpstan-ignore-next-line
             return static::elementType();
         }
 
         throw new \RuntimeException('You must implement the objectType method in your class.');
     }
 
+    /**
+     * @param array<array-key, mixed> $elements
+     */
     public static function from(array $elements): self
     {
         if ([] === $elements) {
@@ -70,6 +80,7 @@ trait CollectionTrait
             ? self::$COLLECTION_TYPE_LIST
             : self::$COLLECTION_TYPE_MAP;
 
+        // @phpstan-ignore-next-line
         return new static(
             $elements,
             $collectionType,
@@ -77,8 +88,13 @@ trait CollectionTrait
         );
     }
 
+    /**
+     * @param array<int, mixed> $elements
+     * @return self
+     */
     public static function asList($elements = []): self
     {
+        // @phpstan-ignore-next-line
         return new static(
             $elements,
             self::$COLLECTION_TYPE_LIST,
@@ -86,8 +102,13 @@ trait CollectionTrait
         );
     }
 
+    /**
+     * @param array<array-key, mixed> $elements
+     * @return self
+     */
     public static function asMap($elements = []): self
     {
+        // @phpstan-ignore-next-line
         return new static(
             $elements,
             self::$COLLECTION_TYPE_MAP,
@@ -116,6 +137,7 @@ trait CollectionTrait
 
     public static function empty(): self
     {
+        // @phpstan-ignore-next-line
         return new static(
             [],
             self::$COLLECTION_TYPE_LIST,
@@ -123,11 +145,17 @@ trait CollectionTrait
         );
     }
 
+    /**
+     * @param array-key $offset
+     */
     public function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->elements);
     }
 
+    /**
+     * @param array-key $offset
+     */
     public function offsetGet($offset)
     {
         return $this->elements[$offset];
@@ -142,6 +170,10 @@ trait CollectionTrait
         $this->elements[$key] = $value;
     }
 
+    /**
+     * @param array-key $offset
+     * @param mixed     $element
+     */
     private function offsetSetAssertion($offset, $element): void
     {
         $this->assertElement($element);
@@ -157,11 +189,17 @@ trait CollectionTrait
         Assert::false($offsetIsNotCompatibleWithMap, 'Adding element to collection (map) using numeric key is not supported.');
     }
 
+    /**
+     * @return array<array-key, mixed>
+     */
     public function values(): array
     {
         return array_values($this->elements);
     }
 
+    /**
+     * @return array<array-key, mixed>
+     */
     public function toArray(): array
     {
         return $this->elements;
@@ -202,6 +240,10 @@ trait CollectionTrait
         return BoolEnum::fromBool($hasXElements);
     }
 
+    /**
+     * @param array-key $offset
+     * @return void
+     */
     public function offsetUnset($offset): void
     {
         unset($this->elements[$offset]);
@@ -231,6 +273,7 @@ trait CollectionTrait
     }
 
     /**
+     * @param mixed $value
      * @param bool|BoolEnum|callable|null $condition
      */
     public function add(
@@ -242,6 +285,7 @@ trait CollectionTrait
 
     /**
      * @param array-key                   $key
+     * @param mixed                       $value
      * @param bool|BoolEnum|callable|null $condition
      */
     public function set($key, $value, $condition = null): self

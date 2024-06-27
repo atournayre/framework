@@ -8,6 +8,9 @@ use Atournayre\Common\Collection\Event\AllowedEventsTypesCollection;
 use Atournayre\Common\Collection\EventCollection;
 use Atournayre\Common\VO\Event;
 
+/**
+ * @template Event of \Atournayre\Common\VO\Event
+ */
 interface HasEventsInterface
 {
     /**

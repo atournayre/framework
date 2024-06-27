@@ -152,7 +152,7 @@ parameters:
             message: 'consider using Collections'
             allowIn:
                 - 'src/Common/Assert/Assert.php'
-                - 'src/Primitives/Collection/AbstractCollection.php'
+                - 'src/Primitives/Collection/CollectionTrait.php'
                 - 'src/Primitives/StringType.php'
 
     disallowedMethodCalls:

@@ -8,6 +8,13 @@ use Atournayre\Common\VO\DateTime\DateTime;
 use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 
+/**
+ * @template TKey of array-key
+ * @template TValue of DateTime
+ *
+ * @implements CollectionInterface<TKey, TValue>
+ * @implements \ArrayAccess<TKey, TValue>
+ */
 class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -19,6 +26,8 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
 
     /**
      * @api
+     *
+     * @return DateTimeCollection<TKey, TValue>
      */
     public function sortAsc(): self
     {
@@ -35,6 +44,8 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
 
     /**
      * @api
+     *
+     * @return DateTimeCollection<TKey, TValue>
      */
     public function sortDesc(): self
     {
@@ -68,7 +79,7 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
     /**
      * @api
      *
-     * @return \Atournayre\Primitives\Collection\DateTimeCollection<T>
+     * @return DateTimeCollection<TKey, TValue>
      */
     public function between(DateTime $start, DateTime $end): self
     {
@@ -86,7 +97,7 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
     /**
      * @api
      *
-     * @return DateTimeCollection<T>
+     * @return DateTimeCollection<TKey, TValue>
      */
     public function before(DateTime $date): self
     {
@@ -104,7 +115,7 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
     /**
      * @api
      *
-     * @return DateTimeCollection<T>
+     * @return DateTimeCollection<TKey, TValue>
      */
     public function after(DateTime $date): self
     {
@@ -119,6 +130,11 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
         return DateTimeCollection::asList($map);
     }
 
+    /**
+     * @api
+     *
+     * @return array<string>
+     */
     public function toLog(): array
     {
         return $this->toMap()

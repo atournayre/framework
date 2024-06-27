@@ -198,8 +198,8 @@ final class Filesystem implements FilesystemInterface
      */
     public function isEmpty(): BoolEnum
     {
-        $isEmpty = $this->listFiles()->hasNoElement()
-            && $this->listDirectories()->hasNoElement();
+        $isEmpty = $this->listFiles()->hasNoElement()->isTrue()
+            && $this->listDirectories()->hasNoElement()->isTrue();
 
         return BoolEnum::fromBool($isEmpty);
     }
@@ -215,8 +215,6 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @throws \Exception
      */
     public function listFiles(): FileCollection

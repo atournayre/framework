@@ -242,6 +242,9 @@ final class Numeric implements LoggableInterface
         return Numeric::of($value / (10 ** $precision), $precision);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toLog(): array
     {
         return [
