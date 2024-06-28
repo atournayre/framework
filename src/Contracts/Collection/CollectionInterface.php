@@ -7,16 +7,23 @@ namespace Atournayre\Contracts\Collection;
 use Atournayre\Primitives\BoolEnum;
 
 /**
- * @template T
- * @template TKey of array-key
- * @template TValue of T
+ * @template Element of object The type of the elements in the collection
+ * @template Collection of CollectionInterface
  */
 interface CollectionInterface
 {
     public static function elementType(): string;
 
+    /**
+     * @param array<int, Element> $elements
+     * @return Collection
+     */
     public static function asList($elements = []): self;
 
+    /**
+     * @param array<string, Element> $elements
+     * @return Collection
+     */
     public static function asMap($elements = []): self;
 
     public function count(): int;
@@ -25,22 +32,36 @@ interface CollectionInterface
 
     public function isMap(): BoolEnum;
 
+    /**
+     * @return Collection
+     */
     public static function empty(): self;
 
+    /**
+     * @param array-key $offset
+     */
     public function offsetExists($offset): bool;
 
     /**
-     * @return TValue
+     * @param array-key $offset
+     * @return Element
      */
     public function offsetGet($offset);
 
+    /**
+     * @param array-key $offset
+     * @param Element $value
+     */
     public function offsetSet($offset, $value): void;
 
     /**
-     * @return array<TKey, TValue>
+     * @return array<int, Element>
      */
     public function values(): array;
 
+    /**
+     * @return array<array-key, Element>
+     */
     public function toArray(): array;
 
     public function atLeastOneElement(): BoolEnum;
@@ -53,25 +74,29 @@ interface CollectionInterface
 
     public function hasXElements(int $int): BoolEnum;
 
+    /**
+     * @param array-key $offset
+     */
     public function offsetUnset($offset): void;
 
     /**
-     * @return TValue
+     * @return Element
      */
     public function first();
 
     /**
-     * @return TValue
+     * @return Element
      */
     public function last();
 
     /**
-     * @return TValue
+     * @param array-key $key
+     * @return Element
      */
     public function get($key);
 
     /**
-     * @return TValue
+     * @return Element
      */
     public function current();
 }
