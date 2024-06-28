@@ -9,6 +9,9 @@ use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
+/**
+ * @implements \ArrayAccess<string, string>
+ */
 final class TagCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -30,6 +33,9 @@ final class TagCollection implements \Countable, \ArrayAccess, CollectionInterfa
         throw new \RuntimeException(sprintf('Use %s::asMap() instead.', self::class));
     }
 
+    /**
+     * @param string $value
+     */
     protected function validateElement($value): void
     {
         Assert::lengthBetween(

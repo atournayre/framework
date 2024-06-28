@@ -106,6 +106,9 @@ final class EmailAddress implements LoggableInterface
         return new self($stringEmail);
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function toLog(): array
     {
         return [

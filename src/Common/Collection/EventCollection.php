@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Collection;
 
-use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Event;
 use Atournayre\Contracts\Collection\CollectionInterface;
-use Atournayre\Contracts\Context\HasContextInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
+/**
+ * @template T
+ * @implements \ArrayAccess<int|string, Event>
+ */
 final class EventCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -21,11 +23,17 @@ final class EventCollection implements \Countable, \ArrayAccess, CollectionInter
         return Event::class;
     }
 
+    /**
+     * @return static
+     */
     public static function empty(): self
     {
-        return EventCollection::asMap([]);
+        return EventCollection::asMap();
     }
 
+    /**
+     * @return static
+     */
     public static function asList($elements = []): self
     {
         throw new \RuntimeException('Use empty() instead.');
@@ -33,6 +41,7 @@ final class EventCollection implements \Countable, \ArrayAccess, CollectionInter
 
     /**
      * @api
+     * @return static
      */
     public function filterByType(string $type): self
     {
@@ -53,7 +62,9 @@ final class EventCollection implements \Countable, \ArrayAccess, CollectionInter
     /**
      * @api
      *
+     * @param Event $value
      * @param bool|BoolEnum|callable|null $condition
+     * @return static
      */
     public function add($value, $condition = null): self
     {
@@ -64,13 +75,8 @@ final class EventCollection implements \Countable, \ArrayAccess, CollectionInter
         ;
     }
 
-    protected function validateElement($value): void
-    {
-        Assert::implementsInterface($value, HasContextInterface::class, 'All events must implement HasContextInterface');
-    }
-
     /**
-     * @return array<string, array>
+     * @return array<string, array<string, mixed>>
      */
     public function toLog(): array
     {

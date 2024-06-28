@@ -9,6 +9,9 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
+/**
+ * @implements \ArrayAccess<int|string, string>
+ */
 final class ValidationCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -37,18 +40,11 @@ final class ValidationCollection implements \Countable, \ArrayAccess, Collection
         return $this->hasNoElement();
     }
 
+    /**
+     * @return array<string>
+     */
     public function toLog(): array
     {
         return $this->values();
-    }
-
-    /**
-     * @throws \InvalidArgumentException
-     */
-    protected function assertElement($element): void
-    {
-        if (!is_string($element)) {
-            throw new \InvalidArgumentException('Element must be a string.');
-        }
     }
 }

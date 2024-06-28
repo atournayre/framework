@@ -8,6 +8,10 @@ use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
+/**
+ * @template T
+ * @implements \ArrayAccess<int|string, mixed>
+ */
 final class TemplateContextCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -18,6 +22,7 @@ final class TemplateContextCollection implements \Countable, \ArrayAccess, Colle
     }
 
     /**
+     * @return self<array-key, mixed>
      * @throws \RuntimeException
      */
     public static function asList($elements = []): self
@@ -25,8 +30,12 @@ final class TemplateContextCollection implements \Countable, \ArrayAccess, Colle
         throw new \RuntimeException(sprintf('Use %s::asMap() instead.', self::class));
     }
 
+    /**
+     * @return array<array-key, mixed>
+     */
     public function toLog(): array
     {
-        return $this->toMap()->toArray();
+        return $this->toMap()
+            ->toArray();
     }
 }

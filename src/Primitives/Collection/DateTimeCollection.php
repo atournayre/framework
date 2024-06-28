@@ -8,6 +8,9 @@ use Atournayre\Common\VO\DateTime\DateTime;
 use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 
+/**
+ * @implements \ArrayAccess<int|string, DateTime>
+ */
 class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;

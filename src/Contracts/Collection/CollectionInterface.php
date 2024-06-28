@@ -10,8 +10,19 @@ interface CollectionInterface
 {
     public static function elementType(): string;
 
+    /**
+     * @param array<array-key, mixed> $elements
+     */
+    public static function from(array $elements): self;
+
+    /**
+     * @param array<int, mixed> $elements
+     */
     public static function asList($elements = []): self;
 
+    /**
+     * @param array<string, mixed> $elements
+     */
     public static function asMap($elements = []): self;
 
     public function count(): int;
@@ -28,12 +39,15 @@ interface CollectionInterface
     public function offsetExists($offset): bool;
 
     /**
+     * @template Element
      * @param array-key $offset
+     * @return Element
      */
     public function offsetGet($offset);
 
     /**
-     * @param array-key $offset
+     * @param array-key|null $offset
+     * @param mixed $value
      */
     public function offsetSet($offset, $value): void;
 
@@ -56,11 +70,28 @@ interface CollectionInterface
      */
     public function offsetUnset($offset): void;
 
+    /**
+     * @template Element
+     * @return Element
+     */
     public function first();
 
+    /**
+     * @template Element
+     * @return Element
+     */
     public function last();
 
+    /**
+     * @template Element
+     * @param array-key $key
+     * @return Element
+     */
     public function get($key);
 
+    /**
+     * @template Element
+     * @return Element
+     */
     public function current();
 }

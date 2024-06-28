@@ -9,6 +9,10 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
+/**
+ * @template T
+ * @implements \ArrayAccess<int|string, string>
+ */
 final class AllowedEventsTypesCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;

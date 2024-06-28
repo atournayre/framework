@@ -37,7 +37,6 @@ final class DateTimeCollectionTest extends TestCase
             DateTime::of('2024-06-27'),
         ]);
 
-        // @phpstan-ignore-next-line
         $dateTimeCollection[] = 'not a DateTime object';
     }
 

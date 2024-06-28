@@ -36,7 +36,7 @@ final class NumericCollectionTest extends TestCase
         $dateTimeCollection = NumericCollection::asList([
             Numeric::of(123, 2),
         ], 2);
-        // @phpstan-ignore-next-line
+
         $dateTimeCollection[] = 'not a Numeric object';
     }
 

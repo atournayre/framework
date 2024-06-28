@@ -10,6 +10,10 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\StringType;
 use Symfony\Component\Finder\SplFileInfo;
 
+/**
+ * @template T
+ * @implements \ArrayAccess<int|string, SplFileInfo>
+ */
 final class FileCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -21,8 +25,6 @@ final class FileCollection implements \Countable, \ArrayAccess, CollectionInterf
 
     /**
      * @api
-     *
-     * @return self<array-key, SplFileInfo>
      */
     public function filterByExtension(string $extension): self
     {
@@ -37,8 +39,6 @@ final class FileCollection implements \Countable, \ArrayAccess, CollectionInterf
 
     /**
      * @api
-     *
-     * @return self<array-key, SplFileInfo>
      */
     public function filterBySize(int $size): self
     {
@@ -53,8 +53,6 @@ final class FileCollection implements \Countable, \ArrayAccess, CollectionInterf
 
     /**
      * @api
-     *
-     * @return self<array-key, SplFileInfo>
      */
     public function filterByContent(string $content): FileCollection
     {

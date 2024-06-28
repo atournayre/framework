@@ -10,9 +10,6 @@ use Atournayre\Common\Traits\EventsTrait;
 use Atournayre\Common\VO\Event;
 use Atournayre\Contracts\Event\HasEventsInterface;
 
-/**
- * @implements HasEventsInterface<Event>
- */
 final class ObjectWithEvents implements HasEventsInterface
 {
     use EventsTrait;

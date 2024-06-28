@@ -10,6 +10,9 @@ use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
+/**
+ * @implements \ArrayAccess<int|string, EmailAddress>
+ */
 final class EmailAddressCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;

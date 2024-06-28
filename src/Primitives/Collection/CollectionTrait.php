@@ -20,8 +20,14 @@ trait CollectionTrait
 
     private string $objectType;
 
+    /**
+     * @var array<array-key, mixed>
+     */
     protected array $elements;
 
+    /**
+     * @param array<array-key, mixed> $elements
+     */
     private function __construct(
         array $elements,
         string $collectionType,
@@ -70,6 +76,9 @@ trait CollectionTrait
         throw new \RuntimeException('You must implement the objectType method in your class.');
     }
 
+    /**
+     * @param array<array-key, mixed> $elements
+     */
     public static function from(array $elements): self
     {
         if ([] === $elements) {
@@ -88,6 +97,10 @@ trait CollectionTrait
         );
     }
 
+    /**
+     * @param array<int, mixed> $elements
+     * @return static
+     */
     public static function asList($elements = []): self
     {
         // @phpstan-ignore-next-line
@@ -98,6 +111,10 @@ trait CollectionTrait
         );
     }
 
+    /**
+     * @param array<string, mixed> $elements
+     * @return static
+     */
     public static function asMap($elements = []): self
     {
         // @phpstan-ignore-next-line
@@ -154,7 +171,8 @@ trait CollectionTrait
     }
 
     /**
-     * @param array-key $offset
+     * @param array-key|null $offset
+     * @param mixed          $value
      */
     public function offsetSet($offset, $value): void
     {
@@ -167,6 +185,7 @@ trait CollectionTrait
 
     /**
      * @param array-key|null $offset
+     * @param mixed          $element
      * @throws \InvalidArgumentException If the offset is not compatible with the collection type.
      */
     private function offsetSetAssertion($offset, $element): void
@@ -283,7 +302,7 @@ trait CollectionTrait
     }
 
     /**
-     * @param array-key                   $key
+     * @param array-key|null              $key
      * @param mixed                       $value
      * @param bool|BoolEnum|callable|null $condition
      */

@@ -10,6 +10,9 @@ use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Numeric;
 
+/**
+ * @implements \ArrayAccess<int|string, Numeric>
+ */
 class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -23,6 +26,7 @@ class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface
     }
 
     /**
+     * @param array<int, mixed|Numeric> $elements
      * @param int $precision
      * @return self
      */
@@ -42,6 +46,7 @@ class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface
     }
 
     /**
+     * @param array<string, mixed|Numeric> $elements
      * @param int $precision
      * @return self
      */
@@ -68,6 +73,11 @@ class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface
         return $clone;
     }
 
+    /**
+     * @param array<int|string, Numeric> $collection
+     * @param int $precision
+     * @return void
+     */
     private static function assertSamePrecision(array $collection, int $precision): void
     {
         if ([] === $collection) {
@@ -152,8 +162,7 @@ class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface
     }
 
     /**
-     * @return array<int|string, array>
-
+     * @return array<int|string, array<string, mixed>>
      */
     public function toLog(): array
     {
