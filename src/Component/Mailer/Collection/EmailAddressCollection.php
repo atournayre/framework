@@ -23,8 +23,6 @@ final class EmailAddressCollection implements \Countable, \ArrayAccess, Collecti
      * @api
      *
      * @param array<string> $emails
-     *
-     * @return EmailAddressCollection<T>
      */
     public static function fromArray(array $emails): self
     {
@@ -36,6 +34,9 @@ final class EmailAddressCollection implements \Countable, \ArrayAccess, Collecti
         return EmailAddressCollection::asList($map);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toLog(): array
     {
         return $this->toMap()

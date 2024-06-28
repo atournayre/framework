@@ -12,13 +12,6 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
-/**
- * @template TKey of string
- * @template TValue of Event
- *
- * @implements CollectionInterface<TKey, TValue>
- * @implements \ArrayAccess<TKey, TValue>
- */
 final class EventCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -28,17 +21,11 @@ final class EventCollection implements \Countable, \ArrayAccess, CollectionInter
         return Event::class;
     }
 
-    /**
-     * @return self<TKey, TValue>
-     */
     public static function empty(): self
     {
         return EventCollection::asMap([]);
     }
 
-    /**
-     * @return self<TKey, TValue>
-     */
     public static function asList($elements = []): self
     {
         throw new \RuntimeException('Use empty() instead.');
@@ -46,8 +33,6 @@ final class EventCollection implements \Countable, \ArrayAccess, CollectionInter
 
     /**
      * @api
-     *
-     * @return EventCollection<TKey, TValue>
      */
     public function filterByType(string $type): self
     {

@@ -9,14 +9,6 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
-/**
- * @template T
- * @template TKey of int
- * @template TValue of string
- *
- * @implements CollectionInterface<TKey, TValue>
- * @implements \ArrayAccess<TKey, TValue>
- */
 final class AllowedEventsTypesCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -26,6 +18,9 @@ final class AllowedEventsTypesCollection implements \Countable, \ArrayAccess, Co
         return 'string';
     }
 
+    /**
+     * @api
+     */
     public function contains(string $type): BoolEnum
     {
         $contains = $this->toMap()

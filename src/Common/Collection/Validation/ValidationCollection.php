@@ -13,6 +13,9 @@ final class ValidationCollection implements \Countable, \ArrayAccess, Collection
 {
     use CollectionTrait;
 
+    /**
+     * @return string
+     */
     public static function elementType(): string
     {
         return 'string';
@@ -26,6 +29,9 @@ final class ValidationCollection implements \Countable, \ArrayAccess, Collection
         throw new \RuntimeException(sprintf('Use %s::asMap() instead.', self::class));
     }
 
+    /**
+     * @api
+     */
     public function isValid(): BoolEnum
     {
         return $this->hasNoElement();
@@ -34,5 +40,15 @@ final class ValidationCollection implements \Countable, \ArrayAccess, Collection
     public function toLog(): array
     {
         return $this->values();
+    }
+
+    /**
+     * @throws \InvalidArgumentException
+     */
+    protected function assertElement($element): void
+    {
+        if (!is_string($element)) {
+            throw new \InvalidArgumentException('Element must be a string.');
+        }
     }
 }

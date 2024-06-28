@@ -10,13 +10,6 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\CollectionTrait;
 
-/**
- * @template TKey of array-key
- * @template TValue of EmailContact
- *
- * @implements CollectionInterface<TKey, TValue>
- * @implements \ArrayAccess<TKey, TValue>
- */
 final class EmailContactCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;

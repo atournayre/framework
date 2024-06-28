@@ -10,13 +10,6 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\StringType;
 use Symfony\Component\Finder\SplFileInfo;
 
-/**
- * @template TKey of array-key
- * @template TValue of \Symfony\Component\Finder\SplFileInfo
- *
- * @implements CollectionInterface<TKey, TValue>
- * @implements \ArrayAccess<TKey, TValue>
- */
 final class FileCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;

@@ -20,14 +20,8 @@ trait CollectionTrait
 
     private string $objectType;
 
-    /**
-     * @var array<array-key, mixed>
-     */
     protected array $elements;
 
-    /**
-     * @param array<array-key, mixed> $elements
-     */
     private function __construct(
         array $elements,
         string $collectionType,
@@ -42,7 +36,13 @@ trait CollectionTrait
         }
     }
 
-    private function assertElement($element): void
+    /**
+     * Asserts that the given element is of the expected type.
+     *
+     * @param mixed $element
+     * @throws \InvalidArgumentException If the element is not of the expected type.
+     */
+    protected function assertElement($element): void
     {
         if ('mixed' === $this->objectType) {
             return;
@@ -57,6 +57,9 @@ trait CollectionTrait
         Assert::inArray($this->objectType, $types, 'All elements must be of type '.$this->objectType.'.');
     }
 
+    /**
+     * @throws \RuntimeException If the elementType method is not implemented.
+     */
     private static function getElementType(): string
     {
         if (method_exists(static::class, 'elementType')) {
@@ -67,9 +70,6 @@ trait CollectionTrait
         throw new \RuntimeException('You must implement the objectType method in your class.');
     }
 
-    /**
-     * @param array<array-key, mixed> $elements
-     */
     public static function from(array $elements): self
     {
         if ([] === $elements) {
@@ -88,10 +88,6 @@ trait CollectionTrait
         );
     }
 
-    /**
-     * @param array<int, mixed> $elements
-     * @return self
-     */
     public static function asList($elements = []): self
     {
         // @phpstan-ignore-next-line
@@ -102,10 +98,6 @@ trait CollectionTrait
         );
     }
 
-    /**
-     * @param array<array-key, mixed> $elements
-     * @return self
-     */
     public static function asMap($elements = []): self
     {
         // @phpstan-ignore-next-line
@@ -161,6 +153,9 @@ trait CollectionTrait
         return $this->elements[$offset];
     }
 
+    /**
+     * @param array-key $offset
+     */
     public function offsetSet($offset, $value): void
     {
         $this->offsetSetAssertion($offset, $value);
@@ -171,8 +166,8 @@ trait CollectionTrait
     }
 
     /**
-     * @param array-key $offset
-     * @param mixed     $element
+     * @param array-key|null $offset
+     * @throws \InvalidArgumentException If the offset is not compatible with the collection type.
      */
     private function offsetSetAssertion($offset, $element): void
     {
@@ -251,11 +246,13 @@ trait CollectionTrait
 
     public function first()
     {
+        // TODO Recuperer ou ::asNull
         return reset($this->elements);
     }
 
     public function last()
     {
+        // TODO Recuperer ou ::asNull
         return end($this->elements);
     }
 
@@ -264,11 +261,13 @@ trait CollectionTrait
      */
     public function get($key)
     {
+        // TODO Recuperer ou ::asNull
         return $this->elements[$key];
     }
 
     public function current()
     {
+        // TODO Recuperer ou ::asNull
         return current($this->elements);
     }
 
@@ -320,6 +319,9 @@ trait CollectionTrait
         return Map::from($this->elements);
     }
 
+    /**
+     * @return array<array-key, mixed>
+     */
     public function keys(): array
     {
         return array_keys($this->elements);

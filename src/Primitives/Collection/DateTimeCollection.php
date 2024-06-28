@@ -8,13 +8,6 @@ use Atournayre\Common\VO\DateTime\DateTime;
 use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 
-/**
- * @template TKey of array-key
- * @template TValue of DateTime
- *
- * @implements CollectionInterface<TKey, TValue>
- * @implements \ArrayAccess<TKey, TValue>
- */
 class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -65,7 +58,8 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
      */
     public function mostRecent(): DateTime
     {
-        return $this->sortDesc()->first();
+        return $this->sortDesc()
+            ->first();
     }
 
     /**
@@ -73,7 +67,8 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
      */
     public function oldest(): DateTime
     {
-        return $this->sortAsc()->first();
+        return $this->sortAsc()
+            ->first();
     }
 
     /**
