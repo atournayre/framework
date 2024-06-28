@@ -19,8 +19,6 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<TKey, TValue>
      */
     public function sortAsc(): self
     {
@@ -37,8 +35,6 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<TKey, TValue>
      */
     public function sortDesc(): self
     {
@@ -73,8 +69,6 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<TKey, TValue>
      */
     public function between(DateTime $start, DateTime $end): self
     {
@@ -91,8 +85,6 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<TKey, TValue>
      */
     public function before(DateTime $date): self
     {
@@ -109,8 +101,6 @@ class DateTimeCollection implements \Countable, \ArrayAccess, CollectionInterfac
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<TKey, TValue>
      */
     public function after(DateTime $date): self
     {
