@@ -10,13 +10,6 @@ use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Numeric;
 
-/**
- * @template TKey of array-key
- * @template TValue of Numeric
- *
- * @implements CollectionInterface<TKey, TValue>
- * @implements \ArrayAccess<TKey, TValue>
- */
 class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface, LoggableInterface
 {
     use CollectionTrait;
@@ -30,7 +23,6 @@ class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface
     }
 
     /**
-     * @param array<TKey, TValue> $elements
      * @param int $precision
      * @return self
      */
@@ -50,7 +42,6 @@ class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface
     }
 
     /**
-     * @param array<TKey, TValue> $elements
      * @param int $precision
      * @return self
      */
@@ -77,9 +68,6 @@ class NumericCollection implements \Countable, \ArrayAccess, CollectionInterface
         return $clone;
     }
 
-    /**
-     * @param array<TKey, TValue> $collection
-     */
     private static function assertSamePrecision(array $collection, int $precision): void
     {
         if ([] === $collection) {
