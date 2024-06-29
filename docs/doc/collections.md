@@ -1,66 +1,32 @@
-# TypedCollection
-```php
-// Samples classes
-class Person
-{
-    public function __construct(
-        public string $name
-    ) {}
-}
+# Collections
 
-class People extends TypedCollection
-{
-    protected static string $type = Person::class;
-}
-```
+Collections are of 2 types:
+- `List` where each object is identified by an index. 
+- `Map` where each object is identified by a key.
 
-```php
-// Create collection
-$collection = People::asList([
-    new Person('John'),
-]);
-$collection[] = new Person('Jack'); // Add item
-```
+## Create a typed collection
 
-# DateTimeCollection
-```php
-// Create collection
-$collection = DateTimeCollection::asList([
-    DateTime::of('2021-01-05'),
-    DateTime::of('2021-01-04'),
-    DateTime::of('2021-01-03'),
-    DateTime::of('2021-01-02'),
-    DateTime::of('2021-01-01'),
-])->sortAsc();
-```
+### Create a class that implements interface(s)
+A collection should implements `ListInterface` or `MapInterface` based on the type of collection. It can implement `NumericListInterface` or `NumericMapInterface` if the collection contains numeric objects. A collection can implement multiple interfaces based on the requirement.
 
-# NumericCollection
+### Use a trait to provide basic functionality
+A trait can be used to provide basic functionality to interact with the group of objects. It can be used to create a collection of objects.
 
-```php
-// Create collection
-use Atournayre\Primitives\Collection\NumericCollection;
-$collection = NumericCollection::asList([
-    Numeric::of(1, 2),
-    Numeric::of(2, 2),
-]);
-$collection->avg()->value(); // 1.50
-$collection->max()->value(); // 2.00
-$collection->min()->value(); // 1.00
-$collection->sum()->value(); // 3.00
-```
+Available traits are:
+- `CollectionCommonTrait` to provide the basic functionality to interact with the group of objects.
+- `CollectionTrait` to provide the basic functionality to create a collection of objects.
+- `NumericCollectionTrait` to provide the basic functionality to create a collection of numeric objects.
 
-# FileCollection
+### Assertions
+Use assertions to validate the type of objects in the collection when creating named constructors.
 
-```php
-// Create collection
-use Atournayre\Primitives\Collection\FileCollection;
+## Built-in collections
 
-$collection = FileCollection::asList([
-    new SplFileInfo('file1.txt'),
-    new SplFileInfo('file2.txt'),
-]);
-$collection->filterByContent('dummy');
-$collection->filterByExtension('txt');
-$collection->filterBySize(100);
-$collection->totalSize();
-```
+- AllowedEventsTypesCollection
+- DateTimeCollection
+- EventCollection
+- FileCollection
+- TemplateContextCollection
+- ValidationCollection
+
+Each collection have specific methods to interact with the group of objects.
