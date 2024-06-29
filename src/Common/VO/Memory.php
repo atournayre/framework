@@ -67,6 +67,8 @@ final class Memory
     }
 
     /**
+     * @throws \Throwable
+     *
      * @api
      */
     public function humanReadable(): string
@@ -80,7 +82,7 @@ final class Memory
             ++$unit;
         }
 
-        return round($value, 2).' '.$units[$unit];
+        return round($value, 2).' '.$units->get($unit);
     }
 
     public function equalsTo(int $size): BoolEnum

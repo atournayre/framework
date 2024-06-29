@@ -4,27 +4,19 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Collection;
 
-use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Event;
-use Atournayre\Contracts\Context\HasContextInterface;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Primitives\Collection\CollectionTrait;
+use Atournayre\Primitives\Collection\MapTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<T>
- *
- * @method EventCollection set($key, string $value, ?\Closure $callback = null)
- * @method Event[]         values()
- * @method Event           first()
- * @method Event           last()
- */
-final class EventCollection extends TypedCollection
+final class EventCollection
 {
+    use CollectionTrait;
+    use MapTrait;
+
     protected static string $type = Event::class;
 
     /**
-     * @return self<T>
+     * @api
      */
     public static function empty(): self
     {
@@ -32,36 +24,13 @@ final class EventCollection extends TypedCollection
     }
 
     /**
-     * @param array<T> $collection
-     *
-     * @return self<T>
-     */
-    public static function asList(array $collection): self
-    {
-        throw new \RuntimeException('Use empty() instead.');
-    }
-
-    /**
-     * @param array<T> $collection
-     *
-     * @return self<T>
-     */
-    public static function asMap(array $collection): self
-    {
-        Assert::isMapOf($collection, Event::class);
-
-        return new self($collection);
-    }
-
-    /**
      * @api
-     *
-     * @return EventCollection<T>
      */
     public function filterByType(string $type): self
     {
-        $events = $this
-            ->toMap()
+        $clone = clone $this;
+        $events = $clone
+            ->collection
             ->filter(static fn (Event $event): bool => $event instanceof $type)
             ->toArray()
         ;
@@ -77,19 +46,14 @@ final class EventCollection extends TypedCollection
     /**
      * @api
      *
-     * @param T|Event $value
+     * @param mixed|null $value
      *
-     * @return EventCollection<T>
+     * @throws \Exception
      */
     public function add($value, ?\Closure $callback = null): self
     {
         $key = $value->_identifier();
 
-        return parent::set($key, $value, $callback);
-    }
-
-    protected function validateElement($value): void
-    {
-        Assert::implementsInterface($value, HasContextInterface::class, 'All events must implement HasContextInterface');
+        return $this->set($key, $value, $callback);
     }
 }

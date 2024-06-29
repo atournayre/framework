@@ -16,9 +16,6 @@ final class TemplatedEmail extends Email
 
     public TextTemplatePath $textTemplatePath;
 
-    /**
-     * @var TemplateContextCollection<mixed>
-     */
     public TemplateContextCollection $templateContextCollection;
 
     protected function __construct(
@@ -49,8 +46,6 @@ final class TemplatedEmail extends Email
 
     /**
      * @api
-     *
-     * @return TemplateContextCollection<mixed>
      */
     public function templateContextCollection(): TemplateContextCollection
     {
@@ -81,8 +76,6 @@ final class TemplatedEmail extends Email
 
     /**
      * @api
-     *
-     * @param TemplateContextCollection<mixed> $templateContextCollection
      */
     public function withContext(TemplateContextCollection $templateContextCollection): self
     {
@@ -93,6 +86,8 @@ final class TemplatedEmail extends Email
     }
 
     /**
+     * @throws \Exception
+     *
      * @api
      */
     public function validate(): ValidationCollection

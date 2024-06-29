@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Traits;
 
-use Atournayre\Common\Collection\Event\AllowedEventsTypesCollection;
 use Atournayre\Common\Collection\EventCollection;
 use Atournayre\Common\VO\Event;
 
@@ -14,14 +13,8 @@ use Atournayre\Common\VO\Event;
  */
 trait EventsTrait
 {
-    /**
-     * @var EventCollection<Event>
-     */
     private EventCollection $events;
 
-    /**
-     * @return EventCollection<Event>
-     */
     public function events(): EventCollection
     {
         return $this->events;
@@ -45,21 +38,22 @@ trait EventsTrait
             throw new \RuntimeException('You must implement the method "allowedEventsTypes" to use this trait');
         }
 
-        /** @var AllowedEventsTypesCollection<string> $allowedEventsTypes */
-        $allowedEventsTypes = $this->allowedEventsTypes();
-
         $eventType = $event->_type();
-        if ($allowedEventsTypes->contains($eventType)->isFalse()) {
+        $eventTypeIsNotAllowed = $this->allowedEventsTypes()
+            ->contains($eventType)
+            ->isFalse()
+        ;
+
+        if ($eventTypeIsNotAllowed) {
             throw new \RuntimeException(sprintf('Event type "%s" is not allowed for this object', $eventType));
         }
 
-        $this->events[$index] = $event;
+        $this->events->offsetSet($index, $event);
     }
 
     public function removeEvent(Event $event): void
     {
         $index = $this->events
-            ->toMap()
             ->search($event)
         ;
 
@@ -72,9 +66,6 @@ trait EventsTrait
         ;
     }
 
-    /**
-     * @return EventCollection<Event>
-     */
     public function filterEventsByType(string $type): EventCollection
     {
         return $this->events

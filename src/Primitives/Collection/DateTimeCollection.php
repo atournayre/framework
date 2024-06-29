@@ -4,49 +4,23 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Collection;
 
-use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\DateTime\DateTime;
-use Atournayre\Contracts\Collection\CollectionInterface;
-use Atournayre\Contracts\Collection\ListInterface;
-use Atournayre\Contracts\Collection\MapInterface;
-use Atournayre\Wrapper\Collection;
 
 /**
- * @template T
- * @implements CollectionInterface<DateTime>
+ * @method DateTime           first()
+ * @method DateTime           last()
+ * @method DateTimeCollection values()
  */
-class DateTimeCollection implements CollectionInterface, ListInterface, MapInterface
+class DateTimeCollection
 {
-    /** @use CollectionTrait<DateTime> */
     use CollectionTrait;
+    use MapTrait;
+    use ListTrait;
 
     protected static string $type = DateTime::class;
 
     /**
      * @api
-     * @return self<DateTime>
-     */
-    public static function asList(array $collection): self
-    {
-        Assert::isListOf($collection, static::$type);
-
-        return new self(Collection::of($collection));
-    }
-
-    /**
-     * @api
-     * @return self<DateTime>
-     */
-    public static function asMap(array $collection): self
-    {
-        Assert::isMapOf($collection, static::$type);
-
-        return new self(Collection::of($collection));
-    }
-
-    /**
-     * @api
-     * @return self<DateTime>
      */
     public function sortAsc(): self
     {
@@ -63,7 +37,6 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
-     * @return self<DateTime>
      */
     public function sortDesc(): self
     {
@@ -80,6 +53,7 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
+     *
      * @throws \Throwable
      */
     public function mostRecent(): DateTime
@@ -104,32 +78,7 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
     }
 
     /**
-     * @throws \Throwable
-     *
      * @api
-     */
-    public function first(): DateTime
-    {
-        return $this->collection
-            ->first()
-        ;
-    }
-
-    /**
-     * @throws \Throwable
-     *
-     * @api
-     */
-    public function last(): DateTime
-    {
-        return $this->collection
-            ->last()
-        ;
-    }
-
-    /**
-     * @api
-     * @return self<DateTime>
      */
     public function between(DateTime $start, DateTime $end): self
     {
@@ -146,7 +95,6 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
-     * @return self<DateTime>
      */
     public function before(DateTime $date): self
     {
@@ -163,7 +111,6 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
-     * @return self<DateTime>
      */
     public function after(DateTime $date): self
     {

@@ -17,6 +17,6 @@ final class TemplateContextCollectionTest extends TestCase
         ];
         $collection = TemplateContextCollection::asMap($input);
 
-        self::assertEquals($input, $collection->values());
+        self::assertEquals($input, $collection->toArray());
     }
 }

@@ -12,8 +12,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @template T
  *
  * @implements \ArrayAccess<int|string, T>
- *
- * @deprecated Use Atournayre\Wrapper\Collection instead
  */
 abstract class AbstractCollection implements \ArrayAccess, \Countable
 {

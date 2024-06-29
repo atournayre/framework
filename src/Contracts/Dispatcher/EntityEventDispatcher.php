@@ -25,8 +25,6 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
     }
 
     /**
-     * @param EventCollection<Event> $eventCollection
-     *
      * @throws \Exception
      */
     public function dispatch(EventCollection $eventCollection, ?string $type = null): void
@@ -40,13 +38,9 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
         $this->dispatchEventsByType($eventCollection, $type);
     }
 
-    /**
-     * @param EventCollection<Event> $eventCollection
-     */
     private function dispatchAllEvents(EventCollection $eventCollection): void
     {
         $eventCollection
-            ->toMap()
             ->each(fn (Event $event) => $this->dispatchEvent($event))
         ;
     }
@@ -60,14 +54,10 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
         $this->logger->info(sprintf('Event %s dispatched', $event->_type()), $event->toLog());
     }
 
-    /**
-     * @param EventCollection<Event> $eventCollection
-     */
     private function dispatchEventsByType(EventCollection $eventCollection, string $type): void
     {
         $eventCollection
             ->filterByType($type)
-            ->toMap()
             ->each(fn (Event $event) => $this->dispatchEvent($event))
         ;
     }

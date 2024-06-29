@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Atournayre\Wrapper;
 
 use Aimeos\Map as AimeosMap;
-use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Primitives\BoolEnum;
 
-final class Collection implements CollectionInterface
+final class Collection
 {
     private AimeosMap $map;
 
@@ -19,9 +18,8 @@ final class Collection implements CollectionInterface
 
     /**
      * @api
-     * @template T
-     * @param array<int|string, T> $elements
-     * @return self<int|string, T>
+     *
+     * @param array<int|string, mixed> $elements
      */
     public static function of(array $elements = []): self
     {
@@ -48,8 +46,6 @@ final class Collection implements CollectionInterface
      * @api
      *
      * @param int|string $key
-     *
-     * @return self<int|string, mixed>
      */
     // @phpstan-ignore-next-line Remove when upgrading to PHP 8
     public function set($key, $value): self
@@ -75,8 +71,6 @@ final class Collection implements CollectionInterface
      * @api
      *
      * @param iterable<int|string>|array<int|string>|int|string $keys
-     *
-     * @return self<int|string, mixed>
      */
     public function remove($keys): self
     {
@@ -87,8 +81,6 @@ final class Collection implements CollectionInterface
 
     /**
      * @api
-     *
-     * @return self<int|string, mixed>
      */
     public function each(\Closure $callback): self
     {
@@ -109,8 +101,6 @@ final class Collection implements CollectionInterface
 
     /**
      * @api
-     *
-     * @return self<int|string, mixed>
      */
     public function map(callable $callback): self
     {
@@ -188,18 +178,19 @@ final class Collection implements CollectionInterface
 
     /**
      * @api
+     *
+     * @param \Closure|iterable|mixed $key
+     * @param mixed|null              $value
      */
-    public function contains(string $type): BoolEnum
+    public function contains($key, ?string $operator = null, $value = null): BoolEnum
     {
-        $contains = $this->map->contains($type);
+        $contains = $this->map->contains($key, $operator, $value);
 
         return BoolEnum::fromBool($contains);
     }
 
     /**
      * @api
-     *
-     * @return self<int|string, mixed>
      */
     public function filter(?callable $callback = null): self
     {
@@ -210,8 +201,6 @@ final class Collection implements CollectionInterface
 
     /**
      * @api
-     *
-     * @return self<int|string, mixed>
      */
     public function values(): self
     {
@@ -222,8 +211,6 @@ final class Collection implements CollectionInterface
 
     /**
      * @api
-     *
-     * @return self<int|string, mixed>
      */
     public function usort(callable $callback): self
     {
@@ -277,6 +264,8 @@ final class Collection implements CollectionInterface
      * @api
      *
      * @param int|string $offset
+     *
+     * @return mixed|null
      */
     public function offsetGet($offset)
     {
@@ -287,6 +276,7 @@ final class Collection implements CollectionInterface
      * @api
      *
      * @param int|string|null $offset
+     * @param mixed|null      $value
      */
     public function offsetSet($offset, $value): void
     {
@@ -311,5 +301,21 @@ final class Collection implements CollectionInterface
     public function jsonSerialize(): array
     {
         return $this->map->jsonSerialize();
+    }
+
+    /**
+     * @param mixed|null $value
+     *
+     * @throws \Exception
+     */
+    public function add($value, ?\Closure $callback = null): self
+    {
+        if ($callback instanceof \Closure && !$callback($value)) {
+            return self::of($this->toArray());
+        }
+
+        $this->offsetSet(null, $value);
+
+        return self::of($this->toArray());
     }
 }

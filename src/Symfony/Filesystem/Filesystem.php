@@ -14,11 +14,6 @@ use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
 
-/**
- * @template T
- *
- * @implements FilesystemInterface<T>
- */
 final class Filesystem implements FilesystemInterface
 {
     /** @api */
@@ -38,9 +33,6 @@ final class Filesystem implements FilesystemInterface
         $this->symfonyFilesystem = new SymfonyFilesystem();
     }
 
-    /**
-     * @return self<T>
-     */
     public static function from(string $directoryOrFile): self
     {
         return new self($directoryOrFile);
@@ -201,8 +193,8 @@ final class Filesystem implements FilesystemInterface
      */
     public function isEmpty(): BoolEnum
     {
-        $isEmpty = $this->listFiles()->hasNoElement()
-            && $this->listDirectories()->hasNoElement();
+        $isEmpty = $this->listFiles()->hasNoElement()->isTrue()
+            && $this->listDirectories()->hasNoElement()->isTrue();
 
         return BoolEnum::fromBool($isEmpty);
     }
@@ -218,8 +210,6 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @throws \Exception
      */
     public function listFiles(): FileCollection
@@ -261,8 +251,6 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @throws \Exception
      */
     public function listDirectories(): FileCollection

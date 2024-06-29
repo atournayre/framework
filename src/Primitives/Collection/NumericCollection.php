@@ -13,6 +13,11 @@ use Atournayre\Wrapper\Collection;
  *
  * @extends AbstractCollection<T>
  */
+// TODO NumericCollectionTrait
+// TODO NumericCollectionTrait
+// TODO NumericCollectionTrait
+// TODO NumericCollectionTrait
+// TODO NumericCollectionTrait
 class NumericCollection extends AbstractCollection
 {
     protected const DEFAULT_PRECISION = 0;
