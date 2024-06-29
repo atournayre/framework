@@ -167,4 +167,12 @@ final class NumericTest extends TestCase
         self::expectException(\InvalidArgumentException::class);
         Numeric::of(2)->betweenOrEqual(3, 2);
     }
+
+    public function testNumericFromFloat(): void
+    {
+        $number = Numeric::fromFloat(1.23);
+        self::assertEquals(123, $number->intValue());
+        self::assertEquals(2, $number->precision());
+        self::assertEquals(1.23, $number->value());
+    }
 }

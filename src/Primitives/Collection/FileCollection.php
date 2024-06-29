@@ -4,22 +4,32 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Collection;
 
+use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Memory;
+use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 use Atournayre\Wrapper\SplFileInfo;
 
-/**
- * @method SplFileInfo    first()
- * @method SplFileInfo    last()
- * @method FileCollection values()
- */
-final class FileCollection implements LoggableInterface
+final class FileCollection implements LoggableInterface, ListInterface, MapInterface
 {
     use CollectionTrait;
-    use MapTrait;
-    use ListTrait;
 
-    protected static string $type = SplFileInfo::class;
+    public static function asList(array $collection): self
+    {
+        Assert::isListOf($collection, SplFileInfo::class);
+
+        return new self(Collection::of($collection));
+    }
+
+    public static function asMap(array $collection): self
+    {
+        Assert::isMapOf($collection, SplFileInfo::class);
+
+        return new self(Collection::of($collection));
+    }
 
     /**
      * @api
@@ -72,9 +82,10 @@ final class FileCollection implements LoggableInterface
             ->collection
             ->map(static fn (SplFileInfo $file) => $file->getSize()->asIs())
             ->sum()
+            ->intValue()
         ;
 
-        return Memory::fromBytes((int) $sizeInBytes);
+        return Memory::fromBytes($sizeInBytes);
     }
 
     /**

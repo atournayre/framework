@@ -64,7 +64,7 @@ final class EventsTraitTest extends TestCase
         $event = new Event();
         $object->addEvent($event);
 
-        self::assertSame(1, $object->events()->count());
+        self::assertTrue($object->events()->count()->equalTo(1)->isTrue());
     }
 
     /**

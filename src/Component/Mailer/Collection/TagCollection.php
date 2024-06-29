@@ -5,17 +5,14 @@ declare(strict_types=1);
 namespace Atournayre\Component\Mailer\Collection;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
-use Atournayre\Primitives\Collection\CollectionTrait;
-use Atournayre\Primitives\Collection\MapTrait;
-use Atournayre\Wrapper\Collection;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-final class TagCollection implements LoggableInterface
+final class TagCollection implements LoggableInterface, MapInterface
 {
     use CollectionTrait;
-    use MapTrait;
-
-    protected static string $type = 'string';
 
     private const TAG_MIN_LENGTH = 3;
 
@@ -26,11 +23,13 @@ final class TagCollection implements LoggableInterface
      */
     public static function asMap(array $collection): self
     {
-        Assert::isMapOf($collection, self::$type);
+        Assert::isMapOf($collection, 'string');
 
-        return (new self(Collection::of($collection)))
-            ->validate(fn (string $tag) => self::validateElement($tag))
+        $collection1 = Collection::of($collection)
+            ->each(fn (string $tag) => self::validateElement($tag))
         ;
+
+        return new self($collection1);
     }
 
     private static function validateElement(string $value): void

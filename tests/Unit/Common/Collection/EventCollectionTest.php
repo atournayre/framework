@@ -20,7 +20,7 @@ final class EventCollectionTest extends TestCase
         $eventCollection = EventCollection::empty()
             ->add(new Event())
         ;
-        self::assertSame(1, $eventCollection->count());
+        self::assertTrue($eventCollection->count()->equalTo(1)->isTrue());
     }
 
     /**

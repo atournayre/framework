@@ -7,8 +7,8 @@ namespace Atournayre\Symfony\Filesystem;
 use Atournayre\Common\Types\DirectoryOrFile;
 use Atournayre\Contracts\Filesystem\FilesystemInterface;
 use Atournayre\Primitives\BoolEnum;
+use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Collection\FileCollection;
-use Atournayre\Wrapper\Collection;
 use Atournayre\Wrapper\SplFileInfo;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
@@ -206,6 +206,7 @@ final class Filesystem implements FilesystemInterface
     {
         return $this->listFiles()
             ->count()
+            ->intValue()
         ;
     }
 
@@ -247,6 +248,7 @@ final class Filesystem implements FilesystemInterface
     {
         return $this->listDirectories()
             ->count()
+            ->intValue()
         ;
     }
 

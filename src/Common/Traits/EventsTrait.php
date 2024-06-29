@@ -48,7 +48,7 @@ trait EventsTrait
             throw new \RuntimeException(sprintf('Event type "%s" is not allowed for this object', $eventType));
         }
 
-        $this->events->offsetSet($index, $event);
+        $this->events->set($index, $event);
     }
 
     public function removeEvent(Event $event): void

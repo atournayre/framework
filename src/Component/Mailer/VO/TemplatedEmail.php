@@ -93,7 +93,12 @@ final class TemplatedEmail extends Email
     public function validate(): ValidationCollection
     {
         return ValidationCollection::asMap([])
-            ->set('template', 'validation.templated_email.template.empty', fn () => $this->htmlTemplatePath->isEmpty()->isTrue() && $this->textTemplatePath->isEmpty()->isTrue())
+            ->set(
+                'template',
+                'validation.templated_email.template.empty',
+                fn () => $this->htmlTemplatePath->isEmpty()->isTrue()
+                    && $this->textTemplatePath->isEmpty()->isTrue()
+            )
         ;
     }
 }

@@ -4,16 +4,26 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Collection;
 
+use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Event;
-use Atournayre\Primitives\Collection\CollectionTrait;
-use Atournayre\Primitives\Collection\MapTrait;
+use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Primitives\BoolEnum;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-final class EventCollection
+final class EventCollection implements MapInterface
 {
     use CollectionTrait;
-    use MapTrait;
 
-    protected static string $type = Event::class;
+    /**
+     * @param array<string, Event|mixed> $collection
+     */
+    public static function asMap(array $collection = []): self
+    {
+        Assert::isMapOf($collection, Event::class);
+
+        return new self(Collection::of($collection));
+    }
 
     /**
      * @api
@@ -24,6 +34,8 @@ final class EventCollection
     }
 
     /**
+     * @throws \Exception
+     *
      * @api
      */
     public function filterByType(string $type): self
@@ -53,7 +65,33 @@ final class EventCollection
     public function add($value, ?\Closure $callback = null): self
     {
         $key = $value->_identifier();
+        $this->set($key, $value, $callback);
 
-        return $this->set($key, $value, $callback);
+        return $this;
+    }
+
+    /**
+     * @api
+     *
+     * @param mixed|null $key
+     * @param mixed|null $value
+     */
+    public function contains($key, ?string $operator = null, $value = null): BoolEnum
+    {
+        return $this->collection
+            ->contains($key, $operator, $value)
+        ;
+    }
+
+    /**
+     * @param mixed|null $value
+     * @param bool $strict
+     * @return int|string|null
+     */
+    public function search($value, $strict = true)
+    {
+        return $this->collection
+            ->search($value, $strict)
+        ;
     }
 }

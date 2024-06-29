@@ -4,13 +4,33 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Collection\Event;
 
-use Atournayre\Primitives\Collection\CollectionTrait;
-use Atournayre\Primitives\Collection\ListTrait;
+use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Primitives\BoolEnum;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-final class AllowedEventsTypesCollection
+final class AllowedEventsTypesCollection implements ListInterface
 {
     use CollectionTrait;
-    use ListTrait;
 
-    protected static string $type = 'string';
+    public static function asList(array $collection): self
+    {
+        Assert::isListOf($collection, 'string');
+
+        return new self(Collection::of($collection));
+    }
+
+    /**
+     * @param mixed|null $key
+     * @param string|null $operator
+     * @param mixed|null $value
+     * @return BoolEnum
+     */
+    public function contains($key, ?string $operator = null, $value = null): BoolEnum
+    {
+        return $this->collection
+            ->contains($key, $operator, $value)
+        ;
+    }
 }

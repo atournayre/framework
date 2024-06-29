@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Common\VO;
 
 use Atournayre\Primitives\BoolEnum;
-use Atournayre\Wrapper\Collection;
+use Atournayre\Primitives\Collection;
 
 final class Memory
 {
@@ -77,7 +77,7 @@ final class Memory
         $value = $this->bytes;
         $unit = 0;
 
-        while ($value >= self::KB && $unit < $units->count() - 1) {
+        while ($value >= self::KB && $unit < $units->count()->intValue() - 1) {
             $value /= self::KB;
             ++$unit;
         }

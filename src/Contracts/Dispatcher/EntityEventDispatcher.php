@@ -54,6 +54,9 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
         $this->logger->info(sprintf('Event %s dispatched', $event->_type()), $event->toLog());
     }
 
+    /**
+     * @throws \Exception
+     */
     private function dispatchEventsByType(EventCollection $eventCollection, string $type): void
     {
         $eventCollection

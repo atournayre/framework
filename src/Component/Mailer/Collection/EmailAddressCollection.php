@@ -4,19 +4,30 @@ declare(strict_types=1);
 
 namespace Atournayre\Component\Mailer\Collection;
 
+use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\Types\EmailAddress;
-use Atournayre\Primitives\Collection\CollectionTrait;
-use Atournayre\Primitives\Collection\ListTrait;
-use Atournayre\Primitives\Collection\MapTrait;
-use Atournayre\Wrapper\Collection;
+use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-final class EmailAddressCollection
+final class EmailAddressCollection implements ListInterface, MapInterface
 {
     use CollectionTrait;
-    use ListTrait;
-    use MapTrait;
 
-    protected static string $type = EmailAddress::class;
+    public static function asList(array $collection): self
+    {
+        Assert::isListOf($collection, EmailAddress::class);
+
+        return new self(Collection::of($collection));
+    }
+
+    public static function asMap(array $collection): self
+    {
+        Assert::isMapOf($collection, EmailAddress::class);
+
+        return new self(Collection::of($collection));
+    }
 
     /**
      * @api

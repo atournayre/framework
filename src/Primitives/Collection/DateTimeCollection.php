@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Collection;
 
+use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\DateTime\DateTime;
+use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-/**
- * @method DateTime           first()
- * @method DateTime           last()
- * @method DateTimeCollection values()
- */
-class DateTimeCollection
+final class DateTimeCollection implements ListInterface
 {
     use CollectionTrait;
-    use MapTrait;
-    use ListTrait;
 
-    protected static string $type = DateTime::class;
+    public static function asList(array $collection): self
+    {
+        Assert::isListOf($collection, DateTime::class);
+
+        return new self(Collection::of($collection));
+    }
 
     /**
      * @api

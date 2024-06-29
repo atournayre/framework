@@ -4,16 +4,25 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Collection\Validation;
 
+use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Primitives\BoolEnum;
-use Atournayre\Primitives\Collection\CollectionTrait;
-use Atournayre\Primitives\Collection\MapTrait;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-final class ValidationCollection
+final class ValidationCollection implements MapInterface
 {
     use CollectionTrait;
-    use MapTrait;
 
-    protected static string $type = 'string';
+    /**
+     * @param array<string, string|mixed> $collection
+     */
+    public static function asMap(array $collection): self
+    {
+        Assert::isMapOf($collection, 'string');
+
+        return new self(Collection::of($collection));
+    }
 
     public function isValid(): BoolEnum
     {
