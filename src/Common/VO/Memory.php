@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Common\VO;
 
 use Atournayre\Primitives\BoolEnum;
-use Atournayre\Wrapper\Map;
+use Atournayre\Wrapper\Collection;
 
 final class Memory
 {
@@ -71,7 +71,7 @@ final class Memory
      */
     public function humanReadable(): string
     {
-        $units = Map::from(['B', 'KB', 'MB', 'GB', 'TB']);
+        $units = Collection::of(['B', 'KB', 'MB', 'GB', 'TB']);
         $value = $this->bytes;
         $unit = 0;
 

@@ -8,7 +8,7 @@ use Atournayre\Primitives\Collection\TypedCollection;
 use Atournayre\Tests\Fixtures\People;
 use Atournayre\Tests\Fixtures\PeopleMustBeMap;
 use Atournayre\Tests\Fixtures\Person;
-use Atournayre\Wrapper\Map;
+use Atournayre\Wrapper\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\InvalidArgumentException;
@@ -117,7 +117,7 @@ final class TypedCollectionTest extends TestCase
 
     public function testFromMapToArrayCollectionUsingList(): void
     {
-        $arrayCollection = Map::from(['a', 'b']);
+        $arrayCollection = Collection::of(['a', 'b']);
         $map = TypedCollection::fromMapToArrayCollection($arrayCollection);
         self::assertEquals('a', $map->first());
         self::assertEquals(0, $map->key());
@@ -125,7 +125,7 @@ final class TypedCollectionTest extends TestCase
 
     public function testFromMapToArrayCollectionUsingMap(): void
     {
-        $arrayCollection = Map::from(['a' => 'a', 'b' => 'b']);
+        $arrayCollection = Collection::of(['a' => 'a', 'b' => 'b']);
         $map = TypedCollection::fromMapToArrayCollection($arrayCollection);
         self::assertEquals('a', $map->first());
         self::assertEquals('a', $map->key());
@@ -207,7 +207,7 @@ final class TypedCollectionTest extends TestCase
 
     public function testCreateMapFromMap(): void
     {
-        $map = Map::from([
+        $map = Collection::of([
             'taylor' => new Person('Taylor'),
             'jeffrey' => new Person('Jeffrey'),
         ]);
@@ -220,7 +220,7 @@ final class TypedCollectionTest extends TestCase
 
     public function testCreateListFromMap(): void
     {
-        $people = Map::from([
+        $people = Collection::of([
             new Person('Taylor'),
             new Person('Jeffrey'),
         ]);

@@ -8,7 +8,7 @@ use Atournayre\Common\Types\DirectoryOrFile;
 use Atournayre\Contracts\Filesystem\FilesystemInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\FileCollection;
-use Atournayre\Wrapper\Map;
+use Atournayre\Wrapper\Collection;
 use Atournayre\Wrapper\SplFileInfo;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
@@ -240,7 +240,7 @@ final class Filesystem implements FilesystemInterface
      */
     private function fromIteratorToSplFileInfos(iterable $files): array
     {
-        return Map::from($files)
+        return Collection::of($files)
             ->map(static fn (SymfonySplFileInfo $file) => SplFileInfo::of(
                 $file->getRealPath(),
                 $file->getRelativePath(),

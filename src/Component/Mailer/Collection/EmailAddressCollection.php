@@ -7,7 +7,7 @@ namespace Atournayre\Component\Mailer\Collection;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\Types\EmailAddress;
 use Atournayre\Primitives\Collection\TypedCollection;
-use Atournayre\Wrapper\Map;
+use Atournayre\Wrapper\Collection;
 
 /**
  * @template T
@@ -45,7 +45,7 @@ final class EmailAddressCollection extends TypedCollection
      */
     public static function fromArray(array $emails): self
     {
-        $map = Map::from($emails)
+        $map = Collection::of($emails)
             ->each(static fn (string $email) => EmailAddress::of($email))
             ->toArray()
         ;

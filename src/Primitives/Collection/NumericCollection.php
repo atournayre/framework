@@ -6,7 +6,7 @@ namespace Atournayre\Primitives\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Primitives\Numeric;
-use Atournayre\Wrapper\Map;
+use Atournayre\Wrapper\Collection;
 
 /**
  * @template T
@@ -74,7 +74,7 @@ class NumericCollection extends AbstractCollection
         }
 
         Assert::allSame(
-            Map::from($collection)
+            Collection::of($collection)
                 ->map(static fn (Numeric $value) => $value->precision())
                 ->toArray(),
             $precision,

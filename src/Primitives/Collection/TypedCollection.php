@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Collection;
 
 use Atournayre\Common\Assert\Assert;
-use Atournayre\Wrapper\Map;
+use Atournayre\Wrapper\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -52,7 +52,7 @@ class TypedCollection extends AbstractCollection
      *
      * @param ArrayCollection<array-key, T> $collection
      */
-    public static function fromArrayCollectionToMap(ArrayCollection $collection): Map
+    public static function fromArrayCollectionToMap(ArrayCollection $collection): Collection
     {
         $firstKey = $collection->key();
 
@@ -68,13 +68,13 @@ class TypedCollection extends AbstractCollection
     }
 
     /**
-     * @api
-     *
-     * @param Map<int|string, T> $collection
+     * @param Collection<int|string, T> $collection
      *
      * @return ArrayCollection<int|string, T>
+     *
+     *@api
      */
-    public static function fromMapToArrayCollection(Map $collection): ArrayCollection
+    public static function fromMapToArrayCollection(Collection $collection): ArrayCollection
     {
         $firstKey = $collection->firstKey();
 
@@ -90,13 +90,13 @@ class TypedCollection extends AbstractCollection
     }
 
     /**
-     * @api
-     *
-     * @param Map<int|string, T> $map
+     * @param Collection<int|string, T> $map
      *
      * @return self<T>
+     *
+     *@api
      */
-    public static function fromMapAsMap(Map $map): self
+    public static function fromMapAsMap(Collection $map): self
     {
         return self::asMap($map->toArray());
     }
@@ -138,13 +138,13 @@ class TypedCollection extends AbstractCollection
     }
 
     /**
-     * @api
-     *
-     * @param Map<int|string, T> $map
+     * @param Collection<int|string, T> $map
      *
      * @return self<T>
+     *
+     *@api
      */
-    public static function fromMapAsList(Map $map): self
+    public static function fromMapAsList(Collection $map): self
     {
         return self::asList($map->toArray());
     }

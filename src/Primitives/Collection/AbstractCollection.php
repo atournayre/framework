@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Collection;
 
 use Atournayre\Common\Assert\Assert;
-use Atournayre\Wrapper\Map;
+use Atournayre\Wrapper\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @template T
  *
  * @implements \ArrayAccess<int|string, T>
+ *
+ * @deprecated Use Atournayre\Wrapper\Collection instead
  */
 abstract class AbstractCollection implements \ArrayAccess, \Countable
 {
@@ -194,9 +196,9 @@ abstract class AbstractCollection implements \ArrayAccess, \Countable
     /**
      * @api
      */
-    public function toMap(): Map
+    public function toMap(): Collection
     {
-        return Map::from($this->collection);
+        return Collection::of($this->collection);
     }
 
     /**

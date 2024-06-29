@@ -5,29 +5,25 @@ declare(strict_types=1);
 namespace Atournayre\Wrapper;
 
 use Aimeos\Map as AimeosMap;
+use Atournayre\Contracts\Collection\CollectionInterface;
 use Atournayre\Primitives\BoolEnum;
 
-/**
- * @template-implements \ArrayAccess<int|string,mixed>
- * @template-implements \IteratorAggregate<int|string,mixed>
- */
-final class Map implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonSerializable
+final class Collection implements CollectionInterface
 {
     private AimeosMap $map;
 
-    public function __construct(AimeosMap $map)
+    private function __construct(AimeosMap $map)
     {
         $this->map = $map;
     }
 
     /**
      * @api
-     *
-     * @param iterable<int|string,mixed> $elements
-     *
-     * @return self<int|string, mixed>
+     * @template T
+     * @param array<int|string, T> $elements
+     * @return self<int|string, T>
      */
-    public static function from($elements = []): self
+    public static function of(array $elements = []): self
     {
         $map = AimeosMap::from($elements);
 
@@ -175,6 +171,19 @@ final class Map implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonSe
     public function first($default = null)
     {
         return $this->map->first($default);
+    }
+
+    /**
+     * @api
+     *
+     * @param mixed|null $default
+     *
+     * @throws \Throwable
+     */
+    // @phpstan-ignore-next-line Remove when upgrading to PHP 8
+    public function last($default = null)
+    {
+        return $this->map->last($default);
     }
 
     /**
