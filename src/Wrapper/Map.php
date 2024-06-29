@@ -7,7 +7,11 @@ namespace Atournayre\Wrapper;
 use Aimeos\Map as AimeosMap;
 use Atournayre\Primitives\BoolEnum;
 
-final class Map
+/**
+ * @template-implements \ArrayAccess<int|string,mixed>
+ * @template-implements \IteratorAggregate<int|string,mixed>
+ */
+final class Map implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonSerializable
 {
     private AimeosMap $map;
 
@@ -16,6 +20,13 @@ final class Map
         $this->map = $map;
     }
 
+    /**
+     * @api
+     *
+     * @param iterable<int|string,mixed> $elements
+     *
+     * @return self<int|string, mixed>
+     */
     public static function from($elements = []): self
     {
         $map = AimeosMap::from($elements);
@@ -24,13 +35,27 @@ final class Map
     }
 
     /**
+     * @api
+     *
+     * @param int|string $key
+     * @param mixed|null $default
+     *
      * @throws \Throwable
      */
+    // @phpstan-ignore-next-line Remove when upgrading to PHP 8
     public function get($key, $default = null)
     {
         return $this->map->get($key, $default);
     }
 
+    /**
+     * @api
+     *
+     * @param int|string $key
+     *
+     * @return self<int|string, mixed>
+     */
+    // @phpstan-ignore-next-line Remove when upgrading to PHP 8
     public function set($key, $value): self
     {
         $this->map->set($key, $value);
@@ -38,6 +63,11 @@ final class Map
         return $this;
     }
 
+    /**
+     * @api
+     *
+     * @param array<int|string>|int|string $key
+     */
     public function has($key): BoolEnum
     {
         $has = $this->map->has($key);
@@ -45,13 +75,25 @@ final class Map
         return BoolEnum::fromBool($has);
     }
 
-    public function remove($key): self
+    /**
+     * @api
+     *
+     * @param iterable<int|string>|array<int|string>|int|string $keys
+     *
+     * @return self<int|string, mixed>
+     */
+    public function remove($keys): self
     {
-        $this->map->remove($key);
+        $this->map->remove($keys);
 
         return $this;
     }
 
+    /**
+     * @api
+     *
+     * @return self<int|string, mixed>
+     */
     public function each(\Closure $callback): self
     {
         $this->map->each($callback);
@@ -59,38 +101,64 @@ final class Map
         return $this;
     }
 
+    /**
+     * @api
+     *
+     * @return array<int|string, mixed>
+     */
     public function toArray(): array
     {
         return $this->map->toArray();
     }
 
-    public function map(\Closure $callback): self
+    /**
+     * @api
+     *
+     * @return self<int|string, mixed>
+     */
+    public function map(callable $callback): self
     {
         $map = $this->map->map($callback);
 
         return new self($map);
     }
 
+    /**
+     * @api
+     */
     public function sum(): float
     {
         return $this->map->sum();
     }
 
+    /**
+     * @api
+     */
     public function avg(): float
     {
         return $this->map->avg();
     }
 
+    /**
+     * @api
+     */
     public function min(): float
     {
         return $this->map->min();
     }
 
+    /**
+     * @api
+     */
     public function max(): float
     {
         return $this->map->max();
     }
 
+    /**
+     * @api
+     */
+    // @phpstan-ignore-next-line Remove when upgrading to PHP 8
     public function firstKey()
     {
         return $this->map->firstKey();
@@ -99,11 +167,14 @@ final class Map
     /**
      * @api
      *
+     * @param mixed|null $default
+     *
      * @throws \Throwable
      */
-    public function first()
+    // @phpstan-ignore-next-line Remove when upgrading to PHP 8
+    public function first($default = null)
     {
-        return $this->map->first();
+        return $this->map->first($default);
     }
 
     /**
@@ -116,13 +187,23 @@ final class Map
         return BoolEnum::fromBool($contains);
     }
 
-    public function filter(\Closure $callback): self
+    /**
+     * @api
+     *
+     * @return self<int|string, mixed>
+     */
+    public function filter(?callable $callback = null): self
     {
         $map = $this->map->filter($callback);
 
         return new self($map);
     }
 
+    /**
+     * @api
+     *
+     * @return self<int|string, mixed>
+     */
     public function values(): self
     {
         $values = $this->map->values();
@@ -130,20 +211,96 @@ final class Map
         return new self($values);
     }
 
-    public function usort(\Closure $callback): self
+    /**
+     * @api
+     *
+     * @return self<int|string, mixed>
+     */
+    public function usort(callable $callback): self
     {
         $this->map->usort($callback);
 
         return $this;
     }
 
+    /**
+     * @api
+     *
+     * @param bool $strict
+     *
+     * @return int|string|null
+     */
+    // @phpstan-ignore-next-line Remove when upgrading to PHP 8
     public function search($value, $strict = true)
     {
         return $this->map->search($value, $strict);
     }
 
+    /**
+     * @api
+     */
     public function count(): int
     {
         return $this->map->count();
+    }
+
+    /**
+     * @api
+     *
+     * @return \ArrayIterator<int|string, mixed>
+     */
+    public function getIterator(): \ArrayIterator
+    {
+        return $this->map->getIterator();
+    }
+
+    /**
+     * @api
+     *
+     * @param int|string $offset
+     */
+    public function offsetExists($offset): bool
+    {
+        return $this->map->offsetExists($offset);
+    }
+
+    /**
+     * @api
+     *
+     * @param int|string $offset
+     */
+    public function offsetGet($offset)
+    {
+        return $this->map->offsetGet($offset);
+    }
+
+    /**
+     * @api
+     *
+     * @param int|string|null $offset
+     */
+    public function offsetSet($offset, $value): void
+    {
+        $this->map->offsetSet($offset, $value);
+    }
+
+    /**
+     * @api
+     *
+     * @param int|string $offset
+     */
+    public function offsetUnset($offset): void
+    {
+        $this->map->offsetUnset($offset);
+    }
+
+    /**
+     * @api
+     *
+     * @return array<int|string, mixed>
+     */
+    public function jsonSerialize(): array
+    {
+        return $this->map->jsonSerialize();
     }
 }

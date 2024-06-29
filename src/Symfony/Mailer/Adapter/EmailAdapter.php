@@ -41,7 +41,7 @@ class EmailAdapter
         $symfonyEmail->replyTo(...$replyTos);
 
         foreach ($email->attachments()->values() as $attachment) {
-            $symfonyEmail->attachFromPath($attachment->getPathname());
+            $symfonyEmail->attachFromPath($attachment->getPathname()->toString());
         }
 
         $headers = $symfonyEmail->getHeaders();

@@ -3,6 +3,7 @@
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__.'/../../{src,tests}')
     ->notPath([
+        // Delete cache file when you want to update the rules
         __DIR__.'/../../src/Contracts/Response/ResponseInterface.php',
     ])
 ;

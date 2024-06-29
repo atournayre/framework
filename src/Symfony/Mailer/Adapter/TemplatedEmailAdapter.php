@@ -28,7 +28,7 @@ final class TemplatedEmailAdapter extends EmailAdapter
         $templatedEmail->replyTo(...$symfonyEmail->getReplyTo());
 
         foreach ($email->attachments()->values() as $attachment) {
-            $templatedEmail->attachFromPath($attachment->getPathname());
+            $templatedEmail->attachFromPath($attachment->getPathname()->toString());
         }
 
         $headers = $templatedEmail->getHeaders();
