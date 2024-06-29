@@ -85,7 +85,8 @@ final class EventCollection implements MapInterface
 
     /**
      * @param mixed|null $value
-     * @param bool $strict
+     * @param bool       $strict
+     *
      * @return int|string|null
      */
     public function search($value, $strict = true)

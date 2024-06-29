@@ -159,7 +159,9 @@ final class Collection
      * Returns the first element.
      *
      * @param mixed|null $default
+     *
      * @return mixed|null
+     *
      * @throws \Throwable
      *
      * @api
@@ -185,7 +187,9 @@ final class Collection
      *
      * @param mixed|null $key
      * @param mixed|null $default
+     *
      * @throws \Throwable
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
@@ -242,7 +246,9 @@ final class Collection
      * Returns the last element.
      *
      * @param mixed|null $default
+     *
      * @return mixed|null
+     *
      * @throws \Throwable
      *
      * @api
@@ -311,8 +317,10 @@ final class Collection
      * Find the key of an element.
      *
      * @api
+     *
      * @param mixed|null $value
-     * @param bool $strict
+     * @param bool       $strict
+     *
      * @return int|string|null
      */
     public function search($value, $strict = true)
@@ -346,6 +354,7 @@ final class Collection
      * Returns the plain array.
      *
      * @api
+     *
      * @return array<int|string, mixed>
      */
     public function toArray(): array
@@ -457,6 +466,7 @@ final class Collection
      * Adds an element to the end.
      *
      * @api
+     *
      * @param mixed|null $value
      */
     public function push($value, ?\Closure $callback = null): self
@@ -485,6 +495,7 @@ final class Collection
      * Overwrites or adds an element.
      *
      * @api
+     *
      * @param mixed|null $key
      * @param mixed|null $value
      */
@@ -1003,6 +1014,7 @@ final class Collection
      * Tests if an item exists in the map.
      *
      * @api
+     *
      * @param mixed|null $key
      * @param mixed|null $value
      */
@@ -1064,6 +1076,7 @@ final class Collection
      * Tests if a key exists.
      *
      * @api
+     *
      * @param array-key $key
      */
     public function has($key): BoolEnum
@@ -1719,6 +1732,7 @@ final class Collection
      * Overwrites an element.
      *
      * @api
+     *
      * @param mixed|null $key
      * @param mixed|null $value
      */
@@ -1731,6 +1745,7 @@ final class Collection
      * Removes an element by key.
      *
      * @api
+     *
      * @param array-key $key
      */
     public function offsetUnset($key): void

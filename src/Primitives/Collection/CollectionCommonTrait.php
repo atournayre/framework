@@ -116,8 +116,6 @@ trait CollectionCommonTrait
     /**
      * @param mixed|null $key
      * @param mixed|null $value
-     * @param \Closure|null $callback
-     * @return self
      */
     public function set($key, $value, ?\Closure $callback = null): self
     {

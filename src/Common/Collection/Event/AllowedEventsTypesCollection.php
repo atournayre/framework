@@ -23,9 +23,7 @@ final class AllowedEventsTypesCollection implements ListInterface
 
     /**
      * @param mixed|null $key
-     * @param string|null $operator
      * @param mixed|null $value
-     * @return BoolEnum
      */
     public function contains($key, ?string $operator = null, $value = null): BoolEnum
     {

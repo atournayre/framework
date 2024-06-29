@@ -23,6 +23,7 @@ final class TemplateContextCollection implements MapInterface
 
     /**
      * @api
+     *
      * @param mixed|null $offset
      */
     public function has($offset): BoolEnum
