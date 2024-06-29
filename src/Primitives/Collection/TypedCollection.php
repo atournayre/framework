@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Collection;
 
-use Aimeos\Map;
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Wrapper\Map;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

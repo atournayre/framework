@@ -520,4 +520,24 @@ final class StringType
 
         return self::of($u->toString());
     }
+
+    /**
+     * @api
+     */
+    public function beforeLast(string $string): self
+    {
+        $u = u($this->value)->beforeLast($string);
+
+        return self::of($u->toString());
+    }
+
+    /**
+     * @api
+     */
+    public function afterLast(string $string): self
+    {
+        $u = u($this->value)->afterLast($string);
+
+        return self::of($u->toString());
+    }
 }

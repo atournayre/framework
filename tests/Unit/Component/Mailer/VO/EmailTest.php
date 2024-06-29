@@ -12,8 +12,8 @@ use Atournayre\Component\Mailer\Types\EmailSubject;
 use Atournayre\Component\Mailer\VO\Email;
 use Atournayre\Component\Mailer\VO\EmailContact;
 use Atournayre\Primitives\Collection\FileCollection;
+use Atournayre\Wrapper\SplFileInfo;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Finder\SplFileInfo;
 
 final class EmailTest extends TestCase
 {
@@ -231,7 +231,7 @@ final class EmailTest extends TestCase
         $emailAddress = EmailAddress::of('test@example.com');
         $emailName = EmailName::of('Test');
         $emailContact = EmailContact::create($emailAddress, $emailName);
-        $splFileInfo = new SplFileInfo('test.txt', 'test.txt', 'test.txt');
+        $splFileInfo = SplFileInfo::of('test.txt', 'test.txt', 'test.txt');
         $attachments = FileCollection::asList([$splFileInfo]);
 
         $email = Email::create($subject, $emailContact)

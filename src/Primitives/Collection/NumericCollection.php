@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Collection;
 
-use Aimeos\Map;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Primitives\Numeric;
+use Atournayre\Wrapper\Map;
 
 /**
  * @template T

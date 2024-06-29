@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
 
-use Aimeos\Map;
+use Atournayre\Primitives\BoolEnum;
+use Atournayre\Wrapper\Map;
 
 final class Memory
 {
@@ -80,5 +81,12 @@ final class Memory
         }
 
         return round($value, 2).' '.$units[$unit];
+    }
+
+    public function equalsTo(int $size): BoolEnum
+    {
+        $isEquals = $this->bytes === $size;
+
+        return BoolEnum::fromBool($isEquals);
     }
 }

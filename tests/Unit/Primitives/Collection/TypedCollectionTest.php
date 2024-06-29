@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Primitives\Collection;
 
-use Aimeos\Map;
 use Atournayre\Primitives\Collection\TypedCollection;
 use Atournayre\Tests\Fixtures\People;
 use Atournayre\Tests\Fixtures\PeopleMustBeMap;
 use Atournayre\Tests\Fixtures\Person;
+use Atournayre\Wrapper\Map;
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\InvalidArgumentException;
@@ -117,7 +117,7 @@ final class TypedCollectionTest extends TestCase
 
     public function testFromMapToArrayCollectionUsingList(): void
     {
-        $arrayCollection = new Map(['a', 'b']);
+        $arrayCollection = Map::from(['a', 'b']);
         $map = TypedCollection::fromMapToArrayCollection($arrayCollection);
         self::assertEquals('a', $map->first());
         self::assertEquals(0, $map->key());
@@ -125,7 +125,7 @@ final class TypedCollectionTest extends TestCase
 
     public function testFromMapToArrayCollectionUsingMap(): void
     {
-        $arrayCollection = new Map(['a' => 'a', 'b' => 'b']);
+        $arrayCollection = Map::from(['a' => 'a', 'b' => 'b']);
         $map = TypedCollection::fromMapToArrayCollection($arrayCollection);
         self::assertEquals('a', $map->first());
         self::assertEquals('a', $map->key());

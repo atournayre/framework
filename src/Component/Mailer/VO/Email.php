@@ -13,7 +13,7 @@ use Atournayre\Component\Mailer\Types\EmailText;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\FileCollection;
-use Symfony\Component\Finder\SplFileInfo;
+use Atournayre\Wrapper\SplFileInfo;
 
 class Email implements LoggableInterface
 {

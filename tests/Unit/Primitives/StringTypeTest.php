@@ -842,4 +842,18 @@ final class StringTypeTest extends TestCase
         $string->ensureStart('Hello ');
         self::assertEquals('World', $string->toString());
     }
+
+    public function testBeforeLastReturnsStringBeforeLastOccurrenceOfNeedle(): void
+    {
+        $string = StringType::of('Hello World');
+        $result = $string->beforeLast(' ');
+        self::assertEquals('Hello', $result->toString());
+    }
+
+    public function testAfterLastReturnsStringAfterLastOccurrenceOfNeedle(): void
+    {
+        $string = StringType::of('Hello World');
+        $result = $string->afterLast(' ');
+        self::assertEquals('World', $result->toString());
+    }
 }

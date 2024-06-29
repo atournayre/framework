@@ -8,8 +8,11 @@ use Atournayre\Common\Types\DirectoryOrFile;
 use Atournayre\Contracts\Filesystem\FilesystemInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\FileCollection;
+use Atournayre\Wrapper\Map;
+use Atournayre\Wrapper\SplFileInfo;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
 
 /**
  * @template T
@@ -225,9 +228,26 @@ final class Filesystem implements FilesystemInterface
             ->files()
             ->in($this->directoryOrFile->toString())
         ;
-        $files = iterator_to_array($finder);
+        $files = $this->fromIteratorToSplFileInfos($finder);
 
         return FileCollection::asMap($files);
+    }
+
+    /**
+     * @param iterable<SymfonySplFileInfo> $files
+     *
+     * @return array<SplFileInfo>
+     */
+    private function fromIteratorToSplFileInfos(iterable $files): array
+    {
+        return Map::from($files)
+            ->map(static fn (SymfonySplFileInfo $file) => SplFileInfo::of(
+                $file->getRealPath(),
+                $file->getRelativePath(),
+                $file->getRelativePathname()
+            ))
+            ->toArray()
+        ;
     }
 
     /**
@@ -251,7 +271,7 @@ final class Filesystem implements FilesystemInterface
             ->directories()
             ->in($this->directoryOrFile->toString())
         ;
-        $files = iterator_to_array($finder);
+        $files = $this->fromIteratorToSplFileInfos($finder);
 
         return FileCollection::asMap($files);
     }

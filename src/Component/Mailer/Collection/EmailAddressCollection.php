@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Atournayre\Component\Mailer\Collection;
 
-use Aimeos\Map;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\Types\EmailAddress;
 use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Wrapper\Map;
 
 /**
  * @template T
