@@ -234,9 +234,9 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @param iterable<SymfonySplFileInfo> $files
+     * @param iterable<int|string, SymfonySplFileInfo> $files
      *
-     * @return array<SplFileInfo>
+     * @return array<int|string, SplFileInfo>
      */
     private function fromIteratorToSplFileInfos(iterable $files): array
     {

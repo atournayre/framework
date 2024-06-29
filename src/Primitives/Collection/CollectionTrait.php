@@ -6,6 +6,9 @@ namespace Atournayre\Primitives\Collection;
 
 use Atournayre\Wrapper\Collection;
 
+/**
+ * @template T
+ */
 trait CollectionTrait
 {
     protected Collection $collection;
@@ -16,9 +19,9 @@ trait CollectionTrait
     }
 
     /**
-     * @template T
-     * @param array<int|string, T> $elements
-     * @return self<int|string, T>
+     * @template TElement
+     * @param array<int|string, TElement> $elements
+     * @return static<TElement>
      */
     public static function of(array $elements = []): self
     {

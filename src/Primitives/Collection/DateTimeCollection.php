@@ -13,14 +13,18 @@ use Atournayre\Wrapper\Collection;
 
 /**
  * @template T
+ * @implements CollectionInterface<DateTime>
  */
 class DateTimeCollection implements CollectionInterface, ListInterface, MapInterface
 {
+    /** @use CollectionTrait<DateTime> */
     use CollectionTrait;
+
     protected static string $type = DateTime::class;
 
     /**
      * @api
+     * @return self<DateTime>
      */
     public static function asList(array $collection): self
     {
@@ -31,6 +35,7 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
+     * @return self<DateTime>
      */
     public static function asMap(array $collection): self
     {
@@ -41,6 +46,7 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
+     * @return self<DateTime>
      */
     public function sortAsc(): self
     {
@@ -57,6 +63,7 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
+     * @return self<DateTime>
      */
     public function sortDesc(): self
     {
@@ -72,9 +79,8 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
     }
 
     /**
-     * @throws \Throwable
-     *
      * @api
+     * @throws \Throwable
      */
     public function mostRecent(): DateTime
     {
@@ -123,6 +129,7 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
+     * @return self<DateTime>
      */
     public function between(DateTime $start, DateTime $end): self
     {
@@ -139,6 +146,7 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
+     * @return self<DateTime>
      */
     public function before(DateTime $date): self
     {
@@ -155,6 +163,7 @@ class DateTimeCollection implements CollectionInterface, ListInterface, MapInter
 
     /**
      * @api
+     * @return self<DateTime>
      */
     public function after(DateTime $date): self
     {
