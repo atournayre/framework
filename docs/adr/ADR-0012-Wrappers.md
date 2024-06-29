@@ -12,6 +12,8 @@ Wrappers are used to encapsulate third-party libraries or APIs. They provide a c
 
 We need to create new types related to the `SplFileInfo` class : `Content`, `Filename`, `Extension`, `Path`.
 
+`Map` is a wrapper for the Aimeos `Map` class. It provides a consistent interface to interact with the `Map` class.
+
 
 ### Implementation Details
 1. **SplFileInfo**:
@@ -28,9 +30,16 @@ We need to create new types related to the `SplFileInfo` class : `Content`, `Fil
 5. **Path**:
     - `Path` to represent the path of a file.
     - Must have a method to get the path of the file.
+6. **Map**:
+    - `Map` to represent a map.
 
 ## Consequences
 
-- **Benefits**: 
+- **Benefits**:
+    - Provides a consistent interface to interact with the third-party code.
+    - Adds additional functionality to the third-party code.
+    - Makes the code more readable and maintainable.
 
 - **Drawbacks**: 
+    - Adds an additional layer of abstraction.
+    - Increases the complexity of the code.
