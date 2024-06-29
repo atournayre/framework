@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 class DateTimeCollectionTest extends TestCase
 {
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function testSortAsc(): void
     {
@@ -23,13 +23,13 @@ class DateTimeCollectionTest extends TestCase
             DateTime::of('2021-01-01'),
         ])->sortAsc();
 
-        self::assertCount(5, $collection);
+        self::assertTrue($collection->count()->equalTo(5)->isTrue());
         self::assertEquals(DateTime::of('2021-01-01'), $collection->first());
         self::assertEquals(DateTime::of('2021-01-05'), $collection->last());
     }
 
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function testSortDesc(): void
     {
@@ -41,13 +41,13 @@ class DateTimeCollectionTest extends TestCase
             DateTime::of('2021-01-05'),
         ])->sortDesc();
 
-        self::assertCount(5, $collection);
+        self::assertTrue($collection->count()->equalTo(5)->isTrue());
         self::assertEquals(DateTime::of('2021-01-05'), $collection->first());
         self::assertEquals(DateTime::of('2021-01-01'), $collection->last());
     }
 
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function testMostRecent(): void
     {
@@ -63,7 +63,7 @@ class DateTimeCollectionTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function testOldest(): void
     {
@@ -79,7 +79,7 @@ class DateTimeCollectionTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function testDatesBetween(): void
     {
@@ -93,14 +93,14 @@ class DateTimeCollectionTest extends TestCase
 
         $dates = $collection->between(DateTime::of('2021-01-02'), DateTime::of('2021-01-04'));
 
-        self::assertCount(3, $dates);
-        self::assertEquals(DateTime::of('2021-01-02'), $dates[0]);
-        self::assertEquals(DateTime::of('2021-01-03'), $dates[1]);
-        self::assertEquals(DateTime::of('2021-01-04'), $dates[2]);
+        self::assertTrue($dates->count()->equalTo(3)->isTrue());
+        self::assertEquals(DateTime::of('2021-01-02'), $dates->offsetGet(0));
+        self::assertEquals(DateTime::of('2021-01-03'), $dates->offsetGet(1));
+        self::assertEquals(DateTime::of('2021-01-04'), $dates->offsetGet(2));
     }
 
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function testDatesBefore(): void
     {
@@ -114,13 +114,13 @@ class DateTimeCollectionTest extends TestCase
 
         $dates = $collection->before(DateTime::of('2021-01-03'));
 
-        self::assertCount(2, $dates);
-        self::assertEquals(DateTime::of('2021-01-01'), $dates[0]);
-        self::assertEquals(DateTime::of('2021-01-02'), $dates[1]);
+        self::assertTrue($dates->count()->equalTo(2)->isTrue());
+        self::assertEquals(DateTime::of('2021-01-01'), $dates->offsetGet(0));
+        self::assertEquals(DateTime::of('2021-01-02'), $dates->offsetGet(1));
     }
 
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function testDatesAfter(): void
     {
@@ -134,8 +134,8 @@ class DateTimeCollectionTest extends TestCase
 
         $dates = $collection->after(DateTime::of('2021-01-03'));
 
-        self::assertCount(2, $dates);
-        self::assertEquals(DateTime::of('2021-01-04'), $dates[0]);
-        self::assertEquals(DateTime::of('2021-01-05'), $dates[1]);
+        self::assertTrue($dates->count()->equalTo(2)->isTrue());
+        self::assertEquals(DateTime::of('2021-01-04'), $dates->offsetGet(0));
+        self::assertEquals(DateTime::of('2021-01-05'), $dates->offsetGet(1));
     }
 }

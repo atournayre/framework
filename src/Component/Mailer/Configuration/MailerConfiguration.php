@@ -12,9 +12,6 @@ final class MailerConfiguration
 {
     private EmailContact $from;
 
-    /**
-     * @var EmailContactCollection<EmailContact>
-     */
     private EmailContactCollection $replyTos;
 
     private AttachmentMaxSize $attachmentsMaxSize;
@@ -66,8 +63,6 @@ final class MailerConfiguration
 
     /**
      * @api
-     *
-     * @param EmailContactCollection<EmailContact> $replyToCollection
      */
     public function withReplyTos(EmailContactCollection $replyToCollection): self
     {
@@ -79,8 +74,6 @@ final class MailerConfiguration
 
     /**
      * @api
-     *
-     * @return EmailContactCollection<EmailContact>
      */
     public function replyTos(): EmailContactCollection
     {

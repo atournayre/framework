@@ -10,14 +10,8 @@ use Atournayre\Common\VO\Event;
 
 interface HasEventsInterface
 {
-    /**
-     * @return EventCollection<Event>
-     */
     public function events(): EventCollection;
 
-    /**
-     * @return EventCollection<Event>
-     */
     public function filterEventsByType(string $type): EventCollection;
 
     public function addEvent(Event $event): void;
@@ -26,8 +20,5 @@ interface HasEventsInterface
 
     public function removeEvent(Event $event): void;
 
-    /**
-     * @return AllowedEventsTypesCollection<string>
-     */
     public function allowedEventsTypes(): AllowedEventsTypesCollection;
 }

@@ -5,38 +5,30 @@ declare(strict_types=1);
 namespace Atournayre\Common\Collection\Event;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\ListInterface;
 use Atournayre\Primitives\BoolEnum;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<T>
- *
- * @method AllowedEventsTypesCollection add(string $value, ?\Closure $callback = null)
- * @method AllowedEventsTypesCollection set($key, string $value, ?\Closure $callback = null)
- * @method string[]                     values()
- * @method string                       first()
- * @method string                       last()
- */
-final class AllowedEventsTypesCollection extends TypedCollection
+final class AllowedEventsTypesCollection implements ListInterface
 {
-    /**
-     * @param array<T> $collection
-     *
-     * @return AllowedEventsTypesCollection<T>
-     */
+    use CollectionTrait;
+
     public static function asList(array $collection): self
     {
-        Assert::isListOf($collection, TypedCollection::$type);
+        Assert::isListOf($collection, 'string');
 
-        return new self($collection);
+        return new self(Collection::of($collection));
     }
 
-    public function contains(string $type): BoolEnum
+    /**
+     * @param mixed|null $key
+     * @param mixed|null $value
+     */
+    public function contains($key, ?string $operator = null, $value = null): BoolEnum
     {
-        return $this->toMap()
-            ->contains($type)
+        return $this->collection
+            ->contains($key, $operator, $value)
         ;
     }
 }

@@ -27,19 +27,19 @@ final class TemplatedEmailAdapter extends EmailAdapter
         $templatedEmail->bcc(...$symfonyEmail->getBcc());
         $templatedEmail->replyTo(...$symfonyEmail->getReplyTo());
 
-        foreach ($email->attachments()->values() as $attachment) {
+        foreach ($email->attachments()->toArray() as $attachment) {
             $templatedEmail->attachFromPath($attachment->getPathname()->toString());
         }
 
         $headers = $templatedEmail->getHeaders();
-        foreach ($email->tags()->values() as $tagName => $tagValue) {
+        foreach ($email->tags()->toArray() as $tagName => $tagValue) {
             $headers->addTextHeader($tagName, $tagValue);
         }
 
         if ($email instanceof TemplatedEmail) {
             $templatedEmail->htmlTemplate($email->htmlTemplatePath()->toString());
             $templatedEmail->textTemplate($email->textTemplatePath()->toString());
-            $templatedEmail->context($email->templateContextCollection()->toMap()->toArray());
+            $templatedEmail->context($email->templateContextCollection()->toArray());
         }
 
         return $templatedEmail;

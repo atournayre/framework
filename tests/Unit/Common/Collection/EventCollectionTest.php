@@ -12,26 +12,32 @@ use PHPUnit\Framework\TestCase;
 
 final class EventCollectionTest extends TestCase
 {
+    /**
+     * @throws \Exception
+     */
     public function testEventCollection(): void
     {
         $eventCollection = EventCollection::empty()
             ->add(new Event())
         ;
-        self::assertCount(1, $eventCollection);
+        self::assertTrue($eventCollection->count()->equalTo(1)->isTrue());
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testEventCollectionEvents(): void
     {
         $event = new Event();
         $eventCollection = EventCollection::empty()
             ->add($event)
         ;
-        self::assertTrue(
-            $eventCollection->toArrayCollection()
-                ->contains($event)
-        );
+        self::assertTrue($eventCollection->contains($event)->isTrue());
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testEventCollectionEventsType(): void
     {
         $kernelEvent = new KernelEvent();
@@ -41,12 +47,7 @@ final class EventCollectionTest extends TestCase
             ->add($responseEvent)
         ;
 
-        self::assertCount(1, $eventCollection->filterByType(KernelEvent::class));
-        self::assertTrue(
-            $eventCollection
-                ->filterByType(KernelEvent::class)
-                ->toArrayCollection()
-                ->contains($kernelEvent)
-        );
+        self::assertCount(1, $eventCollection->filterByType(KernelEvent::class)->toArray());
+        self::assertTrue($eventCollection->filterByType(KernelEvent::class)->contains($kernelEvent)->isTrue());
     }
 }

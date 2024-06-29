@@ -5,44 +5,31 @@ declare(strict_types=1);
 namespace Atournayre\Common\Collection;
 
 use Atournayre\Common\Assert\Assert;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Primitives\BoolEnum;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<T>
- *
- * @method TemplateContextCollection add(string $value, ?\Closure $callback = null)
- * @method TemplateContextCollection set($key, string $value, ?\Closure $callback = null)
- * @method mixed[]                   values()
- * @method mixed                     first()
- * @method mixed                     last()
- */
-final class TemplateContextCollection extends TypedCollection
+final class TemplateContextCollection implements MapInterface
 {
-    protected static string $type = 'mixed';
+    use CollectionTrait;
 
-    /**
-     * @param array<T> $collection
-     *
-     * @return self<T>
-     *
-     * @throws \RuntimeException
-     */
-    public static function asList(array $collection): self
+    public static function asMap(array $collection): self
     {
-        throw new \RuntimeException(sprintf('Use %s::asMap() instead.', self::class));
+        Assert::isMapOf($collection, 'mixed');
+
+        return new self(Collection::of($collection));
     }
 
     /**
-     * @param array<T> $collection
+     * @api
      *
-     * @return self<T>
+     * @param mixed|null $offset
      */
-    public static function asMap(array $collection): self
+    public function has($offset): BoolEnum
     {
-        Assert::isMapOf($collection, TemplateContextCollection::$type);
-
-        return new self($collection);
+        return $this->collection
+            ->has($offset)
+        ;
     }
 }

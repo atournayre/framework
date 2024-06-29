@@ -19,9 +19,6 @@ final class ObjectWithEvents implements HasEventsInterface
         $this->events = EventCollection::empty();
     }
 
-    /**
-     * @return AllowedEventsTypesCollection<string>
-     */
     public function allowedEventsTypes(): AllowedEventsTypesCollection
     {
         return AllowedEventsTypesCollection::asList([

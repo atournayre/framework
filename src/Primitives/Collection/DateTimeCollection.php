@@ -6,66 +6,29 @@ namespace Atournayre\Primitives\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\DateTime\DateTime;
+use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<T>
- *
- * @method DateTimeCollection add(DateTime $value, ?\Closure $callback = null)
- * @method DateTimeCollection set($key, DateTime $value, ?\Closure $callback = null)
- * @method DateTime[]         values()
- * @method DateTime           first()
- * @method DateTime           last()
- */
-class DateTimeCollection extends TypedCollection
+final class DateTimeCollection implements ListInterface
 {
-    protected static string $type = DateTime::class;
+    use CollectionTrait;
 
-    /**
-     * @api
-     *
-     * @return DateTimeCollection<T>
-     */
     public static function asList(array $collection): self
     {
-        Assert::isListOf($collection, static::$type);
+        Assert::isListOf($collection, DateTime::class);
 
-        return new self($collection);
+        return new self(Collection::of($collection));
     }
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<T>
-     */
-    public static function asMap(array $collection): self
-    {
-        Assert::isMapOf($collection, static::$type);
-
-        return new self($collection);
-    }
-
-    /**
-     * @api
-     *
-     * @return array<DateTime>
-     */
-    public function dates(): array
-    {
-        return $this->values();
-    }
-
-    /**
-     * @api
-     *
-     * @return DateTimeCollection<T>
      */
     public function sortAsc(): self
     {
         $clone = clone $this;
         $values = $clone
-            ->toMap()
+            ->collection
             ->usort(static fn (DateTime $a, DateTime $b) => $a <=> $b)
             ->values()
             ->toArray()
@@ -76,14 +39,12 @@ class DateTimeCollection extends TypedCollection
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<T>
      */
     public function sortDesc(): self
     {
         $clone = clone $this;
         $values = $clone
-            ->toMap()
+            ->collection
             ->usort(static fn (DateTime $a, DateTime $b) => $b <=> $a)
             ->values()
             ->toArray()
@@ -94,30 +55,38 @@ class DateTimeCollection extends TypedCollection
 
     /**
      * @api
+     *
+     * @throws \Throwable
      */
     public function mostRecent(): DateTime
     {
-        return $this->sortDesc()->first();
+        return $this->sortDesc()
+            ->collection
+            ->first()
+        ;
     }
 
     /**
+     * @throws \Throwable
+     *
      * @api
      */
     public function oldest(): DateTime
     {
-        return $this->sortAsc()->first();
+        return $this->sortAsc()
+            ->collection
+            ->first()
+        ;
     }
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<T>
      */
     public function between(DateTime $start, DateTime $end): self
     {
         $clone = clone $this;
         $map = $clone
-            ->toMap()
+            ->collection
             ->filter(static fn (DateTime $date) => $date >= $start && $date <= $end)
             ->values()
             ->toArray()
@@ -128,14 +97,12 @@ class DateTimeCollection extends TypedCollection
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<T>
      */
     public function before(DateTime $date): self
     {
         $clone = clone $this;
         $map = $clone
-            ->toMap()
+            ->collection
             ->filter(static fn (DateTime $d) => $d < $date)
             ->values()
             ->toArray()
@@ -146,14 +113,12 @@ class DateTimeCollection extends TypedCollection
 
     /**
      * @api
-     *
-     * @return DateTimeCollection<T>
      */
     public function after(DateTime $date): self
     {
         $clone = clone $this;
         $map = $clone
-            ->toMap()
+            ->collection
             ->filter(static fn (DateTime $d) => $d > $date)
             ->values()
             ->toArray()

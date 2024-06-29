@@ -42,8 +42,8 @@ final class EmailTest extends TestCase
 
         $errors = $email->validate();
 
-        self::assertArrayHasKey('to', $errors);
-        self::assertEquals('validation.email.to.empty', $errors['to']);
+        self::assertArrayHasKey('to', $errors->toArray());
+        self::assertEquals('validation.email.to.empty', $errors->offsetGet('to'));
     }
 
     /**

@@ -6,25 +6,27 @@ namespace Atournayre\Common\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Event;
-use Atournayre\Contracts\Context\HasContextInterface;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Primitives\BoolEnum;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<T>
- *
- * @method EventCollection set($key, string $value, ?\Closure $callback = null)
- * @method Event[]         values()
- * @method Event           first()
- * @method Event           last()
- */
-final class EventCollection extends TypedCollection
+final class EventCollection implements MapInterface
 {
-    protected static string $type = Event::class;
+    use CollectionTrait;
 
     /**
-     * @return self<T>
+     * @param array<string, Event|mixed> $collection
+     */
+    public static function asMap(array $collection = []): self
+    {
+        Assert::isMapOf($collection, Event::class);
+
+        return new self(Collection::of($collection));
+    }
+
+    /**
+     * @api
      */
     public static function empty(): self
     {
@@ -32,36 +34,15 @@ final class EventCollection extends TypedCollection
     }
 
     /**
-     * @param array<T> $collection
+     * @throws \Exception
      *
-     * @return self<T>
-     */
-    public static function asList(array $collection): self
-    {
-        throw new \RuntimeException('Use empty() instead.');
-    }
-
-    /**
-     * @param array<T> $collection
-     *
-     * @return self<T>
-     */
-    public static function asMap(array $collection): self
-    {
-        Assert::isMapOf($collection, Event::class);
-
-        return new self($collection);
-    }
-
-    /**
      * @api
-     *
-     * @return EventCollection<T>
      */
     public function filterByType(string $type): self
     {
-        $events = $this
-            ->toMap()
+        $clone = clone $this;
+        $events = $clone
+            ->collection
             ->filter(static fn (Event $event): bool => $event instanceof $type)
             ->toArray()
         ;
@@ -77,19 +58,41 @@ final class EventCollection extends TypedCollection
     /**
      * @api
      *
-     * @param T|Event $value
+     * @param mixed|null $value
      *
-     * @return EventCollection<T>
+     * @throws \Exception
      */
     public function add($value, ?\Closure $callback = null): self
     {
         $key = $value->_identifier();
+        $this->set($key, $value, $callback);
 
-        return parent::set($key, $value, $callback);
+        return $this;
     }
 
-    protected function validateElement($value): void
+    /**
+     * @api
+     *
+     * @param mixed|null $key
+     * @param mixed|null $value
+     */
+    public function contains($key, ?string $operator = null, $value = null): BoolEnum
     {
-        Assert::implementsInterface($value, HasContextInterface::class, 'All events must implement HasContextInterface');
+        return $this->collection
+            ->contains($key, $operator, $value)
+        ;
+    }
+
+    /**
+     * @param mixed|null $value
+     * @param bool       $strict
+     *
+     * @return int|string|null
+     */
+    public function search($value, $strict = true)
+    {
+        return $this->collection
+            ->search($value, $strict)
+        ;
     }
 }

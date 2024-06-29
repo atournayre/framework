@@ -150,4 +150,9 @@ trait NumericTrait
     {
         return Numeric::fromInt($value, $precision);
     }
+
+    public static function fromFloat(float $value): Numeric
+    {
+        return Numeric::fromFloat($value);
+    }
 }

@@ -15,11 +15,11 @@ final class EventsTraitTest extends TestCase
     {
         $object = new ObjectWithEvents();
 
-        self::assertEmpty($object->events());
+        self::assertTrue($object->events()->hasNoElement()->isTrue());
     }
 
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function testAddEvent(): void
     {
@@ -52,7 +52,7 @@ final class EventsTraitTest extends TestCase
         $object->addEvent($event);
         $object->removeEvent($event);
 
-        self::assertEmpty($object->events());
+        self::assertTrue($object->events()->hasNoElement()->isTrue());
     }
 
     /**
@@ -64,7 +64,7 @@ final class EventsTraitTest extends TestCase
         $event = new Event();
         $object->addEvent($event);
 
-        self::assertCount(1, $object->events());
+        self::assertTrue($object->events()->count()->equalTo(1)->isTrue());
     }
 
     /**
@@ -76,7 +76,7 @@ final class EventsTraitTest extends TestCase
         $event = new Event();
         $object->addEvent($event);
 
-        self::assertCount(1, $object->filterEventsByType(Event::class));
+        self::assertCount(1, $object->filterEventsByType(Event::class)->toArray());
     }
 
     /**

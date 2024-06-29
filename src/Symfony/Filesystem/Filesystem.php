@@ -7,18 +7,13 @@ namespace Atournayre\Symfony\Filesystem;
 use Atournayre\Common\Types\DirectoryOrFile;
 use Atournayre\Contracts\Filesystem\FilesystemInterface;
 use Atournayre\Primitives\BoolEnum;
+use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Collection\FileCollection;
-use Atournayre\Wrapper\Map;
 use Atournayre\Wrapper\SplFileInfo;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
 
-/**
- * @template T
- *
- * @implements FilesystemInterface<T>
- */
 final class Filesystem implements FilesystemInterface
 {
     /** @api */
@@ -38,9 +33,6 @@ final class Filesystem implements FilesystemInterface
         $this->symfonyFilesystem = new SymfonyFilesystem();
     }
 
-    /**
-     * @return self<T>
-     */
     public static function from(string $directoryOrFile): self
     {
         return new self($directoryOrFile);
@@ -201,8 +193,8 @@ final class Filesystem implements FilesystemInterface
      */
     public function isEmpty(): BoolEnum
     {
-        $isEmpty = $this->listFiles()->hasNoElement()
-            && $this->listDirectories()->hasNoElement();
+        $isEmpty = $this->listFiles()->hasNoElement()->isTrue()
+            && $this->listDirectories()->hasNoElement()->isTrue();
 
         return BoolEnum::fromBool($isEmpty);
     }
@@ -214,12 +206,11 @@ final class Filesystem implements FilesystemInterface
     {
         return $this->listFiles()
             ->count()
+            ->intValue()
         ;
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @throws \Exception
      */
     public function listFiles(): FileCollection
@@ -234,13 +225,13 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @param iterable<SymfonySplFileInfo> $files
+     * @param iterable<int|string, SymfonySplFileInfo> $files
      *
-     * @return array<SplFileInfo>
+     * @return array<int|string, SplFileInfo>
      */
     private function fromIteratorToSplFileInfos(iterable $files): array
     {
-        return Map::from($files)
+        return Collection::of($files)
             ->map(static fn (SymfonySplFileInfo $file) => SplFileInfo::of(
                 $file->getRealPath(),
                 $file->getRelativePath(),
@@ -257,12 +248,11 @@ final class Filesystem implements FilesystemInterface
     {
         return $this->listDirectories()
             ->count()
+            ->intValue()
         ;
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @throws \Exception
      */
     public function listDirectories(): FileCollection

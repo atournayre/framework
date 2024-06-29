@@ -13,33 +13,17 @@ use Atournayre\Component\Mailer\Types\EmailText;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\FileCollection;
-use Atournayre\Wrapper\SplFileInfo;
 
 class Email implements LoggableInterface
 {
-    /**
-     * @var EmailContactCollection<EmailContact>
-     */
     private EmailContactCollection $to;
 
-    /**
-     * @var EmailContactCollection<EmailContact>
-     */
     private EmailContactCollection $cc;
 
-    /**
-     * @var EmailContactCollection<EmailContact>
-     */
     private EmailContactCollection $bcc;
 
-    /**
-     * @var EmailContactCollection<EmailContact>
-     */
     private EmailContactCollection $replyTo;
 
-    /**
-     * @var FileCollection<SplFileInfo>
-     */
     private FileCollection $attachments;
 
     private TagCollection $tags;
@@ -82,16 +66,20 @@ class Email implements LoggableInterface
     }
 
     /**
+     * @throws \Exception
+     *
      * @api
      */
     public function validate(): ValidationCollection
     {
         return ValidationCollection::asMap([])
-            ->set('to', 'validation.email.to.empty', fn () => $this->to->hasNoElement())
+            ->set('to', 'validation.email.to.empty', fn () => $this->to->hasNoElement()->isTrue())
         ;
     }
 
     /**
+     * @throws \Exception
+     *
      * @api
      */
     public function isValid(): BoolEnum
@@ -117,8 +105,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @return EmailContactCollection<EmailContact>
      */
     public function to(): EmailContactCollection
     {
@@ -127,8 +113,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @return EmailContactCollection<EmailContact>
      */
     public function cc(): EmailContactCollection
     {
@@ -137,8 +121,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @return EmailContactCollection<EmailContact>
      */
     public function bcc(): EmailContactCollection
     {
@@ -147,8 +129,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @return EmailContactCollection<EmailContact>
      */
     public function replyTo(): EmailContactCollection
     {
@@ -157,8 +137,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @return FileCollection<SplFileInfo>
      */
     public function attachments(): FileCollection
     {
@@ -191,8 +169,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @param EmailContactCollection<EmailContact> $to
      */
     public function withTo(EmailContactCollection $to): self
     {
@@ -204,8 +180,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @param EmailContactCollection<EmailContact> $cc
      */
     public function withCc(EmailContactCollection $cc): self
     {
@@ -217,8 +191,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @param EmailContactCollection<EmailContact> $bcc
      */
     public function withBcc(EmailContactCollection $bcc): self
     {
@@ -230,8 +202,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @param EmailContactCollection<EmailContact> $replyTo
      */
     public function withReplyTo(EmailContactCollection $replyTo): self
     {
@@ -243,8 +213,6 @@ class Email implements LoggableInterface
 
     /**
      * @api
-     *
-     * @param FileCollection<SplFileInfo> $attachments
      */
     public function withAttachments(FileCollection $attachments): self
     {

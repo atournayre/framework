@@ -6,57 +6,38 @@ namespace Atournayre\Primitives\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Memory;
+use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 use Atournayre\Wrapper\SplFileInfo;
 
-/**
- * @template T
- *
- * @extends TypedCollection<SplFileInfo>
- *
- * @method FileCollection add(SplFileInfo $value, ?\Closure $callback = null)
- * @method FileCollection set($key, SplFileInfo $value, ?\Closure $callback = null)
- * @method SplFileInfo[]  values()
- * @method SplFileInfo    first()
- * @method SplFileInfo    last()
- */
-final class FileCollection extends TypedCollection implements LoggableInterface
+final class FileCollection implements LoggableInterface, ListInterface, MapInterface
 {
-    protected static string $type = SplFileInfo::class;
+    use CollectionTrait;
 
-    /**
-     * @return FileCollection<T>
-     *
-     * @api
-     */
     public static function asList(array $collection): self
     {
-        Assert::isListOf($collection, FileCollection::$type);
+        Assert::isListOf($collection, SplFileInfo::class);
 
-        return new self($collection);
+        return new self(Collection::of($collection));
     }
 
-    /**
-     * @return FileCollection<T>
-     *
-     * @api
-     */
     public static function asMap(array $collection): self
     {
-        Assert::isMapOf($collection, FileCollection::$type);
+        Assert::isMapOf($collection, SplFileInfo::class);
 
-        return new self($collection);
+        return new self(Collection::of($collection));
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @api
      */
     public function filterByExtension(string $extension): self
     {
         $array = $this
-            ->toMap()
+            ->collection
             ->filter(static fn (SplFileInfo $file): bool => $file->getExtension()->equalsTo($extension)->isTrue())
             ->toArray()
         ;
@@ -65,14 +46,12 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @api
      */
     public function filterBySize(int $size): self
     {
         $array = $this
-            ->toMap()
+            ->collection
             ->filter(static fn (SplFileInfo $file): bool => $file->getSize()->equalsTo($size)->isTrue())
             ->toArray()
         ;
@@ -81,14 +60,12 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     }
 
     /**
-     * @return FileCollection<T>
-     *
      * @api
      */
     public function filterByContent(string $content): FileCollection
     {
         $array = $this
-            ->toMap()
+            ->collection
             ->filter(static fn (SplFileInfo $file): bool => $file->getContents()->containsAny($content)->isTrue())
             ->toArray()
         ;
@@ -102,12 +79,13 @@ final class FileCollection extends TypedCollection implements LoggableInterface
     public function totalSize(): Memory
     {
         $sizeInBytes = $this
-            ->toMap()
+            ->collection
             ->map(static fn (SplFileInfo $file) => $file->getSize()->asIs())
             ->sum()
+            ->intValue()
         ;
 
-        return Memory::fromBytes((int) $sizeInBytes);
+        return Memory::fromBytes($sizeInBytes);
     }
 
     /**
@@ -115,7 +93,7 @@ final class FileCollection extends TypedCollection implements LoggableInterface
      */
     public function toLog(): array
     {
-        return $this->toMap()
+        return $this->collection
             ->map(static fn (SplFileInfo $file): array => $file->toLog())
             ->toArray()
         ;

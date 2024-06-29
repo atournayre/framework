@@ -78,9 +78,9 @@ final class TemplatedEmailTest extends TestCase
             ->withContext($templateContextCollection)
         ;
 
-        self::assertEquals($input, $email->templateContextCollection()->values());
-        self::assertArrayHasKey('key', $email->templateContextCollection());
-        self::assertArrayHasKey('date', $email->templateContextCollection());
+        self::assertEquals($input, $email->templateContextCollection()->toArray());
+        self::assertTrue($email->templateContextCollection()->has('key')->isTrue());
+        self::assertTrue($email->templateContextCollection()->has('date')->isTrue());
     }
 
     /**

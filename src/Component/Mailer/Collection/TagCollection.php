@@ -5,40 +5,34 @@ declare(strict_types=1);
 namespace Atournayre\Component\Mailer\Collection;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-/**
- * @extends TypedCollection<string>
- *
- * @method TagCollection add(string $value, ?\Closure $callback = null)
- * @method TagCollection set($key, string $value, ?\Closure $callback = null)
- * @method string[]      values()
- * @method string        first()
- * @method string        last()
- */
-final class TagCollection extends TypedCollection implements LoggableInterface
+final class TagCollection implements LoggableInterface, MapInterface
 {
+    use CollectionTrait;
+
     private const TAG_MIN_LENGTH = 3;
 
     private const TAG_MAX_LENGTH = 5;
 
     /**
-     * @throws \RuntimeException
+     * @param array<string, mixed> $collection
      */
-    public static function asList(array $collection): self
-    {
-        throw new \RuntimeException(sprintf('Use %s::asMap() instead.', self::class));
-    }
-
     public static function asMap(array $collection): self
     {
-        Assert::isMapOf($collection, TagCollection::$type);
+        Assert::isMapOf($collection, 'string');
 
-        return new self($collection);
+        $collection1 = Collection::of($collection)
+            ->each(fn (string $tag) => self::validateElement($tag))
+        ;
+
+        return new self($collection1);
     }
 
-    protected function validateElement($value): void
+    private static function validateElement(string $value): void
     {
         Assert::lengthBetween(
             $value,
@@ -53,7 +47,7 @@ final class TagCollection extends TypedCollection implements LoggableInterface
      */
     public function toLog(): array
     {
-        return $this->toMap()
+        return $this->collection
             ->toArray()
         ;
     }

@@ -40,12 +40,12 @@ class EmailAdapter
         $symfonyEmail->bcc(...$bccs);
         $symfonyEmail->replyTo(...$replyTos);
 
-        foreach ($email->attachments()->values() as $attachment) {
+        foreach ($email->attachments()->toArray() as $attachment) {
             $symfonyEmail->attachFromPath($attachment->getPathname()->toString());
         }
 
         $headers = $symfonyEmail->getHeaders();
-        foreach ($email->tags()->values() as $tagName => $tagValue) {
+        foreach ($email->tags()->toArray() as $tagName => $tagValue) {
             $headers->addTextHeader($tagName, $tagValue);
         }
 
@@ -53,18 +53,15 @@ class EmailAdapter
     }
 
     /**
-     * @param EmailContactCollection<EmailContact> $emailContactCollection
-     *
      * @return array|Address[]
      */
     private static function collectionToAddresses(EmailContactCollection $emailContactCollection): array
     {
-        if ($emailContactCollection->hasNoElement()) {
+        if ($emailContactCollection->hasNoElement()->isTrue()) {
             return [];
         }
 
         return $emailContactCollection
-            ->toMap()
             ->map(static fn (EmailContact $emailContact): Address => new Address(
                 $emailContact->email()->toString(),
                 $emailContact->name()->toString()

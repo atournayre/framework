@@ -12,6 +12,17 @@ final class Numeric
 
     private int $precision;
 
+    public static function fromFloat(float $float): self
+    {
+        $precision = StringType::of((string) $float)
+            ->afterLast('.')
+            ->length()
+            ->intValue()
+        ;
+
+        return new self($float, $precision);
+    }
+
     /**
      * @param int|float|string $value
      *
@@ -237,6 +248,6 @@ final class Numeric
 
     public static function fromInt(int $value, int $precision): Numeric
     {
-        return Numeric::of($value / (10 ** $precision), $precision);
+        return Numeric::of($value, $precision);
     }
 }

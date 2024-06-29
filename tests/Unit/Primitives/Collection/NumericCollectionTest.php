@@ -4,48 +4,36 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Primitives\Collection;
 
-use Atournayre\Primitives\Collection\NumericCollection;
-use Atournayre\Primitives\Numeric;
+use Atournayre\Tests\Fixtures\Collection\PriceCollection;
+use Atournayre\Tests\Fixtures\Price;
 use PHPUnit\Framework\TestCase;
 
 final class NumericCollectionTest extends TestCase
 {
     public function testAdd(): void
     {
-        $collection = NumericCollection::asList([Numeric::of(1, 2)], 2);
-        $newCollection = $collection->add(Numeric::of(2, 2));
-        self::assertCount(2, $newCollection->values());
+        $collection = PriceCollection::asList([Price::fromInt(1, 2)], 2);
+        $newCollection = $collection->add(Price::fromInt(2, 2));
+        self::assertTrue($newCollection->count()->equalTo(2)->isTrue());
     }
 
     public function testAddWithDifferentPrecision(): void
     {
         self::expectException(\InvalidArgumentException::class);
-        $collection = NumericCollection::asList([Numeric::of(1, 2)], 2);
-        $collection->add(Numeric::of(2, 3));
-    }
-
-    public function testSumWithDifferentPrecision(): void
-    {
-        self::expectException(\InvalidArgumentException::class);
-        $collection = NumericCollection::asList(
-            [
-                Numeric::of(1, 2),
-                Numeric::of(2, 3),
-            ],
-            2
-        );
-        $collection->sum();
+        self::expectExceptionMessage('Precisions must be the same.');
+        $collection = PriceCollection::asList([Price::fromInt(1, 2)], 2);
+        $collection->add(Price::fromInt(2, 3));
     }
 
     public function testSumWithEmptyCollection(): void
     {
-        $collection = NumericCollection::asList([], 2);
+        $collection = PriceCollection::asList([], 2);
         self::assertSame(0, $collection->sum()->intValue());
     }
 
     public function testSumWithOneElement(): void
     {
-        $collection = NumericCollection::asList([Numeric::of(1, 2)], 2);
+        $collection = PriceCollection::asList([Price::fromInt(1, 2)], 2);
         self::assertSame(100, $collection->sum()->intValue());
         self::assertSame(1.00, $collection->sum()->value());
         self::assertSame(2, $collection->sum()->precision());
@@ -53,10 +41,10 @@ final class NumericCollectionTest extends TestCase
 
     public function testSumWithTwoElements(): void
     {
-        $collection = NumericCollection::asList(
+        $collection = PriceCollection::asList(
             [
-                Numeric::of(1, 2),
-                Numeric::of(2, 2),
+                Price::fromInt(1, 2),
+                Price::fromInt(2, 2),
             ],
             2
         );
@@ -67,12 +55,12 @@ final class NumericCollectionTest extends TestCase
 
     public function testMin(): void
     {
-        $collection = NumericCollection::asList(
+        $collection = PriceCollection::asList(
             [
-                Numeric::of(10, 2),
-                Numeric::of(2, 2),
-                Numeric::of(200, 2),
-                Numeric::of(20, 2),
+                Price::fromInt(10, 2),
+                Price::fromInt(2, 2),
+                Price::fromInt(200, 2),
+                Price::fromInt(20, 2),
             ],
             2
         );
@@ -81,12 +69,12 @@ final class NumericCollectionTest extends TestCase
 
     public function testMax(): void
     {
-        $collection = NumericCollection::asList(
+        $collection = PriceCollection::asList(
             [
-                Numeric::of(10, 2),
-                Numeric::of(2, 2),
-                Numeric::of(200, 2),
-                Numeric::of(20, 2),
+                Price::fromInt(10, 2),
+                Price::fromInt(2, 2),
+                Price::fromInt(200, 2),
+                Price::fromInt(20, 2),
             ],
             2
         );
@@ -96,13 +84,13 @@ final class NumericCollectionTest extends TestCase
 
     public function testAvgWithEmptyCollection(): void
     {
-        $collection = NumericCollection::asList([], 2);
+        $collection = PriceCollection::asList([], 2);
         self::assertSame(0, $collection->avg()->intValue());
     }
 
     public function testAvgWithOneElement(): void
     {
-        $collection = NumericCollection::asList([Numeric::of(1, 2)], 2);
+        $collection = PriceCollection::asList([Price::fromInt(1, 2)], 2);
         self::assertSame(100, $collection->avg()->intValue());
         self::assertSame(1.00, $collection->avg()->value());
         self::assertSame(2, $collection->avg()->precision());
@@ -110,10 +98,10 @@ final class NumericCollectionTest extends TestCase
 
     public function testAvgWithTwoElements(): void
     {
-        $collection = NumericCollection::asList(
+        $collection = PriceCollection::asList(
             [
-                Numeric::of(1, 2),
-                Numeric::of(2, 2),
+                Price::fromInt(1, 2),
+                Price::fromInt(2, 2),
             ],
             2
         );

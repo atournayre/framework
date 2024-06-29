@@ -6,46 +6,37 @@ namespace Atournayre\Component\Mailer\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\Types\EmailAddress;
-use Atournayre\Primitives\Collection\TypedCollection;
-use Atournayre\Wrapper\Map;
+use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-/**
- * @template T
- *
- * @extends TypedCollection<EmailAddress>
- *
- * @method EmailAddressCollection add(EmailAddress $value, ?\Closure $callback = null)
- * @method EmailAddressCollection set($key, EmailAddress $value, ?\Closure $callback = null)
- * @method EmailAddress[]         values()
- * @method EmailAddress           first()
- * @method EmailAddress           last()
- */
-final class EmailAddressCollection extends TypedCollection
+final class EmailAddressCollection implements ListInterface, MapInterface
 {
-    protected static string $type = EmailAddress::class;
+    use CollectionTrait;
 
-    /**
-     * @param array<EmailAddress> $collection
-     *
-     * @return self<T>
-     */
     public static function asList(array $collection): self
     {
-        Assert::isListOf($collection, EmailAddressCollection::$type);
+        Assert::isListOf($collection, EmailAddress::class);
 
-        return new self($collection);
+        return new self(Collection::of($collection));
+    }
+
+    public static function asMap(array $collection): self
+    {
+        Assert::isMapOf($collection, EmailAddress::class);
+
+        return new self(Collection::of($collection));
     }
 
     /**
      * @api
      *
      * @param array<string> $emails
-     *
-     * @return EmailAddressCollection<T>
      */
     public static function fromArray(array $emails): self
     {
-        $map = Map::from($emails)
+        $map = Collection::of($emails)
             ->each(static fn (string $email) => EmailAddress::of($email))
             ->toArray()
         ;

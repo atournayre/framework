@@ -5,37 +5,27 @@ declare(strict_types=1);
 namespace Atournayre\Common\Collection\Validation;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Primitives\BoolEnum;
-use Atournayre\Primitives\Collection\TypedCollection;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\CollectionTrait;
 
-/**
- * @extends TypedCollection<string>
- *
- * @method ValidationCollection add(string $value, ?\Closure $callback = null)
- * @method ValidationCollection set($key, string $value, ?\Closure $callback = null)
- * @method string[]             values()
- * @method string               first()
- * @method string               last()
- */
-final class ValidationCollection extends TypedCollection
+final class ValidationCollection implements MapInterface
 {
-    /**
-     * @throws \RuntimeException
-     */
-    public static function asList(array $collection): self
-    {
-        throw new \RuntimeException(sprintf('Use %s::asMap() instead.', self::class));
-    }
+    use CollectionTrait;
 
+    /**
+     * @param array<string, string|mixed> $collection
+     */
     public static function asMap(array $collection): self
     {
-        Assert::isMapOf($collection, ValidationCollection::$type);
+        Assert::isMapOf($collection, 'string');
 
-        return new self($collection);
+        return new self(Collection::of($collection));
     }
 
     public function isValid(): BoolEnum
     {
-        return BoolEnum::fromBool($this->hasNoElement());
+        return $this->hasNoElement();
     }
 }
