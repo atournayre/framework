@@ -51,6 +51,10 @@ interface CollectionInterface
      */
     public function offsetSet($offset, $value): void;
 
+    /**
+     * @template Element
+     * @return Element[]
+     */
     public function values(): array;
 
     public function toArray(): array;
