@@ -11,12 +11,3 @@ parameters:
         methods: true
         properties: true
         constants: true
-    ignoreErrors:
-        - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::redirectToUrl\(\) has no return type specified.#'
-        - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::redirectToRoute\(\) has no return type specified.#'
-        - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::render\(\) has no return type specified.#'
-        - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::json\(\) has no return type specified.#'
-        - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::jsonError\(\) has no return type specified.#'
-        - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::file\(\) has no return type specified.#'
-        - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::empty\(\) has no return type specified.#'
-        - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::error\(\) has no return type specified.#'

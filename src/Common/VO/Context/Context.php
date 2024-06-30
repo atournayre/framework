@@ -18,11 +18,11 @@ final class Context implements ContextInterface, LoggableInterface
 
     private UserInterface $user;
 
-    private DateTime $createdAt;
+    private DateTimeInterface $createdAt;
 
     private function __construct(
         UserInterface $user,
-        DateTime $createdAt
+        DateTimeInterface $createdAt
     ) {
         $this->createdAt = $createdAt;
         $this->user = $user;
@@ -40,7 +40,7 @@ final class Context implements ContextInterface, LoggableInterface
      */
     public static function create(UserInterface $user, \DateTimeInterface $createdAt): self
     {
-        return new self($user, DateTime::fromInterface($createdAt));
+        return new self($user, DateTime::of($createdAt));
     }
 
     public function user(): UserInterface

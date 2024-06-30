@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Collection;
 
 use Atournayre\Common\Assert\Assert;
-use Atournayre\Common\VO\DateTime\DateTime;
 use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\CollectionTrait;
 
@@ -16,7 +16,7 @@ final class DateTimeCollection implements ListInterface
 
     public static function asList(array $collection): self
     {
-        Assert::isListOf($collection, DateTime::class);
+        Assert::isListOf($collection, DateTimeInterface::class);
 
         return new self(Collection::of($collection));
     }
@@ -29,7 +29,7 @@ final class DateTimeCollection implements ListInterface
         $clone = clone $this;
         $values = $clone
             ->collection
-            ->usort(static fn (DateTime $a, DateTime $b) => $a <=> $b)
+            ->usort(static fn (DateTimeInterface $a, DateTimeInterface $b) => $a <=> $b)
             ->values()
             ->toArray()
         ;
@@ -45,7 +45,7 @@ final class DateTimeCollection implements ListInterface
         $clone = clone $this;
         $values = $clone
             ->collection
-            ->usort(static fn (DateTime $a, DateTime $b) => $b <=> $a)
+            ->usort(static fn (DateTimeInterface $a, DateTimeInterface $b) => $b <=> $a)
             ->values()
             ->toArray()
         ;
@@ -58,7 +58,7 @@ final class DateTimeCollection implements ListInterface
      *
      * @throws \Throwable
      */
-    public function mostRecent(): DateTime
+    public function mostRecent(): DateTimeInterface
     {
         return $this->sortDesc()
             ->collection
@@ -71,7 +71,7 @@ final class DateTimeCollection implements ListInterface
      *
      * @api
      */
-    public function oldest(): DateTime
+    public function oldest(): DateTimeInterface
     {
         return $this->sortAsc()
             ->collection
@@ -82,12 +82,12 @@ final class DateTimeCollection implements ListInterface
     /**
      * @api
      */
-    public function between(DateTime $start, DateTime $end): self
+    public function between(DateTimeInterface $start, DateTimeInterface $end): self
     {
         $clone = clone $this;
         $map = $clone
             ->collection
-            ->filter(static fn (DateTime $date) => $date >= $start && $date <= $end)
+            ->filter(static fn (DateTimeInterface $date) => $date >= $start && $date <= $end)
             ->values()
             ->toArray()
         ;
@@ -98,12 +98,12 @@ final class DateTimeCollection implements ListInterface
     /**
      * @api
      */
-    public function before(DateTime $date): self
+    public function before(DateTimeInterface $date): self
     {
         $clone = clone $this;
         $map = $clone
             ->collection
-            ->filter(static fn (DateTime $d) => $d < $date)
+            ->filter(static fn (DateTimeInterface $d) => $d < $date)
             ->values()
             ->toArray()
         ;
@@ -114,12 +114,12 @@ final class DateTimeCollection implements ListInterface
     /**
      * @api
      */
-    public function after(DateTime $date): self
+    public function after(DateTimeInterface $date): self
     {
         $clone = clone $this;
         $map = $clone
             ->collection
-            ->filter(static fn (DateTime $d) => $d > $date)
+            ->filter(static fn (DateTimeInterface $d) => $d > $date)
             ->values()
             ->toArray()
         ;
