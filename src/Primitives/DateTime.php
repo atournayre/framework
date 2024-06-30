@@ -12,11 +12,11 @@ final class DateTime implements DateTimeInterface
 {
     use NullTrait;
 
-    private Carbon $carbon;
+    private Carbon $datetime;
 
     private function __construct(Carbon $datetime)
     {
-        $this->carbon = $datetime;
+        $this->datetime = $datetime;
     }
 
     public static function asNull(): self
@@ -73,12 +73,12 @@ final class DateTime implements DateTimeInterface
      */
     public function isAM(): BoolEnum
     {
-        $noon = $this->carbon
+        $noon = $this->datetime
             ->copy()
             ->setTime(12, 0)
         ;
 
-        $lt = $this->carbon
+        $lt = $this->datetime
             ->lt($noon)
         ;
 
@@ -90,7 +90,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isAfter(\DateTimeInterface $datetime): BoolEnum
     {
-        $gt = $this->carbon
+        $gt = $this->datetime
             ->gt($datetime)
         ;
 
@@ -102,7 +102,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isAfterOrEqual(\DateTimeInterface $datetime): BoolEnum
     {
-        $gte = $this->carbon
+        $gte = $this->datetime
             ->gte($datetime)
         ;
 
@@ -114,7 +114,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isBefore(\DateTimeInterface $datetime): BoolEnum
     {
-        $lt = $this->carbon
+        $lt = $this->datetime
             ->lt($datetime)
         ;
 
@@ -126,7 +126,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isBeforeOrEqual(\DateTimeInterface $datetime): BoolEnum
     {
-        $lte = $this->carbon
+        $lte = $this->datetime
             ->lte($datetime)
         ;
 
@@ -138,7 +138,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isBetween(\DateTimeInterface $datetime1, \DateTimeInterface $datetime2): BoolEnum
     {
-        $between = $this->carbon
+        $between = $this->datetime
             ->between($datetime1, $datetime2, false)
         ;
 
@@ -150,7 +150,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isBetweenOrEqual(\DateTimeInterface $datetime1, \DateTimeInterface $datetime2): BoolEnum
     {
-        $between = $this->carbon
+        $between = $this->datetime
             ->between($datetime1, $datetime2)
         ;
 
@@ -188,7 +188,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isSame(\DateTimeInterface $datetime): BoolEnum
     {
-        $eq = $this->carbon
+        $eq = $this->datetime
             ->eq($datetime)
         ;
 
@@ -200,7 +200,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isSameOrAfter(\DateTimeInterface $datetime): BoolEnum
     {
-        $gte = $this->carbon
+        $gte = $this->datetime
             ->gte($datetime)
         ;
 
@@ -212,7 +212,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isSameOrBefore(\DateTimeInterface $datetime): BoolEnum
     {
-        $lte = $this->carbon
+        $lte = $this->datetime
             ->lte($datetime)
         ;
 
@@ -224,7 +224,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isSameOrBetween(\DateTimeInterface $datetime1, \DateTimeInterface $datetime2): BoolEnum
     {
-        $between = $this->carbon
+        $between = $this->datetime
             ->between($datetime1, $datetime2)
         ;
 
@@ -236,7 +236,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isWeekday(): BoolEnum
     {
-        $isWeekday = $this->carbon
+        $isWeekday = $this->datetime
             ->isWeekday()
         ;
 
@@ -248,7 +248,7 @@ final class DateTime implements DateTimeInterface
      */
     public function isWeekend(): BoolEnum
     {
-        $isWeekend = $this->carbon
+        $isWeekend = $this->datetime
             ->isWeekend()
         ;
 
@@ -260,7 +260,7 @@ final class DateTime implements DateTimeInterface
      */
     public function toDateTime(): \DateTimeInterface
     {
-        return $this->carbon->toDateTime();
+        return $this->datetime->toDateTime();
     }
 
     /**
@@ -268,385 +268,385 @@ final class DateTime implements DateTimeInterface
      */
     public function setTimezone($timezone = null): DateTimeInterface
     {
-        $this->carbon->setTimezone($timezone);
+        $this->datetime->setTimezone($timezone);
 
         return $this;
     }
 
     public function year(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->year
         ;
     }
 
     public function yearIso(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->yearIso
         ;
     }
 
     public function month(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->month
         ;
     }
 
     public function day(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->day
         ;
     }
 
     public function hour(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->hour
         ;
     }
 
     public function minute(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->minute
         ;
     }
 
     public function second(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->second
         ;
     }
 
     public function micro(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->micro
         ;
     }
 
     public function microsecond(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->microsecond
         ;
     }
 
     public function timestamp()
     {
-        return $this->carbon
+        return $this->datetime
             ->timestamp
         ;
     }
 
     public function englishDayOfWeek(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->englishDayOfWeek
         ;
     }
 
     public function shortEnglishDayOfWeek(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->shortEnglishDayOfWeek
         ;
     }
 
     public function englishMonth(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->englishMonth
         ;
     }
 
     public function shortEnglishMonth(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->shortEnglishMonth
         ;
     }
 
     public function milliseconds(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->milliseconds
         ;
     }
 
     public function millisecond(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->millisecond
         ;
     }
 
     public function milli(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->milli
         ;
     }
 
     public function week(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->week
         ;
     }
 
     public function isoWeek(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->isoWeek
         ;
     }
 
     public function weekYear(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->weekYear
         ;
     }
 
     public function isoWeekYear(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->isoWeekYear
         ;
     }
 
     public function dayOfYear(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->dayOfYear
         ;
     }
 
     public function age(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->age
         ;
     }
 
     public function offset(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->offset
         ;
     }
 
     public function offsetMinutes(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->offsetMinutes
         ;
     }
 
     public function offsetHours(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->offsetHours
         ;
     }
 
     public function dayOfWeek(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->dayOfWeek
         ;
     }
 
     public function dayOfWeekIso(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->dayOfWeekIso
         ;
     }
 
     public function weekOfYear(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->weekOfYear
         ;
     }
 
     public function daysInMonth(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->daysInMonth
         ;
     }
 
     public function latinMeridiem(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->latinMeridiem
         ;
     }
 
     public function latinUpperMeridiem(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->latinUpperMeridiem
         ;
     }
 
     public function timezoneAbbreviatedName(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->timezoneAbbreviatedName
         ;
     }
 
     public function tzAbbrName(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->tzAbbrName
         ;
     }
 
     public function dayName(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->dayName
         ;
     }
 
     public function shortDayName(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->shortDayName
         ;
     }
 
     public function minDayName(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->minDayName
         ;
     }
 
     public function monthName(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->monthName
         ;
     }
 
     public function shortMonthName(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->shortMonthName
         ;
     }
 
     public function meridiem(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->meridiem
         ;
     }
 
     public function upperMeridiem(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->upperMeridiem
         ;
     }
 
     public function noZeroHour(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->noZeroHour
         ;
     }
 
     public function weeksInYear(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->weeksInYear
         ;
     }
 
     public function isoWeeksInYear(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->isoWeeksInYear
         ;
     }
 
     public function weekOfMonth(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->weekOfMonth
         ;
     }
 
     public function weekNumberInMonth(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->weekNumberInMonth
         ;
     }
 
     public function firstWeekDay(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->firstWeekDay
         ;
     }
 
     public function lastWeekDay(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->lastWeekDay
         ;
     }
 
     public function daysInYear(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->daysInYear
         ;
     }
 
     public function quarter(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->quarter
         ;
     }
 
     public function decade(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->decade
         ;
     }
 
     public function century(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->century
         ;
     }
 
     public function millennium(): int
     {
-        return $this->carbon
+        return $this->datetime
             ->millennium
         ;
     }
 
     public function isDst(): BoolEnum
     {
-        $isDst = $this->carbon
+        $isDst = $this->datetime
             ->isDST()
         ;
 
@@ -655,7 +655,7 @@ final class DateTime implements DateTimeInterface
 
     public function isLocal(): BoolEnum
     {
-        $isLocal = $this->carbon
+        $isLocal = $this->datetime
             ->isLocal()
         ;
 
@@ -664,7 +664,7 @@ final class DateTime implements DateTimeInterface
 
     public function isUtc(): BoolEnum
     {
-        $isUtc = $this->carbon
+        $isUtc = $this->datetime
             ->isUtc()
         ;
 
@@ -673,28 +673,28 @@ final class DateTime implements DateTimeInterface
 
     public function timezoneName(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->timezoneName
         ;
     }
 
     public function tzName(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->tzName
         ;
     }
 
     public function locale(): string
     {
-        return $this->carbon
+        return $this->datetime
             ->locale
         ;
     }
 
     public function isValid(): BoolEnum
     {
-        $isValid = $this->carbon
+        $isValid = $this->datetime
             ->isValid()
         ;
 
@@ -703,7 +703,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSunday(): BoolEnum
     {
-        $isSunday = $this->carbon
+        $isSunday = $this->datetime
             ->isSunday()
         ;
 
@@ -712,7 +712,7 @@ final class DateTime implements DateTimeInterface
 
     public function isMonday(): BoolEnum
     {
-        $isMonday = $this->carbon
+        $isMonday = $this->datetime
             ->isMonday()
         ;
 
@@ -721,7 +721,7 @@ final class DateTime implements DateTimeInterface
 
     public function isTuesday(): BoolEnum
     {
-        $isTuesday = $this->carbon
+        $isTuesday = $this->datetime
             ->isTuesday()
         ;
 
@@ -730,7 +730,7 @@ final class DateTime implements DateTimeInterface
 
     public function isWednesday(): BoolEnum
     {
-        $isWednesday = $this->carbon
+        $isWednesday = $this->datetime
             ->isWednesday()
         ;
 
@@ -739,7 +739,7 @@ final class DateTime implements DateTimeInterface
 
     public function isThursday(): BoolEnum
     {
-        $isThursday = $this->carbon
+        $isThursday = $this->datetime
             ->isThursday()
         ;
 
@@ -748,7 +748,7 @@ final class DateTime implements DateTimeInterface
 
     public function isFriday(): BoolEnum
     {
-        $isFriday = $this->carbon
+        $isFriday = $this->datetime
             ->isFriday()
         ;
 
@@ -757,7 +757,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSaturday(): BoolEnum
     {
-        $isSaturday = $this->carbon
+        $isSaturday = $this->datetime
             ->isSaturday()
         ;
 
@@ -766,7 +766,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameYear($date = null): BoolEnum
     {
-        $isSameYear = $this->carbon
+        $isSameYear = $this->datetime
             ->isSameYear($date)
         ;
 
@@ -775,7 +775,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameWeek($date = null): BoolEnum
     {
-        $isSameWeek = $this->carbon
+        $isSameWeek = $this->datetime
             ->isSameWeek($date)
         ;
 
@@ -784,7 +784,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameDay($date = null): BoolEnum
     {
-        $isSameDay = $this->carbon
+        $isSameDay = $this->datetime
             ->isSameDay($date)
         ;
 
@@ -793,7 +793,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameHour($date = null): BoolEnum
     {
-        $isSameHour = $this->carbon
+        $isSameHour = $this->datetime
             ->isSameHour($date)
         ;
 
@@ -802,7 +802,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameMinute($date = null): BoolEnum
     {
-        $isSameMinute = $this->carbon
+        $isSameMinute = $this->datetime
             ->isSameMinute($date)
         ;
 
@@ -811,7 +811,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameSecond($date = null): BoolEnum
     {
-        $isSameSecond = $this->carbon
+        $isSameSecond = $this->datetime
             ->isSameSecond($date)
         ;
 
@@ -820,7 +820,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameMicro($date = null): BoolEnum
     {
-        $isSameMicro = $this->carbon
+        $isSameMicro = $this->datetime
             ->isSameMicro($date)
         ;
 
@@ -829,7 +829,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameMicrosecond($date = null): BoolEnum
     {
-        $isSameMicrosecond = $this->carbon
+        $isSameMicrosecond = $this->datetime
             ->isSameMicrosecond($date)
         ;
 
@@ -838,7 +838,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameDecade($date = null): BoolEnum
     {
-        $isSameDecade = $this->carbon
+        $isSameDecade = $this->datetime
             ->isSameDecade($date)
         ;
 
@@ -847,7 +847,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameCentury($date = null): BoolEnum
     {
-        $isSameCentury = $this->carbon
+        $isSameCentury = $this->datetime
             ->isSameCentury($date)
         ;
 
@@ -856,7 +856,7 @@ final class DateTime implements DateTimeInterface
 
     public function isSameMillennium($date = null): BoolEnum
     {
-        $isSameMillennium = $this->carbon
+        $isSameMillennium = $this->datetime
             ->isSameMillennium($date)
         ;
 
@@ -865,2296 +865,2296 @@ final class DateTime implements DateTimeInterface
 
     public function years(int $value): DateTimeInterface
     {
-        $this->carbon->years($value);
+        $this->datetime->years($value);
 
         return $this;
     }
 
     public function setYears(int $value): DateTimeInterface
     {
-        $this->carbon->setYears($value);
+        $this->datetime->setYears($value);
 
         return $this;
     }
 
     public function setYear(int $value): DateTimeInterface
     {
-        $this->carbon->setYear($value);
+        $this->datetime->setYear($value);
 
         return $this;
     }
 
     public function months(int $value): DateTimeInterface
     {
-        $this->carbon->months($value);
+        $this->datetime->months($value);
 
         return $this;
     }
 
     public function setMonths(int $value): DateTimeInterface
     {
-        $this->carbon->setMonths($value);
+        $this->datetime->setMonths($value);
 
         return $this;
     }
 
     public function setMonth(int $value): DateTimeInterface
     {
-        $this->carbon->setMonth($value);
+        $this->datetime->setMonth($value);
 
         return $this;
     }
 
     public function setDays(int $value): DateTimeInterface
     {
-        $this->carbon->setDays($value);
+        $this->datetime->setDays($value);
 
         return $this;
     }
 
     public function setDay(int $value): DateTimeInterface
     {
-        $this->carbon->setDay($value);
+        $this->datetime->setDay($value);
 
         return $this;
     }
 
     public function hours(int $value): DateTimeInterface
     {
-        $this->carbon->hours($value);
+        $this->datetime->hours($value);
 
         return $this;
     }
 
     public function setHours(int $value): DateTimeInterface
     {
-        $this->carbon->setHours($value);
+        $this->datetime->setHours($value);
 
         return $this;
     }
 
     public function setHour(int $value): DateTimeInterface
     {
-        $this->carbon->setHour($value);
+        $this->datetime->setHour($value);
 
         return $this;
     }
 
     public function minutes(int $value): DateTimeInterface
     {
-        $this->carbon->minutes($value);
+        $this->datetime->minutes($value);
 
         return $this;
     }
 
     public function setMinutes(int $value): DateTimeInterface
     {
-        $this->carbon->setMinutes($value);
+        $this->datetime->setMinutes($value);
 
         return $this;
     }
 
     public function setMinute(int $value): DateTimeInterface
     {
-        $this->carbon->setMinute($value);
+        $this->datetime->setMinute($value);
 
         return $this;
     }
 
     public function seconds(int $value): DateTimeInterface
     {
-        $this->carbon->seconds($value);
+        $this->datetime->seconds($value);
 
         return $this;
     }
 
     public function setSeconds(int $value): DateTimeInterface
     {
-        $this->carbon->setSeconds($value);
+        $this->datetime->setSeconds($value);
 
         return $this;
     }
 
     public function setSecond(int $value): DateTimeInterface
     {
-        $this->carbon->setSecond($value);
+        $this->datetime->setSecond($value);
 
         return $this;
     }
 
     public function millis(int $value): DateTimeInterface
     {
-        $this->carbon->millis($value);
+        $this->datetime->millis($value);
 
         return $this;
     }
 
     public function setMillis(int $value): DateTimeInterface
     {
-        $this->carbon->setMillis($value);
+        $this->datetime->setMillis($value);
 
         return $this;
     }
 
     public function setMilli(int $value): DateTimeInterface
     {
-        $this->carbon->setMilli($value);
+        $this->datetime->setMilli($value);
 
         return $this;
     }
 
     public function setMilliseconds(int $value): DateTimeInterface
     {
-        $this->carbon->setMilliseconds($value);
+        $this->datetime->setMilliseconds($value);
 
         return $this;
     }
 
     public function setMillisecond(int $value): DateTimeInterface
     {
-        $this->carbon->setMillisecond($value);
+        $this->datetime->setMillisecond($value);
 
         return $this;
     }
 
     public function micros(int $value): DateTimeInterface
     {
-        $this->carbon->micros($value);
+        $this->datetime->micros($value);
 
         return $this;
     }
 
     public function setMicros(int $value): DateTimeInterface
     {
-        $this->carbon->setMicros($value);
+        $this->datetime->setMicros($value);
 
         return $this;
     }
 
     public function setMicro(int $value): DateTimeInterface
     {
-        $this->carbon->setMicro($value);
+        $this->datetime->setMicro($value);
 
         return $this;
     }
 
     public function microseconds(int $value): DateTimeInterface
     {
-        $this->carbon->microseconds($value);
+        $this->datetime->microseconds($value);
 
         return $this;
     }
 
     public function setMicroseconds(int $value): DateTimeInterface
     {
-        $this->carbon->setMicroseconds($value);
+        $this->datetime->setMicroseconds($value);
 
         return $this;
     }
 
     public function setMicrosecond(int $value): DateTimeInterface
     {
-        $this->carbon->setMicrosecond($value);
+        $this->datetime->setMicrosecond($value);
 
         return $this;
     }
 
     public function addYears(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addYears($value);
+        $this->datetime->addYears($value);
 
         return $this;
     }
 
     public function addYear(): DateTimeInterface
     {
-        $this->carbon->addYear();
+        $this->datetime->addYear();
 
         return $this;
     }
 
     public function subYears(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subYears($value);
+        $this->datetime->subYears($value);
 
         return $this;
     }
 
     public function subYear(): DateTimeInterface
     {
-        $this->carbon->subYear();
+        $this->datetime->subYear();
 
         return $this;
     }
 
     public function addYearsWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addYearsWithOverflow($value);
+        $this->datetime->addYearsWithOverflow($value);
 
         return $this;
     }
 
     public function addYearWithOverflow(): DateTimeInterface
     {
-        $this->carbon->addYearWithOverflow();
+        $this->datetime->addYearWithOverflow();
 
         return $this;
     }
 
     public function subYearsWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subYearsWithOverflow($value);
+        $this->datetime->subYearsWithOverflow($value);
 
         return $this;
     }
 
     public function subYearWithOverflow(): DateTimeInterface
     {
-        $this->carbon->subYearWithOverflow();
+        $this->datetime->subYearWithOverflow();
 
         return $this;
     }
 
     public function addYearsWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addYearsWithoutOverflow($value);
+        $this->datetime->addYearsWithoutOverflow($value);
 
         return $this;
     }
 
     public function addYearWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->addYearWithoutOverflow();
+        $this->datetime->addYearWithoutOverflow();
 
         return $this;
     }
 
     public function subYearsWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subYearsWithoutOverflow($value);
+        $this->datetime->subYearsWithoutOverflow($value);
 
         return $this;
     }
 
     public function subYearWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->subYearWithoutOverflow();
+        $this->datetime->subYearWithoutOverflow();
 
         return $this;
     }
 
     public function addYearsWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addYearsWithNoOverflow($value);
+        $this->datetime->addYearsWithNoOverflow($value);
 
         return $this;
     }
 
     public function addYearWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addYearWithNoOverflow();
+        $this->datetime->addYearWithNoOverflow();
 
         return $this;
     }
 
     public function subYearsWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subYearsWithNoOverflow($value);
+        $this->datetime->subYearsWithNoOverflow($value);
 
         return $this;
     }
 
     public function subYearWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subYearWithNoOverflow();
+        $this->datetime->subYearWithNoOverflow();
 
         return $this;
     }
 
     public function addYearsNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addYearsNoOverflow($value);
+        $this->datetime->addYearsNoOverflow($value);
 
         return $this;
     }
 
     public function addYearNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addYearNoOverflow();
+        $this->datetime->addYearNoOverflow();
 
         return $this;
     }
 
     public function subYearsNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subYearsNoOverflow($value);
+        $this->datetime->subYearsNoOverflow($value);
 
         return $this;
     }
 
     public function subYearNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subYearNoOverflow();
+        $this->datetime->subYearNoOverflow();
 
         return $this;
     }
 
     public function addMonths(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMonths($value);
+        $this->datetime->addMonths($value);
 
         return $this;
     }
 
     public function addMonth(): DateTimeInterface
     {
-        $this->carbon->addMonth();
+        $this->datetime->addMonth();
 
         return $this;
     }
 
     public function subMonths(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMonths($value);
+        $this->datetime->subMonths($value);
 
         return $this;
     }
 
     public function subMonth(): DateTimeInterface
     {
-        $this->carbon->subMonth();
+        $this->datetime->subMonth();
 
         return $this;
     }
 
     public function addMonthsWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMonthsWithOverflow($value);
+        $this->datetime->addMonthsWithOverflow($value);
 
         return $this;
     }
 
     public function addMonthWithOverflow(): DateTimeInterface
     {
-        $this->carbon->addMonthWithOverflow();
+        $this->datetime->addMonthWithOverflow();
 
         return $this;
     }
 
     public function subMonthsWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMonthsWithOverflow($value);
+        $this->datetime->subMonthsWithOverflow($value);
 
         return $this;
     }
 
     public function subMonthWithOverflow(): DateTimeInterface
     {
-        $this->carbon->subMonthWithOverflow();
+        $this->datetime->subMonthWithOverflow();
 
         return $this;
     }
 
     public function addMonthsWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMonthsWithoutOverflow($value);
+        $this->datetime->addMonthsWithoutOverflow($value);
 
         return $this;
     }
 
     public function addMonthWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->addMonthWithoutOverflow();
+        $this->datetime->addMonthWithoutOverflow();
 
         return $this;
     }
 
     public function subMonthsWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMonthsWithoutOverflow($value);
+        $this->datetime->subMonthsWithoutOverflow($value);
 
         return $this;
     }
 
     public function subMonthWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->subMonthWithoutOverflow();
+        $this->datetime->subMonthWithoutOverflow();
 
         return $this;
     }
 
     public function addMonthsWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMonthsWithNoOverflow($value);
+        $this->datetime->addMonthsWithNoOverflow($value);
 
         return $this;
     }
 
     public function addMonthWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addMonthWithNoOverflow();
+        $this->datetime->addMonthWithNoOverflow();
 
         return $this;
     }
 
     public function subMonthsWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMonthsWithNoOverflow($value);
+        $this->datetime->subMonthsWithNoOverflow($value);
 
         return $this;
     }
 
     public function subMonthWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subMonthWithNoOverflow();
+        $this->datetime->subMonthWithNoOverflow();
 
         return $this;
     }
 
     public function addMonthsNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMonthsNoOverflow($value);
+        $this->datetime->addMonthsNoOverflow($value);
 
         return $this;
     }
 
     public function addMonthNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addMonthNoOverflow();
+        $this->datetime->addMonthNoOverflow();
 
         return $this;
     }
 
     public function subMonthsNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMonthsNoOverflow($value);
+        $this->datetime->subMonthsNoOverflow($value);
 
         return $this;
     }
 
     public function subMonthNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subMonthNoOverflow();
+        $this->datetime->subMonthNoOverflow();
 
         return $this;
     }
 
     public function addDays(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addDays($value);
+        $this->datetime->addDays($value);
 
         return $this;
     }
 
     public function addDay(): DateTimeInterface
     {
-        $this->carbon->addDay();
+        $this->datetime->addDay();
 
         return $this;
     }
 
     public function subDays(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subDays($value);
+        $this->datetime->subDays($value);
 
         return $this;
     }
 
     public function subDay(): DateTimeInterface
     {
-        $this->carbon->subDay();
+        $this->datetime->subDay();
 
         return $this;
     }
 
     public function addHours(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addHours($value);
+        $this->datetime->addHours($value);
 
         return $this;
     }
 
     public function addHour(): DateTimeInterface
     {
-        $this->carbon->addHour();
+        $this->datetime->addHour();
 
         return $this;
     }
 
     public function subHours(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subHours($value);
+        $this->datetime->subHours($value);
 
         return $this;
     }
 
     public function subHour(): DateTimeInterface
     {
-        $this->carbon->subHour();
+        $this->datetime->subHour();
 
         return $this;
     }
 
     public function addMinutes(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMinutes($value);
+        $this->datetime->addMinutes($value);
 
         return $this;
     }
 
     public function addMinute(): DateTimeInterface
     {
-        $this->carbon->addMinute();
+        $this->datetime->addMinute();
 
         return $this;
     }
 
     public function subMinutes(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMinutes($value);
+        $this->datetime->subMinutes($value);
 
         return $this;
     }
 
     public function subMinute(): DateTimeInterface
     {
-        $this->carbon->subMinute();
+        $this->datetime->subMinute();
 
         return $this;
     }
 
     public function addSeconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addSeconds($value);
+        $this->datetime->addSeconds($value);
 
         return $this;
     }
 
     public function addSecond(): DateTimeInterface
     {
-        $this->carbon->addSecond();
+        $this->datetime->addSecond();
 
         return $this;
     }
 
     public function subSeconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subSeconds($value);
+        $this->datetime->subSeconds($value);
 
         return $this;
     }
 
     public function subSecond(): DateTimeInterface
     {
-        $this->carbon->subSecond();
+        $this->datetime->subSecond();
 
         return $this;
     }
 
     public function addMillis(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMillis($value);
+        $this->datetime->addMillis($value);
 
         return $this;
     }
 
     public function addMilli(): DateTimeInterface
     {
-        $this->carbon->addMilli();
+        $this->datetime->addMilli();
 
         return $this;
     }
 
     public function subMillis(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMillis($value);
+        $this->datetime->subMillis($value);
 
         return $this;
     }
 
     public function subMilli(): DateTimeInterface
     {
-        $this->carbon->subMilli();
+        $this->datetime->subMilli();
 
         return $this;
     }
 
     public function addMilliseconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMilliseconds($value);
+        $this->datetime->addMilliseconds($value);
 
         return $this;
     }
 
     public function addMillisecond(): DateTimeInterface
     {
-        $this->carbon->addMillisecond();
+        $this->datetime->addMillisecond();
 
         return $this;
     }
 
     public function subMilliseconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMilliseconds($value);
+        $this->datetime->subMilliseconds($value);
 
         return $this;
     }
 
     public function subMillisecond(): DateTimeInterface
     {
-        $this->carbon->subMillisecond();
+        $this->datetime->subMillisecond();
 
         return $this;
     }
 
     public function addMicros(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMicros($value);
+        $this->datetime->addMicros($value);
 
         return $this;
     }
 
     public function addMicro(): DateTimeInterface
     {
-        $this->carbon->addMicro();
+        $this->datetime->addMicro();
 
         return $this;
     }
 
     public function subMicros(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMicros($value);
+        $this->datetime->subMicros($value);
 
         return $this;
     }
 
     public function subMicro(): DateTimeInterface
     {
-        $this->carbon->subMicro();
+        $this->datetime->subMicro();
 
         return $this;
     }
 
     public function addMicroseconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMicroseconds($value);
+        $this->datetime->addMicroseconds($value);
 
         return $this;
     }
 
     public function addMicrosecond(): DateTimeInterface
     {
-        $this->carbon->addMicrosecond();
+        $this->datetime->addMicrosecond();
 
         return $this;
     }
 
     public function subMicroseconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMicroseconds($value);
+        $this->datetime->subMicroseconds($value);
 
         return $this;
     }
 
     public function subMicrosecond(): DateTimeInterface
     {
-        $this->carbon->subMicrosecond();
+        $this->datetime->subMicrosecond();
 
         return $this;
     }
 
     public function addMillennia(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMillennia($value);
+        $this->datetime->addMillennia($value);
 
         return $this;
     }
 
     public function addMillennium(): DateTimeInterface
     {
-        $this->carbon->addMillennium();
+        $this->datetime->addMillennium();
 
         return $this;
     }
 
     public function subMillennia(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMillennia($value);
+        $this->datetime->subMillennia($value);
 
         return $this;
     }
 
     public function subMillennium(): DateTimeInterface
     {
-        $this->carbon->subMillennium();
+        $this->datetime->subMillennium();
 
         return $this;
     }
 
     public function addMillenniaWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMillenniaWithOverflow($value);
+        $this->datetime->addMillenniaWithOverflow($value);
 
         return $this;
     }
 
     public function addMillenniumWithOverflow(): DateTimeInterface
     {
-        $this->carbon->addMillenniumWithOverflow();
+        $this->datetime->addMillenniumWithOverflow();
 
         return $this;
     }
 
     public function subMillenniaWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMillenniaWithOverflow($value);
+        $this->datetime->subMillenniaWithOverflow($value);
 
         return $this;
     }
 
     public function subMillenniumWithOverflow(): DateTimeInterface
     {
-        $this->carbon->subMillenniumWithOverflow();
+        $this->datetime->subMillenniumWithOverflow();
 
         return $this;
     }
 
     public function addMillenniaWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMillenniaWithoutOverflow($value);
+        $this->datetime->addMillenniaWithoutOverflow($value);
 
         return $this;
     }
 
     public function addMillenniumWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->addMillenniumWithoutOverflow();
+        $this->datetime->addMillenniumWithoutOverflow();
 
         return $this;
     }
 
     public function subMillenniaWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMillenniaWithoutOverflow($value);
+        $this->datetime->subMillenniaWithoutOverflow($value);
 
         return $this;
     }
 
     public function subMillenniumWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->subMillenniumWithoutOverflow();
+        $this->datetime->subMillenniumWithoutOverflow();
 
         return $this;
     }
 
     public function addMillenniaWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMillenniaWithNoOverflow($value);
+        $this->datetime->addMillenniaWithNoOverflow($value);
 
         return $this;
     }
 
     public function addMillenniumWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addMillenniumWithNoOverflow();
+        $this->datetime->addMillenniumWithNoOverflow();
 
         return $this;
     }
 
     public function subMillenniaWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMillenniaWithNoOverflow($value);
+        $this->datetime->subMillenniaWithNoOverflow($value);
 
         return $this;
     }
 
     public function subMillenniumWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subMillenniumWithNoOverflow();
+        $this->datetime->subMillenniumWithNoOverflow();
 
         return $this;
     }
 
     public function addMillenniaNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addMillenniaNoOverflow($value);
+        $this->datetime->addMillenniaNoOverflow($value);
 
         return $this;
     }
 
     public function addMillenniumNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addMillenniumNoOverflow();
+        $this->datetime->addMillenniumNoOverflow();
 
         return $this;
     }
 
     public function subMillenniaNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subMillenniaNoOverflow($value);
+        $this->datetime->subMillenniaNoOverflow($value);
 
         return $this;
     }
 
     public function subMillenniumNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subMillenniumNoOverflow();
+        $this->datetime->subMillenniumNoOverflow();
 
         return $this;
     }
 
     public function addCenturies(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addCenturies($value);
+        $this->datetime->addCenturies($value);
 
         return $this;
     }
 
     public function addCentury(): DateTimeInterface
     {
-        $this->carbon->addCentury();
+        $this->datetime->addCentury();
 
         return $this;
     }
 
     public function subCenturies(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subCenturies($value);
+        $this->datetime->subCenturies($value);
 
         return $this;
     }
 
     public function subCentury(): DateTimeInterface
     {
-        $this->carbon->subCentury();
+        $this->datetime->subCentury();
 
         return $this;
     }
 
     public function addCenturiesWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addCenturiesWithOverflow($value);
+        $this->datetime->addCenturiesWithOverflow($value);
 
         return $this;
     }
 
     public function addCenturyWithOverflow(): DateTimeInterface
     {
-        $this->carbon->addCenturyWithOverflow();
+        $this->datetime->addCenturyWithOverflow();
 
         return $this;
     }
 
     public function subCenturiesWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subCenturiesWithOverflow($value);
+        $this->datetime->subCenturiesWithOverflow($value);
 
         return $this;
     }
 
     public function subCenturyWithOverflow(): DateTimeInterface
     {
-        $this->carbon->subCenturyWithOverflow();
+        $this->datetime->subCenturyWithOverflow();
 
         return $this;
     }
 
     public function addCenturiesWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addCenturiesWithoutOverflow($value);
+        $this->datetime->addCenturiesWithoutOverflow($value);
 
         return $this;
     }
 
     public function addCenturyWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->addCenturyWithoutOverflow();
+        $this->datetime->addCenturyWithoutOverflow();
 
         return $this;
     }
 
     public function subCenturiesWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subCenturiesWithoutOverflow($value);
+        $this->datetime->subCenturiesWithoutOverflow($value);
 
         return $this;
     }
 
     public function subCenturyWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->subCenturyWithoutOverflow();
+        $this->datetime->subCenturyWithoutOverflow();
 
         return $this;
     }
 
     public function addCenturiesWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addCenturiesWithNoOverflow($value);
+        $this->datetime->addCenturiesWithNoOverflow($value);
 
         return $this;
     }
 
     public function addCenturyWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addCenturyWithNoOverflow();
+        $this->datetime->addCenturyWithNoOverflow();
 
         return $this;
     }
 
     public function subCenturiesWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subCenturiesWithNoOverflow($value);
+        $this->datetime->subCenturiesWithNoOverflow($value);
 
         return $this;
     }
 
     public function subCenturyWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subCenturyWithNoOverflow();
+        $this->datetime->subCenturyWithNoOverflow();
 
         return $this;
     }
 
     public function addCenturiesNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addCenturiesNoOverflow($value);
+        $this->datetime->addCenturiesNoOverflow($value);
 
         return $this;
     }
 
     public function addCenturyNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addCenturyNoOverflow();
+        $this->datetime->addCenturyNoOverflow();
 
         return $this;
     }
 
     public function subCenturiesNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subCenturiesNoOverflow($value);
+        $this->datetime->subCenturiesNoOverflow($value);
 
         return $this;
     }
 
     public function subCenturyNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subCenturyNoOverflow();
+        $this->datetime->subCenturyNoOverflow();
 
         return $this;
     }
 
     public function addDecades(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addDecades($value);
+        $this->datetime->addDecades($value);
 
         return $this;
     }
 
     public function addDecade(): DateTimeInterface
     {
-        $this->carbon->addDecade();
+        $this->datetime->addDecade();
 
         return $this;
     }
 
     public function subDecades(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subDecades($value);
+        $this->datetime->subDecades($value);
 
         return $this;
     }
 
     public function subDecade(): DateTimeInterface
     {
-        $this->carbon->subDecade();
+        $this->datetime->subDecade();
 
         return $this;
     }
 
     public function addDecadesWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addDecadesWithOverflow($value);
+        $this->datetime->addDecadesWithOverflow($value);
 
         return $this;
     }
 
     public function addDecadeWithOverflow(): DateTimeInterface
     {
-        $this->carbon->addDecadeWithOverflow();
+        $this->datetime->addDecadeWithOverflow();
 
         return $this;
     }
 
     public function subDecadesWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subDecadesWithOverflow($value);
+        $this->datetime->subDecadesWithOverflow($value);
 
         return $this;
     }
 
     public function subDecadeWithOverflow(): DateTimeInterface
     {
-        $this->carbon->subDecadeWithOverflow();
+        $this->datetime->subDecadeWithOverflow();
 
         return $this;
     }
 
     public function addDecadesWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addDecadesWithoutOverflow($value);
+        $this->datetime->addDecadesWithoutOverflow($value);
 
         return $this;
     }
 
     public function addDecadeWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->addDecadeWithoutOverflow();
+        $this->datetime->addDecadeWithoutOverflow();
 
         return $this;
     }
 
     public function subDecadesWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subDecadesWithoutOverflow($value);
+        $this->datetime->subDecadesWithoutOverflow($value);
 
         return $this;
     }
 
     public function subDecadeWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->subDecadeWithoutOverflow();
+        $this->datetime->subDecadeWithoutOverflow();
 
         return $this;
     }
 
     public function addDecadesWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addDecadesWithNoOverflow($value);
+        $this->datetime->addDecadesWithNoOverflow($value);
 
         return $this;
     }
 
     public function addDecadeWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addDecadeWithNoOverflow();
+        $this->datetime->addDecadeWithNoOverflow();
 
         return $this;
     }
 
     public function subDecadesWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subDecadesWithNoOverflow($value);
+        $this->datetime->subDecadesWithNoOverflow($value);
 
         return $this;
     }
 
     public function subDecadeWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subDecadeWithNoOverflow();
+        $this->datetime->subDecadeWithNoOverflow();
 
         return $this;
     }
 
     public function addDecadesNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addDecadesNoOverflow($value);
+        $this->datetime->addDecadesNoOverflow($value);
 
         return $this;
     }
 
     public function addDecadeNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addDecadeNoOverflow();
+        $this->datetime->addDecadeNoOverflow();
 
         return $this;
     }
 
     public function subDecadesNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subDecadesNoOverflow($value);
+        $this->datetime->subDecadesNoOverflow($value);
 
         return $this;
     }
 
     public function subDecadeNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subDecadeNoOverflow();
+        $this->datetime->subDecadeNoOverflow();
 
         return $this;
     }
 
     public function addQuarters(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addQuarters($value);
+        $this->datetime->addQuarters($value);
 
         return $this;
     }
 
     public function addQuarter(): DateTimeInterface
     {
-        $this->carbon->addQuarter();
+        $this->datetime->addQuarter();
 
         return $this;
     }
 
     public function subQuarters(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subQuarters($value);
+        $this->datetime->subQuarters($value);
 
         return $this;
     }
 
     public function subQuarter(): DateTimeInterface
     {
-        $this->carbon->subQuarter();
+        $this->datetime->subQuarter();
 
         return $this;
     }
 
     public function addQuartersWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addQuartersWithOverflow($value);
+        $this->datetime->addQuartersWithOverflow($value);
 
         return $this;
     }
 
     public function addQuarterWithOverflow(): DateTimeInterface
     {
-        $this->carbon->addQuarterWithOverflow();
+        $this->datetime->addQuarterWithOverflow();
 
         return $this;
     }
 
     public function subQuartersWithOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subQuartersWithOverflow($value);
+        $this->datetime->subQuartersWithOverflow($value);
 
         return $this;
     }
 
     public function subQuarterWithOverflow(): DateTimeInterface
     {
-        $this->carbon->subQuarterWithOverflow();
+        $this->datetime->subQuarterWithOverflow();
 
         return $this;
     }
 
     public function addQuartersWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addQuartersWithoutOverflow($value);
+        $this->datetime->addQuartersWithoutOverflow($value);
 
         return $this;
     }
 
     public function addQuarterWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->addQuarterWithoutOverflow();
+        $this->datetime->addQuarterWithoutOverflow();
 
         return $this;
     }
 
     public function subQuartersWithoutOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subQuartersWithoutOverflow($value);
+        $this->datetime->subQuartersWithoutOverflow($value);
 
         return $this;
     }
 
     public function subQuarterWithoutOverflow(): DateTimeInterface
     {
-        $this->carbon->subQuarterWithoutOverflow();
+        $this->datetime->subQuarterWithoutOverflow();
 
         return $this;
     }
 
     public function addQuartersWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addQuartersWithNoOverflow($value);
+        $this->datetime->addQuartersWithNoOverflow($value);
 
         return $this;
     }
 
     public function addQuarterWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addQuarterWithNoOverflow();
+        $this->datetime->addQuarterWithNoOverflow();
 
         return $this;
     }
 
     public function subQuartersWithNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subQuartersWithNoOverflow($value);
+        $this->datetime->subQuartersWithNoOverflow($value);
 
         return $this;
     }
 
     public function subQuarterWithNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subQuarterWithNoOverflow();
+        $this->datetime->subQuarterWithNoOverflow();
 
         return $this;
     }
 
     public function addQuartersNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addQuartersNoOverflow($value);
+        $this->datetime->addQuartersNoOverflow($value);
 
         return $this;
     }
 
     public function addQuarterNoOverflow(): DateTimeInterface
     {
-        $this->carbon->addQuarterNoOverflow();
+        $this->datetime->addQuarterNoOverflow();
 
         return $this;
     }
 
     public function subQuartersNoOverflow(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subQuartersNoOverflow($value);
+        $this->datetime->subQuartersNoOverflow($value);
 
         return $this;
     }
 
     public function subQuarterNoOverflow(): DateTimeInterface
     {
-        $this->carbon->subQuarterNoOverflow();
+        $this->datetime->subQuarterNoOverflow();
 
         return $this;
     }
 
     public function addWeeks(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addWeeks($value);
+        $this->datetime->addWeeks($value);
 
         return $this;
     }
 
     public function addWeek(): DateTimeInterface
     {
-        $this->carbon->addWeek();
+        $this->datetime->addWeek();
 
         return $this;
     }
 
     public function subWeeks(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subWeeks($value);
+        $this->datetime->subWeeks($value);
 
         return $this;
     }
 
     public function subWeek(): DateTimeInterface
     {
-        $this->carbon->subWeek();
+        $this->datetime->subWeek();
 
         return $this;
     }
 
     public function addWeekdays(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addWeekdays($value);
+        $this->datetime->addWeekdays($value);
 
         return $this;
     }
 
     public function addWeekday(): DateTimeInterface
     {
-        $this->carbon->addWeekday();
+        $this->datetime->addWeekday();
 
         return $this;
     }
 
     public function subWeekdays(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subWeekdays($value);
+        $this->datetime->subWeekdays($value);
 
         return $this;
     }
 
     public function subWeekday(): DateTimeInterface
     {
-        $this->carbon->subWeekday();
+        $this->datetime->subWeekday();
 
         return $this;
     }
 
     public function addRealMicros(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealMicros($value);
+        $this->datetime->addRealMicros($value);
 
         return $this;
     }
 
     public function addRealMicro(): DateTimeInterface
     {
-        $this->carbon->addRealMicro();
+        $this->datetime->addRealMicro();
 
         return $this;
     }
 
     public function subRealMicros(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealMicros($value);
+        $this->datetime->subRealMicros($value);
 
         return $this;
     }
 
     public function subRealMicro(): DateTimeInterface
     {
-        $this->carbon->subRealMicro();
+        $this->datetime->subRealMicro();
 
         return $this;
     }
 
     public function addRealMicroseconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealMicroseconds($value);
+        $this->datetime->addRealMicroseconds($value);
 
         return $this;
     }
 
     public function addRealMicrosecond(): DateTimeInterface
     {
-        $this->carbon->addRealMicrosecond();
+        $this->datetime->addRealMicrosecond();
 
         return $this;
     }
 
     public function subRealMicroseconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealMicroseconds($value);
+        $this->datetime->subRealMicroseconds($value);
 
         return $this;
     }
 
     public function subRealMicrosecond(): DateTimeInterface
     {
-        $this->carbon->subRealMicrosecond();
+        $this->datetime->subRealMicrosecond();
 
         return $this;
     }
 
     public function addRealMillis(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealMillis($value);
+        $this->datetime->addRealMillis($value);
 
         return $this;
     }
 
     public function addRealMilli(): DateTimeInterface
     {
-        $this->carbon->addRealMilli();
+        $this->datetime->addRealMilli();
 
         return $this;
     }
 
     public function subRealMillis(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealMillis($value);
+        $this->datetime->subRealMillis($value);
 
         return $this;
     }
 
     public function subRealMilli(): DateTimeInterface
     {
-        $this->carbon->subRealMilli();
+        $this->datetime->subRealMilli();
 
         return $this;
     }
 
     public function addRealMilliseconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealMilliseconds($value);
+        $this->datetime->addRealMilliseconds($value);
 
         return $this;
     }
 
     public function addRealMillisecond(): DateTimeInterface
     {
-        $this->carbon->addRealMillisecond();
+        $this->datetime->addRealMillisecond();
 
         return $this;
     }
 
     public function subRealMilliseconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealMilliseconds($value);
+        $this->datetime->subRealMilliseconds($value);
 
         return $this;
     }
 
     public function subRealMillisecond(): DateTimeInterface
     {
-        $this->carbon->subRealMillisecond();
+        $this->datetime->subRealMillisecond();
 
         return $this;
     }
 
     public function addRealSeconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealSeconds($value);
+        $this->datetime->addRealSeconds($value);
 
         return $this;
     }
 
     public function addRealSecond(): DateTimeInterface
     {
-        $this->carbon->addRealSecond();
+        $this->datetime->addRealSecond();
 
         return $this;
     }
 
     public function subRealSeconds(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealSeconds($value);
+        $this->datetime->subRealSeconds($value);
 
         return $this;
     }
 
     public function subRealSecond(): DateTimeInterface
     {
-        $this->carbon->subRealSecond();
+        $this->datetime->subRealSecond();
 
         return $this;
     }
 
     public function addRealMinutes(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealMinutes($value);
+        $this->datetime->addRealMinutes($value);
 
         return $this;
     }
 
     public function addRealMinute(): DateTimeInterface
     {
-        $this->carbon->addRealMinute();
+        $this->datetime->addRealMinute();
 
         return $this;
     }
 
     public function subRealMinutes(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealMinutes($value);
+        $this->datetime->subRealMinutes($value);
 
         return $this;
     }
 
     public function subRealMinute(): DateTimeInterface
     {
-        $this->carbon->subRealMinute();
+        $this->datetime->subRealMinute();
 
         return $this;
     }
 
     public function addRealHours(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealHours($value);
+        $this->datetime->addRealHours($value);
 
         return $this;
     }
 
     public function addRealHour(): DateTimeInterface
     {
-        $this->carbon->addRealHour();
+        $this->datetime->addRealHour();
 
         return $this;
     }
 
     public function subRealHours(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealHours($value);
+        $this->datetime->subRealHours($value);
 
         return $this;
     }
 
     public function subRealHour(): DateTimeInterface
     {
-        $this->carbon->subRealHour();
+        $this->datetime->subRealHour();
 
         return $this;
     }
 
     public function addRealDays(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealDays($value);
+        $this->datetime->addRealDays($value);
 
         return $this;
     }
 
     public function addRealDay(): DateTimeInterface
     {
-        $this->carbon->addRealDay();
+        $this->datetime->addRealDay();
 
         return $this;
     }
 
     public function subRealDays(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealDays($value);
+        $this->datetime->subRealDays($value);
 
         return $this;
     }
 
     public function subRealDay(): DateTimeInterface
     {
-        $this->carbon->subRealDay();
+        $this->datetime->subRealDay();
 
         return $this;
     }
 
     public function addRealWeeks(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealWeeks($value);
+        $this->datetime->addRealWeeks($value);
 
         return $this;
     }
 
     public function addRealWeek(): DateTimeInterface
     {
-        $this->carbon->addRealWeek();
+        $this->datetime->addRealWeek();
 
         return $this;
     }
 
     public function subRealWeeks(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealWeeks($value);
+        $this->datetime->subRealWeeks($value);
 
         return $this;
     }
 
     public function subRealWeek(): DateTimeInterface
     {
-        $this->carbon->subRealWeek();
+        $this->datetime->subRealWeek();
 
         return $this;
     }
 
     public function addRealMonths(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealMonths($value);
+        $this->datetime->addRealMonths($value);
 
         return $this;
     }
 
     public function addRealMonth(): DateTimeInterface
     {
-        $this->carbon->addRealMonth();
+        $this->datetime->addRealMonth();
 
         return $this;
     }
 
     public function subRealMonths(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealMonths($value);
+        $this->datetime->subRealMonths($value);
 
         return $this;
     }
 
     public function subRealMonth(): DateTimeInterface
     {
-        $this->carbon->subRealMonth();
+        $this->datetime->subRealMonth();
 
         return $this;
     }
 
     public function addRealQuarters(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealQuarters($value);
+        $this->datetime->addRealQuarters($value);
 
         return $this;
     }
 
     public function addRealQuarter(): DateTimeInterface
     {
-        $this->carbon->addRealQuarter();
+        $this->datetime->addRealQuarter();
 
         return $this;
     }
 
     public function subRealQuarters(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealQuarters($value);
+        $this->datetime->subRealQuarters($value);
 
         return $this;
     }
 
     public function subRealQuarter(): DateTimeInterface
     {
-        $this->carbon->subRealQuarter();
+        $this->datetime->subRealQuarter();
 
         return $this;
     }
 
     public function addRealYears(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealYears($value);
+        $this->datetime->addRealYears($value);
 
         return $this;
     }
 
     public function addRealYear(): DateTimeInterface
     {
-        $this->carbon->addRealYear();
+        $this->datetime->addRealYear();
 
         return $this;
     }
 
     public function subRealYears(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealYears($value);
+        $this->datetime->subRealYears($value);
 
         return $this;
     }
 
     public function subRealYear(): DateTimeInterface
     {
-        $this->carbon->subRealYear();
+        $this->datetime->subRealYear();
 
         return $this;
     }
 
     public function addRealDecades(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealDecades($value);
+        $this->datetime->addRealDecades($value);
 
         return $this;
     }
 
     public function addRealDecade(): DateTimeInterface
     {
-        $this->carbon->addRealDecade();
+        $this->datetime->addRealDecade();
 
         return $this;
     }
 
     public function subRealDecades(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealDecades($value);
+        $this->datetime->subRealDecades($value);
 
         return $this;
     }
 
     public function subRealDecade(): DateTimeInterface
     {
-        $this->carbon->subRealDecade();
+        $this->datetime->subRealDecade();
 
         return $this;
     }
 
     public function addRealCenturies(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealCenturies($value);
+        $this->datetime->addRealCenturies($value);
 
         return $this;
     }
 
     public function addRealCentury(): DateTimeInterface
     {
-        $this->carbon->addRealCentury();
+        $this->datetime->addRealCentury();
 
         return $this;
     }
 
     public function subRealCenturies(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealCenturies($value);
+        $this->datetime->subRealCenturies($value);
 
         return $this;
     }
 
     public function subRealCentury(): DateTimeInterface
     {
-        $this->carbon->subRealCentury();
+        $this->datetime->subRealCentury();
 
         return $this;
     }
 
     public function addRealMillennia(int $value = 1): DateTimeInterface
     {
-        $this->carbon->addRealMillennia($value);
+        $this->datetime->addRealMillennia($value);
 
         return $this;
     }
 
     public function addRealMillennium(): DateTimeInterface
     {
-        $this->carbon->addRealMillennium();
+        $this->datetime->addRealMillennium();
 
         return $this;
     }
 
     public function subRealMillennia(int $value = 1): DateTimeInterface
     {
-        $this->carbon->subRealMillennia($value);
+        $this->datetime->subRealMillennia($value);
 
         return $this;
     }
 
     public function subRealMillennium(): DateTimeInterface
     {
-        $this->carbon->subRealMillennium();
+        $this->datetime->subRealMillennium();
 
         return $this;
     }
 
     public function roundYear($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundYear($precision, $function);
+        $this->datetime->roundYear($precision, $function);
 
         return $this;
     }
 
     public function roundYears($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundYears($precision, $function);
+        $this->datetime->roundYears($precision, $function);
 
         return $this;
     }
 
     public function floorYear($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorYear($precision);
+        $this->datetime->floorYear($precision);
 
         return $this;
     }
 
     public function floorYears($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorYears($precision);
+        $this->datetime->floorYears($precision);
 
         return $this;
     }
 
     public function ceilYear($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilYear($precision);
+        $this->datetime->ceilYear($precision);
 
         return $this;
     }
 
     public function ceilYears($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilYears($precision);
+        $this->datetime->ceilYears($precision);
 
         return $this;
     }
 
     public function roundMonth($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMonth($precision, $function);
+        $this->datetime->roundMonth($precision, $function);
 
         return $this;
     }
 
     public function roundMonths($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMonths($precision, $function);
+        $this->datetime->roundMonths($precision, $function);
 
         return $this;
     }
 
     public function floorMonth($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMonth($precision);
+        $this->datetime->floorMonth($precision);
 
         return $this;
     }
 
     public function floorMonths($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMonths($precision);
+        $this->datetime->floorMonths($precision);
 
         return $this;
     }
 
     public function ceilMonth($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMonth($precision);
+        $this->datetime->ceilMonth($precision);
 
         return $this;
     }
 
     public function ceilMonths($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMonths($precision);
+        $this->datetime->ceilMonths($precision);
 
         return $this;
     }
 
     public function roundDay($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundDay($precision, $function);
+        $this->datetime->roundDay($precision, $function);
 
         return $this;
     }
 
     public function roundDays($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundDays($precision, $function);
+        $this->datetime->roundDays($precision, $function);
 
         return $this;
     }
 
     public function floorDay($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorDay($precision);
+        $this->datetime->floorDay($precision);
 
         return $this;
     }
 
     public function floorDays($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorDays($precision);
+        $this->datetime->floorDays($precision);
 
         return $this;
     }
 
     public function ceilDay($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilDay($precision);
+        $this->datetime->ceilDay($precision);
 
         return $this;
     }
 
     public function ceilDays($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilDays($precision);
+        $this->datetime->ceilDays($precision);
 
         return $this;
     }
 
     public function roundHour($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundHour($precision, $function);
+        $this->datetime->roundHour($precision, $function);
 
         return $this;
     }
 
     public function roundHours($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundHours($precision, $function);
+        $this->datetime->roundHours($precision, $function);
 
         return $this;
     }
 
     public function floorHour($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorHour($precision);
+        $this->datetime->floorHour($precision);
 
         return $this;
     }
 
     public function floorHours($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorHours($precision);
+        $this->datetime->floorHours($precision);
 
         return $this;
     }
 
     public function ceilHour($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilHour($precision);
+        $this->datetime->ceilHour($precision);
 
         return $this;
     }
 
     public function ceilHours($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilHours($precision);
+        $this->datetime->ceilHours($precision);
 
         return $this;
     }
 
     public function roundMinute($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMinute($precision, $function);
+        $this->datetime->roundMinute($precision, $function);
 
         return $this;
     }
 
     public function roundMinutes($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMinutes($precision, $function);
+        $this->datetime->roundMinutes($precision, $function);
 
         return $this;
     }
 
     public function floorMinute($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMinute($precision);
+        $this->datetime->floorMinute($precision);
 
         return $this;
     }
 
     public function floorMinutes($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMinutes($precision);
+        $this->datetime->floorMinutes($precision);
 
         return $this;
     }
 
     public function ceilMinute($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMinute($precision);
+        $this->datetime->ceilMinute($precision);
 
         return $this;
     }
 
     public function ceilMinutes($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMinutes($precision);
+        $this->datetime->ceilMinutes($precision);
 
         return $this;
     }
 
     public function roundSecond($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundSecond($precision, $function);
+        $this->datetime->roundSecond($precision, $function);
 
         return $this;
     }
 
     public function roundSeconds($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundSeconds($precision, $function);
+        $this->datetime->roundSeconds($precision, $function);
 
         return $this;
     }
 
     public function floorSecond($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorSecond($precision);
+        $this->datetime->floorSecond($precision);
 
         return $this;
     }
 
     public function floorSeconds($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorSeconds($precision);
+        $this->datetime->floorSeconds($precision);
 
         return $this;
     }
 
     public function ceilSecond($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilSecond($precision);
+        $this->datetime->ceilSecond($precision);
 
         return $this;
     }
 
     public function ceilSeconds($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilSeconds($precision);
+        $this->datetime->ceilSeconds($precision);
 
         return $this;
     }
 
     public function roundMillennium($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMillennium($precision, $function);
+        $this->datetime->roundMillennium($precision, $function);
 
         return $this;
     }
 
     public function roundMillennia($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMillennia($precision, $function);
+        $this->datetime->roundMillennia($precision, $function);
 
         return $this;
     }
 
     public function floorMillennium($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMillennium($precision);
+        $this->datetime->floorMillennium($precision);
 
         return $this;
     }
 
     public function floorMillennia($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMillennia($precision);
+        $this->datetime->floorMillennia($precision);
 
         return $this;
     }
 
     public function ceilMillennium($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMillennium($precision);
+        $this->datetime->ceilMillennium($precision);
 
         return $this;
     }
 
     public function ceilMillennia($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMillennia($precision);
+        $this->datetime->ceilMillennia($precision);
 
         return $this;
     }
 
     public function roundCentury($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundCentury($precision, $function);
+        $this->datetime->roundCentury($precision, $function);
 
         return $this;
     }
 
     public function roundCenturies($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundCenturies($precision, $function);
+        $this->datetime->roundCenturies($precision, $function);
 
         return $this;
     }
 
     public function floorCentury($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorCentury($precision);
+        $this->datetime->floorCentury($precision);
 
         return $this;
     }
 
     public function floorCenturies($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorCenturies($precision);
+        $this->datetime->floorCenturies($precision);
 
         return $this;
     }
 
     public function ceilCentury($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilCentury($precision);
+        $this->datetime->ceilCentury($precision);
 
         return $this;
     }
 
     public function ceilCenturies($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilCenturies($precision);
+        $this->datetime->ceilCenturies($precision);
 
         return $this;
     }
 
     public function roundDecade($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundDecade($precision, $function);
+        $this->datetime->roundDecade($precision, $function);
 
         return $this;
     }
 
     public function roundDecades($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundDecades($precision, $function);
+        $this->datetime->roundDecades($precision, $function);
 
         return $this;
     }
 
     public function floorDecade($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorDecade($precision);
+        $this->datetime->floorDecade($precision);
 
         return $this;
     }
 
     public function floorDecades($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorDecades($precision);
+        $this->datetime->floorDecades($precision);
 
         return $this;
     }
 
     public function ceilDecade($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilDecade($precision);
+        $this->datetime->ceilDecade($precision);
 
         return $this;
     }
 
     public function ceilDecades($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilDecades($precision);
+        $this->datetime->ceilDecades($precision);
 
         return $this;
     }
 
     public function roundQuarter($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundQuarter($precision, $function);
+        $this->datetime->roundQuarter($precision, $function);
 
         return $this;
     }
 
     public function roundQuarters($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundQuarters($precision, $function);
+        $this->datetime->roundQuarters($precision, $function);
 
         return $this;
     }
 
     public function floorQuarter($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorQuarter($precision);
+        $this->datetime->floorQuarter($precision);
 
         return $this;
     }
 
     public function floorQuarters($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorQuarters($precision);
+        $this->datetime->floorQuarters($precision);
 
         return $this;
     }
 
     public function ceilQuarter($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilQuarter($precision);
+        $this->datetime->ceilQuarter($precision);
 
         return $this;
     }
 
     public function ceilQuarters($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilQuarters($precision);
+        $this->datetime->ceilQuarters($precision);
 
         return $this;
     }
 
     public function roundMillisecond($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMillisecond($precision, $function);
+        $this->datetime->roundMillisecond($precision, $function);
 
         return $this;
     }
 
     public function roundMilliseconds($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMilliseconds($precision, $function);
+        $this->datetime->roundMilliseconds($precision, $function);
 
         return $this;
     }
 
     public function floorMillisecond($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMillisecond($precision);
+        $this->datetime->floorMillisecond($precision);
 
         return $this;
     }
 
     public function floorMilliseconds($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMilliseconds($precision);
+        $this->datetime->floorMilliseconds($precision);
 
         return $this;
     }
 
     public function ceilMillisecond($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMillisecond($precision);
+        $this->datetime->ceilMillisecond($precision);
 
         return $this;
     }
 
     public function ceilMilliseconds($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMilliseconds($precision);
+        $this->datetime->ceilMilliseconds($precision);
 
         return $this;
     }
 
     public function roundMicrosecond($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMicrosecond($precision, $function);
+        $this->datetime->roundMicrosecond($precision, $function);
 
         return $this;
     }
 
     public function roundMicroseconds($precision = 1, string $function = 'round'): DateTimeInterface
     {
-        $this->carbon->roundMicroseconds($precision, $function);
+        $this->datetime->roundMicroseconds($precision, $function);
 
         return $this;
     }
 
     public function floorMicrosecond($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMicrosecond($precision);
+        $this->datetime->floorMicrosecond($precision);
 
         return $this;
     }
 
     public function floorMicroseconds($precision = 1): DateTimeInterface
     {
-        $this->carbon->floorMicroseconds($precision);
+        $this->datetime->floorMicroseconds($precision);
 
         return $this;
     }
 
     public function ceilMicrosecond($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMicrosecond($precision);
+        $this->datetime->ceilMicrosecond($precision);
 
         return $this;
     }
 
     public function ceilMicroseconds($precision = 1): DateTimeInterface
     {
-        $this->carbon->ceilMicroseconds($precision);
+        $this->datetime->ceilMicroseconds($precision);
 
         return $this;
     }
 
     public function shortAbsoluteDiffForHumans($other = null, int $parts = 1): string
     {
-        return $this->carbon
+        return $this->datetime
             ->shortAbsoluteDiffForHumans($other, $parts)
         ;
     }
 
     public function longAbsoluteDiffForHumans($other = null, int $parts = 1): string
     {
-        return $this->carbon
+        return $this->datetime
             ->longAbsoluteDiffForHumans($other, $parts)
         ;
     }
 
     public function shortRelativeDiffForHumans($other = null, int $parts = 1): string
     {
-        return $this->carbon
+        return $this->datetime
             ->shortRelativeDiffForHumans($other, $parts)
         ;
     }
 
     public function longRelativeDiffForHumans($other = null, int $parts = 1): string
     {
-        return $this->carbon
+        return $this->datetime
             ->longRelativeDiffForHumans($other, $parts)
         ;
     }
 
     public function shortRelativeToNowDiffForHumans($other = null, int $parts = 1): string
     {
-        return $this->carbon
+        return $this->datetime
             ->shortRelativeToNowDiffForHumans($other, $parts)
         ;
     }
 
     public function longRelativeToNowDiffForHumans($other = null, int $parts = 1): string
     {
-        return $this->carbon
+        return $this->datetime
             ->longRelativeToNowDiffForHumans($other, $parts)
         ;
     }
 
     public function shortRelativeToOtherDiffForHumans($other = null, int $parts = 1): string
     {
-        return $this->carbon
+        return $this->datetime
             ->shortRelativeToOtherDiffForHumans($other, $parts)
         ;
     }
 
     public function longRelativeToOtherDiffForHumans($other = null, int $parts = 1): string
     {
-        return $this->carbon
+        return $this->datetime
             ->longRelativeToOtherDiffForHumans($other, $parts)
         ;
     }
@@ -3164,235 +3164,235 @@ final class DateTime implements DateTimeInterface
      */
     public function copy(): DateTimeInterface
     {
-        $copy = $this->carbon->copy();
+        $copy = $this->datetime->copy();
 
         return DateTime::of($copy);
     }
 
     public function clone(): DateTimeInterface
     {
-        $clone = $this->carbon->clone();
+        $clone = $this->datetime->clone();
 
         return DateTime::of($clone);
     }
 
     public function nowWithSameTz(): DateTimeInterface
     {
-        $this->carbon->nowWithSameTz();
+        $this->datetime->nowWithSameTz();
 
         return $this;
     }
 
     public function get(string $name)
     {
-        return $this->carbon->get($name);
+        return $this->datetime->get($name);
     }
 
     public function set($name, $value = null): DateTimeInterface
     {
-        $this->carbon->set($name, $value);
+        $this->datetime->set($name, $value);
 
         return $this;
     }
 
     public function getTranslatedDayName($context = null, string $keySuffix = '', $defaultValue = null): string
     {
-        return $this->carbon
+        return $this->datetime
             ->getTranslatedDayName($context, $keySuffix, $defaultValue)
         ;
     }
 
     public function getTranslatedShortDayName($context = null): string
     {
-        return $this->carbon
+        return $this->datetime
             ->getTranslatedShortDayName($context)
         ;
     }
 
     public function getTranslatedMinDayName($context = null): string
     {
-        return $this->carbon
+        return $this->datetime
             ->getTranslatedMinDayName($context)
         ;
     }
 
     public function getTranslatedMonthName($context = null, string $keySuffix = '', $defaultValue = null): string
     {
-        return $this->carbon
+        return $this->datetime
             ->getTranslatedMonthName($context, $keySuffix, $defaultValue)
         ;
     }
 
     public function getTranslatedShortMonthName($context = null): string
     {
-        return $this->carbon
+        return $this->datetime
             ->getTranslatedShortMonthName($context)
         ;
     }
 
     public function weekday($value = null): int
     {
-        return $this->carbon
+        return $this->datetime
             ->weekday($value)
         ;
     }
 
     public function isoWeekday($value = null): int
     {
-        return $this->carbon
+        return $this->datetime
             ->isoWeekday($value)
         ;
     }
 
     public function getDaysFromStartOfWeek($weekStartsAt = null): int
     {
-        return $this->carbon
+        return $this->datetime
             ->getDaysFromStartOfWeek($weekStartsAt)
         ;
     }
 
     public function setDaysFromStartOfWeek(int $numberOfDays, $weekStartsAt = null): DateTimeInterface
     {
-        $this->carbon->setDaysFromStartOfWeek($numberOfDays, $weekStartsAt);
+        $this->datetime->setDaysFromStartOfWeek($numberOfDays, $weekStartsAt);
 
         return $this;
     }
 
     public function setUnitNoOverflow(string $valueUnit, int $value, string $overflowUnit): DateTimeInterface
     {
-        $this->carbon->setUnitNoOverflow($valueUnit, $value, $overflowUnit);
+        $this->datetime->setUnitNoOverflow($valueUnit, $value, $overflowUnit);
 
         return $this;
     }
 
     public function addUnitNoOverflow(string $valueUnit, int $value, string $overflowUnit): DateTimeInterface
     {
-        $this->carbon->addUnitNoOverflow($valueUnit, $value, $overflowUnit);
+        $this->datetime->addUnitNoOverflow($valueUnit, $value, $overflowUnit);
 
         return $this;
     }
 
     public function subUnitNoOverflow(string $valueUnit, int $value, string $overflowUnit): DateTimeInterface
     {
-        $this->carbon->subUnitNoOverflow($valueUnit, $value, $overflowUnit);
+        $this->datetime->subUnitNoOverflow($valueUnit, $value, $overflowUnit);
 
         return $this;
     }
 
     public function utcOffset($minuteOffset = null): DateTimeInterface
     {
-        $this->carbon->utcOffset($minuteOffset);
+        $this->datetime->utcOffset($minuteOffset);
 
         return $this;
     }
 
     public function setDate(int $year, int $month, int $day): DateTimeInterface
     {
-        $this->carbon->setDate($year, $month, $day);
+        $this->datetime->setDate($year, $month, $day);
 
         return $this;
     }
 
     public function setISODate(int $year, int $week, int $day = 1): DateTimeInterface
     {
-        $this->carbon->setISODate($year, $week, $day);
+        $this->datetime->setISODate($year, $week, $day);
 
         return $this;
     }
 
     public function setDateTime(int $year, int $month, int $day, int $hour, int $minute, int $second = 0, int $microseconds = 0): DateTimeInterface
     {
-        $this->carbon->setDateTime($year, $month, $day, $hour, $minute, $second, $microseconds);
+        $this->datetime->setDateTime($year, $month, $day, $hour, $minute, $second, $microseconds);
 
         return $this;
     }
 
     public function setTime(int $hour, int $minute, int $second = 0, int $microseconds = 0): DateTimeInterface
     {
-        $this->carbon->setTime($hour, $minute, $second, $microseconds);
+        $this->datetime->setTime($hour, $minute, $second, $microseconds);
 
         return $this;
     }
 
     public function setTimestamp($unixTimestamp): DateTimeInterface
     {
-        $this->carbon->setTimestamp($unixTimestamp);
+        $this->datetime->setTimestamp($unixTimestamp);
 
         return $this;
     }
 
     public function setTimeFromTimeString(string $time): DateTimeInterface
     {
-        $this->carbon->setTimeFromTimeString($time);
+        $this->datetime->setTimeFromTimeString($time);
 
         return $this;
     }
 
     public function shiftTimezone($value): DateTimeInterface
     {
-        $this->carbon->shiftTimezone($value);
+        $this->datetime->shiftTimezone($value);
 
         return $this;
     }
 
     public function setDateFrom($date = null): DateTimeInterface
     {
-        $this->carbon->setDateFrom($date);
+        $this->datetime->setDateFrom($date);
 
         return $this;
     }
 
     public function setTimeFrom($date = null): DateTimeInterface
     {
-        $this->carbon->setTimeFrom($date);
+        $this->datetime->setTimeFrom($date);
 
         return $this;
     }
 
     public function setDateTimeFrom($date = null): DateTimeInterface
     {
-        $this->carbon->setDateTimeFrom($date);
+        $this->datetime->setDateTimeFrom($date);
 
         return $this;
     }
 
     public function getDays(): array
     {
-        return $this->carbon::getDays();
+        return $this->datetime::getDays();
     }
 
     public function getWeekStartsAt(): int
     {
-        return $this->carbon::getWeekStartsAt();
+        return $this->datetime::getWeekStartsAt();
     }
 
     public function getWeekEndsAt(): int
     {
-        return $this->carbon::getWeekEndsAt();
+        return $this->datetime::getWeekEndsAt();
     }
 
     public function getWeekendDays(): array
     {
-        return $this->carbon::getWeekendDays();
+        return $this->datetime::getWeekendDays();
     }
 
     public function hasRelativeKeywords(string $time): BoolEnum
     {
-        $hasRelativeKeywords = $this->carbon::hasRelativeKeywords($time);
+        $hasRelativeKeywords = $this->datetime::hasRelativeKeywords($time);
 
         return BoolEnum::fromBool($hasRelativeKeywords);
     }
 
     public function getIsoFormats($locale = null): array
     {
-        return $this->carbon
+        return $this->datetime
             ->getIsoFormats($locale)
         ;
     }
 
     public function getCalendarFormats($locale = null): array
     {
-        return $this->carbon
+        return $this->datetime
             ->getCalendarFormats($locale)
         ;
     }
@@ -3402,33 +3402,33 @@ final class DateTime implements DateTimeInterface
      */
     public function getIsoUnits()
     {
-        return $this->carbon::getIsoUnits();
+        return $this->datetime::getIsoUnits();
     }
 
     public function getPaddedUnit(string $unit, int $length = 2, string $padString = '0', int $padType = STR_PAD_LEFT): string
     {
-        return $this->carbon
+        return $this->datetime
             ->getPaddedUnit($unit, $length, $padString, $padType)
         ;
     }
 
     public function ordinal(string $key, $period = null): string
     {
-        return $this->carbon
+        return $this->datetime
             ->ordinal($key, $period)
         ;
     }
 
     public function getAltNumber(string $key): string
     {
-        return $this->carbon
+        return $this->datetime
             ->getAltNumber($key)
         ;
     }
 
     public function isoFormat(string $format, $originalFormat = null): string
     {
-        return $this->carbon
+        return $this->datetime
             ->isoFormat($format, $originalFormat)
         ;
     }
@@ -3438,37 +3438,37 @@ final class DateTime implements DateTimeInterface
      */
     public function getFormatsToIsoReplacements()
     {
-        return $this->carbon::getFormatsToIsoReplacements();
+        return $this->datetime::getFormatsToIsoReplacements();
     }
 
     public function translatedFormat(string $format): string
     {
-        return $this->carbon
+        return $this->datetime
             ->translatedFormat($format)
         ;
     }
 
     public function getOffsetString(string $separator = ':'): string
     {
-        return $this->carbon
+        return $this->datetime
             ->getOffsetString($separator)
         ;
     }
 
     public function setUnit(string $unit, $value = null): DateTimeInterface
     {
-        $this->carbon->setUnit($unit, $value);
+        $this->datetime->setUnit($unit, $value);
 
         return $this;
     }
 
     public function singularUnit(string $unit): string
     {
-        return $this->carbon::singularUnit($unit);
+        return $this->datetime::singularUnit($unit);
     }
 
     public function pluralUnit(string $unit): string
     {
-        return $this->carbon::pluralUnit($unit);
+        return $this->datetime::pluralUnit($unit);
     }
 }
