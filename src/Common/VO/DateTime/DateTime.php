@@ -3160,11 +3160,6 @@ final class DateTime implements DateTimeInterface
         ;
     }
 
-    public function getRangesByUnit(int $daysInMonth = 31): array
-    {
-        return $this->carbon::getRangesByUnit($daysInMonth);
-    }
-
     /**
      * @throws \Exception
      */
@@ -3189,11 +3184,6 @@ final class DateTime implements DateTimeInterface
         return $this;
     }
 
-    public function expectDateTime($date, $other): void
-    {
-        $this->carbon::expectDateTime($date, $other);
-    }
-
     public function get(string $name)
     {
         return $this->carbon->get($name);
@@ -3204,13 +3194,6 @@ final class DateTime implements DateTimeInterface
         $this->carbon->set($name, $value);
 
         return $this;
-    }
-
-    public function getTranslatedFormByRegExp($baseKey, $keySuffix, $context, $subKey, $defaultValue)
-    {
-        return $this->carbon
-            ->getTranslatedFormByRegExp($baseKey, $keySuffix, $context, $subKey, $defaultValue)
-        ;
     }
 
     public function getTranslatedDayName($context = null, string $keySuffix = '', $defaultValue = null): string
@@ -3416,7 +3399,7 @@ final class DateTime implements DateTimeInterface
     }
 
     /**
-     * @return array|null
+     * @return array<string, string|array<array<string|int>>>|null
      */
     public function getIsoUnits()
     {
@@ -3452,7 +3435,7 @@ final class DateTime implements DateTimeInterface
     }
 
     /**
-     * @return array|null
+     * @return array<string, bool|string>|null
      */
     public function getFormatsToIsoReplacements()
     {
@@ -3473,11 +3456,6 @@ final class DateTime implements DateTimeInterface
         ;
     }
 
-    public function executeStaticCallable($macro, ...$parameters)
-    {
-        return $this->carbon::executeStaticCallable($macro, ...$parameters);
-    }
-
     public function setUnit(string $unit, $value = null): DateTimeInterface
     {
         $this->carbon->setUnit($unit, $value);
@@ -3493,56 +3471,5 @@ final class DateTime implements DateTimeInterface
     public function pluralUnit(string $unit): string
     {
         return $this->carbon::pluralUnit($unit);
-    }
-
-    public function executeCallable($macro, ...$parameters)
-    {
-        return $this->carbon
-            ->executeCallable($macro, ...$parameters)
-        ;
-    }
-
-    public function executeCallableWithContext($macro, ...$parameters)
-    {
-        return $this->carbon
-            ->executeCallableWithContext($macro, ...$parameters);
-    }
-
-    public function getGenericMacros(): \Generator
-    {
-        return $this->carbon::getGenericMacros();
-    }
-
-    public function diff(\DateTimeInterface $targetObject, $absolute = false)
-    {
-        return $this->carbon->diff($targetObject, $absolute);
-    }
-
-    public function format($format): string
-    {
-        return $this->carbon->format($format);
-    }
-
-    public function getOffset()
-    {
-        return $this->carbon->getOffset();
-    }
-
-    public function getTimestamp()
-    {
-        return $this->carbon->getTimestamp();
-    }
-
-    public function getTimezone()
-    {
-        return $this->carbon->getTimezone();
-    }
-
-    /**
-     * @throws \Throwable
-     */
-    public function __wakeup()
-    {
-        $this->carbon->__wakeup();
     }
 }
