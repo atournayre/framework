@@ -8,8 +8,6 @@ use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\BoolEnum;
 use Carbon\Carbon;
-use DateInterval;
-use DateTimeZone;
 
 final class DateTime implements DateTimeInterface
 {
@@ -279,325 +277,379 @@ final class DateTime implements DateTimeInterface
     public function year(): int
     {
         return $this->carbon
-            ->year;
+            ->year
+        ;
     }
 
     public function yearIso(): int
     {
         return $this->carbon
-            ->yearIso;
+            ->yearIso
+        ;
     }
 
     public function month(): int
     {
         return $this->carbon
-            ->month;
+            ->month
+        ;
     }
 
     public function day(): int
     {
         return $this->carbon
-            ->day;
+            ->day
+        ;
     }
 
     public function hour(): int
     {
         return $this->carbon
-            ->hour;
+            ->hour
+        ;
     }
 
     public function minute(): int
     {
         return $this->carbon
-            ->minute;
+            ->minute
+        ;
     }
 
     public function second(): int
     {
         return $this->carbon
-            ->second;
+            ->second
+        ;
     }
 
     public function micro(): int
     {
         return $this->carbon
-            ->micro;
+            ->micro
+        ;
     }
 
     public function microsecond(): int
     {
         return $this->carbon
-            ->microsecond;
+            ->microsecond
+        ;
     }
 
     public function timestamp()
     {
         return $this->carbon
-            ->timestamp;
+            ->timestamp
+        ;
     }
 
     public function englishDayOfWeek(): string
     {
         return $this->carbon
-            ->englishDayOfWeek;
+            ->englishDayOfWeek
+        ;
     }
 
     public function shortEnglishDayOfWeek(): string
     {
         return $this->carbon
-            ->shortEnglishDayOfWeek;
+            ->shortEnglishDayOfWeek
+        ;
     }
 
     public function englishMonth(): string
     {
         return $this->carbon
-            ->englishMonth;
+            ->englishMonth
+        ;
     }
 
     public function shortEnglishMonth(): string
     {
         return $this->carbon
-            ->shortEnglishMonth;
+            ->shortEnglishMonth
+        ;
     }
 
     public function milliseconds(): int
     {
         return $this->carbon
-            ->milliseconds;
+            ->milliseconds
+        ;
     }
 
     public function millisecond(): int
     {
         return $this->carbon
-            ->millisecond;
+            ->millisecond
+        ;
     }
 
     public function milli(): int
     {
         return $this->carbon
-            ->milli;
+            ->milli
+        ;
     }
 
     public function week(): int
     {
         return $this->carbon
-            ->week;
+            ->week
+        ;
     }
 
     public function isoWeek(): int
     {
         return $this->carbon
-            ->isoWeek;
+            ->isoWeek
+        ;
     }
 
     public function weekYear(): int
     {
         return $this->carbon
-            ->weekYear;
+            ->weekYear
+        ;
     }
 
     public function isoWeekYear(): int
     {
         return $this->carbon
-            ->isoWeekYear;
+            ->isoWeekYear
+        ;
     }
 
     public function dayOfYear(): int
     {
         return $this->carbon
-            ->dayOfYear;
+            ->dayOfYear
+        ;
     }
 
     public function age(): int
     {
         return $this->carbon
-            ->age;
+            ->age
+        ;
     }
 
     public function offset(): int
     {
         return $this->carbon
-            ->offset;
+            ->offset
+        ;
     }
 
     public function offsetMinutes(): int
     {
         return $this->carbon
-            ->offsetMinutes;
+            ->offsetMinutes
+        ;
     }
 
     public function offsetHours(): int
     {
         return $this->carbon
-            ->offsetHours;
+            ->offsetHours
+        ;
     }
 
     public function dayOfWeek(): int
     {
         return $this->carbon
-            ->dayOfWeek;
+            ->dayOfWeek
+        ;
     }
 
     public function dayOfWeekIso(): int
     {
         return $this->carbon
-            ->dayOfWeekIso;
+            ->dayOfWeekIso
+        ;
     }
 
     public function weekOfYear(): int
     {
         return $this->carbon
-            ->weekOfYear;
+            ->weekOfYear
+        ;
     }
 
     public function daysInMonth(): int
     {
         return $this->carbon
-            ->daysInMonth;
+            ->daysInMonth
+        ;
     }
 
     public function latinMeridiem(): string
     {
         return $this->carbon
-            ->latinMeridiem;
+            ->latinMeridiem
+        ;
     }
 
     public function latinUpperMeridiem(): string
     {
         return $this->carbon
-            ->latinUpperMeridiem;
+            ->latinUpperMeridiem
+        ;
     }
 
     public function timezoneAbbreviatedName(): string
     {
         return $this->carbon
-            ->timezoneAbbreviatedName;
+            ->timezoneAbbreviatedName
+        ;
     }
 
     public function tzAbbrName(): string
     {
         return $this->carbon
-            ->tzAbbrName;
+            ->tzAbbrName
+        ;
     }
 
     public function dayName(): string
     {
         return $this->carbon
-            ->dayName;
+            ->dayName
+        ;
     }
 
     public function shortDayName(): string
     {
         return $this->carbon
-            ->shortDayName;
+            ->shortDayName
+        ;
     }
 
     public function minDayName(): string
     {
         return $this->carbon
-            ->minDayName;
+            ->minDayName
+        ;
     }
 
     public function monthName(): string
     {
         return $this->carbon
-            ->monthName;
+            ->monthName
+        ;
     }
 
     public function shortMonthName(): string
     {
         return $this->carbon
-            ->shortMonthName;
+            ->shortMonthName
+        ;
     }
 
     public function meridiem(): string
     {
         return $this->carbon
-            ->meridiem;
+            ->meridiem
+        ;
     }
 
     public function upperMeridiem(): string
     {
         return $this->carbon
-            ->upperMeridiem;
+            ->upperMeridiem
+        ;
     }
 
     public function noZeroHour(): int
     {
         return $this->carbon
-            ->noZeroHour;
+            ->noZeroHour
+        ;
     }
 
     public function weeksInYear(): int
     {
         return $this->carbon
-            ->weeksInYear;
+            ->weeksInYear
+        ;
     }
 
     public function isoWeeksInYear(): int
     {
         return $this->carbon
-            ->isoWeeksInYear;
+            ->isoWeeksInYear
+        ;
     }
 
     public function weekOfMonth(): int
     {
         return $this->carbon
-            ->weekOfMonth;
+            ->weekOfMonth
+        ;
     }
 
     public function weekNumberInMonth(): int
     {
         return $this->carbon
-            ->weekNumberInMonth;
+            ->weekNumberInMonth
+        ;
     }
 
     public function firstWeekDay(): int
     {
         return $this->carbon
-            ->firstWeekDay;
+            ->firstWeekDay
+        ;
     }
 
     public function lastWeekDay(): int
     {
         return $this->carbon
-            ->lastWeekDay;
+            ->lastWeekDay
+        ;
     }
 
     public function daysInYear(): int
     {
         return $this->carbon
-            ->daysInYear;
+            ->daysInYear
+        ;
     }
 
     public function quarter(): int
     {
         return $this->carbon
-            ->quarter;
+            ->quarter
+        ;
     }
 
     public function decade(): int
     {
         return $this->carbon
-            ->decade;
+            ->decade
+        ;
     }
 
     public function century(): int
     {
         return $this->carbon
-            ->century;
+            ->century
+        ;
     }
 
     public function millennium(): int
     {
         return $this->carbon
-            ->millennium;
+            ->millennium
+        ;
     }
 
     public function isDst(): BoolEnum
     {
         $isDst = $this->carbon
-            ->isDST();
+            ->isDST()
+        ;
 
         return BoolEnum::fromBool($isDst);
     }
@@ -605,7 +657,8 @@ final class DateTime implements DateTimeInterface
     public function isLocal(): BoolEnum
     {
         $isLocal = $this->carbon
-            ->isLocal();
+            ->isLocal()
+        ;
 
         return BoolEnum::fromBool($isLocal);
     }
@@ -613,7 +666,8 @@ final class DateTime implements DateTimeInterface
     public function isUtc(): BoolEnum
     {
         $isUtc = $this->carbon
-            ->isUtc();
+            ->isUtc()
+        ;
 
         return BoolEnum::fromBool($isUtc);
     }
@@ -621,25 +675,29 @@ final class DateTime implements DateTimeInterface
     public function timezoneName(): string
     {
         return $this->carbon
-            ->timezoneName;
+            ->timezoneName
+        ;
     }
 
     public function tzName(): string
     {
         return $this->carbon
-            ->tzName;
+            ->tzName
+        ;
     }
 
     public function locale(): string
     {
         return $this->carbon
-            ->locale;
+            ->locale
+        ;
     }
 
     public function isValid(): BoolEnum
     {
         $isValid = $this->carbon
-            ->isValid();
+            ->isValid()
+        ;
 
         return BoolEnum::fromBool($isValid);
     }
@@ -647,7 +705,8 @@ final class DateTime implements DateTimeInterface
     public function isSunday(): BoolEnum
     {
         $isSunday = $this->carbon
-            ->isSunday();
+            ->isSunday()
+        ;
 
         return BoolEnum::fromBool($isSunday);
     }
@@ -655,7 +714,8 @@ final class DateTime implements DateTimeInterface
     public function isMonday(): BoolEnum
     {
         $isMonday = $this->carbon
-            ->isMonday();
+            ->isMonday()
+        ;
 
         return BoolEnum::fromBool($isMonday);
     }
@@ -663,7 +723,8 @@ final class DateTime implements DateTimeInterface
     public function isTuesday(): BoolEnum
     {
         $isTuesday = $this->carbon
-            ->isTuesday();
+            ->isTuesday()
+        ;
 
         return BoolEnum::fromBool($isTuesday);
     }
@@ -671,7 +732,8 @@ final class DateTime implements DateTimeInterface
     public function isWednesday(): BoolEnum
     {
         $isWednesday = $this->carbon
-            ->isWednesday();
+            ->isWednesday()
+        ;
 
         return BoolEnum::fromBool($isWednesday);
     }
@@ -679,7 +741,8 @@ final class DateTime implements DateTimeInterface
     public function isThursday(): BoolEnum
     {
         $isThursday = $this->carbon
-            ->isThursday();
+            ->isThursday()
+        ;
 
         return BoolEnum::fromBool($isThursday);
     }
@@ -687,7 +750,8 @@ final class DateTime implements DateTimeInterface
     public function isFriday(): BoolEnum
     {
         $isFriday = $this->carbon
-            ->isFriday();
+            ->isFriday()
+        ;
 
         return BoolEnum::fromBool($isFriday);
     }
@@ -695,7 +759,8 @@ final class DateTime implements DateTimeInterface
     public function isSaturday(): BoolEnum
     {
         $isSaturday = $this->carbon
-            ->isSaturday();
+            ->isSaturday()
+        ;
 
         return BoolEnum::fromBool($isSaturday);
     }
@@ -703,7 +768,8 @@ final class DateTime implements DateTimeInterface
     public function isSameYear($date = null): BoolEnum
     {
         $isSameYear = $this->carbon
-            ->isSameYear($date);
+            ->isSameYear($date)
+        ;
 
         return BoolEnum::fromBool($isSameYear);
     }
@@ -711,7 +777,8 @@ final class DateTime implements DateTimeInterface
     public function isSameWeek($date = null): BoolEnum
     {
         $isSameWeek = $this->carbon
-            ->isSameWeek($date);
+            ->isSameWeek($date)
+        ;
 
         return BoolEnum::fromBool($isSameWeek);
     }
@@ -719,7 +786,8 @@ final class DateTime implements DateTimeInterface
     public function isSameDay($date = null): BoolEnum
     {
         $isSameDay = $this->carbon
-            ->isSameDay($date);
+            ->isSameDay($date)
+        ;
 
         return BoolEnum::fromBool($isSameDay);
     }
@@ -727,7 +795,8 @@ final class DateTime implements DateTimeInterface
     public function isSameHour($date = null): BoolEnum
     {
         $isSameHour = $this->carbon
-            ->isSameHour($date);
+            ->isSameHour($date)
+        ;
 
         return BoolEnum::fromBool($isSameHour);
     }
@@ -735,7 +804,8 @@ final class DateTime implements DateTimeInterface
     public function isSameMinute($date = null): BoolEnum
     {
         $isSameMinute = $this->carbon
-            ->isSameMinute($date);
+            ->isSameMinute($date)
+        ;
 
         return BoolEnum::fromBool($isSameMinute);
     }
@@ -743,7 +813,8 @@ final class DateTime implements DateTimeInterface
     public function isSameSecond($date = null): BoolEnum
     {
         $isSameSecond = $this->carbon
-            ->isSameSecond($date);
+            ->isSameSecond($date)
+        ;
 
         return BoolEnum::fromBool($isSameSecond);
     }
@@ -751,7 +822,8 @@ final class DateTime implements DateTimeInterface
     public function isSameMicro($date = null): BoolEnum
     {
         $isSameMicro = $this->carbon
-            ->isSameMicro($date);
+            ->isSameMicro($date)
+        ;
 
         return BoolEnum::fromBool($isSameMicro);
     }
@@ -759,7 +831,8 @@ final class DateTime implements DateTimeInterface
     public function isSameMicrosecond($date = null): BoolEnum
     {
         $isSameMicrosecond = $this->carbon
-            ->isSameMicrosecond($date);
+            ->isSameMicrosecond($date)
+        ;
 
         return BoolEnum::fromBool($isSameMicrosecond);
     }
@@ -767,7 +840,8 @@ final class DateTime implements DateTimeInterface
     public function isSameDecade($date = null): BoolEnum
     {
         $isSameDecade = $this->carbon
-            ->isSameDecade($date);
+            ->isSameDecade($date)
+        ;
 
         return BoolEnum::fromBool($isSameDecade);
     }
@@ -775,7 +849,8 @@ final class DateTime implements DateTimeInterface
     public function isSameCentury($date = null): BoolEnum
     {
         $isSameCentury = $this->carbon
-            ->isSameCentury($date);
+            ->isSameCentury($date)
+        ;
 
         return BoolEnum::fromBool($isSameCentury);
     }
@@ -783,7 +858,8 @@ final class DateTime implements DateTimeInterface
     public function isSameMillennium($date = null): BoolEnum
     {
         $isSameMillennium = $this->carbon
-            ->isSameMillennium($date);
+            ->isSameMillennium($date)
+        ;
 
         return BoolEnum::fromBool($isSameMillennium);
     }
@@ -3031,55 +3107,62 @@ final class DateTime implements DateTimeInterface
     public function shortAbsoluteDiffForHumans($other = null, int $parts = 1): string
     {
         return $this->carbon
-            ->shortAbsoluteDiffForHumans($other, $parts);
+            ->shortAbsoluteDiffForHumans($other, $parts)
+        ;
     }
 
     public function longAbsoluteDiffForHumans($other = null, int $parts = 1): string
     {
         return $this->carbon
-            ->longAbsoluteDiffForHumans($other, $parts);
+            ->longAbsoluteDiffForHumans($other, $parts)
+        ;
     }
 
     public function shortRelativeDiffForHumans($other = null, int $parts = 1): string
     {
         return $this->carbon
-            ->shortRelativeDiffForHumans($other, $parts);
+            ->shortRelativeDiffForHumans($other, $parts)
+        ;
     }
 
     public function longRelativeDiffForHumans($other = null, int $parts = 1): string
     {
         return $this->carbon
-            ->longRelativeDiffForHumans($other, $parts);
+            ->longRelativeDiffForHumans($other, $parts)
+        ;
     }
 
     public function shortRelativeToNowDiffForHumans($other = null, int $parts = 1): string
     {
         return $this->carbon
-            ->shortRelativeToNowDiffForHumans($other, $parts);
+            ->shortRelativeToNowDiffForHumans($other, $parts)
+        ;
     }
 
     public function longRelativeToNowDiffForHumans($other = null, int $parts = 1): string
     {
         return $this->carbon
-            ->longRelativeToNowDiffForHumans($other, $parts);
+            ->longRelativeToNowDiffForHumans($other, $parts)
+        ;
     }
 
     public function shortRelativeToOtherDiffForHumans($other = null, int $parts = 1): string
     {
         return $this->carbon
-            ->shortRelativeToOtherDiffForHumans($other, $parts);
+            ->shortRelativeToOtherDiffForHumans($other, $parts)
+        ;
     }
 
     public function longRelativeToOtherDiffForHumans($other = null, int $parts = 1): string
     {
         return $this->carbon
-            ->longRelativeToOtherDiffForHumans($other, $parts);
+            ->longRelativeToOtherDiffForHumans($other, $parts)
+        ;
     }
 
     public function getRangesByUnit(int $daysInMonth = 31): array
     {
-        return $this->carbon
-            ::getRangesByUnit($daysInMonth);
+        return $this->carbon::getRangesByUnit($daysInMonth);
     }
 
     /**
@@ -3126,55 +3209,64 @@ final class DateTime implements DateTimeInterface
     public function getTranslatedFormByRegExp($baseKey, $keySuffix, $context, $subKey, $defaultValue)
     {
         return $this->carbon
-            ->getTranslatedFormByRegExp($baseKey, $keySuffix, $context, $subKey, $defaultValue);
+            ->getTranslatedFormByRegExp($baseKey, $keySuffix, $context, $subKey, $defaultValue)
+        ;
     }
 
     public function getTranslatedDayName($context = null, string $keySuffix = '', $defaultValue = null): string
     {
         return $this->carbon
-            ->getTranslatedDayName($context, $keySuffix, $defaultValue);
+            ->getTranslatedDayName($context, $keySuffix, $defaultValue)
+        ;
     }
 
     public function getTranslatedShortDayName($context = null): string
     {
         return $this->carbon
-            ->getTranslatedShortDayName($context);
+            ->getTranslatedShortDayName($context)
+        ;
     }
 
     public function getTranslatedMinDayName($context = null): string
     {
         return $this->carbon
-            ->getTranslatedMinDayName($context);
+            ->getTranslatedMinDayName($context)
+        ;
     }
 
     public function getTranslatedMonthName($context = null, string $keySuffix = '', $defaultValue = null): string
     {
         return $this->carbon
-            ->getTranslatedMonthName($context, $keySuffix, $defaultValue);
+            ->getTranslatedMonthName($context, $keySuffix, $defaultValue)
+        ;
     }
 
     public function getTranslatedShortMonthName($context = null): string
     {
         return $this->carbon
-            ->getTranslatedShortMonthName($context);
+            ->getTranslatedShortMonthName($context)
+        ;
     }
 
     public function weekday($value = null): int
     {
         return $this->carbon
-            ->weekday($value);
+            ->weekday($value)
+        ;
     }
 
     public function isoWeekday($value = null): int
     {
         return $this->carbon
-            ->isoWeekday($value);
+            ->isoWeekday($value)
+        ;
     }
 
     public function getDaysFromStartOfWeek($weekStartsAt = null): int
     {
         return $this->carbon
-            ->getDaysFromStartOfWeek($weekStartsAt);
+            ->getDaysFromStartOfWeek($weekStartsAt)
+        ;
     }
 
     public function setDaysFromStartOfWeek(int $numberOfDays, $weekStartsAt = null): DateTimeInterface
@@ -3284,33 +3376,27 @@ final class DateTime implements DateTimeInterface
 
     public function getDays(): array
     {
-        return $this->carbon
-            ::getDays();
+        return $this->carbon::getDays();
     }
-
 
     public function getWeekStartsAt(): int
     {
-        return $this->carbon
-            ::getWeekStartsAt();
+        return $this->carbon::getWeekStartsAt();
     }
 
     public function getWeekEndsAt(): int
     {
-        return $this->carbon
-            ::getWeekEndsAt();
+        return $this->carbon::getWeekEndsAt();
     }
 
     public function getWeekendDays(): array
     {
-        return $this->carbon
-            ::getWeekendDays();
+        return $this->carbon::getWeekendDays();
     }
 
     public function hasRelativeKeywords(string $time): BoolEnum
     {
-        $hasRelativeKeywords = $this->carbon
-            ::hasRelativeKeywords($time);
+        $hasRelativeKeywords = $this->carbon::hasRelativeKeywords($time);
 
         return BoolEnum::fromBool($hasRelativeKeywords);
     }
@@ -3318,13 +3404,15 @@ final class DateTime implements DateTimeInterface
     public function getIsoFormats($locale = null): array
     {
         return $this->carbon
-            ->getIsoFormats($locale);
+            ->getIsoFormats($locale)
+        ;
     }
 
     public function getCalendarFormats($locale = null): array
     {
         return $this->carbon
-            ->getCalendarFormats($locale);
+            ->getCalendarFormats($locale)
+        ;
     }
 
     /**
@@ -3332,32 +3420,35 @@ final class DateTime implements DateTimeInterface
      */
     public function getIsoUnits()
     {
-        return $this->carbon
-            ::getIsoUnits();
+        return $this->carbon::getIsoUnits();
     }
 
     public function getPaddedUnit(string $unit, int $length = 2, string $padString = '0', int $padType = STR_PAD_LEFT): string
     {
         return $this->carbon
-            ->getPaddedUnit($unit, $length, $padString, $padType);
+            ->getPaddedUnit($unit, $length, $padString, $padType)
+        ;
     }
 
     public function ordinal(string $key, $period = null): string
     {
         return $this->carbon
-            ->ordinal($key, $period);
+            ->ordinal($key, $period)
+        ;
     }
 
     public function getAltNumber(string $key): string
     {
         return $this->carbon
-            ->getAltNumber($key);
+            ->getAltNumber($key)
+        ;
     }
 
     public function isoFormat(string $format, $originalFormat = null): string
     {
         return $this->carbon
-            ->isoFormat($format, $originalFormat);
+            ->isoFormat($format, $originalFormat)
+        ;
     }
 
     /**
@@ -3365,26 +3456,26 @@ final class DateTime implements DateTimeInterface
      */
     public function getFormatsToIsoReplacements()
     {
-        return $this->carbon
-            ::getFormatsToIsoReplacements();
+        return $this->carbon::getFormatsToIsoReplacements();
     }
 
     public function translatedFormat(string $format): string
     {
         return $this->carbon
-            ->translatedFormat($format);
+            ->translatedFormat($format)
+        ;
     }
 
     public function getOffsetString(string $separator = ':'): string
     {
         return $this->carbon
-            ->getOffsetString($separator);
+            ->getOffsetString($separator)
+        ;
     }
 
     public function executeStaticCallable($macro, ...$parameters)
     {
-        return $this->carbon
-            ::executeStaticCallable($macro, ...$parameters);
+        return $this->carbon::executeStaticCallable($macro, ...$parameters);
     }
 
     public function setUnit(string $unit, $value = null): DateTimeInterface
@@ -3396,20 +3487,19 @@ final class DateTime implements DateTimeInterface
 
     public function singularUnit(string $unit): string
     {
-        return $this->carbon
-            ::singularUnit($unit);
+        return $this->carbon::singularUnit($unit);
     }
 
     public function pluralUnit(string $unit): string
     {
-        return $this->carbon
-            ::pluralUnit($unit);
+        return $this->carbon::pluralUnit($unit);
     }
 
     public function executeCallable($macro, ...$parameters)
     {
         return $this->carbon
-            ->executeCallable($macro, ...$parameters);
+            ->executeCallable($macro, ...$parameters)
+        ;
     }
 
     public function executeCallableWithContext($macro, ...$parameters)
