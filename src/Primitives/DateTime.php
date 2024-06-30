@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Common\VO\DateTime;
+namespace Atournayre\Primitives;
 
 use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Null\NullTrait;
-use Atournayre\Primitives\BoolEnum;
 use Carbon\Carbon;
 
 final class DateTime implements DateTimeInterface

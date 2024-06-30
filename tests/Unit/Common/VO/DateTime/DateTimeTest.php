@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Unit\Common\VO\DateTime;
 
-use Atournayre\Common\VO\DateTime\DateTime;
+use Atournayre\Primitives\DateTime;
 use PHPUnit\Framework\TestCase;
 
 final class DateTimeTest extends TestCase

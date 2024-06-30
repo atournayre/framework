@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Atournayre\Common\VO\Context;
 
 use Atournayre\Common\Model\DefaultUser;
-use Atournayre\Common\VO\DateTime\DateTime;
 use Atournayre\Contracts\Context\ContextInterface;
 use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Contracts\Security\UserInterface;
 use Atournayre\Null\NullTrait;
+use Atournayre\Primitives\DateTime;
 
 final class Context implements ContextInterface, LoggableInterface
 {
