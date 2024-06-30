@@ -1262,12 +1262,14 @@ interface DateTimeInterface extends NullableInterface
 
     /**
      * @param string|null $locale
+     *
      * @return array<string, string>
      */
     public function getIsoFormats($locale = null): array;
 
     /**
      * @param string|null $locale
+     *
      * @return array<string, string|array<array<string|int>>>
      */
     public function getCalendarFormats($locale = null): array;
