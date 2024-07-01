@@ -99,7 +99,7 @@ A datetime must implement the `DateTimeInterface` interface.
 `DateTimeTrait` provides basic functionality to manipulate a datetime.
 
 ```php
-use Atournayre\Primitives\DateTimeTrait;
+use Atournayre\Primitives\Traits\DateTimeTrait;
 
 final class MyDateTime implements DateTimeInterface
 {
