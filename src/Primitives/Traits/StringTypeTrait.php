@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Primitives;
+namespace Atournayre\Primitives\Traits;
+
+use Atournayre\Primitives\BoolEnum;
+use Atournayre\Primitives\StringType;
 
 trait StringTypeTrait
 {

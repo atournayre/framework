@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Common\Types\File;
 
 use Atournayre\Primitives\BoolEnum;
-use Atournayre\Primitives\StringTypeTrait;
+use Atournayre\Primitives\Traits\StringTypeTrait;
 
 final class Content
 {
