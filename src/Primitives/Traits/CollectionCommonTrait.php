@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Primitives\Collection;
+namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Numeric;

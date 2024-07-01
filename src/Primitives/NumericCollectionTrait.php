@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives;
 
 use Atournayre\Common\Assert\Assert;
-use Atournayre\Primitives\Collection\CollectionCommonTrait;
+use Atournayre\Primitives\Traits\CollectionCommonTrait;
 
 trait NumericCollectionTrait
 {

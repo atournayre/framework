@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
-use Atournayre\Primitives\Collection\CollectionCommonTrait;
+use Atournayre\Primitives\Traits\CollectionCommonTrait;
 
 trait CollectionTrait
 {
