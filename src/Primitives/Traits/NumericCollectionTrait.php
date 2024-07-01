@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Primitives;
+namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Common\Assert\Assert;
-use Atournayre\Primitives\Traits\CollectionCommonTrait;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\Numeric;
 
 trait NumericCollectionTrait
 {
