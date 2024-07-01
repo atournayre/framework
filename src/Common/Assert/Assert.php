@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Assert;
 
+use Atournayre\Primitives\Primitive;
 use Webmozart\Assert\InvalidArgumentException;
 
 /**
@@ -11,33 +12,17 @@ use Webmozart\Assert\InvalidArgumentException;
  */
 final class Assert extends \Webmozart\Assert\Assert
 {
-    private const TYPE_STRING = 'string';
-
-    private const TYPE_INT = 'int';
-
-    private const TYPE_FLOAT = 'float';
-
-    private const TYPE_BOOL = 'bool';
-
-    private const TYPE_ARRAY = 'array';
-
-    private const TYPE_NULL = 'null';
-
-    private const TYPE_OBJECT = 'object';
-
-    private const TYPE_MIXED = 'mixed';
-
     /**
      * @var array|string[]
      */
     private static array $primitiveTypes = [
-        self::TYPE_STRING,
-        self::TYPE_INT,
-        self::TYPE_FLOAT,
-        self::TYPE_BOOL,
-        self::TYPE_ARRAY,
-        self::TYPE_NULL,
-        self::TYPE_OBJECT,
+        Primitive::STRING,
+        Primitive::INT,
+        Primitive::FLOAT,
+        Primitive::BOOL,
+        Primitive::ARRAY,
+        Primitive::NULL,
+        Primitive::OBJECT,
     ];
 
     /**
@@ -53,7 +38,7 @@ final class Assert extends \Webmozart\Assert\Assert
 
         Assert::isList($array, $message);
 
-        if (self::TYPE_MIXED === $classOrType) {
+        if (Primitive::MIXED === $classOrType) {
             return;
         }
 
@@ -79,7 +64,7 @@ final class Assert extends \Webmozart\Assert\Assert
 
         Assert::isMap($array, $message);
 
-        if (self::TYPE_MIXED === $classOrType) {
+        if (Primitive::MIXED === $classOrType) {
             return;
         }
 
@@ -100,25 +85,25 @@ final class Assert extends \Webmozart\Assert\Assert
     public static function isType($value, string $type, string $message = ''): void
     {
         switch ($type) {
-            case 'string':
+            case Primitive::STRING:
                 Assert::string($value, $message);
                 break;
-            case 'int':
+            case Primitive::INT:
                 Assert::integer($value, $message);
                 break;
-            case 'float':
+            case Primitive::FLOAT:
                 Assert::float($value, $message);
                 break;
-            case 'bool':
+            case Primitive::BOOL:
                 Assert::boolean($value, $message);
                 break;
-            case 'array':
+            case Primitive::ARRAY:
                 Assert::isArray($value, $message);
                 break;
-            case 'object':
+            case Primitive::OBJECT:
                 Assert::object($value, $message);
                 break;
-            case 'null':
+            case Primitive::NULL:
                 Assert::null($value, $message);
                 break;
             default:
