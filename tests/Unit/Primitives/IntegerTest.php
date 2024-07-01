@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Primitives;
+namespace Atournayre\Tests\Unit\Primitives;
 
 use Atournayre\Primitives\Int_;
 use PHPUnit\Framework\TestCase;
@@ -30,11 +30,13 @@ final class IntegerTest extends TestCase
         self::assertSame(1, $integer->value());
     }
 
+    // Remove when PHP 8.0 support will be added
     public function testFromFloat(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Integer::of() expects parameter 1 to be integer or string, double given');
 
+        // @phpstan-ignore-next-line
         Int_::of(1.1);
     }
 

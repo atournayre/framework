@@ -17,7 +17,6 @@ final class Int_
 
     /**
      * @param int|string|Int_ $value
-     * @return self
      */
     public static function of($value): self
     {
@@ -25,21 +24,31 @@ final class Int_
             return $value;
         }
 
+        // @phpstan-ignore-next-line Remove when PHP 8.0 support will be added
         Assert::false(is_float($value), 'Integer::of() expects parameter 1 to be integer or string, '.gettype($value).' given');
 
         return new self((int) $value);
     }
 
+    /**
+     * @api
+     */
     public function value(): int
     {
         return $this->value;
     }
 
+    /**
+     * @api
+     */
     public function toString(): string
     {
         return (string) $this->value;
     }
 
+    /**
+     * @api
+     */
     public function isPositive(): BoolEnum
     {
         $isPositive = $this->value > 0;
@@ -47,6 +56,9 @@ final class Int_
         return BoolEnum::fromBool($isPositive);
     }
 
+    /**
+     * @api
+     */
     public function isNegative(): BoolEnum
     {
         $isNegative = $this->value < 0;
@@ -54,22 +66,27 @@ final class Int_
         return BoolEnum::fromBool($isNegative);
     }
 
+    /**
+     * @api
+     */
     public function isZero(): BoolEnum
     {
-        $isZero = $this->value === 0;
-
-        return BoolEnum::fromBool($isZero);
+        return $this->equalsTo(0);
     }
 
+    /**
+     * @api
+     */
     public function abs(): self
     {
         return Int_::of(abs($this->value));
     }
 
     /**
+     * @api
+     *
      * @param int|Int_ $of
      * @param int|Int_ $of1
-     * @return BoolEnum
      */
     public function between($of, $of1): BoolEnum
     {
@@ -83,9 +100,10 @@ final class Int_
     }
 
     /**
+     * @api
+     *
      * @param Int_|int $of
      * @param Int_|int $of1
-     * @return BoolEnum
      */
     public function betweenOrEqual($of, $of1): BoolEnum
     {
@@ -98,23 +116,30 @@ final class Int_
         return BoolEnum::fromBool($betweenOrEqual);
     }
 
+    /**
+     * @api
+     */
     public function isEven(): BoolEnum
     {
-        $isEven = $this->value % 2 === 0;
+        $isEven = 0 === $this->value % 2;
 
         return BoolEnum::fromBool($isEven);
     }
 
+    /**
+     * @api
+     */
     public function isOdd(): BoolEnum
     {
-        $isOdd = $this->value % 2 !== 0;
+        $isOdd = 0 !== $this->value % 2;
 
         return BoolEnum::fromBool($isOdd);
     }
 
     /**
+     * @api
+     *
      * @param int|Int_ $of
-     * @return BoolEnum
      */
     public function greaterThan($of): BoolEnum
     {
@@ -125,8 +150,9 @@ final class Int_
     }
 
     /**
+     * @api
+     *
      * @param int|Int_ $of
-     * @return BoolEnum
      */
     public function greaterThanOrEqual($of): BoolEnum
     {
@@ -137,8 +163,9 @@ final class Int_
     }
 
     /**
+     * @api
+     *
      * @param int|Int_ $of
-     * @return BoolEnum
      */
     public function lessThan($of): BoolEnum
     {
@@ -149,8 +176,9 @@ final class Int_
     }
 
     /**
+     * @api
+     *
      * @param int|Int_ $of
-     * @return BoolEnum
      */
     public function lessThanOrEqual($of): BoolEnum
     {
@@ -161,8 +189,9 @@ final class Int_
     }
 
     /**
+     * @api
+     *
      * @param int|Int_ $of
-     * @return BoolEnum
      */
     public function equalsTo($of): BoolEnum
     {

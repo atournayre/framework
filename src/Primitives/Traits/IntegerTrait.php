@@ -17,7 +17,6 @@ trait IntegerTrait
 
     /**
      * @param int|string|Int_ $value
-     * @return self
      */
     public static function of($value): self
     {
