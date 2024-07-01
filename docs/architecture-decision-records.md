@@ -16,3 +16,4 @@
 | [ADR 0012](adr/ADR-0012-Wrappers.md)          | Wrappers                | 2024-06-26 | Accepted | Wrappers                                               |
 | [ADR 0013](adr/ADR-0013-Collection.md)        | Collection              | 2024-06-29 | Accepted | Refactor collection using composition                  |
 | [ADR 0014](adr/ADR-0014-DateTimeWrapper.md)   | DateTime Wrapper        | 2024-06-30 | Accepted | Refactor DateTime to wrap Carbon                       |
+| [ADR 0015](adr/ADR-0015-Integer.md)           | Integer type            | 2024-07-01 | Accepted | Integer type                                           |
