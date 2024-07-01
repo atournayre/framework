@@ -10,7 +10,7 @@ use Atournayre\Contracts\Collection\ListInterface;
 use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection;
-use Atournayre\Primitives\CollectionTrait;
+use Atournayre\Primitives\Traits\CollectionTrait;
 use Atournayre\Wrapper\SplFileInfo;
 
 final class FileCollection implements LoggableInterface, ListInterface, MapInterface

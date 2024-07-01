@@ -10,7 +10,7 @@ use Atournayre\Contracts\Collection\ListInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
-use Atournayre\Primitives\CollectionTrait;
+use Atournayre\Primitives\Traits\CollectionTrait;
 
 final class EmailContactCollection implements LoggableInterface, ListInterface
 {

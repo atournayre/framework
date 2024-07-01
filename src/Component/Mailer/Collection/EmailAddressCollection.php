@@ -9,7 +9,7 @@ use Atournayre\Component\Mailer\Types\EmailAddress;
 use Atournayre\Contracts\Collection\ListInterface;
 use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Primitives\Collection;
-use Atournayre\Primitives\CollectionTrait;
+use Atournayre\Primitives\Traits\CollectionTrait;
 
 final class EmailAddressCollection implements ListInterface, MapInterface
 {

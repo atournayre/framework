@@ -9,7 +9,7 @@ use Atournayre\Common\VO\Event;
 use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
-use Atournayre\Primitives\CollectionTrait;
+use Atournayre\Primitives\Traits\CollectionTrait;
 
 final class EventCollection implements MapInterface
 {
