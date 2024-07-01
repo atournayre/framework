@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Primitives\Collection;
 
-use Atournayre\Common\VO\DateTime\DateTime;
 use Atournayre\Primitives\Collection\DateTimeCollection;
+use Atournayre\Primitives\DateTime;
 use PHPUnit\Framework\TestCase;
 
 class DateTimeCollectionTest extends TestCase

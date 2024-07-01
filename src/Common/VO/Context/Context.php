@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Atournayre\Common\VO\Context;
 
 use Atournayre\Common\Model\DefaultUser;
-use Atournayre\Common\VO\DateTime\DateTime;
 use Atournayre\Contracts\Context\ContextInterface;
 use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Contracts\Security\UserInterface;
 use Atournayre\Null\NullTrait;
+use Atournayre\Primitives\DateTime;
 
 final class Context implements ContextInterface, LoggableInterface
 {
@@ -18,11 +18,11 @@ final class Context implements ContextInterface, LoggableInterface
 
     private UserInterface $user;
 
-    private DateTime $createdAt;
+    private DateTimeInterface $createdAt;
 
     private function __construct(
         UserInterface $user,
-        DateTime $createdAt
+        DateTimeInterface $createdAt
     ) {
         $this->createdAt = $createdAt;
         $this->user = $user;
@@ -40,7 +40,7 @@ final class Context implements ContextInterface, LoggableInterface
      */
     public static function create(UserInterface $user, \DateTimeInterface $createdAt): self
     {
-        return new self($user, DateTime::fromInterface($createdAt));
+        return new self($user, DateTime::of($createdAt));
     }
 
     public function user(): UserInterface

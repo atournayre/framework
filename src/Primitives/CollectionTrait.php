@@ -16,12 +16,4 @@ trait CollectionTrait
     {
         $this->collection = $collection;
     }
-
-    /**
-     * @param array<int|string, mixed> $collection
-     */
-    public static function of(array $collection): self
-    {
-        return new self(Collection::of($collection));
-    }
 }

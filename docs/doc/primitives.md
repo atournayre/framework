@@ -86,4 +86,23 @@ This library provides a `Numeric` class to manipulate numeric values.
 - `between(min: \Atournayre\Primitives\Numeric|int, max: \Atournayre\Primitives\Numeric|int): BoolEnum`
 - `betweenOrEqual(min: \Atournayre\Primitives\Numeric|int, max: \Atournayre\Primitives\Numeric|int): BoolEnum`
 
+# DateTime
 
+This library provides a `DateTime` class to manipulate date and time values.
+
+## Create a typed DateTime
+
+### Create a class that implements interface
+A datetime must implement the `DateTimeInterface` interface.
+
+### Use a trait to provide basic functionality
+`DateTimeTrait` provides basic functionality to manipulate a datetime.
+
+```php
+use Atournayre\Primitives\DateTimeTrait;
+
+final class MyDateTime implements DateTimeInterface
+{
+    use DateTimeTrait;
+}
+```
