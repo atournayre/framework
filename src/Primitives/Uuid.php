@@ -40,8 +40,6 @@ final class Uuid
     }
 
     /**
-     * @param Uuid $uuid
-     * @return BoolEnum
      * @api
      */
     public function equalsTo(self $uuid): BoolEnum

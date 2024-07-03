@@ -33,8 +33,6 @@ final class Ulid
     }
 
     /**
-     * @param Ulid $ulid
-     * @return BoolEnum
      * @api
      */
     public function equalsTo(self $ulid): BoolEnum
@@ -56,6 +54,7 @@ final class Ulid
 
     /**
      * @throws \Exception
+     *
      * @api
      */
     public function getDateTime(): DateTimeInterface
