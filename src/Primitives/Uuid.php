@@ -15,11 +15,17 @@ final class Uuid
         $this->uuid = $uuid;
     }
 
+    /**
+     * @api
+     */
     public static function of(string $string): Uuid
     {
         return new self(SymfonyUuid::fromString($string));
     }
 
+    /**
+     * @api
+     */
     public static function v4(): self
     {
         return new self(SymfonyUuid::v4());

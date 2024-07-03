@@ -1,0 +1,65 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Atournayre\Primitives;
+
+use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Symfony\Component\Uid\Ulid as SymfonyUlid;
+
+final class Ulid
+{
+    private SymfonyUlid $ulid;
+
+    private function __construct(SymfonyUlid $ulid)
+    {
+        $this->ulid = $ulid;
+    }
+
+    /**
+     * @api
+     */
+    public static function of(?string $string = null): Ulid
+    {
+        return new self(new SymfonyUlid($string));
+    }
+
+    /**
+     * @api
+     */
+    public function toString(): string
+    {
+        return $this->ulid->toBase32();
+    }
+
+    /**
+     * @param Ulid $ulid
+     * @return BoolEnum
+     * @api
+     */
+    public function equalsTo(self $ulid): BoolEnum
+    {
+        $equalsTo = $this->ulid->equals($ulid->ulid);
+
+        return BoolEnum::fromBool($equalsTo);
+    }
+
+    /**
+     * @api
+     */
+    public function toRfc4122(): StringType
+    {
+        $rfc4122 = $this->ulid->toRfc4122();
+
+        return StringType::of($rfc4122);
+    }
+
+    /**
+     * @throws \Exception
+     * @api
+     */
+    public function getDateTime(): DateTimeInterface
+    {
+        return DateTime::of($this->ulid->getDateTime());
+    }
+}

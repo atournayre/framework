@@ -22,6 +22,9 @@ trait UuidTrait
         return new self(Uuid::of($string));
     }
 
+    /**
+     * @api
+     */
     public static function v4(): self
     {
         return new self(Uuid::v4());
