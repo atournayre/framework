@@ -68,6 +68,28 @@ BoolEnum::fromBool(true)
     ->throwIfFalse('This is false') // do nothing
     ->throwIfTrue('This is true') // throw an exception
 ```
+
+# Integer
+
+This library provides a `Int_` class to manipulate integer values.
+
+- `of(value: int|string|Int_): Int_`
+- `value(): int`
+- `toString(): string`
+- `isPositive(): BoolEnum`
+- `isNegative(): BoolEnum`
+- `isZero(): BoolEnum`
+- `abs(): Int_`
+- `between(min: Int_|int, max: Int_|int): BoolEnum`
+- `betweenOrEqual(min: Int_|int, max: Int_|int): BoolEnum`
+- `isEven(): BoolEnum`
+- `isOdd(): BoolEnum`
+- `greaterThan(int: Int_|int): BoolEnum`
+- `greaterThanOrEqual(int: Int_|int): BoolEnum`
+- `lessThan(int: Int_|int): BoolEnum`
+- `lessThanOrEqual(int: Int_|int): BoolEnum`
+- `equalsTo(int: Int_|int): BoolEnum`
+
 # Numeric
 
 This library provides a `Numeric` class to manipulate numeric values.
@@ -99,7 +121,7 @@ A datetime must implement the `DateTimeInterface` interface.
 `DateTimeTrait` provides basic functionality to manipulate a datetime.
 
 ```php
-use Atournayre\Primitives\DateTimeTrait;
+use Atournayre\Primitives\Traits\DateTimeTrait;
 
 final class MyDateTime implements DateTimeInterface
 {

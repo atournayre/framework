@@ -6,7 +6,7 @@ namespace Atournayre\Tests\Fixtures\Collection;
 
 use Atournayre\Contracts\Collection\NumericListInterface;
 use Atournayre\Contracts\Collection\NumericMapInterface;
-use Atournayre\Primitives\NumericCollectionTrait;
+use Atournayre\Primitives\Traits\NumericCollectionTrait;
 
 final class PriceCollection implements NumericListInterface, NumericMapInterface
 {

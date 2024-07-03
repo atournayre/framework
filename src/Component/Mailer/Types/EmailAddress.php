@@ -8,7 +8,7 @@ use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\Types\Domain;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\StringType;
-use Atournayre\Primitives\StringTypeTrait;
+use Atournayre\Primitives\Traits\StringTypeTrait;
 
 /**
  * Represents an e-mail address.

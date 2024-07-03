@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Fixtures;
 
-use Atournayre\Primitives\NumericTrait;
+use Atournayre\Primitives\Traits\NumericTrait;
 
 final class Price
 {

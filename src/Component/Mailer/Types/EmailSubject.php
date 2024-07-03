@@ -8,7 +8,7 @@ use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Null\NullableInterface;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\StringType;
-use Atournayre\Primitives\StringTypeTrait;
+use Atournayre\Primitives\Traits\StringTypeTrait;
 
 final class EmailSubject implements NullableInterface
 {

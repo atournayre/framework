@@ -37,6 +37,7 @@ quality: ## Run Swiss Knife
 	@$(PHP) vendor/bin/swiss-knife privatize-constants src tests \
 		--exclude-path=src/Primitives/Locale.php \
 		--exclude-path=src/Primitives/StringType.php \
+		--exclude-path=src/Primitives/Primitive.php \
 		--exclude-path=src/Contracts/Session/FlashBagInterface.php \
 		--exclude-path=src/Contracts/Routing/RoutingInterface.php
 #	@$(PHP) vendor/bin/swiss-knife finalize-classes src tests --skip-mocked

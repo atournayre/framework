@@ -34,7 +34,8 @@
         "twig/twig": "^3.10",
         "symfony/dependency-injection": "^5.4",
         "symfony/mailer": "^5.4",
-        "symfony/twig-bridge": "^5.4"
+        "symfony/twig-bridge": "^5.4",
+        "symfony/uid": "^5.4"
     },
     "autoload": {
         "psr-4": {

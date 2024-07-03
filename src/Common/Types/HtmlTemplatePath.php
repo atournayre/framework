@@ -6,7 +6,7 @@ namespace Atournayre\Common\Types;
 
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\StringType;
-use Atournayre\Primitives\StringTypeTrait;
+use Atournayre\Primitives\Traits\StringTypeTrait;
 
 /**
  * Represents an HTML template path.

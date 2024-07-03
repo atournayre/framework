@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Primitives;
+namespace Atournayre\Primitives\Traits;
 
-use Atournayre\Primitives\Collection\CollectionCommonTrait;
+use Atournayre\Primitives\Collection;
 
 trait CollectionTrait
 {

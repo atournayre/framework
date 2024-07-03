@@ -8,7 +8,7 @@ use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Collection\ListInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
-use Atournayre\Primitives\CollectionTrait;
+use Atournayre\Primitives\Traits\CollectionTrait;
 
 final class AllowedEventsTypesCollection implements ListInterface
 {

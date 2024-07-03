@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Primitives;
+namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Null\NullTrait;
+use Atournayre\Primitives\BoolEnum;
+use Atournayre\Primitives\DateTime;
 use Carbon\Carbon;
 
 trait DateTimeTrait

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Component\Mailer\Types;
 
 use Atournayre\Common\VO\Memory;
-use Atournayre\Primitives\NumericTrait;
+use Atournayre\Primitives\Traits\NumericTrait;
 
 final class AttachmentMaxSize
 {
