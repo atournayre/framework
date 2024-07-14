@@ -31,7 +31,7 @@
         "nesbot/carbon": "^2.72",
         "symfony/routing": "^5.4",
         "symfony/http-foundation": "^5.4",
-        "twig/twig": "^3.10",
+        "twig/twig": "^2.13|^3.0.4",
         "symfony/dependency-injection": "^5.4",
         "symfony/mailer": "^5.4",
         "symfony/twig-bridge": "^5.4",
