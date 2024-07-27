@@ -16,6 +16,7 @@ Available traits are:
 - `CollectionCommonTrait` to provide the basic functionality to interact with the group of objects.
 - `CollectionTrait` to provide the basic functionality to create a collection of objects.
 - `NumericCollectionTrait` to provide the basic functionality to create a collection of numeric objects.
+- `StaticCollectionTrait` to provide the basic functionality to create a static collection of objects.
 
 ### Assertions
 Use assertions to validate the type of objects in the collection when creating named constructors.
