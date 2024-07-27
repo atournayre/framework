@@ -13,6 +13,7 @@ use Symfony\Component\Mime\Email as SymfonyEmail;
 class EmailAdapter
 {
     /**
+     * @api
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
