@@ -1399,10 +1399,11 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function join()
+    public function join(string $glue = ''): string
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->values()
+            ->join($glue);
     }
 
     /**
