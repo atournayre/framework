@@ -9,7 +9,7 @@ use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\StaticCollectionTrait;
 
-class CodeCollection implements MapInterface, ListInterface
+final class CodeCollection implements MapInterface, ListInterface
 {
     use StaticCollectionTrait;
 

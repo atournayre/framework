@@ -12,14 +12,12 @@ class StaticCollectionTest extends TestCase
     public function testCreateMapWithoutParameters(): void
     {
         $staticCollection = CodeCollection::asMap();
-        self::assertInstanceOf(CodeCollection::class, $staticCollection);
         self::assertSame(['key1' => 'value1', 'key2' => 'value2'], $staticCollection->toArray());
     }
 
     public function testCreateListWithoutParameters(): void
     {
         $staticCollection = CodeCollection::asList();
-        self::assertInstanceOf(CodeCollection::class, $staticCollection);
         self::assertSame(['value1', 'value2'], $staticCollection->toArray());
     }
 
