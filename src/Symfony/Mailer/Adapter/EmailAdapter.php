@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\Symfony\Mailer\Service\Adapter;
+namespace Atournayre\Symfony\Mailer\Adapter;
 
 use Atournayre\Component\Mailer\Collection\EmailContactCollection;
 use Atournayre\Component\Mailer\VO\Email;
