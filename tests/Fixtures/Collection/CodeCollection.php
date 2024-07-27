@@ -34,6 +34,9 @@ final class CodeCollection implements MapInterface, ListInterface
         return new self(Collection::of($collection));
     }
 
+    /**
+     * @api
+     */
     public function join(string $glue = ''): string
     {
         return $this->collection
