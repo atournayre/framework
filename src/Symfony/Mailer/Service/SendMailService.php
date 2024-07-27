@@ -7,8 +7,8 @@ namespace Atournayre\Symfony\Mailer\Service;
 use Atournayre\Component\Mailer\VO\Email;
 use Atournayre\Component\Mailer\VO\TemplatedEmail;
 use Atournayre\Contracts\Mailer\SendMailInterface;
-use Atournayre\Symfony\Mailer\Service\Adapter\EmailAdapter;
-use Atournayre\Symfony\Mailer\Service\Adapter\TemplatedEmailAdapter;
+use Atournayre\Symfony\Mailer\Adapter\EmailAdapter;
+use Atournayre\Symfony\Mailer\Adapter\TemplatedEmailAdapter;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\RawMessage;
 
