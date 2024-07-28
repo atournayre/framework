@@ -140,4 +140,14 @@ trait CollectionCommonTrait
 
         return $clone;
     }
+
+    /**
+     * @return array-key[]
+     */
+    public function keys(): array
+    {
+        return $this->collection
+            ->keys()
+        ;
+    }
 }
