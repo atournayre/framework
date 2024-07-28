@@ -235,11 +235,14 @@ final class Collection
      * Returns all keys.
      *
      * @api
+     * @return array-key[]
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function keys()
+    public function keys(): array
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->keys()
+            ->toArray()
+        ;
     }
 
     /**
@@ -1489,10 +1492,11 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function rekey()
+    public function rekey(callable $callback): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $map = $this->collection->rekey($callback);
+
+        return new self($map);
     }
 
     /**
