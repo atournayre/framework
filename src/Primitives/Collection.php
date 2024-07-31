@@ -1069,10 +1069,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function every()
+    public function every(\Closure $callback): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $every = $this->collection
+            ->every($callback);
+
+        return BoolEnum::fromBool($every);
     }
 
     /**

@@ -150,14 +150,16 @@ trait NumericTrait
         return $this->value->betweenOrEqual($min, $max);
     }
 
-    public static function fromInt(int $value, int $precision): Numeric
+    public static function fromInt(int $value, int $precision): self
     {
-        return Numeric::fromInt($value, $precision);
+        $numeric = Numeric::fromInt($value, $precision);
+        return new self($numeric);
     }
 
-    public static function fromFloat(float $value): Numeric
+    public static function fromFloat(float $value): self
     {
-        return Numeric::fromFloat($value);
+        $numeric = Numeric::fromFloat($value);
+        return new self($numeric);
     }
 
     /**

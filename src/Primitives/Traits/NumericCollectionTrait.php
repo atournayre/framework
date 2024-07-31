@@ -32,7 +32,10 @@ trait NumericCollectionTrait
         return new self(Collection::of($collection), $precision);
     }
 
-    public function add(Numeric $numeric): self
+    /**
+     * @param mixed $numeric
+     */
+    public function add($numeric): self
     {
         Assert::same($numeric->precision(), $this->precision, 'Precisions must be the same.');
 
@@ -53,11 +56,11 @@ trait NumericCollectionTrait
         }
 
         if ($this->hasOneElement()->isTrue()) {
-            return $this->first();
+            return Numeric::of($this->first()->value(), $this->precision);
         }
 
         $sum = $this->collection
-            ->map(static fn (Numeric $value) => $value->intValue())
+            ->map(static fn ($value) => $value->intValue())
             ->sum()
         ;
 
@@ -73,11 +76,13 @@ trait NumericCollectionTrait
         }
 
         if ($this->hasOneElement()->isTrue()) {
-            return $this->first();
+            return Numeric::of($this->first()->value(), $this->precision);
         }
 
+        $this->validateCollection();
+
         $avg = $this->collection
-            ->map(static fn (Numeric $value) => $value->intValue())
+            ->map(static fn ($value) => $value->intValue())
             ->avg()
         ;
 
@@ -93,11 +98,13 @@ trait NumericCollectionTrait
         }
 
         if ($this->hasOneElement()->isTrue()) {
-            return $this->first();
+            return Numeric::of($this->first()->value(), $this->precision);
         }
 
+        $this->validateCollection();
+
         $max = $this->collection
-            ->map(static fn (Numeric $value) => $value->intValue())
+            ->map(static fn ($value) => $value->intValue())
             ->max()
         ;
 
@@ -113,16 +120,26 @@ trait NumericCollectionTrait
         }
 
         if ($this->hasOneElement()->isTrue()) {
-            return $this->first();
+            return Numeric::of($this->first()->value(), $this->precision);
         }
 
+        $this->validateCollection();
+
         $min = $this->collection
-            ->map(static fn (Numeric $value) => $value->intValue())
+            ->map(static fn ($value) => $value->intValue())
             ->min()
         ;
 
         $minValue = $min->value() / (10 ** $this->precision);
 
         return Numeric::of($minValue, $this->precision);
+    }
+
+    private function validateCollection(): void
+    {
+        $every = $this->collection
+            ->every(static fn($element) => method_exists($element, 'value'));
+
+        Assert::true($every->isTrue(), 'All elements must be Numeric.');
     }
 }
