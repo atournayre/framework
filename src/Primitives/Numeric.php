@@ -250,4 +250,12 @@ final class Numeric
     {
         return Numeric::of($value, $precision);
     }
+
+    public function isZero(): BoolEnum
+    {
+        $isZero = $this->equalTo(0)
+            ->isTrue();
+
+        return BoolEnum::fromBool($isZero);
+    }
 }
