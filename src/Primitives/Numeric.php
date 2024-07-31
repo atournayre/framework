@@ -246,6 +246,9 @@ final class Numeric
         return BoolEnum::fromBool($between);
     }
 
+    /**
+     * @api
+     */
     public static function fromInt(int $value, int $precision): Numeric
     {
         return Numeric::of($value, $precision);

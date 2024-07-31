@@ -159,4 +159,12 @@ trait NumericTrait
     {
         return Numeric::fromFloat($value);
     }
+
+    /**
+     * @api
+     */
+    public function isZero(): BoolEnum
+    {
+        return $this->value->isZero();
+    }
 }
