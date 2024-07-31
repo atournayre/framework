@@ -175,4 +175,10 @@ final class NumericTest extends TestCase
         self::assertEquals(2, $number->precision());
         self::assertEquals(1.23, $number->value());
     }
+
+    public function testIsZero(): void
+    {
+        $number = Numeric::of(0);
+        self::assertTrue($number->isZero()->yes());
+    }
 }
