@@ -251,6 +251,9 @@ final class Numeric
         return Numeric::of($value, $precision);
     }
 
+    /**
+     * @api
+     */
     public function isZero(): BoolEnum
     {
         $isZero = $this->equalTo(0)
