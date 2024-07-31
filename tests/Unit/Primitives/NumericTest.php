@@ -176,7 +176,6 @@ final class NumericTest extends TestCase
         self::assertEquals(1.23, $number->value());
     }
 
-    // isZero
     public function testIsZero(): void
     {
         $number = Numeric::of(0);
