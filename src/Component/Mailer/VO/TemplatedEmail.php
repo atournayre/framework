@@ -9,8 +9,9 @@ use Atournayre\Common\Collection\Validation\ValidationCollection;
 use Atournayre\Common\Types\HtmlTemplatePath;
 use Atournayre\Common\Types\TextTemplatePath;
 use Atournayre\Component\Mailer\Types\EmailSubject;
+use Atournayre\Contracts\Types\TypeValidationInterface;
 
-final class TemplatedEmail extends Email
+final class TemplatedEmail extends Email implements TypeValidationInterface
 {
     public HtmlTemplatePath $htmlTemplatePath;
 

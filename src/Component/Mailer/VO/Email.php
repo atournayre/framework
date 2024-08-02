@@ -11,10 +11,11 @@ use Atournayre\Component\Mailer\Types\EmailHtml;
 use Atournayre\Component\Mailer\Types\EmailSubject;
 use Atournayre\Component\Mailer\Types\EmailText;
 use Atournayre\Contracts\Log\LoggableInterface;
+use Atournayre\Contracts\Types\TypeValidationInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\FileCollection;
 
-class Email implements LoggableInterface
+class Email implements LoggableInterface, TypeValidationInterface
 {
     private EmailContactCollection $to;
 
