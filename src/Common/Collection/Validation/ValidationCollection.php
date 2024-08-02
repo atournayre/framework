@@ -28,4 +28,11 @@ final class ValidationCollection implements MapInterface
     {
         return $this->hasNoElement();
     }
+
+    public function toString(string $glue = ', '): string
+    {
+        return $this->collection
+            ->join($glue)
+        ;
+    }
 }

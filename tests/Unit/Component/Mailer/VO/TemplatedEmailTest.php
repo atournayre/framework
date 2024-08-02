@@ -138,5 +138,6 @@ final class TemplatedEmailTest extends TestCase
         $email = TemplatedEmail::create($subject, $emailContact);
 
         self::assertTrue($email->validate()->isValid()->isFalse());
+        self::assertSame('validation.templated_email.template.empty', $email->validate()->toString());
     }
 }
