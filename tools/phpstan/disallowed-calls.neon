@@ -34,6 +34,8 @@ parameters:
                 - 'ucfirst()'
                 - 'ucwords()'
             message: 'use Symfony\Component\String\u() instead, because it is more secure and toString() performs assertion'
+            allowIn:
+                - tests/*
         -
             function:
                 - 'printr()'
@@ -151,6 +153,7 @@ parameters:
                 - 'usort'
             message: 'consider using Collections'
             allowIn:
+                - tests/*
                 - 'src/Common/Assert/Assert.php'
                 - 'src/Primitives/Collection/AbstractCollection.php'
                 - 'src/Primitives/StringType.php'

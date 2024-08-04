@@ -29,6 +29,9 @@ final class ValidationCollection implements MapInterface
         return $this->hasNoElement();
     }
 
+    /**
+     * @api
+     */
     public function toString(string $glue = ', '): string
     {
         return $this->collection

@@ -33,7 +33,7 @@ trait NumericCollectionTrait
     }
 
     /**
-     * @param mixed $numeric
+     * @param mixed $numeric the numeric value to add
      */
     public function add($numeric): self
     {
@@ -138,7 +138,8 @@ trait NumericCollectionTrait
     private function validateCollection(): void
     {
         $every = $this->collection
-            ->every(static fn($element) => method_exists($element, 'value'));
+            ->every(static fn ($element) => method_exists($element, 'value'))
+        ;
 
         Assert::true($every->isTrue(), 'All elements must be Numeric.');
     }

@@ -40,6 +40,7 @@ final class CodeCollection implements MapInterface, ListInterface
     public function join(string $glue = ''): string
     {
         return $this->collection
-            ->join($glue);
+            ->join($glue)
+        ;
     }
 }

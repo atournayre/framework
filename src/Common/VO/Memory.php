@@ -77,7 +77,7 @@ final class Memory
         $value = $this->bytes;
         $unit = 0;
 
-        while ($value >= self::KB && $unit < $units->count()->intValue() - 1) {
+        while ($value >= self::KB && $unit < $units->count()->value() - 1) {
             $value /= self::KB;
             ++$unit;
         }

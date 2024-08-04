@@ -14,7 +14,7 @@ final class NumericCollectionTest extends TestCase
     {
         $collection = PriceCollection::asList([Price::fromInt(1, 2)], 2);
         $newCollection = $collection->add(Price::fromInt(2, 2));
-        self::assertTrue($newCollection->count()->equalTo(2)->isTrue());
+        self::assertTrue($newCollection->count()->equalsTo(2)->isTrue());
     }
 
     public function testAddWithDifferentPrecision(): void

@@ -14,6 +14,7 @@ class EmailAdapter
 {
     /**
      * @api
+     *
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
