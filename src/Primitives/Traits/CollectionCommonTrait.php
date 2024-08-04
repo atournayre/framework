@@ -15,7 +15,8 @@ trait CollectionCommonTrait
     public function count(): Int_
     {
         return $this->collection
-            ->count();
+            ->count()
+        ;
     }
 
     /**

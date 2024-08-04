@@ -31,8 +31,6 @@ final class ValidationCollection implements MapInterface
 
     /**
      * @api
-     * @param string $glue
-     * @return string
      */
     public function toString(string $glue = ', '): string
     {

@@ -260,7 +260,8 @@ final class Numeric
     public function isZero(): BoolEnum
     {
         $isZero = $this->equalTo(0)
-            ->isTrue();
+            ->isTrue()
+        ;
 
         return BoolEnum::fromBool($isZero);
     }

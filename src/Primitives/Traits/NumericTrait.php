@@ -153,12 +153,14 @@ trait NumericTrait
     public static function fromInt(int $value, int $precision): self
     {
         $numeric = Numeric::fromInt($value, $precision);
+
         return new self($numeric);
     }
 
     public static function fromFloat(float $value): self
     {
         $numeric = Numeric::fromFloat($value);
+
         return new self($numeric);
     }
 
