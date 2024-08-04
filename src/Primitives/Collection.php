@@ -8,6 +8,7 @@ use Aimeos\Map as AimeosMap;
 use Atournayre\Primitives\Traits\Collection\AccessCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\AddCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\AggregateCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\CountableCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\CreateCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\DebugCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\MiscCollectionTrait;
@@ -21,6 +22,7 @@ final class Collection
     use AccessCollectionTrait;
     use AddCollectionTrait;
     use AggregateCollectionTrait;
+    use CountableCollectionTrait;
     use CreateCollectionTrait;
     use DebugCollectionTrait;
     use MiscCollectionTrait;

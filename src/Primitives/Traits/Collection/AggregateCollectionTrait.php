@@ -22,34 +22,6 @@ trait AggregateCollectionTrait
     }
 
     /**
-     * Returns the total number of elements.
-     *
-     * @api
-     */
-    public function count(): Int_
-    {
-        $count = $this->collection->count();
-
-        return Int_::of($count);
-    }
-
-    /**
-     * Counts how often the same values are in the map.
-     *
-     * @param callable|null $callback Function with (value, key) parameters which returns the value to use for counting
-     *
-     * @api
-     */
-    public function countBy(?callable $callback = null): self
-    {
-        $countBy = $this->collection
-            ->countBy($callback)
-        ;
-
-        return new self($countBy);
-    }
-
-    /**
      * Returns the maximum value of all elements.
      *
      * @api
