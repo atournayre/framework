@@ -23,7 +23,7 @@ class DateTimeCollectionTest extends TestCase
             DateTime::of('2021-01-01'),
         ])->sortAsc();
 
-        self::assertTrue($collection->count()->equalTo(5)->isTrue());
+        self::assertTrue($collection->count()->equalsTo(5)->isTrue());
         self::assertEquals(DateTime::of('2021-01-01'), $collection->first());
         self::assertEquals(DateTime::of('2021-01-05'), $collection->last());
     }
@@ -41,7 +41,7 @@ class DateTimeCollectionTest extends TestCase
             DateTime::of('2021-01-05'),
         ])->sortDesc();
 
-        self::assertTrue($collection->count()->equalTo(5)->isTrue());
+        self::assertTrue($collection->count()->equalsTo(5)->isTrue());
         self::assertEquals(DateTime::of('2021-01-05'), $collection->first());
         self::assertEquals(DateTime::of('2021-01-01'), $collection->last());
     }
@@ -93,7 +93,7 @@ class DateTimeCollectionTest extends TestCase
 
         $dates = $collection->between(DateTime::of('2021-01-02'), DateTime::of('2021-01-04'));
 
-        self::assertTrue($dates->count()->equalTo(3)->isTrue());
+        self::assertTrue($dates->count()->equalsTo(3)->isTrue());
         self::assertEquals(DateTime::of('2021-01-02'), $dates->offsetGet(0));
         self::assertEquals(DateTime::of('2021-01-03'), $dates->offsetGet(1));
         self::assertEquals(DateTime::of('2021-01-04'), $dates->offsetGet(2));
@@ -114,7 +114,7 @@ class DateTimeCollectionTest extends TestCase
 
         $dates = $collection->before(DateTime::of('2021-01-03'));
 
-        self::assertTrue($dates->count()->equalTo(2)->isTrue());
+        self::assertTrue($dates->count()->equalsTo(2)->isTrue());
         self::assertEquals(DateTime::of('2021-01-01'), $dates->offsetGet(0));
         self::assertEquals(DateTime::of('2021-01-02'), $dates->offsetGet(1));
     }
@@ -134,7 +134,7 @@ class DateTimeCollectionTest extends TestCase
 
         $dates = $collection->after(DateTime::of('2021-01-03'));
 
-        self::assertTrue($dates->count()->equalTo(2)->isTrue());
+        self::assertTrue($dates->count()->equalsTo(2)->isTrue());
         self::assertEquals(DateTime::of('2021-01-04'), $dates->offsetGet(0));
         self::assertEquals(DateTime::of('2021-01-05'), $dates->offsetGet(1));
     }

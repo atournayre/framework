@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Primitives\BoolEnum;
-use Atournayre\Primitives\Numeric;
+use Atournayre\Primitives\Int_;
 
 /**
  * @internal
  */
 trait CollectionCommonTrait
 {
-    public function count(): Numeric
+    public function count(): Int_
     {
-        return $this->collection->count();
+        return $this->collection
+            ->count();
     }
 
     /**
@@ -84,21 +85,21 @@ trait CollectionCommonTrait
     public function hasNoElement(): BoolEnum
     {
         return $this->count()
-            ->equalTo(0)
+            ->equalsTo(0)
         ;
     }
 
     public function hasOneElement(): BoolEnum
     {
         return $this->count()
-            ->equalTo(1)
+            ->equalsTo(1)
         ;
     }
 
     public function hasXElements(int $int): BoolEnum
     {
         return $this->count()
-            ->equalTo($int)
+            ->equalsTo($int)
         ;
     }
 

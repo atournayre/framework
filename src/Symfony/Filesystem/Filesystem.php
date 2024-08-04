@@ -206,7 +206,7 @@ final class Filesystem implements FilesystemInterface
     {
         return $this->listFiles()
             ->count()
-            ->intValue()
+            ->value()
         ;
     }
 
@@ -248,7 +248,7 @@ final class Filesystem implements FilesystemInterface
     {
         return $this->listDirectories()
             ->count()
-            ->intValue()
+            ->value()
         ;
     }
 

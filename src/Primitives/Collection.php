@@ -16,10 +16,14 @@ final class Collection
     }
 
     /**
-     * @param array<int|string, mixed> $collection
+     * @param array<int|string, mixed>|Collection|null|string $collection
      */
-    public static function of(array $collection): self
+    public static function of($collection = []): self
     {
+        if ($collection instanceof self) {
+            return $collection;
+        }
+
         return new self(AimeosMap::from($collection));
     }
 
@@ -28,10 +32,9 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function clone()
+    public function clone(): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return new self($this->collection->clone());
     }
 
     /**
@@ -39,10 +42,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function copy()
+    public function copy(): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $clone = $this->collection
+            ->copy();
+
+        return new self($clone);
     }
 
     /**
@@ -50,10 +55,9 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function explode()
+    public static function explode(string $delimiter, string $string, int $limit = PHP_INT_MAX): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return new self(AimeosMap::explode($delimiter, $string, $limit));
     }
 
     /**
@@ -79,58 +83,58 @@ final class Collection
     }
 
     /**
-     * Creates a new map by invoking the closure a number of times.
-     *
-     * @api
-     */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function times()
-    {
-        throw new \RuntimeException('Not implemented yet!');
-    }
-
-    /**
      * Creates a tree structure from the list items.
      *
+     * @param string $idKey Name of the key with the unique ID of the node
+     * @param string $parentKey Name of the key with the ID of the parent node
+     * @param string $nestKey Name of the key with will contain the children of the node
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function tree()
+    public function tree( string $idKey, string $parentKey, string $nestKey = 'children' ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $tree = $this->collection
+            ->tree($idKey, $parentKey, $nestKey);
+
+        return new self($tree);
     }
 
     /**
      * Returns the plain array.
      *
+     * @return array<int|string, mixed>
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function all()
+    public function all(): array
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->all();
     }
 
     /**
      * Returns the value at the given position.
      *
+     * @return mixed|null
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function at()
+    public function at(int $pos)
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->at($pos);
     }
 
     /**
      * Returns an element by key and casts it to boolean.
      *
+     * @param int|string $key
+     * @param mixed $default
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function bool()
+    public function bool($key, $default = false): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $bool = $this->collection
+            ->bool($key, $default);
+
+        return BoolEnum::fromBool($bool);
     }
 
     /**
@@ -147,12 +151,17 @@ final class Collection
     /**
      * Returns the first/last matching element.
      *
+     * @param \Closure $callback Function with (value, key) parameters and returns TRUE/FALSE
+     * @param mixed $default Default value or exception if the map contains no elements
+     * @param bool $reverse TRUE to test elements from back to front, FALSE for front to back (default)
+     * @return mixed First matching value, passed default value or an exception
+     * @throws \Throwable
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function find()
+    public function find(\Closure $callback, $default = null, bool $reverse = false)
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->find($callback, $default, $reverse);
     }
 
     /**
@@ -174,61 +183,73 @@ final class Collection
     /**
      * Returns the first key.
      *
+     * @return mixed First key of map or NULL if empty
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function firstKey()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->firstKey();
     }
 
     /**
      * Returns an element by key.
      *
-     * @param mixed|null $key
+     * @param int|string $key
      * @param mixed|null $default
+     * @return mixed Value from map or default value
      *
      * @throws \Throwable
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function get($key, $default = null)
     {
-        return $this->collection->get($key, $default);
+        return $this->collection
+            ->get($key, $default);
     }
 
     /**
      * Returns the numerical index of the given key.
      *
+     * @param \Closure|string|int $value Key to search for or function with (key) parameters return TRUE if key is found
+     * @return int|null Position of the found value (zero based) or NULL if not found
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function index()
+    public function index($value): ?int
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->index($value);
     }
 
     /**
      * Returns an element by key and casts it to integer.
      *
+     * @param int|string $key Key or path to the requested item
+     * @param mixed $default Default value if key isn't found (will be casted to integer)
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function int()
+    public function int($key, $default = 0): Int_
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $int = $this->collection
+            ->int($key, $default);
+
+        return Int_::of($int);
     }
 
     /**
      * Returns an element by key and casts it to float.
      *
+     * @param int|string $key Key or path to the requested item
+     * @param mixed $default Default value if key isn't found (will be casted to float)
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function float()
+    public function float($key, $default = 0.0): Numeric
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $float = $this->collection
+            ->float($key, $default);
+
+        return Numeric::fromFloat($float);
     }
 
     /**
@@ -258,99 +279,112 @@ final class Collection
      */
     public function last($default = null)
     {
-        return $this->collection->last($default);
+        return $this->collection
+            ->last($default);
     }
 
     /**
      * Returns the last key.
      *
+     * @return mixed Last key of map or NULL if empty
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function lastKey()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->lastKey();
     }
 
     /**
      * Returns and removes the last element.
      *
+     * @return mixed Last element of the map or null if empty
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function pop()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->pop();
     }
 
     /**
      * Returns the numerical index of the value.
      *
+     * @param \Closure|mixed $value Value to search for or function with (item, key) parameters return TRUE if value is found
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function pos()
+    public function pos( $value ) : ?int
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->pos($value);
     }
 
     /**
      * Returns and removes an element by key.
      *
+     * @param int|string $key Key to retrieve the value for
+     * @param mixed $default Default value if key isn't available
+     * @return mixed Value from map or default value
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function pull()
+    public function pull( $key, $default = null )
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->pull($key, $default);
     }
 
     /**
      * Returns random elements preserving keys.
      *
+     * @param int $max Maximum number of elements that should be returned
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function random()
+    public function random( int $max = 1 ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $random = $this->collection
+            ->random($max);
+
+        return new self($random);
     }
 
     /**
      * Find the key of an element.
      *
+     * @param mixed|null $value
+     *
+     * @return int|string|null Key associated to the value or null if not found
      * @api
      *
-     * @param mixed|null $value
-     * @param bool       $strict
-     *
-     * @return int|string|null
      */
-    public function search($value, $strict = true)
+    public function search($value, bool $strict = true)
     {
-        return $this->collection->search($value, $strict);
+        return $this->collection
+            ->search($value, $strict);
     }
 
     /**
      * Returns and removes the first element.
      *
+     * @return mixed|null Value from map or null if not found
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function shift()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->shift();
     }
 
     /**
      * Returns an element by key and casts it to string.
      *
+     * @param int|string $key Key or path to the requested item
+     * @param mixed $default Default value if key isn't found (will be casted to bool)
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function string()
+    public function string( $key, $default = '' ) : string
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->string($key, $default);
     }
 
     /**
@@ -370,10 +404,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function unique()
+    public function unique( string $key = null ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $unique = $this->collection
+            ->unique($key);
+
+        return new self($unique);
     }
 
     /**
@@ -391,78 +427,108 @@ final class Collection
     /**
      * Adds all elements with new keys.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function concat()
+    public function concat($elements): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $concat = $this->collection
+            ->concat($elements);
+
+        return new self($concat);
     }
 
     /**
      * Inserts the value after the given element.
      *
+     * @param mixed|null $element Element to insert after
+     * @param mixed|null $value Value to insert
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function insertAfter()
+    public function insertAfter($element, $value): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $insertAfter = $this->collection
+            ->insertAfter($element, $value);
+
+        return new self($insertAfter);
     }
 
     /**
      * Inserts the element at the given position in the map.
      *
+     * @param int $pos Position the element it should be inserted at
+     * @param mixed $element Element to be inserted
+     * @param mixed|null $key Element key or NULL to assign an integer key automatically
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function insertAt()
+    public function insertAt(int $pos, $element, $key = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $insertAt = $this->collection
+            ->insertAt($pos, $element, $key);
+
+        return new self($insertAt);
     }
 
     /**
      * Inserts the value before the given element.
      *
+     * @param mixed $element Element before the value is inserted
+     * @param mixed $value Element or list of elements to insert
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function insertBefore()
+    public function insertBefore($element, $value): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $insertBefore = $this->collection
+            ->insertBefore($element, $value);
+
+        return new self($insertBefore);
     }
 
     /**
      * Combines elements overwriting existing ones.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function merge()
+    public function merge($elements, bool $recursive = false): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $merge = $this->collection
+            ->merge($elements, $recursive);
+
+        return new self($merge);
     }
 
     /**
      * Fill up to the specified length with the given value.
      *
+     * @param mixed $value Value to fill up with if the map length is smaller than the given size
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function pad()
+    public function pad( int $size, $value = null ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $pad = $this->collection
+            ->pad($size, $value);
+
+        return new self($pad);
     }
 
     /**
      * Adds an element at the beginning.
      *
+     * @param mixed $value Item to add at the beginning
+     * @param int|string|null $key Key for the item or NULL to reindex all numerical keys
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function prepend()
+    public function prepend( $value, $key = null ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $prepend = $this->collection
+            ->prepend($value, $key);
+
+        return new self($prepend);
     }
 
     /**
@@ -486,12 +552,16 @@ final class Collection
     /**
      * Sets the given key and value in the map.
      *
+     * @param int|string $key Key to set the new value for
+     * @param mixed $value New element that should be set
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function put()
+    public function put( $key, $value ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $put = $this->collection
+            ->put($key, $value);
+
+        return new self($put);
     }
 
     /**
@@ -508,40 +578,54 @@ final class Collection
             return;
         }
 
-        $this->collection->set($key, $value);
+        $this->collection
+            ->set($key, $value);
     }
 
     /**
      * Adds the elements without overwriting existing ones.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function union()
+    public function union( $elements ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $union = $this->collection
+            ->union($elements);
+
+        return new self($union);
     }
 
     /**
      * Adds an element at the beginning.
      *
+     * @param mixed $value Item to add at the beginning
+     * @param int|string|null $key Key for the item or NULL to reindex all numerical keys
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function unshift()
+    public function unshift( $value, $key = null ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $unshift = $this->collection
+            ->unshift($value, $key);
+
+        return new self($unshift);
     }
 
     /**
      * Returns a copy and sets an element.
      *
+     * @param int|string $key Array key to set or replace
+     * @param mixed $value New value for the given key
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function with()
+    public function with( $key, $value ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $with = $this->collection
+            ->with($key, $value);
+
+        return new self($with);
     }
 
     /**
@@ -561,22 +645,25 @@ final class Collection
      *
      * @api
      */
-    public function count(): Numeric
+    public function count(): Int_
     {
         $count = $this->collection->count();
 
-        return Numeric::of($count);
+        return Int_::of($count);
     }
 
     /**
      * Counts how often the same values are in the map.
      *
+     * @param callable|null $callback Function with (value, key) parameters which returns the value to use for counting
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function countBy()
+    public function countBy(callable $callback = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $countBy = $this->collection
+            ->countBy($callback);
+
+        return new self($countBy);
     }
 
     /**
@@ -586,7 +673,12 @@ final class Collection
      */
     public function max(?string $key = null): Numeric
     {
-        $max = $this->collection->max($key);
+        if ($this->isEmpty()->isTrue()) {
+            return Numeric::of(0);
+        }
+
+        $max = $this->collection
+            ->max($key);
 
         return Numeric::fromFloat($max);
     }
@@ -598,7 +690,12 @@ final class Collection
      */
     public function min(?string $key = null): Numeric
     {
-        $min = $this->collection->min($key);
+        if ($this->isEmpty()->isTrue()) {
+            return Numeric::of(0);
+        }
+
+        $min = $this->collection
+            ->min($key);
 
         return Numeric::fromFloat($min);
     }
@@ -631,21 +728,26 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function dump()
+    public function dump(callable $callback = null) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $dump = $this->collection
+            ->dump($callback);
+
+        return new self($dump);
     }
 
     /**
      * Passes a clone of the map to the given callback.
      *
+     * @param callable $callback Function receiving ($map) parameter
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function tap()
+    public function tap( callable $callback ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $tap = $this->collection
+            ->tap($callback);
+
+        return new self($tap);
     }
 
     /**
@@ -653,10 +755,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function arsort()
+    public function arsort(int $options = SORT_REGULAR): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $clone = $this->collection;
+        $clone->arsort($options);
+
+        return new self($clone);
     }
 
     /**
@@ -664,10 +768,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function asort()
+    public function asort(int $options = SORT_REGULAR): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $clone = $this->collection;
+        $clone->asort($options);
+
+        return new self($clone);
     }
 
     /**
@@ -675,10 +781,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function krsort()
+    public function krsort(int $options = SORT_REGULAR): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $clone = $this->collection;
+        $clone->krsort($options);
+
+        return new self($clone);
     }
 
     /**
@@ -686,21 +794,26 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function ksort()
+    public function ksort(int $options = SORT_REGULAR): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $clone = $this->collection;
+        $clone->ksort($options);
+
+        return new self($clone);
     }
 
     /**
      * Orders elements by the passed keys.
      *
+     * @param iterable<mixed> $keys Keys of the elements in the required order
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function order()
+    public function order(iterable $keys) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $order = $this->collection
+            ->order($keys);
+
+        return new self($order);
     }
 
     /**
@@ -708,10 +821,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function reverse()
+    public function reverse() : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $reverse = $this->collection
+            ->reverse();
+
+        return new self($reverse);
     }
 
     /**
@@ -719,10 +834,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function rsort()
+    public function rsort( int $options = SORT_REGULAR ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $clone = $this->collection;
+        $clone->rsort($options);
+
+        return new self($clone);
     }
 
     /**
@@ -730,10 +847,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function shuffle()
+    public function shuffle( bool $assoc = false ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $shuffle = $this->collection
+            ->shuffle($assoc);
+
+        return new self($shuffle);
     }
 
     /**
@@ -741,10 +860,30 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function sort()
+    public function sort(int $options = SORT_REGULAR) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $sort = $this->collection
+            ->sort($options);
+
+        return new self($sort);
+    }
+
+    /**
+     * Returns the duplicate values from the map.
+     *
+     * For nested arrays, you have to pass the name of the column of the nested
+     * array which should be used to check for duplicates.
+     *
+     * @param string|null $key
+     * @return self
+     * @api
+     */
+    public function duplicates(string $key = null) : self
+    {
+        $duplicates = $this->collection
+            ->duplicates($key);
+
+        return new self($duplicates);
     }
 
     /**
@@ -752,10 +891,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function uasort()
+    public function uasort( callable $callback ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $uasort = $this->collection
+            ->uasort($callback);
+
+        return new self($uasort);
     }
 
     /**
@@ -763,10 +904,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function uksort()
+    public function uksort( callable $callback ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $uksort = $this->collection
+            ->uksort($callback);
+
+        return new self($uksort);
     }
 
     /**
@@ -784,23 +927,29 @@ final class Collection
     /**
      * Returns the elements after the given one.
      *
+     * @param \Closure|int|string $value
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function after()
+    public function after($value): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $after = $this->collection
+            ->after($value);
+
+        return new self($after);
     }
 
     /**
      * Returns the elements before the given one.
      *
+     * @param \Closure|int|string $value
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function before()
+    public function before($value): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $before = $this->collection
+            ->before($value);
+
+        return new self($before);
     }
 
     /**
@@ -808,54 +957,77 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function clear()
+    public function clear(): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $clear = $this->collection
+            ->clear();
+
+        return new self($clear);
     }
 
     /**
      * Returns the elements missing in the given list.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
+     * @param callable|null $callback Function with (valueA, valueB) parameters and returns -1 (<), 0 (=) and 1 (>)
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function diff()
+    public function diff($elements, callable $callback = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $diff = $this->collection
+            ->diff($elements, $callback);
+
+        return new self($diff);
     }
 
     /**
      * Returns the elements missing in the given list and checks keys.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
+     * @param callable|null $callback Function with (valueA, valueB) parameters and returns -1 (<), 0 (=) and 1 (>)
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function diffAssoc()
+    public function diffAssoc($elements, callable $callback = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $diffAssoc = $this->collection
+            ->diffAssoc($elements, $callback);
+
+        return new self($diffAssoc);
     }
 
     /**
      * Returns the elements missing in the given list by keys.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
+     * @param callable|null $callback Function with (valueA, valueB) parameters and returns -1 (<), 0 (=) and 1 (>)
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function diffKeys()
+    public function diffKeys($elements, callable $callback = null ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $diffKeys = $this->collection
+            ->diffKeys($elements, $callback);
+
+        return new self($diffKeys);
     }
 
     /**
      * Returns a new map without the passed element keys.
      *
+     * @param iterable<string|int>|array<string|int>|string|int $keys List of keys to remove
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function except()
+    public function except($keys): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $except = $this->collection
+            ->except($keys);
+
+        return new self($except);
     }
 
     /**
@@ -875,43 +1047,73 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function grep()
+    public function grep(string $pattern, int $flags = 0): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $grep = $this->collection
+            ->grep($pattern, $flags);
+
+        return new self($grep);
     }
 
     /**
      * Returns the elements shared.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function intersect()
+    public function intersect($elements, callable $callback = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $intersect = $this->collection
+            ->intersect($elements, $callback);
+
+        return new self($intersect);
     }
 
     /**
      * Returns the elements shared and checks keys.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function intersectAssoc()
+    public function intersectAssoc($elements, callable $callback = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $intersectAssoc = $this->collection
+            ->intersectAssoc($elements, $callback);
+
+        return new self($intersectAssoc);
     }
 
     /**
      * Returns the elements shared by keys.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function intersectKeys()
+    public function intersectKeys($elements, callable $callback = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $intersectKeys = $this->collection
+            ->intersectKeys($elements, $callback);
+
+        return new self($intersectKeys);
+    }
+
+    /**
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
+     * @return array<int|string,mixed>
+     */
+    private function convertElementsToArray($elements): array
+    {
+        if ($elements instanceof self) {
+            return $elements->all();
+        }
+
+        return (array) $elements;
     }
 
     /**
@@ -919,87 +1121,114 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function nth()
+    public function nth(int $step, int $offset = 0): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $nth = $this->collection
+            ->nth($step, $offset);
+
+        return new self($nth);
     }
 
     /**
      * Returns only those elements specified by the keys.
      *
+     * @param iterable<mixed>|array<mixed>|string|int $keys Keys of the elements that should be returned
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function only()
+    public function only($keys): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $only = $this->collection
+            ->only($keys);
+
+        return new self($only);
     }
 
     /**
      * Removes all matched elements.
      *
+     * @param Closure|mixed $callback Function with (item) parameter which returns TRUE/FALSE or value to compare with
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function reject()
+    public function reject( $callback = true ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $reject = $this->collection
+            ->reject($callback);
+
+        return new self($reject);
     }
 
     /**
      * Removes an element by key.
      *
+     * @param iterable<string|int>|array<string|int>|string|int $keys List of keys to remove
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function remove()
+    public function remove( $keys ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $remove = $this->collection
+            ->remove($keys);
+
+        return new self($remove);
     }
 
     /**
      * Skips the given number of items and return the rest.
      *
+     * @param \Closure|int|array<array-key,mixed> $offset Number of items to skip or function($item, $key) returning true for skipped items
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function skip()
+    public function skip( $offset ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $skip = $this->collection
+            ->skip($offset);
+
+        return new self($skip);
     }
 
     /**
      * Returns a slice of the map.
      *
+     * @param int $offset Number of elements to start from
+     * @param int|null $length Number of elements to return or NULL for no limit
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function slice()
+    public function slice( int $offset, int $length = null ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $slice = $this->collection
+            ->slice($offset, $length);
+
+        return new self($slice);
     }
 
     /**
      * Returns a new map with the given number of items.
      *
+     * @param int $size Number of items to return
+     * @param \Closure|int|array<array-key,mixed> $offset Number of items to skip or function($item, $key) returning true for skipped items
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function take()
+    public function take( int $size, $offset = 0 ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $take = $this->collection
+            ->take($size, $offset);
+
+        return new self($take);
     }
 
     /**
      * Filters the list of elements by a given condition.
      *
+     * @param string $key Key or path of the value in the array or object used for comparison
+     * @param string $op Operator used for comparison
+     * @param mixed $value Value used for comparison
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function where()
+    public function where( string $key, string $op, $value ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $where = $this->collection
+            ->where($key, $op, $value);
+
+        return new self($where);
     }
 
     /**
@@ -1007,10 +1236,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function compare()
+    public function compare(string $value, bool $case = true): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $compare = $this->collection
+            ->compare($value, $case);
+
+        return BoolEnum::fromBool($compare);
     }
 
     /**
@@ -1047,21 +1278,28 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function empty()
+    public function empty(): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $empty = $this->collection
+            ->empty();
+
+        return BoolEnum::fromBool($empty);
     }
 
     /**
      * Tests if map contents are equal.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements to test against
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function equals()
+    public function equals($elements): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $equals = $this->collection
+            ->equals($elements);
+
+        return BoolEnum::fromBool($equals);
     }
 
     /**
@@ -1080,13 +1318,13 @@ final class Collection
     /**
      * Tests if a key exists.
      *
+     * @param array<int|string>|int|string $key Key of the requested item or list of keys
      * @api
-     *
-     * @param array-key $key
      */
     public function has($key): BoolEnum
     {
-        $has = $this->collection->has($key);
+        $has = $this->collection
+            ->has($key);
 
         return BoolEnum::fromBool($has);
     }
@@ -1094,12 +1332,17 @@ final class Collection
     /**
      * Executes callbacks depending on the condition.
      *
+     * @param \Closure|bool $condition Boolean or function with (map) parameter returning a boolean
+     * @param \Closure|null $then Function with (map, condition) parameter (optional)
+     * @param \Closure|null $else Function with (map, condition) parameter (optional)
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function if()
+    public function if($condition, \Closure $then = null, \Closure $else = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $if = $this->collection
+            ->if($condition, $then, $else);
+
+        return new self($if);
     }
 
     /**
@@ -1107,10 +1350,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function ifAny()
+    public function ifAny(\Closure $then = null, \Closure $else = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $ifAny = $this->collection
+            ->ifAny($then, $else);
+
+        return new self($ifAny);
     }
 
     /**
@@ -1127,45 +1372,47 @@ final class Collection
     /**
      * Tests if element is included.
      *
+     * @param mixed|array $element Element or elements to search for in the map
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function in()
+    public function in($element, bool $strict = false): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $in = $this->collection
+            ->in($element, $strict);
+
+        return BoolEnum::fromBool($in);
     }
 
     /**
      * Tests if element is included.
      *
+     * @param mixed|array $element Element or elements to search for in the map
+     * @param bool $strict TRUE to check the type too, using FALSE '1' and 1 will be the same
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function includes()
+    public function includes($element, bool $strict = false): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
-    }
+        $includes = $this->collection
+            ->includes($element, $strict);
 
-    /**
-     * Tests if the item is part of the strings in the map.
-     *
-     * @api
-     */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function inString()
-    {
-        throw new \RuntimeException('Not implemented yet!');
+        return BoolEnum::fromBool($includes);
     }
 
     /**
      * Tests if the map consists of the same keys and values.
      *
+     * @param iterable<int|string,mixed>|Collection $list List of key/value pairs to compare with
+     * @param bool $strict TRUE for comparing order of elements too, FALSE for key/values only
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function is()
+    public function is($list, bool $strict = false): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $list = $this->convertElementsToArray($list);
+
+        $is = $this->collection
+            ->is($list, $strict);
+
+        return BoolEnum::fromBool($is);
     }
 
     /**
@@ -1173,10 +1420,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function isEmpty()
+    public function isEmpty(): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $isEmpty = $this->collection
+            ->isEmpty();
+
+        return BoolEnum::fromBool($isEmpty);
     }
 
     /**
@@ -1184,10 +1433,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function isNumeric()
+    public function isNumeric(): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $isNumeric = $this->collection
+            ->isNumeric();
+
+        return BoolEnum::fromBool($isNumeric);
     }
 
     /**
@@ -1195,10 +1446,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function isObject()
+    public function isObject(): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $isObject = $this->collection
+            ->isObject();
+
+        return BoolEnum::fromBool($isObject);
     }
 
     /**
@@ -1206,109 +1459,145 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function isScalar()
+    public function isScalar(): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $isScalar = $this->collection
+            ->isScalar();
+
+        return BoolEnum::fromBool($isScalar);
     }
 
     /**
      * Tests if all entries are objects implementing the interface.
      *
+     * @param \Throwable|bool|string $throw Passing TRUE or an exception name will throw the exception instead of returning FALSE
+     * @throws \Throwable
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function implements()
+    public function implements(string $interface, $throw = false): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $implements = $this->collection
+            ->implements($interface, $throw);
+
+        return BoolEnum::fromBool($implements);
     }
 
     /**
      * Tests if none of the elements are part of the map.
      *
+     * @param mixed|null $element Element or elements to search for in the map
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function none()
+    public function none($element, bool $strict = false): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $none = $this->collection
+            ->none($element, $strict);
+
+        return BoolEnum::fromBool($none);
     }
 
     /**
      * Tests if at least one element is included.
      *
+     * @param \Closure|iterable|mixed $values Anonymous function with (item, key) parameter, element or list of elements to test against
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function some()
+    public function some($values, bool $strict = false ) : BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $some = $this->collection
+            ->some($values, $strict);
+
+        return BoolEnum::fromBool($some);
     }
 
     /**
      * Tests if at least one of the passed strings is part of at least one entry.
      *
+     * @param mixed $value The string or list of strings to search for in each entry
+     * @param string $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strContains()
+    public function strContains( $value, string $encoding = 'UTF-8' ) : BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strContains = $this->collection
+            ->strContains($value, $encoding);
+
+        return BoolEnum::fromBool($strContains);
     }
 
     /**
      * Tests if all of the entries contains one of the passed strings.
      *
+     * @param mixed $value The string or list of strings to search for in each entry
+     * @param string $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strContainsAll()
+    public function strContainsAll( $value, string $encoding = 'UTF-8' ) : BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strContainsAll = $this->collection
+            ->strContainsAll($value, $encoding);
+
+        return BoolEnum::fromBool($strContainsAll);
     }
 
     /**
      * Tests if at least one of the entries ends with one of the passed strings.
      *
+     * @param array<array-key,mixed>|string $value The string or strings to search for in each entry
+     * @param string $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strEnds()
+    public function strEnds( $value, string $encoding = 'UTF-8' ) : BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strEnds = $this->collection
+            ->strEnds($value, $encoding);
+
+        return BoolEnum::fromBool($strEnds);
     }
 
     /**
      * Tests if all of the entries ends with at least one of the passed strings.
      *
+     * @param array<array-key,mixed>|string $value The string or strings to search for in each entry
+     * @param string $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strEndsAll()
+    public function strEndsAll( $value, string $encoding = 'UTF-8' ) : BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strEndsAll = $this->collection
+            ->strEndsAll($value, $encoding);
+
+        return BoolEnum::fromBool($strEndsAll);
     }
 
     /**
      * Tests if at least one of the entries starts with at least one of the passed strings.
      *
+     * @param array<array-key,mixed>|string $value The string or strings to search for in each entry
+     * @param string $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strStarts()
+    public function strStarts( $value, string $encoding = 'UTF-8' ) : BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strStarts = $this->collection
+            ->strStarts($value, $encoding);
+
+        return BoolEnum::fromBool($strStarts);
     }
 
     /**
      * Tests if all of the entries starts with one of the passed strings.
      *
+     * @param array<array-key,mixed>|string $value The string or strings to search for in each entry
+     * @param string $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strStartsAll()
+    public function strStartsAll( $value, string $encoding = 'UTF-8' ) : BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strStartsAll = $this->collection
+            ->strStartsAll($value, $encoding);
+
+        return BoolEnum::fromBool($strStartsAll);
     }
 
     /**
@@ -1316,10 +1605,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function cast()
+    public function cast(string $type = 'string'): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $cast = $this->collection
+            ->cast($type);
+
+        return new self($cast);
     }
 
     /**
@@ -1327,10 +1618,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function chunk()
+    public function chunk(int $size, bool $preserve = false): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $chunk = $this->collection
+            ->chunk($size, $preserve);
+
+        return new self($chunk);
     }
 
     /**
@@ -1338,10 +1631,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function col()
+    public function col(string $valuecol = null, string $indexcol = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $col = $this->collection
+            ->col($valuecol, $indexcol);
+
+        return new self($col);
     }
 
     /**
@@ -1349,21 +1644,26 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function collapse()
+    public function collapse(int $depth = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $collapse = $this->collection
+            ->collapse($depth);
+
+        return new self($collapse);
     }
 
     /**
      * Combines the map elements as keys with the given values.
      *
+     * @param iterable<int|string,mixed> $values
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function combine()
+    public function combine(iterable $values): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $combine = $this->collection
+            ->combine($values);
+
+        return new self($combine);
     }
 
     /**
@@ -1371,10 +1671,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function flat()
+    public function flat(int $depth = null): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $flat = $this->collection
+            ->flat($depth);
+
+        return new self($flat);
     }
 
     /**
@@ -1382,21 +1684,26 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function flip()
+    public function flip(): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $flip = $this->collection
+            ->flip();
+
+        return new self($flip);
     }
 
     /**
      * Groups associative array elements or objects.
      *
+     * @param \Closure|string|int $key Closure function with (item, idx) parameters returning the key or the key itself to group by
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function groupBy()
+    public function groupBy($key): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $groupBy = $this->collection
+            ->groupBy($key);
+
+        return new self($groupBy);
     }
 
     /**
@@ -1416,10 +1723,12 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function ltrim()
+    public function ltrim(string $chars = " \n\r\t\v\x00"): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $ltrim = $this->collection
+            ->ltrim($chars);
+
+        return new self($ltrim);
     }
 
     /**
@@ -1437,23 +1746,28 @@ final class Collection
     /**
      * Breaks the list into the given number of groups.
      *
+     * @param \Closure|int|array<array-key,mixed> $number Function with (value, index) as arguments returning the bucket key or number of groups
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function partition()
+    public function partition( $number ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $partition = $this->collection
+            ->partition($number);
+
+        return new self($partition);
     }
 
     /**
      * Applies a callback to the whole map.
      *
+     * @param \Closure $callback Function with map as parameter which returns arbitrary result
+     * @return mixed Result returned by the callback
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function pipe()
+    public function pipe( \Closure $callback )
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->pipe($callback);
     }
 
     /**
@@ -1461,32 +1775,41 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function pluck()
+    public function pluck( string $valuecol = null, string $indexcol = null ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $pluck = $this->collection
+            ->pluck($valuecol, $indexcol);
+
+        return new self($pluck);
     }
 
     /**
      * Adds a prefix to each map entry.
      *
+     * @param \Closure|string $prefix Prefix string or anonymous function with ($item, $key) as parameters
+     * @param int|null $depth Maximum depth to dive into multi-dimensional arrays starting from "1"
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function prefix()
+    public function prefix( $prefix, int $depth = null ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $prefix = $this->collection
+            ->prefix($prefix, $depth);
+
+        return new self($prefix);
     }
 
     /**
      * Computes a single value from the map content.
      *
+     * @param callable $callback Function with (result, value) parameters and returns result
+     * @param mixed $initial Initial value when computing the result
+     * @return mixed Value computed by the callback function
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function reduce()
+    public function reduce( callable $callback, $initial = null )
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->reduce($callback, $initial);
     }
 
     /**
@@ -1504,12 +1827,18 @@ final class Collection
     /**
      * Replaces elements recursively.
      *
+     * @param iterable<int|string,mixed>|Collection $elements List of elements
+     * @param bool $recursive TRUE to replace recursively (default), FALSE to replace elements only
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function replace()
+    public function replace( $elements, bool $recursive = true ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $elements = $this->convertElementsToArray($elements);
+
+        $replace = $this->collection
+            ->replace($elements, $recursive);
+
+        return new self($replace);
     }
 
     /**
@@ -1517,32 +1846,44 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function rtrim()
+    public function rtrim( string $chars = " \n\r\t\v\x00" ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $rtrim = $this->collection
+            ->rtrim($chars);
+
+        return new self($rtrim);
     }
 
     /**
      * Replaces a slice by new elements.
      *
+     * @param int $offset Number of elements to start from
+     * @param int|null $length Number of elements to remove, NULL for all
+     * @param mixed $replacement List of elements to insert
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function splice()
+    public function splice( int $offset, int $length = null, $replacement = [] ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $splice = $this->collection
+            ->splice($offset, $length, $replacement);
+
+        return new self($splice);
     }
 
     /**
      * Returns the strings after the passed value.
      *
+     * @param string $value Character or string to search for
+     * @param bool $case TRUE if search should be case insensitive, FALSE if case-sensitive
+     * @param string $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strAfter()
+    public function strAfter( string $value, bool $case = false, string $encoding = 'UTF-8' ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strAfter = $this->collection
+            ->strAfter($value, $case, $encoding);
+
+        return new self($strAfter);
     }
 
     /**
@@ -1550,21 +1891,28 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strLower()
+    public function strLower( string $encoding = 'UTF-8' ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strLower = $this->collection
+            ->strLower($encoding);
+
+        return new self($strLower);
     }
 
     /**
      * Replaces all occurrences of the search string with the replacement string.
      *
+     * @param array<array-key, mixed>|string $search String or list of strings to search for
+     * @param array<array-key, mixed>|string $replace String or list of strings of replacement strings
+     * @param bool $case TRUE if replacements should be case insensitive, FALSE if case-sensitive
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strReplace()
+    public function strReplace( $search, $replace, bool $case = false ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strReplace = $this->collection
+            ->strReplace($search, $replace, $case);
+
+        return new self($strReplace);
     }
 
     /**
@@ -1572,21 +1920,27 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function strUpper()
+    public function strUpper( string $encoding = 'UTF-8' ) :self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $strUpper = $this->collection
+            ->strUpper($encoding);
+
+        return new self($strUpper);
     }
 
     /**
      * Adds a suffix to each map entry.
      *
+     * @param \Closure|string $suffix Suffix string or anonymous function with ($item, $key) as parameters
+     * @param int|null $depth Maximum depth to dive into multi-dimensional arrays starting from "1"
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function suffix()
+    public function suffix( $suffix, int $depth = null ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $suffix = $this->collection
+            ->suffix($suffix, $depth);
+
+        return new self($suffix);
     }
 
     /**
@@ -1594,10 +1948,10 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function toJson()
+    public function toJson(int $options = 0): ?string
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->toJson($options);
     }
 
     /**
@@ -1605,10 +1959,10 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function toUrl()
+    public function toUrl(): string
     {
-        throw new \RuntimeException('Not implemented yet!');
+        return $this->collection
+            ->toUrl();
     }
 
     /**
@@ -1616,21 +1970,27 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function transpose()
+    public function transpose(): self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $transpose = $this->collection
+            ->transpose();
+
+        return new self($transpose);
     }
 
     /**
      * Traverses trees of nested items passing each item to the callback.
      *
+     * @param \Closure|null $callback Callback with (entry, key, level, $parent) arguments, returns the entry added to result
+     * @param string $nestKey Key to the children of each item
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function traverse()
+    public function traverse( \Closure $callback = null, string $nestKey = 'children' ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $traverse = $this->collection
+            ->traverse($callback, $nestKey);
+
+        return new self($traverse);
     }
 
     /**
@@ -1638,32 +1998,42 @@ final class Collection
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function trim()
+    public function trim( string $chars = " \n\r\t\v\x00" ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $trim = $this->collection
+            ->trim($chars);
+
+        return new self($trim);
     }
 
     /**
      * Applies the given callback to all elements.
      *
+     * @param callable $callback Function with (item, key, data) parameters
+     * @param mixed $data Arbitrary data that will be passed to the callback as third parameter
+     * @param bool $recursive TRUE to traverse sub-arrays recursively (default), FALSE to iterate Map elements only
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function walk()
+    public function walk( callable $callback, $data = null, bool $recursive = true ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $walk = $this->collection
+            ->walk($callback, $data, $recursive);
+
+        return new self($walk);
     }
 
     /**
      * Merges the values of all arrays at the corresponding index.
      *
+     * @param array<int|string,mixed>|\Traversable<int|string,mixed>|\Iterator<int|string,mixed> $arrays List of arrays to merge with at the same position
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function zip()
+    public function zip( ...$arrays ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $zip = $this->collection
+            ->zip(...$arrays);
+
+        return new self($zip);
     }
 
     /**
@@ -1700,25 +2070,17 @@ final class Collection
     }
 
     /**
-     * Registers a custom method.
-     *
-     * @api
-     */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function method()
-    {
-        throw new \RuntimeException('Not implemented yet!');
-    }
-
-    /**
      * Checks if the key exists.
      *
+     * @param int|string $key Key to check for
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function offsetExists()
+    public function offsetExists($key): BoolEnum
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $exists = $this->collection
+            ->offsetExists($key);
+
+        return BoolEnum::fromBool($exists);
     }
 
     /**
@@ -1761,13 +2123,32 @@ final class Collection
     }
 
     /**
-     * Sets the seperator for paths to multi-dimensional arrays in the current map.
+     * Sets the separator for paths to multi-dimensional arrays in the current map.
      *
+     * @param string $char Separator character, e.g. "." for "key.to.value" instead of "key/to/value"
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function sep()
+    public function sep( string $char ) : self
     {
-        throw new \RuntimeException('Not implemented yet!');
+        $sep = $this->collection
+            ->sep($char);
+
+        return new self($sep);
+    }
+
+    /**
+     * Returns the strings before the passed value.
+     *
+     * @param string $value Character or string to search for
+     * @param bool $case TRUE if search should be case insensitive, FALSE if case-sensitive
+     * @param string $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
+     * @api
+     */
+    public function strBefore( string $value, bool $case = false, string $encoding = 'UTF-8' ) : self
+    {
+        $strBefore = $this->collection
+            ->strBefore($value, $case, $encoding);
+
+        return new self($strBefore);
     }
 }
