@@ -50,7 +50,7 @@ final class Numeric
 
         $numericValue = (float) $value;
 
-        if (($numericValue < PHP_FLOAT_MIN || $numericValue > PHP_FLOAT_MAX) && 0.0 !== $numericValue) {
+        if ((abs($numericValue) < PHP_FLOAT_MIN || abs($numericValue) > PHP_FLOAT_MAX) && 0.0 !== $numericValue) {
             $message = sprintf('The value %s is out of range [%s, %s] for floating point numbers.', $numericValue, PHP_FLOAT_MIN, PHP_FLOAT_MAX);
             throw new \InvalidArgumentException($message);
         }

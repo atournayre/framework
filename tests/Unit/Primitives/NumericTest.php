@@ -181,4 +181,20 @@ final class NumericTest extends TestCase
         $number = Numeric::of(0);
         self::assertTrue($number->isZero()->yes());
     }
+
+    public function testFloatIsNegative(): void
+    {
+        $number = Numeric::fromFloat(-272.03);
+        self::assertEquals(-27203, $number->intValue());
+        self::assertEquals(2, $number->precision());
+        self::assertEquals(-272.03, $number->value());
+    }
+
+    public function testIntIsNegative(): void
+    {
+        $number = Numeric::fromInt(-272, 0);
+        self::assertEquals(-272, $number->intValue());
+        self::assertEquals(0, $number->precision());
+        self::assertEquals(-272, $number->value());
+    }
 }
