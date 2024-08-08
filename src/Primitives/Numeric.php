@@ -51,14 +51,16 @@ final class Numeric
         $numericValue = (float) $value;
 
         if (($numericValue < PHP_FLOAT_MIN || $numericValue > PHP_FLOAT_MAX) && 0.0 !== $numericValue) {
-            throw new \InvalidArgumentException(sprintf('The value %s is out of range for floating point numbers.', $numericValue));
+            $message = sprintf('The value %s is out of range [%s, %s] for floating point numbers.', $numericValue, PHP_FLOAT_MIN, PHP_FLOAT_MAX);
+            throw new \InvalidArgumentException($message);
         }
 
         $multiplier = 10 ** $precision;
         $intValue = intval(round($numericValue * $multiplier));
 
         if ($intValue < PHP_INT_MIN || $intValue > PHP_INT_MAX) {
-            throw new \InvalidArgumentException(sprintf('The value %s exceeds the allowed limits.', $intValue));
+            $message = sprintf('The value %s exceeds the allowed limits [%s, %s].', $intValue, PHP_INT_MIN, PHP_INT_MAX);
+            throw new \InvalidArgumentException($message);
         }
 
         $this->value = $numericValue;
