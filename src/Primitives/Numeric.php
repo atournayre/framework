@@ -51,7 +51,7 @@ final class Numeric
         $numericValue = (float) $value;
 
         if (($numericValue < PHP_FLOAT_MIN || $numericValue > PHP_FLOAT_MAX) && 0.0 !== $numericValue) {
-            throw new \InvalidArgumentException('The value is out of range for floating point numbers.');
+            throw new \InvalidArgumentException(sprintf('The value %s is out of range for floating point numbers.', $numericValue));
         }
 
         $multiplier = 10 ** $precision;
