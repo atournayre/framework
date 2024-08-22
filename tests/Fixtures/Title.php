@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Fixtures;
 
+use Atournayre\Common\Traits\IsTrait;
 use Atournayre\Contracts\Null\NullableInterface;
 use Atournayre\Null\NullTrait;
 
 final class Title implements NullableInterface
 {
     use NullTrait;
+    use IsTrait;
 
     /**
      * @api

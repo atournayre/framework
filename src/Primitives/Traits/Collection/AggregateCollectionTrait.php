@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
-use Atournayre\Primitives\Int_;
 use Atournayre\Primitives\Numeric;
 
 trait AggregateCollectionTrait

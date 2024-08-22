@@ -18,3 +18,4 @@
 | [ADR 0014](adr/ADR-0014-DateTimeWrapper.md)   | DateTime Wrapper        | 2024-06-30 | Accepted | Refactor DateTime to wrap Carbon                       |
 | [ADR 0015](adr/ADR-0015-Integer.md)           | Integer type            | 2024-07-01 | Accepted | Integer type                                           |
 | [ADR 0016](adr/ADR-0016-Static-Collection.md) | Static collection       | 2024-07-27 | Accepted | Static collection                                      |
+| [ADR 0017](adr/ADR-0017-Is.md)                | Is                      | 2024-08-22 | Accepted | Check sameness                                         |
