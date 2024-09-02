@@ -171,4 +171,14 @@ trait NumericTrait
     {
         return $this->value->isZero();
     }
+
+    /**
+     * @api
+     */
+    public function abs(): self
+    {
+        $abs = $this->value->abs();
+
+        return new self($abs);
+    }
 }
