@@ -267,4 +267,14 @@ final class Numeric
 
         return BoolEnum::fromBool($isZero);
     }
+
+    /**
+     * @api
+     */
+    public function abs(): self
+    {
+        $abs = abs($this->value);
+
+        return new self($abs, $this->precision);
+    }
 }
