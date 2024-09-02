@@ -197,4 +197,19 @@ final class NumericTest extends TestCase
         self::assertEquals(0, $number->precision());
         self::assertEquals(-272, $number->value());
     }
+
+    public function testAbsoluteValue(): void
+    {
+        $number = Numeric::fromInt(-272, 0);
+        self::assertEquals(272, $number->abs()->intValue(), 'Absolute value of -272 is 272');
+
+        $number = Numeric::fromFloat(-272.03);
+        self::assertEquals(272.03, $number->abs()->value(), 'Absolute value of -272.03 is 272.03');
+
+        $number = Numeric::fromFloat(-272.03);
+        self::assertEquals(272.03, $number->abs()->value(), 'Absolute value of -272.03 is 272.03');
+
+        $number = Numeric::fromInt(272, 0);
+        self::assertEquals(272, $number->abs()->intValue(), 'Absolute value of 272 is 272');
+    }
 }
