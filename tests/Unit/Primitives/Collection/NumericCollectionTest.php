@@ -110,4 +110,24 @@ final class NumericCollectionTest extends TestCase
         self::assertSame(1.50, $collection->avg()->value());
         self::assertSame(2, $collection->avg()->precision());
     }
+
+    public function testValidateListCollection(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Negative price is not allowed.');
+        PriceCollection::asList([
+            Price::fromInt(1, 2),
+            Price::fromInt(-2, 2),
+        ], 2);
+    }
+
+    public function testValidateMapCollection(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Negative price is not allowed.');
+        PriceCollection::asMap([
+            'key1' => Price::fromInt(1, 2),
+            'key2' => Price::fromInt(-2, 2),
+        ], 2);
+    }
 }
