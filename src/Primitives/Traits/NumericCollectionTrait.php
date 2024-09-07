@@ -5,13 +5,16 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Common\Assert\Assert;
-use Atournayre\Contracts\Collection\CollectionValidationInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Numeric;
+use Atournayre\Primitives\Traits\Collection\CollectionAsListTrait;
+use Atournayre\Primitives\Traits\Collection\CollectionAsMapTrait;
 
 trait NumericCollectionTrait
 {
     use CollectionCommonTrait;
+    use CollectionAsMapTrait;
+    use CollectionAsListTrait;
 
     protected Collection $collection;
 
@@ -21,34 +24,6 @@ trait NumericCollectionTrait
     {
         $this->collection = $collection;
         $this->precision = $precision;
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public static function asList(array $collection, int $precision): self
-    {
-        $self = new self(Collection::of($collection), $precision);
-
-        if ($self instanceof CollectionValidationInterface) { // @phpstan-ignore-line
-            $self->validateCollection();
-        }
-
-        return $self;
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public static function asMap(array $collection, int $precision): self
-    {
-        $self = new self(Collection::of($collection), $precision);
-
-        if ($self instanceof CollectionValidationInterface) { // @phpstan-ignore-line
-            $self->validateCollection();
-        }
-
-        return $self;
     }
 
     /**
