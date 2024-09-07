@@ -6,5 +6,8 @@ namespace Atournayre\Contracts\Collection;
 
 interface CollectionValidationInterface
 {
+    /**
+     * @throws \InvalidArgumentException
+     */
     public function validateCollection(): void;
 }
