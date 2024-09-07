@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\CollectionValidationInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Numeric;
 
@@ -22,14 +23,32 @@ trait NumericCollectionTrait
         $this->precision = $precision;
     }
 
+    /**
+     * @throws \Exception
+     */
     public static function asList(array $collection, int $precision): self
     {
-        return new self(Collection::of($collection), $precision);
+        $self = new self(Collection::of($collection), $precision);
+
+        if ($self instanceof CollectionValidationInterface) { // @phpstan-ignore-line
+            $self->validateCollection();
+        }
+
+        return $self;
     }
 
+    /**
+     * @throws \Exception
+     */
     public static function asMap(array $collection, int $precision): self
     {
-        return new self(Collection::of($collection), $precision);
+        $self = new self(Collection::of($collection), $precision);
+
+        if ($self instanceof CollectionValidationInterface) { // @phpstan-ignore-line
+            $self->validateCollection();
+        }
+
+        return $self;
     }
 
     /**
@@ -69,6 +88,9 @@ trait NumericCollectionTrait
         return Numeric::of($sumValue, $this->precision);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function avg(): Numeric
     {
         if ($this->hasNoElement()->isTrue()) {
@@ -79,7 +101,7 @@ trait NumericCollectionTrait
             return Numeric::of($this->first()->value(), $this->precision);
         }
 
-        $this->validateCollection();
+        $this->_validateCollection();
 
         $avg = $this->collection
             ->map(static fn ($value) => $value->intValue())
@@ -91,6 +113,9 @@ trait NumericCollectionTrait
         return Numeric::of($avgValue, $this->precision);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function max(): Numeric
     {
         if ($this->hasNoElement()->isTrue()) {
@@ -101,7 +126,7 @@ trait NumericCollectionTrait
             return Numeric::of($this->first()->value(), $this->precision);
         }
 
-        $this->validateCollection();
+        $this->_validateCollection();
 
         $max = $this->collection
             ->map(static fn ($value) => $value->intValue())
@@ -113,6 +138,9 @@ trait NumericCollectionTrait
         return Numeric::of($maxValue, $this->precision);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function min(): Numeric
     {
         if ($this->hasNoElement()->isTrue()) {
@@ -123,7 +151,7 @@ trait NumericCollectionTrait
             return Numeric::of($this->first()->value(), $this->precision);
         }
 
-        $this->validateCollection();
+        $this->_validateCollection();
 
         $min = $this->collection
             ->map(static fn ($value) => $value->intValue())
@@ -135,7 +163,7 @@ trait NumericCollectionTrait
         return Numeric::of($minValue, $this->precision);
     }
 
-    private function validateCollection(): void
+    private function _validateCollection(): void
     {
         $every = $this->collection
             ->every(static fn ($element) => method_exists($element, 'value'))
