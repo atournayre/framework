@@ -1313,8 +1313,6 @@ interface DateTimeInterface extends NullableInterface
 
     /**
      * @param DateTimeInterface|string $value
-     * @param int $numberOfDays
-     * @return BoolEnum
      */
     public function numberOfDaysIsLowerThanOrEquals($value, int $numberOfDays): BoolEnum;
 }

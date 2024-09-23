@@ -3475,7 +3475,6 @@ trait DateTimeTrait
     }
 
     /**
-     * @inheritDoc
      * @throws \Exception
      */
     public function numberOfDaysIsLowerThanOrEquals($value, int $numberOfDays): BoolEnum

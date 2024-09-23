@@ -180,9 +180,9 @@ final class DateTimeTest extends TestCase
     public function testNumberOfDaysIsLowerThanOrEquals(): void
     {
         $dateTime = DateTime::of(new \DateTime('2024-06-01'));
-        self::assertFalse($dateTime->numberOfDaysIsLowerThanOrEquals(new \DateTime('2024-06-17'), 7)->asBool());
+        self::assertFalse($dateTime->numberOfDaysIsLowerThanOrEquals('2024-06-17', 7)->asBool());
 
         $dateTime = DateTime::of(new \DateTime('2024-06-01'));
-        self::assertTrue($dateTime->numberOfDaysIsLowerThanOrEquals(new \DateTime('2024-06-07'), 7)->asBool());
+        self::assertTrue($dateTime->numberOfDaysIsLowerThanOrEquals(DateTime::of('2024-06-07'), 7)->asBool());
     }
 }
