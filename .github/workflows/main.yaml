@@ -38,6 +38,7 @@ jobs:
             - uses: php-actions/phpstan@v3
               with:
                   configuration: tools/phpstan/phpstan.neon
+                  version: composer
     
     phpunit:
         runs-on: ubuntu-latest
