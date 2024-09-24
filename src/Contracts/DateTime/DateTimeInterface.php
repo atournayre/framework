@@ -1310,4 +1310,9 @@ interface DateTimeInterface extends NullableInterface
     public function singularUnit(string $unit): string;
 
     public function pluralUnit(string $unit): string;
+
+    /**
+     * @param DateTimeInterface|string $value
+     */
+    public function numberOfDaysIsLowerThanOrEquals($value, int $numberOfDays): BoolEnum;
 }

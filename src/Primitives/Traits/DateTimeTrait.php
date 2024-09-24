@@ -3473,4 +3473,19 @@ trait DateTimeTrait
     {
         return $this->datetime::pluralUnit($unit);
     }
+
+    /**
+     * @throws \Exception
+     */
+    public function numberOfDaysIsLowerThanOrEquals($value, int $numberOfDays): BoolEnum
+    {
+        $dateTime = $this->toDateTime();
+        $valueDateTime = $value instanceof DateTimeInterface ? $value->toDateTime() : DateTime::of($value)->toDateTime();
+
+        $diff = $dateTime->diff($valueDateTime);
+
+        $result = $diff->days <= $numberOfDays;
+
+        return BoolEnum::fromBool($result);
+    }
 }

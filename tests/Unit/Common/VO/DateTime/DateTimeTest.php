@@ -173,4 +173,16 @@ final class DateTimeTest extends TestCase
         $dateTime = DateTime::of(new \DateTime('2024-06-18'));
         self::assertTrue($dateTime->isSameOrBetween(new \DateTime('2024-06-17'), new \DateTime('2024-06-19'))->isTrue());
     }
+
+    /**
+     * @throws \Exception
+     */
+    public function testNumberOfDaysIsLowerThanOrEquals(): void
+    {
+        $dateTime = DateTime::of(new \DateTime('2024-06-01'));
+        self::assertFalse($dateTime->numberOfDaysIsLowerThanOrEquals('2024-06-17', 7)->asBool());
+
+        $dateTime = DateTime::of(new \DateTime('2024-06-01'));
+        self::assertTrue($dateTime->numberOfDaysIsLowerThanOrEquals(DateTime::of('2024-06-07'), 7)->asBool());
+    }
 }
