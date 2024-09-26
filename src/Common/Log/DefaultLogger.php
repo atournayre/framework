@@ -15,6 +15,8 @@ final class DefaultLogger extends AbstractLogger implements LoggerInterface
     public function exception(\Exception $exception, array $context = []): void
     {
         $context['exception'] = $exception;
+        $context['trace'] = $exception->getTrace();
+
         $this->logger->error($exception->getMessage(), $context);
     }
 
