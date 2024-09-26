@@ -54,7 +54,7 @@ interface LoggerInterface extends \Psr\Log\LoggerInterface
     public function log($level, $message, array $context = []): void;
 
     // @phpstan-ignore-next-line
-    public function exception(\Exception $exception, array $context = []): void;
+    public function exception(\Throwable $exception, array $context = []): void;
 
     // @phpstan-ignore-next-line
     public function start(array $context = []): void;

@@ -12,7 +12,7 @@ final class DefaultLogger extends AbstractLogger implements LoggerInterface
      * @api
      */
     // @phpstan-ignore-next-line
-    public function exception(\Exception $exception, array $context = []): void
+    public function exception(\Throwable $exception, array $context = []): void
     {
         $context['exception'] = $exception;
         $this->logger->error($exception->getMessage(), $context);
