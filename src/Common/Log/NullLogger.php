@@ -12,7 +12,7 @@ final class NullLogger extends AbstractLogger implements LoggerInterface
      * @api
      */
     // @phpstan-ignore-next-line
-    public function exception(\Exception $exception, array $context = []): void
+    public function exception(\Throwable $exception, array $context = []): void
     {
         // Do nothing
     }
