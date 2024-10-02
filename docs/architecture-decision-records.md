@@ -21,3 +21,4 @@
 | [ADR 0017](adr/ADR-0017-Is.md)                    | Is                         | 2024-08-22 | Accepted | Check sameness                                         |
 | [ADR 0018](adr/ADR-0018-Absolute-Numeric.md)      | Absolute value for numeric | 2024-09-01 | Accepted | Absolute value for numeric                             |
 | [ADR 0019](adr/ADR-0019-Collection-Validation.md) | Collection validation      | 2024-09-07 | Accepted | Collection validation                                  |
+| [ADR 0020](adr/ADR-0020-Duration.md)              | Duration                   | 2024-10-02 | Accepted | Duration                                               |
