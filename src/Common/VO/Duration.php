@@ -16,33 +16,42 @@ final class Duration
 
     private const HOURS_IN_DAY = 24;
 
-    private int $milliseconds;
+    /**
+     * @var int|float $milliseconds
+     */
+    private $milliseconds;
 
-    private function __construct(int $milliseconds)
+    /**
+     * @param $milliseconds int|float
+     */
+    private function __construct($milliseconds)
     {
         $this->milliseconds = $milliseconds;
     }
 
     /**
      * @api
+     * @var int|float $milliseconds
      */
-    public static function of(int $milliseconds): self
+    public static function of($milliseconds): self
     {
         return new self($milliseconds);
     }
 
     /**
      * @api
+     * @return int|float
      */
-    public function asIs(): int
+    public function asIs()
     {
         return $this->milliseconds;
     }
 
     /**
      * @api
+     * @return int|float
      */
-    public function milliseconds(): int
+    public function milliseconds()
     {
         return $this->milliseconds;
     }
@@ -82,7 +91,7 @@ final class Duration
     /**
      * @api
      */
-    public function forHumanReading(string $glue = ' '): string
+    public function humanReadable(string $glue = ' '): string
     {
         $days = floor($this->milliseconds / self::MILLISECONDS_IN_SECOND / self::SECONDS_IN_MINUTE / self::MINUTES_IN_HOUR / self::HOURS_IN_DAY);
         $hours = floor($this->milliseconds / self::MILLISECONDS_IN_SECOND / self::SECONDS_IN_MINUTE / self::MINUTES_IN_HOUR) % self::HOURS_IN_DAY;

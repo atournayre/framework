@@ -14,7 +14,7 @@ final class DurationTest extends TestCase
      */
     public function dataProvider(): array
     {
-        $test1 = 1 * 24 * 60 * 60 * 1000 // 1 day
+        $test1 = (float) 1 * 24 * 60 * 60 * 1000 // 1 day
             + 4 * 60 * 60 * 1000 // 4 hours
             + 31 * 60 * 1000 // 31 minutes
             + 12 * 1000 // 12 seconds
@@ -54,8 +54,8 @@ final class DurationTest extends TestCase
      * @dataProvider dataProvider
      */
     public function testDuration(
-        int $milliseconds,
-        int $expectedMilliseconds,
+        float $milliseconds,
+        float $expectedMilliseconds,
         float $expectedSeconds,
         float $expectedMinutes,
         float $expectedHours,
@@ -70,6 +70,6 @@ final class DurationTest extends TestCase
         self::assertEquals($expectedMinutes, $duration->inMinutes());
         self::assertEquals($expectedHours, $duration->inHours());
         self::assertEquals($expectedDays, $duration->inDays());
-        self::assertEquals($expectedHuman, $duration->forHumanReading($glueForHumanReading));
+        self::assertEquals($expectedHuman, $duration->humanReadable($glueForHumanReading));
     }
 }
