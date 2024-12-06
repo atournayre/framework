@@ -18,7 +18,7 @@
         "aimeos/map": "^3.7",
         "doctrine/collections": "^1.6 || ^2",
         "nesbot/carbon": "^2.72",
-        "psr/log": "^1.1 || ^2.0",
+        "psr/log": "^1.1 || ^2.0 || ^3",
         "symfony/console": "^5.4 || ^6.0",
         "symfony/dependency-injection": "^5.4 || ^6.0",
         "symfony/event-dispatcher": "^5.4 || ^6.0",
