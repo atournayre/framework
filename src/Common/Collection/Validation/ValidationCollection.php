@@ -38,4 +38,16 @@ final class ValidationCollection implements MapInterface
             ->join($glue)
         ;
     }
+
+    /**
+     * @api
+     */
+    public function throwException(string $glue = ', '): void
+    {
+        if ($this->hasNoElement()->yes()) {
+            return;
+        }
+
+        throw new \RuntimeException($this->toString($glue));
+    }
 }
