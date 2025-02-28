@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
+use Atournayre\Contracts\Log\LoggerInterface;
+
 use function Symfony\Component\String\u;
 
 final class BoolEnum
@@ -14,6 +16,8 @@ final class BoolEnum
 
     private string $value;
 
+    private ?LoggerInterface $logger = null;
+
     private function __construct(string $value)
     {
         $this->value = $value;
@@ -22,6 +26,17 @@ final class BoolEnum
     public static function fromBool(bool $value): self
     {
         return $value ? self::true() : self::false();
+    }
+
+    /**
+     * @api
+     */
+    public function withLogger(LoggerInterface $logger): self
+    {
+        $clone = clone $this;
+        $clone->logger = $logger;
+
+        return $clone;
     }
 
     /**
@@ -104,6 +119,7 @@ final class BoolEnum
         }
 
         if (is_string($message)) {
+            $this->logger?->error($message);
             throw new \InvalidArgumentException($message);
         }
 
@@ -124,6 +140,7 @@ final class BoolEnum
         }
 
         if (is_string($message)) {
+            $this->logger?->error($message);
             throw new \InvalidArgumentException($message);
         }
 
