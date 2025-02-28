@@ -17,7 +17,7 @@ final class SendMailService implements SendMailInterface
     private MailerInterface $mailer;
 
     public function __construct(
-        MailerInterface $mailer
+        MailerInterface $mailer,
     ) {
         $this->mailer = $mailer;
     }

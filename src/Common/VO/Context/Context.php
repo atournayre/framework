@@ -22,7 +22,7 @@ final class Context implements ContextInterface, LoggableInterface
 
     private function __construct(
         UserInterface $user,
-        DateTimeInterface $createdAt
+        DateTimeInterface $createdAt,
     ) {
         $this->createdAt = $createdAt;
         $this->user = $user;

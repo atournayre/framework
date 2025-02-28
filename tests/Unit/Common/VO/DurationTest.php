@@ -61,7 +61,7 @@ final class DurationTest extends TestCase
         float $expectedHours,
         float $expectedDays,
         string $glueForHumanReading,
-        string $expectedHuman
+        string $expectedHuman,
     ): void {
         $duration = Duration::of($milliseconds);
 

@@ -12,7 +12,7 @@ final class RoutingService implements RoutingInterface
     private RouterInterface $router;
 
     public function __construct(
-        RouterInterface $router
+        RouterInterface $router,
     ) {
         $this->router = $router;
     }

@@ -15,7 +15,7 @@ final class TwigTemplatingService implements TemplatingInterface
     private Environment $twigEnvironment;
 
     public function __construct(
-        Environment $twigEnvironment
+        Environment $twigEnvironment,
     ) {
         $this->twigEnvironment = $twigEnvironment;
     }

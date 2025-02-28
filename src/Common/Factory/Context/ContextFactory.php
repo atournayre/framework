@@ -18,7 +18,7 @@ final class ContextFactory
 
     public function __construct(
         SecurityInterface $security,
-        ClockInterface $clock
+        ClockInterface $clock,
     ) {
         $this->clock = $clock;
         $this->security = $security;

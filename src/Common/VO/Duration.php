@@ -17,7 +17,7 @@ final class Duration
     private const HOURS_IN_DAY = 24;
 
     /**
-     * @var int|float $milliseconds
+     * @var int|float
      */
     private $milliseconds;
 
@@ -31,6 +31,7 @@ final class Duration
 
     /**
      * @api
+     *
      * @param int|float $milliseconds
      */
     public static function of($milliseconds): self
@@ -40,6 +41,7 @@ final class Duration
 
     /**
      * @api
+     *
      * @return int|float
      */
     public function asIs()
@@ -49,6 +51,7 @@ final class Duration
 
     /**
      * @api
+     *
      * @return int|float
      */
     public function milliseconds()

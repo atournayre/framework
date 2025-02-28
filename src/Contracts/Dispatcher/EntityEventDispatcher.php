@@ -18,7 +18,7 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
 
     public function __construct(
         EventDispatcherInterface $eventDispatcher,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->logger = $logger;
         $this->eventDispatcher = $eventDispatcher;

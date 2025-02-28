@@ -20,7 +20,7 @@ final class MailService
     public function __construct(
         LoggerInterface $logger,
         SendMailInterface $sendMail,
-        MailerConfiguration $mailerConfiguration
+        MailerConfiguration $mailerConfiguration,
     ) {
         $this->logger = $logger;
         $this->sendMail = $sendMail;
