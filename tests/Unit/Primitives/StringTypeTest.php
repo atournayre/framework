@@ -863,4 +863,16 @@ final class StringTypeTest extends TestCase
         $result = $string->truncate(5);
         self::assertEquals('Hello', $result->toString());
     }
+
+    public function testFromPatternfReturnsFormattedString(): void
+    {
+        $string = StringType::fromPattern('Welcome %s %s %s', 'to', 'my', 'World');
+        self::assertEquals('Welcome to my World', $string->toString());
+    }
+
+    public function testFromPatternWithIntThrowsException(): void
+    {
+        self::expectException(\InvalidArgumentException::class);
+        StringType::fromPattern('Welcome %s %s %s', 'to', 1, 'World');
+    }
 }
