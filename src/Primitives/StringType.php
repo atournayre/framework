@@ -29,9 +29,17 @@ final class StringType
         $this->value = $value;
     }
 
+    /**
+     * @param string $string
+     * @param array<string> $arg
+     *
+     * @return StringType
+     * @api
+     *
+     */
     public static function fromPattern(string $string, ...$arg): self
     {
-        Assert::allString($arg, 'The arguments must be strings');
+        Assert::allString($arg, 'The arguments must be strings'); // @phpstan-ignore-line
         $string = sprintf($string, ...$arg);
 
         return self::of($string);

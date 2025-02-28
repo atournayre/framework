@@ -873,6 +873,6 @@ final class StringTypeTest extends TestCase
     public function testFromPatternWithIntThrowsException(): void
     {
         self::expectException(\InvalidArgumentException::class);
-        StringType::fromPattern('Welcome %s %s %s', 'to', 1, 'World');
+        StringType::fromPattern('Welcome %s %s %s', 'to', 1, 'World'); // @phpstan-ignore-line
     }
 }
