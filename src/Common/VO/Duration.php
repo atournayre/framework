@@ -22,7 +22,7 @@ final class Duration
     private $milliseconds;
 
     /**
-     * @param $milliseconds int|float
+     * @param int|float $milliseconds
      */
     private function __construct($milliseconds)
     {
@@ -31,7 +31,7 @@ final class Duration
 
     /**
      * @api
-     * @var int|float $milliseconds
+     * @param int|float $milliseconds
      */
     public static function of($milliseconds): self
     {
