@@ -39,7 +39,7 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     protected function __construct(
         EmailSubject $subject,
-        EmailContact $from
+        EmailContact $from,
     ) {
         $this->from = $from;
         $this->subject = $subject;

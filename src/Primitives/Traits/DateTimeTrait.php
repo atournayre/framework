@@ -39,7 +39,7 @@ trait DateTimeTrait
      */
     public static function of(
         $datetime,
-        ?\DateTimeZone $timezone = null
+        ?\DateTimeZone $timezone = null,
     ): DateTimeInterface {
         if ($datetime instanceof self) {
             $fromInterface = Carbon::parse($datetime->toDateTime())

@@ -21,7 +21,7 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
 
     protected function __construct(
         EmailSubject $subject,
-        EmailContact $from
+        EmailContact $from,
     ) {
         parent::__construct($subject, $from);
         $this->htmlTemplatePath = HtmlTemplatePath::empty();

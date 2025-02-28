@@ -24,7 +24,7 @@ final class ResponseService implements ResponseInterface
     public function __construct(
         TemplatingInterface $templating,
         RoutingInterface $routing,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->logger = $logger;
         $this->routing = $routing;

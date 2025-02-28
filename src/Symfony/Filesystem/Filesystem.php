@@ -26,7 +26,7 @@ final class Filesystem implements FilesystemInterface
     public DirectoryOrFile $directoryOrFile;
 
     private function __construct(
-        string $directoryOrFile
+        string $directoryOrFile,
     ) {
         $this->directoryOrFile = DirectoryOrFile::of($directoryOrFile);
         $this->finder = new Finder();

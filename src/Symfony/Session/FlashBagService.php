@@ -19,7 +19,7 @@ final class FlashBagService implements FlashBagInterface
     private SymfonyFlashBagInterface $symfonyFlashBag;
 
     public function __construct(
-        SymfonyFlashBagInterface $symfonyFlashBag
+        SymfonyFlashBagInterface $symfonyFlashBag,
     ) {
         $this->symfonyFlashBag = $symfonyFlashBag;
     }

@@ -17,7 +17,7 @@ final class EmailContact implements LoggableInterface
 
     private function __construct(
         EmailAddress $email,
-        EmailName $name
+        EmailName $name,
     ) {
         $this->emailName = $name;
         $this->emailAddress = $email;

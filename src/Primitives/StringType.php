@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
+use Atournayre\Common\Assert\Assert;
+
 use function Symfony\Component\String\u;
 
 final class StringType
@@ -25,6 +27,22 @@ final class StringType
     private function __construct(string $value)
     {
         $this->value = $value;
+    }
+
+    /**
+     * @param string $string
+     * @param array<string> $arg
+     *
+     * @return StringType
+     * @api
+     *
+     */
+    public static function fromPattern(string $string, ...$arg): self
+    {
+        Assert::allString($arg, 'The arguments must be strings'); // @phpstan-ignore-line
+        $string = sprintf($string, ...$arg);
+
+        return self::of($string);
     }
 
     public static function of(string $value): self
