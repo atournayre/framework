@@ -856,4 +856,11 @@ final class StringTypeTest extends TestCase
         $result = $string->afterLast(' ');
         self::assertEquals('World', $result->toString());
     }
+
+    public function testTruncayReturnsStringWithTruncatedLength(): void
+    {
+        $string = StringType::of('Hello World');
+        $result = $string->truncate(5);
+        self::assertEquals('Hello', $result->toString());
+    }
 }

@@ -540,4 +540,14 @@ final class StringType
 
         return self::of($u->toString());
     }
+
+    /**
+     * @api
+     */
+    public function truncate(int $int): self
+    {
+        $u = u($this->value)->truncate($int);
+
+        return self::of($u->toString());
+    }
 }
