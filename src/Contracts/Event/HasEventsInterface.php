@@ -10,6 +10,8 @@ use Atournayre\Common\VO\Event;
 
 interface HasEventsInterface
 {
+    public function initializeEvents(): void;
+
     public function events(): EventCollection;
 
     public function filterEventsByType(string $type): EventCollection;
