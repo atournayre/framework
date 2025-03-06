@@ -17,7 +17,7 @@ trait TestCollectionTrait
     public function compare(string $value, bool $case = true): BoolEnum
     {
         $compare = $this->collection
-            ->compare($value, $case)
+            ->strCompare($value, $case)
         ;
 
         return BoolEnum::fromBool($compare);
