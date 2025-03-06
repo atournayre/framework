@@ -4,16 +4,25 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Traits;
 
+use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\Collection\EventCollection;
 use Atournayre\Common\VO\Event;
+use Atournayre\Contracts\Event\HasEventsInterface;
 
 /**
  * Add to constructor:
  * $this->events = EventCollection::empty();
+ *
+ * Add a PostLoadListener to initialize the events collection on postLoad (Doctrine)
  */
 trait EventsTrait
 {
-    private EventCollection $events;
+    protected EventCollection $events;
+
+    public function initializeEvents(): void
+    {
+        $this->events = EventCollection::empty();
+    }
 
     public function events(): EventCollection
     {
@@ -33,10 +42,8 @@ trait EventsTrait
      */
     public function setEvent(string $index, Event $event): void
     {
-        // @phpstan-ignore-next-line
-        if (false === method_exists($this, 'allowedEventsTypes')) {
-            throw new \RuntimeException('You must implement the method "allowedEventsTypes" to use this trait');
-        }
+        /* @phpstan-ignore-next-line */
+        Assert::implementsInterface($this, HasEventsInterface::class);
 
         $eventType = $event->_type();
         $eventTypeIsNotAllowed = $this->allowedEventsTypes()

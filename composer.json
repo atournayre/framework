@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": ">=8.1",
-        "aimeos/map": "^3.7",
+        "aimeos/map": "^3.12",
         "doctrine/collections": "^1.6 || ^2",
         "nesbot/carbon": "^2.72",
         "psr/log": "^1.1 || ^2.0 || ^3",
