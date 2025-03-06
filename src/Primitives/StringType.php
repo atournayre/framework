@@ -30,12 +30,9 @@ final class StringType
     }
 
     /**
-     * @param string $string
      * @param array<string> $arg
      *
-     * @return StringType
      * @api
-     *
      */
     public static function fromPattern(string $string, ...$arg): self
     {

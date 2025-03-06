@@ -42,6 +42,7 @@ trait EventsTrait
      */
     public function setEvent(string $index, Event $event): void
     {
+        /* @phpstan-ignore-next-line */
         Assert::implementsInterface($this, HasEventsInterface::class);
 
         $eventType = $event->_type();
@@ -76,6 +77,6 @@ trait EventsTrait
     {
         return $this->events
             ->filterByType($type)
-            ;
+        ;
     }
 }
