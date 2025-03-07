@@ -109,5 +109,4 @@ final class EventCollection implements MapInterface
             ->offsetUnset($index)
         ;
     }
-
 }

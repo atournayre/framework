@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Unit\Common\Traits;
 
 use Atournayre\Common\VO\Event;
-use Atournayre\Tests\Fixtures\Event\KernelEvent;
 use Atournayre\Tests\Fixtures\Event\ObjectWithEvents;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +24,7 @@ final class EventsTraitTest extends TestCase
     {
         $object = new ObjectWithEvents();
         $event = new Event();
-        $object->addEvent($event);
+        $object->events()->add($event);
 
         self::assertSame($event, $object->events()->first());
     }
@@ -37,7 +36,7 @@ final class EventsTraitTest extends TestCase
     {
         $object = new ObjectWithEvents();
         $newEvent = new Event();
-        $object->setEvent($newEvent->_identifier(), $newEvent);
+        $object->events()->set($newEvent->_identifier(), $newEvent);
 
         self::assertSame($newEvent, $object->events()->first());
     }
@@ -49,8 +48,8 @@ final class EventsTraitTest extends TestCase
     {
         $object = new ObjectWithEvents();
         $event = new Event();
-        $object->addEvent($event);
-        $object->removeEvent($event);
+        $object->events()->add($event);
+        $object->events()->remove($event);
 
         self::assertTrue($object->events()->hasNoElement()->isTrue());
     }
@@ -62,7 +61,7 @@ final class EventsTraitTest extends TestCase
     {
         $object = new ObjectWithEvents();
         $event = new Event();
-        $object->addEvent($event);
+        $object->events()->add($event);
 
         self::assertTrue($object->events()->count()->equalsTo(1)->isTrue());
     }
@@ -74,34 +73,8 @@ final class EventsTraitTest extends TestCase
     {
         $object = new ObjectWithEvents();
         $event = new Event();
-        $object->addEvent($event);
+        $object->events()->add($event);
 
-        self::assertCount(1, $object->filterEventsByType(Event::class)->toArray());
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public function testAddEventForNotAllowedType(): void
-    {
-        self::expectException(\RuntimeException::class);
-        self::expectExceptionMessage('Event type "Atournayre\Tests\Fixtures\Event\KernelEvent" is not allowed for this object');
-
-        $object = new ObjectWithEvents();
-        $event = new KernelEvent();
-        $object->addEvent($event);
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public function testSetEventForNotAllowedType(): void
-    {
-        self::expectException(\RuntimeException::class);
-        self::expectExceptionMessage('Event type "Atournayre\Tests\Fixtures\Event\KernelEvent" is not allowed for this object');
-
-        $object = new ObjectWithEvents();
-        $event = new KernelEvent();
-        $object->setEvent($event->_identifier(), $event);
+        self::assertCount(1, $object->events()->filterByType(Event::class)->toArray());
     }
 }

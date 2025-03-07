@@ -14,9 +14,8 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
 {
     public function __construct(
         private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly LoggerInterface          $logger,
-    )
-    {
+        private readonly LoggerInterface $logger,
+    ) {
     }
 
     /**
@@ -41,7 +40,8 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
                     $this->dispatchEvent($event);
                     $eventCollection->remove($event);
                 },
-            );
+            )
+        ;
     }
 
     private function dispatchEvent(Event $event): void
