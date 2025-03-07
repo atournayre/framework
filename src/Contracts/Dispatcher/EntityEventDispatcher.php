@@ -12,16 +12,11 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 
 final class EntityEventDispatcher implements EntityEventDispatcherInterface
 {
-    private EventDispatcherInterface $eventDispatcher;
-
-    private LoggerInterface $logger;
-
     public function __construct(
-        EventDispatcherInterface $eventDispatcher,
-        LoggerInterface $logger,
-    ) {
-        $this->logger = $logger;
-        $this->eventDispatcher = $eventDispatcher;
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly LoggerInterface          $logger,
+    )
+    {
     }
 
     /**
@@ -41,8 +36,12 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
     private function dispatchAllEvents(EventCollection $eventCollection): void
     {
         $eventCollection
-            ->each(fn (Event $event) => $this->dispatchEvent($event))
-        ;
+            ->each(
+                function (Event $event) use ($eventCollection): void {
+                    $this->dispatchEvent($event);
+                    $eventCollection->remove($event);
+                },
+            );
     }
 
     private function dispatchEvent(Event $event): void
@@ -59,9 +58,8 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
      */
     private function dispatchEventsByType(EventCollection $eventCollection, string $type): void
     {
-        $eventCollection
-            ->filterByType($type)
-            ->each(fn (Event $event) => $this->dispatchEvent($event))
-        ;
+        $eventCollection = $eventCollection->filterByType($type);
+
+        $this->dispatchAllEvents($eventCollection);
     }
 }
