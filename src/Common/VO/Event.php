@@ -46,9 +46,16 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
      */
     public function toLog(): array
     {
-        return [
+        $log = [
             'identifier' => $this->_identifier(),
             'type' => $this->_type(),
+        ];
+
+        if (!$this->hasContext()) {
+            return $log;
+        }
+
+        return $log + [
             'context' => $this->getContext()->toLog(),
         ];
     }
