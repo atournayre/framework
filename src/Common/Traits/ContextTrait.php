@@ -25,6 +25,10 @@ trait ContextTrait
 
     public function hasContext(): bool
     {
+        if (!isset($this->context)) {
+            return false;
+        }
+
         return $this->context->isNotNull();
     }
 }
