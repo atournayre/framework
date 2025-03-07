@@ -2700,7 +2700,7 @@ Array
         $m = Collection::of([['p' => '1'], ['p' => 1], ['p' => 2]]);
         $r = $m->unique('p');
 
-        self::assertSame( [0 => ['p' => '1'], 2 => ['p' => 2]], $r->toArray() );
+        self::assertSame([0 => ['p' => '1'], 2 => ['p' => 2]], $r->toArray());
     }
 
     public function testUniquePath(): void
@@ -2708,7 +2708,7 @@ Array
         $m = Collection::of([['i' => ['p' => '1']], ['i' => ['p' => 1]]]);
         $r = $m->unique('i/p');
 
-        self::assertSame( [0 => ['i' => ['p' => '1']]], $r->toArray() );
+        self::assertSame([0 => ['i' => ['p' => '1']]], $r->toArray());
     }
 
     public function testUnshift(): void

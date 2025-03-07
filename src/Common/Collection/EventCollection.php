@@ -58,11 +58,9 @@ final class EventCollection implements MapInterface
     /**
      * @api
      *
-     * @param mixed|null $value
-     *
      * @throws \Exception
      */
-    public function add($value, ?\Closure $callback = null): self
+    public function add(mixed $value, ?\Closure $callback = null): self
     {
         $key = $value->_identifier();
         $this->set($key, $value, $callback);
@@ -72,27 +70,43 @@ final class EventCollection implements MapInterface
 
     /**
      * @api
-     *
-     * @param mixed|null $key
-     * @param mixed|null $value
      */
-    public function contains($key, ?string $operator = null, $value = null): BoolEnum
+    public function contains(mixed $key, ?string $operator = null, mixed $value = null): BoolEnum
     {
-        return $this->collection
+        return $this
+            ->collection
             ->contains($key, $operator, $value)
         ;
     }
 
     /**
-     * @param mixed|null $value
-     * @param bool       $strict
-     *
-     * @return int|string|null
+     * @api
      */
-    public function search($value, $strict = true)
+    public function search(mixed $value, bool $strict = true): int|string|null
     {
-        return $this->collection
+        return $this
+            ->collection
             ->search($value, $strict)
+        ;
+    }
+
+    /**
+     * @api
+     */
+    public function remove(Event $event): void
+    {
+        $index = $this
+            ->collection
+            ->search($event)
+        ;
+
+        if (null === $index) {
+            return;
+        }
+
+        $this
+            ->collection
+            ->offsetUnset($index)
         ;
     }
 }
