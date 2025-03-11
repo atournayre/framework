@@ -106,9 +106,13 @@ trait CollectionCommonTrait
 
     /**
      * @param mixed|null $value
+     *
+     * @throws \Exception
      */
     public function add($value, ?\Closure $callback = null): self
     {
+        $this->ensureMutable('add');
+
         $clone = clone $this;
         $clone->collection->push($value, $callback);
 
@@ -118,9 +122,13 @@ trait CollectionCommonTrait
     /**
      * @param mixed|null $key
      * @param mixed|null $value
+     *
+     * @throws \Exception
      */
     public function set($key, $value, ?\Closure $callback = null): self
     {
+        $this->ensureMutable('set');
+
         $clone = clone $this;
         $clone->collection->set($key, $value, $callback);
 
@@ -151,5 +159,15 @@ trait CollectionCommonTrait
         return $this->collection
             ->keys()
         ;
+    }
+
+    /**
+     * @throws \Exception
+     */
+    private function ensureMutable(string $operation): void
+    {
+        if ($this->collection->isReadOnly()->yes()) {
+            throw new \RuntimeException(sprintf('Cannot %s a read-only collection. Use clone to create a mutable copy.', $operation));
+        }
     }
 }
