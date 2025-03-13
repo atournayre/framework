@@ -1541,6 +1541,11 @@ Array
         self::assertSame(0.0, Collection::of([])->max()->value());
     }
 
+    public function testMaxZero(): void
+    {
+        self::assertSame(0.0, Collection::of([0])->max()->value());
+    }
+
     public function testMaxPath(): void
     {
         self::assertSame(50.0, Collection::of([['p' => 30], ['p' => 50], ['p' => 10]])->max('p')->value());
@@ -1578,6 +1583,11 @@ Array
     public function testMinEmpty(): void
     {
         self::assertSame(0.0, Collection::of([])->min()->value());
+    }
+
+    public function testMinZero(): void
+    {
+        self::assertSame(0.0, Collection::of([0])->min()->value());
     }
 
     public function testMinPath(): void

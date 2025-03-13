@@ -35,7 +35,7 @@ trait AggregateCollectionTrait
             ->max($key)
         ;
 
-        return Numeric::fromFloat($max);
+        return Numeric::fromFloat($max ?? 0);
     }
 
     /**
@@ -53,7 +53,7 @@ trait AggregateCollectionTrait
             ->min($key)
         ;
 
-        return Numeric::fromFloat($min);
+        return Numeric::fromFloat($min ?? 0);
     }
 
     /**
