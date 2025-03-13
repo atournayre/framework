@@ -1552,6 +1552,14 @@ Array
         self::assertSame(50.0, Collection::of([['i' => ['p' => 30]], ['i' => ['p' => 50]]])->max('i/p')->value());
     }
 
+    public function testAvg(): void
+    {
+        self::assertSame(1.0, Collection::of([1, 1])->avg()->value());
+        self::assertSame(3.0, Collection::of([4, 2])->avg()->value());
+        self::assertSame(0.5, Collection::of([0, 1])->avg()->value());
+        self::assertSame(0.0, Collection::of([0])->avg()->value());
+    }
+
     public function testMergeArray(): void
     {
         $m = Collection::of(['name' => 'Hello']);
