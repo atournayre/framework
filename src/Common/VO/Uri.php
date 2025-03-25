@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
@@ -66,54 +67,63 @@ final class Uri implements UriInterface
     public function withScheme(string $scheme): UriInterface
     {
         $newUri = $this->uri->withScheme($scheme);
+
         return self::of($newUri->__toString());
     }
 
     public function withUserInfo(string $user): UriInterface
     {
         $newUri = $this->uri->withUserInfo($user);
+
         return self::of($newUri->__toString());
     }
 
     public function withUserAndPassword(string $user, string $password): UriInterface
     {
         $newUri = $this->uri->withUserInfo($user, $password);
+
         return self::of($newUri->__toString());
     }
 
     public function withHost(string $host): UriInterface
     {
         $newUri = $this->uri->withHost($host);
+
         return self::of($newUri->__toString());
     }
 
     public function withPort(int $port): UriInterface
     {
         $newUri = $this->uri->withPort($port);
+
         return self::of($newUri->__toString());
     }
 
     public function withoutPort(): UriInterface
     {
         $newUri = $this->uri->withPort(null);
+
         return self::of($newUri->__toString());
     }
 
     public function withPath(string $path): UriInterface
     {
         $newUri = $this->uri->withPath($path);
+
         return self::of($newUri->__toString());
     }
 
     public function withQuery(string $query): UriInterface
     {
         $newUri = $this->uri->withQuery($query);
+
         return self::of($newUri->__toString());
     }
 
     public function withFragment(string $fragment): UriInterface
     {
         $newUri = $this->uri->withFragment($fragment);
+
         return self::of($newUri->__toString());
     }
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Atournayre\Tests\Unit\Common\Uri;
 
@@ -29,13 +31,14 @@ class UriTest extends TestCase
 
     public function testCanTransformAndRetrievePartsIndividually(): void
     {
-        $uri = (Uri::of())
+        $uri = Uri::of()
             ->withScheme('https')
             ->withHost('example.com')
             ->withPort(8080)
             ->withPath('/path/123')
             ->withQuery('q=abc')
-            ->withFragment('test');
+            ->withFragment('test')
+        ;
 
         self::assertSame('https', $uri->scheme());
         self::assertSame('example.com', $uri->host());
@@ -48,13 +51,14 @@ class UriTest extends TestCase
 
     public function testSupportsUrlEncodedValues(): void
     {
-        $uri = (Uri::of())
+        $uri = Uri::of()
             ->withScheme('https')
             ->withHost('example.com')
             ->withPort(8080)
             ->withPath('/path/123')
             ->withQuery('q=abc')
-            ->withFragment('test');
+            ->withFragment('test')
+        ;
 
         self::assertSame('https', $uri->scheme());
         self::assertSame('example.com', $uri->host());
@@ -136,7 +140,7 @@ class UriTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid port: 100000. Must be between 0 and 65535');
 
-        (Uri::of())->withPort(100000);
+        Uri::of()->withPort(100000);
     }
 
     public function testWithPortCannotBeNegative(): void
@@ -144,7 +148,7 @@ class UriTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid port: -1. Must be between 0 and 65535');
 
-        (Uri::of())->withPort(-1);
+        Uri::of()->withPort(-1);
     }
 
     public function testParseUriPortCannotBeNegative(): void
@@ -250,7 +254,7 @@ class UriTest extends TestCase
         self::assertSame('http', $uri->scheme());
         self::assertSame('http://example.com', (string) $uri);
 
-        $uri = (Uri::of('//example.com'))->withScheme('HTTP');
+        $uri = Uri::of('//example.com')->withScheme('HTTP');
 
         self::assertSame('http', $uri->scheme());
         self::assertSame('http://example.com', (string) $uri);
@@ -263,7 +267,7 @@ class UriTest extends TestCase
         self::assertSame('example.com', $uri->host());
         self::assertSame('//example.com', (string) $uri);
 
-        $uri = (Uri::of())->withHost('eXaMpLe.CoM');
+        $uri = Uri::of()->withHost('eXaMpLe.CoM');
 
         self::assertSame('example.com', $uri->host());
         self::assertSame('//example.com', (string) $uri);
@@ -276,7 +280,7 @@ class UriTest extends TestCase
         self::assertNull($uri->port());
         self::assertSame('example.com', $uri->authority());
 
-        $uri = (Uri::of('https://example.com'))->withPort(443);
+        $uri = Uri::of('https://example.com')->withPort(443);
         self::assertNull($uri->port());
         self::assertSame('example.com', $uri->authority());
 
@@ -285,14 +289,14 @@ class UriTest extends TestCase
         self::assertNull($uri->port());
         self::assertSame('example.com', $uri->authority());
 
-        $uri = (Uri::of('http://example.com'))->withPort(80);
+        $uri = Uri::of('http://example.com')->withPort(80);
         self::assertNull($uri->port());
         self::assertSame('example.com', $uri->authority());
     }
 
     public function testPortIsReturnedIfSchemeUnknown(): void
     {
-        $uri = (Uri::of('//example.com'))->withPort(80);
+        $uri = Uri::of('//example.com')->withPort(80);
 
         self::assertSame(80, $uri->port());
         self::assertSame('example.com:80', $uri->authority());
@@ -310,7 +314,7 @@ class UriTest extends TestCase
 
     public function testPortCanBeRemoved(): void
     {
-        $uri = (Uri::of('http://example.com:8080'))->withoutPort();
+        $uri = Uri::of('http://example.com:8080')->withoutPort();
 
         self::assertNull($uri->port());
         self::assertSame('http://example.com', (string) $uri);
@@ -318,7 +322,7 @@ class UriTest extends TestCase
 
     public function testAuthorityWithUserInfoButWithoutHost(): void
     {
-        $uri = (Uri::of())
+        $uri = Uri::of()
             ->withUserAndPassword('user', 'pass')
         ;
 
@@ -359,9 +363,8 @@ class UriTest extends TestCase
         string $path,
         string $query,
         string $fragment,
-        string $output
-    ): void
-    {
+        string $output,
+    ): void {
         $uri = Uri::of($input);
         self::assertSame($path, $uri->path());
         self::assertSame($query, $uri->query());
@@ -371,7 +374,7 @@ class UriTest extends TestCase
 
     public function testWithPathEncodesProperly(): void
     {
-        $uri = (Uri::of())->withPath('/baz?#€/b%61r');
+        $uri = Uri::of()->withPath('/baz?#€/b%61r');
         // Query and fragment delimiters and multibyte chars are encoded.
         self::assertSame('/baz%3F%23%E2%82%AC/b%61r', $uri->path());
         self::assertSame('/baz%3F%23%E2%82%AC/b%61r', (string) $uri);
@@ -379,7 +382,7 @@ class UriTest extends TestCase
 
     public function testWithQueryEncodesProperly(): void
     {
-        $uri = (Uri::of())->withQuery('?=#&€=/&b%61r');
+        $uri = Uri::of()->withQuery('?=#&€=/&b%61r');
         // A query starting with a "?" is valid and must not be magically removed. Otherwise it would be impossible to
         // construct such an URI. Also the "?" and "/" does not need to be encoded in the query.
         self::assertSame('?=%23&%E2%82%AC=/&b%61r', $uri->query());
@@ -388,7 +391,7 @@ class UriTest extends TestCase
 
     public function testWithFragmentEncodesProperly(): void
     {
-        $uri = (Uri::of())->withFragment('#€?/b%61r');
+        $uri = Uri::of()->withFragment('#€?/b%61r');
         // A fragment starting with a "#" is valid and must not be magically removed. Otherwise it would be impossible to
         // construct such an URI. Also the "?" and "/" does not need to be encoded in the fragment.
         self::assertSame('%23%E2%82%AC?/b%61r', $uri->fragment());
@@ -397,7 +400,7 @@ class UriTest extends TestCase
 
     public function testAllowsForRelativeUri(): void
     {
-        $uri = (Uri::of())->withPath('foo');
+        $uri = Uri::of()->withPath('foo');
         self::assertSame('foo', $uri->path());
         self::assertSame('foo', (string) $uri);
     }
@@ -406,7 +409,7 @@ class UriTest extends TestCase
     {
         // If the path is rootless and an authority is present, the path MUST
         // be prefixed by "/".
-        $uri = (Uri::of())->withPath('foo')->withHost('example.com');
+        $uri = Uri::of()->withPath('foo')->withHost('example.com');
         self::assertSame('/foo', $uri->path());
         // concatenating a relative path with a host doesn't work: "//example.comfoo" would be wrong
         self::assertSame('//example.com/foo', (string) $uri);
@@ -416,7 +419,7 @@ class UriTest extends TestCase
     {
         // If the path is starting with more than one "/" and no authority is
         // present, the starting slashes MUST be reduced to one.
-        $uri = (Uri::of())->withPath('//foo');
+        $uri = Uri::of()->withPath('//foo');
         self::assertSame('/foo', $uri->path());
         // URI "//foo" would be interpreted as network reference and thus change the original path to the host
         self::assertSame('/foo', (string) $uri);
@@ -458,8 +461,8 @@ class UriTest extends TestCase
         self::assertSame('程式设计.com', $new->host());
 
         $testDomain = 'παράδειγμα.δοκιμή';
-        $uri = (Uri::of())->withHost($testDomain);
+        $uri = Uri::of()->withHost($testDomain);
         self::assertSame($testDomain, $uri->host());
-        self::assertSame('//' . $testDomain, (string) $uri);
+        self::assertSame('//'.$testDomain, (string) $uri);
     }
 }
