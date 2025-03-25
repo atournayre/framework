@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Atournayre\Symfony\VO;
@@ -13,26 +14,21 @@ final readonly class Uri implements UriInterface
      */
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
-        private string                $route,
-        private array                 $params,
-    )
-    {
+        private string $route,
+        private array $params,
+    ) {
     }
 
     /**
-     * @param UrlGeneratorInterface $urlGenerator
-     * @param string $route
      * @param array<array-key, mixed> $params
      *
-     * @return self
      * @api
      */
     public static function new(
         UrlGeneratorInterface $urlGenerator,
-        string                $route,
-        array                 $params,
-    ): self
-    {
+        string $route,
+        array $params,
+    ): self {
         return new self(
             $urlGenerator,
             $route,
@@ -44,7 +40,8 @@ final readonly class Uri implements UriInterface
     {
         $url = $this
             ->urlGenerator
-            ->generate($this->route, $this->params, UrlGeneratorInterface::ABSOLUTE_URL);
+            ->generate($this->route, $this->params, UrlGeneratorInterface::ABSOLUTE_URL)
+        ;
 
         return \Atournayre\Common\VO\Uri::of($url);
     }
