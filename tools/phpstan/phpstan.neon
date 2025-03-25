@@ -4,7 +4,7 @@ includes:
     - ../../tools/phpstan/elegant-object.neon
 
 parameters:
-    phpVersion: 80100
+    phpVersion: 80200
     level: 6
     paths:
         - ../../src/
@@ -25,3 +25,4 @@ parameters:
         # To be compliant with PSR7 UriInterface
         - '#Interface Atournayre\\Contracts\\Uri\\UriInterface has 19 methods, which exceeds the maximum of 5 \(Elegant Object principle\)(.)*#'
         - '#Class Atournayre\\Common\\VO\\Uri has 20 public methods, which exceeds the maximum of 5 \(Elegant Object principle\)(.)*#'
+        - '#Class Atournayre\\Symfony\\VO\\Uri has 21 public methods, which exceeds the maximum of 5 \(Elegant Object principle\)(.)*#'
