@@ -1,6 +1,6 @@
 > **Warning**: This documentation is a work in progress.
 >
-> Currently, it is compatible with PHP 7.4 ans Symfony 5.4.
+> Currently, it is compatible with PHP 8.2 and Symfony 6.4.
 
 # Documentation
 

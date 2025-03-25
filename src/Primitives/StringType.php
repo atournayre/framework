@@ -36,7 +36,7 @@ final class StringType
      */
     public static function fromPattern(string $string, ...$arg): self
     {
-        Assert::allString($arg, 'The arguments must be strings'); // @phpstan-ignore-line
+        Assert::allString($arg, 'The arguments must be strings');
         $string = sprintf($string, ...$arg);
 
         return self::of($string);
