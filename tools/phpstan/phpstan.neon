@@ -1,5 +1,6 @@
 includes:
     - ../../tools/phpstan/disallowed-calls.neon
+    - ../../tools/phpstan/elegant-object.neon
 
 parameters:
     phpVersion: 80100
