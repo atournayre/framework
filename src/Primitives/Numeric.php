@@ -16,6 +16,9 @@ final class Numeric
 
     private int $precision;
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function fromFloat(float $float): self
     {
         $precision = StringType::of((string) $float)

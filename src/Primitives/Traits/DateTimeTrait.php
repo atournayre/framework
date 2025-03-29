@@ -3172,20 +3172,20 @@ trait DateTimeTrait
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function copy(): DateTimeInterface
     {
         $copy = $this->datetime->copy();
 
-        return DateTimeTrait::of($copy);
+        return self::of($copy);
     }
 
     public function clone(): DateTimeInterface
     {
         $clone = $this->datetime->clone();
 
-        return DateTimeTrait::of($clone);
+        return self::of($clone);
     }
 
     public function nowWithSameTz(): DateTimeInterface
@@ -3485,7 +3485,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function numberOfDaysIsLowerThanOrEquals($value, int $numberOfDays): BoolEnum
     {

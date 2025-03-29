@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Collection;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+
 interface CollectionValidationInterface
 {
     /**
-     * @throws \InvalidArgumentException
+     * @throws ThrowableInterface
      */
     public function validateCollection(): void;
 }

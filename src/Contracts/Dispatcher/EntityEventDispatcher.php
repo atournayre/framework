@@ -10,11 +10,11 @@ use Atournayre\Contracts\Event\EntityEventDispatcherInterface;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
-final class EntityEventDispatcher implements EntityEventDispatcherInterface
+final readonly class EntityEventDispatcher implements EntityEventDispatcherInterface
 {
     public function __construct(
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly LoggerInterface $logger,
+        private EventDispatcherInterface $eventDispatcher,
+        private LoggerInterface          $logger,
     ) {
     }
 

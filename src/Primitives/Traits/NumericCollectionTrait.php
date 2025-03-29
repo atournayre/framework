@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Numeric;
 use Atournayre\Primitives\Traits\Collection\CollectionAsListTrait;
@@ -65,6 +66,7 @@ trait NumericCollectionTrait
 
     /**
      * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function avg(): Numeric
     {
@@ -90,6 +92,7 @@ trait NumericCollectionTrait
 
     /**
      * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function max(): Numeric
     {
@@ -115,6 +118,7 @@ trait NumericCollectionTrait
 
     /**
      * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function min(): Numeric
     {

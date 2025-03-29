@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Null;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
+
 trait NullTrait
 {
     protected NullEnum $null;
@@ -79,7 +82,7 @@ trait NullTrait
     /**
      * @api
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function orThrow($throwable): self
     {
@@ -87,10 +90,6 @@ trait NullTrait
             return $this;
         }
 
-        if ($throwable instanceof \Throwable) {
-            throw $throwable;
-        }
-
-        throw $throwable();
+        RuntimeException::fromThrowable($throwable)->throw();
     }
 }
