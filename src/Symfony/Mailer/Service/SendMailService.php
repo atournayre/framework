@@ -12,14 +12,11 @@ use Atournayre\Symfony\Mailer\Adapter\TemplatedEmailAdapter;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\RawMessage;
 
-final class SendMailService implements SendMailInterface
+final readonly class SendMailService implements SendMailInterface
 {
-    private MailerInterface $mailer;
-
     public function __construct(
-        MailerInterface $mailer,
+        private MailerInterface $mailer,
     ) {
-        $this->mailer = $mailer;
     }
 
     /**
