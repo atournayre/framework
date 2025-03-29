@@ -10,10 +10,8 @@ trait CollectionTrait
 {
     use CollectionCommonTrait;
 
-    protected Collection $collection;
-
-    private function __construct(Collection $collection)
-    {
-        $this->collection = $collection;
+    private function __construct(
+        protected Collection $collection,
+    ) {
     }
 }
