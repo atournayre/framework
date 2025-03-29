@@ -13,10 +13,14 @@ trait AddCollectionTrait
      *
      * @param iterable<int|string,mixed>|Collection $elements List of elements
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function concat($elements): self
     {
+        $this->ensureMutable('concat');
+
         $elements = $this->convertElementsToArray($elements);
 
         $concat = $this->collection
@@ -32,10 +36,14 @@ trait AddCollectionTrait
      * @param mixed|null $element Element to insert after
      * @param mixed|null $value   Value to insert
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function insertAfter($element, $value): self
     {
+        $this->ensureMutable('insertAfter');
+
         $insertAfter = $this->collection
             ->insertAfter($element, $value)
         ;
@@ -50,10 +58,14 @@ trait AddCollectionTrait
      * @param mixed      $element Element to be inserted
      * @param mixed|null $key     Element key or NULL to assign an integer key automatically
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function insertAt(int $pos, $element, $key = null): self
     {
+        $this->ensureMutable('insertAt');
+
         $insertAt = $this->collection
             ->insertAt($pos, $element, $key)
         ;
@@ -67,10 +79,14 @@ trait AddCollectionTrait
      * @param mixed $element Element before the value is inserted
      * @param mixed $value   Element or list of elements to insert
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function insertBefore($element, $value): self
     {
+        $this->ensureMutable('insertBefore');
+
         $insertBefore = $this->collection
             ->insertBefore($element, $value)
         ;
@@ -83,10 +99,14 @@ trait AddCollectionTrait
      *
      * @param iterable<int|string,mixed>|Collection $elements List of elements
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function merge($elements, bool $recursive = false): self
     {
+        $this->ensureMutable('merge');
+
         $elements = $this->convertElementsToArray($elements);
 
         $merge = $this->collection
@@ -101,10 +121,14 @@ trait AddCollectionTrait
      *
      * @param mixed $value Value to fill up with if the map length is smaller than the given size
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function pad(int $size, $value = null): self
     {
+        $this->ensureMutable('pad');
+
         $pad = $this->collection
             ->pad($size, $value)
         ;
@@ -118,10 +142,14 @@ trait AddCollectionTrait
      * @param mixed           $value Item to add at the beginning
      * @param int|string|null $key   Key for the item or NULL to reindex all numerical keys
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function prepend($value, $key = null): self
     {
+        $this->ensureMutable('prepend');
+
         $prepend = $this->collection
             ->prepend($value, $key)
         ;
@@ -132,12 +160,16 @@ trait AddCollectionTrait
     /**
      * Adds an element to the end.
      *
-     * @api
-     *
      * @param mixed|null $value
+     *
+     * @throws \Exception
+     *
+     * @api
      */
     public function push($value, ?\Closure $callback = null): self
     {
+        $this->ensureMutable('push');
+
         if ($callback instanceof \Closure && !$callback($value)) {
             return $this;
         }
@@ -153,10 +185,14 @@ trait AddCollectionTrait
      * @param int|string $key   Key to set the new value for
      * @param mixed      $value New element that should be set
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function put($key, $value): self
     {
+        $this->ensureMutable('put');
+
         $put = $this->collection
             ->put($key, $value)
         ;
@@ -167,13 +203,17 @@ trait AddCollectionTrait
     /**
      * Overwrites or adds an element.
      *
-     * @api
-     *
      * @param mixed|null $key
      * @param mixed|null $value
+     *
+     * @throws \Exception
+     *
+     * @api
      */
     public function set($key, $value, ?\Closure $callback = null): void
     {
+        $this->ensureMutable('set');
+
         if ($callback instanceof \Closure && !$callback($key, $value)) {
             return;
         }
@@ -188,10 +228,14 @@ trait AddCollectionTrait
      *
      * @param iterable<int|string,mixed>|Collection $elements List of elements
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function union($elements): self
     {
+        $this->ensureMutable('union');
+
         $elements = $this->convertElementsToArray($elements);
 
         $union = $this->collection
@@ -207,10 +251,14 @@ trait AddCollectionTrait
      * @param mixed           $value Item to add at the beginning
      * @param int|string|null $key   Key for the item or NULL to reindex all numerical keys
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function unshift($value, $key = null): self
     {
+        $this->ensureMutable('unshift');
+
         $unshift = $this->collection
             ->unshift($value, $key)
         ;
@@ -224,10 +272,14 @@ trait AddCollectionTrait
      * @param int|string $key   Array key to set or replace
      * @param mixed      $value New value for the given key
      *
+     * @throws \Exception
+     *
      * @api
      */
     public function with($key, $value): self
     {
+        $this->ensureMutable('with');
+
         $with = $this->collection
             ->with($key, $value)
         ;
