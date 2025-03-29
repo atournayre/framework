@@ -14,14 +14,11 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface as SymfonyF
  *         class: Symfony\Component\HttpFoundation\Session\Flash\FlashBag
  *         public: true
  */
-final class FlashBagService implements FlashBagInterface
+final readonly class FlashBagService implements FlashBagInterface
 {
-    private SymfonyFlashBagInterface $symfonyFlashBag;
-
     public function __construct(
-        SymfonyFlashBagInterface $symfonyFlashBag,
+        private SymfonyFlashBagInterface $symfonyFlashBag,
     ) {
-        $this->symfonyFlashBag = $symfonyFlashBag;
     }
 
     /**
