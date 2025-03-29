@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggerInterface;
+use Atournayre\Exception\InvalidArgumentException;
 
 use function Symfony\Component\String\u;
 
@@ -108,42 +110,42 @@ final class BoolEnum
     /**
      * @api
      *
-     * @param string|\Exception $message
-     *
-     * @throws \Exception|\InvalidArgumentException
+     * @throws ThrowableInterface
      */
-    public function throwIfFalse($message): void
+    public function throwIfFalse(string|\Exception $message): void
     {
         if ($this->isTrue()) {
             return;
         }
 
-        if (is_string($message)) {
-            $this->logger?->error($message);
-            throw new \InvalidArgumentException($message);
-        }
+        $this->throw($message);
+    }
 
-        throw $message;
+    /**
+     * @throws ThrowableInterface
+     */
+    private function throw(string|\Exception $message): void
+    {
+        $invalidArgumentException = is_string($message)
+            ? InvalidArgumentException::new($message)
+            : InvalidArgumentException::new($message->getMessage())->withPrevious($message);
+
+        $this->logger?->exception($invalidArgumentException);
+
+        $invalidArgumentException->throw();
     }
 
     /**
      * @api
      *
-     * @param string|\Exception $message
-     *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
-    public function throwIfTrue($message): void
+    public function throwIfTrue(string|\Exception $message): void
     {
         if ($this->isFalse()) {
             return;
         }
 
-        if (is_string($message)) {
-            $this->logger?->error($message);
-            throw new \InvalidArgumentException($message);
-        }
-
-        throw $message;
+        $this->throw($message);
     }
 }
