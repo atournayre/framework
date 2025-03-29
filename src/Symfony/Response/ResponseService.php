@@ -13,22 +13,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-final class ResponseService implements ResponseInterface
+final readonly class ResponseService implements ResponseInterface
 {
-    private TemplatingInterface $templating;
-
-    private RoutingInterface $routing;
-
-    private LoggerInterface $logger;
-
     public function __construct(
-        TemplatingInterface $templating,
-        RoutingInterface $routing,
-        LoggerInterface $logger,
+        private TemplatingInterface $templating,
+        private RoutingInterface $routing,
+        private LoggerInterface $logger,
     ) {
-        $this->logger = $logger;
-        $this->routing = $routing;
-        $this->templating = $templating;
     }
 
     public function redirectToUrl(string $url): RedirectResponse
