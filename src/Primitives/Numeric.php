@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
+
 final class Numeric
 {
     private float $value;
@@ -95,7 +98,7 @@ final class Numeric
     /**
      * @api
      *
-     * @throws \RuntimeException
+     * @throws ThrowableInterface
      */
     public function format(Locale $locale): string
     {
@@ -103,7 +106,7 @@ final class Numeric
 
         $format = $fmt->format($this->value);
         if (false === $format) {
-            throw new \RuntimeException('Failed to format the number.');
+            RuntimeException::new('Not implemented yet!')->throw();
         }
 
         return $format;

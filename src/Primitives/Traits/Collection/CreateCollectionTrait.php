@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits\Collection;
 
 use Aimeos\Map as AimeosMap;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 
 trait CreateCollectionTrait
 {
@@ -45,23 +47,27 @@ trait CreateCollectionTrait
     /**
      * Creates a new map from passed elements.
      *
+     * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function from()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        RuntimeException::new('Not implemented yet!')->throw();
     }
 
     /**
      * Creates a new map from a JSON string.
+     *
+     * @throws ThrowableInterface
      *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function fromJson()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        RuntimeException::new('Not implemented yet!')->throw();
     }
 
     /**

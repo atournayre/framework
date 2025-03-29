@@ -6,6 +6,8 @@ namespace Atournayre\Common\Collection\Validation;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
@@ -41,6 +43,8 @@ final class ValidationCollection implements MapInterface
 
     /**
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public function throwException(string $glue = ', '): void
     {
@@ -48,6 +52,6 @@ final class ValidationCollection implements MapInterface
             return;
         }
 
-        throw new \RuntimeException($this->toString($glue));
+        RuntimeException::new($this->toString($glue))->throw();
     }
 }

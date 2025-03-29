@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 
@@ -149,12 +151,14 @@ trait TestCollectionTrait
     /**
      * Executes callbacks if the map is empty.
      *
+     * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function ifEmpty()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        RuntimeException::new('Not implemented yet!')->throw();
     }
 
     /**
