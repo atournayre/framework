@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Atournayre\Symfony\Templating;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Templating\TemplatingInterface;
+use Atournayre\Exception\RuntimeException;
 use Twig\Environment;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
+use Twig\Error\Error;
 
 final readonly class TwigTemplatingService implements TemplatingInterface
 {
@@ -18,12 +18,14 @@ final readonly class TwigTemplatingService implements TemplatingInterface
     }
 
     /**
-     * @throws SyntaxError
-     * @throws RuntimeError
-     * @throws LoaderError
+     * @throws ThrowableInterface
      */
     public function render(string $template, array $parameters = []): string
     {
-        return $this->twigEnvironment->render($template, $parameters);
+        try {
+            return $this->twigEnvironment->render($template, $parameters);
+        } catch (Error $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 }

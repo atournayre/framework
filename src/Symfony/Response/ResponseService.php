@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Symfony\Response;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Response\ResponseInterface;
 use Atournayre\Contracts\Routing\RoutingInterface;
@@ -44,7 +45,7 @@ final readonly class ResponseService implements ResponseInterface
             $render = $this->templating->render($view, $parameters);
 
             return new Response($render);
-        } catch (\Error|\Exception $e) {
+        } catch (\Error|\Exception|ThrowableInterface $e) {
             $this->logger->error('An error occurred while rendering view', ['error' => $e->getMessage()]);
 
             return $this->error('error.html.twig', ['error' => 'An error occurred']);
@@ -90,8 +91,14 @@ final readonly class ResponseService implements ResponseInterface
     public function error(string $view, array $parameters = [], int $status = 500): Response
     {
         $this->logger->info('Returning error response', ['view' => $view, 'parameters' => $parameters, 'status' => $status]);
-        $render = $this->templating->render($view, $parameters);
+        try {
+            $render = $this->templating->render($view, $parameters);
 
-        return new Response($render, $status);
+            return new Response($render, $status);
+        } catch (\Error|\Exception|ThrowableInterface $e) {
+            $this->logger->error('An error occurred while rendering view', ['error' => $e->getMessage()]);
+
+            return $this->error('error.html.twig', ['error' => 'An error occurred']);
+        }
     }
 }

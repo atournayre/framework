@@ -10,6 +10,7 @@ use Atournayre\Common\Types\File\Extension;
 use Atournayre\Common\Types\File\Filename;
 use Atournayre\Common\Types\File\Path;
 use Atournayre\Common\VO\Memory;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\StringType;
 use Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
@@ -114,7 +115,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @return array<string, mixed>
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function toLog(): array
     {

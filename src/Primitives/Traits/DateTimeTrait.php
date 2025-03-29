@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\InvalidArgumentException;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\DateTime;
@@ -35,7 +37,7 @@ trait DateTimeTrait
      *
      * @param \DateTimeInterface|DateTimeInterface|string|int|DateTime $datetime
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public static function of(
         $datetime,
@@ -50,9 +52,13 @@ trait DateTimeTrait
         }
 
         if ($datetime instanceof \DateTimeInterface) {
-            $newDateTime = Carbon::parse($datetime)
-                ->setTimezone($timezone)
-            ;
+            try {
+                $newDateTime = Carbon::parse($datetime)
+                    ->setTimezone($timezone)
+                ;
+            } catch (\Exception $e) {
+                InvalidArgumentException::new($e->getMessage())->withPrevious($e)->throw();
+            }
 
             return new self($newDateTime);
         }
@@ -65,7 +71,11 @@ trait DateTimeTrait
             return new self($newDateTime);
         }
 
-        $datetimeObject = Carbon::parse($datetime, $timezone);
+        try {
+            $datetimeObject = Carbon::parse($datetime, $timezone);
+        } catch (\Exception $exception) {
+            InvalidArgumentException::new($exception->getMessage())->withPrevious($exception)->throw();
+        }
 
         return new self($datetimeObject);
     }

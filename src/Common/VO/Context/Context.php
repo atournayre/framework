@@ -7,8 +7,10 @@ namespace Atournayre\Common\VO\Context;
 use Atournayre\Common\Model\DefaultUser;
 use Atournayre\Contracts\Context\ContextInterface;
 use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Contracts\Security\UserInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\DateTime;
 
@@ -36,11 +38,15 @@ final class Context implements ContextInterface, LoggableInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public static function create(UserInterface $user, \DateTimeInterface $createdAt): self
     {
-        return new self($user, DateTime::of($createdAt));
+        try {
+            return new self($user, DateTime::of($createdAt));
+        } catch (\Exception $exception) {
+            RuntimeException::fromThrowable($exception)->throw();
+        }
     }
 
     public function user(): UserInterface

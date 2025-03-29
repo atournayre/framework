@@ -34,8 +34,6 @@ final class EventCollection implements MapInterface
     }
 
     /**
-     * @throws \Exception
-     *
      * @api
      */
     public function filterByType(string $type): self
@@ -57,8 +55,6 @@ final class EventCollection implements MapInterface
 
     /**
      * @api
-     *
-     * @throws \Exception
      */
     public function add(mixed $value, ?\Closure $callback = null): self
     {

@@ -128,15 +128,20 @@ trait AccessCollectionTrait
      *
      * @return mixed Value from map or default value
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function get($key, $default = null)
     {
-        return $this->collection
-            ->get($key, $default)
-        ;
+        try {
+            return $this->collection
+                ->get($key, $default)
+            ;
+        } catch (\Exception|\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
+        return null;
     }
 
     /**

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\Ulid;
@@ -39,10 +41,14 @@ trait UlidTrait
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function getDateTime(): DateTimeInterface
     {
-        return $this->ulid->getDateTime();
+        try {
+            return $this->ulid->getDateTime();
+        } catch (\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 }

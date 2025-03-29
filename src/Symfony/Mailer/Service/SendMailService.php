@@ -6,7 +6,9 @@ namespace Atournayre\Symfony\Mailer\Service;
 
 use Atournayre\Component\Mailer\VO\Email;
 use Atournayre\Component\Mailer\VO\TemplatedEmail;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Mailer\SendMailInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Symfony\Mailer\Adapter\EmailAdapter;
 use Atournayre\Symfony\Mailer\Adapter\TemplatedEmailAdapter;
 use Symfony\Component\Mailer\MailerInterface;
@@ -22,14 +24,18 @@ final readonly class SendMailService implements SendMailInterface
     /**
      * @param Email|TemplatedEmail $message
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     // @phpstan-ignore-next-line
     public function send($message, $envelope = null): void
     {
-        $message = $this->adaptMessage($message);
+        try {
+            $message = $this->adaptMessage($message);
 
-        $this->mailer->send($message, $envelope);
+            $this->mailer->send($message, $envelope);
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
     }
 
     /**

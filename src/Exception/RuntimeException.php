@@ -13,6 +13,13 @@ final class RuntimeException extends \RuntimeException implements ThrowableInter
         return new self($message, $code);
     }
 
+    public static function fromThrowable(\Throwable $throwable): self
+    {
+        return self::new($throwable->getMessage(), $throwable->getCode())
+            ->withPrevious($throwable)
+        ;
+    }
+
     public function withPrevious(\Throwable $previous): self
     {
         return new self($this->message, $this->code, $previous);

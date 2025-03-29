@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Locale;
 use Atournayre\Primitives\Numeric;
@@ -49,11 +51,15 @@ trait NumericTrait
     /**
      * @api
      *
-     * @throws \RuntimeException
+     * @throws ThrowableInterface
      */
     public function format(Locale $locale): string
     {
-        return $this->value->format($locale);
+        try {
+            return $this->value->format($locale);
+        } catch (\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 
     /**
@@ -130,7 +136,7 @@ trait NumericTrait
      * @param int|Numeric $min
      * @param int|Numeric $max
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function between($min, $max): BoolEnum
     {
@@ -143,7 +149,7 @@ trait NumericTrait
      * @param int|Numeric $min
      * @param int|Numeric $max
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function betweenOrEqual($min, $max): BoolEnum
     {
