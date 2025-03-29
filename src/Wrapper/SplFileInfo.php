@@ -14,13 +14,11 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\StringType;
 use Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
 
-final class SplFileInfo implements LoggableInterface
+final readonly class SplFileInfo implements LoggableInterface
 {
-    private SymfonySplFileInfo $splFileInfo;
-
-    private function __construct(SymfonySplFileInfo $splFileInfo)
-    {
-        $this->splFileInfo = $splFileInfo;
+    private function __construct(
+        private SymfonySplFileInfo $splFileInfo,
+    ) {
     }
 
     /**
@@ -35,8 +33,101 @@ final class SplFileInfo implements LoggableInterface
 
     /**
      * @api
+     *
+     * @deprecated use relativePath()
      */
-    public function getRelativePath(): Path
+    public function getRelativePath(): Path // @phpstan-ignore-line
+    {
+        return $this->relativePath();
+    }
+
+    /**
+     * @api
+     *
+     * @deprecated use relativePathname()
+     */
+    public function getRelativePathname(): Path // @phpstan-ignore-line
+    {
+        return $this->relativePathname();
+    }
+
+    /**
+     * @api
+     *
+     * @deprecated use filenameWithoutExtension()
+     */
+    public function getFilenameWithoutExtension(): StringType // @phpstan-ignore-line
+    {
+        return $this->filenameWithoutExtension();
+    }
+
+    /**
+     * @api
+     *
+     * @deprecated use contents()
+     */
+    public function getContents(): Content // @phpstan-ignore-line
+    {
+        return $this->contents();
+    }
+
+    /**
+     * @api
+     *
+     * @deprecated use extension()
+     */
+    public function getExtension(): Extension // @phpstan-ignore-line
+    {
+        return $this->extension();
+    }
+
+    /**
+     * @api
+     *
+     * @deprecated use size()
+     */
+    public function getSize(): Memory // @phpstan-ignore-line
+    {
+        return $this->size();
+    }
+
+    /**
+     * @api
+     *
+     * @deprecated use filename()
+     */
+    public function getFilename(): Filename // @phpstan-ignore-line
+    {
+        return $this->filename();
+    }
+
+    /**
+     * @api
+     *
+     * @deprecated use pathname()
+     */
+    public function getPathname(): Path // @phpstan-ignore-line
+    {
+        return $this->pathname();
+    }
+
+    /**
+     * @return array<string, mixed>
+     *
+     * @throws \Throwable
+     */
+    public function toLog(): array
+    {
+        return [
+            'pathname' => $this->pathname(),
+            'size' => $this->size()->humanReadable(),
+        ];
+    }
+
+    /**
+     * @api
+     */
+    public function relativePath(): Path
     {
         $relativePath = $this->splFileInfo->getRelativePath();
 
@@ -46,7 +137,7 @@ final class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getRelativePathname(): Path
+    public function relativePathname(): Path
     {
         $relativePathname = $this->splFileInfo->getRelativePathname();
 
@@ -56,7 +147,7 @@ final class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getFilenameWithoutExtension(): StringType
+    public function filenameWithoutExtension(): StringType
     {
         $filename = $this->splFileInfo->getFilenameWithoutExtension();
 
@@ -66,7 +157,7 @@ final class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getContents(): Content
+    public function contents(): Content
     {
         $contents = $this->splFileInfo->getContents();
 
@@ -76,7 +167,7 @@ final class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getExtension(): Extension
+    public function extension(): Extension
     {
         $extension = $this->splFileInfo->getExtension();
 
@@ -86,7 +177,7 @@ final class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getSize(): Memory
+    public function size(): Memory
     {
         $size = $this->splFileInfo->getSize();
 
@@ -98,7 +189,7 @@ final class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getFilename(): Filename
+    public function filename(): Filename
     {
         $filename = $this->splFileInfo->getFilename();
 
@@ -108,21 +199,10 @@ final class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getPathname(): Path
+    public function pathname(): Path
     {
         $pathname = $this->splFileInfo->getPathname();
 
         return Path::of($pathname);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function toLog(): array
-    {
-        return [
-            'pathname' => $this->getPathname(),
-            'size' => $this->getSize()->humanReadable(),
-        ];
     }
 }

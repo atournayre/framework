@@ -82,6 +82,7 @@ services:
       arguments:
         maxPublicMethods: 5
         excludedPaths:
+          - %currentWorkingDirectory%/src/Wrapper/SplFileInfo.php
           - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule
