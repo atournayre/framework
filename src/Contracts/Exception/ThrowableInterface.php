@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Exception;
 
-interface ThrowableInterface
+interface ThrowableInterface extends \Throwable
 {
     public static function new(string $message = '', int $code = 0): self;
 
