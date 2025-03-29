@@ -52,6 +52,11 @@ services:
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverUseErNamesRule
       arguments:
+          excludedSuffixes:
+              - 'Adapter'
+              - 'Dispatcher'
+              - 'Logger'
+              - 'User'
       tags:
         - phpstan.rules.rule
 
