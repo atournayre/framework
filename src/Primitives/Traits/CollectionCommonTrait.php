@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Int_;
 
@@ -32,11 +34,15 @@ trait CollectionCommonTrait
      *
      * @return mixed|null
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function first($default = null)
     {
-        return $this->collection->first($default);
+        try {
+            return $this->collection->first($default);
+        } catch (\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 
     /**
@@ -44,11 +50,15 @@ trait CollectionCommonTrait
      *
      * @return mixed|null
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function last($default = null)
     {
-        return $this->collection->last($default);
+        try {
+            return $this->collection->last($default);
+        } catch (\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 
     /**

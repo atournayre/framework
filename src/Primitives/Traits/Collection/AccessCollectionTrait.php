@@ -79,15 +79,18 @@ trait AccessCollectionTrait
      *
      * @return mixed First matching value, passed default value or an exception
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function find(\Closure $callback, $default = null, bool $reverse = false)
     {
-        return $this->collection
-            ->find($callback, $default, $reverse)
-        ;
+        try {
+            return $this->collection
+                ->find($callback, $default, $reverse);
+        } catch (\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 
     /**
@@ -97,13 +100,17 @@ trait AccessCollectionTrait
      *
      * @return mixed|null
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function first($default = null)
     {
-        return $this->collection->first($default);
+        try {
+            return $this->collection->first($default);
+        } catch (\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 
     /**
@@ -111,13 +118,19 @@ trait AccessCollectionTrait
      *
      * @return mixed First key of map or NULL if empty
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function firstKey()
     {
-        return $this->collection
-            ->firstKey()
-        ;
+        try {
+            return $this
+                ->collection
+                ->firstKey()
+            ;
+        } catch (\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 
     /**
@@ -216,15 +229,20 @@ trait AccessCollectionTrait
      *
      * @return mixed|null
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function last($default = null)
     {
-        return $this->collection
-            ->last($default)
-        ;
+        try {
+            return $this
+                ->collection
+                ->last($default)
+            ;
+        } catch (\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 
     /**

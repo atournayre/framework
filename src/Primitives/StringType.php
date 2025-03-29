@@ -6,6 +6,7 @@ namespace Atournayre\Primitives;
 
 use Atournayre\Common\Assert\Assert;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use function Symfony\Component\String\u;
 
 final class StringType
@@ -228,7 +229,7 @@ final class StringType
     /**
      * @api
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function lengthIsBetween(int $start, int $end): BoolEnum
     {

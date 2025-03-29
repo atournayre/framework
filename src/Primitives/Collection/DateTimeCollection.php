@@ -7,6 +7,8 @@ namespace Atournayre\Primitives\Collection;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Collection\ListInterface;
 use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
@@ -56,7 +58,7 @@ final class DateTimeCollection implements ListInterface
     /**
      * @api
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function mostRecent(): DateTimeInterface
     {
@@ -67,16 +69,21 @@ final class DateTimeCollection implements ListInterface
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function oldest(): DateTimeInterface
     {
-        return $this->sortAsc()
-            ->collection
-            ->first()
-        ;
+        try {
+            return $this
+                ->sortAsc()
+                ->collection
+                ->first()
+            ;
+        } catch (\Throwable $e) {
+            RuntimeException::fromThrowable($e)->throw();
+        }
     }
 
     /**

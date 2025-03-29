@@ -42,6 +42,7 @@ final readonly class SendMailService implements SendMailInterface
      * @param Email|TemplatedEmail $message
      *
      * @throws \Exception
+     * @throws ThrowableInterface
      */
     private function adaptMessage($message): RawMessage
     {

@@ -65,7 +65,6 @@ trait NumericCollectionTrait
     }
 
     /**
-     * @throws \Throwable
      * @throws ThrowableInterface
      */
     public function avg(): Numeric
@@ -91,7 +90,6 @@ trait NumericCollectionTrait
     }
 
     /**
-     * @throws \Throwable
      * @throws ThrowableInterface
      */
     public function max(): Numeric
@@ -117,7 +115,6 @@ trait NumericCollectionTrait
     }
 
     /**
-     * @throws \Throwable
      * @throws ThrowableInterface
      */
     public function min(): Numeric
