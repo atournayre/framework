@@ -5,13 +5,9 @@ declare(strict_types=1);
 namespace Atournayre\Contracts\Collection\Event;
 
 use Atournayre\Common\Collection\EventCollection;
-use Atournayre\Primitives\BoolEnum;
+use Atournayre\Contracts\Collection\CollectionSearchInterface;
 
-interface EventSearchCollectionInterface
+interface EventSearchCollectionInterface extends CollectionSearchInterface
 {
-    public static function new(EventCollection $eventCollection): self;
-
-    public function contains(mixed $key, ?string $operator = null, mixed $value = null): BoolEnum;
-
-    public function search(mixed $value, bool $strict = true): int|string|null;
+    public static function new(EventCollection $collection): self;
 }
