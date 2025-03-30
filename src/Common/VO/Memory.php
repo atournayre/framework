@@ -4,19 +4,23 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
 
+use Atournayre\Common\VO\Memory\MemoryIn;
+use Atournayre\Contracts\Common\VO\MemoryInInterface\MemoryInInterface;
+use Atournayre\Contracts\Common\VO\MemoryInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 
-final class Memory
+final readonly class Memory implements MemoryInterface
 {
-    private const KB = 1024;
+    private function __construct(
+        private int $bytes,
+    ) {
+    }
 
-    private int $bytes;
-
-    private function __construct(int $bytes)
+    private function kb(): int
     {
-        $this->bytes = $bytes;
+        return 1024;
     }
 
     /**
@@ -35,36 +39,49 @@ final class Memory
         return $this->bytes;
     }
 
+    public function in(): MemoryInInterface
+    {
+        return MemoryIn::of($this->bytes, $this->kb());
+    }
+
     /**
      * @api
+     *
+     * @deprecated Use in()->kilobytes() instead
      */
     public function inKilobytes(): float
     {
-        return $this->bytes / self::KB;
+        return $this->in()->kilobytes();
     }
 
     /**
      * @api
+     *
+     * @deprecated Use in()->megabytes() instead
      */
     public function inMegabytes(): float
     {
-        return $this->inKilobytes() / self::KB;
+        return $this->in()->megabytes();
     }
 
     /**
      * @api
+     *
+     * @deprecated Use in()->gigabytes() instead
      */
     public function inGigabytes(): float
     {
-        return $this->inMegabytes() / self::KB;
+        return $this->in()->gigabytes();
     }
 
     /**
      * @api
+     *
+     * @deprecated Use in()->terabytes() instead
      */
     public function inTerabytes(): float
     {
-        return $this->inGigabytes() / self::KB;
+        return $this->in()->terabytes();
     }
 
     /**
@@ -78,8 +95,8 @@ final class Memory
         $value = $this->bytes;
         $unit = 0;
 
-        while ($value >= self::KB && $unit < $units->count()->value() - 1) {
-            $value /= self::KB;
+        while ($value >= $this->kb() && $unit < $units->count()->value() - 1) {
+            $value /= $this->kb();
             ++$unit;
         }
 
