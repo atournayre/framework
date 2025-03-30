@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Primitives\Collection;
 
 use Aimeos\Map;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use PHPUnit\Framework\TestCase;
@@ -131,23 +133,17 @@ class CollectionTest extends TestCase
 
     public function testBoolClosure(): void
     {
-        self::assertEquals(true, Collection::of([])->bool('c', function () { return random_int(1, 2); })->isTrue());
+        self::assertTrue(Collection::of([])->bool('c', function () {
+            return random_int(1, 2);
+        })->isTrue());
     }
 
     public function testBoolException(): void
     {
-        $this->expectException(\RuntimeException::class);
-        Collection::of([])->bool('c', new \RuntimeException('error'));
+        $this->expectException(ThrowableInterface::class);
+        Collection::of([])->bool('c', RuntimeException::new('error'));
     }
 
-    //    public function testCall(): void
-    //    {
-    //        $m = Collection::of( ['a' => new \Aimeos\TestMapObject(), 'b' => new TestMapObject()] );
-    //
-    //        self::assertSame( ['a' => 'p1', 'b' => 'p2'], $m->call( 'get', [1] )->toArray() );
-    //        self::assertSame( ['a' => ['prop' => 'p3'], 'b' => ['prop' => 'p4']], $m->call( 'toArray' )->toArray() );
-    //    }
-    //
     public function testCast(): void
     {
         self::assertEquals(['1', '1', '1', 'yes'], Collection::of([true, 1, 1.0, 'yes'])->cast()->all());
@@ -166,16 +162,22 @@ class CollectionTest extends TestCase
 
     public function testChunkException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         Collection::of([])->chunk(0);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testChunkKeys(): void
     {
         $m = Collection::of(['a' => 0, 'b' => 1, 'c' => 2]);
         self::assertSame([['a' => 0, 'b' => 1], ['c' => 2]], $m->chunk(2, true)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testClone(): void
     {
         $m1 = Collection::of([new \stdClass(), new \stdClass()]);
@@ -249,30 +251,45 @@ class CollectionTest extends TestCase
         self::assertSame(['two'], $r->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testCollapse(): void
     {
         $m = Collection::of([0 => ['a' => 0, 'b' => 1], 1 => ['c' => 2, 'd' => 3]]);
         self::assertSame(['a' => 0, 'b' => 1, 'c' => 2, 'd' => 3], $m->collapse()->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testCollapseOverwrite(): void
     {
         $m = Collection::of([0 => ['a' => 0, 'b' => 1], 1 => ['a' => 2]]);
         self::assertSame(['a' => 2, 'b' => 1], $m->collapse()->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testCollapseRecursive(): void
     {
         $m = Collection::of([0 => [0 => 0, 1 => 1], 1 => [0 => ['a' => 2, 0 => 3], 1 => 4]]);
         self::assertSame([0 => 3, 1 => 4, 'a' => 2], $m->collapse()->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testCollapseDepth(): void
     {
         $m = Collection::of([0 => [0 => 0, 'a' => 1], 1 => [0 => ['b' => 2, 0 => 3], 1 => 4]]);
         self::assertSame([0 => ['b' => 2, 0 => 3], 'a' => 1, 1 => 4], $m->collapse(1)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testCollapseIterable(): void
     {
         $m = Collection::of([0 => [0 => 0, 'a' => 1], 1 => Collection::of([0 => ['b' => 2, 0 => 3], 1 => 4])->toArray()]);
@@ -281,7 +298,7 @@ class CollectionTest extends TestCase
 
     public function testCollapseException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         Collection::of([])->collapse(-1);
     }
 
@@ -689,7 +706,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testFind(): void
     {
@@ -703,7 +720,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testFindLast(): void
     {
@@ -717,7 +734,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testFindDefault(): void
     {
@@ -732,19 +749,25 @@ Array
     {
         $m = Collection::of(['foo', 'bar', 'baz']);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(ThrowableInterface::class);
 
         $m->find(function ($value) {
             return false;
-        }, new \RuntimeException('error'));
+        }, RuntimeException::new('error'));
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFirst(): void
     {
         $m = Collection::of(['foo', 'bar']);
         self::assertSame('foo', $m->first());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFirstWithDefault(): void
     {
         $m = Collection::of([]);
@@ -756,10 +779,13 @@ Array
     {
         $m = Collection::of([]);
 
-        $this->expectException(\RuntimeException::class);
-        $result = $m->first(new \RuntimeException('error'));
+        $this->expectException(ThrowableInterface::class);
+        $result = $m->first(RuntimeException::new('error'));
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFirstWithClosure(): void
     {
         $m = Collection::of([]);
@@ -768,40 +794,61 @@ Array
         self::assertGreaterThanOrEqual(10, $result);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFirstKey(): void
     {
         self::assertSame('a', Collection::of(['a' => 1, 'b' => 2])->firstKey());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFirstKeyEmpty(): void
     {
         self::assertNull(Collection::of()->firstKey());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFlat(): void
     {
         $m = Collection::of([[0, 1], [2, 3]]);
         self::assertSame([0, 1, 2, 3], $m->flat()->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFlatNone(): void
     {
         $m = Collection::of([[0, 1], [2, 3]]);
         self::assertSame([[0, 1], [2, 3]], $m->flat(0)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFlatRecursive(): void
     {
         $m = Collection::of([[0, 1], [[2, 3], 4]]);
         self::assertSame([0, 1, 2, 3, 4], $m->flat()->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFlatDepth(): void
     {
         $m = Collection::of([[0, 1], [[2, 3], 4]]);
         self::assertSame([0, 1, [2, 3], 4], $m->flat(1)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFlatTraversable(): void
     {
         $m = Collection::of([[0, 1], Collection::of([[2, 3], 4])->toArray()]);
@@ -810,7 +857,7 @@ Array
 
     public function testFlatException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         Collection::of([])->flat(-1);
     }
 
@@ -844,8 +891,8 @@ Array
 
     public function testFloatException(): void
     {
-        $this->expectException(\RuntimeException::class);
-        Collection::of([])->float('c', new \RuntimeException('error'));
+        $this->expectException(ThrowableInterface::class);
+        Collection::of([])->float('c', RuntimeException::new('error'));
     }
 
     public function testFromNull(): void
@@ -896,6 +943,9 @@ Array
         self::assertSame('X', Collection::of(['a' => $obj])->get('a/b'));
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testGetWithNull(): void
     {
         $map = Collection::of([1, 2, 3]);
@@ -906,10 +956,13 @@ Array
     {
         $m = Collection::of([]);
 
-        $this->expectException(\RuntimeException::class);
-        $m->get('Y', new \RuntimeException('error'));
+        $this->expectException(ThrowableInterface::class);
+        $m->get('Y', RuntimeException::new('error'));
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testGetWithClosure(): void
     {
         $m = Collection::of([]);
@@ -918,6 +971,9 @@ Array
         self::assertGreaterThanOrEqual(10, $result);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testGrep(): void
     {
         $r = Collection::of(['ab', 'bc', 'cd'])->grep('/b/');
@@ -925,6 +981,9 @@ Array
         self::assertSame(['ab', 'bc'], $r->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testGrepInvert(): void
     {
         $r = Collection::of(['ab', 'bc', 'cd'])->grep('/a/', PREG_GREP_INVERT);
@@ -936,10 +995,13 @@ Array
     {
         set_error_handler(function ($errno, $str, $file, $line) { return true; });
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(ThrowableInterface::class);
         Collection::of([])->grep('b');
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testGrepNumbers(): void
     {
         $r = Collection::of([1.5, 0, 0.0, 'a'])->grep('/^(\d+)?\.\d+$/');
@@ -1123,7 +1185,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testImplements(): void
     {
@@ -1131,21 +1193,21 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testImplementsException(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(ThrowableInterface::class);
         Collection::of([Collection::of(), 123])->implements('\Countable', true);
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testImplementsCustomException(): void
     {
-        $this->expectException(\RuntimeException::class);
-        Collection::of([Collection::of(), 123])->implements('\Countable', \RuntimeException::class);
+        $this->expectException(ThrowableInterface::class);
+        Collection::of([Collection::of(), 123])->implements('\Countable', ThrowableInterface::class);
     }
 
     public function testIn(): void
@@ -1296,8 +1358,8 @@ Array
 
     public function testIntException(): void
     {
-        $this->expectException(\RuntimeException::class);
-        Collection::of([])->int('c', new \RuntimeException('error'));
+        $this->expectException(ThrowableInterface::class);
+        Collection::of([])->int('c', RuntimeException::new('error'));
     }
 
     public function testIntersect(): void
@@ -1476,12 +1538,18 @@ Array
         self::assertSame(['a' => 'foo', 'b' => 'bar-1', 'c' => 'bar-10'], $m->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testLast(): void
     {
         $m = Collection::of(['foo', 'bar']);
         self::assertSame('bar', $m->last());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testLastWithDefault(): void
     {
         $m = Collection::of([]);
@@ -1493,8 +1561,8 @@ Array
     {
         $m = Collection::of([]);
 
-        $this->expectException(\RuntimeException::class);
-        $result = $m->last(new \RuntimeException('error'));
+        $this->expectException(ThrowableInterface::class);
+        $result = $m->last(RuntimeException::new('error'));
     }
 
     public function testLastWithClosure(): void
@@ -1640,6 +1708,9 @@ Array
         self::assertSame('bar', $m->offsetGet(1));
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testOffsetSet(): void
     {
         $m = Collection::of(['foo', 'foo']);
@@ -1690,6 +1761,9 @@ Array
         self::assertSame($expected, Collection::of([1, 2, 3, 4, 5])->partition(3)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testPartitionClosure(): void
     {
         $expected = [[0 => 1, 3 => 4], [1 => 2, 4 => 5], [2 => 3]];
@@ -1699,6 +1773,9 @@ Array
         })->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testPartitionEmpty(): void
     {
         self::assertSame([], Collection::of([])->partition(2)->toArray());
@@ -1706,7 +1783,7 @@ Array
 
     public function testPartitionInvalid(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         Collection::of([1])->partition([]);
     }
 
@@ -1790,8 +1867,8 @@ Array
     {
         $m = Collection::of([]);
 
-        $this->expectException(\RuntimeException::class);
-        $result = $m->pull('Y', new \RuntimeException('error'));
+        $this->expectException(ThrowableInterface::class);
+        $result = $m->pull('Y', RuntimeException::new('error'));
     }
 
     public function testPullWithClosure(): void
@@ -1816,6 +1893,9 @@ Array
         self::assertSame(['foo' => 1], $r->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testRandom(): void
     {
         $m = Collection::of(['a' => 1, 'b' => 2, 'c' => 3]);
@@ -1825,6 +1905,9 @@ Array
         self::assertCount(1, $r->intersectAssoc($m)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testRandomEmpty(): void
     {
         $m = Collection::of();
@@ -1833,16 +1916,22 @@ Array
 
     public function testRandomException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         Collection::of()->random(0);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testRandomMax(): void
     {
         $m = Collection::of(['a' => 1, 'b' => 2, 'c' => 3]);
         self::assertCount(3, $m->random(4)->intersectAssoc($m)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testRandomMultiple(): void
     {
         $m = Collection::of(['a' => 1, 'b' => 2, 'c' => 3]);
@@ -2045,6 +2134,9 @@ Array
         self::assertSame(['foo' => 3], $map->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testShift(): void
     {
         $m = Collection::of(['foo', 'bar']);
@@ -2064,6 +2156,9 @@ Array
         self::assertNotEquals($firstRandom->toArray(), $secondRandom->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testShuffleAssoc(): void
     {
         $map = Collection::of(range(0, 100, 10));
@@ -2077,11 +2172,17 @@ Array
         }
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testSkip(): void
     {
         self::assertSame([2 => 3, 3 => 4], Collection::of([1, 2, 3, 4])->skip(2)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testSkipFunction(): void
     {
         $fcn = function ($item, $key) {
@@ -2093,7 +2194,7 @@ Array
 
     public function testSkipException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         Collection::of([])->skip([]);
     }
 
@@ -2369,8 +2470,8 @@ Array
 
     public function testStringException(): void
     {
-        $this->expectException(\RuntimeException::class);
-        Collection::of([])->string('c', new \RuntimeException('error'));
+        $this->expectException(ThrowableInterface::class);
+        Collection::of([])->string('c', RuntimeException::new('error'));
     }
 
     public function testStringReplace(): void
@@ -2429,21 +2530,33 @@ Array
         self::assertSame(80.0, Collection::of([['i' => ['p' => 30]], ['i' => ['p' => 50]]])->sum('i/p')->value());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testTake(): void
     {
         self::assertSame([1, 2], Collection::of([1, 2, 3, 4])->take(2)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testTakeOffset(): void
     {
         self::assertSame([1 => 2, 2 => 3], Collection::of([1, 2, 3, 4])->take(2, 1)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testTakeNegativeOffset(): void
     {
         self::assertSame([2 => 3, 3 => 4], Collection::of([1, 2, 3, 4])->take(2, -2)->toArray());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testTakeFunction(): void
     {
         $fcn = function ($item, $key) {
@@ -2455,7 +2568,7 @@ Array
 
     public function testTakeException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         Collection::of([])->take(0, []);
     }
 

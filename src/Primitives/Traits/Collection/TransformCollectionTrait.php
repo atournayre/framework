@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Primitives\Collection;
 
 trait TransformCollectionTrait
@@ -26,12 +28,18 @@ trait TransformCollectionTrait
      * Splits the map into chunks.
      *
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public function chunk(int $size, bool $preserve = false): self
     {
-        $chunk = $this->collection
-            ->chunk($size, $preserve)
-        ;
+        try {
+            $chunk = $this->collection
+                ->chunk($size, $preserve)
+            ;
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return new self($chunk);
     }
@@ -54,12 +62,18 @@ trait TransformCollectionTrait
      * Collapses multi-dimensional elements overwriting elements.
      *
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public function collapse(?int $depth = null): self
     {
-        $collapse = $this->collection
-            ->collapse($depth)
-        ;
+        try {
+            $collapse = $this->collection
+                ->collapse($depth)
+            ;
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return new self($collapse);
     }
@@ -84,12 +98,18 @@ trait TransformCollectionTrait
      * Flattens multi-dimensional elements without overwriting elements.
      *
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public function flat(?int $depth = null): self
     {
-        $flat = $this->collection
-            ->flat($depth)
-        ;
+        try {
+            $flat = $this->collection
+                ->flat($depth)
+            ;
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return new self($flat);
     }
@@ -169,12 +189,18 @@ trait TransformCollectionTrait
      * @param \Closure|int|array<array-key,mixed> $number Function with (value, index) as arguments returning the bucket key or number of groups
      *
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public function partition($number): self
     {
-        $partition = $this->collection
-            ->partition($number)
-        ;
+        try {
+            $partition = $this->collection
+                ->partition($number)
+            ;
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return new self($partition);
     }

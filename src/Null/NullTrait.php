@@ -90,6 +90,10 @@ trait NullTrait
             return $this;
         }
 
+        if (is_callable($throwable)) {
+            $throwable = $throwable();
+        }
+
         RuntimeException::fromThrowable($throwable)->throw();
     }
 }

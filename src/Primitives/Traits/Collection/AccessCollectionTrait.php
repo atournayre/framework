@@ -311,12 +311,18 @@ trait AccessCollectionTrait
      * @param int $max Maximum number of elements that should be returned
      *
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public function random(int $max = 1): self
     {
-        $random = $this->collection
-            ->random($max)
-        ;
+        try {
+            $random = $this->collection
+                ->random($max)
+            ;
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return new self($random);
     }

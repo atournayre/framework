@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Primitives\Collection;
 
 trait ShortenCollectionTrait
@@ -143,12 +145,18 @@ trait ShortenCollectionTrait
      * Applies a regular expression to all elements.
      *
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public function grep(string $pattern, int $flags = 0): self
     {
-        $grep = $this->collection
-            ->grep($pattern, $flags)
-        ;
+        try {
+            $grep = $this->collection
+                ->grep($pattern, $flags)
+            ;
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return new self($grep);
     }
@@ -275,12 +283,18 @@ trait ShortenCollectionTrait
      * @param \Closure|int|array<array-key,mixed> $offset Number of items to skip or function($item, $key) returning true for skipped items
      *
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public function skip($offset): self
     {
-        $skip = $this->collection
-            ->skip($offset)
-        ;
+        try {
+            $skip = $this->collection
+                ->skip($offset)
+            ;
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return new self($skip);
     }
@@ -309,12 +323,18 @@ trait ShortenCollectionTrait
      * @param \Closure|int|array<array-key,mixed> $offset Number of items to skip or function($item, $key) returning true for skipped items
      *
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public function take(int $size, $offset = 0): self
     {
-        $take = $this->collection
-            ->take($size, $offset)
-        ;
+        try {
+            $take = $this->collection
+                ->take($size, $offset)
+            ;
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return new self($take);
     }

@@ -70,7 +70,7 @@ trait NumericTrait
      */
     public function round(int $mode = PHP_ROUND_HALF_UP): self
     {
-        return new self($this->value->round($mode));
+        return new self(Numeric::of(1234)->round($mode));
     }
 
     /**

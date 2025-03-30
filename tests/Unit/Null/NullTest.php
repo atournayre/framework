@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Unit\Null;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\RuntimeException;
 use Atournayre\Tests\Fixtures\Title;
 use PHPUnit\Framework\TestCase;
 
@@ -76,9 +78,9 @@ final class NullTest extends TestCase
     public function testOrThrowWithCallable(): void
     {
         $title = Title::asNull();
-        self::expectException(\RuntimeException::class);
+        self::expectException(ThrowableInterface::class);
         $title->orThrow(function () {
-            return new \RuntimeException();
+            return RuntimeException::new();
         });
     }
 }
