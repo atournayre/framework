@@ -75,6 +75,6 @@ final class EventsTraitTest extends TestCase
         $event = new Event();
         $object->events()->add($event);
 
-        self::assertCount(1, $object->events()->filterByType(Event::class)->toArray());
+        self::assertCount(1, $object->events()->filter()->byType(Event::class)->toArray());
     }
 }

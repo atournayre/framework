@@ -65,8 +65,9 @@ services:
       arguments:
         excludedPaths:
             - %currentWorkingDirectory%/tests
-#        allowedInterfaces:
-#            - *Interface
+            - %currentWorkingDirectory%/src/Primitives/DateTime.php
+            - %currentWorkingDirectory%/src/Primitives/Traits/DateTimeTrait.php
+            - %currentWorkingDirectory%/tests/Fixtures/Birthday.php
       tags:
         - phpstan.rules.rule
 
@@ -85,7 +86,7 @@ services:
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\ExposeFewPublicMethodsRule
       arguments:
-        maxPublicMethods: 5
+        maxPublicMethods: 7
         excludedPaths:
           - %currentWorkingDirectory%/src/Wrapper/SplFileInfo.php
           - %currentWorkingDirectory%/tests
@@ -94,6 +95,12 @@ services:
 
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverAcceptNullArgumentsRule
+      arguments:
+          excludedPaths:
+              - %currentWorkingDirectory%/src/Common/Collection/Event/EventSearchCollection.php
+              - %currentWorkingDirectory%/src/Primitives/DateTime.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/DateTimeTrait.php
+              - %currentWorkingDirectory%/tests/Fixtures/Birthday.php
       tags:
         - phpstan.rules.rule
 

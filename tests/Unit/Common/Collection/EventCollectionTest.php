@@ -32,7 +32,7 @@ final class EventCollectionTest extends TestCase
         $eventCollection = EventCollection::empty()
             ->add($event)
         ;
-        self::assertTrue($eventCollection->contains($event)->isTrue());
+        self::assertTrue($eventCollection->search()->contains($event)->isTrue());
     }
 
     /**
@@ -47,7 +47,7 @@ final class EventCollectionTest extends TestCase
             ->add($responseEvent)
         ;
 
-        self::assertCount(1, $eventCollection->filterByType(KernelEvent::class)->toArray());
-        self::assertTrue($eventCollection->filterByType(KernelEvent::class)->contains($kernelEvent)->isTrue());
+        self::assertCount(1, $eventCollection->filter()->byType(KernelEvent::class)->toArray());
+        self::assertTrue($eventCollection->filter()->byType(KernelEvent::class)->search()->contains($kernelEvent)->isTrue());
     }
 }

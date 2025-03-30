@@ -5,13 +5,19 @@ declare(strict_types=1);
 namespace Atournayre\Common\Collection;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Common\Collection\Event\EventFilterCollection;
+use Atournayre\Common\Collection\Event\EventSearchCollection;
 use Atournayre\Common\VO\Event;
+use Atournayre\Contracts\Collection\CollectionAddInterface;
+use Atournayre\Contracts\Collection\CollectionCanBeEmptyInterface;
+use Atournayre\Contracts\Collection\CollectionRemoveInterface;
+use Atournayre\Contracts\Collection\Event\EventFilterInterface;
+use Atournayre\Contracts\Collection\Event\EventSearchInterface;
 use Atournayre\Contracts\Collection\MapInterface;
-use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
-final class EventCollection implements MapInterface
+final class EventCollection implements MapInterface, EventSearchInterface, EventFilterInterface, CollectionCanBeEmptyInterface, CollectionAddInterface, CollectionRemoveInterface
 {
     use CollectionTrait;
 
@@ -33,24 +39,14 @@ final class EventCollection implements MapInterface
         return EventCollection::asMap([]);
     }
 
-    /**
-     * @api
-     */
-    public function filterByType(string $type): self
+    public function filter(): EventFilterCollection
     {
-        $clone = clone $this;
-        $events = $clone
-            ->collection
-            ->filter(static fn (Event $event): bool => $event instanceof $type)
-            ->toArray()
-        ;
+        return EventFilterCollection::new($this);
+    }
 
-        $eventCollection = EventCollection::empty();
-        foreach ($events as $event) {
-            $eventCollection = $eventCollection->add($event);
-        }
-
-        return $eventCollection;
+    public function search(): EventSearchCollection
+    {
+        return EventSearchCollection::new($this);
     }
 
     /**
@@ -66,34 +62,14 @@ final class EventCollection implements MapInterface
 
     /**
      * @api
+     *
+     * @param Event|mixed $element
      */
-    public function contains(mixed $key, ?string $operator = null, mixed $value = null): BoolEnum
-    {
-        return $this
-            ->collection
-            ->contains($key, $operator, $value)
-        ;
-    }
-
-    /**
-     * @api
-     */
-    public function search(mixed $value, bool $strict = true): int|string|null
-    {
-        return $this
-            ->collection
-            ->search($value, $strict)
-        ;
-    }
-
-    /**
-     * @api
-     */
-    public function remove(Event $event): void
+    public function remove(mixed $element): void
     {
         $index = $this
             ->collection
-            ->search($event)
+            ->search($element)
         ;
 
         if (null === $index) {
