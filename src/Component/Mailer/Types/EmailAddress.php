@@ -6,6 +6,7 @@ namespace Atournayre\Component\Mailer\Types;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\Types\Domain;
+use Atournayre\Contracts\Primitives\StringTypeInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\Traits\StringTypeTrait;
@@ -13,7 +14,7 @@ use Atournayre\Primitives\Traits\StringTypeTrait;
 /**
  * Represents an e-mail address.
  */
-final class EmailAddress
+final class EmailAddress implements StringTypeInterface
 {
     use StringTypeTrait;
 

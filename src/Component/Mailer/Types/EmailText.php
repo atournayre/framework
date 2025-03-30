@@ -6,11 +6,12 @@ namespace Atournayre\Component\Mailer\Types;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Null\NullableInterface;
+use Atournayre\Contracts\Primitives\StringTypeInterface;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\Traits\StringTypeTrait;
 
-final class EmailText implements NullableInterface
+final class EmailText implements NullableInterface, StringTypeInterface
 {
     use NullTrait;
     use StringTypeTrait;

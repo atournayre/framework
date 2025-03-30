@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Types;
 
+use Atournayre\Contracts\Primitives\StringTypeInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\Traits\StringTypeTrait;
@@ -11,7 +12,7 @@ use Atournayre\Primitives\Traits\StringTypeTrait;
 /**
  * Represents an HTML template path.
  */
-final class HtmlTemplatePath
+final class HtmlTemplatePath implements StringTypeInterface
 {
     use StringTypeTrait;
 
