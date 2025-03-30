@@ -13,6 +13,9 @@ parameters:
         methods: true
         properties: true
         constants: true
+    excludePaths:
+        - '%currentWorkingDirectory%/src/Common/Assert/Assert.php'
+        - '%currentWorkingDirectory%/src/Contracts/Common/Assert/AssertInterface.php'
     ignoreErrors:
         - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::redirectToUrl\(\) has no return type specified.#'
         - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::redirectToRoute\(\) has no return type specified.#'

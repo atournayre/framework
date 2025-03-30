@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Types;
 
+use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Primitives\StringTypeInterface;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\Traits\StringTypeTrait;
-use Webmozart\Assert\Assert;
 
 final class DirectoryOrFile implements StringTypeInterface
 {

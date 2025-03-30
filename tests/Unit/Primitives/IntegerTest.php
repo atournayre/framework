@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Unit\Primitives;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Int_;
 use PHPUnit\Framework\TestCase;
 
@@ -33,7 +34,7 @@ final class IntegerTest extends TestCase
     // Remove when PHP 8.0 support will be added
     public function testFromFloat(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         $this->expectExceptionMessage('Integer::of() expects parameter 1 to be integer or string, double given');
 
         // @phpstan-ignore-next-line

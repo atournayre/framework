@@ -8,13 +8,17 @@ use Atournayre\Contracts\Uri\UriInterface;
 use Atournayre\Exception\InvalidArgumentException;
 use Nyholm\Psr7\Uri as NyholmUri;
 
-final class Uri implements UriInterface
+final readonly class Uri implements UriInterface
 {
-    private readonly NyholmUri $uri;
+    private NyholmUri $uri;
 
     private function __construct(string $uri = '')
     {
-        $this->uri = new NyholmUri($uri);
+        try {
+            $this->uri = new NyholmUri($uri);
+        } catch (\InvalidArgumentException $invalidArgumentException) {
+            InvalidArgumentException::fromThrowable($invalidArgumentException)->throw();
+        }
     }
 
     /**

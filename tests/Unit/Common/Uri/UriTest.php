@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Unit\Common\Uri;
 
 use Atournayre\Common\VO\Uri;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -115,7 +116,7 @@ class UriTest extends TestCase
      */
     public function testInvalidUrisThrowException(string $invalidUri): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         $this->expectExceptionMessage('Unable to parse URI');
 
         Uri::of($invalidUri);
@@ -137,7 +138,7 @@ class UriTest extends TestCase
 
     public function testPortMustBeValid(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         $this->expectExceptionMessage('Invalid port: 100000. Must be between 0 and 65535');
 
         Uri::of()->withPort(100000);
@@ -145,7 +146,7 @@ class UriTest extends TestCase
 
     public function testWithPortCannotBeNegative(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         $this->expectExceptionMessage('Invalid port: -1. Must be between 0 and 65535');
 
         Uri::of()->withPort(-1);
@@ -153,7 +154,7 @@ class UriTest extends TestCase
 
     public function testParseUriPortCannotBeNegative(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         $this->expectExceptionMessage('Unable to parse URI');
 
         Uri::of('//example.com:-1');

@@ -11,6 +11,7 @@ use Atournayre\Component\Mailer\Types\EmailName;
 use Atournayre\Component\Mailer\Types\EmailSubject;
 use Atournayre\Component\Mailer\VO\Email;
 use Atournayre\Component\Mailer\VO\EmailContact;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection\FileCollection;
 use Atournayre\Wrapper\SplFileInfo;
 use PHPUnit\Framework\TestCase;
@@ -18,18 +19,18 @@ use PHPUnit\Framework\TestCase;
 final class EmailTest extends TestCase
 {
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testCreateEmailWithEmptySubjectThrowsException(): void
     {
-        self::expectException(\Exception::class);
+        self::expectException(ThrowableInterface::class);
         self::expectExceptionMessage('Email subject cannot be empty.');
 
         EmailSubject::of('');
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testValidateEmailWithoutToReturnsError(): void
     {
@@ -47,7 +48,7 @@ final class EmailTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsValidReturnsFalseWhenEmailIsInvalid(): void
     {
@@ -62,7 +63,7 @@ final class EmailTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsValidReturnsTrueWhenEmailIsValid(): void
     {
@@ -86,7 +87,7 @@ final class EmailTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testWithTextThrowsExceptionWhenTextIsEmpty(): void
     {
@@ -98,14 +99,14 @@ final class EmailTest extends TestCase
 
         $email = Email::create($subject, $emailContact);
 
-        self::expectException(\Exception::class);
+        self::expectException(ThrowableInterface::class);
         self::expectExceptionMessage('Email text cannot be empty.');
 
         $email->withText('');
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testWithHtmlThrowsExceptionWhenHtmlIsEmpty(): void
     {
@@ -117,7 +118,7 @@ final class EmailTest extends TestCase
 
         $email = Email::create($subject, $emailContact);
 
-        self::expectException(\Exception::class);
+        self::expectException(ThrowableInterface::class);
         self::expectExceptionMessage('Email HTML cannot be empty.');
 
         $email->withHtml('');
@@ -126,7 +127,7 @@ final class EmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\Email::from
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testFrom(): void
     {
@@ -143,7 +144,7 @@ final class EmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\Email::to
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testTo(): void
     {
@@ -163,7 +164,7 @@ final class EmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\Email::cc
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testCc(): void
     {
@@ -183,7 +184,7 @@ final class EmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\Email::bcc
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testBcc(): void
     {
@@ -203,7 +204,7 @@ final class EmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\Email::replyTo
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testReplyTo(): void
     {
@@ -223,7 +224,7 @@ final class EmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\Email::attachments
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testAttachments(): void
     {
@@ -244,7 +245,7 @@ final class EmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\Email::tags
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testTags(): void
     {

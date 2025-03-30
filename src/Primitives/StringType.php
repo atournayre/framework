@@ -6,6 +6,7 @@ namespace Atournayre\Primitives;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\InvalidArgumentException;
 
 use function Symfony\Component\String\u;
 
@@ -34,6 +35,8 @@ final class StringType
      * @param array<string> $arg
      *
      * @api
+     *
+     * @throws ThrowableInterface
      */
     public static function fromPattern(string $string, ...$arg): self
     {
@@ -152,13 +155,16 @@ final class StringType
         if (false === $filterVar) {
             switch ($filter) {
                 case FILTER_VALIDATE_EMAIL:
-                    throw new \InvalidArgumentException('Invalid email address');
+                    InvalidArgumentException::new('Invalid email address')->throw();
+                    // no break
                 case FILTER_VALIDATE_URL:
-                    throw new \InvalidArgumentException('Invalid URL');
+                    InvalidArgumentException::new('Invalid URL')->throw();
+                    // no break
                 case FILTER_VALIDATE_IP:
-                    throw new \InvalidArgumentException('Invalid IP address');
+                    InvalidArgumentException::new('Invalid IP address')->throw();
+                    // no break
                 default:
-                    throw new \InvalidArgumentException('Invalid value');
+                    InvalidArgumentException::new('Invalid value')->throw();
             }
         }
 

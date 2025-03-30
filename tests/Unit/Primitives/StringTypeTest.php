@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Primitives;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Exception\InvalidArgumentException;
 use Atournayre\Primitives\StringType;
 use PHPUnit\Framework\TestCase;
 
@@ -192,7 +194,7 @@ final class StringTypeTest extends TestCase
 
     public function testFilterVarThrowExceptionWhenStringIsInvalid(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         $string = StringType::of('email@example');
         $string->filterVar(FILTER_VALIDATE_EMAIL);
     }
@@ -338,7 +340,7 @@ final class StringTypeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testLengthBetweenReturnsTrueWhenLengthIsBetweenBounds(): void
     {
@@ -348,31 +350,31 @@ final class StringTypeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testLengthBetweenThrowExceptionWhenLengthIsBetweenBounds(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         StringType::of('Hello')
             ->lengthIsBetween(1, 10)
-            ->throwIfTrue(new \InvalidArgumentException())
+            ->throwIfTrue(InvalidArgumentException::new())
         ;
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testLengthBetweenThrowExceptionWhenLengthIsNotBetweenBounds(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         StringType::of('Hello')
             ->lengthIsBetween(10, 20)
-            ->throwIfFalse(new \InvalidArgumentException())
+            ->throwIfFalse(InvalidArgumentException::new())
         ;
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testLengthBetweenReturnsFalseWhenLengthIsNotBetweenBounds(): void
     {
@@ -872,7 +874,7 @@ final class StringTypeTest extends TestCase
 
     public function testFromPatternWithIntThrowsException(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         StringType::fromPattern('Welcome %s %s %s', 'to', 1, 'World'); // @phpstan-ignore-line
     }
 }

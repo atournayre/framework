@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Primitives\Collection;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Tests\Fixtures\Collection\PriceCollection;
 use Atournayre\Tests\Fixtures\Price;
 use PHPUnit\Framework\TestCase;
@@ -19,7 +20,7 @@ final class NumericCollectionTest extends TestCase
 
     public function testAddWithDifferentPrecision(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         self::expectExceptionMessage('Precisions must be the same.');
         $collection = PriceCollection::asList([Price::fromInt(1, 2)], 2);
         $collection->add(Price::fromInt(2, 3));
@@ -113,7 +114,7 @@ final class NumericCollectionTest extends TestCase
 
     public function testValidateListCollection(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         $this->expectExceptionMessage('Negative price is not allowed.');
         PriceCollection::asList([
             Price::fromInt(1, 2),
@@ -123,7 +124,7 @@ final class NumericCollectionTest extends TestCase
 
     public function testValidateMapCollection(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(ThrowableInterface::class);
         $this->expectExceptionMessage('Negative price is not allowed.');
         PriceCollection::asMap([
             'key1' => Price::fromInt(1, 2),

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Primitives;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Locale;
 use Atournayre\Primitives\Numeric;
 use PHPUnit\Framework\TestCase;
@@ -36,13 +37,13 @@ final class NumericTest extends TestCase
 
     public function testOfWithNegativePrecision(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         Numeric::of(1.23, -1);
     }
 
     public function testOfWithNonNumericString(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         Numeric::of('abc', 2);
     }
 
@@ -145,7 +146,7 @@ final class NumericTest extends TestCase
      */
     public function testBetweenWithInvertedBounds(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         Numeric::of(2)->between(3, 1);
     }
 
@@ -164,7 +165,7 @@ final class NumericTest extends TestCase
      */
     public function testBetweenOrEqualWithInvertedBounds(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         Numeric::of(2)->betweenOrEqual(3, 2);
     }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Unit\Common\Types;
 
 use Atournayre\Common\Types\DirectoryOrFile;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use PHPUnit\Framework\TestCase;
 
 final class DirectoryOrFileTest extends TestCase
@@ -42,7 +43,7 @@ final class DirectoryOrFileTest extends TestCase
 
     public function testDirectoryWithoutStratingSlashThrowAnException(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         DirectoryOrFile::of('path/to/directory');
     }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 
 final class Int_
 {
@@ -17,6 +18,8 @@ final class Int_
 
     /**
      * @param int|string|Int_ $value
+     *
+     * @throws ThrowableInterface
      */
     public static function of($value): self
     {

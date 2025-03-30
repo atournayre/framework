@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Unit\Component\Mailer\Types;
 
 use Atournayre\Component\Mailer\Types\EmailAddress;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use PHPUnit\Framework\TestCase;
 
 final class EmailAddressTest extends TestCase
@@ -19,7 +20,7 @@ final class EmailAddressTest extends TestCase
     public function testEmailAddressEmpty(): void
     {
         $email = '';
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         self::expectExceptionMessage('Expected a value to be a valid e-mail address. Got: ""');
         EmailAddress::of($email);
     }
@@ -27,7 +28,7 @@ final class EmailAddressTest extends TestCase
     public function testEmailAddressInvalid(): void
     {
         $email = 'a@a';
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(ThrowableInterface::class);
         self::expectExceptionMessage('Expected a value to be a valid e-mail address. Got: "a@a"');
         EmailAddress::of($email);
     }
