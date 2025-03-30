@@ -21,7 +21,7 @@ final class InvalidArgumentException extends \InvalidArgumentException implement
     /**
      * @throws self
      */
-    public function throw(): void
+    public function throw(): never
     {
         throw $this;
     }

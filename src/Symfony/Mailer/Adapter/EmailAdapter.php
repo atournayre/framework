@@ -17,8 +17,8 @@ class EmailAdapter
      * @throws \InvalidArgumentException
      * @throws \Exception
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public static function fromMessage(Email $email): SymfonyEmail
     {

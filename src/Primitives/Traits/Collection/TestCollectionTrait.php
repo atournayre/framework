@@ -284,8 +284,8 @@ trait TestCollectionTrait
             $implements = $this->collection
                 ->implements($interface, $throw)
             ;
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
 
         return BoolEnum::fromBool($implements);

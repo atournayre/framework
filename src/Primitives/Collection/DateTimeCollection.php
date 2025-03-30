@@ -81,8 +81,8 @@ final class DateTimeCollection implements ListInterface
                 ->collection
                 ->first()
             ;
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 

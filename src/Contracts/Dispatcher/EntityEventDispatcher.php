@@ -14,7 +14,7 @@ final readonly class EntityEventDispatcher implements EntityEventDispatcherInter
 {
     public function __construct(
         private EventDispatcherInterface $eventDispatcher,
-        private LoggerInterface          $logger,
+        private LoggerInterface $logger,
     ) {
     }
 

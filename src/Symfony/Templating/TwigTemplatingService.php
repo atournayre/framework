@@ -24,8 +24,8 @@ final readonly class TwigTemplatingService implements TemplatingInterface
     {
         try {
             return $this->twigEnvironment->render($template, $parameters);
-        } catch (Error $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (Error $error) {
+            RuntimeException::fromThrowable($error)->throw();
         }
     }
 }

@@ -47,8 +47,8 @@ trait UlidTrait
     {
         try {
             return $this->ulid->getDateTime();
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 }

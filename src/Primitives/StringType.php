@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\Primitives;
 
 use Atournayre\Common\Assert\Assert;
-
 use Atournayre\Contracts\Exception\ThrowableInterface;
+
 use function Symfony\Component\String\u;
 
 final class StringType

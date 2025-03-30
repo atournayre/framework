@@ -28,7 +28,7 @@ final class RuntimeException extends \RuntimeException implements ThrowableInter
     /**
      * @throws self
      */
-    public function throw(): void
+    public function throw(): never
     {
         throw $this;
     }

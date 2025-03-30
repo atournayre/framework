@@ -57,8 +57,8 @@ trait NumericTrait
     {
         try {
             return $this->value->format($locale);
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 

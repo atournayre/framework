@@ -63,8 +63,8 @@ final class Ulid
     {
         try {
             return DateTime::of($this->ulid->getDateTime());
-        } catch (\Throwable $exception) {
-            RuntimeException::fromThrowable($exception)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 }

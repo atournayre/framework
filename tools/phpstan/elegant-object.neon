@@ -106,6 +106,7 @@ services:
           - 'asList'
           - 'asMap'
           - 'new'
+          - 'from'
           - 'fromArray'
           - 'fromIterable'
           - 'car' # For exceptions

@@ -40,8 +40,8 @@ trait CollectionCommonTrait
     {
         try {
             return $this->collection->first($default);
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 
@@ -56,8 +56,8 @@ trait CollectionCommonTrait
     {
         try {
             return $this->collection->last($default);
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 

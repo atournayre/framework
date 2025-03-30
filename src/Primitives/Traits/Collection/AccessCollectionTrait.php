@@ -87,9 +87,10 @@ trait AccessCollectionTrait
     {
         try {
             return $this->collection
-                ->find($callback, $default, $reverse);
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+                ->find($callback, $default, $reverse)
+            ;
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 
@@ -108,8 +109,8 @@ trait AccessCollectionTrait
     {
         try {
             return $this->collection->first($default);
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 
@@ -119,6 +120,7 @@ trait AccessCollectionTrait
      * @return mixed First key of map or NULL if empty
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function firstKey()
@@ -128,8 +130,8 @@ trait AccessCollectionTrait
                 ->collection
                 ->firstKey()
             ;
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 
@@ -154,7 +156,6 @@ trait AccessCollectionTrait
         } catch (\Exception|\Throwable $e) {
             RuntimeException::fromThrowable($e)->throw();
         }
-        return null;
     }
 
     /**
@@ -240,8 +241,8 @@ trait AccessCollectionTrait
                 ->collection
                 ->last($default)
             ;
-        } catch (\Throwable $e) {
-            RuntimeException::fromThrowable($e)->throw();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
         }
     }
 
