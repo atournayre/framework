@@ -8,11 +8,11 @@ use Atournayre\Primitives\BoolEnum;
 
 interface StringTypeInterface
 {
-    public static function of(string $value): self;
+    public static function of(string $value): StringTypeInterface;
 
     public function toString(): string;
 
     public function __toString(): string;
 
-    public function equalsTo(string|self $value): BoolEnum;
+    public function equalsTo(string|StringTypeInterface $value): BoolEnum;
 }

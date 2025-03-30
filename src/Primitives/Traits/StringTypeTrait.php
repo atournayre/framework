@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits;
 
+use Atournayre\Contracts\Primitives\StringTypeInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\StringType;
 
@@ -29,10 +30,7 @@ trait StringTypeTrait
         return $this->toString();
     }
 
-    /**
-     * @param string|self $value
-     */
-    public function equalsTo($value): BoolEnum
+    public function equalsTo(string|StringTypeInterface $value): BoolEnum
     {
         $valueToCheck = $value instanceof self ? $value->toString() : $value;
 
