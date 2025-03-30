@@ -31,21 +31,17 @@ final class Numeric
     }
 
     /**
-     * @param int|float|string $value
-     *
      * @throws ThrowableInterface
      */
-    public static function of($value, int $precision = 0): self
+    public static function of(float|int|string $value, int $precision = 0): self
     {
         return new self($value, $precision);
     }
 
     /**
-     * @param int|float|string $value
-     *
      * @throws ThrowableInterface
      */
-    private function __construct($value, int $precision)
+    private function __construct(float|int|string $value, int $precision)
     {
         if ($precision < 0) {
             InvalidArgumentException::new('Precision cannot be negative.')->throw();
@@ -117,30 +113,27 @@ final class Numeric
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function round(int $mode = PHP_ROUND_HALF_UP): self
     {
-        switch ($mode) {
-            case PHP_ROUND_HALF_UP:
-                return new self(round($this->value, $this->precision), $this->precision);
-            case PHP_ROUND_HALF_DOWN:
-                return new self(round($this->value, $this->precision, PHP_ROUND_HALF_DOWN), $this->precision);
-            case PHP_ROUND_HALF_EVEN:
-                return new self(round($this->value, $this->precision, PHP_ROUND_HALF_EVEN), $this->precision);
-            case PHP_ROUND_HALF_ODD:
-                return new self(round($this->value, $this->precision, PHP_ROUND_HALF_ODD), $this->precision);
-            default:
-                InvalidArgumentException::new('Invalid rounding mode provided.')->throw();
-        }
+        return match ($mode) {
+            PHP_ROUND_HALF_UP => new self(round($this->value, $this->precision), $this->precision),
+            PHP_ROUND_HALF_DOWN => new self(round($this->value, $this->precision, PHP_ROUND_HALF_DOWN), $this->precision),
+            PHP_ROUND_HALF_EVEN => new self(round($this->value, $this->precision, PHP_ROUND_HALF_EVEN), $this->precision),
+            PHP_ROUND_HALF_ODD => new self(round($this->value, $this->precision, PHP_ROUND_HALF_ODD), $this->precision),
+            default => InvalidArgumentException::new('Invalid rounding mode provided.')->throw(),
+        };
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function greaterThan($numeric): BoolEnum
+    public function greaterThan(float|int|string|Numeric $numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $greaterThan = $this->value > $that->intValue();
@@ -149,11 +142,11 @@ final class Numeric
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function greaterThanOrEqual($numeric): BoolEnum
+    public function greaterThanOrEqual(float|int|string|Numeric $numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $greaterThanOrEqual = $this->value >= $that->value();
@@ -162,11 +155,11 @@ final class Numeric
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function lessThan($numeric): BoolEnum
+    public function lessThan(float|int|string|Numeric $numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $lessThan = $this->value < $that->value();
@@ -175,11 +168,11 @@ final class Numeric
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function lessThanOrEqual($numeric): BoolEnum
+    public function lessThanOrEqual(float|int|string|Numeric $numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $lessThanOrEqual = $this->value <= $that->value();
@@ -188,11 +181,11 @@ final class Numeric
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function equalTo($numeric): BoolEnum
+    public function equalTo(float|int|string|Numeric $numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $equalTo = $this->value === $that->value();
@@ -201,11 +194,11 @@ final class Numeric
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function notEqualTo($numeric): BoolEnum
+    public function notEqualTo(float|int|string|Numeric $numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
         $equalTo = $this->value !== $that->value();
@@ -214,14 +207,11 @@ final class Numeric
     }
 
     /**
-     * @api
-     *
-     * @param int|Numeric $min
-     * @param int|Numeric $max
-     *
      * @throws ThrowableInterface
+     *
+     *@api
      */
-    public function between($min, $max): BoolEnum
+    public function between(float|int|string $min, float|int|string $max): BoolEnum
     {
         Numeric::of($min)
             ->greaterThan($max)
@@ -235,14 +225,11 @@ final class Numeric
     }
 
     /**
-     * @api
-     *
-     * @param int|Numeric $min
-     * @param int|Numeric $max
-     *
      * @throws ThrowableInterface
+     *
+     *@api
      */
-    public function betweenOrEqual($min, $max): BoolEnum
+    public function betweenOrEqual(float|int|string $min, float|int|string $max): BoolEnum
     {
         Numeric::of($min)
             ->greaterThan($max)
@@ -264,6 +251,8 @@ final class Numeric
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function isZero(): BoolEnum
@@ -276,6 +265,8 @@ final class Numeric
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function abs(): self

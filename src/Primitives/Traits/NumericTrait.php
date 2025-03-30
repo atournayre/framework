@@ -12,13 +12,14 @@ use Atournayre\Primitives\Numeric;
 
 trait NumericTrait
 {
-    protected Numeric $value;
-
-    private function __construct(Numeric $value)
-    {
-        $this->value = $value;
+    private function __construct(
+        protected Numeric $value,
+    ) {
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function of(string $value): self
     {
         return new self(Numeric::of($value));
@@ -63,6 +64,8 @@ trait NumericTrait
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function round(int $mode = PHP_ROUND_HALF_UP): self
@@ -71,87 +74,81 @@ trait NumericTrait
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function greaterThan($numeric): BoolEnum
+    public function greaterThan(float|int|string|Numeric $numeric): BoolEnum
     {
         return $this->value->greaterThan($numeric);
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function greaterThanOrEqual($numeric): BoolEnum
+    public function greaterThanOrEqual(float|int|string|Numeric $numeric): BoolEnum
     {
         return $this->value->greaterThanOrEqual($numeric);
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function lessThan($numeric): BoolEnum
+    public function lessThan(float|int|string|Numeric $numeric): BoolEnum
     {
         return $this->value->lessThan($numeric);
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function lessThanOrEqual($numeric): BoolEnum
+    public function lessThanOrEqual(float|int|string|Numeric $numeric): BoolEnum
     {
         return $this->value->lessThanOrEqual($numeric);
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function equalTo($numeric): BoolEnum
+    public function equalTo(float|int|string|Numeric $numeric): BoolEnum
     {
         return $this->value->equalTo($numeric);
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @param int|Numeric $numeric
+     * @api
      */
-    public function notEqualTo($numeric): BoolEnum
+    public function notEqualTo(float|int|string|Numeric $numeric): BoolEnum
     {
         return $this->value->notEqualTo($numeric);
     }
 
     /**
-     * @api
-     *
-     * @param int|Numeric $min
-     * @param int|Numeric $max
-     *
      * @throws ThrowableInterface
+     *
+     * @api
      */
-    public function between($min, $max): BoolEnum
+    public function between(float|int|string $min, float|int|string $max): BoolEnum
     {
         return $this->value->between($min, $max);
     }
 
     /**
-     * @api
-     *
-     * @param int|Numeric $min
-     * @param int|Numeric $max
-     *
      * @throws ThrowableInterface
+     *
+     * @api
      */
-    public function betweenOrEqual($min, $max): BoolEnum
+    public function betweenOrEqual(float|int|string $min, float|int|string $max): BoolEnum
     {
         return $this->value->betweenOrEqual($min, $max);
     }
@@ -163,6 +160,9 @@ trait NumericTrait
         return new self($numeric);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function fromFloat(float $value): self
     {
         $numeric = Numeric::fromFloat($value);
@@ -171,6 +171,8 @@ trait NumericTrait
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function isZero(): BoolEnum
@@ -179,6 +181,8 @@ trait NumericTrait
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function abs(): self
