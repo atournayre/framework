@@ -23,7 +23,7 @@ trait ShortenCollectionTrait
             ->after($value)
         ;
 
-        return new self($after);
+        return self::of($after->toArray());
     }
 
     /**
@@ -39,7 +39,7 @@ trait ShortenCollectionTrait
             ->before($value)
         ;
 
-        return new self($before);
+        return self::of($before->toArray());
     }
 
     /**
