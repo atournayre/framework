@@ -105,15 +105,15 @@ services:
         secondaryConstructorPrefixes:
           - 'asList'
           - 'asMap'
-          - 'new'
+          - 'asNull' # For Null pattern
+          - 'because' # For exceptions
+          - 'create'
+          - 'empty'
           - 'from'
           - 'fromArray'
           - 'fromIterable'
-          - 'car' # For exceptions
-          - 'creer'
-          - 'create'
+          - 'new'
           - 'of'
           - 'with'
-          - 'depuis'
       tags:
         - phpstan.rules.rule
