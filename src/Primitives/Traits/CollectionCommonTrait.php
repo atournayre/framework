@@ -30,13 +30,21 @@ trait CollectionCommonTrait
     }
 
     /**
-     * @param mixed|null $default
-     *
-     * @return mixed|null
-     *
      * @throws ThrowableInterface
      */
-    public function first($default = null)
+    public function first(): mixed
+    {
+        try {
+            return $this->collection->first();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function firstWithDefault(mixed $default): mixed
     {
         try {
             return $this->collection->first($default);
@@ -46,13 +54,21 @@ trait CollectionCommonTrait
     }
 
     /**
-     * @param mixed|null $default
-     *
-     * @return mixed|null
-     *
      * @throws ThrowableInterface
      */
-    public function last($default = null)
+    public function last(): mixed
+    {
+        try {
+            return $this->collection->last();
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function lastWithDefault(mixed $default): mixed
     {
         try {
             return $this->collection->last($default);
