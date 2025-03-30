@@ -88,83 +88,74 @@ final readonly class Uri implements UriInterface
 
     public function withScheme(string $scheme): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withScheme($scheme);
+        return $this
+            ->generateUri()
+            ->withScheme($scheme)
+        ;
     }
 
     public function withUserInfo(string $user): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withUserInfo($user);
+        return $this
+            ->generateUri()
+            ->withUserInfo($user)
+        ;
     }
 
     public function withUserAndPassword(string $user, string $password): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withUserAndPassword($user, $password);
+        return $this
+            ->generateUri()
+            ->withUserAndPassword($user, $password)
+        ;
     }
 
     public function withHost(string $host): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withHost($host);
+        return $this
+            ->generateUri()
+            ->withHost($host)
+        ;
     }
 
     public function withPort(int $port): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withPort($port);
+        return $this
+            ->generateUri()
+            ->withPort($port)
+        ;
     }
 
     public function withoutPort(): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withoutPort();
+        return $this
+            ->generateUri()
+            ->withoutPort()
+        ;
     }
 
     public function withPath(string $path): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withPath($path);
+        return $this
+            ->generateUri()
+            ->withPath($path)
+        ;
     }
 
     public function withQuery(string $query): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withQuery($query);
+        return $this
+            ->generateUri()
+            ->withQuery($query)
+        ;
     }
 
     public function withFragment(string $fragment): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withFragment($fragment);
+        return $this
+            ->generateUri()
+            ->withFragment($fragment)
+        ;
     }
 
     public function __toString(): string

@@ -18,9 +18,6 @@ final readonly class EntityEventDispatcher implements EntityEventDispatcherInter
     ) {
     }
 
-    /**
-     * @throws \Exception
-     */
     public function dispatch(EventCollection $eventCollection, ?string $type = null): void
     {
         if (null === $type) {
@@ -53,9 +50,6 @@ final readonly class EntityEventDispatcher implements EntityEventDispatcherInter
         $this->logger->info(sprintf('Event %s dispatched', $event->_type()), $event->toLog());
     }
 
-    /**
-     * @throws \Exception
-     */
     private function dispatchEventsByType(EventCollection $eventCollection, string $type): void
     {
         $eventCollection = $eventCollection->filterByType($type);
