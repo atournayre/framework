@@ -526,7 +526,7 @@ parameters:
 			path: ../../src/Common/VO/Duration.php
 
 		-
-			message: "#^Class Atournayre\\\\Common\\\\VO\\\\Duration has 8 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Common\\\\VO\\\\Duration has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Duration.php
 
@@ -566,7 +566,7 @@ parameters:
 			path: ../../src/Common/VO/Memory.php
 
 		-
-			message: "#^Class Atournayre\\\\Common\\\\VO\\\\Memory has 8 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Common\\\\VO\\\\Memory has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Memory.php
 
@@ -624,6 +624,11 @@ parameters:
 			message: "#^The operator new is used in Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:asNull\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Security/PlainPassword.php
+
+		-
+			message: "#^Class Atournayre\\\\Common\\\\VO\\\\Uri has 10 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Common/VO/Uri.php
 
 		-
 			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Collection\\\\EmailAddressCollection\\:\\:add\\(\\) accepts null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
@@ -771,11 +776,6 @@ parameters:
 			path: ../../src/Component/Mailer/Configuration/MailerConfiguration.php
 
 		-
-			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\Configuration\\\\MailerConfiguration has 8 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Configuration/MailerConfiguration.php
-
-		-
 			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Configuration\\\\MailerConfiguration\\:\\:\\$attachmentsMaxSize is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Configuration/MailerConfiguration.php
@@ -851,7 +851,7 @@ parameters:
 			path: ../../src/Component/Mailer/Types/EmailAddress.php
 
 		-
-			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailAddress has 8 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailAddress has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailAddress.php
 
@@ -1036,7 +1036,7 @@ parameters:
 			path: ../../src/Component/Mailer/Types/EmailUserName.php
 
 		-
-			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email has 22 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email has 12 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/VO/Email.php
 
@@ -1104,16 +1104,6 @@ parameters:
 			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\EmailContact\\:\\:\\$emailName is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/VO/EmailContact.php
-
-		-
-			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\VO\\\\TemplatedEmail has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/TemplatedEmail.php
-
-		-
-			message: "#^Constructor Atournayre\\\\Component\\\\Mailer\\\\VO\\\\TemplatedEmail\\:\\:__construct\\(\\) contains code other than property assignments or assertions, which violates the \"code\\-free constructor\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/TemplatedEmail.php
 
 		-
 			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\TemplatedEmail\\:\\:\\$htmlTemplatePath is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
@@ -1731,11 +1721,6 @@ parameters:
 			path: ../../src/Null/NullEnum.php
 
 		-
-			message: "#^Class Atournayre\\\\Null\\\\NullEnum has 6 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Null/NullEnum.php
-
-		-
 			message: "#^Method Atournayre\\\\Null\\\\NullEnum\\:\\:getValue\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Null/NullEnum.php
@@ -1766,7 +1751,7 @@ parameters:
 			path: ../../src/Primitives/BoolEnum.php
 
 		-
-			message: "#^Class Atournayre\\\\Primitives\\\\BoolEnum has 11 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Primitives\\\\BoolEnum has 9 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/BoolEnum.php
 
@@ -2666,11 +2651,6 @@ parameters:
 			path: ../../src/Primitives/Collection.php
 
 		-
-			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\Collection\\:\\:with\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Primitives/Collection.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\Collection\\:\\:zip\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Primitives/Collection.php
@@ -3281,7 +3261,7 @@ parameters:
 			path: ../../src/Primitives/Int_.php
 
 		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Int_ has 16 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Primitives\\\\Int_ has 15 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Int_.php
 
@@ -4026,7 +4006,7 @@ parameters:
 			path: ../../src/Primitives/Numeric.php
 
 		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Numeric has 18 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Primitives\\\\Numeric has 15 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Numeric.php
 
@@ -4131,7 +4111,7 @@ parameters:
 			path: ../../src/Primitives/StringType.php
 
 		-
-			message: "#^Class Atournayre\\\\Primitives\\\\StringType has 51 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Primitives\\\\StringType has 49 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/StringType.php
 
@@ -4246,7 +4226,7 @@ parameters:
 			path: ../../src/Primitives/Uuid.php
 
 		-
-			message: "#^Class Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem has 24 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem has 21 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Symfony/Filesystem/Filesystem.php
 
@@ -4351,7 +4331,7 @@ parameters:
 			path: ../../src/Symfony/Mailer/Service/SendMailService.php
 
 		-
-			message: "#^Class Atournayre\\\\Symfony\\\\Response\\\\ResponseService has 9 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Symfony\\\\Response\\\\ResponseService has 8 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Symfony/Response/ResponseService.php
 
@@ -4411,11 +4391,6 @@ parameters:
 			path: ../../src/Symfony/Routing/RoutingService.php
 
 		-
-			message: "#^Class Atournayre\\\\Symfony\\\\Session\\\\FlashBagService has 6 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Session/FlashBagService.php
-
-		-
 			message: "#^Property Atournayre\\\\Symfony\\\\Session\\\\FlashBagService\\:\\:\\$symfonyFlashBag is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Symfony/Session/FlashBagService.php
@@ -4426,7 +4401,12 @@ parameters:
 			path: ../../src/Symfony/Templating/TwigTemplatingService.php
 
 		-
-			message: "#^Class Atournayre\\\\Wrapper\\\\SplFileInfo has 10 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Symfony\\\\VO\\\\Uri has 10 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Symfony/VO/Uri.php
+
+		-
+			message: "#^Class Atournayre\\\\Wrapper\\\\SplFileInfo has 9 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Wrapper/SplFileInfo.php
 
