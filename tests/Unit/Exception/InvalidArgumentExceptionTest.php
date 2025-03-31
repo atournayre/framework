@@ -53,4 +53,3 @@ class InvalidArgumentExceptionTest extends TestCase
         self::assertInstanceOf(\InvalidArgumentException::class, $exception); // @phpstan-ignore-line
     }
 }
-
