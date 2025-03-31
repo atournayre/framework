@@ -49,7 +49,7 @@
         }
     },
     "require-dev": {
-        "atournayre/phpstan-elegant-object": "^0.0.0",
+        "atournayre/phpstan-elegant-object": "^0.2.0",
         "phpunit/phpunit": "^9.5",
         "rector/rector": "^1.1",
         "rector/swiss-knife": "^0.2.16",
