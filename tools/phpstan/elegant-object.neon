@@ -11,6 +11,7 @@ services:
       class: Atournayre\PHPStan\ElegantObject\Rules\AlwaysUseInterfaceRule
       arguments:
           excludedPaths:
+              - %currentWorkingDirectory%/src/PHPStan
               - '%currentWorkingDirectory%/tests'
       tags:
         - phpstan.rules.rule
@@ -63,9 +64,8 @@ services:
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverUseGettersAndSettersRule
       arguments:
         excludedPaths:
+            - %currentWorkingDirectory%/src/PHPStan
             - %currentWorkingDirectory%/tests
-#        allowedInterfaces:
-#            - *Interface
       tags:
         - phpstan.rules.rule
 
