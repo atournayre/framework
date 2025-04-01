@@ -81,7 +81,7 @@ final class Assert implements AssertInterface, AssertStringInterface, AssertNume
     {
         $primitive = Primitive::tryFrom($type);
 
-        if (null === $primitive) {
+        if (!$primitive instanceof Primitive) {
             InvalidArgumentException::new(\sprintf('Invalid type "%s". Expected one of "string", "int", "float", "bool", "array", "object" or "null".', $type))
                 ->throw()
             ;
