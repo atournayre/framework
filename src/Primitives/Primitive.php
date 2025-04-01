@@ -4,21 +4,68 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
-final class Primitive
+use Atournayre\Common\Assert\Assert;
+use Atournayre\Common\Exception\InvalidArgumentException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Traits\EnumTrait;
+
+enum Primitive: string
 {
-    public const STRING = 'string';
+    use EnumTrait;
 
-    public const INT = 'int';
+    case STRING = 'string';
 
-    public const FLOAT = 'float';
+    case INT = 'int';
 
-    public const BOOL = 'bool';
+    case FLOAT = 'float';
 
-    public const ARRAY = 'array';
+    case BOOL = 'bool';
 
-    public const OBJECT = 'object';
+    case ARRAY = 'array';
 
-    public const NULL = 'null';
+    case OBJECT = 'object';
 
-    public const MIXED = 'mixed';
+    case NULL = 'null';
+
+    case MIXED = 'mixed';
+
+    private static function types(): Collection
+    {
+        return Collection::of([
+            self::STRING,
+            self::INT,
+            self::FLOAT,
+            self::BOOL,
+            self::ARRAY,
+            self::OBJECT,
+            self::NULL,
+        ]);
+    }
+
+    public function isMixed(): BoolEnum
+    {
+        $isMixed = $this->is(self::MIXED);
+
+        return BoolEnum::fromBool($isMixed);
+    }
+
+    public function isPrimitive(): BoolEnum
+    {
+        return self::types()
+            ->contains($this)
+        ;
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function assert(self $primitive, mixed $value, string $message = ''): void
+    {
+        $this
+            ->isPrimitive()
+            ->throwIfFalse(InvalidArgumentException::new(\sprintf('Invalid type "%s". Expected one of "string", "int", "float", "bool", "array", "object" or "null".', $this->value)))
+        ;
+
+        Assert::__callStatic($primitive->value, [$value, $message]);
+    }
 }

@@ -6,6 +6,7 @@ namespace Atournayre\Component\Mailer\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
@@ -20,6 +21,8 @@ final class TagCollection implements LoggableInterface, MapInterface
 
     /**
      * @param array<string, mixed> $collection
+     *
+     * @throws ThrowableInterface
      */
     public static function asMap(array $collection): self
     {
@@ -32,6 +35,9 @@ final class TagCollection implements LoggableInterface, MapInterface
         return new self($collection1);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     private static function validateElement(string $value): void
     {
         Assert::lengthBetween(

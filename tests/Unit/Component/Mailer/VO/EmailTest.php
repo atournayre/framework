@@ -11,6 +11,7 @@ use Atournayre\Component\Mailer\Types\EmailName;
 use Atournayre\Component\Mailer\Types\EmailSubject;
 use Atournayre\Component\Mailer\VO\Email;
 use Atournayre\Component\Mailer\VO\EmailContact;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection\FileCollection;
 use Atournayre\Wrapper\SplFileInfo;
 use PHPUnit\Framework\TestCase;
@@ -245,6 +246,7 @@ final class EmailTest extends TestCase
      * @covers \Atournayre\Component\Mailer\VO\Email::tags
      *
      * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testTags(): void
     {
