@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 
 use function Symfony\Component\String\u;
 
@@ -30,13 +31,13 @@ final class StringType
     }
 
     /**
-     * @param array<string> $arg
+     * @throws ThrowableInterface
      *
      * @api
      */
-    public static function fromPattern(string $string, ...$arg): self
+    public static function fromPattern(string $string, mixed ...$arg): self
     {
-        Assert::allString($arg, 'The arguments must be strings'); // @phpstan-ignore-line
+        Assert::allString([...$arg], 'The arguments must be strings');
         $string = sprintf($string, ...$arg);
 
         return self::of($string);

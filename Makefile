@@ -27,6 +27,9 @@ tests: ## Run tests
 phpstan: ## Run PHPStan
 	@$(PHP) vendor/bin/phpstan analyse --configuration=tools/phpstan/phpstan.neon --memory-limit=4G
 
+phpstan-update-baseline: ## Update PHPStan baseline
+	@$(PHP) vendor/bin/phpstan analyse --configuration=tools/phpstan/phpstan.neon --memory-limit=4G --generate-baseline=tools/phpstan/baseline.neon
+
 rector: ## Run Rector
 	@$(PHP) vendor/bin/rector process src --config=tools/rector.php
 

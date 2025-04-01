@@ -1,5 +1,7 @@
 includes:
+    - ../../tools/phpstan/baseline.neon
     - ../../tools/phpstan/disallowed-calls.neon
+    - ../../tools/phpstan/elegant-object.neon
 
 services:
     -
@@ -8,7 +10,7 @@ services:
             - phpstan.typeSpecifier.staticMethodTypeSpecifyingExtension
 
 parameters:
-    phpVersion: 80100
+    phpVersion: 80200
     level: 6
     paths:
         - ../../src/
@@ -26,3 +28,5 @@ parameters:
         - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::file\(\) has no return type specified.#'
         - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::empty\(\) has no return type specified.#'
         - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::error\(\) has no return type specified.#'
+        # To be compliant with PSR7 UriInterface
+        - '#Interface Atournayre\\Contracts\\Uri\\UriInterface has 19 methods, which exceeds the maximum of 5 \(Elegant Object principle\)(.)*#'
