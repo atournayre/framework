@@ -1746,16 +1746,6 @@ parameters:
 			path: ../../src/Primitives/BoolEnum.php
 
 		-
-			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\BoolEnum\\:\\:throwIfFalse\\(\\) for class InvalidArgumentException, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Primitives/BoolEnum.php
-
-		-
-			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\BoolEnum\\:\\:throwIfTrue\\(\\) for class InvalidArgumentException, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Primitives/BoolEnum.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\BoolEnum\\:\\:true\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Primitives/BoolEnum.php
