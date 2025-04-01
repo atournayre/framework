@@ -6,7 +6,7 @@ namespace Atournayre\Common\Exception;
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
-final class InvalidArgumentException extends \InvalidArgumentException implements ThrowableInterface
+class InvalidArgumentException extends \InvalidArgumentException implements ThrowableInterface
 {
     public static function new(string $message = '', int $code = 0): self
     {
