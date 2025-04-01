@@ -1,6 +1,12 @@
 includes:
     - ../../tools/phpstan/disallowed-calls.neon
 
+services:
+    -
+        class: Atournayre\PHPStan\Extension\AssertTypeSpecifyingExtension
+        tags:
+            - phpstan.typeSpecifier.staticMethodTypeSpecifyingExtension
+
 parameters:
     phpVersion: 80100
     level: 6
