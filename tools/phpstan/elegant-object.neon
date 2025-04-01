@@ -19,6 +19,7 @@ services:
       class: Atournayre\PHPStan\ElegantObject\Rules\BeEitherFinalOrAbstractRule
       arguments:
         excludedPaths:
+          - %currentWorkingDirectory%/src/Common/Exception
           - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule
