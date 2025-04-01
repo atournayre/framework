@@ -1,31 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Class Atournayre\\\\Common\\\\Assert\\\\Assert does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Assert/Assert.php
-
-		-
-			message: "#^Method Atournayre\\\\Common\\\\Assert\\\\Assert\\:\\:allIsType\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
-			count: 1
-			path: ../../src/Common/Assert/Assert.php
-
-		-
-			message: "#^Method Atournayre\\\\Common\\\\Assert\\\\Assert\\:\\:isListOf\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
-			count: 1
-			path: ../../src/Common/Assert/Assert.php
-
-		-
-			message: "#^Method Atournayre\\\\Common\\\\Assert\\\\Assert\\:\\:isMapOf\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
-			count: 1
-			path: ../../src/Common/Assert/Assert.php
-
-		-
-			message: "#^Method Atournayre\\\\Common\\\\Assert\\\\Assert\\:\\:isType\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
-			count: 1
-			path: ../../src/Common/Assert/Assert.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Common\\\\Assert\\\\Assert\\:\\:isType\\(\\) for class Webmozart\\\\Assert\\\\InvalidArgumentException, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Common/Assert/Assert.php

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Primitives;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\StringType;
 use PHPUnit\Framework\TestCase;
 
@@ -870,9 +871,12 @@ final class StringTypeTest extends TestCase
         self::assertEquals('Welcome to my World', $string->toString());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function testFromPatternWithIntThrowsException(): void
     {
         self::expectException(\InvalidArgumentException::class);
-        StringType::fromPattern('Welcome %s %s %s', 'to', 1, 'World'); // @phpstan-ignore-line
+        StringType::fromPattern('Welcome %s %s %s', 'to', 1, 'World');
     }
 }
