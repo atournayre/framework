@@ -3,6 +3,12 @@ includes:
     - ../../tools/phpstan/disallowed-calls.neon
     - ../../tools/phpstan/elegant-object.neon
 
+services:
+    -
+        class: Atournayre\PHPStan\Extension\AssertTypeSpecifyingExtension
+        tags:
+            - phpstan.typeSpecifier.staticMethodTypeSpecifyingExtension
+
 parameters:
     phpVersion: 80200
     level: 6
