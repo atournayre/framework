@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Assert;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\Common\Assert\AssertAllInterface;
 use Atournayre\Contracts\Common\Assert\AssertInterface;
 use Atournayre\Contracts\Common\Assert\AssertIsInterface;
@@ -15,7 +16,6 @@ use Atournayre\Contracts\Common\Assert\AssertStringInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Primitive;
 use Atournayre\Primitives\StringType;
-use Webmozart\Assert\InvalidArgumentException;
 
 /**
  * @template T
@@ -23,22 +23,9 @@ use Webmozart\Assert\InvalidArgumentException;
 final class Assert implements AssertInterface, AssertStringInterface, AssertNumericInterface, AssertMiscInterface, AssertAllInterface, AssertIsInterface, AssertNotInterface, AssertNullInterface
 {
     /**
-     * @var array|string[]
-     */
-    private static array $primitiveTypes = [
-        Primitive::STRING,
-        Primitive::INT,
-        Primitive::FLOAT,
-        Primitive::BOOL,
-        Primitive::ARRAY,
-        Primitive::NULL,
-        Primitive::OBJECT,
-    ];
-
-    /**
      * @param array<T> $array
      *
-     * @throws InvalidArgumentException
+     * @throws ThrowableInterface
      */
     public static function isListOf(array $array, string $classOrType, string $message = ''): void
     {
@@ -46,14 +33,14 @@ final class Assert implements AssertInterface, AssertStringInterface, AssertNume
             $message = \sprintf('Expected list - non-associative array of %s.', $classOrType);
         }
 
-        \Webmozart\Assert\Assert::isList($array, $message);
+        self::isList($array, $message);
 
-        if (Primitive::MIXED === $classOrType) {
+        if (Primitive::tryFrom($classOrType)?->isMixed()->yes() ?? false) {
             return;
         }
 
-        if (in_array($classOrType, self::$primitiveTypes, true)) {
-            Assert::allIsType($array, $classOrType, $message);
+        if (Primitive::tryFrom($classOrType)?->isPrimitive()->yes() ?? false) {
+            self::allIsType($array, $classOrType, $message);
 
             return;
         }
@@ -64,7 +51,7 @@ final class Assert implements AssertInterface, AssertStringInterface, AssertNume
     /**
      * @param array<T> $array
      *
-     * @throws InvalidArgumentException
+     * @throws ThrowableInterface
      */
     public static function isMapOf(array $array, string $classOrType, string $message = ''): void
     {
@@ -72,14 +59,14 @@ final class Assert implements AssertInterface, AssertStringInterface, AssertNume
             $message = \sprintf('Expected map - associative array with string keys of %s.', $classOrType);
         }
 
-        \Webmozart\Assert\Assert::isMap($array, $message);
+        self::isMap($array, $message);
 
-        if (Primitive::MIXED === $classOrType) {
+        if (Primitive::tryFrom($classOrType)?->isMixed()->yes() ?? false) {
             return;
         }
 
-        if (in_array($classOrType, self::$primitiveTypes, true)) {
-            Assert::allIsType($array, $classOrType, $message);
+        if (Primitive::tryFrom($classOrType)?->isPrimitive()->yes() ?? false) {
+            self::allIsType($array, $classOrType, $message);
 
             return;
         }
@@ -88,43 +75,27 @@ final class Assert implements AssertInterface, AssertStringInterface, AssertNume
     }
 
     /**
-     * @throws InvalidArgumentException
+     * @throws ThrowableInterface
      */
     public static function isType(mixed $value, string $type, string $message = ''): void
     {
-        switch ($type) {
-            case Primitive::STRING:
-                \Webmozart\Assert\Assert::string($value, $message);
-                break;
-            case Primitive::INT:
-                \Webmozart\Assert\Assert::integer($value, $message);
-                break;
-            case Primitive::FLOAT:
-                \Webmozart\Assert\Assert::float($value, $message);
-                break;
-            case Primitive::BOOL:
-                \Webmozart\Assert\Assert::boolean($value, $message);
-                break;
-            case Primitive::ARRAY:
-                \Webmozart\Assert\Assert::isArray($value, $message);
-                break;
-            case Primitive::OBJECT:
-                \Webmozart\Assert\Assert::object($value, $message);
-                break;
-            case Primitive::NULL:
-                \Webmozart\Assert\Assert::null($value, $message);
-                break;
-            default:
-                throw new InvalidArgumentException(\sprintf('Invalid type "%s". Expected one of "string", "int", "float", "bool", "array", "object" or "null".', $type));
+        $primitive = Primitive::tryFrom($type);
+
+        if (null === $primitive) {
+            InvalidArgumentException::new(\sprintf('Invalid type "%s". Expected one of "string", "int", "float", "bool", "array", "object" or "null".', $type))
+                ->throw()
+            ;
         }
+
+        $primitive->assert(Primitive::tryFrom($type), $value, $message);
     }
 
     /**
      * @param array<T> $value
      *
-     * @throws InvalidArgumentException
+     * @throws ThrowableInterface
      */
-    public static function allIsType(array $value, string $type, string $message = ''): void
+    public static function allIsType(array $value, string|Primitive $type, string $message = ''): void
     {
         foreach ($value as $element) {
             Assert::isType($element, $type, $message);
@@ -146,7 +117,7 @@ final class Assert implements AssertInterface, AssertStringInterface, AssertNume
         try {
             $method(...$arguments);
         } catch (\Throwable $throwable) {
-            \Atournayre\Common\Exception\InvalidArgumentException::fromThrowable($throwable)->throw();
+            InvalidArgumentException::fromThrowable($throwable)->throw();
         }
     }
 

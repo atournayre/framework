@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^The operator new is used in Atournayre\\\\Common\\\\Assert\\\\Assert\\:\\:isType\\(\\) for class Webmozart\\\\Assert\\\\InvalidArgumentException, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Common/Assert/Assert.php
-
-		-
 			message: "#^Class Atournayre\\\\Common\\\\Collection\\\\EventCollection has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Collection/EventCollection.php
@@ -4024,51 +4019,6 @@ parameters:
 			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\Numeric\\:\\:round\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 4
 			path: ../../src/Primitives/Numeric.php
-
-		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Primitive does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Primitive.php
-
-		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Primitive has a public constant ARRAY, which violates encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Primitive.php
-
-		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Primitive has a public constant BOOL, which violates encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Primitive.php
-
-		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Primitive has a public constant FLOAT, which violates encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Primitive.php
-
-		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Primitive has a public constant INT, which violates encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Primitive.php
-
-		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Primitive has a public constant MIXED, which violates encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Primitive.php
-
-		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Primitive has a public constant NULL, which violates encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Primitive.php
-
-		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Primitive has a public constant OBJECT, which violates encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Primitive.php
-
-		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Primitive has a public constant STRING, which violates encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Primitive.php
 
 		-
 			message: "#^Class Atournayre\\\\Primitives\\\\StringType does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
