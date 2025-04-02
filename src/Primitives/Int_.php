@@ -24,7 +24,6 @@ final class Int_
             return $value;
         }
 
-        // @phpstan-ignore-next-line Remove when PHP 8.0 support will be added
         Assert::false(is_float($value), 'Integer::of() expects parameter 1 to be integer or string, '.gettype($value).' given');
 
         return new self((int) $value);

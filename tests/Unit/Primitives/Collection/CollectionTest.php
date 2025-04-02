@@ -1541,10 +1541,23 @@ Array
         self::assertSame(0.0, Collection::of([])->max()->value());
     }
 
+    public function testMaxZero(): void
+    {
+        self::assertSame(0.0, Collection::of([0])->max()->value());
+    }
+
     public function testMaxPath(): void
     {
         self::assertSame(50.0, Collection::of([['p' => 30], ['p' => 50], ['p' => 10]])->max('p')->value());
         self::assertSame(50.0, Collection::of([['i' => ['p' => 30]], ['i' => ['p' => 50]]])->max('i/p')->value());
+    }
+
+    public function testAvg(): void
+    {
+        self::assertSame(1.0, Collection::of([1, 1])->avg()->value());
+        self::assertSame(3.0, Collection::of([4, 2])->avg()->value());
+        self::assertSame(0.5, Collection::of([0, 1])->avg()->value());
+        self::assertSame(0.0, Collection::of([0])->avg()->value());
     }
 
     public function testMergeArray(): void
@@ -1578,6 +1591,11 @@ Array
     public function testMinEmpty(): void
     {
         self::assertSame(0.0, Collection::of([])->min()->value());
+    }
+
+    public function testMinZero(): void
+    {
+        self::assertSame(0.0, Collection::of([0])->min()->value());
     }
 
     public function testMinPath(): void
