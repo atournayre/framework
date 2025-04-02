@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Int_;
 use Atournayre\Primitives\Numeric;
@@ -58,12 +60,13 @@ trait AccessCollectionTrait
     /**
      * Calls the given method on all items.
      *
+     * @throws ThrowableInterface
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function call()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        RuntimeException::new('Not implemented yet!')->throw();
     }
 
     /**
