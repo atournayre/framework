@@ -15,7 +15,7 @@ trait CreateCollectionTrait
      */
     public function clone(): self
     {
-        return new self($this->collection->clone());
+        return self::of($this->collection->clone());
     }
 
     /**
@@ -29,7 +29,7 @@ trait CreateCollectionTrait
             ->copy()
         ;
 
-        return new self($clone);
+        return self::of($clone);
     }
 
     /**
@@ -39,7 +39,7 @@ trait CreateCollectionTrait
      */
     public static function explode(string $delimiter, string $string, int $limit = PHP_INT_MAX): self
     {
-        return new self(AimeosMap::explode($delimiter, $string, $limit));
+        return self::of(AimeosMap::explode($delimiter, $string, $limit));
     }
 
     /**
@@ -79,6 +79,6 @@ trait CreateCollectionTrait
             ->tree($idKey, $parentKey, $nestKey)
         ;
 
-        return new self($tree);
+        return self::of($tree);
     }
 }

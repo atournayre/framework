@@ -109,6 +109,6 @@ trait MiscCollectionTrait
             ->sep($char)
         ;
 
-        return new self($sep);
+        return self::of($sep);
     }
 }

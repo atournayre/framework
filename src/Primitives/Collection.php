@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\Primitives;
 
 use Aimeos\Map as AimeosMap;
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Traits\Collection\AccessCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\AddCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\AggregateCollectionTrait;
@@ -31,14 +33,10 @@ final class Collection
     use TestCollectionTrait;
     use TransformCollectionTrait;
 
-    private AimeosMap $collection;
-
-    private BoolEnum $isReadOnly;
-
-    private function __construct(AimeosMap $collection)
-    {
-        $this->collection = $collection;
-        $this->isReadOnly = BoolEnum::fromBool(false);
+    private function __construct(
+        private readonly AimeosMap $collection,
+        private readonly BoolEnum $isReadOnly,
+    ) {
     }
 
     /**
@@ -50,7 +48,10 @@ final class Collection
             return $collection;
         }
 
-        return new self(AimeosMap::from($collection));
+        return new self(
+            collection: AimeosMap::from($collection),
+            isReadOnly: BoolEnum::fromBool(false),
+        );
     }
 
     /**
@@ -60,7 +61,10 @@ final class Collection
      */
     public static function readOnly($collection = []): self
     {
-        return self::of($collection)->asReadOnly();
+        return new self(
+            collection: AimeosMap::from($collection),
+            isReadOnly: BoolEnum::fromBool(true)
+        );
     }
 
     /**
@@ -82,10 +86,10 @@ final class Collection
      */
     public function asReadOnly(): self
     {
-        $clone = clone $this;
-        $clone->isReadOnly = BoolEnum::fromBool(true);
-
-        return $clone;
+        return new self(
+            collection: AimeosMap::from($this->collection),
+            isReadOnly: BoolEnum::fromBool(true)
+        );
     }
 
     public function isReadOnly(): BoolEnum
@@ -94,12 +98,14 @@ final class Collection
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     private function ensureMutable(string $operation): void
     {
         if ($this->isReadOnly->yes()) {
-            throw new \RuntimeException(sprintf('Cannot %s a read-only collection. Use clone to create a mutable copy.', $operation));
+            RuntimeException::new(sprintf('Cannot %s a read-only collection. Use clone to create a mutable copy.', $operation))
+                ->throw()
+            ;
         }
     }
 }

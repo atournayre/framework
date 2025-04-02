@@ -49,7 +49,7 @@ trait TestCollectionTrait
             ->each($callback)
         ;
 
-        return new self($collection);
+        return self::of($collection);
     }
 
     /**
@@ -129,7 +129,7 @@ trait TestCollectionTrait
             ->if($condition, $then, $else)
         ;
 
-        return new self($if);
+        return self::of($if);
     }
 
     /**
@@ -143,7 +143,7 @@ trait TestCollectionTrait
             ->ifAny($then, $else)
         ;
 
-        return new self($ifAny);
+        return self::of($ifAny);
     }
 
     /**
@@ -432,6 +432,6 @@ trait TestCollectionTrait
             ->strBefore($value, $case, $encoding)
         ;
 
-        return new self($strBefore);
+        return self::of($strBefore);
     }
 }

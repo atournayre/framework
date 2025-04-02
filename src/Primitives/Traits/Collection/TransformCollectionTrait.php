@@ -19,7 +19,7 @@ trait TransformCollectionTrait
             ->cast($type)
         ;
 
-        return new self($cast);
+        return self::of($cast);
     }
 
     /**
@@ -33,7 +33,7 @@ trait TransformCollectionTrait
             ->chunk($size, $preserve)
         ;
 
-        return new self($chunk);
+        return self::of($chunk);
     }
 
     /**
@@ -47,7 +47,7 @@ trait TransformCollectionTrait
             ->col($valuecol, $indexcol)
         ;
 
-        return new self($col);
+        return self::of($col);
     }
 
     /**
@@ -61,7 +61,7 @@ trait TransformCollectionTrait
             ->collapse($depth)
         ;
 
-        return new self($collapse);
+        return self::of($collapse);
     }
 
     /**
@@ -77,7 +77,7 @@ trait TransformCollectionTrait
             ->combine($values)
         ;
 
-        return new self($combine);
+        return self::of($combine);
     }
 
     /**
@@ -91,7 +91,7 @@ trait TransformCollectionTrait
             ->flat($depth)
         ;
 
-        return new self($flat);
+        return self::of($flat);
     }
 
     /**
@@ -105,7 +105,7 @@ trait TransformCollectionTrait
             ->flip()
         ;
 
-        return new self($flip);
+        return self::of($flip);
     }
 
     /**
@@ -121,7 +121,7 @@ trait TransformCollectionTrait
             ->groupBy($key)
         ;
 
-        return new self($groupBy);
+        return self::of($groupBy);
     }
 
     /**
@@ -148,7 +148,7 @@ trait TransformCollectionTrait
             ->ltrim($chars)
         ;
 
-        return new self($ltrim);
+        return self::of($ltrim);
     }
 
     /**
@@ -160,7 +160,7 @@ trait TransformCollectionTrait
     {
         $map = $this->collection->map($callback);
 
-        return new self($map);
+        return self::of($map);
     }
 
     /**
@@ -176,7 +176,7 @@ trait TransformCollectionTrait
             ->partition($number)
         ;
 
-        return new self($partition);
+        return self::of($partition);
     }
 
     /**
@@ -206,7 +206,7 @@ trait TransformCollectionTrait
             ->pluck($valuecol, $indexcol)
         ;
 
-        return new self($pluck);
+        return self::of($pluck);
     }
 
     /**
@@ -223,7 +223,7 @@ trait TransformCollectionTrait
             ->prefix($prefix, $depth)
         ;
 
-        return new self($prefix);
+        return self::of($prefix);
     }
 
     /**
@@ -252,7 +252,7 @@ trait TransformCollectionTrait
     {
         $map = $this->collection->rekey($callback);
 
-        return new self($map);
+        return self::of($map);
     }
 
     /**
@@ -271,7 +271,7 @@ trait TransformCollectionTrait
             ->replace($elements, $recursive)
         ;
 
-        return new self($replace);
+        return self::of($replace);
     }
 
     /**
@@ -285,7 +285,7 @@ trait TransformCollectionTrait
             ->rtrim($chars)
         ;
 
-        return new self($rtrim);
+        return self::of($rtrim);
     }
 
     /**
@@ -303,7 +303,7 @@ trait TransformCollectionTrait
             ->splice($offset, $length, $replacement)
         ;
 
-        return new self($splice);
+        return self::of($splice);
     }
 
     /**
@@ -321,7 +321,7 @@ trait TransformCollectionTrait
             ->strAfter($value, $case, $encoding)
         ;
 
-        return new self($strAfter);
+        return self::of($strAfter);
     }
 
     /**
@@ -335,7 +335,7 @@ trait TransformCollectionTrait
             ->strLower($encoding)
         ;
 
-        return new self($strLower);
+        return self::of($strLower);
     }
 
     /**
@@ -353,7 +353,7 @@ trait TransformCollectionTrait
             ->strReplace($search, $replace, $case)
         ;
 
-        return new self($strReplace);
+        return self::of($strReplace);
     }
 
     /**
@@ -367,7 +367,7 @@ trait TransformCollectionTrait
             ->strUpper($encoding)
         ;
 
-        return new self($strUpper);
+        return self::of($strUpper);
     }
 
     /**
@@ -384,7 +384,7 @@ trait TransformCollectionTrait
             ->suffix($suffix, $depth)
         ;
 
-        return new self($suffix);
+        return self::of($suffix);
     }
 
     /**
@@ -422,7 +422,7 @@ trait TransformCollectionTrait
             ->transpose()
         ;
 
-        return new self($transpose);
+        return self::of($transpose);
     }
 
     /**
@@ -439,7 +439,7 @@ trait TransformCollectionTrait
             ->traverse($callback, $nestKey)
         ;
 
-        return new self($traverse);
+        return self::of($traverse);
     }
 
     /**
@@ -453,7 +453,7 @@ trait TransformCollectionTrait
             ->trim($chars)
         ;
 
-        return new self($trim);
+        return self::of($trim);
     }
 
     /**
@@ -471,7 +471,7 @@ trait TransformCollectionTrait
             ->walk($callback, $data, $recursive)
         ;
 
-        return new self($walk);
+        return self::of($walk);
     }
 
     /**
@@ -487,7 +487,7 @@ trait TransformCollectionTrait
             ->zip(...$arrays)
         ;
 
-        return new self($zip);
+        return self::of($zip);
     }
 
     /**
@@ -504,6 +504,6 @@ trait TransformCollectionTrait
             ->duplicates($key)
         ;
 
-        return new self($duplicates);
+        return self::of($duplicates);
     }
 }

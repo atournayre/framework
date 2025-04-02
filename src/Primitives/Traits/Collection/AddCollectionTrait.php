@@ -27,7 +27,7 @@ trait AddCollectionTrait
             ->concat($elements)
         ;
 
-        return new self($concat);
+        return self::of($concat);
     }
 
     /**
@@ -48,7 +48,7 @@ trait AddCollectionTrait
             ->insertAfter($element, $value)
         ;
 
-        return new self($insertAfter);
+        return self::of($insertAfter);
     }
 
     /**
@@ -70,7 +70,7 @@ trait AddCollectionTrait
             ->insertAt($pos, $element, $key)
         ;
 
-        return new self($insertAt);
+        return self::of($insertAt);
     }
 
     /**
@@ -91,7 +91,7 @@ trait AddCollectionTrait
             ->insertBefore($element, $value)
         ;
 
-        return new self($insertBefore);
+        return self::of($insertBefore);
     }
 
     /**
@@ -113,7 +113,7 @@ trait AddCollectionTrait
             ->merge($elements, $recursive)
         ;
 
-        return new self($merge);
+        return self::of($merge);
     }
 
     /**
@@ -133,7 +133,7 @@ trait AddCollectionTrait
             ->pad($size, $value)
         ;
 
-        return new self($pad);
+        return self::of($pad);
     }
 
     /**
@@ -154,7 +154,7 @@ trait AddCollectionTrait
             ->prepend($value, $key)
         ;
 
-        return new self($prepend);
+        return self::of($prepend);
     }
 
     /**
@@ -197,7 +197,7 @@ trait AddCollectionTrait
             ->put($key, $value)
         ;
 
-        return new self($put);
+        return self::of($put);
     }
 
     /**
@@ -242,7 +242,7 @@ trait AddCollectionTrait
             ->union($elements)
         ;
 
-        return new self($union);
+        return self::of($union);
     }
 
     /**
@@ -263,7 +263,7 @@ trait AddCollectionTrait
             ->unshift($value, $key)
         ;
 
-        return new self($unshift);
+        return self::of($unshift);
     }
 
     /**
@@ -284,6 +284,6 @@ trait AddCollectionTrait
             ->with($key, $value)
         ;
 
-        return new self($with);
+        return self::of($with);
     }
 }

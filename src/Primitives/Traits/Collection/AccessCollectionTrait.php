@@ -290,7 +290,7 @@ trait AccessCollectionTrait
             ->random($max)
         ;
 
-        return new self($random);
+        return self::of($random);
     }
 
     /**
@@ -361,7 +361,7 @@ trait AccessCollectionTrait
             ->unique($key)
         ;
 
-        return new self($unique);
+        return self::of($unique);
     }
 
     /**
@@ -373,6 +373,6 @@ trait AccessCollectionTrait
     {
         $values = $this->collection->values();
 
-        return new self($values);
+        return self::of($values);
     }
 }

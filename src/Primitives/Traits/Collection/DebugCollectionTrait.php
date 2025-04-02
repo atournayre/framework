@@ -28,7 +28,7 @@ trait DebugCollectionTrait
             ->dump($callback)
         ;
 
-        return new self($dump);
+        return self::of($dump);
     }
 
     /**
@@ -44,6 +44,6 @@ trait DebugCollectionTrait
             ->tap($callback)
         ;
 
-        return new self($tap);
+        return self::of($tap);
     }
 }
