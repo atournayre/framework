@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits;
 
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Int_;
 
@@ -107,7 +109,7 @@ trait CollectionCommonTrait
     /**
      * @param mixed|null $value
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function add($value, ?\Closure $callback = null): self
     {
@@ -123,7 +125,7 @@ trait CollectionCommonTrait
      * @param mixed|null $key
      * @param mixed|null $value
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function set($key, $value, ?\Closure $callback = null): self
     {
@@ -162,12 +164,14 @@ trait CollectionCommonTrait
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     private function ensureMutable(string $operation): void
     {
         if ($this->collection->isReadOnly()->yes()) {
-            throw new \RuntimeException(sprintf('Cannot %s a read-only collection. Use clone to create a mutable copy.', $operation));
+            RuntimeException::new(sprintf('Cannot %s a read-only collection. Use clone to create a mutable copy.', $operation))
+                ->throw()
+            ;
         }
     }
 }

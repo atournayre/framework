@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 
 trait AddCollectionTrait
@@ -13,7 +14,7 @@ trait AddCollectionTrait
      *
      * @param iterable<int|string,mixed>|Collection $elements List of elements
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -36,7 +37,7 @@ trait AddCollectionTrait
      * @param mixed|null $element Element to insert after
      * @param mixed|null $value   Value to insert
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -58,7 +59,7 @@ trait AddCollectionTrait
      * @param mixed      $element Element to be inserted
      * @param mixed|null $key     Element key or NULL to assign an integer key automatically
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -79,7 +80,7 @@ trait AddCollectionTrait
      * @param mixed $element Element before the value is inserted
      * @param mixed $value   Element or list of elements to insert
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -99,7 +100,7 @@ trait AddCollectionTrait
      *
      * @param iterable<int|string,mixed>|Collection $elements List of elements
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -121,7 +122,7 @@ trait AddCollectionTrait
      *
      * @param mixed $value Value to fill up with if the map length is smaller than the given size
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -142,7 +143,7 @@ trait AddCollectionTrait
      * @param mixed           $value Item to add at the beginning
      * @param int|string|null $key   Key for the item or NULL to reindex all numerical keys
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -162,7 +163,7 @@ trait AddCollectionTrait
      *
      * @param mixed|null $value
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -185,7 +186,7 @@ trait AddCollectionTrait
      * @param int|string $key   Key to set the new value for
      * @param mixed      $value New element that should be set
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -206,7 +207,7 @@ trait AddCollectionTrait
      * @param mixed|null $key
      * @param mixed|null $value
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -228,7 +229,7 @@ trait AddCollectionTrait
      *
      * @param iterable<int|string,mixed>|Collection $elements List of elements
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -251,7 +252,7 @@ trait AddCollectionTrait
      * @param mixed           $value Item to add at the beginning
      * @param int|string|null $key   Key for the item or NULL to reindex all numerical keys
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -272,7 +273,7 @@ trait AddCollectionTrait
      * @param int|string $key   Array key to set or replace
      * @param mixed      $value New value for the given key
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
