@@ -40,7 +40,7 @@ final class Collection
     }
 
     /**
-     * @param array<int|string, mixed>|Collection|string|null $collection
+     * @param array<int|string, mixed>|Collection|AimeosMap|string|null $collection
      */
     public static function of($collection = []): self
     {
@@ -57,7 +57,7 @@ final class Collection
     /**
      * @api
      *
-     * @param array<int|string, mixed>|Collection|string|null $collection
+     * @param array<int|string, mixed>|Collection|AimeosMap|string|null $collection
      */
     public static function readOnly($collection = []): self
     {
