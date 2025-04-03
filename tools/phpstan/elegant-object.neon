@@ -132,7 +132,8 @@ services:
         secondaryConstructorPrefixes:
           - 'asList'
           - 'asMap'
-          - 'asReadOnlyListe'
+          - 'asReadOnly'
+          - 'asReadOnlyList'
           - 'asReadOnlyMap'
           - 'because' # For exceptions
           - 'create'
