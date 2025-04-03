@@ -38,6 +38,8 @@ services:
       arguments:
         excludedPaths:
             - '%currentWorkingDirectory%/src/Common/Assert/Assert.php'
+            - '%currentWorkingDirectory%/src/Contracts/Collection/ReadOnlyListInterface.php'
+            - '%currentWorkingDirectory%/src/Contracts/Collection/ReadOnlyMapInterface.php'
             - '%currentWorkingDirectory%/src/Contracts/Common/Assert'
             - '%currentWorkingDirectory%/src/Primitives/Primitive.php'
         allowedInterfaces:
@@ -52,6 +54,22 @@ services:
 
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverReturnNullRule
+      arguments:
+          excludedPaths:
+              - %currentWorkingDirectory%/src/Primitives/Collection.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/AccessCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/AddCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/AggregateCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CollectionAsListTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CollectionAsMapTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CountableCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CreateCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/DebugCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/MiscCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/OrderCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/ShortenCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/TestCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/TransformCollectionTrait.php'
       tags:
         - phpstan.rules.rule
 
@@ -114,14 +132,16 @@ services:
         secondaryConstructorPrefixes:
           - 'asList'
           - 'asMap'
-          - 'new'
+          - 'asReadOnlyListe'
+          - 'asReadOnlyMap'
+          - 'because' # For exceptions
+          - 'create'
+          - 'from'
           - 'fromArray'
           - 'fromIterable'
-          - 'car' # For exceptions
-          - 'creer'
-          - 'create'
+          - 'new'
           - 'of'
+          - 'readOnly'
           - 'with'
-          - 'depuis'
       tags:
         - phpstan.rules.rule
