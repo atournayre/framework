@@ -61,10 +61,9 @@ final class Collection
      */
     public static function readOnly($collection = []): self
     {
-        return new self(
-            collection: AimeosMap::from($collection),
-            isReadOnly: BoolEnum::fromBool(true)
-        );
+        return self::of($collection)
+            ->asReadOnly()
+        ;
     }
 
     /**
