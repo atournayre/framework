@@ -546,11 +546,6 @@ parameters:
 			path: ../../src/Common/VO/Memory.php
 
 		-
-			message: "#^The operator new is used in Atournayre\\\\Common\\\\VO\\\\Memory\\:\\:fromBytes\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Memory.php
-
-		-
 			message: "#^Method Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Security/PlainPassword.php
@@ -797,16 +792,6 @@ parameters:
 
 		-
 			message: "#^The operator new is used in Atournayre\\\\Component\\\\Mailer\\\\Types\\\\AttachmentMaxSize\\:\\:abs\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/AttachmentMaxSize.php
-
-		-
-			message: "#^The operator new is used in Atournayre\\\\Component\\\\Mailer\\\\Types\\\\AttachmentMaxSize\\:\\:fromFloat\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/AttachmentMaxSize.php
-
-		-
-			message: "#^The operator new is used in Atournayre\\\\Component\\\\Mailer\\\\Types\\\\AttachmentMaxSize\\:\\:fromInt\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/AttachmentMaxSize.php
 
@@ -1698,11 +1683,6 @@ parameters:
 		-
 			message: "#^Property Atournayre\\\\Null\\\\NullEnum\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
-			path: ../../src/Null/NullEnum.php
-
-		-
-			message: "#^The operator new is used in Atournayre\\\\Null\\\\NullEnum\\:\\:fromBool\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 2
 			path: ../../src/Null/NullEnum.php
 
 		-
@@ -3136,11 +3116,6 @@ parameters:
 			path: ../../src/Primitives/Numeric.php
 
 		-
-			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\Numeric\\:\\:fromFloat\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Primitives/Numeric.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\Numeric\\:\\:round\\(\\) for class InvalidArgumentException, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Primitives/Numeric.php
@@ -3306,11 +3281,6 @@ parameters:
 			path: ../../src/Symfony/Filesystem/Filesystem.php
 
 		-
-			message: "#^The operator new is used in Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem\\:\\:from\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Symfony/Filesystem/Filesystem.php
-
-		-
 			message: "#^Class Atournayre\\\\Symfony\\\\Mailer\\\\Adapter\\\\EmailAdapter does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Symfony/Mailer/Adapter/EmailAdapter.php
@@ -3341,16 +3311,6 @@ parameters:
 			path: ../../src/Symfony/Mailer/Adapter/EmailAdapter.php
 
 		-
-			message: "#^The operator new is used in Atournayre\\\\Symfony\\\\Mailer\\\\Adapter\\\\EmailAdapter\\:\\:fromMessage\\(\\) for class Symfony\\\\Component\\\\Mime\\\\Address, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Symfony/Mailer/Adapter/EmailAdapter.php
-
-		-
-			message: "#^The operator new is used in Atournayre\\\\Symfony\\\\Mailer\\\\Adapter\\\\EmailAdapter\\:\\:fromMessage\\(\\) for class Symfony\\\\Component\\\\Mime\\\\Email, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Symfony/Mailer/Adapter/EmailAdapter.php
-
-		-
 			message: "#^Class Atournayre\\\\Symfony\\\\Mailer\\\\Adapter\\\\TemplatedEmailAdapter does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Symfony/Mailer/Adapter/TemplatedEmailAdapter.php
@@ -3362,11 +3322,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Symfony\\\\Mailer\\\\Adapter\\\\TemplatedEmailAdapter\\:\\:fromMessage\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
-			count: 1
-			path: ../../src/Symfony/Mailer/Adapter/TemplatedEmailAdapter.php
-
-		-
-			message: "#^The operator new is used in Atournayre\\\\Symfony\\\\Mailer\\\\Adapter\\\\TemplatedEmailAdapter\\:\\:fromMessage\\(\\) for class Symfony\\\\Bridge\\\\Twig\\\\Mime\\\\TemplatedEmail, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Symfony/Mailer/Adapter/TemplatedEmailAdapter.php
 
