@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\DateTime;
@@ -31,41 +33,56 @@ trait DateTimeTrait
     }
 
     /**
-     * @api
-     *
      * @param \DateTimeInterface|DateTimeInterface|string|int|DateTime $datetime
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
+     * @api
      */
     public static function of(
         $datetime,
         ?\DateTimeZone $timezone = null,
     ): DateTimeInterface {
         if ($datetime instanceof self) {
-            $fromInterface = Carbon::parse($datetime->toDateTime())
-                ->setTimezone($timezone ?? $datetime->toDateTime()->getTimezone())
-            ;
+            try {
+                $fromInterface = Carbon::parse($datetime->toDateTime())
+                    ->setTimezone($timezone ?? $datetime->toDateTime()->getTimezone())
+                ;
+            } catch (\Exception $exception) {
+                InvalidArgumentException::fromThrowable($exception)->throw();
+            }
 
             return new self($fromInterface);
         }
 
         if ($datetime instanceof \DateTimeInterface) {
-            $newDateTime = Carbon::parse($datetime)
-                ->setTimezone($timezone)
-            ;
+            try {
+                $newDateTime = Carbon::parse($datetime)
+                    ->setTimezone($timezone)
+                ;
+            } catch (\Exception $exception) {
+                InvalidArgumentException::fromThrowable($exception)->throw();
+            }
 
             return new self($newDateTime);
         }
 
         if (is_int($datetime)) {
-            $newDateTime = Carbon::createFromTimestamp($datetime)
-                ->setTimezone($timezone)
-            ;
+            try {
+                $newDateTime = Carbon::createFromTimestamp($datetime)
+                    ->setTimezone($timezone)
+                ;
+            } catch (\Exception $exception) {
+                InvalidArgumentException::fromThrowable($exception)->throw();
+            }
 
             return new self($newDateTime);
         }
 
-        $datetimeObject = Carbon::parse($datetime, $timezone);
+        try {
+            $datetimeObject = Carbon::parse($datetime, $timezone);
+        } catch (\Exception $exception) {
+            InvalidArgumentException::fromThrowable($exception)->throw();
+        }
 
         return new self($datetimeObject);
     }

@@ -6,6 +6,7 @@ namespace Atournayre\Common\Factory\Context;
 
 use Atournayre\Common\VO\Context\Context;
 use Atournayre\Contracts\Context\ContextInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Security\SecurityInterface;
 use Atournayre\Contracts\Security\UserInterface;
 use Psr\Clock\ClockInterface;
@@ -25,9 +26,8 @@ final class ContextFactory
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
-     *
-     * @throws \Exception
      */
     public function fromUser(UserInterface $user): ContextInterface
     {
@@ -37,9 +37,8 @@ final class ContextFactory
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
-     *
-     * @throws \Exception
      */
     public function fromDateTime(\DateTimeInterface $dateTime): ContextInterface
     {
@@ -49,9 +48,8 @@ final class ContextFactory
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
-     *
-     * @throws \Exception
      */
     public function create(UserInterface $user, \DateTimeInterface $dateTime): ContextInterface
     {
