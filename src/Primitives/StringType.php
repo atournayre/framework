@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
 use function Symfony\Component\String\u;
@@ -150,16 +151,12 @@ final class StringType
     {
         $filterVar = filter_var($this->value, $filter, $options ?? []);
         if (false === $filterVar) {
-            switch ($filter) {
-                case FILTER_VALIDATE_EMAIL:
-                    throw new \InvalidArgumentException('Invalid email address');
-                case FILTER_VALIDATE_URL:
-                    throw new \InvalidArgumentException('Invalid URL');
-                case FILTER_VALIDATE_IP:
-                    throw new \InvalidArgumentException('Invalid IP address');
-                default:
-                    throw new \InvalidArgumentException('Invalid value');
-            }
+            throw match ($filter) {
+                FILTER_VALIDATE_EMAIL => InvalidArgumentException::new('Invalid email address'),
+                FILTER_VALIDATE_URL => InvalidArgumentException::new('Invalid URL'),
+                FILTER_VALIDATE_IP => InvalidArgumentException::new('Invalid IP address'),
+                default => InvalidArgumentException::new('Invalid value'),
+            };
         }
 
         return self::of($filterVar);
