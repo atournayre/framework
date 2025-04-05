@@ -37,9 +37,10 @@ final class EmailAddressCollection implements ListInterface, MapInterface
     }
 
     /**
-     * @api
-     *
      * @param array<string> $emails
+     *
+     * @throws ThrowableInterface
+     * @api
      */
     public static function fromArray(array $emails): self
     {

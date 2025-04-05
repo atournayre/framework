@@ -6,6 +6,7 @@ namespace Atournayre\Component\Mailer\Types;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\Types\Domain;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\Traits\StringTypeTrait;
@@ -18,6 +19,7 @@ final class EmailAddress
     use StringTypeTrait;
 
     /**
+     * @throws ThrowableInterface
      * @api
      */
     public static function of(string $value): self

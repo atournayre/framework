@@ -9,6 +9,7 @@ use Atournayre\Common\Collection\Validation\ValidationCollection;
 use Atournayre\Common\Types\HtmlTemplatePath;
 use Atournayre\Common\Types\TextTemplatePath;
 use Atournayre\Component\Mailer\Types\EmailSubject;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Types\TypeValidationInterface;
 
 final class TemplatedEmail extends Email implements TypeValidationInterface
@@ -87,8 +88,7 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
     }
 
     /**
-     * @throws \Exception
-     *
+     * @throws ThrowableInterface
      * @api
      */
     public function validate(): ValidationCollection

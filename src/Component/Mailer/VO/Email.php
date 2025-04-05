@@ -10,6 +10,7 @@ use Atournayre\Component\Mailer\Collection\TagCollection;
 use Atournayre\Component\Mailer\Types\EmailHtml;
 use Atournayre\Component\Mailer\Types\EmailSubject;
 use Atournayre\Component\Mailer\Types\EmailText;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Contracts\Types\TypeValidationInterface;
 use Atournayre\Primitives\BoolEnum;
@@ -57,8 +58,6 @@ class Email implements LoggableInterface, TypeValidationInterface
      * @api
      *
      * @return static
-     *
-     * @throws \Exception
      */
     public static function create(EmailSubject $subject, EmailContact $from): self
     {
@@ -67,7 +66,7 @@ class Email implements LoggableInterface, TypeValidationInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -79,7 +78,7 @@ class Email implements LoggableInterface, TypeValidationInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -224,9 +223,8 @@ class Email implements LoggableInterface, TypeValidationInterface
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
-     *
-     * @throws \Exception
      */
     public function withText(string $text): self
     {
@@ -237,9 +235,8 @@ class Email implements LoggableInterface, TypeValidationInterface
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
-     *
-     * @throws \Exception
      */
     public function withHtml(string $html): self
     {

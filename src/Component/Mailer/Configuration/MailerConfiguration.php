@@ -7,6 +7,7 @@ namespace Atournayre\Component\Mailer\Configuration;
 use Atournayre\Component\Mailer\Collection\EmailContactCollection;
 use Atournayre\Component\Mailer\Types\AttachmentMaxSize;
 use Atournayre\Component\Mailer\VO\EmailContact;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 
 final class MailerConfiguration
 {
@@ -16,6 +17,9 @@ final class MailerConfiguration
 
     private AttachmentMaxSize $attachmentsMaxSize;
 
+    /**
+     * @throws ThrowableInterface
+     */
     private function __construct()
     {
         $this->replyTos = EmailContactCollection::asList([]);
@@ -49,6 +53,7 @@ final class MailerConfiguration
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
      */
     public function withReplyTo(EmailContact $replyToAddress): self
