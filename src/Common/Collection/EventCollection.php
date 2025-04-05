@@ -7,6 +7,7 @@ namespace Atournayre\Common\Collection;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Event;
 use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
@@ -17,6 +18,8 @@ final class EventCollection implements MapInterface
 
     /**
      * @param array<string, Event|mixed> $collection
+     *
+     * @throws ThrowableInterface
      */
     public static function asMap(array $collection = []): self
     {
@@ -26,6 +29,7 @@ final class EventCollection implements MapInterface
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
      */
     public static function empty(): self
@@ -34,7 +38,7 @@ final class EventCollection implements MapInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */
@@ -56,9 +60,9 @@ final class EventCollection implements MapInterface
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
      *
-     * @throws \Exception
      */
     public function add(mixed $value, ?\Closure $callback = null): self
     {
