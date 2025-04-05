@@ -16,7 +16,7 @@ trait OrderCollectionTrait
         $clone = $this->collection;
         $clone->arsort($options);
 
-        return new self($clone);
+        return self::of($clone);
     }
 
     /**
@@ -29,7 +29,7 @@ trait OrderCollectionTrait
         $clone = $this->collection;
         $clone->asort($options);
 
-        return new self($clone);
+        return self::of($clone);
     }
 
     /**
@@ -42,7 +42,7 @@ trait OrderCollectionTrait
         $clone = $this->collection;
         $clone->krsort($options);
 
-        return new self($clone);
+        return self::of($clone);
     }
 
     /**
@@ -55,7 +55,7 @@ trait OrderCollectionTrait
         $clone = $this->collection;
         $clone->ksort($options);
 
-        return new self($clone);
+        return self::of($clone);
     }
 
     /**
@@ -71,7 +71,7 @@ trait OrderCollectionTrait
             ->order($keys)
         ;
 
-        return new self($order);
+        return self::of($order);
     }
 
     /**
@@ -85,7 +85,7 @@ trait OrderCollectionTrait
             ->reverse()
         ;
 
-        return new self($reverse);
+        return self::of($reverse);
     }
 
     /**
@@ -98,7 +98,7 @@ trait OrderCollectionTrait
         $clone = $this->collection;
         $clone->rsort($options);
 
-        return new self($clone);
+        return self::of($clone);
     }
 
     /**
@@ -112,7 +112,7 @@ trait OrderCollectionTrait
             ->shuffle($assoc)
         ;
 
-        return new self($shuffle);
+        return self::of($shuffle);
     }
 
     /**
@@ -126,7 +126,7 @@ trait OrderCollectionTrait
             ->sort($options)
         ;
 
-        return new self($sort);
+        return self::of($sort);
     }
 
     /**
@@ -140,7 +140,7 @@ trait OrderCollectionTrait
             ->uasort($callback)
         ;
 
-        return new self($uasort);
+        return self::of($uasort);
     }
 
     /**
@@ -154,7 +154,7 @@ trait OrderCollectionTrait
             ->uksort($callback)
         ;
 
-        return new self($uksort);
+        return self::of($uksort);
     }
 
     /**

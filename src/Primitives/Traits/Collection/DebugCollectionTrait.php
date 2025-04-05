@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+
 trait DebugCollectionTrait
 {
     /**
      * Prints the map content and terminates the script.
      *
+     * @throws ThrowableInterface
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function dd()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        RuntimeException::new('Not implemented yet!')->throw();
     }
 
     /**
@@ -28,7 +32,7 @@ trait DebugCollectionTrait
             ->dump($callback)
         ;
 
-        return new self($dump);
+        return self::of($dump);
     }
 
     /**
@@ -44,6 +48,6 @@ trait DebugCollectionTrait
             ->tap($callback)
         ;
 
-        return new self($tap);
+        return self::of($tap);
     }
 }

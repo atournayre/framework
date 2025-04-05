@@ -21,7 +21,7 @@ trait ShortenCollectionTrait
             ->after($value)
         ;
 
-        return new self($after);
+        return self::of($after);
     }
 
     /**
@@ -37,7 +37,7 @@ trait ShortenCollectionTrait
             ->before($value)
         ;
 
-        return new self($before);
+        return self::of($before);
     }
 
     /**
@@ -51,7 +51,7 @@ trait ShortenCollectionTrait
             ->clear()
         ;
 
-        return new self($clear);
+        return self::of($clear);
     }
 
     /**
@@ -70,7 +70,7 @@ trait ShortenCollectionTrait
             ->diff($elements, $callback)
         ;
 
-        return new self($diff);
+        return self::of($diff);
     }
 
     /**
@@ -89,7 +89,7 @@ trait ShortenCollectionTrait
             ->diffAssoc($elements, $callback)
         ;
 
-        return new self($diffAssoc);
+        return self::of($diffAssoc);
     }
 
     /**
@@ -108,7 +108,7 @@ trait ShortenCollectionTrait
             ->diffKeys($elements, $callback)
         ;
 
-        return new self($diffKeys);
+        return self::of($diffKeys);
     }
 
     /**
@@ -124,7 +124,7 @@ trait ShortenCollectionTrait
             ->except($keys)
         ;
 
-        return new self($except);
+        return self::of($except);
     }
 
     /**
@@ -136,7 +136,7 @@ trait ShortenCollectionTrait
     {
         $filtered = $this->collection->filter($callback);
 
-        return new self($filtered);
+        return self::of($filtered);
     }
 
     /**
@@ -150,7 +150,7 @@ trait ShortenCollectionTrait
             ->grep($pattern, $flags)
         ;
 
-        return new self($grep);
+        return self::of($grep);
     }
 
     /**
@@ -168,7 +168,7 @@ trait ShortenCollectionTrait
             ->intersect($elements, $callback)
         ;
 
-        return new self($intersect);
+        return self::of($intersect);
     }
 
     /**
@@ -186,7 +186,7 @@ trait ShortenCollectionTrait
             ->intersectAssoc($elements, $callback)
         ;
 
-        return new self($intersectAssoc);
+        return self::of($intersectAssoc);
     }
 
     /**
@@ -204,7 +204,7 @@ trait ShortenCollectionTrait
             ->intersectKeys($elements, $callback)
         ;
 
-        return new self($intersectKeys);
+        return self::of($intersectKeys);
     }
 
     /**
@@ -218,7 +218,7 @@ trait ShortenCollectionTrait
             ->nth($step, $offset)
         ;
 
-        return new self($nth);
+        return self::of($nth);
     }
 
     /**
@@ -234,7 +234,7 @@ trait ShortenCollectionTrait
             ->only($keys)
         ;
 
-        return new self($only);
+        return self::of($only);
     }
 
     /**
@@ -250,7 +250,7 @@ trait ShortenCollectionTrait
             ->reject($callback)
         ;
 
-        return new self($reject);
+        return self::of($reject);
     }
 
     /**
@@ -266,7 +266,7 @@ trait ShortenCollectionTrait
             ->remove($keys)
         ;
 
-        return new self($remove);
+        return self::of($remove);
     }
 
     /**
@@ -282,7 +282,7 @@ trait ShortenCollectionTrait
             ->skip($offset)
         ;
 
-        return new self($skip);
+        return self::of($skip);
     }
 
     /**
@@ -299,7 +299,7 @@ trait ShortenCollectionTrait
             ->slice($offset, $length)
         ;
 
-        return new self($slice);
+        return self::of($slice);
     }
 
     /**
@@ -316,7 +316,7 @@ trait ShortenCollectionTrait
             ->take($size, $offset)
         ;
 
-        return new self($take);
+        return self::of($take);
     }
 
     /**
@@ -334,6 +334,6 @@ trait ShortenCollectionTrait
             ->where($key, $op, $value)
         ;
 
-        return new self($where);
+        return self::of($where);
     }
 }

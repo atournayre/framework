@@ -2846,4 +2846,13 @@ Array
 
         self::assertSame($expected, $m->zip($en, $es)->toArray());
     }
+
+    public function testCollectionReadOnly(): void
+    {
+        $this->expectException(\Exception::class);
+        Collection::of([1, 2, 3])
+            ->asReadOnly()
+            ->set('4', 4)
+        ;
+    }
 }
