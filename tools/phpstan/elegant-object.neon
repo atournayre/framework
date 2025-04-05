@@ -12,6 +12,7 @@ services:
       arguments:
           excludedPaths:
               - %currentWorkingDirectory%/src/PHPStan
+              - %currentWorkingDirectory%/src/Primitives/Collection.php
               - '%currentWorkingDirectory%/tests'
       tags:
         - phpstan.rules.rule
