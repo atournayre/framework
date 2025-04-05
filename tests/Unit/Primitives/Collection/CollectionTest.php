@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Primitives\Collection;
 
 use Aimeos\Map;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use PHPUnit\Framework\TestCase;
@@ -2845,5 +2846,14 @@ Array
         ];
 
         self::assertSame($expected, $m->zip($en, $es)->toArray());
+    }
+
+    public function testCollectionReadOnly(): void
+    {
+        $this->expectException(ThrowableInterface::class);
+        Collection::of([1, 2, 3])
+            ->asReadOnly()
+            ->set('4', 4)
+        ;
     }
 }

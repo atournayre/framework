@@ -34,7 +34,7 @@ trait CountableCollectionTrait
             ->countBy($callback)
         ;
 
-        return new self($countBy);
+        return self::of($countBy);
     }
 
     public function atLeastOneElement(): BoolEnum

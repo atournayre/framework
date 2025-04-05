@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits;
 
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Int_;
 
@@ -106,9 +108,13 @@ trait CollectionCommonTrait
 
     /**
      * @param mixed|null $value
+     *
+     * @throws ThrowableInterface
      */
     public function add($value, ?\Closure $callback = null): self
     {
+        $this->ensureMutable('add');
+
         $clone = clone $this;
         $clone->collection->push($value, $callback);
 
@@ -118,9 +124,13 @@ trait CollectionCommonTrait
     /**
      * @param mixed|null $key
      * @param mixed|null $value
+     *
+     * @throws ThrowableInterface
      */
     public function set($key, $value, ?\Closure $callback = null): self
     {
+        $this->ensureMutable('set');
+
         $clone = clone $this;
         $clone->collection->set($key, $value, $callback);
 
@@ -151,5 +161,17 @@ trait CollectionCommonTrait
         return $this->collection
             ->keys()
         ;
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    private function ensureMutable(string $operation): void
+    {
+        if ($this->collection->isReadOnly()->yes()) {
+            RuntimeException::new(sprintf('Cannot %s a read-only collection. Use clone to create a mutable copy.', $operation))
+                ->throw()
+            ;
+        }
     }
 }

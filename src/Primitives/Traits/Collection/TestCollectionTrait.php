@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 
@@ -49,7 +51,7 @@ trait TestCollectionTrait
             ->each($callback)
         ;
 
-        return new self($collection);
+        return self::of($collection);
     }
 
     /**
@@ -129,7 +131,7 @@ trait TestCollectionTrait
             ->if($condition, $then, $else)
         ;
 
-        return new self($if);
+        return self::of($if);
     }
 
     /**
@@ -143,18 +145,19 @@ trait TestCollectionTrait
             ->ifAny($then, $else)
         ;
 
-        return new self($ifAny);
+        return self::of($ifAny);
     }
 
     /**
      * Executes callbacks if the map is empty.
      *
+     * @throws ThrowableInterface
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function ifEmpty()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        RuntimeException::new('Not implemented yet!')->throw();
     }
 
     /**
@@ -432,6 +435,6 @@ trait TestCollectionTrait
             ->strBefore($value, $case, $encoding)
         ;
 
-        return new self($strBefore);
+        return self::of($strBefore);
     }
 }

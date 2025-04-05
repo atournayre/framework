@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits\Collection;
 
 use Aimeos\Map as AimeosMap;
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 
 trait CreateCollectionTrait
 {
@@ -15,7 +17,7 @@ trait CreateCollectionTrait
      */
     public function clone(): self
     {
-        return new self($this->collection->clone());
+        return self::of($this->collection->clone());
     }
 
     /**
@@ -29,7 +31,7 @@ trait CreateCollectionTrait
             ->copy()
         ;
 
-        return new self($clone);
+        return self::of($clone);
     }
 
     /**
@@ -39,29 +41,31 @@ trait CreateCollectionTrait
      */
     public static function explode(string $delimiter, string $string, int $limit = PHP_INT_MAX): self
     {
-        return new self(AimeosMap::explode($delimiter, $string, $limit));
+        return self::of(AimeosMap::explode($delimiter, $string, $limit));
     }
 
     /**
      * Creates a new map from passed elements.
      *
+     * @throws ThrowableInterface
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function from()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        RuntimeException::new('Not implemented yet!')->throw();
     }
 
     /**
      * Creates a new map from a JSON string.
      *
+     * @throws ThrowableInterface
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
     public function fromJson()
     {
-        throw new \RuntimeException('Not implemented yet!');
+        RuntimeException::new('Not implemented yet!')->throw();
     }
 
     /**
@@ -79,6 +83,6 @@ trait CreateCollectionTrait
             ->tree($idKey, $parentKey, $nestKey)
         ;
 
-        return new self($tree);
+        return self::of($tree);
     }
 }
