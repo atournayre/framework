@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
@@ -96,13 +97,16 @@ trait AccessCollectionTrait
      *
      * @return mixed|null
      *
-     * @throws \Throwable
-     *
+     * @throws ThrowableInterface
      * @api
      */
     public function first($default = null)
     {
-        return $this->collection->first($default);
+        try {
+            return $this->collection->first($default);
+        } catch (\Throwable $throwable) {
+            InvalidArgumentException::fromThrowable($throwable)->throw();
+        }
     }
 
     /**
@@ -114,9 +118,7 @@ trait AccessCollectionTrait
      */
     public function firstKey()
     {
-        return $this->collection
-            ->firstKey()
-        ;
+        return $this->collection->firstKey();
     }
 
     /**

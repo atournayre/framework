@@ -26,6 +26,7 @@ final class DateTimeCollection implements ListInterface
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
      */
     public function sortAsc(): self
@@ -42,6 +43,7 @@ final class DateTimeCollection implements ListInterface
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
      */
     public function sortDesc(): self
@@ -58,32 +60,33 @@ final class DateTimeCollection implements ListInterface
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
-     *
-     * @throws \Throwable
      */
     public function mostRecent(): DateTimeInterface
     {
-        return $this->sortDesc()
+        return $this
+            ->sortDesc()
             ->collection
             ->first()
         ;
     }
 
     /**
-     * @throws \Throwable
-     *
+     * @throws ThrowableInterface
      * @api
      */
     public function oldest(): DateTimeInterface
     {
-        return $this->sortAsc()
+        return $this
+            ->sortAsc()
             ->collection
             ->first()
         ;
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
      */
     public function between(DateTimeInterface $start, DateTimeInterface $end): self
@@ -100,6 +103,7 @@ final class DateTimeCollection implements ListInterface
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
      */
     public function before(DateTimeInterface $date): self
@@ -116,6 +120,7 @@ final class DateTimeCollection implements ListInterface
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
      */
     public function after(DateTimeInterface $date): self
