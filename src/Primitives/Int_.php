@@ -11,8 +11,7 @@ final readonly class Int_
 {
     private function __construct(
         private int $value,
-    )
-    {
+    ) {
     }
 
     /**

@@ -19,8 +19,7 @@ final readonly class SplFileInfo implements LoggableInterface
 {
     private function __construct(
         private SymfonySplFileInfo $splFileInfo,
-    )
-    {
+    ) {
     }
 
     /**

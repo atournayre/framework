@@ -12,8 +12,7 @@ final readonly class NullEnum
 
     private function __construct(
         private string $value,
-    )
-    {
+    ) {
     }
 
     /**

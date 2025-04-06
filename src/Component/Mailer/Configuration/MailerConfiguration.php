@@ -17,12 +17,12 @@ final class MailerConfiguration
 
     private function __construct(
         private EmailContactCollection $replyTos,
-    )
-    {
+    ) {
     }
 
     /**
      * @api
+     *
      * @throws ThrowableInterface
      */
     public static function create(): self

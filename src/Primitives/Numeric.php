@@ -43,9 +43,8 @@ final class Numeric
      */
     private function __construct(
         float|int|string $value,
-        int              $precision,
-    )
-    {
+        int $precision,
+    ) {
         if ($precision < 0) {
             InvalidArgumentException::new('Precision cannot be negative.')->throw();
         }

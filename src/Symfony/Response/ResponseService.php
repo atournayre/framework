@@ -16,26 +16,24 @@ use Symfony\Component\HttpFoundation\Response;
 
 final readonly class ResponseService implements ResponseInterface
 {
-
     public function __construct(
         private TemplatingInterface $templating,
-        private RoutingInterface    $routing,
-        private LoggerInterface     $logger,
-    )
-    {
+        private RoutingInterface $routing,
+        private LoggerInterface $logger,
+    ) {
     }
 
     public function redirectToRoute(string $route, array $parameters = []): RedirectResponse
     {
         $url = $this->routing->generate($route, $parameters);
-        $this->logger->info('Redirecting to route: ' . $route, ['parameters' => $parameters]);
+        $this->logger->info('Redirecting to route: '.$route, ['parameters' => $parameters]);
 
         return $this->redirectToUrl($url);
     }
 
     public function redirectToUrl(string $url): RedirectResponse
     {
-        $this->logger->info('Redirecting to URL: ' . $url);
+        $this->logger->info('Redirecting to URL: '.$url);
 
         return new RedirectResponse($url);
     }
@@ -46,7 +44,7 @@ final readonly class ResponseService implements ResponseInterface
     public function render(string $view, array $parameters = []): Response
     {
         try {
-            $this->logger->info('Rendering view: ' . $view, ['parameters' => $parameters]);
+            $this->logger->info('Rendering view: '.$view, ['parameters' => $parameters]);
             $render = $this->templating->render($view, $parameters);
 
             return new Response($render);
@@ -92,7 +90,7 @@ final readonly class ResponseService implements ResponseInterface
     {
         $contentDisposition = $headers['Content-Disposition'] ?? 'attachment';
         $headers['Content-Disposition'] = sprintf('%s; filename="%s"', $contentDisposition, $filename);
-        $this->logger->info('Returning file: ' . $file, ['filename' => $filename, 'headers' => $headers]);
+        $this->logger->info('Returning file: '.$file, ['filename' => $filename, 'headers' => $headers]);
 
         return new BinaryFileResponse($file, 200, $headers);
     }

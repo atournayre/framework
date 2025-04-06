@@ -20,8 +20,7 @@ final class BoolEnum
 
     private function __construct(
         private readonly string $value,
-    )
-    {
+    ) {
     }
 
     public static function fromBool(bool $value): self

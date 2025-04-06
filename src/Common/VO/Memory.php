@@ -14,8 +14,7 @@ final readonly class Memory
 
     private function __construct(
         private int $bytes,
-    )
-    {
+    ) {
     }
 
     /**

@@ -34,7 +34,9 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @return static
+     *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public static function create(EmailSubject $subject, EmailContact $from): self

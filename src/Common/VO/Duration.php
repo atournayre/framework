@@ -18,8 +18,7 @@ final readonly class Duration
 
     private function __construct(
         private float|int $milliseconds,
-    )
-    {
+    ) {
     }
 
     /**

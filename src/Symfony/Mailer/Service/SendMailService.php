@@ -17,7 +17,6 @@ use Symfony\Component\Mime\RawMessage;
 
 final readonly class SendMailService implements SendMailInterface
 {
-
     public function __construct(
         private MailerInterface $mailer,
     ) {

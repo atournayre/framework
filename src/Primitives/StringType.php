@@ -26,8 +26,7 @@ final readonly class StringType
 
     private function __construct(
         private string $value,
-    )
-    {
+    ) {
     }
 
     /**

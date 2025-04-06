@@ -14,7 +14,6 @@ use Twig\Error\SyntaxError;
 
 final readonly class TwigTemplatingService implements TemplatingInterface
 {
-
     public function __construct(
         private Environment $twigEnvironment,
     ) {

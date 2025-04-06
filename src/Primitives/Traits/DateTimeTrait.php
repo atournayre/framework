@@ -18,8 +18,7 @@ trait DateTimeTrait
 
     private function __construct(
         private readonly Carbon $datetime,
-    )
-    {
+    ) {
     }
 
     public static function asNull(): self

@@ -12,10 +12,9 @@ use Atournayre\Contracts\Mailer\SendMailInterface;
 
 final readonly class MailService
 {
-
     public function __construct(
-        private LoggerInterface     $logger,
-        private SendMailInterface       $sendMail,
+        private LoggerInterface $logger,
+        private SendMailInterface $sendMail,
         private MailerConfiguration $mailerConfiguration,
     ) {
     }

@@ -593,8 +593,7 @@ final class Locale
 
     private function __construct(
         private readonly string $value,
-    )
-    {
+    ) {
     }
 
     /**

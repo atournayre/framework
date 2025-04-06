@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
-use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Common\Exception\UnexpectedValueException;
 use Atournayre\Contracts\Exception\ThrowableInterface;

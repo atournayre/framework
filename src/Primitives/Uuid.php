@@ -8,11 +8,9 @@ use Symfony\Component\Uid\Uuid as SymfonyUuid;
 
 final readonly class Uuid
 {
-
     private function __construct(
         private SymfonyUuid $uuid,
-    )
-    {
+    ) {
     }
 
     /**

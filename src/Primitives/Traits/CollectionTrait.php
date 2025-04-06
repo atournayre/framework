@@ -12,7 +12,6 @@ trait CollectionTrait
 
     private function __construct(
         protected Collection $collection,
-    )
-    {
+    ) {
     }
 }

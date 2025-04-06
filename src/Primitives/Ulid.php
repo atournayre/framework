@@ -12,8 +12,7 @@ final readonly class Ulid
 {
     private function __construct(
         private SymfonyUlid $ulid,
-    )
-    {
+    ) {
     }
 
     /**

@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface as SymfonyF
  */
 final readonly class FlashBagService implements FlashBagInterface
 {
-
     public function __construct(
         private SymfonyFlashBagInterface $symfonyFlashBag,
     ) {

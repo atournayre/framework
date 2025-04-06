@@ -13,7 +13,6 @@ use Psr\Clock\ClockInterface;
 
 final readonly class ContextFactory
 {
-
     public function __construct(
         private SecurityInterface $security,
         private ClockInterface $clock,

@@ -13,8 +13,7 @@ trait NumericTrait
 {
     private function __construct(
         protected Numeric $value,
-    )
-    {
+    ) {
     }
 
     /**

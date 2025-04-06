@@ -9,7 +9,6 @@ use Symfony\Component\Routing\RouterInterface;
 
 final readonly class RoutingService implements RoutingInterface
 {
-
     public function __construct(
         private RouterInterface $router,
     ) {

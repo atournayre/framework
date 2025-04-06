@@ -11,8 +11,7 @@ trait StringTypeTrait
 {
     private function __construct(
         protected StringType $value,
-    )
-    {
+    ) {
     }
 
     public static function of(string $value): self
