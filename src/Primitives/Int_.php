@@ -20,7 +20,7 @@ final class Int_
      * @param int|string|Int_ $value
      *
      * @throws ThrowableInterface
-*/
+     */
     public static function of($value): self
     {
         if ($value instanceof self) {
@@ -70,6 +70,7 @@ final class Int_
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function isZero(): BoolEnum
@@ -79,6 +80,7 @@ final class Int_
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function abs(): self
@@ -91,8 +93,8 @@ final class Int_
      * @param int|Int_ $of1
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function between($of, $of1): BoolEnum
     {
@@ -110,8 +112,8 @@ final class Int_
      * @param Int_|int $of1
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function betweenOrEqual($of, $of1): BoolEnum
     {
@@ -148,8 +150,8 @@ final class Int_
      * @param int|Int_ $of
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function greaterThan($of): BoolEnum
     {
@@ -163,8 +165,8 @@ final class Int_
      * @param int|Int_ $of
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function greaterThanOrEqual($of): BoolEnum
     {
@@ -178,8 +180,8 @@ final class Int_
      * @param int|Int_ $of
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function lessThan($of): BoolEnum
     {
@@ -193,8 +195,8 @@ final class Int_
      * @param int|Int_ $of
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function lessThanOrEqual($of): BoolEnum
     {
@@ -208,8 +210,8 @@ final class Int_
      * @param int|Int_ $of
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function equalsTo($of): BoolEnum
     {

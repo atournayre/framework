@@ -54,6 +54,7 @@ final class MailerConfiguration
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function withReplyTo(EmailContact $replyToAddress): self

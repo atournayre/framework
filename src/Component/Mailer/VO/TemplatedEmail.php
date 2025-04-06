@@ -89,6 +89,7 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function validate(): ValidationCollection

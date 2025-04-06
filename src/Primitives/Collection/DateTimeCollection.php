@@ -27,6 +27,7 @@ final class DateTimeCollection implements ListInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function sortAsc(): self
@@ -44,6 +45,7 @@ final class DateTimeCollection implements ListInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function sortDesc(): self
@@ -61,6 +63,7 @@ final class DateTimeCollection implements ListInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function mostRecent(): DateTimeInterface
@@ -74,6 +77,7 @@ final class DateTimeCollection implements ListInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function oldest(): DateTimeInterface
@@ -87,6 +91,7 @@ final class DateTimeCollection implements ListInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function between(DateTimeInterface $start, DateTimeInterface $end): self
@@ -104,6 +109,7 @@ final class DateTimeCollection implements ListInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function before(DateTimeInterface $date): self
@@ -121,6 +127,7 @@ final class DateTimeCollection implements ListInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function after(DateTimeInterface $date): self

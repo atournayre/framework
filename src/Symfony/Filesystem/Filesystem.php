@@ -28,8 +28,8 @@ final class Filesystem implements FilesystemInterface
 
     private function __construct(
         DirectoryOrFile $directoryOrFile,
-        Finder $finder = null,
-        SymfonyFilesystem $filesystem = null,
+        ?Finder $finder = null,
+        ?SymfonyFilesystem $filesystem = null,
     ) {
         $this->directoryOrFile = $directoryOrFile;
         $this->finder = $finder;

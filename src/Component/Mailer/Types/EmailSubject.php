@@ -18,6 +18,7 @@ final class EmailSubject implements NullableInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public static function of(string $value): self

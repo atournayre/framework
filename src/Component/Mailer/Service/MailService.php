@@ -30,6 +30,7 @@ final class MailService
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line

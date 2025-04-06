@@ -36,6 +36,7 @@ trait DateTimeTrait
      * @param \DateTimeInterface|DateTimeInterface|string|int|DateTime $datetime
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public static function of(

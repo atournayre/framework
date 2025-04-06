@@ -20,6 +20,7 @@ final class EmailAddress
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public static function of(string $value): self

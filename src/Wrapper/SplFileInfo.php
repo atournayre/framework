@@ -86,6 +86,7 @@ final class SplFileInfo implements LoggableInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function getSize(): Memory
@@ -119,6 +120,7 @@ final class SplFileInfo implements LoggableInterface
 
     /**
      * @return array<string, mixed>
+     *
      * @throws ThrowableInterface
      */
     public function toLog(): array

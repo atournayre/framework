@@ -51,7 +51,8 @@ trait NumericTrait
     }
 
     /**
-     *@throws ThrowableInterface
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function format(Locale $locale): string
@@ -61,6 +62,7 @@ trait NumericTrait
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function round(int $mode = PHP_ROUND_HALF_UP): self
@@ -72,8 +74,8 @@ trait NumericTrait
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function greaterThan($numeric): BoolEnum
     {
@@ -84,8 +86,8 @@ trait NumericTrait
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function greaterThanOrEqual($numeric): BoolEnum
     {
@@ -96,8 +98,8 @@ trait NumericTrait
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function lessThan($numeric): BoolEnum
     {
@@ -108,8 +110,8 @@ trait NumericTrait
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function lessThanOrEqual($numeric): BoolEnum
     {
@@ -120,8 +122,8 @@ trait NumericTrait
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function equalTo($numeric): BoolEnum
     {
@@ -132,8 +134,8 @@ trait NumericTrait
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function notEqualTo($numeric): BoolEnum
     {
@@ -145,8 +147,8 @@ trait NumericTrait
      * @param int|Numeric $max
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function between($min, $max): BoolEnum
     {
@@ -158,8 +160,8 @@ trait NumericTrait
      * @param int|Numeric $max
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function betweenOrEqual($min, $max): BoolEnum
     {
@@ -188,6 +190,7 @@ trait NumericTrait
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function isZero(): BoolEnum
@@ -197,6 +200,7 @@ trait NumericTrait
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function abs(): self

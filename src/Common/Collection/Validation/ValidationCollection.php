@@ -45,6 +45,7 @@ final class ValidationCollection implements MapInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function throwException(string $glue = ', '): void

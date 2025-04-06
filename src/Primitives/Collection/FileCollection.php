@@ -40,6 +40,7 @@ final class FileCollection implements LoggableInterface, ListInterface, MapInter
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function filterByExtension(string $extension): self
@@ -55,6 +56,7 @@ final class FileCollection implements LoggableInterface, ListInterface, MapInter
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function filterBySize(int $size): self
@@ -70,6 +72,7 @@ final class FileCollection implements LoggableInterface, ListInterface, MapInter
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function filterByContent(string $content): FileCollection

@@ -62,6 +62,7 @@ trait AccessCollectionTrait
      * Calls the given method on all items.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
@@ -74,12 +75,13 @@ trait AccessCollectionTrait
      * Returns the first/last matching element.
      *
      * @param \Closure $callback Function with (value, key) parameters and returns TRUE/FALSE
-     * @param mixed $default Default value or exception if the map contains no elements
-     * @param bool $reverse TRUE to test elements from back to front, FALSE for front to back (default)
+     * @param mixed    $default  Default value or exception if the map contains no elements
+     * @param bool     $reverse  TRUE to test elements from back to front, FALSE for front to back (default)
      *
      * @return mixed First matching value, passed default value or an exception
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function find(\Closure $callback, $default = null, bool $reverse = false)
@@ -91,6 +93,7 @@ trait AccessCollectionTrait
         } catch (\Throwable $throwable) {
             InvalidArgumentException::fromThrowable($throwable)->throw();
         }
+        return null;
     }
 
     /**
@@ -101,6 +104,7 @@ trait AccessCollectionTrait
      * @return mixed|null
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function first($default = null)
@@ -110,6 +114,7 @@ trait AccessCollectionTrait
         } catch (\Throwable $throwable) {
             InvalidArgumentException::fromThrowable($throwable)->throw();
         }
+        return null;
     }
 
     /**
@@ -118,6 +123,7 @@ trait AccessCollectionTrait
      * @return mixed First key of map or NULL if empty
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function firstKey()
@@ -127,6 +133,7 @@ trait AccessCollectionTrait
         } catch (\Throwable $throwable) {
             InvalidArgumentException::fromThrowable($throwable)->throw();
         }
+        return null;
     }
 
     /**
@@ -138,6 +145,7 @@ trait AccessCollectionTrait
      * @return mixed Value from map or default value
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function get($key, $default = null)
@@ -149,6 +157,7 @@ trait AccessCollectionTrait
         } catch (\Throwable $throwable) {
             InvalidArgumentException::fromThrowable($throwable)->throw();
         }
+        return null;
     }
 
     /**
@@ -187,10 +196,11 @@ trait AccessCollectionTrait
     /**
      * Returns an element by key and casts it to float.
      *
-     * @param int|string $key Key or path to the requested item
-     * @param mixed $default Default value if key isn't found (will be casted to float)
+     * @param int|string $key     Key or path to the requested item
+     * @param mixed      $default Default value if key isn't found (will be casted to float)
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function float($key, $default = 0.0): Numeric
@@ -229,6 +239,7 @@ trait AccessCollectionTrait
      * @return mixed|null
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function last($default = null)
@@ -240,6 +251,7 @@ trait AccessCollectionTrait
         } catch (\Throwable $throwable) {
             InvalidArgumentException::fromThrowable($throwable)->throw();
         }
+        return null;
     }
 
     /**
@@ -248,6 +260,7 @@ trait AccessCollectionTrait
      * @return mixed Last key of map or NULL if empty
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function lastKey()
@@ -259,6 +272,7 @@ trait AccessCollectionTrait
         } catch (\Throwable $throwable) {
             InvalidArgumentException::fromThrowable($throwable)->throw();
         }
+        return null;
     }
 
     /**

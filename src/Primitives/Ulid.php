@@ -54,8 +54,8 @@ final class Ulid
     }
 
     /**
-     *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function getDateTime(): DateTimeInterface

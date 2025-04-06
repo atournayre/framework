@@ -81,6 +81,7 @@ trait NullTrait
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function orThrow($throwable): self

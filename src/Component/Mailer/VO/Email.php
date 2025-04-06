@@ -224,6 +224,7 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function withText(string $text): self
@@ -236,6 +237,7 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function withHtml(string $html): self

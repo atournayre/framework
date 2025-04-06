@@ -101,6 +101,7 @@ final class Numeric
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function format(Locale $locale): string
@@ -117,6 +118,7 @@ final class Numeric
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function round(int $mode = PHP_ROUND_HALF_UP): self
@@ -134,8 +136,8 @@ final class Numeric
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function greaterThan($numeric): BoolEnum
     {
@@ -149,8 +151,8 @@ final class Numeric
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function greaterThanOrEqual($numeric): BoolEnum
     {
@@ -164,8 +166,8 @@ final class Numeric
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function lessThan($numeric): BoolEnum
     {
@@ -179,8 +181,8 @@ final class Numeric
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function lessThanOrEqual($numeric): BoolEnum
     {
@@ -194,8 +196,8 @@ final class Numeric
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function equalTo($numeric): BoolEnum
     {
@@ -209,8 +211,8 @@ final class Numeric
      * @param int|Numeric $numeric
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function notEqualTo($numeric): BoolEnum
     {
@@ -264,6 +266,7 @@ final class Numeric
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public static function fromInt(int $value, int $precision): Numeric
@@ -273,6 +276,7 @@ final class Numeric
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function isZero(): BoolEnum
@@ -286,6 +290,7 @@ final class Numeric
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function abs(): self

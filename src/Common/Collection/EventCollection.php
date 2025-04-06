@@ -30,6 +30,7 @@ final class EventCollection implements MapInterface
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public static function empty(): self
@@ -61,8 +62,8 @@ final class EventCollection implements MapInterface
 
     /**
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function add(mixed $value, ?\Closure $callback = null): self
     {

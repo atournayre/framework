@@ -69,6 +69,7 @@ final class Memory
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function humanReadable(): string

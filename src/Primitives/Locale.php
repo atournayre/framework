@@ -616,6 +616,7 @@ final class Locale
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function fullName(): string

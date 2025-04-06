@@ -13,6 +13,7 @@ trait DebugCollectionTrait
      * Prints the map content and terminates the script.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented

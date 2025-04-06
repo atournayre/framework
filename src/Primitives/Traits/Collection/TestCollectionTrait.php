@@ -153,6 +153,7 @@ trait TestCollectionTrait
      * Executes callbacks if the map is empty.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
@@ -275,15 +276,17 @@ trait TestCollectionTrait
      * @param \Throwable|bool|string $throw Passing TRUE or an exception name will throw the exception instead of returning FALSE
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function implements(string $interface, $throw = false): BoolEnum
     {
         try {
             $implements = $this->collection
-                ->implements($interface, $throw);
-        } catch (\Throwable $e) {
-            InvalidArgumentException::fromThrowable($e)->throw();
+                ->implements($interface, $throw)
+            ;
+        } catch (\Throwable $throwable) {
+            InvalidArgumentException::fromThrowable($throwable)->throw();
         }
 
         return BoolEnum::fromBool($implements);

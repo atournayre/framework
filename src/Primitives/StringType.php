@@ -225,6 +225,7 @@ final class StringType
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function lengthIsBetween(int $start, int $end): BoolEnum

@@ -27,6 +27,7 @@ final class ContextFactory
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function fromUser(UserInterface $user): ContextInterface
@@ -38,6 +39,7 @@ final class ContextFactory
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function fromDateTime(\DateTimeInterface $dateTime): ContextInterface
@@ -49,6 +51,7 @@ final class ContextFactory
 
     /**
      * @throws ThrowableInterface
+     *
      * @api
      */
     public function create(UserInterface $user, \DateTimeInterface $dateTime): ContextInterface

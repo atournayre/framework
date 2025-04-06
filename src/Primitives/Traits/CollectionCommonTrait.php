@@ -33,6 +33,7 @@ trait CollectionCommonTrait
      * @param mixed|null $default
      *
      * @return mixed|null
+     *
      * @throws ThrowableInterface
      */
     public function first($default = null)
@@ -42,12 +43,14 @@ trait CollectionCommonTrait
         } catch (\Throwable $throwable) {
             RuntimeException::fromThrowable($throwable)->throw();
         }
+        return null;
     }
 
     /**
      * @param mixed|null $default
      *
      * @return mixed|null
+     *
      * @throws ThrowableInterface
      */
     public function last($default = null)
@@ -57,6 +60,7 @@ trait CollectionCommonTrait
         } catch (\Throwable $throwable) {
             RuntimeException::fromThrowable($throwable)->throw();
         }
+        return null;
     }
 
     /**

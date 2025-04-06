@@ -54,8 +54,8 @@ final class ResponseService implements ResponseInterface
             $render = $this->templating->render($view, $parameters);
 
             return new Response($render);
-        } catch (ThrowableInterface $e) {
-            $this->logger->error('An error occurred while rendering view', ['error' => $e->getMessage()]);
+        } catch (ThrowableInterface $throwable) {
+            $this->logger->error('An error occurred while rendering view', ['error' => $throwable->getMessage()]);
 
             return $this->error('error.html.twig', ['error' => 'An error occurred']);
         }
@@ -67,8 +67,8 @@ final class ResponseService implements ResponseInterface
             $this->logger->info('Returning JSON response', ['data' => $data, 'status' => $status, 'headers' => $headers]);
 
             return new JsonResponse($data, $status, $headers, $json);
-        } catch (ThrowableInterface $e) {
-            $this->logger->error('An error occurred while returning JSON response', ['error' => $e->getMessage()]);
+        } catch (ThrowableInterface $throwable) {
+            $this->logger->error('An error occurred while returning JSON response', ['error' => $throwable->getMessage()]);
 
             return $this->jsonError(['error' => 'An error occurred'], 500);
         }
