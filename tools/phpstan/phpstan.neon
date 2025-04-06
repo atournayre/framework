@@ -40,7 +40,12 @@ parameters:
         - '#Constructor Atournayre\\Primitives\\Numeric::__construct\(\) contains code other than property assignments or assertions, which violates the "code-free constructor" principle#'
         - '#Constructor Atournayre\\Tests\\Fixtures\\Title::__construct\(\) contains code other than property assignments or assertions, which violates the "code-free constructor" principle#'
         - '#Property Atournayre\\(.)*::\$(null|plainPassword) is not private, which violates object encapsulation#'
+        - '#Method (.)*::(s|g)etLoggerIdentifier\(\) appears to be a (s|g)etter, which violates object encapsulation#'
+        - '#Method Atournayre\\Common\\Model\\AbstractUser::get(.*) appears to be a getter, which violates object encapsulation#'
         # To be compliant with PSR7 UriInterface
         - '#Interface Atournayre\\Contracts\\Uri\\UriInterface has 19 methods, which exceeds the maximum of 5 \(Elegant Object principle\)(.)*#'
+        # To be compliant with Carbon
+        - '#Method Atournayre\\Contracts\\DateTime\\DateTimeInterface::(s|g)et(.)*\(\) appears to be a (s|g)etter, which violates object encapsulation#'
+        - '#Method Atournayre\\Primitives\\DateTime::(s|g)et(.)*\(\) appears to be a (s|g)etter, which violates object encapsulation#'
         # To be compliant with Symfony Event
         - '#Property Atournayre\\Common\\VO\\Event::\$propagationStopped is mutable, which violates object immutability#'

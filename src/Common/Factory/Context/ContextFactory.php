@@ -38,7 +38,7 @@ final readonly class ContextFactory
      */
     public function fromDateTime(\DateTimeInterface $dateTime): ContextInterface
     {
-        $user = $this->security->getUser();
+        $user = $this->security->user();
 
         return $this->create($user, $dateTime);
     }

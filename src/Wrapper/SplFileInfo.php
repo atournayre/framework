@@ -34,8 +34,96 @@ final readonly class SplFileInfo implements LoggableInterface
 
     /**
      * @api
+     * @deprecated Use relativePath()
      */
     public function getRelativePath(): Path
+    {
+        return $this->relativePath();
+    }
+
+    /**
+     * @api
+     * @deprecated Use relativePathname()
+     */
+    public function getRelativePathname(): Path
+    {
+        return $this->relativePathname();
+    }
+
+    /**
+     * @api
+     * @deprecated Use filenameWithoutExtension()
+     */
+    public function getFilenameWithoutExtension(): StringType
+    {
+        return $this->filenameWithoutExtension();
+    }
+
+    /**
+     * @api
+     * @deprecated Use contents()
+     */
+    public function getContents(): Content
+    {
+        return $this->contents();
+    }
+
+    /**
+     * @api
+     * @deprecated Use extension()
+     */
+    public function getExtension(): Extension
+    {
+        return $this->extension();
+    }
+
+    /**
+     * @throws ThrowableInterface
+     *
+     * @api
+     * @deprecated Use size()
+     */
+    public function getSize(): Memory
+    {
+        return $this->size();
+    }
+
+    /**
+     * @api
+     * @deprecated Use filename()
+     */
+    public function getFilename(): Filename
+    {
+        return $this->filename();
+    }
+
+    /**
+     * @api
+     * @deprecated Use pathname()
+     */
+    public function getPathname(): Path
+    {
+        return $this->pathname();
+    }
+
+    /**
+     * @return array<string, mixed>
+     *
+     * @throws ThrowableInterface
+     */
+    public function toLog(): array
+    {
+        return [
+            'pathname' => $this->pathname(),
+            'size' => $this->size()->humanReadable(),
+        ];
+    }
+
+
+    /**
+     * @api
+     */
+    public function relativePath(): Path
     {
         $relativePath = $this->splFileInfo->getRelativePath();
 
@@ -45,7 +133,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getRelativePathname(): Path
+    public function relativePathname(): Path
     {
         $relativePathname = $this->splFileInfo->getRelativePathname();
 
@@ -55,7 +143,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getFilenameWithoutExtension(): StringType
+    public function filenameWithoutExtension(): StringType
     {
         $filename = $this->splFileInfo->getFilenameWithoutExtension();
 
@@ -65,7 +153,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getContents(): Content
+    public function contents(): Content
     {
         $contents = $this->splFileInfo->getContents();
 
@@ -75,7 +163,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getExtension(): Extension
+    public function extension(): Extension
     {
         $extension = $this->splFileInfo->getExtension();
 
@@ -87,7 +175,7 @@ final readonly class SplFileInfo implements LoggableInterface
      *
      * @api
      */
-    public function getSize(): Memory
+    public function size(): Memory
     {
         $size = $this->splFileInfo->getSize();
 
@@ -99,7 +187,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getFilename(): Filename
+    public function filename(): Filename
     {
         $filename = $this->splFileInfo->getFilename();
 
@@ -109,23 +197,10 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getPathname(): Path
+    public function pathname(): Path
     {
         $pathname = $this->splFileInfo->getPathname();
 
         return Path::of($pathname);
-    }
-
-    /**
-     * @return array<string, mixed>
-     *
-     * @throws ThrowableInterface
-     */
-    public function toLog(): array
-    {
-        return [
-            'pathname' => $this->getPathname(),
-            'size' => $this->getSize()->humanReadable(),
-        ];
     }
 }
