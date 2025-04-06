@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
 
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Uri\UriInterface;
 use Nyholm\Psr7\Uri as NyholmUri;
 
@@ -64,9 +66,16 @@ final class Uri implements UriInterface
         return $this->uri->getFragment();
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withScheme(string $scheme): UriInterface
     {
-        $newUri = $this->uri->withScheme($scheme);
+        try {
+            $newUri = $this->uri->withScheme($scheme);
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return self::of($newUri->__toString());
     }
@@ -85,16 +94,30 @@ final class Uri implements UriInterface
         return self::of($newUri->__toString());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withHost(string $host): UriInterface
     {
-        $newUri = $this->uri->withHost($host);
+        try {
+            $newUri = $this->uri->withHost($host);
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return self::of($newUri->__toString());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withPort(int $port): UriInterface
     {
-        $newUri = $this->uri->withPort($port);
+        try {
+            $newUri = $this->uri->withPort($port);
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return self::of($newUri->__toString());
     }
@@ -106,16 +129,30 @@ final class Uri implements UriInterface
         return self::of($newUri->__toString());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withPath(string $path): UriInterface
     {
-        $newUri = $this->uri->withPath($path);
+        try {
+            $newUri = $this->uri->withPath($path);
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return self::of($newUri->__toString());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withQuery(string $query): UriInterface
     {
-        $newUri = $this->uri->withQuery($query);
+        try {
+            $newUri = $this->uri->withQuery($query);
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
 
         return self::of($newUri->__toString());
     }
