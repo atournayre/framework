@@ -8,7 +8,7 @@ use Rector\Renaming\ValueObject\MethodCallRename;
 
 return RectorConfig::configure()
     ->withPaths([
-        '/src',
+        __DIR__ . '/../../../src',
     ])
     ->withConfiguredRule(RenameMethodRector::class, [
         new MethodCallRename(
