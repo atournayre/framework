@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
@@ -273,15 +274,17 @@ trait TestCollectionTrait
      *
      * @param \Throwable|bool|string $throw Passing TRUE or an exception name will throw the exception instead of returning FALSE
      *
-     * @throws \Throwable
-     *
+     * @throws ThrowableInterface
      * @api
      */
     public function implements(string $interface, $throw = false): BoolEnum
     {
-        $implements = $this->collection
-            ->implements($interface, $throw)
-        ;
+        try {
+            $implements = $this->collection
+                ->implements($interface, $throw);
+        } catch (\Throwable $e) {
+            InvalidArgumentException::fromThrowable($e)->throw();
+        }
 
         return BoolEnum::fromBool($implements);
     }
