@@ -73,11 +73,11 @@ final class Uri implements UriInterface
     {
         try {
             $newUri = $this->uri->withScheme($scheme);
-        } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
-        }
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     public function withUserInfo(string $user): UriInterface
@@ -101,11 +101,11 @@ final class Uri implements UriInterface
     {
         try {
             $newUri = $this->uri->withHost($host);
-        } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
-        }
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     /**
@@ -115,11 +115,11 @@ final class Uri implements UriInterface
     {
         try {
             $newUri = $this->uri->withPort($port);
-        } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
-        }
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     public function withoutPort(): UriInterface
@@ -136,11 +136,11 @@ final class Uri implements UriInterface
     {
         try {
             $newUri = $this->uri->withPath($path);
-        } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
-        }
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     /**
@@ -150,11 +150,11 @@ final class Uri implements UriInterface
     {
         try {
             $newUri = $this->uri->withQuery($query);
-        } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
-        }
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     public function withFragment(string $fragment): UriInterface
