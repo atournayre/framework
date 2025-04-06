@@ -6,13 +6,13 @@ namespace Atournayre\Primitives;
 
 use Symfony\Component\Uid\Uuid as SymfonyUuid;
 
-final class Uuid
+final readonly class Uuid
 {
-    private SymfonyUuid $uuid;
 
-    private function __construct(SymfonyUuid $uuid)
+    private function __construct(
+        private SymfonyUuid $uuid,
+    )
     {
-        $this->uuid = $uuid;
     }
 
     /**

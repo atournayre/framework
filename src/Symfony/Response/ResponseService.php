@@ -14,43 +14,39 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-final class ResponseService implements ResponseInterface
+final readonly class ResponseService implements ResponseInterface
 {
-    private TemplatingInterface $templating;
-
-    private RoutingInterface $routing;
-
-    private LoggerInterface $logger;
 
     public function __construct(
-        TemplatingInterface $templating,
-        RoutingInterface $routing,
-        LoggerInterface $logger,
-    ) {
-        $this->logger = $logger;
-        $this->routing = $routing;
-        $this->templating = $templating;
-    }
-
-    public function redirectToUrl(string $url): RedirectResponse
+        private TemplatingInterface $templating,
+        private RoutingInterface    $routing,
+        private LoggerInterface     $logger,
+    )
     {
-        $this->logger->info('Redirecting to URL: '.$url);
-
-        return new RedirectResponse($url);
     }
 
     public function redirectToRoute(string $route, array $parameters = []): RedirectResponse
     {
         $url = $this->routing->generate($route, $parameters);
-        $this->logger->info('Redirecting to route: '.$route, ['parameters' => $parameters]);
+        $this->logger->info('Redirecting to route: ' . $route, ['parameters' => $parameters]);
 
         return $this->redirectToUrl($url);
     }
 
+    public function redirectToUrl(string $url): RedirectResponse
+    {
+        $this->logger->info('Redirecting to URL: ' . $url);
+
+        return new RedirectResponse($url);
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
     public function render(string $view, array $parameters = []): Response
     {
         try {
-            $this->logger->info('Rendering view: '.$view, ['parameters' => $parameters]);
+            $this->logger->info('Rendering view: ' . $view, ['parameters' => $parameters]);
             $render = $this->templating->render($view, $parameters);
 
             return new Response($render);
@@ -59,6 +55,17 @@ final class ResponseService implements ResponseInterface
 
             return $this->error('error.html.twig', ['error' => 'An error occurred']);
         }
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function error(string $view, array $parameters = [], int $status = 500): Response
+    {
+        $this->logger->info('Returning error response', ['view' => $view, 'parameters' => $parameters, 'status' => $status]);
+        $render = $this->templating->render($view, $parameters);
+
+        return new Response($render, $status);
     }
 
     public function json(array $data, int $status = 200, array $headers = [], bool $json = false): JsonResponse
@@ -85,7 +92,7 @@ final class ResponseService implements ResponseInterface
     {
         $contentDisposition = $headers['Content-Disposition'] ?? 'attachment';
         $headers['Content-Disposition'] = sprintf('%s; filename="%s"', $contentDisposition, $filename);
-        $this->logger->info('Returning file: '.$file, ['filename' => $filename, 'headers' => $headers]);
+        $this->logger->info('Returning file: ' . $file, ['filename' => $filename, 'headers' => $headers]);
 
         return new BinaryFileResponse($file, 200, $headers);
     }
@@ -95,16 +102,5 @@ final class ResponseService implements ResponseInterface
         $this->logger->info('Returning empty response', ['status' => $status, 'headers' => $headers]);
 
         return new Response(null, $status, $headers);
-    }
-
-    /**
-     * @throws ThrowableInterface
-     */
-    public function error(string $view, array $parameters = [], int $status = 500): Response
-    {
-        $this->logger->info('Returning error response', ['view' => $view, 'parameters' => $parameters, 'status' => $status]);
-        $render = $this->templating->render($view, $parameters);
-
-        return new Response($render, $status);
     }
 }

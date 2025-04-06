@@ -441,8 +441,6 @@ final class Locale
     /** @api */
     public const ZH_TW = 'zh_TW';
 
-    private string $value;
-
     /**
      * @var string[] The list of all available locales
      */
@@ -593,9 +591,10 @@ final class Locale
         self::ZH_TW => 'Chinese (Taiwan)',
     ];
 
-    private function __construct(string $value)
+    private function __construct(
+        private readonly string $value,
+    )
     {
-        $this->value = $value;
     }
 
     /**

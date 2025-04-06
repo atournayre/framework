@@ -16,13 +16,12 @@ final class BoolEnum
 
     private const FALSE = 'false';
 
-    private string $value;
-
     private ?LoggerInterface $logger = null;
 
-    private function __construct(string $value)
+    private function __construct(
+        private readonly string $value,
+    )
     {
-        $this->value = $value;
     }
 
     public static function fromBool(bool $value): self
