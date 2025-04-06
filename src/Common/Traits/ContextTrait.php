@@ -10,7 +10,7 @@ trait ContextTrait
 {
     private ContextInterface $context;
 
-    public function getContext(): ContextInterface
+    public function context(): ContextInterface
     {
         return $this->context;
     }

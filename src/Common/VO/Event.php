@@ -56,7 +56,7 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
         }
 
         return $log + [
-            'context' => $this->getContext()->toLog(),
+            'context' => $this->context()->toLog(),
         ];
     }
 }

@@ -56,7 +56,7 @@ final readonly class Ulid
      *
      * @api
      */
-    public function getDateTime(): DateTimeInterface
+    public function dateTime(): DateTimeInterface
     {
         return DateTime::of($this->ulid->getDateTime());
     }

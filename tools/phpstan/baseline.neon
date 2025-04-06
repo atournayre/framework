@@ -326,11 +326,6 @@ parameters:
 			path: ../../src/Common/VO/Event.php
 
 		-
-			message: "#^Method Atournayre\\\\Common\\\\VO\\\\Event\\:\\:getContext\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Event.php
-
-		-
 			message: "#^Method Atournayre\\\\Common\\\\VO\\\\Event\\:\\:stopPropagation\\(\\) modifies an object property, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Event.php
@@ -1171,11 +1166,6 @@ parameters:
 			path: ../../src/Contracts/Routing/RoutingInterface.php
 
 		-
-			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\SecurityInterface\\:\\:getUser\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Contracts/Security/SecurityInterface.php
-
-		-
 			message: "#^Interface Atournayre\\\\Contracts\\\\Security\\\\UserInterface has 6 methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Contracts/Security/UserInterface.php
@@ -1202,11 +1192,6 @@ parameters:
 
 		-
 			message: "#^Class Atournayre\\\\Null\\\\NullEnum does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Null/NullEnum.php
-
-		-
-			message: "#^Method Atournayre\\\\Null\\\\NullEnum\\:\\:getValue\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Null/NullEnum.php
 
@@ -3041,11 +3026,6 @@ parameters:
 			path: ../../src/Primitives/Ulid.php
 
 		-
-			message: "#^Method Atournayre\\\\Primitives\\\\Ulid\\:\\:getDateTime\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Ulid.php
-
-		-
 			message: "#^Method Atournayre\\\\Primitives\\\\Ulid\\:\\:of\\(\\) accepts null for parameter \\$string, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Ulid.php
@@ -3162,46 +3142,6 @@ parameters:
 
 		-
 			message: "#^Class Atournayre\\\\Wrapper\\\\SplFileInfo has 9 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Wrapper/SplFileInfo.php
-
-		-
-			message: "#^Method Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:getContents\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Wrapper/SplFileInfo.php
-
-		-
-			message: "#^Method Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:getExtension\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Wrapper/SplFileInfo.php
-
-		-
-			message: "#^Method Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:getFilename\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Wrapper/SplFileInfo.php
-
-		-
-			message: "#^Method Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:getFilenameWithoutExtension\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Wrapper/SplFileInfo.php
-
-		-
-			message: "#^Method Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:getPathname\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Wrapper/SplFileInfo.php
-
-		-
-			message: "#^Method Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:getRelativePath\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Wrapper/SplFileInfo.php
-
-		-
-			message: "#^Method Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:getRelativePathname\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Wrapper/SplFileInfo.php
-
-		-
-			message: "#^Method Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:getSize\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Wrapper/SplFileInfo.php
 

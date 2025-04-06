@@ -33,9 +33,22 @@ final readonly class SplFileInfo implements LoggableInterface
     }
 
     /**
+     * @return array<string, mixed>
+     *
+     * @throws ThrowableInterface
+     */
+    public function toLog(): array
+    {
+        return [
+            'pathname' => $this->pathname(),
+            'size' => $this->size()->humanReadable(),
+        ];
+    }
+
+    /**
      * @api
      */
-    public function getRelativePath(): Path
+    public function relativePath(): Path
     {
         $relativePath = $this->splFileInfo->getRelativePath();
 
@@ -45,7 +58,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getRelativePathname(): Path
+    public function relativePathname(): Path
     {
         $relativePathname = $this->splFileInfo->getRelativePathname();
 
@@ -55,7 +68,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getFilenameWithoutExtension(): StringType
+    public function filenameWithoutExtension(): StringType
     {
         $filename = $this->splFileInfo->getFilenameWithoutExtension();
 
@@ -65,7 +78,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getContents(): Content
+    public function contents(): Content
     {
         $contents = $this->splFileInfo->getContents();
 
@@ -75,7 +88,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getExtension(): Extension
+    public function extension(): Extension
     {
         $extension = $this->splFileInfo->getExtension();
 
@@ -87,7 +100,7 @@ final readonly class SplFileInfo implements LoggableInterface
      *
      * @api
      */
-    public function getSize(): Memory
+    public function size(): Memory
     {
         $size = $this->splFileInfo->getSize();
 
@@ -99,7 +112,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getFilename(): Filename
+    public function filename(): Filename
     {
         $filename = $this->splFileInfo->getFilename();
 
@@ -109,23 +122,10 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    public function getPathname(): Path
+    public function pathname(): Path
     {
         $pathname = $this->splFileInfo->getPathname();
 
         return Path::of($pathname);
-    }
-
-    /**
-     * @return array<string, mixed>
-     *
-     * @throws ThrowableInterface
-     */
-    public function toLog(): array
-    {
-        return [
-            'pathname' => $this->getPathname(),
-            'size' => $this->getSize()->humanReadable(),
-        ];
     }
 }

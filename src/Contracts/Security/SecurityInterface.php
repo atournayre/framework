@@ -6,5 +6,5 @@ namespace Atournayre\Contracts\Security;
 
 interface SecurityInterface
 {
-    public function getUser(): UserInterface;
+    public function user(): UserInterface;
 }
