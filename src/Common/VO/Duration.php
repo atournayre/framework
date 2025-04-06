@@ -6,7 +6,7 @@ namespace Atournayre\Common\VO;
 
 use Atournayre\Primitives\Collection;
 
-final class Duration
+final readonly class Duration
 {
     private const MILLISECONDS_IN_SECOND = 1000;
 
@@ -16,25 +16,16 @@ final class Duration
 
     private const HOURS_IN_DAY = 24;
 
-    /**
-     * @var int|float
-     */
-    private $milliseconds;
-
-    /**
-     * @param int|float $milliseconds
-     */
-    private function __construct($milliseconds)
+    private function __construct(
+        private float|int $milliseconds,
+    )
     {
-        $this->milliseconds = $milliseconds;
     }
 
     /**
      * @api
-     *
-     * @param int|float $milliseconds
      */
-    public static function of($milliseconds): self
+    public static function of(float|int $milliseconds): self
     {
         return new self($milliseconds);
     }

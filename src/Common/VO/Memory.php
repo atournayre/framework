@@ -7,15 +7,14 @@ namespace Atournayre\Common\VO;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 
-final class Memory
+final readonly class Memory
 {
     private const KB = 1024;
 
-    private int $bytes;
-
-    private function __construct(int $bytes)
+    private function __construct(
+        private int $bytes,
+    )
     {
-        $this->bytes = $bytes;
     }
 
     /**

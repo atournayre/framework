@@ -12,20 +12,14 @@ use Atournayre\Contracts\Security\UserInterface;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\DateTime;
 
-final class Context implements ContextInterface, LoggableInterface
+final readonly class Context implements ContextInterface, LoggableInterface
 {
     use NullTrait;
 
-    private UserInterface $user;
-
-    private DateTimeInterface $createdAt;
-
     private function __construct(
-        UserInterface $user,
-        DateTimeInterface $createdAt,
+        private UserInterface $user,
+        private DateTimeInterface $createdAt,
     ) {
-        $this->createdAt = $createdAt;
-        $this->user = $user;
     }
 
     public static function asNull(): self

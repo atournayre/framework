@@ -14,13 +14,12 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\StringType;
 use Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
 
-final class SplFileInfo implements LoggableInterface
+final readonly class SplFileInfo implements LoggableInterface
 {
-    private SymfonySplFileInfo $splFileInfo;
-
-    private function __construct(SymfonySplFileInfo $splFileInfo)
+    private function __construct(
+        private SymfonySplFileInfo $splFileInfo,
+    )
     {
-        $this->splFileInfo = $splFileInfo;
     }
 
     /**

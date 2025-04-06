@@ -12,13 +12,12 @@ final class MailerConfiguration
 {
     private EmailContact $from;
 
-    private EmailContactCollection $replyTos;
-
     private AttachmentMaxSize $attachmentsMaxSize;
 
-    private function __construct()
+    private function __construct(
+        private EmailContactCollection $replyTos,
+    )
     {
-        $this->replyTos = EmailContactCollection::asList([]);
     }
 
     /**
@@ -26,7 +25,9 @@ final class MailerConfiguration
      */
     public static function create(): self
     {
-        return new self();
+        return new self(
+            replyTos: EmailContactCollection::asList([]),
+        );
     }
 
     /**
