@@ -10,7 +10,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 use function Symfony\Component\String\u;
 
-final class StringType
+final readonly class StringType
 {
     /** @api */
     public const NFC = \Normalizer::NFC;
@@ -24,11 +24,10 @@ final class StringType
     /** @api */
     public const NFKD = \Normalizer::NFKD;
 
-    private string $value;
-
-    private function __construct(string $value)
+    private function __construct(
+        private string $value,
+    )
     {
-        $this->value = $value;
     }
 
     /**

@@ -9,18 +9,12 @@ use Atournayre\Component\Mailer\Types\EmailName;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 
-final class EmailContact implements LoggableInterface
+final readonly class EmailContact implements LoggableInterface
 {
-    private EmailAddress $emailAddress;
-
-    private EmailName $emailName;
-
     private function __construct(
-        EmailAddress $email,
-        EmailName $name,
+        private EmailAddress $email,
+        private EmailName $name,
     ) {
-        $this->emailName = $name;
-        $this->emailAddress = $email;
     }
 
     /**
@@ -36,7 +30,7 @@ final class EmailContact implements LoggableInterface
      */
     public function email(): EmailAddress
     {
-        return $this->emailAddress;
+        return $this->email;
     }
 
     /**
@@ -44,7 +38,7 @@ final class EmailContact implements LoggableInterface
      */
     public function name(): EmailName
     {
-        return $this->emailName;
+        return $this->name;
     }
 
     /**
@@ -52,12 +46,12 @@ final class EmailContact implements LoggableInterface
      */
     public function equalsTo(EmailContact $emailContact): BoolEnum
     {
-        $emailAddressSameAsContact = $this->emailAddress
+        $emailAddressSameAsContact = $this->email
             ->equalsTo($emailContact->email())
             ->isTrue()
         ;
 
-        $emailNameSameAsContact = $this->emailName
+        $emailNameSameAsContact = $this->name
             ->equalsTo($emailContact->name())
             ->isTrue()
         ;
@@ -74,8 +68,8 @@ final class EmailContact implements LoggableInterface
     public function toLog(): array
     {
         return [
-            'email' => $this->emailAddress->toString(),
-            'name' => $this->emailName->toString(),
+            'email' => $this->email->toString(),
+            'name' => $this->name->toString(),
         ];
     }
 }

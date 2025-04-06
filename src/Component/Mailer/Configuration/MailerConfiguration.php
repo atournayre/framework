@@ -15,9 +15,6 @@ final class MailerConfiguration
 
     private AttachmentMaxSize $attachmentsMaxSize;
 
-    /**
-     * @throws ThrowableInterface
-     */
     private function __construct(
         private EmailContactCollection $replyTos,
     )
@@ -26,6 +23,7 @@ final class MailerConfiguration
 
     /**
      * @api
+     * @throws ThrowableInterface
      */
     public static function create(): self
     {
