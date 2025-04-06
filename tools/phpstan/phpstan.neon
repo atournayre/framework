@@ -39,6 +39,7 @@ parameters:
         - '#Property Atournayre\\Common\\Log\\AbstractLogger::\$logIdentifier is mutable, which violates object immutability#'
         - '#Constructor Atournayre\\Primitives\\Numeric::__construct\(\) contains code other than property assignments or assertions, which violates the "code-free constructor" principle#'
         - '#Constructor Atournayre\\Tests\\Fixtures\\Title::__construct\(\) contains code other than property assignments or assertions, which violates the "code-free constructor" principle#'
+        - '#Property Atournayre\\(.)*::\$(null|plainPassword) is not private, which violates object encapsulation#'
         # To be compliant with PSR7 UriInterface
         - '#Interface Atournayre\\Contracts\\Uri\\UriInterface has 19 methods, which exceeds the maximum of 5 \(Elegant Object principle\)(.)*#'
         # To be compliant with Symfony Event
