@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives;
 
 use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Symfony\Component\Uid\Ulid as SymfonyUlid;
 
 final class Ulid
@@ -53,7 +54,7 @@ final class Ulid
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      *
      * @api
      */

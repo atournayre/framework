@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Component\Mailer\Service;
 
 use Atournayre\Component\Mailer\Configuration\MailerConfiguration;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Mailer\SendMailInterface;
@@ -20,9 +21,9 @@ final readonly class MailService
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @throws \Throwable
+     * @api
      */
     // @phpstan-ignore-next-line
     public function send($message, $envelope = null): void

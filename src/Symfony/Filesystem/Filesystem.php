@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Symfony\Filesystem;
 
 use Atournayre\Common\Types\DirectoryOrFile;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Filesystem\FilesystemInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
@@ -26,16 +27,22 @@ final class Filesystem implements FilesystemInterface
     public DirectoryOrFile $directoryOrFile;
 
     private function __construct(
-        string $directoryOrFile,
+        DirectoryOrFile $directoryOrFile,
+        Finder $finder,
+        SymfonyFilesystem $filesystem,
     ) {
-        $this->directoryOrFile = DirectoryOrFile::of($directoryOrFile);
-        $this->finder = new Finder();
-        $this->symfonyFilesystem = new SymfonyFilesystem();
+        $this->directoryOrFile = $directoryOrFile;
+        $this->finder = $finder;
+        $this->symfonyFilesystem = $filesystem;
     }
 
     public static function from(string $directoryOrFile): self
     {
-        return new self($directoryOrFile);
+        return new self(
+            directoryOrFile: DirectoryOrFile::of($directoryOrFile),
+            finder: new Finder(),
+            filesystem: new SymfonyFilesystem(),
+        );
     }
 
     public function createDirectory(string $directory): void
@@ -177,7 +184,7 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function isNotEmpty(): BoolEnum
     {
@@ -189,7 +196,7 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function isEmpty(): BoolEnum
     {
@@ -200,7 +207,7 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function countFiles(): int
     {
@@ -211,7 +218,7 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function listFiles(): FileCollection
     {
@@ -242,7 +249,7 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function countDirectories(): int
     {
@@ -253,7 +260,7 @@ final class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function listDirectories(): FileCollection
     {

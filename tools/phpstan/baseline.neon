@@ -141,11 +141,6 @@ parameters:
 			path: ../../src/Common/Collection/Validation/ValidationCollection.php
 
 		-
-			message: "#^The operator new is used in Atournayre\\\\Common\\\\Collection\\\\Validation\\\\ValidationCollection\\:\\:throwException\\(\\) for class RuntimeException, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Common/Collection/Validation/ValidationCollection.php
-
-		-
 			message: "#^Class Atournayre\\\\Common\\\\Factory\\\\Context\\\\ContextFactory does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Factory/Context/ContextFactory.php
@@ -3511,16 +3506,6 @@ parameters:
 			path: ../../src/Primitives/Numeric.php
 
 		-
-			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\Numeric\\:\\:format\\(\\) for class RuntimeException, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Primitives/Numeric.php
-
-		-
-			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\Numeric\\:\\:round\\(\\) for class InvalidArgumentException, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 1
-			path: ../../src/Primitives/Numeric.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\Numeric\\:\\:round\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 4
 			path: ../../src/Primitives/Numeric.php
@@ -3598,11 +3583,6 @@ parameters:
 		-
 			message: "#^Property Atournayre\\\\Primitives\\\\StringType\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
-			path: ../../src/Primitives/StringType.php
-
-		-
-			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\StringType\\:\\:filterVar\\(\\) for class InvalidArgumentException, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
-			count: 4
 			path: ../../src/Primitives/StringType.php
 
 		-

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 
@@ -66,7 +67,7 @@ final readonly class Memory
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */

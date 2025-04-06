@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Uri\UriInterface;
 use Nyholm\Psr7\Uri as NyholmUri;
 
@@ -64,11 +66,18 @@ final class Uri implements UriInterface
         return $this->uri->getFragment();
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withScheme(string $scheme): UriInterface
     {
-        $newUri = $this->uri->withScheme($scheme);
+        try {
+            $newUri = $this->uri->withScheme($scheme);
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw InvalidArgumentException::fromThrowable($throwable);
+        }
     }
 
     public function withUserInfo(string $user): UriInterface
@@ -85,18 +94,32 @@ final class Uri implements UriInterface
         return self::of($newUri->__toString());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withHost(string $host): UriInterface
     {
-        $newUri = $this->uri->withHost($host);
+        try {
+            $newUri = $this->uri->withHost($host);
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw InvalidArgumentException::fromThrowable($throwable);
+        }
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withPort(int $port): UriInterface
     {
-        $newUri = $this->uri->withPort($port);
+        try {
+            $newUri = $this->uri->withPort($port);
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw InvalidArgumentException::fromThrowable($throwable);
+        }
     }
 
     public function withoutPort(): UriInterface
@@ -106,18 +129,32 @@ final class Uri implements UriInterface
         return self::of($newUri->__toString());
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withPath(string $path): UriInterface
     {
-        $newUri = $this->uri->withPath($path);
+        try {
+            $newUri = $this->uri->withPath($path);
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw InvalidArgumentException::fromThrowable($throwable);
+        }
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withQuery(string $query): UriInterface
     {
-        $newUri = $this->uri->withQuery($query);
+        try {
+            $newUri = $this->uri->withQuery($query);
 
-        return self::of($newUri->__toString());
+            return self::of($newUri->__toString());
+        } catch (\Throwable $throwable) {
+            throw InvalidArgumentException::fromThrowable($throwable);
+        }
     }
 
     public function withFragment(string $fragment): UriInterface

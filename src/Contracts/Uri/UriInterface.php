@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Uri;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+
 /**
  * Why not using Psr\Http\Message\UriInterface ?
  * Because it's not compliant with Elegant Objects rules.
@@ -200,7 +202,7 @@ interface UriInterface
      *
      * @return static a new instance with the specified scheme
      *
-     * @throws \InvalidArgumentException for invalid or unsupported schemes
+     * @throws ThrowableInterface for invalid or unsupported schemes
      */
     public function withScheme(string $scheme): UriInterface;
 
@@ -243,7 +245,7 @@ interface UriInterface
      *
      * @return static a new instance with the specified host
      *
-     * @throws \InvalidArgumentException for invalid hostnames
+     * @throws ThrowableInterface for invalid hostnames
      */
     public function withHost(string $host): UriInterface;
 
@@ -264,7 +266,7 @@ interface UriInterface
      *
      * @return static a new instance with the specified port
      *
-     * @throws \InvalidArgumentException for invalid ports
+     * @throws ThrowableInterface for invalid ports
      */
     public function withPort(int $port): UriInterface;
 
@@ -292,7 +294,7 @@ interface UriInterface
      *
      * @return static a new instance with the specified path
      *
-     * @throws \InvalidArgumentException for invalid paths
+     * @throws ThrowableInterface for invalid paths
      */
     public function withPath(string $path): UriInterface;
 
@@ -311,7 +313,7 @@ interface UriInterface
      *
      * @return static a new instance with the specified query string
      *
-     * @throws \InvalidArgumentException for invalid query strings
+     * @throws ThrowableInterface for invalid query strings
      */
     public function withQuery(string $query): UriInterface;
 

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\DateTime;
@@ -31,43 +33,59 @@ trait DateTimeTrait
     }
 
     /**
-     * @api
-     *
      * @param \DateTimeInterface|DateTimeInterface|string|int|DateTime $datetime
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public static function of(
         $datetime,
         ?\DateTimeZone $timezone = null,
     ): DateTimeInterface {
         if ($datetime instanceof self) {
-            $fromInterface = Carbon::parse($datetime->toDateTime())
-                ->setTimezone($timezone ?? $datetime->toDateTime()->getTimezone())
-            ;
+            try {
+                $fromInterface = Carbon::parse($datetime->toDateTime())
+                    ->setTimezone($timezone ?? $datetime->toDateTime()->getTimezone())
+                ;
 
-            return new self($fromInterface);
+                return new self($fromInterface);
+            } catch (\Exception $exception) {
+                throw InvalidArgumentException::fromThrowable($exception);
+            }
         }
 
         if ($datetime instanceof \DateTimeInterface) {
-            $newDateTime = Carbon::parse($datetime)
-                ->setTimezone($timezone)
-            ;
+            try {
+                $newDateTime = Carbon::parse($datetime)
+                    ->setTimezone($timezone)
+                ;
 
-            return new self($newDateTime);
+                return new self($newDateTime);
+            } catch (\Exception $exception) {
+                throw InvalidArgumentException::fromThrowable($exception);
+            }
         }
 
         if (is_int($datetime)) {
-            $newDateTime = Carbon::createFromTimestamp($datetime)
-                ->setTimezone($timezone)
-            ;
+            try {
+                $newDateTime = Carbon::createFromTimestamp($datetime)
+                    ->setTimezone($timezone)
+                ;
 
-            return new self($newDateTime);
+                return new self($newDateTime);
+            } catch (\Exception $exception) {
+                throw InvalidArgumentException::fromThrowable($exception);
+            }
         }
 
-        $datetimeObject = Carbon::parse($datetime, $timezone);
+        try {
+            $datetimeObject = Carbon::parse($datetime, $timezone);
 
-        return new self($datetimeObject);
+            return new self($datetimeObject);
+        } catch (\Exception $exception) {
+            throw InvalidArgumentException::fromThrowable($exception);
+        }
     }
 
     /**
@@ -3162,20 +3180,23 @@ trait DateTimeTrait
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function copy(): DateTimeInterface
     {
         $copy = $this->datetime->copy();
 
-        return DateTimeTrait::of($copy);
+        return self::of($copy);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function clone(): DateTimeInterface
     {
         $clone = $this->datetime->clone();
 
-        return DateTimeTrait::of($clone);
+        return self::of($clone);
     }
 
     public function nowWithSameTz(): DateTimeInterface
@@ -3475,7 +3496,7 @@ trait DateTimeTrait
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function numberOfDaysIsLowerThanOrEquals($value, int $numberOfDays): BoolEnum
     {

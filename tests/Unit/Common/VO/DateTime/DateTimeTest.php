@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Unit\Common\VO\DateTime;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\DateTime;
 use PHPUnit\Framework\TestCase;
 
 final class DateTimeTest extends TestCase
 {
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testCreateDateTime(): void
     {
@@ -30,7 +31,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsAM(): void
     {
@@ -39,7 +40,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsAfter(): void
     {
@@ -48,7 +49,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsAfterOrEqual(): void
     {
@@ -57,7 +58,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsBefore(): void
     {
@@ -66,7 +67,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsBeforeOrEqual(): void
     {
@@ -75,7 +76,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsBetween(): void
     {
@@ -84,7 +85,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsBetweenOrEqual(): void
     {
@@ -93,7 +94,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsNotBetween(): void
     {
@@ -102,7 +103,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testToDateTime(): void
     {
@@ -112,7 +113,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsWeekday(): void
     {
@@ -121,7 +122,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsWeekend(): void
     {
@@ -130,7 +131,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsPM(): void
     {
@@ -139,7 +140,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsSame(): void
     {
@@ -148,7 +149,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsSameOrAfter(): void
     {
@@ -157,7 +158,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsSameOrBefore(): void
     {
@@ -166,7 +167,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsSameOrBetween(): void
     {
@@ -175,7 +176,7 @@ final class DateTimeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testNumberOfDaysIsLowerThanOrEquals(): void
     {

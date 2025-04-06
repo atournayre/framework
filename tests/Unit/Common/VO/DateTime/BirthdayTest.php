@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Unit\Common\VO\DateTime;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\DateTime;
 use Atournayre\Tests\Fixtures\Birthday;
 use PHPUnit\Framework\TestCase;
@@ -11,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 final class BirthdayTest extends TestCase
 {
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testIsAfter(): void
     {
@@ -22,7 +23,7 @@ final class BirthdayTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testEqualsTo(): void
     {

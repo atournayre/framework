@@ -14,6 +14,7 @@ trait MiscCollectionTrait
      * Sets or returns the seperator for paths to multi-dimensional arrays.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
@@ -26,6 +27,7 @@ trait MiscCollectionTrait
      * Returns an iterator for the elements.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
@@ -38,6 +40,7 @@ trait MiscCollectionTrait
      * Specifies the data which should be serialized to JSON.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
@@ -83,8 +86,8 @@ trait MiscCollectionTrait
      * @param mixed|null $value
      *
      * @throws ThrowableInterface
-     * @api
      *
+     * @api
      */
     public function offsetSet($key, $value, ?\Closure $callback = null): void
     {

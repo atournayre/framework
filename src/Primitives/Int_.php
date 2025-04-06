@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 
 final class Int_
 {
@@ -17,6 +18,8 @@ final class Int_
 
     /**
      * @param int|string|Int_ $value
+     *
+     * @throws ThrowableInterface
      */
     public static function of($value): self
     {
@@ -66,6 +69,8 @@ final class Int_
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function isZero(): BoolEnum
@@ -74,6 +79,8 @@ final class Int_
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function abs(): self
@@ -82,10 +89,12 @@ final class Int_
     }
 
     /**
-     * @api
-     *
      * @param int|Int_ $of
      * @param int|Int_ $of1
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function between($of, $of1): BoolEnum
     {
@@ -99,10 +108,12 @@ final class Int_
     }
 
     /**
-     * @api
-     *
      * @param Int_|int $of
      * @param Int_|int $of1
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function betweenOrEqual($of, $of1): BoolEnum
     {
@@ -136,9 +147,11 @@ final class Int_
     }
 
     /**
-     * @api
-     *
      * @param int|Int_ $of
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function greaterThan($of): BoolEnum
     {
@@ -149,9 +162,11 @@ final class Int_
     }
 
     /**
-     * @api
-     *
      * @param int|Int_ $of
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function greaterThanOrEqual($of): BoolEnum
     {
@@ -162,9 +177,11 @@ final class Int_
     }
 
     /**
-     * @api
-     *
      * @param int|Int_ $of
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function lessThan($of): BoolEnum
     {
@@ -175,9 +192,11 @@ final class Int_
     }
 
     /**
-     * @api
-     *
      * @param int|Int_ $of
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function lessThanOrEqual($of): BoolEnum
     {
@@ -188,9 +207,11 @@ final class Int_
     }
 
     /**
-     * @api
-     *
      * @param int|Int_ $of
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function equalsTo($of): BoolEnum
     {

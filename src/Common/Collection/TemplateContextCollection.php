@@ -6,6 +6,7 @@ namespace Atournayre\Common\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
@@ -14,6 +15,9 @@ final class TemplateContextCollection implements MapInterface
 {
     use CollectionTrait;
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function asMap(array $collection): self
     {
         Assert::isMapOf($collection, 'mixed');

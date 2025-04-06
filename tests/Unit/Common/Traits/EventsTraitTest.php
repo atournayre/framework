@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Unit\Common\Traits;
 
 use Atournayre\Common\VO\Event;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Tests\Fixtures\Event\ObjectWithEvents;
 use PHPUnit\Framework\TestCase;
 
@@ -18,7 +19,7 @@ final class EventsTraitTest extends TestCase
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testAddEvent(): void
     {
@@ -30,7 +31,7 @@ final class EventsTraitTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testSetEvent(): void
     {
@@ -42,7 +43,7 @@ final class EventsTraitTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testRemoveEvent(): void
     {
@@ -55,7 +56,7 @@ final class EventsTraitTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testEvents(): void
     {
@@ -67,7 +68,7 @@ final class EventsTraitTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testFilterEventsByType(): void
     {

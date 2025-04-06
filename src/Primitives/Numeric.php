@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+
 final class Numeric
 {
     private float $value;
@@ -12,6 +16,9 @@ final class Numeric
 
     private int $precision;
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function fromFloat(float $float): self
     {
         $precision = StringType::of((string) $float)
@@ -26,7 +33,7 @@ final class Numeric
     /**
      * @param int|float|string $value
      *
-     * @throws \InvalidArgumentException
+     * @throws ThrowableInterface
      */
     public static function of($value, int $precision = 0): self
     {
@@ -36,23 +43,23 @@ final class Numeric
     /**
      * @param int|float|string $value
      *
-     * @throws \InvalidArgumentException
+     * @throws ThrowableInterface
      */
     private function __construct($value, int $precision)
     {
         if ($precision < 0) {
-            throw new \InvalidArgumentException('Precision cannot be negative.');
+            InvalidArgumentException::new('Precision cannot be negative.')->throw();
         }
 
         if (is_string($value) && !is_numeric($value)) {
-            throw new \InvalidArgumentException('The provided string value must be numeric.');
+            InvalidArgumentException::new('The provided string value must be numeric.')->throw();
         }
 
         $numericValue = (float) $value;
 
         if ((abs($numericValue) < PHP_FLOAT_MIN || abs($numericValue) > PHP_FLOAT_MAX) && 0.0 !== $numericValue) {
             $message = sprintf('The value %s is out of range [%s, %s] for floating point numbers.', $numericValue, PHP_FLOAT_MIN, PHP_FLOAT_MAX);
-            throw new \InvalidArgumentException($message);
+            InvalidArgumentException::new($message)->throw();
         }
 
         $multiplier = 10 ** $precision;
@@ -60,7 +67,7 @@ final class Numeric
 
         if ($intValue < PHP_INT_MIN || $intValue > PHP_INT_MAX) {
             $message = sprintf('The value %s exceeds the allowed limits [%s, %s].', $intValue, PHP_INT_MIN, PHP_INT_MAX);
-            throw new \InvalidArgumentException($message);
+            InvalidArgumentException::new($message)->throw();
         }
 
         $this->value = $numericValue;
@@ -93,9 +100,9 @@ final class Numeric
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @throws \RuntimeException
+     * @api
      */
     public function format(Locale $locale): string
     {
@@ -103,35 +110,34 @@ final class Numeric
 
         $format = $fmt->format($this->value);
         if (false === $format) {
-            throw new \RuntimeException('Failed to format the number.');
+            RuntimeException::new('Failed to format the number.')->throw();
         }
 
         return $format;
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function round(int $mode = PHP_ROUND_HALF_UP): self
     {
-        switch ($mode) {
-            case PHP_ROUND_HALF_UP:
-                return new self(round($this->value, $this->precision), $this->precision);
-            case PHP_ROUND_HALF_DOWN:
-                return new self(round($this->value, $this->precision, PHP_ROUND_HALF_DOWN), $this->precision);
-            case PHP_ROUND_HALF_EVEN:
-                return new self(round($this->value, $this->precision, PHP_ROUND_HALF_EVEN), $this->precision);
-            case PHP_ROUND_HALF_ODD:
-                return new self(round($this->value, $this->precision, PHP_ROUND_HALF_ODD), $this->precision);
-            default:
-                throw new \InvalidArgumentException('Invalid rounding mode provided.');
-        }
+        return match ($mode) {
+            PHP_ROUND_HALF_UP => new self(round($this->value, $this->precision), $this->precision),
+            PHP_ROUND_HALF_DOWN => new self(round($this->value, $this->precision, PHP_ROUND_HALF_DOWN), $this->precision),
+            PHP_ROUND_HALF_EVEN => new self(round($this->value, $this->precision, PHP_ROUND_HALF_EVEN), $this->precision),
+            PHP_ROUND_HALF_ODD => new self(round($this->value, $this->precision, PHP_ROUND_HALF_ODD), $this->precision),
+            default => InvalidArgumentException::new('Invalid rounding mode provided.')->throw(),
+        };
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function greaterThan($numeric): BoolEnum
     {
@@ -142,9 +148,11 @@ final class Numeric
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function greaterThanOrEqual($numeric): BoolEnum
     {
@@ -155,9 +163,11 @@ final class Numeric
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function lessThan($numeric): BoolEnum
     {
@@ -168,9 +178,11 @@ final class Numeric
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function lessThanOrEqual($numeric): BoolEnum
     {
@@ -181,9 +193,11 @@ final class Numeric
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function equalTo($numeric): BoolEnum
     {
@@ -194,9 +208,11 @@ final class Numeric
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function notEqualTo($numeric): BoolEnum
     {
@@ -212,7 +228,7 @@ final class Numeric
      * @param int|Numeric $min
      * @param int|Numeric $max
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function between($min, $max): BoolEnum
     {
@@ -233,7 +249,7 @@ final class Numeric
      * @param int|Numeric $min
      * @param int|Numeric $max
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function betweenOrEqual($min, $max): BoolEnum
     {
@@ -249,6 +265,8 @@ final class Numeric
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public static function fromInt(int $value, int $precision): Numeric
@@ -257,6 +275,8 @@ final class Numeric
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function isZero(): BoolEnum
@@ -269,6 +289,8 @@ final class Numeric
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function abs(): self

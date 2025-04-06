@@ -6,6 +6,7 @@ namespace Atournayre\Symfony\Mailer\Adapter;
 
 use Atournayre\Component\Mailer\VO\Email;
 use Atournayre\Component\Mailer\VO\TemplatedEmail;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail as SymfonyTemplatedEmail;
 
 final class TemplatedEmailAdapter extends EmailAdapter
@@ -13,7 +14,7 @@ final class TemplatedEmailAdapter extends EmailAdapter
     /**
      * @param TemplatedEmail|Email $email
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public static function fromMessage($email): SymfonyTemplatedEmail
     {

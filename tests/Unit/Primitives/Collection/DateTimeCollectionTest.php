@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Primitives\Collection;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection\DateTimeCollection;
 use Atournayre\Primitives\DateTime;
 use PHPUnit\Framework\TestCase;
@@ -11,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 class DateTimeCollectionTest extends TestCase
 {
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testSortAsc(): void
     {
@@ -29,7 +30,7 @@ class DateTimeCollectionTest extends TestCase
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testSortDesc(): void
     {
@@ -47,7 +48,7 @@ class DateTimeCollectionTest extends TestCase
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testMostRecent(): void
     {
@@ -63,7 +64,7 @@ class DateTimeCollectionTest extends TestCase
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testOldest(): void
     {
@@ -79,7 +80,7 @@ class DateTimeCollectionTest extends TestCase
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testDatesBetween(): void
     {
@@ -100,7 +101,7 @@ class DateTimeCollectionTest extends TestCase
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testDatesBefore(): void
     {
@@ -120,7 +121,7 @@ class DateTimeCollectionTest extends TestCase
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testDatesAfter(): void
     {

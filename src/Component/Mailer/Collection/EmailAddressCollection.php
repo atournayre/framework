@@ -8,6 +8,7 @@ use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\Types\EmailAddress;
 use Atournayre\Contracts\Collection\ListInterface;
 use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
@@ -15,6 +16,9 @@ final class EmailAddressCollection implements ListInterface, MapInterface
 {
     use CollectionTrait;
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function asList(array $collection): self
     {
         Assert::isListOf($collection, EmailAddress::class);
@@ -22,6 +26,9 @@ final class EmailAddressCollection implements ListInterface, MapInterface
         return new self(Collection::of($collection));
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function asMap(array $collection): self
     {
         Assert::isMapOf($collection, EmailAddress::class);
@@ -30,9 +37,11 @@ final class EmailAddressCollection implements ListInterface, MapInterface
     }
 
     /**
-     * @api
-     *
      * @param array<string> $emails
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public static function fromArray(array $emails): self
     {

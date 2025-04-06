@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Common\Traits;
 
 use Atournayre\Common\Collection\EventCollection;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Add to constructor:
@@ -17,6 +18,9 @@ trait EventsTrait
 {
     protected EventCollection $events;
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function initializeEvents(): void
     {
         $this->events = EventCollection::empty();
