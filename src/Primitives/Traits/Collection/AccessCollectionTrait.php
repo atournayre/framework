@@ -91,7 +91,7 @@ trait AccessCollectionTrait
                 ->find($callback, $default, $reverse)
             ;
         } catch (\Throwable $throwable) {
-            throw InvalidArgumentException::fromThrowable($throwable);
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
@@ -111,7 +111,7 @@ trait AccessCollectionTrait
         try {
             return $this->collection->first($default);
         } catch (\Throwable $throwable) {
-            throw InvalidArgumentException::fromThrowable($throwable);
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
@@ -129,7 +129,7 @@ trait AccessCollectionTrait
         try {
             return $this->collection->firstKey();
         } catch (\Throwable $throwable) {
-            throw InvalidArgumentException::fromThrowable($throwable);
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
@@ -152,7 +152,7 @@ trait AccessCollectionTrait
                 ->get($key, $default)
             ;
         } catch (\Throwable $throwable) {
-            throw InvalidArgumentException::fromThrowable($throwable);
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
@@ -246,7 +246,7 @@ trait AccessCollectionTrait
                 ->last($default)
             ;
         } catch (\Throwable $throwable) {
-            throw InvalidArgumentException::fromThrowable($throwable);
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
@@ -266,7 +266,7 @@ trait AccessCollectionTrait
                 ->lastKey()
             ;
         } catch (\Throwable $throwable) {
-            throw InvalidArgumentException::fromThrowable($throwable);
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 

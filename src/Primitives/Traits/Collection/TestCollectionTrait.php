@@ -6,6 +6,7 @@ namespace Atournayre\Primitives\Traits\Collection;
 
 use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Common\Exception\UnexpectedValueException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
@@ -288,7 +289,7 @@ trait TestCollectionTrait
 
             return BoolEnum::fromBool($implements);
         } catch (\Throwable $throwable) {
-            throw InvalidArgumentException::fromThrowable($throwable);
+            throw UnexpectedValueException::fromThrowable($throwable);
         }
     }
 

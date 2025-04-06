@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
 
-use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Uri\UriInterface;
 use Nyholm\Psr7\Uri as NyholmUri;
@@ -76,7 +76,7 @@ final class Uri implements UriInterface
 
             return self::of($newUri->__toString());
         } catch (\Throwable $throwable) {
-            throw RuntimeException::fromThrowable($throwable);
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
     }
 
@@ -104,7 +104,7 @@ final class Uri implements UriInterface
 
             return self::of($newUri->__toString());
         } catch (\Throwable $throwable) {
-            throw RuntimeException::fromThrowable($throwable);
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
     }
 
@@ -118,7 +118,7 @@ final class Uri implements UriInterface
 
             return self::of($newUri->__toString());
         } catch (\Throwable $throwable) {
-            throw RuntimeException::fromThrowable($throwable);
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
     }
 
@@ -139,7 +139,7 @@ final class Uri implements UriInterface
 
             return self::of($newUri->__toString());
         } catch (\Throwable $throwable) {
-            throw RuntimeException::fromThrowable($throwable);
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
     }
 
@@ -153,7 +153,7 @@ final class Uri implements UriInterface
 
             return self::of($newUri->__toString());
         } catch (\Throwable $throwable) {
-            throw RuntimeException::fromThrowable($throwable);
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
     }
 
