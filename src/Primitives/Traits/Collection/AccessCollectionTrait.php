@@ -91,9 +91,8 @@ trait AccessCollectionTrait
                 ->find($callback, $default, $reverse)
             ;
         } catch (\Throwable $throwable) {
-            InvalidArgumentException::fromThrowable($throwable)->throw();
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
-        return null;
     }
 
     /**
@@ -112,9 +111,8 @@ trait AccessCollectionTrait
         try {
             return $this->collection->first($default);
         } catch (\Throwable $throwable) {
-            InvalidArgumentException::fromThrowable($throwable)->throw();
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
-        return null;
     }
 
     /**
@@ -131,9 +129,8 @@ trait AccessCollectionTrait
         try {
             return $this->collection->firstKey();
         } catch (\Throwable $throwable) {
-            InvalidArgumentException::fromThrowable($throwable)->throw();
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
-        return null;
     }
 
     /**
@@ -155,9 +152,8 @@ trait AccessCollectionTrait
                 ->get($key, $default)
             ;
         } catch (\Throwable $throwable) {
-            InvalidArgumentException::fromThrowable($throwable)->throw();
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
-        return null;
     }
 
     /**
@@ -179,9 +175,10 @@ trait AccessCollectionTrait
     /**
      * Returns an element by key and casts it to integer.
      *
-     * @param int|string $key     Key or path to the requested item
-     * @param mixed      $default Default value if key isn't found (will be casted to integer)
+     * @param int|string $key Key or path to the requested item
+     * @param mixed $default Default value if key isn't found (will be casted to integer)
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function int($key, $default = 0): Int_
@@ -212,7 +209,7 @@ trait AccessCollectionTrait
         try {
             return Numeric::fromFloat($float);
         } catch (\Exception|ThrowableInterface $e) {
-            InvalidArgumentException::fromThrowable($e)->throw();
+            throw InvalidArgumentException::fromThrowable($e);
         }
     }
 
@@ -249,9 +246,8 @@ trait AccessCollectionTrait
                 ->last($default)
             ;
         } catch (\Throwable $throwable) {
-            InvalidArgumentException::fromThrowable($throwable)->throw();
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
-        return null;
     }
 
     /**
@@ -270,9 +266,8 @@ trait AccessCollectionTrait
                 ->lastKey()
             ;
         } catch (\Throwable $throwable) {
-            InvalidArgumentException::fromThrowable($throwable)->throw();
+            throw InvalidArgumentException::fromThrowable($throwable);
         }
-        return null;
     }
 
     /**

@@ -41,9 +41,8 @@ trait CollectionCommonTrait
         try {
             return $this->collection->first($default);
         } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
+            throw RuntimeException::fromThrowable($throwable);
         }
-        return null;
     }
 
     /**
@@ -58,9 +57,8 @@ trait CollectionCommonTrait
         try {
             return $this->collection->last($default);
         } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
+            throw RuntimeException::fromThrowable($throwable);
         }
-        return null;
     }
 
     /**
@@ -81,6 +79,9 @@ trait CollectionCommonTrait
         $this->collection->offsetUnset($offset);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function atLeastOneElement(): BoolEnum
     {
         return $this->count()
@@ -88,6 +89,9 @@ trait CollectionCommonTrait
         ;
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function hasSeveralElements(): BoolEnum
     {
         return $this->count()
@@ -95,6 +99,9 @@ trait CollectionCommonTrait
         ;
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function hasNoElement(): BoolEnum
     {
         return $this->count()
@@ -102,6 +109,9 @@ trait CollectionCommonTrait
         ;
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function hasOneElement(): BoolEnum
     {
         return $this->count()
@@ -109,6 +119,9 @@ trait CollectionCommonTrait
         ;
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function hasXElements(int $int): BoolEnum
     {
         return $this->count()
