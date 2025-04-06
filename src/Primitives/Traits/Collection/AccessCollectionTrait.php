@@ -74,20 +74,23 @@ trait AccessCollectionTrait
      * Returns the first/last matching element.
      *
      * @param \Closure $callback Function with (value, key) parameters and returns TRUE/FALSE
-     * @param mixed    $default  Default value or exception if the map contains no elements
-     * @param bool     $reverse  TRUE to test elements from back to front, FALSE for front to back (default)
+     * @param mixed $default Default value or exception if the map contains no elements
+     * @param bool $reverse TRUE to test elements from back to front, FALSE for front to back (default)
      *
      * @return mixed First matching value, passed default value or an exception
      *
-     * @throws \Throwable
-     *
+     * @throws ThrowableInterface
      * @api
      */
     public function find(\Closure $callback, $default = null, bool $reverse = false)
     {
-        return $this->collection
-            ->find($callback, $default, $reverse)
-        ;
+        try {
+            return $this->collection
+                ->find($callback, $default, $reverse)
+            ;
+        } catch (\Throwable $throwable) {
+            InvalidArgumentException::fromThrowable($throwable)->throw();
+        }
     }
 
     /**
@@ -114,11 +117,16 @@ trait AccessCollectionTrait
      *
      * @return mixed First key of map or NULL if empty
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function firstKey()
     {
-        return $this->collection->firstKey();
+        try {
+            return $this->collection->firstKey();
+        } catch (\Throwable $throwable) {
+            InvalidArgumentException::fromThrowable($throwable)->throw();
+        }
     }
 
     /**
@@ -129,15 +137,18 @@ trait AccessCollectionTrait
      *
      * @return mixed Value from map or default value
      *
-     * @throws \Throwable
-     *
+     * @throws ThrowableInterface
      * @api
      */
     public function get($key, $default = null)
     {
-        return $this->collection
-            ->get($key, $default)
-        ;
+        try {
+            return $this->collection
+                ->get($key, $default)
+            ;
+        } catch (\Throwable $throwable) {
+            InvalidArgumentException::fromThrowable($throwable)->throw();
+        }
     }
 
     /**
@@ -176,9 +187,10 @@ trait AccessCollectionTrait
     /**
      * Returns an element by key and casts it to float.
      *
-     * @param int|string $key     Key or path to the requested item
-     * @param mixed      $default Default value if key isn't found (will be casted to float)
+     * @param int|string $key Key or path to the requested item
+     * @param mixed $default Default value if key isn't found (will be casted to float)
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function float($key, $default = 0.0): Numeric
@@ -187,7 +199,11 @@ trait AccessCollectionTrait
             ->float($key, $default)
         ;
 
-        return Numeric::fromFloat($float);
+        try {
+            return Numeric::fromFloat($float);
+        } catch (\Exception|ThrowableInterface $e) {
+            InvalidArgumentException::fromThrowable($e)->throw();
+        }
     }
 
     /**
@@ -212,15 +228,18 @@ trait AccessCollectionTrait
      *
      * @return mixed|null
      *
-     * @throws \Throwable
-     *
+     * @throws ThrowableInterface
      * @api
      */
     public function last($default = null)
     {
-        return $this->collection
-            ->last($default)
-        ;
+        try {
+            return $this->collection
+                ->last($default)
+            ;
+        } catch (\Throwable $throwable) {
+            InvalidArgumentException::fromThrowable($throwable)->throw();
+        }
     }
 
     /**
@@ -228,13 +247,18 @@ trait AccessCollectionTrait
      *
      * @return mixed Last key of map or NULL if empty
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function lastKey()
     {
-        return $this->collection
-            ->lastKey()
-        ;
+        try {
+            return $this->collection
+                ->lastKey()
+            ;
+        } catch (\Throwable $throwable) {
+            InvalidArgumentException::fromThrowable($throwable)->throw();
+        }
     }
 
     /**
