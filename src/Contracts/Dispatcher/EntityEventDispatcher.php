@@ -7,19 +7,20 @@ namespace Atournayre\Contracts\Dispatcher;
 use Atournayre\Common\Collection\EventCollection;
 use Atournayre\Common\VO\Event;
 use Atournayre\Contracts\Event\EntityEventDispatcherInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
-final class EntityEventDispatcher implements EntityEventDispatcherInterface
+final readonly class EntityEventDispatcher implements EntityEventDispatcherInterface
 {
     public function __construct(
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly LoggerInterface $logger,
+        private EventDispatcherInterface $eventDispatcher,
+        private LoggerInterface          $logger,
     ) {
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function dispatch(EventCollection $eventCollection, ?string $type = null): void
     {
@@ -54,7 +55,7 @@ final class EntityEventDispatcher implements EntityEventDispatcherInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     private function dispatchEventsByType(EventCollection $eventCollection, string $type): void
     {
