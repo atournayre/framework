@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Numeric;
 
 trait AggregateCollectionTrait
@@ -11,6 +13,7 @@ trait AggregateCollectionTrait
     /**
      * Returns the average of all values.
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function avg(?string $key = null): Numeric
@@ -23,6 +26,7 @@ trait AggregateCollectionTrait
     /**
      * Returns the maximum value of all elements.
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function max(?string $key = null): Numeric
@@ -41,6 +45,7 @@ trait AggregateCollectionTrait
     /**
      * Returns the minium value of all elements.
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function min(?string $key = null): Numeric
@@ -59,6 +64,7 @@ trait AggregateCollectionTrait
     /**
      * Returns the sum of all values in the map.
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function sum(?string $key = null): Numeric
