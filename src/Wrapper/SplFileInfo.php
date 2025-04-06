@@ -45,7 +45,6 @@ final readonly class SplFileInfo implements LoggableInterface
         ];
     }
 
-
     /**
      * @api
      */
