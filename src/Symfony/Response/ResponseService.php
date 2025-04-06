@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Symfony\Response;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Response\ResponseInterface;
 use Atournayre\Contracts\Routing\RoutingInterface;
@@ -53,7 +54,7 @@ final class ResponseService implements ResponseInterface
             $render = $this->templating->render($view, $parameters);
 
             return new Response($render);
-        } catch (\Error|\Exception $e) {
+        } catch (ThrowableInterface $e) {
             $this->logger->error('An error occurred while rendering view', ['error' => $e->getMessage()]);
 
             return $this->error('error.html.twig', ['error' => 'An error occurred']);
@@ -66,7 +67,7 @@ final class ResponseService implements ResponseInterface
             $this->logger->info('Returning JSON response', ['data' => $data, 'status' => $status, 'headers' => $headers]);
 
             return new JsonResponse($data, $status, $headers, $json);
-        } catch (\Error|\Exception $e) {
+        } catch (ThrowableInterface $e) {
             $this->logger->error('An error occurred while returning JSON response', ['error' => $e->getMessage()]);
 
             return $this->jsonError(['error' => 'An error occurred'], 500);
@@ -96,6 +97,9 @@ final class ResponseService implements ResponseInterface
         return new Response(null, $status, $headers);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function error(string $view, array $parameters = [], int $status = 500): Response
     {
         $this->logger->info('Returning error response', ['view' => $view, 'parameters' => $parameters, 'status' => $status]);
