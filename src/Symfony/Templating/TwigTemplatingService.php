@@ -30,7 +30,7 @@ final class TwigTemplatingService implements TemplatingInterface
         try {
             return $this->twigEnvironment->render($template, $parameters);
         } catch (SyntaxError|RuntimeError|LoaderError $e) {
-            RuntimeException::fromThrowable($e)->throw();
+            throw RuntimeException::fromThrowable($e);
         }
     }
 }

@@ -26,7 +26,7 @@ trait StaticCollectionTrait
      */
     public function add($value, ?\Closure $callback = null): self
     {
-        BadMethodCallException::new('Static collections cannot be modified.')->throw();
+        throw BadMethodCallException::new('Static collections cannot be modified.');
     }
 
     /**
@@ -37,7 +37,7 @@ trait StaticCollectionTrait
      */
     public function set($key, $value, ?\Closure $callback = null): self
     {
-        BadMethodCallException::new('Static collections cannot be modified.')->throw();
+        throw BadMethodCallException::new('Static collections cannot be modified.');
     }
 
     /**
@@ -47,6 +47,6 @@ trait StaticCollectionTrait
      */
     public function offsetUnset($offset): void
     {
-        BadMethodCallException::new('Static collections cannot be modified.')->throw();
+        throw BadMethodCallException::new('Static collections cannot be modified.');
     }
 }

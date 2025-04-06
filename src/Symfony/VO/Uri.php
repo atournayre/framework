@@ -100,7 +100,7 @@ final readonly class Uri implements UriInterface
                 $this->params,
             )->withScheme($scheme);
         } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
@@ -134,7 +134,7 @@ final readonly class Uri implements UriInterface
                 $this->params,
             )->withHost($host);
         } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
@@ -150,7 +150,7 @@ final readonly class Uri implements UriInterface
                 $this->params,
             )->withPort($port);
         } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
@@ -172,7 +172,7 @@ final readonly class Uri implements UriInterface
                 $this->params,
             )->withPath($path);
         } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
@@ -188,7 +188,7 @@ final readonly class Uri implements UriInterface
                 $this->params,
             )->withQuery($query);
         } catch (\Throwable $throwable) {
-            RuntimeException::fromThrowable($throwable)->throw();
+            throw RuntimeException::fromThrowable($throwable);
         }
     }
 
