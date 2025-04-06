@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
-use Webmozart\Assert\Assert;
+use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 
 final class Locale
 {
@@ -614,6 +615,7 @@ final class Locale
     }
 
     /**
+     * @throws ThrowableInterface
      * @api
      */
     public function fullName(): string
