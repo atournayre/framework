@@ -285,11 +285,11 @@ trait TestCollectionTrait
             $implements = $this->collection
                 ->implements($interface, $throw)
             ;
-        } catch (\Throwable $throwable) {
-            InvalidArgumentException::fromThrowable($throwable)->throw();
-        }
 
-        return BoolEnum::fromBool($implements);
+            return BoolEnum::fromBool($implements);
+        } catch (\Throwable $throwable) {
+            throw InvalidArgumentException::fromThrowable($throwable);
+        }
     }
 
     /**
