@@ -186,11 +186,6 @@ parameters:
 			path: ../../src/Common/Model/AbstractUser.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\Model\\\\AbstractUser\\:\\:\\$plainPassword is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Model/AbstractUser.php
-
-		-
 			message: "#^Class Atournayre\\\\Common\\\\Model\\\\DefaultUser does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Model/DefaultUser.php
@@ -222,11 +217,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Common\\\\Model\\\\DefaultUser\\:\\:initializeNull\\(\\) modifies an object property, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Model/DefaultUser.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Model\\\\DefaultUser\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Model/DefaultUser.php
 
@@ -316,11 +306,6 @@ parameters:
 			path: ../../src/Common/VO/Context/Context.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Context\\\\Context\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Context/Context.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Common\\\\VO\\\\Context\\\\Context\\:\\:asNull\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Context/Context.php
@@ -377,11 +362,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:initializeNull\\(\\) modifies an object property, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Security/PlainPassword.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Security/PlainPassword.php
 
@@ -566,11 +546,6 @@ parameters:
 			path: ../../src/Component/Mailer/Types/EmailHtml.php
 
 		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailHtml\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailHtml.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailHtml\\:\\:asNull\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailHtml.php
@@ -601,11 +576,6 @@ parameters:
 			path: ../../src/Component/Mailer/Types/EmailSubject.php
 
 		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailSubject\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailSubject.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailSubject\\:\\:asNull\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailSubject.php
@@ -627,11 +597,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailText\\:\\:initializeNull\\(\\) modifies an object property, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailText.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailText\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailText.php
 
@@ -2232,11 +2197,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Primitives\\\\DateTime\\:\\:weekday\\(\\) has default value null for parameter \\$value, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/DateTime.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\DateTime\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/DateTime.php
 
