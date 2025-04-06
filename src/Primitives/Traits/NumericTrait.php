@@ -11,11 +11,9 @@ use Atournayre\Primitives\Numeric;
 
 trait NumericTrait
 {
-    protected Numeric $value;
-
-    private function __construct(Numeric $value)
-    {
-        $this->value = $value;
+    private function __construct(
+        protected Numeric $value,
+    ) {
     }
 
     /**

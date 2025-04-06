@@ -16,11 +16,9 @@ trait DateTimeTrait
 {
     use NullTrait;
 
-    private Carbon $datetime;
-
-    private function __construct(Carbon $datetime)
-    {
-        $this->datetime = $datetime;
+    private function __construct(
+        private readonly Carbon $datetime,
+    ) {
     }
 
     public static function asNull(): self

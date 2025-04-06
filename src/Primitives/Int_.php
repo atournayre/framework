@@ -7,13 +7,11 @@ namespace Atournayre\Primitives;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
-final class Int_
+final readonly class Int_
 {
-    private int $value;
-
-    private function __construct(int $value)
-    {
-        $this->value = $value;
+    private function __construct(
+        private int $value,
+    ) {
     }
 
     /**

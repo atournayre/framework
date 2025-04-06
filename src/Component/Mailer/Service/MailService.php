@@ -10,22 +10,13 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Mailer\SendMailInterface;
 
-final class MailService
+final readonly class MailService
 {
-    private LoggerInterface $logger;
-
-    private SendMailInterface $sendMail;
-
-    private MailerConfiguration $mailerConfiguration;
-
     public function __construct(
-        LoggerInterface $logger,
-        SendMailInterface $sendMail,
-        MailerConfiguration $mailerConfiguration,
+        private LoggerInterface $logger,
+        private SendMailInterface $sendMail,
+        private MailerConfiguration $mailerConfiguration,
     ) {
-        $this->logger = $logger;
-        $this->sendMail = $sendMail;
-        $this->mailerConfiguration = $mailerConfiguration;
     }
 
     /**

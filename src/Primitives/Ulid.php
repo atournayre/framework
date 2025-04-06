@@ -8,13 +8,11 @@ use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Symfony\Component\Uid\Ulid as SymfonyUlid;
 
-final class Ulid
+final readonly class Ulid
 {
-    private SymfonyUlid $ulid;
-
-    private function __construct(SymfonyUlid $ulid)
-    {
-        $this->ulid = $ulid;
+    private function __construct(
+        private SymfonyUlid $ulid,
+    ) {
     }
 
     /**

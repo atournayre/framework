@@ -18,51 +18,42 @@ use Atournayre\Primitives\Collection\FileCollection;
 
 class Email implements LoggableInterface, TypeValidationInterface
 {
-    private EmailContactCollection $to;
-
-    private EmailContactCollection $cc;
-
-    private EmailContactCollection $bcc;
-
-    private EmailContactCollection $replyTo;
-
-    private FileCollection $attachments;
-
-    private TagCollection $tags;
-
-    private EmailText $text;
-
-    private EmailHtml $html;
-
-    private EmailSubject $subject;
-
-    private EmailContact $from;
-
     protected function __construct(
-        EmailSubject $subject,
-        EmailContact $from,
+        private readonly EmailSubject $subject,
+        private readonly EmailContact $from,
+        private EmailContactCollection $to,
+        private EmailContactCollection $cc,
+        private EmailContactCollection $bcc,
+        private EmailContactCollection $replyTo,
+        private FileCollection $attachments,
+        private TagCollection $tags,
+        private EmailText $text,
+        private EmailHtml $html,
     ) {
-        $this->from = $from;
-        $this->subject = $subject;
-        $this->to = EmailContactCollection::asList([]);
-        $this->cc = EmailContactCollection::asList([]);
-        $this->bcc = EmailContactCollection::asList([]);
-        $this->replyTo = EmailContactCollection::asList([]);
-        $this->attachments = FileCollection::asList([]);
-        $this->tags = TagCollection::asMap([]);
-        $this->text = EmailText::asNull();
-        $this->html = EmailHtml::asNull();
     }
 
     /**
-     * @api
-     *
      * @return static
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public static function create(EmailSubject $subject, EmailContact $from): self
     {
         // @phpstan-ignore-next-line
-        return new static($subject, $from);
+        return new static(
+            subject: $subject,
+            from: $from,
+            to: EmailContactCollection::asList([]),
+            cc: EmailContactCollection::asList([]),
+            bcc: EmailContactCollection::asList([]),
+            replyTo: EmailContactCollection::asList([]),
+            attachments: FileCollection::asList([]),
+            tags: TagCollection::asMap([]),
+            text: EmailText::asNull(),
+            html: EmailHtml::asNull(),
+        );
     }
 
     /**

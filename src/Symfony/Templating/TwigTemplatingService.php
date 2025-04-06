@@ -12,14 +12,11 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-final class TwigTemplatingService implements TemplatingInterface
+final readonly class TwigTemplatingService implements TemplatingInterface
 {
-    private Environment $twigEnvironment;
-
     public function __construct(
-        Environment $twigEnvironment,
+        private Environment $twigEnvironment,
     ) {
-        $this->twigEnvironment = $twigEnvironment;
     }
 
     /**

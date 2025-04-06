@@ -15,25 +15,13 @@ use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
 
-final class Filesystem implements FilesystemInterface
+final readonly class Filesystem implements FilesystemInterface
 {
-    /** @api */
-    public Finder $finder;
-
-    /** @api */
-    public SymfonyFilesystem $symfonyFilesystem;
-
-    /** @api */
-    public DirectoryOrFile $directoryOrFile;
-
     private function __construct(
-        DirectoryOrFile $directoryOrFile,
-        Finder $finder,
-        SymfonyFilesystem $filesystem,
+        private DirectoryOrFile $directoryOrFile,
+        private Finder $finder,
+        private SymfonyFilesystem $filesystem,
     ) {
-        $this->directoryOrFile = $directoryOrFile;
-        $this->finder = $finder;
-        $this->symfonyFilesystem = $filesystem;
     }
 
     public static function from(string $directoryOrFile): self
@@ -49,7 +37,8 @@ final class Filesystem implements FilesystemInterface
     {
         $directoryToCreate = $this->concatWithDirectoryOrFile($directory);
 
-        $this->symfonyFilesystem
+        $this
+            ->filesystem
             ->mkdir($directoryToCreate)
         ;
     }
@@ -66,7 +55,8 @@ final class Filesystem implements FilesystemInterface
     {
         $directoryToRemove = $this->concatWithDirectoryOrFile($directory);
 
-        $this->symfonyFilesystem
+        $this
+            ->filesystem
             ->remove($directoryToRemove)
         ;
     }
@@ -75,7 +65,8 @@ final class Filesystem implements FilesystemInterface
     {
         $fileToRemove = $this->concatWithDirectoryOrFile($file);
 
-        $this->symfonyFilesystem
+        $this
+            ->filesystem
             ->remove($fileToRemove)
         ;
     }
@@ -87,7 +78,8 @@ final class Filesystem implements FilesystemInterface
             ->toString()
         ;
 
-        $this->symfonyFilesystem
+        $this
+            ->filesystem
             ->dumpFile($file, $content)
         ;
     }
@@ -104,7 +96,8 @@ final class Filesystem implements FilesystemInterface
             ->toString()
         ;
 
-        $this->symfonyFilesystem
+        $this
+            ->filesystem
             ->copy($source, $destination)
         ;
     }
@@ -121,7 +114,8 @@ final class Filesystem implements FilesystemInterface
             ->toString()
         ;
 
-        $this->symfonyFilesystem
+        $this
+            ->filesystem
             ->mirror($source, $destination)
         ;
     }
@@ -138,7 +132,8 @@ final class Filesystem implements FilesystemInterface
             ->toString()
         ;
 
-        $this->symfonyFilesystem
+        $this
+            ->filesystem
             ->rename($source, $destination)
         ;
     }
@@ -160,7 +155,8 @@ final class Filesystem implements FilesystemInterface
 
     public function exists(): BoolEnum
     {
-        $exists = $this->symfonyFilesystem
+        $exists = $this
+            ->filesystem
             ->exists($this->directoryOrFile->toString())
         ;
 

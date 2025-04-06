@@ -31,22 +31,20 @@ final class Numeric
     }
 
     /**
-     * @param int|float|string $value
-     *
      * @throws ThrowableInterface
      */
-    public static function of($value, int $precision = 0): self
+    public static function of(float|int|string $value, int $precision = 0): self
     {
         return new self($value, $precision);
     }
 
     /**
-     * @param int|float|string $value
-     *
      * @throws ThrowableInterface
      */
-    private function __construct($value, int $precision)
-    {
+    private function __construct(
+        float|int|string $value,
+        int $precision,
+    ) {
         if ($precision < 0) {
             InvalidArgumentException::new('Precision cannot be negative.')->throw();
         }

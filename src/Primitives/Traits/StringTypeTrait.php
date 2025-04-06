@@ -9,11 +9,9 @@ use Atournayre\Primitives\StringType;
 
 trait StringTypeTrait
 {
-    protected StringType $value;
-
-    private function __construct(StringType $value)
-    {
-        $this->value = $value;
+    private function __construct(
+        protected StringType $value,
+    ) {
     }
 
     public static function of(string $value): self

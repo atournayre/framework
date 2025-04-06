@@ -11,18 +11,12 @@ use Atournayre\Contracts\Security\SecurityInterface;
 use Atournayre\Contracts\Security\UserInterface;
 use Psr\Clock\ClockInterface;
 
-final class ContextFactory
+final readonly class ContextFactory
 {
-    private SecurityInterface $security;
-
-    private ClockInterface $clock;
-
     public function __construct(
-        SecurityInterface $security,
-        ClockInterface $clock,
+        private SecurityInterface $security,
+        private ClockInterface $clock,
     ) {
-        $this->clock = $clock;
-        $this->security = $security;
     }
 
     /**

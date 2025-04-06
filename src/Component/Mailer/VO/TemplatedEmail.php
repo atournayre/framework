@@ -8,26 +8,65 @@ use Atournayre\Common\Collection\TemplateContextCollection;
 use Atournayre\Common\Collection\Validation\ValidationCollection;
 use Atournayre\Common\Types\HtmlTemplatePath;
 use Atournayre\Common\Types\TextTemplatePath;
+use Atournayre\Component\Mailer\Collection\EmailContactCollection;
+use Atournayre\Component\Mailer\Collection\TagCollection;
+use Atournayre\Component\Mailer\Types\EmailHtml;
 use Atournayre\Component\Mailer\Types\EmailSubject;
+use Atournayre\Component\Mailer\Types\EmailText;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Types\TypeValidationInterface;
+use Atournayre\Primitives\Collection\FileCollection;
 
 final class TemplatedEmail extends Email implements TypeValidationInterface
 {
-    public HtmlTemplatePath $htmlTemplatePath;
-
-    public TextTemplatePath $textTemplatePath;
-
-    public TemplateContextCollection $templateContextCollection;
-
     protected function __construct(
         EmailSubject $subject,
         EmailContact $from,
+        EmailContactCollection $to,
+        EmailContactCollection $cc,
+        EmailContactCollection $bcc,
+        EmailContactCollection $replyTo,
+        FileCollection $attachments,
+        TagCollection $tags,
+        EmailText $text,
+        EmailHtml $html,
+        private HtmlTemplatePath $htmlTemplatePath,
+        private TextTemplatePath $textTemplatePath,
+        private TemplateContextCollection $templateContextCollection,
     ) {
-        parent::__construct($subject, $from);
-        $this->htmlTemplatePath = HtmlTemplatePath::empty();
-        $this->textTemplatePath = TextTemplatePath::empty();
-        $this->templateContextCollection = TemplateContextCollection::asMap([]);
+        parent::__construct(
+            subject: $subject,
+            from: $from,
+            to: $to,
+            cc: $cc,
+            bcc: $bcc,
+            replyTo: $replyTo,
+            attachments: $attachments,
+            tags: $tags,
+            text: $text,
+            html: $html,
+        );
+    }
+
+    public static function create(
+        EmailSubject $subject,
+        EmailContact $from,
+    ): self {
+        return new self(
+            subject: $subject,
+            from: $from,
+            to: EmailContactCollection::asList([]),
+            cc: EmailContactCollection::asList([]),
+            bcc: EmailContactCollection::asList([]),
+            replyTo: EmailContactCollection::asList([]),
+            attachments: FileCollection::asList([]),
+            tags: TagCollection::asMap([]),
+            text: EmailText::asNull(),
+            html: EmailHtml::asNull(),
+            htmlTemplatePath: HtmlTemplatePath::empty(),
+            textTemplatePath: TextTemplatePath::empty(),
+            templateContextCollection: TemplateContextCollection::asMap([]),
+        );
     }
 
     /**

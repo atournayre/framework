@@ -8,15 +8,13 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 
-final class Memory
+final readonly class Memory
 {
     private const KB = 1024;
 
-    private int $bytes;
-
-    private function __construct(int $bytes)
-    {
-        $this->bytes = $bytes;
+    private function __construct(
+        private int $bytes,
+    ) {
     }
 
     /**

@@ -51,16 +51,6 @@ parameters:
 			path: ../../src/Common/Collection/EventCollection.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\Collection\\\\EventCollection\\:\\:\\$collection is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Collection/EventCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Collection\\\\EventCollection\\:\\:\\$collection is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Collection/EventCollection.php
-
-		-
 			message: "#^Method Atournayre\\\\Common\\\\Collection\\\\TemplateContextCollection\\:\\:add\\(\\) accepts null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Collection/TemplateContextCollection.php
@@ -87,16 +77,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Common\\\\Collection\\\\TemplateContextCollection\\:\\:set\\(\\) has default value null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Collection/TemplateContextCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Collection\\\\TemplateContextCollection\\:\\:\\$collection is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Collection/TemplateContextCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Collection\\\\TemplateContextCollection\\:\\:\\$collection is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Collection/TemplateContextCollection.php
 
@@ -131,27 +111,7 @@ parameters:
 			path: ../../src/Common/Collection/Validation/ValidationCollection.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\Collection\\\\Validation\\\\ValidationCollection\\:\\:\\$collection is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Collection/Validation/ValidationCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Collection\\\\Validation\\\\ValidationCollection\\:\\:\\$collection is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Collection/Validation/ValidationCollection.php
-
-		-
 			message: "#^Class Atournayre\\\\Common\\\\Factory\\\\Context\\\\ContextFactory does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Factory/Context/ContextFactory.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Factory\\\\Context\\\\ContextFactory\\:\\:\\$clock is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Factory/Context/ContextFactory.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Factory\\\\Context\\\\ContextFactory\\:\\:\\$security is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Factory/Context/ContextFactory.php
 
@@ -177,21 +137,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:setLoggerIdentifier\\(\\) modifies an object property, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Log/AbstractLogger.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:\\$logIdentifier is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Log/AbstractLogger.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:\\$logger is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Log/AbstractLogger.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:\\$logger is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Log/AbstractLogger.php
 
@@ -241,11 +186,6 @@ parameters:
 			path: ../../src/Common/Model/AbstractUser.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\Model\\\\AbstractUser\\:\\:\\$plainPassword is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Model/AbstractUser.php
-
-		-
 			message: "#^Property Atournayre\\\\Common\\\\Model\\\\AbstractUser\\:\\:\\$plainPassword is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Model/AbstractUser.php
@@ -286,11 +226,6 @@ parameters:
 			path: ../../src/Common/Model/DefaultUser.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\Model\\\\DefaultUser\\:\\:\\$null is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Model/DefaultUser.php
-
-		-
 			message: "#^Property Atournayre\\\\Common\\\\Model\\\\DefaultUser\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Model/DefaultUser.php
@@ -302,16 +237,6 @@ parameters:
 
 		-
 			message: "#^Class Atournayre\\\\Common\\\\Types\\\\DirectoryOrFile does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/DirectoryOrFile.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\DirectoryOrFile\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/DirectoryOrFile.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\DirectoryOrFile\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Types/DirectoryOrFile.php
 
@@ -331,27 +256,7 @@ parameters:
 			path: ../../src/Common/Types/Domain.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\Domain\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/Domain.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\Domain\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/Domain.php
-
-		-
 			message: "#^Class Atournayre\\\\Common\\\\Types\\\\File\\\\Content does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/File/Content.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\File\\\\Content\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/File/Content.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\File\\\\Content\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Types/File/Content.php
 
@@ -361,27 +266,7 @@ parameters:
 			path: ../../src/Common/Types/File/Extension.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\File\\\\Extension\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/File/Extension.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\File\\\\Extension\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/File/Extension.php
-
-		-
 			message: "#^Class Atournayre\\\\Common\\\\Types\\\\File\\\\Filename does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/File/Filename.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\File\\\\Filename\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/File/Filename.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\File\\\\Filename\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Types/File/Filename.php
 
@@ -391,27 +276,7 @@ parameters:
 			path: ../../src/Common/Types/File/Path.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\File\\\\Path\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/File/Path.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\File\\\\Path\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/File/Path.php
-
-		-
 			message: "#^Class Atournayre\\\\Common\\\\Types\\\\HtmlTemplatePath does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/HtmlTemplatePath.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\HtmlTemplatePath\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/HtmlTemplatePath.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\HtmlTemplatePath\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Types/HtmlTemplatePath.php
 
@@ -422,16 +287,6 @@ parameters:
 
 		-
 			message: "#^Class Atournayre\\\\Common\\\\Types\\\\TextTemplatePath does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/TextTemplatePath.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\TextTemplatePath\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/Types/TextTemplatePath.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\Types\\\\TextTemplatePath\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Types/TextTemplatePath.php
 
@@ -461,22 +316,7 @@ parameters:
 			path: ../../src/Common/VO/Context/Context.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Context\\\\Context\\:\\:\\$createdAt is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Context/Context.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Context\\\\Context\\:\\:\\$null is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Context/Context.php
-
-		-
 			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Context\\\\Context\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Context/Context.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Context\\\\Context\\:\\:\\$user is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Context/Context.php
 
@@ -496,11 +336,6 @@ parameters:
 			path: ../../src/Common/VO/Duration.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Duration\\:\\:\\$milliseconds is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Duration.php
-
-		-
 			message: "#^Class Atournayre\\\\Common\\\\VO\\\\Event is not final neither abstract, which violates the \"be either final or abstract\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Event.php
@@ -516,27 +351,12 @@ parameters:
 			path: ../../src/Common/VO/Event.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Event\\:\\:\\$context is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Event.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Event\\:\\:\\$propagationStopped is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Event.php
-
-		-
 			message: "#^Class Atournayre\\\\Common\\\\VO\\\\Memory does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Memory.php
 
 		-
 			message: "#^Class Atournayre\\\\Common\\\\VO\\\\Memory has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Memory.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Memory\\:\\:\\$bytes is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Memory.php
 
@@ -561,22 +381,7 @@ parameters:
 			path: ../../src/Common/VO/Security/PlainPassword.php
 
 		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:\\$null is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Security/PlainPassword.php
-
-		-
 			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Security/PlainPassword.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Common/VO/Security/PlainPassword.php
-
-		-
-			message: "#^Property Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Security/PlainPassword.php
 
@@ -617,16 +422,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Collection\\\\EmailAddressCollection\\:\\:set\\(\\) has default value null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Collection/EmailAddressCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Collection\\\\EmailAddressCollection\\:\\:\\$collection is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Collection/EmailAddressCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Collection\\\\EmailAddressCollection\\:\\:\\$collection is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Collection/EmailAddressCollection.php
 
@@ -676,16 +471,6 @@ parameters:
 			path: ../../src/Component/Mailer/Collection/EmailContactCollection.php
 
 		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Collection\\\\EmailContactCollection\\:\\:\\$collection is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Collection/EmailContactCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Collection\\\\EmailContactCollection\\:\\:\\$collection is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Collection/EmailContactCollection.php
-
-		-
 			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Collection\\\\TagCollection\\:\\:add\\(\\) accepts null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Collection/TagCollection.php
@@ -721,32 +506,7 @@ parameters:
 			path: ../../src/Component/Mailer/Collection/TagCollection.php
 
 		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Collection\\\\TagCollection\\:\\:\\$collection is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Collection/TagCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Collection\\\\TagCollection\\:\\:\\$collection is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Collection/TagCollection.php
-
-		-
 			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\Configuration\\\\MailerConfiguration does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Configuration/MailerConfiguration.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Configuration\\\\MailerConfiguration\\:\\:\\$attachmentsMaxSize is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Configuration/MailerConfiguration.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Configuration\\\\MailerConfiguration\\:\\:\\$from is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Configuration/MailerConfiguration.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Configuration\\\\MailerConfiguration\\:\\:\\$replyTos is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Configuration/MailerConfiguration.php
 
@@ -756,32 +516,7 @@ parameters:
 			path: ../../src/Component/Mailer/Service/MailService.php
 
 		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Service\\\\MailService\\:\\:\\$logger is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Service/MailService.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Service\\\\MailService\\:\\:\\$mailerConfiguration is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Service/MailService.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Service\\\\MailService\\:\\:\\$sendMail is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Service/MailService.php
-
-		-
 			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\Types\\\\AttachmentMaxSize does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/AttachmentMaxSize.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\AttachmentMaxSize\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/AttachmentMaxSize.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\AttachmentMaxSize\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/AttachmentMaxSize.php
 
@@ -802,16 +537,6 @@ parameters:
 
 		-
 			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailAddress has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailAddress.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailAddress\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailAddress.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailAddress\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailAddress.php
 
@@ -841,22 +566,7 @@ parameters:
 			path: ../../src/Component/Mailer/Types/EmailHtml.php
 
 		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailHtml\\:\\:\\$null is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailHtml.php
-
-		-
 			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailHtml\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailHtml.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailHtml\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailHtml.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailHtml\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailHtml.php
 
@@ -867,16 +577,6 @@ parameters:
 
 		-
 			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailName does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailName.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailName\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailName.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailName\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailName.php
 
@@ -901,22 +601,7 @@ parameters:
 			path: ../../src/Component/Mailer/Types/EmailSubject.php
 
 		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailSubject\\:\\:\\$null is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailSubject.php
-
-		-
 			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailSubject\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailSubject.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailSubject\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailSubject.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailSubject\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailSubject.php
 
@@ -946,22 +631,7 @@ parameters:
 			path: ../../src/Component/Mailer/Types/EmailText.php
 
 		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailText\\:\\:\\$null is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailText.php
-
-		-
 			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailText\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailText.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailText\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailText.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailText\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailText.php
 
@@ -976,16 +646,6 @@ parameters:
 			path: ../../src/Component/Mailer/Types/EmailUserName.php
 
 		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailUserName\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailUserName.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailUserName\\:\\:\\$value is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/Types/EmailUserName.php
-
-		-
 			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email has 12 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/VO/Email.php
@@ -994,96 +654,6 @@ parameters:
 			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email is not final neither abstract, which violates the \"be either final or abstract\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$attachments is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$bcc is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$cc is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$from is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$html is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$replyTo is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$subject is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$tags is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$text is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\:\\:\\$to is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/Email.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\EmailContact\\:\\:\\$emailAddress is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/EmailContact.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\EmailContact\\:\\:\\$emailName is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/EmailContact.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\TemplatedEmail\\:\\:\\$htmlTemplatePath is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/TemplatedEmail.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\TemplatedEmail\\:\\:\\$htmlTemplatePath is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/TemplatedEmail.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\TemplatedEmail\\:\\:\\$templateContextCollection is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/TemplatedEmail.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\TemplatedEmail\\:\\:\\$templateContextCollection is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/TemplatedEmail.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\TemplatedEmail\\:\\:\\$textTemplatePath is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/TemplatedEmail.php
-
-		-
-			message: "#^Property Atournayre\\\\Component\\\\Mailer\\\\VO\\\\TemplatedEmail\\:\\:\\$textTemplatePath is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Component/Mailer/VO/TemplatedEmail.php
 
 		-
 			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\ListInterface\\:\\:asList\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
@@ -1676,11 +1246,6 @@ parameters:
 			path: ../../src/Null/NullEnum.php
 
 		-
-			message: "#^Property Atournayre\\\\Null\\\\NullEnum\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Null/NullEnum.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Null\\\\NullEnum\\:\\:no\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Null/NullEnum.php
@@ -1697,16 +1262,6 @@ parameters:
 
 		-
 			message: "#^Class Atournayre\\\\Primitives\\\\BoolEnum has 9 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/BoolEnum.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\BoolEnum\\:\\:\\$logger is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/BoolEnum.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\BoolEnum\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/BoolEnum.php
 
@@ -2156,16 +1711,6 @@ parameters:
 			path: ../../src/Primitives/Collection/DateTimeCollection.php
 
 		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Collection\\\\DateTimeCollection\\:\\:\\$collection is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Collection/DateTimeCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Collection\\\\DateTimeCollection\\:\\:\\$collection is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Collection/DateTimeCollection.php
-
-		-
 			message: "#^Class Atournayre\\\\Primitives\\\\Collection\\\\FileCollection has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Collection/FileCollection.php
@@ -2197,16 +1742,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\\\FileCollection\\:\\:set\\(\\) has default value null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Collection/FileCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Collection\\\\FileCollection\\:\\:\\$collection is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Collection/FileCollection.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Collection\\\\FileCollection\\:\\:\\$collection is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Collection/FileCollection.php
 
@@ -2701,16 +2236,6 @@ parameters:
 			path: ../../src/Primitives/DateTime.php
 
 		-
-			message: "#^Property Atournayre\\\\Primitives\\\\DateTime\\:\\:\\$datetime is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/DateTime.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\DateTime\\:\\:\\$null is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/DateTime.php
-
-		-
 			message: "#^Property Atournayre\\\\Primitives\\\\DateTime\\:\\:\\$null is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/DateTime.php
@@ -2727,11 +2252,6 @@ parameters:
 
 		-
 			message: "#^Class Atournayre\\\\Primitives\\\\Int_ has 15 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Int_.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Int_\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Int_.php
 
@@ -3461,11 +2981,6 @@ parameters:
 			path: ../../src/Primitives/Locale.php
 
 		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Locale\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Locale.php
-
-		-
 			message: "#^Class Atournayre\\\\Primitives\\\\Numeric does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Numeric.php
@@ -3477,21 +2992,6 @@ parameters:
 
 		-
 			message: "#^Constructor Atournayre\\\\Primitives\\\\Numeric\\:\\:__construct\\(\\) contains code other than property assignments or assertions, which violates the \"code\\-free constructor\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Numeric.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Numeric\\:\\:\\$intValue is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Numeric.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Numeric\\:\\:\\$precision is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Numeric.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Numeric\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Numeric.php
 
@@ -3581,11 +3081,6 @@ parameters:
 			path: ../../src/Primitives/StringType.php
 
 		-
-			message: "#^Property Atournayre\\\\Primitives\\\\StringType\\:\\:\\$value is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/StringType.php
-
-		-
 			message: "#^Class Atournayre\\\\Primitives\\\\Ulid does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Ulid.php
@@ -3606,17 +3101,7 @@ parameters:
 			path: ../../src/Primitives/Ulid.php
 
 		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Ulid\\:\\:\\$ulid is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Ulid.php
-
-		-
 			message: "#^Class Atournayre\\\\Primitives\\\\Uuid does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Uuid.php
-
-		-
-			message: "#^Property Atournayre\\\\Primitives\\\\Uuid\\:\\:\\$uuid is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Uuid.php
 
@@ -3627,36 +3112,6 @@ parameters:
 
 		-
 			message: "#^Class Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem has 21 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Filesystem/Filesystem.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem\\:\\:\\$directoryOrFile is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Filesystem/Filesystem.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem\\:\\:\\$directoryOrFile is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Filesystem/Filesystem.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem\\:\\:\\$finder is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Filesystem/Filesystem.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem\\:\\:\\$finder is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Filesystem/Filesystem.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem\\:\\:\\$symfonyFilesystem is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Filesystem/Filesystem.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Filesystem\\\\Filesystem\\:\\:\\$symfonyFilesystem is not private, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Symfony/Filesystem/Filesystem.php
 
@@ -3706,27 +3161,7 @@ parameters:
 			path: ../../src/Symfony/Mailer/Adapter/TemplatedEmailAdapter.php
 
 		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Mailer\\\\Service\\\\SendMailService\\:\\:\\$mailer is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Mailer/Service/SendMailService.php
-
-		-
 			message: "#^Class Atournayre\\\\Symfony\\\\Response\\\\ResponseService has 8 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Response/ResponseService.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Response\\\\ResponseService\\:\\:\\$logger is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Response/ResponseService.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Response\\\\ResponseService\\:\\:\\$routing is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Response/ResponseService.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Response\\\\ResponseService\\:\\:\\$templating is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Symfony/Response/ResponseService.php
 
@@ -3764,21 +3199,6 @@ parameters:
 			message: "#^The operator new is used in Atournayre\\\\Symfony\\\\Response\\\\ResponseService\\:\\:render\\(\\) for class Symfony\\\\Component\\\\HttpFoundation\\\\Response, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Symfony/Response/ResponseService.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Routing\\\\RoutingService\\:\\:\\$router is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Routing/RoutingService.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Session\\\\FlashBagService\\:\\:\\$symfonyFlashBag is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Session/FlashBagService.php
-
-		-
-			message: "#^Property Atournayre\\\\Symfony\\\\Templating\\\\TwigTemplatingService\\:\\:\\$twigEnvironment is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Symfony/Templating/TwigTemplatingService.php
 
 		-
 			message: "#^Class Atournayre\\\\Symfony\\\\VO\\\\Uri has 10 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
@@ -3827,11 +3247,6 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:getSize\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Wrapper/SplFileInfo.php
-
-		-
-			message: "#^Property Atournayre\\\\Wrapper\\\\SplFileInfo\\:\\:\\$splFileInfo is mutable, which violates object immutability \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Wrapper/SplFileInfo.php
 

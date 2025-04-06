@@ -8,14 +8,11 @@ use Psr\Log\LoggerInterface;
 
 abstract class AbstractLogger implements LoggerInterface
 {
-    protected LoggerInterface $logger;
-
     private ?string $logIdentifier = null;
 
     public function __construct(
-        LoggerInterface $logger,
+        protected LoggerInterface $logger,
     ) {
-        $this->logger = $logger;
     }
 
     /**

@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Atournayre\Null;
 
-final class NullEnum
+final readonly class NullEnum
 {
     private const YES = 'yes';
 
     private const NO = 'no';
 
-    private string $value;
-
-    private function __construct(string $value)
-    {
-        $this->value = $value;
+    private function __construct(
+        private string $value,
+    ) {
     }
 
     /**

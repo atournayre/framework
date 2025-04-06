@@ -7,14 +7,11 @@ namespace Atournayre\Symfony\Routing;
 use Atournayre\Contracts\Routing\RoutingInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-final class RoutingService implements RoutingInterface
+final readonly class RoutingService implements RoutingInterface
 {
-    private RouterInterface $router;
-
     public function __construct(
-        RouterInterface $router,
+        private RouterInterface $router,
     ) {
-        $this->router = $router;
     }
 
     /**
