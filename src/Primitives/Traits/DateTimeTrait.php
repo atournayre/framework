@@ -48,11 +48,11 @@ trait DateTimeTrait
                 $fromInterface = Carbon::parse($datetime->toDateTime())
                     ->setTimezone($timezone ?? $datetime->toDateTime()->getTimezone())
                 ;
-            } catch (\Exception $exception) {
-                InvalidArgumentException::fromThrowable($exception)->throw();
-            }
 
-            return new self($fromInterface);
+                return new self($fromInterface);
+            } catch (\Exception $exception) {
+                throw InvalidArgumentException::fromThrowable($exception);
+            }
         }
 
         if ($datetime instanceof \DateTimeInterface) {
@@ -60,11 +60,11 @@ trait DateTimeTrait
                 $newDateTime = Carbon::parse($datetime)
                     ->setTimezone($timezone)
                 ;
-            } catch (\Exception $exception) {
-                InvalidArgumentException::fromThrowable($exception)->throw();
-            }
 
-            return new self($newDateTime);
+                return new self($newDateTime);
+            } catch (\Exception $exception) {
+                throw InvalidArgumentException::fromThrowable($exception);
+            }
         }
 
         if (is_int($datetime)) {
@@ -72,20 +72,20 @@ trait DateTimeTrait
                 $newDateTime = Carbon::createFromTimestamp($datetime)
                     ->setTimezone($timezone)
                 ;
-            } catch (\Exception $exception) {
-                InvalidArgumentException::fromThrowable($exception)->throw();
-            }
 
-            return new self($newDateTime);
+                return new self($newDateTime);
+            } catch (\Exception $exception) {
+                throw InvalidArgumentException::fromThrowable($exception);
+            }
         }
 
         try {
             $datetimeObject = Carbon::parse($datetime, $timezone);
-        } catch (\Exception $exception) {
-            InvalidArgumentException::fromThrowable($exception)->throw();
-        }
 
-        return new self($datetimeObject);
+            return new self($datetimeObject);
+        } catch (\Exception $exception) {
+            throw InvalidArgumentException::fromThrowable($exception);
+        }
     }
 
     /**
