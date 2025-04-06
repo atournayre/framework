@@ -13,13 +13,13 @@ use Atournayre\Contracts\Security\UserInterface;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\DateTime;
 
-final readonly class Context implements ContextInterface, LoggableInterface
+final class Context implements ContextInterface, LoggableInterface
 {
     use NullTrait;
 
     private function __construct(
-        private UserInterface $user,
-        private DateTimeInterface $createdAt,
+        private readonly UserInterface $user,
+        private readonly DateTimeInterface $createdAt,
     ) {
     }
 
