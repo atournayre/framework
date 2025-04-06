@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Numeric;
 use Atournayre\Primitives\Traits\Collection\CollectionAsListTrait;
@@ -28,6 +29,8 @@ trait NumericCollectionTrait
 
     /**
      * @param mixed $numeric the numeric value to add
+     *
+     * @throws ThrowableInterface
      */
     public function add($numeric): self
     {
@@ -43,6 +46,9 @@ trait NumericCollectionTrait
         return self::asList($values, $this->precision);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function sum(): Numeric
     {
         if ($this->hasNoElement()->isTrue()) {
@@ -64,7 +70,7 @@ trait NumericCollectionTrait
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function avg(): Numeric
     {
@@ -89,7 +95,7 @@ trait NumericCollectionTrait
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function max(): Numeric
     {
@@ -114,7 +120,7 @@ trait NumericCollectionTrait
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function min(): Numeric
     {
@@ -138,6 +144,9 @@ trait NumericCollectionTrait
         return Numeric::of($minValue, $this->precision);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     private function _validateCollection(): void
     {
         $every = $this->collection

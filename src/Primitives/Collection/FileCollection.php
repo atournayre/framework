@@ -8,6 +8,7 @@ use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Memory;
 use Atournayre\Contracts\Collection\ListInterface;
 use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
@@ -17,6 +18,9 @@ final class FileCollection implements LoggableInterface, ListInterface, MapInter
 {
     use CollectionTrait;
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function asList(array $collection): self
     {
         Assert::isListOf($collection, SplFileInfo::class);
@@ -24,6 +28,9 @@ final class FileCollection implements LoggableInterface, ListInterface, MapInter
         return new self(Collection::of($collection));
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function asMap(array $collection): self
     {
         Assert::isMapOf($collection, SplFileInfo::class);
@@ -32,6 +39,8 @@ final class FileCollection implements LoggableInterface, ListInterface, MapInter
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function filterByExtension(string $extension): self
@@ -46,6 +55,8 @@ final class FileCollection implements LoggableInterface, ListInterface, MapInter
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function filterBySize(int $size): self
@@ -60,6 +71,8 @@ final class FileCollection implements LoggableInterface, ListInterface, MapInter
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function filterByContent(string $content): FileCollection

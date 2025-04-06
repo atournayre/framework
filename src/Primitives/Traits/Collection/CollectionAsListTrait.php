@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits\Collection;
 
 use Atournayre\Contracts\Collection\CollectionValidationInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 
 trait CollectionAsListTrait
 {
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public static function asList(array $collection, int $precision): self
     {

@@ -12,6 +12,7 @@ use Atournayre\Component\Mailer\Types\EmailName;
 use Atournayre\Component\Mailer\Types\EmailSubject;
 use Atournayre\Component\Mailer\VO\EmailContact;
 use Atournayre\Component\Mailer\VO\TemplatedEmail;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use PHPUnit\Framework\TestCase;
 
 final class TemplatedEmailTest extends TestCase
@@ -19,7 +20,7 @@ final class TemplatedEmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\TemplatedEmail::htmlTemplatePath
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testHtmlTemplatePath(): void
     {
@@ -39,7 +40,7 @@ final class TemplatedEmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\TemplatedEmail::textTemplatePath
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testTextTemplatePath(): void
     {
@@ -59,7 +60,7 @@ final class TemplatedEmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\TemplatedEmail::templateContextCollection
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testTemplateContextCollection(): void
     {
@@ -86,7 +87,7 @@ final class TemplatedEmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\TemplatedEmail::validate
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testValidateWithHtmlTemplatePath(): void
     {
@@ -106,7 +107,7 @@ final class TemplatedEmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\TemplatedEmail::validate
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testValidateWithTextTemplatePath(): void
     {
@@ -126,7 +127,7 @@ final class TemplatedEmailTest extends TestCase
     /**
      * @covers \Atournayre\Component\Mailer\VO\TemplatedEmail::validate
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testValidateWithoutTemplate(): void
     {

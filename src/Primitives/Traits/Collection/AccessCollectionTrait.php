@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
@@ -61,6 +62,7 @@ trait AccessCollectionTrait
      * Calls the given method on all items.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
@@ -78,15 +80,19 @@ trait AccessCollectionTrait
      *
      * @return mixed First matching value, passed default value or an exception
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function find(\Closure $callback, $default = null, bool $reverse = false)
     {
-        return $this->collection
-            ->find($callback, $default, $reverse)
-        ;
+        try {
+            return $this->collection
+                ->find($callback, $default, $reverse)
+            ;
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     /**
@@ -96,13 +102,17 @@ trait AccessCollectionTrait
      *
      * @return mixed|null
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function first($default = null)
     {
-        return $this->collection->first($default);
+        try {
+            return $this->collection->first($default);
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     /**
@@ -110,13 +120,17 @@ trait AccessCollectionTrait
      *
      * @return mixed First key of map or NULL if empty
      *
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function firstKey()
     {
-        return $this->collection
-            ->firstKey()
-        ;
+        try {
+            return $this->collection->firstKey();
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     /**
@@ -127,15 +141,19 @@ trait AccessCollectionTrait
      *
      * @return mixed Value from map or default value
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function get($key, $default = null)
     {
-        return $this->collection
-            ->get($key, $default)
-        ;
+        try {
+            return $this->collection
+                ->get($key, $default)
+            ;
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     /**
@@ -157,9 +175,10 @@ trait AccessCollectionTrait
     /**
      * Returns an element by key and casts it to integer.
      *
-     * @param int|string $key     Key or path to the requested item
-     * @param mixed      $default Default value if key isn't found (will be casted to integer)
+     * @param int|string $key Key or path to the requested item
+     * @param mixed $default Default value if key isn't found (will be casted to integer)
      *
+     * @throws ThrowableInterface
      * @api
      */
     public function int($key, $default = 0): Int_
@@ -177,6 +196,8 @@ trait AccessCollectionTrait
      * @param int|string $key     Key or path to the requested item
      * @param mixed      $default Default value if key isn't found (will be casted to float)
      *
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function float($key, $default = 0.0): Numeric
@@ -185,7 +206,11 @@ trait AccessCollectionTrait
             ->float($key, $default)
         ;
 
-        return Numeric::fromFloat($float);
+        try {
+            return Numeric::fromFloat($float);
+        } catch (\Exception|ThrowableInterface $e) {
+            throw InvalidArgumentException::fromThrowable($e);
+        }
     }
 
     /**
@@ -210,15 +235,19 @@ trait AccessCollectionTrait
      *
      * @return mixed|null
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function last($default = null)
     {
-        return $this->collection
-            ->last($default)
-        ;
+        try {
+            return $this->collection
+                ->last($default)
+            ;
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     /**
@@ -226,13 +255,19 @@ trait AccessCollectionTrait
      *
      * @return mixed Last key of map or NULL if empty
      *
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function lastKey()
     {
-        return $this->collection
-            ->lastKey()
-        ;
+        try {
+            return $this->collection
+                ->lastKey()
+            ;
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     /**

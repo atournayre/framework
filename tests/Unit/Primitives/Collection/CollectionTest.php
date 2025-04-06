@@ -690,7 +690,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testFind(): void
     {
@@ -704,7 +704,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testFindLast(): void
     {
@@ -718,7 +718,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testFindDefault(): void
     {
@@ -1124,7 +1124,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testImplements(): void
     {
@@ -1132,7 +1132,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testImplementsException(): void
     {
@@ -1141,7 +1141,7 @@ Array
     }
 
     /**
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function testImplementsCustomException(): void
     {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Component\Mailer\Types;
 
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Null\NullableInterface;
 use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\StringType;
@@ -16,6 +17,8 @@ final class EmailSubject implements NullableInterface
     use StringTypeTrait;
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public static function of(string $value): self

@@ -8,6 +8,7 @@ use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Collection\CollectionValidationInterface;
 use Atournayre\Contracts\Collection\NumericListInterface;
 use Atournayre\Contracts\Collection\NumericMapInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\NumericCollectionTrait;
 use Atournayre\Tests\Fixtures\Price;
@@ -17,7 +18,7 @@ final class PriceCollection implements NumericListInterface, NumericMapInterface
     use NumericCollectionTrait;
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function validateCollection(): void
     {

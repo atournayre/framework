@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Primitives;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Locale;
 use Atournayre\Primitives\Numeric;
 use PHPUnit\Framework\TestCase;
@@ -131,7 +132,7 @@ final class NumericTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testBetween(): void
     {
@@ -141,7 +142,7 @@ final class NumericTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testBetweenWithInvertedBounds(): void
     {
@@ -150,7 +151,7 @@ final class NumericTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testBetweenOrEqual(): void
     {
@@ -160,7 +161,7 @@ final class NumericTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testBetweenOrEqualWithInvertedBounds(): void
     {

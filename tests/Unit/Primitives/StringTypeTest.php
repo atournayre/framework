@@ -339,7 +339,7 @@ final class StringTypeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testLengthBetweenReturnsTrueWhenLengthIsBetweenBounds(): void
     {
@@ -349,7 +349,7 @@ final class StringTypeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testLengthBetweenThrowExceptionWhenLengthIsBetweenBounds(): void
     {
@@ -361,7 +361,7 @@ final class StringTypeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testLengthBetweenThrowExceptionWhenLengthIsNotBetweenBounds(): void
     {
@@ -373,7 +373,7 @@ final class StringTypeTest extends TestCase
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public function testLengthBetweenReturnsFalseWhenLengthIsNotBetweenBounds(): void
     {

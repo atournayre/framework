@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Locale;
 use Atournayre\Primitives\Numeric;
@@ -17,6 +18,9 @@ trait NumericTrait
         $this->value = $value;
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function of(string $value): self
     {
         return new self(Numeric::of($value));
@@ -47,9 +51,9 @@ trait NumericTrait
     }
 
     /**
-     * @api
+     * @throws ThrowableInterface
      *
-     * @throws \RuntimeException
+     * @api
      */
     public function format(Locale $locale): string
     {
@@ -57,6 +61,8 @@ trait NumericTrait
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function round(int $mode = PHP_ROUND_HALF_UP): self
@@ -65,9 +71,11 @@ trait NumericTrait
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function greaterThan($numeric): BoolEnum
     {
@@ -75,9 +83,11 @@ trait NumericTrait
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function greaterThanOrEqual($numeric): BoolEnum
     {
@@ -85,9 +95,11 @@ trait NumericTrait
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function lessThan($numeric): BoolEnum
     {
@@ -95,9 +107,11 @@ trait NumericTrait
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function lessThanOrEqual($numeric): BoolEnum
     {
@@ -105,9 +119,11 @@ trait NumericTrait
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function equalTo($numeric): BoolEnum
     {
@@ -115,9 +131,11 @@ trait NumericTrait
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $numeric
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function notEqualTo($numeric): BoolEnum
     {
@@ -125,12 +143,12 @@ trait NumericTrait
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $min
      * @param int|Numeric $max
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function between($min, $max): BoolEnum
     {
@@ -138,18 +156,21 @@ trait NumericTrait
     }
 
     /**
-     * @api
-     *
      * @param int|Numeric $min
      * @param int|Numeric $max
      *
-     * @throws \Exception
+     * @throws ThrowableInterface
+     *
+     * @api
      */
     public function betweenOrEqual($min, $max): BoolEnum
     {
         return $this->value->betweenOrEqual($min, $max);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function fromInt(int $value, int $precision): self
     {
         $numeric = Numeric::fromInt($value, $precision);
@@ -157,6 +178,9 @@ trait NumericTrait
         return new self($numeric);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public static function fromFloat(float $value): self
     {
         $numeric = Numeric::fromFloat($value);
@@ -165,6 +189,8 @@ trait NumericTrait
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function isZero(): BoolEnum
@@ -173,6 +199,8 @@ trait NumericTrait
     }
 
     /**
+     * @throws ThrowableInterface
+     *
      * @api
      */
     public function abs(): self

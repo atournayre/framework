@@ -7,6 +7,7 @@ namespace Atournayre\Symfony\Mailer\Adapter;
 use Atournayre\Component\Mailer\Collection\EmailContactCollection;
 use Atournayre\Component\Mailer\VO\Email;
 use Atournayre\Component\Mailer\VO\EmailContact;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
@@ -15,8 +16,7 @@ class EmailAdapter
     /**
      * @api
      *
-     * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public static function fromMessage(Email $email): SymfonyEmail
     {

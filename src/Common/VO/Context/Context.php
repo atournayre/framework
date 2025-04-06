@@ -7,6 +7,7 @@ namespace Atournayre\Common\VO\Context;
 use Atournayre\Common\Model\DefaultUser;
 use Atournayre\Contracts\Context\ContextInterface;
 use Atournayre\Contracts\DateTime\DateTimeInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Contracts\Security\UserInterface;
 use Atournayre\Null\NullTrait;
@@ -36,7 +37,7 @@ final class Context implements ContextInterface, LoggableInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws ThrowableInterface
      */
     public static function create(UserInterface $user, \DateTimeInterface $createdAt): self
     {

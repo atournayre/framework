@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Common\Exception\UnexpectedValueException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
@@ -152,6 +154,7 @@ trait TestCollectionTrait
      * Executes callbacks if the map is empty.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
@@ -273,17 +276,21 @@ trait TestCollectionTrait
      *
      * @param \Throwable|bool|string $throw Passing TRUE or an exception name will throw the exception instead of returning FALSE
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      *
      * @api
      */
     public function implements(string $interface, $throw = false): BoolEnum
     {
-        $implements = $this->collection
-            ->implements($interface, $throw)
-        ;
+        try {
+            $implements = $this->collection
+                ->implements($interface, $throw)
+            ;
 
-        return BoolEnum::fromBool($implements);
+            return BoolEnum::fromBool($implements);
+        } catch (\Throwable $throwable) {
+            throw UnexpectedValueException::fromThrowable($throwable);
+        }
     }
 
     /**

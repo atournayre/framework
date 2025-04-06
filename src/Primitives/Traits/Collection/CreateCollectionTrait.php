@@ -48,6 +48,7 @@ trait CreateCollectionTrait
      * Creates a new map from passed elements.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented
@@ -60,6 +61,7 @@ trait CreateCollectionTrait
      * Creates a new map from a JSON string.
      *
      * @throws ThrowableInterface
+     *
      * @api
      */
     // @phpstan-ignore-next-line Remove this line when the method is implemented

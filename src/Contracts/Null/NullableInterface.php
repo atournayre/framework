@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Null;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+
 interface NullableInterface
 {
     public function toNullable(): self;
@@ -21,7 +23,7 @@ interface NullableInterface
      *
      * @return $this
      *
-     * @throws \Throwable
+     * @throws ThrowableInterface
      */
     public function orThrow($throwable): self;
 }

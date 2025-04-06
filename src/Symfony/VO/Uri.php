@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Symfony\VO;
 
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Uri\UriInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -86,13 +88,20 @@ final readonly class Uri implements UriInterface
         return $this->generateUri()->fragment();
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withScheme(string $scheme): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withScheme($scheme);
+        try {
+            return self::new(
+                $this->urlGenerator,
+                $this->route,
+                $this->params,
+            )->withScheme($scheme);
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     public function withUserInfo(string $user): UriInterface
@@ -113,22 +122,36 @@ final readonly class Uri implements UriInterface
         )->withUserAndPassword($user, $password);
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withHost(string $host): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withHost($host);
+        try {
+            return self::new(
+                $this->urlGenerator,
+                $this->route,
+                $this->params,
+            )->withHost($host);
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withPort(int $port): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withPort($port);
+        try {
+            return self::new(
+                $this->urlGenerator,
+                $this->route,
+                $this->params,
+            )->withPort($port);
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     public function withoutPort(): UriInterface
@@ -142,20 +165,31 @@ final readonly class Uri implements UriInterface
 
     public function withPath(string $path): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withPath($path);
+        try {
+            return self::new(
+                $this->urlGenerator,
+                $this->route,
+                $this->params,
+            )->withPath($path);
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
+    /**
+     * @throws ThrowableInterface
+     */
     public function withQuery(string $query): UriInterface
     {
-        return self::new(
-            $this->urlGenerator,
-            $this->route,
-            $this->params,
-        )->withQuery($query);
+        try {
+            return self::new(
+                $this->urlGenerator,
+                $this->route,
+                $this->params,
+            )->withQuery($query);
+        } catch (\Throwable $throwable) {
+            throw RuntimeException::fromThrowable($throwable);
+        }
     }
 
     public function withFragment(string $fragment): UriInterface
