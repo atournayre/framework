@@ -2991,11 +2991,6 @@ parameters:
 			path: ../../src/Primitives/Numeric.php
 
 		-
-			message: "#^Constructor Atournayre\\\\Primitives\\\\Numeric\\:\\:__construct\\(\\) contains code other than property assignments or assertions, which violates the \"code\\-free constructor\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/Numeric.php
-
-		-
 			message: "#^The operator new is used in Atournayre\\\\Primitives\\\\Numeric\\:\\:abs\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Primitives/Numeric.php
@@ -3534,11 +3529,6 @@ parameters:
 			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\PriceCollection\\:\\:set\\(\\) has default value null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../tests/Fixtures/Collection/PriceCollection.php
-
-		-
-			message: "#^Constructor Atournayre\\\\Tests\\\\Fixtures\\\\Title\\:\\:__construct\\(\\) contains code other than property assignments or assertions, which violates the \"code\\-free constructor\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../tests/Fixtures/Title.php
 
 		-
 			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Title\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
