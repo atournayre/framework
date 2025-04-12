@@ -7,16 +7,16 @@ namespace Atournayre\Contracts\Collection;
 use Atournayre\Primitives\Numeric;
 
 /**
- * Interface SumCollectionInterface
+ * Interface SumCollectionInterface.
  */
 interface SumCollectionInterface
 {
     /**
- * Returns the sum of all values in the map.
- *
- * @throws ThrowableInterface
- *
- * @api
- */
-public function sum(?string $key = null) : Numeric;
+     * Returns the sum of all values in the map.
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
+     */
+    public function sum(?string $key = null): Numeric;
 }
