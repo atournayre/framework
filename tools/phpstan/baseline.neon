@@ -3381,26 +3381,6 @@ parameters:
 			path: ../../tests/Fixtures/Birthday.php
 
 		-
-			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:add\\(\\) accepts null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../tests/Fixtures/Collection/CodeCollection.php
-
-		-
-			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:add\\(\\) has default value null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../tests/Fixtures/Collection/CodeCollection.php
-
-		-
-			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:first\\(\\) has default value null for parameter \\$default, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../tests/Fixtures/Collection/CodeCollection.php
-
-		-
-			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:last\\(\\) has default value null for parameter \\$default, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../tests/Fixtures/Collection/CodeCollection.php
-
-		-
 			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:set\\(\\) accepts null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../tests/Fixtures/Collection/CodeCollection.php
