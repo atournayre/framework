@@ -27,7 +27,11 @@ trait UnionCollectionTrait
     public function union($elements): self
     {
         $this->ensureMutable('union');
-        $elements = $this->convertElementsToArray($elements);
+
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $union = $this->collection->union($elements);
 
         return self::of($union);

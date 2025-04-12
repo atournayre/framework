@@ -23,7 +23,10 @@ trait IntersectCollectionTrait
      */
     public function intersect($elements, ?callable $callback = null): self
     {
-        $elements = $this->convertElementsToArray($elements);
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $intersect = $this->collection->intersect($elements, $callback);
 
         return self::of($intersect);

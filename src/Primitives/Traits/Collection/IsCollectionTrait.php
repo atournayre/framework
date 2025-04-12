@@ -25,7 +25,10 @@ trait IsCollectionTrait
      */
     public function is($list, bool $strict = false): BoolEnum
     {
-        $list = $this->convertElementsToArray($list);
+        if ($list instanceof self) {
+            $list = $list->toArray();
+        }
+
         $is = $this->collection->is($list, $strict);
 
         return BoolEnum::fromBool($is);

@@ -27,7 +27,11 @@ trait MergeCollectionTrait
     public function merge($elements, bool $recursive = false): self
     {
         $this->ensureMutable('merge');
-        $elements = $this->convertElementsToArray($elements);
+
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $merge = $this->collection->merge($elements, $recursive);
 
         return self::of($merge);

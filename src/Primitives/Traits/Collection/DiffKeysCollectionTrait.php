@@ -24,7 +24,10 @@ trait DiffKeysCollectionTrait
      */
     public function diffKeys($elements, ?callable $callback = null): self
     {
-        $elements = $this->convertElementsToArray($elements);
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $diffKeys = $this->collection->diffKeys($elements, $callback);
 
         return self::of($diffKeys);

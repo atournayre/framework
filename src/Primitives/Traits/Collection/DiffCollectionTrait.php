@@ -24,7 +24,10 @@ trait DiffCollectionTrait
      */
     public function diff($elements, ?callable $callback = null): self
     {
-        $elements = $this->convertElementsToArray($elements);
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $diff = $this->collection->diff($elements, $callback);
 
         return self::of($diff);

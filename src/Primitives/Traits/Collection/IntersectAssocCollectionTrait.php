@@ -23,7 +23,10 @@ trait IntersectAssocCollectionTrait
      */
     public function intersectAssoc($elements, ?callable $callback = null): self
     {
-        $elements = $this->convertElementsToArray($elements);
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $intersectAssoc = $this->collection->intersectAssoc($elements, $callback);
 
         return self::of($intersectAssoc);

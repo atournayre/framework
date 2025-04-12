@@ -24,7 +24,10 @@ trait DiffAssocCollectionTrait
      */
     public function diffAssoc($elements, ?callable $callback = null): self
     {
-        $elements = $this->convertElementsToArray($elements);
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $diffAssoc = $this->collection->diffAssoc($elements, $callback);
 
         return self::of($diffAssoc);

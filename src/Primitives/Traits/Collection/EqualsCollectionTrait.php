@@ -24,7 +24,10 @@ trait EqualsCollectionTrait
      */
     public function equals($elements): BoolEnum
     {
-        $elements = $this->convertElementsToArray($elements);
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $equals = $this->collection->equals($elements);
 
         return BoolEnum::fromBool($equals);

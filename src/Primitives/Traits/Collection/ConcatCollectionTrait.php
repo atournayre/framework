@@ -27,7 +27,11 @@ trait ConcatCollectionTrait
     public function concat($elements): self
     {
         $this->ensureMutable('concat');
-        $elements = $this->convertElementsToArray($elements);
+
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $concat = $this->collection->concat($elements);
 
         return self::of($concat);

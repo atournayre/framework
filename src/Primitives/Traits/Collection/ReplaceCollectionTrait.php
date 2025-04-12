@@ -24,7 +24,10 @@ trait ReplaceCollectionTrait
      */
     public function replace($elements, bool $recursive = true): self
     {
-        $elements = $this->convertElementsToArray($elements);
+        if ($elements instanceof self) {
+            $elements = $elements->toArray();
+        }
+
         $replace = $this->collection->replace($elements, $recursive);
 
         return self::of($replace);
