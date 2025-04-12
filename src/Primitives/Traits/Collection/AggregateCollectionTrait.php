@@ -4,15 +4,18 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
-use Atournayre\Primitives\Traits\Collection\Aggregate\AvgAggregateCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\Aggregate\MaxAggregateCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\Aggregate\MinAggregateCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\Aggregate\SumAggregateCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\AvgCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\MaxCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\MinCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\SumCollectionTrait;
 
+/**
+ * Trait AggregateCollectionTrait
+ */
 trait AggregateCollectionTrait
 {
-    use AvgAggregateCollectionTrait;
-    use MaxAggregateCollectionTrait;
-    use MinAggregateCollectionTrait;
-    use SumAggregateCollectionTrait;
+    use AvgCollectionTrait;
+    use MaxCollectionTrait;
+    use MinCollectionTrait;
+    use SumCollectionTrait;
 }
