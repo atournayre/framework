@@ -14,7 +14,7 @@ use Atournayre\Primitives\Traits\Collection\CountableCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\CreateCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\DebugCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\MiscCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\OrderingCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\OrderCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\ShortenCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\TestCollectionTrait;
 use Atournayre\Primitives\Traits\Collection\TransformCollectionTrait;
@@ -28,7 +28,7 @@ final class Collection
     use CreateCollectionTrait;
     use DebugCollectionTrait;
     use MiscCollectionTrait;
-    use OrderingCollectionTrait;
+    use OrderCollectionTrait;
     use ShortenCollectionTrait;
     use TestCollectionTrait;
     use TransformCollectionTrait;
