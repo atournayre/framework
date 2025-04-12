@@ -28,30 +28,6 @@ class StaticCollectionTest extends TestCase
         self::assertSame(['value1', 'value2'], $staticCollection);
     }
 
-    public function testOffsetUnsetThrowsException(): void
-    {
-        $this->expectException(\BadMethodCallException::class);
-        $this->expectExceptionMessage('Static collections cannot be modified.');
-        $collection = CodeCollection::asList();
-        $collection->offsetUnset(0);
-    }
-
-    public function testStaticCollectionAddThrowsException(): void
-    {
-        $this->expectException(\BadMethodCallException::class);
-        $this->expectExceptionMessage('Static collections cannot be modified.');
-        $collection = CodeCollection::asList();
-        $collection->add('foo');
-    }
-
-    public function testStaticCollectionSetThrowsException(): void
-    {
-        $this->expectException(\BadMethodCallException::class);
-        $this->expectExceptionMessage('Static collections cannot be modified.');
-        $collection = CodeCollection::asList();
-        $collection->set(0, 'foo');
-    }
-
     public function testJoin(): void
     {
         $staticCollection = CodeCollection::asList();

@@ -5,14 +5,26 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Fixtures\Collection;
 
 use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Contracts\Collection\MapCollectionInterface;
 use Atournayre\Contracts\Collection\MapInterface;
-use Atournayre\Primitives\Collection;
+use Atournayre\Contracts\Collection\MergeCollectionInterface;
+use Atournayre\Contracts\Collection\SetCollectionInterface;
+use Atournayre\Contracts\Collection\ToArrayCollectionInterface;
+use Atournayre\Primitives\AbstractCollection;
 use Atournayre\Primitives\StringType;
-use Atournayre\Primitives\Traits\StaticCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\JoinCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\MapCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\MergeCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\SetCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\ToArrayCollectionTrait;
 
-final class CodeCollection implements MapInterface, ListInterface
+final class CodeCollection extends AbstractCollection implements MapInterface, ListInterface, MergeCollectionInterface, SetCollectionInterface, MapCollectionInterface, ToArrayCollectionInterface
 {
-    use StaticCollectionTrait;
+    use SetCollectionTrait;
+    use MergeCollectionTrait;
+    use MapCollectionTrait;
+    use ToArrayCollectionTrait;
+    use JoinCollectionTrait;
 
     public static function asMap(array $collection = []): self
     {
@@ -21,7 +33,7 @@ final class CodeCollection implements MapInterface, ListInterface
             'key2' => StringType::of('value2'),
         ];
 
-        return new self(Collection::of($collection));
+        return self::of($collection);
     }
 
     public static function asList(array $collection = []): self
@@ -31,16 +43,6 @@ final class CodeCollection implements MapInterface, ListInterface
             StringType::of('value2'),
         ];
 
-        return new self(Collection::of($collection));
-    }
-
-    /**
-     * @api
-     */
-    public function join(string $glue = ''): string
-    {
-        return $this->collection
-            ->join($glue)
-        ;
+        return self::of($collection);
     }
 }
