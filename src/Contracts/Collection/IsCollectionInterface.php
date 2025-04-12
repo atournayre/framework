@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Contracts\Collection;
 
 use Atournayre\Primitives\BoolEnum;
+use Atournayre\Primitives\Collection;
 
 /**
  * Interface IsCollectionInterface.

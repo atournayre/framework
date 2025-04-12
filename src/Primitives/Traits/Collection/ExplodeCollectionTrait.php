@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Aimeos\Map as AimeosMap;
 use Atournayre\Contracts\Collection\ExplodeCollectionInterface;
 
 /**

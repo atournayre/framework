@@ -119,6 +119,7 @@ services:
       arguments:
           excludedPaths:
             - %currentWorkingDirectory%/src/Common/Assert/Assert.php
+            - %currentWorkingDirectory%/src/Contracts/Collection # Remove when methods no longer accept null arguments
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertAllInterface.php
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertMiscInterface.php
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertNullInterface.php
