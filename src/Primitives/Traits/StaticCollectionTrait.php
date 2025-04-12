@@ -8,6 +8,9 @@ use Atournayre\Common\Exception\BadMethodCallException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 
+/**
+ * @deprecated Use Collection::readOnly())
+ */
 trait StaticCollectionTrait
 {
     use CollectionCommonTrait;
