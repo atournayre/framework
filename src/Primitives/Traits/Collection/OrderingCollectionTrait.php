@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
-trait OrderCollectionTrait
+trait OrderingCollectionTrait
 {
     /**
      * Reverse sort elements preserving keys.
