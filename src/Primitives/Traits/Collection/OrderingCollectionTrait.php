@@ -7,13 +7,13 @@ namespace Atournayre\Primitives\Traits\Collection;
 /**
  * Trait OrderCollectionTrait.
  */
-trait OrderCollectionTrait
+trait OrderingCollectionTrait
 {
     use ArsortCollectionTrait;
     use AsortCollectionTrait;
     use KrsortCollectionTrait;
     use KsortCollectionTrait;
-    use OrderCollectionTrait;
+    use OrderingCollectionTrait;
     use ReverseCollectionTrait;
     use RsortCollectionTrait;
     use ShuffleCollectionTrait;
