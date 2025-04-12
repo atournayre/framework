@@ -12,6 +12,11 @@ return RectorConfig::configure()
     ])
     ->withConfiguredRule(RenameMethodRector::class, [
         new MethodCallRename(
+            'Atournayre\Contracts\Security\SecurityInterface',
+            'getUser',
+            'user'
+        ),
+        new MethodCallRename(
             'Atournayre\Wrapper\SplFileInfo',
             'getRelativePath',
             'relativePath'
