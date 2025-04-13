@@ -11,9 +11,7 @@ interface AsMapInterface
     /**
      * @param array<string, mixed> $collection
      *
-     * @return static
-     *
      * @throws ThrowableInterface
      */
-    public static function asMap(array $collection);
+    public static function asMap(array $collection): self;
 }

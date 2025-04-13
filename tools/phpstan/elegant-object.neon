@@ -13,6 +13,7 @@ services:
           excludedPaths:
               - %currentWorkingDirectory%/src/PHPStan
               - %currentWorkingDirectory%/src/Primitives/Collection.php
+              - %currentWorkingDirectory%/src/Rector
               - '%currentWorkingDirectory%/tests'
       tags:
         - phpstan.rules.rule
@@ -30,6 +31,7 @@ services:
       class: Atournayre\PHPStan\ElegantObject\Rules\BeImmutableRule
       arguments:
         excludedPaths:
+            - %currentWorkingDirectory%/src/Rector
             - %currentWorkingDirectory%/tests/Fixtures
       tags:
         - phpstan.rules.rule
@@ -85,12 +87,16 @@ services:
       arguments:
         excludedPaths:
             - %currentWorkingDirectory%/src/PHPStan
+            - %currentWorkingDirectory%/src/Rector
             - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule
 
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverUsePublicConstantsRule
+      arguments:
+          excludedPaths:
+              - %currentWorkingDirectory%/src/Rector
       tags:
         - phpstan.rules.rule
 

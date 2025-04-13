@@ -19,21 +19,25 @@ use Webmozart\Assert\Assert;
 final class ReplaceTraitUseByAliasNameRector extends AbstractRector implements ConfigurableRectorInterface
 {
     /**
+     * @api
      * @var string
      */
     public const OLD_TRAIT_NAME = 'old_trait_name';
 
     /**
+     * @api
      * @var string
      */
     public const NEW_TRAIT_NAME = 'new_trait_name';
 
     /**
+     * @api
      * @var string
      */
     public const NEW_ALIAS_NAME = 'new_alias_name';
 
     /**
+     * @api
      * @var string
      */
     public const SHORT_NAME_TO_REPLACE = 'short_name_to_replace';
@@ -108,7 +112,7 @@ CODE_SAMPLE
     public function refactor(Node $node): ?Node
     {
         // Skip if configuration is not provided
-        if (empty($this->configuration)) {
+        if ($this->configuration === []) {
             return null;
         }
 
@@ -120,11 +124,7 @@ CODE_SAMPLE
             return $this->refactorTraitUse($node);
         }
 
-        if ($node instanceof StaticCall) {
-            return $this->refactorStaticCall($node);
-        }
-
-        return null;
+        return $this->refactorStaticCall($node);
     }
 
     /**

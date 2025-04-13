@@ -4,28 +4,28 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Fixtures\Collection;
 
-use Atournayre\Contracts\Collection\ListInterface;
-use Atournayre\Contracts\Collection\MapCollectionInterface;
+use Atournayre\Contracts\Collection\AsListInterface;
 use Atournayre\Contracts\Collection\MapInterface;
-use Atournayre\Contracts\Collection\MergeCollectionInterface;
-use Atournayre\Contracts\Collection\SetCollectionInterface;
-use Atournayre\Contracts\Collection\ToArrayCollectionInterface;
+use Atournayre\Contracts\Collection\AsMapInterface;
+use Atournayre\Contracts\Collection\MergeInterface;
+use Atournayre\Contracts\Collection\SetInterface;
+use Atournayre\Contracts\Collection\ToArrayInterface;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\Traits\Collection;
-use Atournayre\Primitives\Traits\Collection\JoinCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\MapCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\MergeCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\SetCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\ToArrayCollectionTrait;
+use Atournayre\Primitives\Traits\Collection\Join;
+use Atournayre\Primitives\Traits\Collection\Map;
+use Atournayre\Primitives\Traits\Collection\Merge;
+use Atournayre\Primitives\Traits\Collection\Set;
+use Atournayre\Primitives\Traits\Collection\ToArray;
 
-final class CodeCollection implements MapInterface, ListInterface, MergeCollectionInterface, SetCollectionInterface, MapCollectionInterface, ToArrayCollectionInterface
+final class CodeCollection implements AsMapInterface, AsListInterface, MergeInterface, SetInterface, MapInterface, ToArrayInterface
 {
     use Collection;
-    use SetCollectionTrait;
-    use MergeCollectionTrait;
-    use MapCollectionTrait;
-    use ToArrayCollectionTrait;
-    use JoinCollectionTrait;
+    use Set;
+    use Merge;
+    use Map;
+    use ToArray;
+    use Join;
 
     /**
      * @param array<int|string,mixed> $collection

@@ -616,16 +616,6 @@ parameters:
 			path: ../../src/Component/Mailer/VO/Email.php
 
 		-
-			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\ListInterface\\:\\:asList\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
-			count: 1
-			path: ../../src/Contracts/Collection/ListInterface.php
-
-		-
-			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\MapInterface\\:\\:asMap\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
-			count: 1
-			path: ../../src/Contracts/Collection/MapInterface.php
-
-		-
 			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\NumericListInterface\\:\\:asList\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
 			count: 1
 			path: ../../src/Contracts/Collection/NumericListInterface.php

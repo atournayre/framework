@@ -19,6 +19,8 @@ parameters:
         methods: true
         properties: true
         constants: true
+    excludePaths:
+        - ../../src/Rector/Rules/ReplaceTraitUseByAliasNameRector.php
     ignoreErrors:
         - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::redirectToUrl\(\) has no return type specified.#'
         - '#Method Atournayre\\Contracts\\Response\\ResponseInterface::redirectToRoute\(\) has no return type specified.#'

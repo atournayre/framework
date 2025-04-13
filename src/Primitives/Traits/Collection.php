@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits;
 
 use Aimeos\Map as AimeosMap;
-use Atournayre\Common\Exception\RuntimeException;
-use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection as Collection_;
 
 trait Collection
@@ -36,15 +35,8 @@ trait Collection
         return new self(Collection_::readOnly($collection));
     }
 
-    /**
-     * @throws ThrowableInterface
-     */
-    private function ensureMutable(string $operation): void
+    public function isReadOnly(): BoolEnum
     {
-        $this
-            ->collection
-            ->isReadOnly()
-            ->throwIfTrue(RuntimeException::new(sprintf('Cannot %s a read-only collection. Use clone to create a mutable copy.', $operation)))
-        ;
+        return $this->collection->isReadOnly();
     }
 }

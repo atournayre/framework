@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Collection;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+
 interface AsReadOnlyMapInterface
 {
     /**
      * @param array<string, mixed> $collection
      *
-     * @return static
+     * * @throws ThrowableInterface
      */
-    public static function asReadOnlyMap(array $collection);
+    public static function asReadOnlyMap(array $collection): self;
 }

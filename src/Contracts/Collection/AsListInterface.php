@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Collection;
 
+use Atournayre\Contracts\Exception\ThrowableInterface;
+
 interface AsListInterface
 {
     /**
      * @param array<int, mixed> $collection
      *
-     * @return static
+     * @throws ThrowableInterface
      */
-    public static function asList(array $collection);
+    public static function asList(array $collection): self;
 }

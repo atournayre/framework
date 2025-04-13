@@ -48,4 +48,30 @@ final class PriceCollection implements NumericListInterface, NumericMapInterface
 
         return new self(Collection::of($collection), $this->precision);
     }
+
+    /**
+     * @inheritDoc
+     * @throws ThrowableInterface
+     */
+    public static function asList(array $collection, int $precision): self
+    {
+        $priceCollection = new self(Collection::of($collection), $precision);
+
+        $priceCollection->validateCollection();
+
+        return $priceCollection;
+    }
+
+    /**
+     * @inheritDoc
+     * @throws ThrowableInterface
+     */
+    public static function asMap(array $collection, int $precision): self
+    {
+        $priceCollection = new self(Collection::of($collection), $precision);
+
+        $priceCollection->validateCollection();
+
+        return $priceCollection;
+    }
 }

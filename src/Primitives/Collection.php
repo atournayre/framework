@@ -4,34 +4,32 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives;
 
+use Atournayre\Primitives\Traits\Collection\Access;
+use Atournayre\Primitives\Traits\Collection\Add;
+use Atournayre\Primitives\Traits\Collection\Aggregate;
+use Atournayre\Primitives\Traits\Collection\Countable;
+use Atournayre\Primitives\Traits\Collection\Create;
+use Atournayre\Primitives\Traits\Collection\Debug;
+use Atournayre\Primitives\Traits\Collection\Misc;
+use Atournayre\Primitives\Traits\Collection\Ordering;
+use Atournayre\Primitives\Traits\Collection\Shorten;
+use Atournayre\Primitives\Traits\Collection\Test;
+use Atournayre\Primitives\Traits\Collection\Transform;
 use Aimeos\Map as AimeosMap;
-use Atournayre\Common\Exception\RuntimeException;
-use Atournayre\Contracts\Exception\ThrowableInterface;
-use Atournayre\Primitives\Traits\Collection\AccessCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\AddCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\AggregateCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\CountableCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\CreateCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\DebugCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\MiscCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\OrderingCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\ShortenCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\TestCollectionTrait;
-use Atournayre\Primitives\Traits\Collection\TransformCollectionTrait;
 
 final class Collection
 {
-    use AccessCollectionTrait;
-    use AddCollectionTrait;
-    use AggregateCollectionTrait;
-    use CountableCollectionTrait;
-    use CreateCollectionTrait;
-    use DebugCollectionTrait;
-    use MiscCollectionTrait;
-    use OrderingCollectionTrait;
-    use ShortenCollectionTrait;
-    use TestCollectionTrait;
-    use TransformCollectionTrait;
+    use Access;
+    use Add;
+    use Aggregate;
+    use Countable;
+    use Create;
+    use Debug;
+    use Misc;
+    use Ordering;
+    use Shorten;
+    use Test;
+    use Transform;
 
     private function __construct(
         private readonly AimeosMap $collection,
@@ -89,16 +87,5 @@ final class Collection
     public function isReadOnly(): BoolEnum
     {
         return $this->isReadOnly;
-    }
-
-    /**
-     * @throws ThrowableInterface
-     */
-    private function ensureMutable(string $operation): void
-    {
-        $this
-            ->isReadOnly
-            ->throwIfTrue(RuntimeException::new(sprintf('Cannot %s a read-only collection. Use clone to create a mutable copy.', $operation)))
-        ;
     }
 }

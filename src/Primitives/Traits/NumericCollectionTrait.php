@@ -4,27 +4,31 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits;
 
+use Aimeos\Map as AimeosMap;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Exception\ThrowableInterface;
-use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\Collection as Collection_;
 use Atournayre\Primitives\Numeric;
-use Atournayre\Primitives\Traits\Collection\CollectionAsListTrait;
-use Atournayre\Primitives\Traits\Collection\CollectionAsMapTrait;
 
 trait NumericCollectionTrait
 {
     use CollectionCommonTrait;
-    use CollectionAsMapTrait;
-    use CollectionAsListTrait;
 
-    protected Collection $collection;
-
-    private int $precision;
-
-    private function __construct(Collection $collection, int $precision)
+    private function __construct(
+        protected Collection_ $collection,
+        protected int $precision,
+    )
     {
-        $this->collection = $collection;
-        $this->precision = $precision;
+    }
+
+    /**
+     * @param array<int|string, mixed>|AimeosMap|Collection_ $collection
+     *
+     *@api
+     */
+    protected static function of(Collection_|AimeosMap|array $collection = [], int $precision = 2): self
+    {
+        return new self(Collection_::of($collection), $precision);
     }
 
     /**
@@ -43,7 +47,7 @@ trait NumericCollectionTrait
             ->toArray()
         ;
 
-        return self::asList($values, $this->precision);
+        return self::of($values, $this->precision);
     }
 
     /**
