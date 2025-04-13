@@ -50,7 +50,6 @@ final class PriceCollection implements NumericListInterface, NumericMapInterface
     }
 
     /**
-     * @inheritDoc
      * @throws ThrowableInterface
      */
     public static function asList(array $collection, int $precision): self
@@ -63,7 +62,6 @@ final class PriceCollection implements NumericListInterface, NumericMapInterface
     }
 
     /**
-     * @inheritDoc
      * @throws ThrowableInterface
      */
     public static function asMap(array $collection, int $precision): self

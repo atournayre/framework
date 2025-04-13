@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Component\Mailer\Collection;
 
-use Atournayre\Contracts\Collection\AsListInterface;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\VO\EmailContact;
+use Atournayre\Contracts\Collection\AsListInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;

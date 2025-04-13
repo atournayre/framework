@@ -17,8 +17,7 @@ trait NumericCollectionTrait
     private function __construct(
         protected Collection_ $collection,
         protected int $precision,
-    )
-    {
+    ) {
     }
 
     /**

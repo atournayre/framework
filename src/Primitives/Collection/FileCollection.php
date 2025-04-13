@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Collection;
 
-use Atournayre\Contracts\Collection\AsListInterface;
-use Atournayre\Contracts\Collection\AsMapInterface;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Memory;
+use Atournayre\Contracts\Collection\AsListInterface;
+use Atournayre\Contracts\Collection\AsMapInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection;

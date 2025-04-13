@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Component\Mailer\Collection;
 
-use Atournayre\Contracts\Collection\AsMapInterface;
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\AsMapInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection;

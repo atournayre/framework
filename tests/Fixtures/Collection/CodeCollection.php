@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Fixtures\Collection;
 
 use Atournayre\Contracts\Collection\AsListInterface;
-use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Contracts\Collection\AsMapInterface;
+use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Contracts\Collection\MergeInterface;
 use Atournayre\Contracts\Collection\SetInterface;
 use Atournayre\Contracts\Collection\ToArrayInterface;

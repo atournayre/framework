@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Collection;
 
-use Atournayre\Contracts\Collection\AsMapInterface;
 use Atournayre\Common\Assert\Assert;
+use Atournayre\Contracts\Collection\AsMapInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
