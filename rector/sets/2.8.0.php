@@ -12,6 +12,8 @@ return static function (RectorConfig $rectorConfig) : void {
     ]);
     $rectorConfig->ruleWithConfiguration(RenameClassRector::class, [
         'Atournayre\Primitives\Traits\CollectionTrait' => 'Atournayre\Primitives\Traits\Collection as Collection_',
+        'Atournayre\Contracts\Collection\MapInterface' => 'Atournayre\Contracts\Collection\AsMapInterface',
+        'Atournayre\Contracts\Collection\ListInterface' => 'Atournayre\Contracts\Collection\AsListInterface',
     ]);
     $rectorConfig->ruleWithConfiguration(ReplaceTraitUseByAliasNameRector::class, [
         ReplaceTraitUseByAliasNameRector::OLD_TRAIT_NAME => 'Atournayre\Primitives\Traits\CollectionTrait',

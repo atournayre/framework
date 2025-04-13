@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Collection;
 
-interface ReadOnlyListInterface
+interface AsListInterface
 {
     /**
      * @param array<int, mixed> $collection
      *
      * @return static
      */
-    public static function asReadOnlyList(array $collection);
+    public static function asList(array $collection);
 }

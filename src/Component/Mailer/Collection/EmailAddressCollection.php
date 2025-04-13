@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Atournayre\Component\Mailer\Collection;
 
+use Atournayre\Contracts\Collection\AsListInterface;
+use Atournayre\Contracts\Collection\AsMapInterface;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\Types\EmailAddress;
-use Atournayre\Contracts\Collection\ListInterface;
-use Atournayre\Contracts\Collection\MapInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
-final class EmailAddressCollection implements ListInterface, MapInterface
+final class EmailAddressCollection implements AsListInterface, AsMapInterface
 {
     use CollectionTrait;
 
