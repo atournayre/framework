@@ -25,7 +25,7 @@ trait With
      *
      * @api
      */
-    public function with($key, $value): self
+    public function with($key, mixed $value): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
 

@@ -17,5 +17,5 @@ interface StringInterface
      *
      * @api
      */
-    public function string($key, $default = ''): string;
+    public function string($key, mixed $default = ''): string;
 }

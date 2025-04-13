@@ -22,7 +22,7 @@ trait Walk
      *
      * @api
      */
-    public function walk(callable $callback, $data = null, bool $recursive = true): self
+    public function walk(callable $callback, mixed $data = null, bool $recursive = true): self
     {
         $walk = $this->collection->walk($callback, $data, $recursive);
 

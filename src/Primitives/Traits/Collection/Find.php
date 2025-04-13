@@ -28,7 +28,7 @@ trait Find
      *
      * @api
      */
-    public function find(\Closure $callback, $default = null, bool $reverse = false)
+    public function find(\Closure $callback, mixed $default = null, bool $reverse = false)
     {
         try {
             return $this->collection->find($callback, $default, $reverse);

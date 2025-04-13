@@ -25,7 +25,7 @@ trait Int_
      *
      * @api
      */
-    public function int($key, $default = 0): PrimitiveInt_
+    public function int($key, mixed $default = 0): PrimitiveInt_
     {
         $int = $this->collection->int($key, $default);
 

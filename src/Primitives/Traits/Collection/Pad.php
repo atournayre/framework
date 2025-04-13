@@ -24,7 +24,7 @@ trait Pad
      *
      * @api
      */
-    public function pad(int $size, $value = null): self
+    public function pad(int $size, mixed $value = null): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
 

@@ -21,5 +21,5 @@ interface InsertBeforeInterface
      *
      * @api
      */
-    public function insertBefore($element, $value): self;
+    public function insertBefore(mixed $element, mixed $value): self;
 }

@@ -19,5 +19,5 @@ interface PullInterface
      *
      * @api
      */
-    public function pull($key, $default = null);
+    public function pull($key, mixed $default = null);
 }

@@ -25,7 +25,7 @@ trait Prepend
      *
      * @api
      */
-    public function prepend($value, $key = null): self
+    public function prepend(mixed $value, $key = null): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
 

@@ -22,7 +22,7 @@ trait Where
      *
      * @api
      */
-    public function where(string $key, string $op, $value): self
+    public function where(string $key, string $op, mixed $value): self
     {
         $where = $this->collection->where($key, $op, $value);
 

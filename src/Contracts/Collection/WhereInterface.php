@@ -18,5 +18,5 @@ interface WhereInterface
      *
      * @api
      */
-    public function where(string $key, string $op, $value): self;
+    public function where(string $key, string $op, mixed $value): self;
 }

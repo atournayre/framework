@@ -19,5 +19,5 @@ interface StrContainsAllInterface
      *
      * @api
      */
-    public function strContainsAll($value, string $encoding = 'UTF-8'): BoolEnum;
+    public function strContainsAll(mixed $value, string $encoding = 'UTF-8'): BoolEnum;
 }

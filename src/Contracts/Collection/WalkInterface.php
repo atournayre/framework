@@ -18,5 +18,5 @@ interface WalkInterface
      *
      * @api
      */
-    public function walk(callable $callback, $data = null, bool $recursive = true): self;
+    public function walk(callable $callback, mixed $data = null, bool $recursive = true): self;
 }

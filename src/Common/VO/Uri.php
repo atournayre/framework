@@ -9,9 +9,9 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Uri\UriInterface;
 use Nyholm\Psr7\Uri as NyholmUri;
 
-final class Uri implements UriInterface
+final readonly class Uri implements UriInterface
 {
-    private readonly NyholmUri $uri;
+    private NyholmUri $uri;
 
     private function __construct(string $uri = '')
     {

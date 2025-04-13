@@ -19,5 +19,5 @@ interface BoolInterface
      *
      * @api
      */
-    public function bool($key, $default = false): BoolEnum;
+    public function bool($key, mixed $default = false): BoolEnum;
 }

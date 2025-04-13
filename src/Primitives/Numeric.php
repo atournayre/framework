@@ -8,7 +8,7 @@ use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
-final class Numeric
+final readonly class Numeric
 {
     private float $value;
 

@@ -10,7 +10,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 use function Symfony\Component\String\u;
 
-final readonly class StringType
+final readonly class StringType implements \Stringable
 {
     /** @api */
     public const NFC = \Normalizer::NFC;

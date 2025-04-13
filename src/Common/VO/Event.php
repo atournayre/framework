@@ -38,7 +38,7 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
 
     public function _type(): string
     {
-        return \get_class($this);
+        return static::class;
     }
 
     /**

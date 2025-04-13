@@ -22,5 +22,5 @@ interface IntInterface
      *
      * @api
      */
-    public function int($key, $default = 0): Int_;
+    public function int($key, mixed $default = 0): Int_;
 }

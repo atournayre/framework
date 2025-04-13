@@ -22,7 +22,7 @@ trait StrContainsAll
      *
      * @api
      */
-    public function strContainsAll($value, string $encoding = 'UTF-8'): BoolEnum
+    public function strContainsAll(mixed $value, string $encoding = 'UTF-8'): BoolEnum
     {
         $strContainsAll = $this->collection->strContainsAll($value, $encoding);
 

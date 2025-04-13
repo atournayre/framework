@@ -26,7 +26,7 @@ trait InsertAt
      *
      * @api
      */
-    public function insertAt(int $pos, $element, $key = null): self
+    public function insertAt(int $pos, mixed $element, $key = null): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
 

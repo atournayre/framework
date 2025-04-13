@@ -19,5 +19,5 @@ interface ReduceInterface
      *
      * @api
      */
-    public function reduce(callable $callback, $initial = null);
+    public function reduce(callable $callback, mixed $initial = null);
 }

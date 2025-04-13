@@ -14,20 +14,7 @@ return RectorConfig::configure()
         __DIR__ . '/../src/Rector/Sets.php',
     ])
     ->withPhpSets(
-        \false,
-        \false,
-        \false,
-        \false,
-        \true, // Enable PHP 7.4 set
-        \false,
-        \false,
-        \false,
-        \false,
-        \false,
-        \false,
-        \false,
-        \false,
-        \false
+        php82: \true,
     )
     ->withPreparedSets(
         \true, // Enable dead code set

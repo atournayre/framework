@@ -23,7 +23,7 @@ trait Pull
      *
      * @api
      */
-    public function pull($key, $default = null)
+    public function pull($key, mixed $default = null)
     {
         return $this->collection->pull($key, $default);
     }

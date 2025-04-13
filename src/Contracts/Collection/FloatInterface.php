@@ -22,5 +22,5 @@ interface FloatInterface
      *
      * @api
      */
-    public function float($key, $default = 0.0): Numeric;
+    public function float($key, mixed $default = 0.0): Numeric;
 }

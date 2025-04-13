@@ -25,7 +25,7 @@ trait InsertBefore
      *
      * @api
      */
-    public function insertBefore($element, $value): self
+    public function insertBefore(mixed $element, mixed $value): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
 

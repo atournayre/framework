@@ -25,7 +25,7 @@ trait Unshift
      *
      * @api
      */
-    public function unshift($value, $key = null): self
+    public function unshift(mixed $value, $key = null): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
 

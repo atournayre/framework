@@ -25,7 +25,7 @@ trait Put
      *
      * @api
      */
-    public function put($key, $value): self
+    public function put($key, mixed $value): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
 

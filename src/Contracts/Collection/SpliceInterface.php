@@ -18,5 +18,5 @@ interface SpliceInterface
      *
      * @api
      */
-    public function splice(int $offset, ?int $length = null, $replacement = []): self;
+    public function splice(int $offset, ?int $length = null, mixed $replacement = []): self;
 }

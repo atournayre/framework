@@ -21,7 +21,7 @@ trait String_
      *
      * @api
      */
-    public function string($key, $default = ''): string
+    public function string($key, mixed $default = ''): string
     {
         return $this->collection->string($key, $default);
     }

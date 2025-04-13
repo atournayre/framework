@@ -21,5 +21,5 @@ interface PutInterface
      *
      * @api
      */
-    public function put($key, $value): self;
+    public function put($key, mixed $value): self;
 }

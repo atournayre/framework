@@ -22,5 +22,5 @@ interface InsertAtInterface
      *
      * @api
      */
-    public function insertAt(int $pos, $element, $key = null): self;
+    public function insertAt(int $pos, mixed $element, $key = null): self;
 }

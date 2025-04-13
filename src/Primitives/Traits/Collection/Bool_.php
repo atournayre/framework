@@ -22,7 +22,7 @@ trait Bool_
      *
      * @api
      */
-    public function bool($key, $default = false): BoolEnum
+    public function bool($key, mixed $default = false): BoolEnum
     {
         $bool = $this->collection->bool($key, $default);
 

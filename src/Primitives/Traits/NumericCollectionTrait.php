@@ -35,7 +35,7 @@ trait NumericCollectionTrait
      *
      * @throws ThrowableInterface
      */
-    public function add($numeric): self
+    public function add(mixed $numeric): self
     {
         Assert::same($numeric->precision(), $this->precision, 'Precisions must be the same.');
 

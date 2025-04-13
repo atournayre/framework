@@ -21,5 +21,5 @@ interface WithInterface
      *
      * @api
      */
-    public function with($key, $value): self;
+    public function with($key, mixed $value): self;
 }
