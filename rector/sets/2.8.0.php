@@ -10,7 +10,7 @@ return static function (RectorConfig $rectorConfig) : void {
         __DIR__ . '/2.7.0.php',
     ]);
     $rectorConfig->ruleWithConfiguration(RenameClassRector::class, [
-        'Atournayre\Primitives\Traits\CollectionTrait' => 'Atournayre\Primitives\Traits\Collection',
+        'Atournayre\Primitives\Traits\CollectionTrait' => 'Atournayre\Primitives\Traits\Collection as Collection_',
     ]);
 };
 
