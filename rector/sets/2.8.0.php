@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Atournayre\Rector\ReplaceTraitUseByAliasNameRector;
+use Atournayre\Rector\Rules\ReplaceTraitUseByAliasNameRector;
 use Rector\Config\RectorConfig;
 use Rector\Renaming\Rector\Name\RenameClassRector;
 
