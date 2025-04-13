@@ -11,7 +11,7 @@ interface AsReadOnlyMapInterface
     /**
      * @param array<string, mixed> $collection
      *
-     * * @throws ThrowableInterface
+     * @throws ThrowableInterface
      */
     public static function asReadOnlyMap(array $collection): self;
 }

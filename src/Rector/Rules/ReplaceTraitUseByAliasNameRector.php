@@ -20,24 +20,28 @@ final class ReplaceTraitUseByAliasNameRector extends AbstractRector implements C
 {
     /**
      * @api
+     *
      * @var string
      */
     public const OLD_TRAIT_NAME = 'old_trait_name';
 
     /**
      * @api
+     *
      * @var string
      */
     public const NEW_TRAIT_NAME = 'new_trait_name';
 
     /**
      * @api
+     *
      * @var string
      */
     public const NEW_ALIAS_NAME = 'new_alias_name';
 
     /**
      * @api
+     *
      * @var string
      */
     public const SHORT_NAME_TO_REPLACE = 'short_name_to_replace';
@@ -53,7 +57,7 @@ final class ReplaceTraitUseByAliasNameRector extends AbstractRector implements C
             'Replace trait use by alias name',
             [
                 new ConfiguredCodeSample(
-                // Code before the rector run
+                    // Code before the rector run
                     <<<'CODE_SAMPLE'
 use MyPackage\CollectionTrait;
 
@@ -112,7 +116,7 @@ CODE_SAMPLE
     public function refactor(Node $node): ?Node
     {
         // Skip if configuration is not provided
-        if ($this->configuration === []) {
+        if ([] === $this->configuration) {
             return null;
         }
 

@@ -10,6 +10,9 @@ return RectorConfig::configure()
         __DIR__.'/../src',
         __DIR__.'/../tests',
     ])
+    ->withSkip([
+        __DIR__ . '/../src/Rector/Sets.php',
+    ])
     ->withPhpSets(
         \false,
         \false,

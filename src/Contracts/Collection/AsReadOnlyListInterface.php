@@ -11,7 +11,7 @@ interface AsReadOnlyListInterface
     /**
      * @param array<int, mixed> $collection
      *
-     * * @throws ThrowableInterface
+     * @throws ThrowableInterface
      */
     public static function asReadOnlyList(array $collection): self;
 }

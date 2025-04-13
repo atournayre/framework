@@ -42,7 +42,8 @@ quality: ## Run Swiss Knife
 		--exclude-path=src/Primitives/StringType.php \
 		--exclude-path=src/Primitives/Primitive.php \
 		--exclude-path=src/Contracts/Session/FlashBagInterface.php \
-		--exclude-path=src/Contracts/Routing/RoutingInterface.php
+		--exclude-path=src/Contracts/Routing/RoutingInterface.php\
+		--exclude-path=src/Rector/Rules/ReplaceTraitUseByAliasNameRector.php
 #	@$(PHP) vendor/bin/swiss-knife finalize-classes src tests --skip-mocked
 	@$(PHP) vendor/bin/swiss-knife check-conflicts .
 	@$(PHP) vendor/bin/swiss-knife check-commented-code src --line-limit 5
