@@ -33,9 +33,6 @@ trait Add
         $newCollection = $this
             ->collection->push($value);
 
-        $newCollection = self::of($newCollection);
-
-        return $newCollection
-            ->asReadOnly();
+        return self::of($newCollection);
     }
 }
