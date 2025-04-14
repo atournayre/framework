@@ -30,8 +30,9 @@ trait Add
             return $this;
         }
 
-        $newCollection = $this->collection;
-        $newCollection[] = $value;
+        $newCollection = $this
+            ->collection->push($value);
+
         $newCollection = self::of($newCollection);
 
         return $newCollection
