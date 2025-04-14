@@ -4,22 +4,37 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
+use Atournayre\Common\Exception\MutableException;
+use Atournayre\Contracts\Collection\SetInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
+
 /**
  * Trait Add.
+ *
+ * @see AddInterface
  */
 trait Add
 {
-    use Concat;
-    use InsertAfter;
-    use InsertAt;
-    use InsertBefore;
-    use Merge;
-    use Pad;
-    use Prepend;
-    use Push;
-    use Put;
-    use Set;
-    use Union;
-    use Unshift;
-    use With;
+    /**
+     * Adds an element.
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
+     */
+    public function add(mixed $value, ?\Closure $callback = null): self
+    {
+        $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
+
+        if ($callback instanceof \Closure && !$callback($value)) {
+            return $this;
+        }
+
+        $newCollection = $this->collection;
+        $newCollection[] = $value;
+        $newCollection = self::of($newCollection);
+
+        return $newCollection
+            ->asReadOnly();
+    }
 }
