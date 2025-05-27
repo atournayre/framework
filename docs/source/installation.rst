@@ -1,36 +1,26 @@
 Installation
 ===========
 
-This guide will help you install the Framework in your project.
+This guide will help you install the library in your project.
 
 Requirements
 -----------
 
-* PHP 8.1 or higher
+* PHP 8.2.22 or higher
 * Composer
 
-Installation Steps
-----------------
+Installation
+-----------
 
-1. Create a new project using Composer:
+Add the library to your existing project using Composer:
 
-   .. code-block:: bash
+.. code-block:: bash
 
-      composer create-project framework/framework my-project
+   composer require atournayre/framework
 
-2. Navigate to your project directory:
+Usage
+-----
 
-   .. code-block:: bash
+After installation, you can use the library in your project by importing the necessary classes.
 
-      cd my-project
-
-3. Start the development server:
-
-   .. code-block:: bash
-
-      php -S localhost:8000 -t public/
-
-Configuration
-------------
-
-After installation, you may want to configure the framework according to your needs. The configuration files are located in the `config/` directory.
+For more information on how to use the library, please refer to the Usage section of this documentation.

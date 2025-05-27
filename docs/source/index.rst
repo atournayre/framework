@@ -11,11 +11,11 @@ Welcome to the Framework documentation. This documentation provides information 
 Getting Started
 --------------
 
-To get started with the Framework, follow these steps:
+To get started with the Library, follow these steps:
 
-1. Install the framework
-2. Configure your application
-3. Start building your project
+1. Install the library
+2. Import the necessary components
+3. Start using the library in your project
 
 .. toctree::
    :maxdepth: 2

@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This is the introduction to the Framework. The Framework is a PHP framework designed to help developers build robust and scalable applications.
+This is the introduction to the Framework. The Framework is a PHP library designed to help developers build robust and scalable applications.
 
 Features
 --------

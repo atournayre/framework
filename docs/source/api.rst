@@ -1,7 +1,7 @@
 API Reference
 ============
 
-This section provides detailed information about the Framework's API.
+This section provides detailed information about the Library's API.
 
 Core Components
 --------------
@@ -13,8 +13,8 @@ The ``Application`` class is the main entry point for your application.
 
 .. code-block:: php
 
-    use Framework\Application;
-    
+    use Atournayre\Application;
+
     $app = new Application();
 
 Methods:
@@ -32,8 +32,8 @@ The ``Router`` class handles routing for the application.
 
 .. code-block:: php
 
-    use Framework\Routing\Router;
-    
+    use Atournayre\Routing\Router;
+
     $router = new Router();
 
 Methods:
@@ -48,8 +48,8 @@ The ``AbstractController`` class provides base functionality for controllers.
 
 .. code-block:: php
 
-    use Framework\Controller\AbstractController;
-    
+    use Atournayre\Controller\AbstractController;
+
     class MyController extends AbstractController
     {
         // Your controller methods

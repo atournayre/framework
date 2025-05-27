@@ -6,22 +6,22 @@ This guide provides examples of how to use the Framework in your projects.
 Basic Usage
 ----------
 
-Here's a simple example of how to create a basic application:
+Here's a simple example of how to use the library in your application:
 
 .. code-block:: php
 
     <?php
-    
+
     require_once 'vendor/autoload.php';
-    
-    use Framework\Application;
-    
+
+    use Atournayre\Application;
+
     $app = new Application();
-    
+
     $app->get('/', function() {
         return 'Hello, World!';
     });
-    
+
     $app->run();
 
 Routing
@@ -34,15 +34,15 @@ The Framework provides a simple routing system:
     $app->get('/users', function() {
         // Handle GET request to /users
     });
-    
+
     $app->post('/users', function() {
         // Handle POST request to /users
     });
-    
+
     $app->put('/users/{id}', function($id) {
         // Handle PUT request to /users/{id}
     });
-    
+
     $app->delete('/users/{id}', function($id) {
         // Handle DELETE request to /users/{id}
     });
@@ -55,11 +55,11 @@ You can also use controllers to organize your code:
 .. code-block:: php
 
     <?php
-    
+
     namespace App\Controller;
-    
-    use Framework\Controller\AbstractController;
-    
+
+    use Atournayre\Controller\AbstractController;
+
     class UserController extends AbstractController
     {
         public function index()
