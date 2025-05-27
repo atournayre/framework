@@ -1,7 +1,318 @@
 Usage
 =====
 
-This guide provides examples of how to use the primitives in the Framework.
+This guide provides examples of how to use the primitives and common components in the Framework.
+
+Common Components
+----------------
+
+The Framework provides several common components that can be used across your application.
+
+Assert Usage
+~~~~~~~~~~~
+
+The ``Assert`` class provides methods for making assertions about values, with methods for checking types, values, and other conditions:
+
+.. code-block:: php
+
+    <?php
+
+    use Atournayre\Common\Assert\Assert;
+
+    // Check if a value is of a specific type
+    Assert::isType($value, 'string'); // Checks if $value is a string
+    Assert::isType($value, 'int'); // Checks if $value is an integer
+    Assert::isType($value, 'float'); // Checks if $value is a float
+    Assert::isType($value, 'bool'); // Checks if $value is a boolean
+    Assert::isType($value, 'array'); // Checks if $value is an array
+    Assert::isType($value, 'object'); // Checks if $value is an object
+    Assert::isType($value, 'null'); // Checks if $value is null
+
+    // Check if an array is a list of a specific type
+    Assert::isListOf($array, 'string'); // Checks if $array is a list of strings
+    Assert::isListOf($array, 'int'); // Checks if $array is a list of integers
+    Assert::isListOf($array, SomeClass::class); // Checks if $array is a list of SomeClass instances
+
+    // Check if an array is a map of a specific type
+    Assert::isMapOf($array, 'string'); // Checks if $array is a map with string values
+    Assert::isMapOf($array, 'int'); // Checks if $array is a map with integer values
+    Assert::isMapOf($array, SomeClass::class); // Checks if $array is a map with SomeClass instances
+
+    // Other assertions
+    Assert::string($value); // Checks if $value is a string
+    Assert::integer($value); // Checks if $value is an integer
+    Assert::float($value); // Checks if $value is a float
+    Assert::boolean($value); // Checks if $value is a boolean
+    Assert::notEmpty($value); // Checks if $value is not empty
+    Assert::notNull($value); // Checks if $value is not null
+    Assert::email($value); // Checks if $value is a valid email address
+    Assert::ip($value); // Checks if $value is a valid IP address
+    Assert::uuid($value); // Checks if $value is a valid UUID
+
+The ``Assert`` class implements several interfaces from the ``Contracts`` directory:
+
+- ``AssertInterface``: Basic assertion methods
+- ``AssertStringInterface``: String-specific assertion methods
+- ``AssertNumericInterface``: Numeric-specific assertion methods
+- ``AssertMiscInterface``: Miscellaneous assertion methods
+- ``AssertAllInterface``: Methods for asserting conditions on all elements of an array
+- ``AssertIsInterface``: Methods for asserting what a value is
+- ``AssertNotInterface``: Methods for asserting what a value is not
+- ``AssertNullInterface``: Methods for asserting null or nullable values
+
+Exception Usage
+~~~~~~~~~~~~~
+
+The Framework provides several exception classes that extend PHP's built-in exceptions:
+
+.. code-block:: php
+
+    <?php
+
+    use Atournayre\Common\Exception\InvalidArgumentException;
+    use Atournayre\Common\Exception\BadMethodCallException;
+    use Atournayre\Common\Exception\NullException;
+    use Atournayre\Common\Exception\RuntimeException;
+    use Atournayre\Common\Exception\UnexpectedValueException;
+
+    // Create and throw an exception
+    InvalidArgumentException::new('Invalid argument')->throw();
+
+    // Create an exception from another throwable
+    $exception = InvalidArgumentException::fromThrowable($throwable);
+
+    // Create an exception with a specific message
+    $exception = RuntimeException::new('An error occurred');
+
+    // Create an exception with a specific message and code
+    $exception = UnexpectedValueException::new('Unexpected value', 400);
+
+Logger Usage
+~~~~~~~~~~~
+
+The Framework provides several logger classes for logging messages:
+
+.. code-block:: php
+
+    <?php
+
+    use Atournayre\Common\Log\DefaultLogger;
+    use Atournayre\Common\Log\NullLogger;
+
+    // Create a default logger
+    $logger = new DefaultLogger();
+
+    // Log messages
+    $logger->emergency('Emergency message');
+    $logger->alert('Alert message');
+    $logger->critical('Critical message');
+    $logger->error('Error message');
+    $logger->warning('Warning message');
+    $logger->notice('Notice message');
+    $logger->info('Info message');
+    $logger->debug('Debug message');
+
+    // Create a null logger (doesn't log anything)
+    $logger = new NullLogger();
+
+The logger classes implement the ``LoggerInterface`` from the ``Contracts`` directory.
+
+Collection Usage
+~~~~~~~~~~~~~~
+
+The Framework provides collection classes for working with collections of items:
+
+.. code-block:: php
+
+    <?php
+
+    use Atournayre\Common\Collection\EventCollection;
+    use Atournayre\Common\Collection\TemplateContextCollection;
+    use Atournayre\Common\VO\Event;
+
+    // Create an empty event collection
+    $eventCollection = EventCollection::empty();
+
+    // Create an event collection from an array
+    $eventCollection = EventCollection::asMap([
+        'event1' => new Event(/* ... */),
+        'event2' => new Event(/* ... */),
+    ]);
+
+    // Add an event to the collection
+    $eventCollection = $eventCollection->add(new Event(/* ... */));
+
+    // Filter events by type
+    $filteredEvents = $eventCollection->filterByType(SomeEventType::class);
+
+    // Create a template context collection
+    $contextCollection = TemplateContextCollection::asMap([
+        'key1' => 'value1',
+        'key2' => 'value2',
+    ]);
+
+    // Check if a key exists in the collection
+    $hasKey = $contextCollection->has('key1');
+
+The collection classes implement the ``MapInterface`` from the ``Contracts`` directory.
+
+Model Usage
+~~~~~~~~~
+
+The Framework provides model classes for representing users:
+
+.. code-block:: php
+
+    <?php
+
+    use Atournayre\Common\Model\DefaultUser;
+
+    // Create a null user
+    $nullUser = DefaultUser::asNull();
+
+    // Check if the user is null
+    $isNull = $nullUser->isNull();
+
+The model classes implement the ``UserInterface`` from the ``Contracts`` directory.
+
+Factory Usage
+~~~~~~~~~~
+
+The Framework provides factory classes for creating objects:
+
+.. code-block:: php
+
+    <?php
+
+    use Atournayre\Common\Factory\Context\ContextFactory;
+    use Atournayre\Contracts\Security\SecurityInterface;
+    use Psr\Clock\ClockInterface;
+
+    // Create a context factory
+    $contextFactory = new ContextFactory(
+        $security, // An implementation of SecurityInterface
+        $clock     // An implementation of ClockInterface
+    );
+
+    // Create a context from a user
+    $context = $contextFactory->fromUser($user);
+
+    // Create a context from a date/time
+    $context = $contextFactory->fromDateTime(new \DateTime());
+
+    // Create a context from a user and a date/time
+    $context = $contextFactory->create($user, new \DateTime());
+
+Traits Usage
+~~~~~~~~~~
+
+The Framework provides several traits that can be used in your classes:
+
+.. code-block:: php
+
+    <?php
+
+    use Atournayre\Common\Traits\ContextTrait;
+    use Atournayre\Common\Traits\EventsTrait;
+    use Atournayre\Common\Traits\IsTrait;
+    use Atournayre\Contracts\Context\ContextInterface;
+
+    class YourClass
+    {
+        // Add context functionality
+        use ContextTrait;
+
+        // Add events functionality
+        use EventsTrait;
+
+        // Add comparison functionality
+        use IsTrait;
+
+        public function __construct()
+        {
+            // Initialize events collection (required when using EventsTrait)
+            $this->initializeEvents();
+        }
+    }
+
+    // Using ContextTrait
+    $object = new YourClass();
+    $object = $object->withContext($context);
+    $context = $object->context();
+    $hasContext = $object->hasContext();
+
+    // Using EventsTrait
+    $events = $object->events();
+
+    // Using IsTrait
+    $isSame = $object->is($anotherObject);
+    $isNotSame = $object->isNot($anotherObject);
+
+Types Usage
+~~~~~~~~~
+
+The Framework provides several type classes for representing specific types of data:
+
+.. code-block:: php
+
+    <?php
+
+    use Atournayre\Common\Types\DirectoryOrFile;
+    use Atournayre\Common\Types\Domain;
+    use Atournayre\Common\Types\HtmlTemplatePath;
+    use Atournayre\Common\Types\TextTemplatePath;
+
+    // Create a directory or file path
+    $path = DirectoryOrFile::of('/path/to/file');
+    $path = $path->suffixWith('/suffix');
+    $path = $path->prefixWith('/prefix');
+
+    // Create a domain
+    $domain = Domain::of('example.com');
+
+    // Create a template path
+    $htmlPath = HtmlTemplatePath::of('/path/to/template.html.twig');
+    $textPath = TextTemplatePath::of('/path/to/template.txt.twig');
+
+Value Object Usage
+~~~~~~~~~~~~~~~
+
+The Framework provides several value object classes for representing specific types of data:
+
+.. code-block:: php
+
+    <?php
+
+    use Atournayre\Common\VO\Duration;
+    use Atournayre\Common\VO\Event;
+    use Atournayre\Common\VO\Memory;
+    use Atournayre\Common\VO\Uri;
+
+    // Create a duration
+    $duration = Duration::of(1000); // 1000 milliseconds
+    $seconds = $duration->inSeconds(); // 1.0
+    $minutes = $duration->inMinutes(); // 0.016666666666667
+    $hours = $duration->inHours(); // 0.00027777777777778
+    $days = $duration->inDays(); // 0.000011574074074074
+    $readable = $duration->humanReadable(); // "1 second 0 milliseconds"
+
+    // Create an event
+    $event = new Event(/* ... */);
+
+    // Create a memory object
+    $memory = Memory::of(1024); // 1024 bytes
+    $kilobytes = $memory->inKilobytes(); // 1.0
+    $megabytes = $memory->inMegabytes(); // 0.0009765625
+    $gigabytes = $memory->inGigabytes(); // 9.5367431640625E-7
+    $readable = $memory->humanReadable(); // "1 KB"
+
+    // Create a URI
+    $uri = Uri::of('https://example.com/path?query=value#fragment');
+    $scheme = $uri->scheme(); // "https"
+    $host = $uri->host(); // "example.com"
+    $path = $uri->path(); // "/path"
+    $query = $uri->query(); // "query=value"
+    $fragment = $uri->fragment(); // "fragment"
 
 Primitives
 ----------
