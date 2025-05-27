@@ -8,6 +8,9 @@ Framework documentation
 
 Welcome to the Framework documentation. This documentation provides information about the framework's components and usage.
 
+.. warning::
+   This documentation is being written and may therefore be incomplete or contain errors.
+
 Getting Started
 --------------
 

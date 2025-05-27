@@ -1,6 +1,9 @@
 Introduction
 ============
 
+.. warning::
+   This documentation is being written and may therefore be incomplete or contain errors.
+
 This is the introduction to the Framework. The Framework is a business-oriented framework for Symfony applications designed to help developers build robust and scalable applications.
 
 Features
