@@ -19,7 +19,7 @@ To get started with the Library, follow these steps:
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting started
 
    introduction
    installation
