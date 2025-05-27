@@ -6,7 +6,7 @@
 Framework documentation
 =======================
 
-Welcome to the Framework documentation. This documentation provides information about the framework's components, usage, and API.
+Welcome to the Framework documentation. This documentation provides information about the framework's components and usage.
 
 Getting Started
 --------------
@@ -24,7 +24,6 @@ To get started with the Library, follow these steps:
    introduction
    installation
    usage
-   api
 
 Indices and tables
 ==================
