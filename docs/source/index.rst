@@ -29,6 +29,7 @@ To get started with the Library, follow these steps:
    usage
    interfaces
    null
+   symfony
 
 Indices and tables
 ==================
