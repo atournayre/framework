@@ -8,8 +8,8 @@ Common Components
 
 The Framework provides several common components that can be used across your application.
 
-Assert Usage
-~~~~~~~~~~~
+Assert
+~~~~~~
 
 The ``Assert`` class provides methods for making assertions about values, with methods for checking types, values, and other conditions:
 
@@ -60,8 +60,8 @@ The ``Assert`` class implements several interfaces from the ``Contracts`` direct
 - ``AssertNotInterface``: Methods for asserting what a value is not
 - ``AssertNullInterface``: Methods for asserting null or nullable values
 
-Exception Usage
-~~~~~~~~~~~~~
+Exception
+~~~~~~~~~
 
 The Framework provides several exception classes that extend PHP's built-in exceptions:
 
@@ -87,8 +87,8 @@ The Framework provides several exception classes that extend PHP's built-in exce
     // Create an exception with a specific message and code
     $exception = UnexpectedValueException::new('Unexpected value', 400);
 
-Logger Usage
-~~~~~~~~~~~
+Logger
+~~~~~~
 
 The Framework provides several logger classes for logging messages:
 
@@ -117,8 +117,8 @@ The Framework provides several logger classes for logging messages:
 
 The logger classes implement the ``LoggerInterface`` from the ``Contracts`` directory.
 
-Collection Usage
-~~~~~~~~~~~~~~
+Collection
+~~~~~~~~~~
 
 The Framework provides collection classes for working with collections of items:
 
@@ -156,8 +156,8 @@ The Framework provides collection classes for working with collections of items:
 
 The collection classes implement the ``MapInterface`` from the ``Contracts`` directory.
 
-Model Usage
-~~~~~~~~~
+Model
+~~~~~
 
 The Framework provides model classes for representing users:
 
@@ -175,8 +175,8 @@ The Framework provides model classes for representing users:
 
 The model classes implement the ``UserInterface`` from the ``Contracts`` directory.
 
-Factory Usage
-~~~~~~~~~~
+Factory
+~~~~~~~
 
 The Framework provides factory classes for creating objects:
 
@@ -203,8 +203,8 @@ The Framework provides factory classes for creating objects:
     // Create a context from a user and a date/time
     $context = $contextFactory->create($user, new \DateTime());
 
-Traits Usage
-~~~~~~~~~~
+Traits
+~~~~~~
 
 The Framework provides several traits that can be used in your classes:
 
@@ -248,8 +248,8 @@ The Framework provides several traits that can be used in your classes:
     $isSame = $object->is($anotherObject);
     $isNotSame = $object->isNot($anotherObject);
 
-Types Usage
-~~~~~~~~~
+Types
+~~~~~
 
 The Framework provides several type classes for representing specific types of data:
 
@@ -274,8 +274,8 @@ The Framework provides several type classes for representing specific types of d
     $htmlPath = HtmlTemplatePath::of('/path/to/template.html.twig');
     $textPath = TextTemplatePath::of('/path/to/template.txt.twig');
 
-Value Object Usage
-~~~~~~~~~~~~~~~
+Value Object
+~~~~~~~~~~~~
 
 The Framework provides several value object classes for representing specific types of data:
 
@@ -331,8 +331,8 @@ The Framework provides several primitive types:
 - ``Ulid``: A ULID (Universally Unique Lexicographically Sortable Identifier) primitive
 - ``Uuid``: A UUID (Universally Unique Identifier) primitive
 
-StringType Usage
-~~~~~~~~~~~~~~~
+StringType
+~~~~~~~~~~
 
 The ``StringType`` class provides a rich set of methods for working with strings:
 
@@ -381,8 +381,8 @@ The ``StringType`` class provides a rich set of methods for working with strings
     // Convert to string
     $value = $string->toString(); // Hello, World!
 
-Collection Usage
-~~~~~~~~~~~~~~~
+Collection
+~~~~~~~~~~
 
 The ``Collection`` class provides methods for working with collections of items:
 
@@ -413,8 +413,8 @@ The ``Collection`` class provides methods for working with collections of items:
     // Get collection size
     $count = $collection->count(); // 5
 
-DateTime Usage
-~~~~~~~~~~~~~
+DateTime
+~~~~~~~~
 
 The ``DateTime`` class provides methods for working with dates and times:
 
@@ -443,8 +443,8 @@ The ``DateTime`` class provides methods for working with dates and times:
     $isAfter = $tomorrow->isAfter($now); // true
     $isBefore = $yesterday->isBefore($now); // true
 
-Int_ Usage
-~~~~~~~~~
+Int_
+~~~~
 
 The ``Int_`` class provides methods for working with integers:
 
@@ -490,8 +490,8 @@ The ``Int_`` class provides methods for working with integers:
     $between = $integer->between(30, 50); // true
     $betweenOrEqual = $integer->betweenOrEqual(42, 50); // true
 
-BoolEnum Usage
-~~~~~~~~~~~~
+BoolEnum
+~~~~~~~~
 
 The ``BoolEnum`` class provides methods for working with boolean values:
 
@@ -520,8 +520,8 @@ The ``BoolEnum`` class provides methods for working with boolean values:
     $or = $bool->or(BoolEnum::false()); // true
     $not = $bool->not(); // false
 
-Uuid and Ulid Usage
-~~~~~~~~~~~~~~~~
+Uuid and Ulid
+~~~~~~~~~~~~~
 
 The ``Uuid`` and ``Ulid`` classes provide methods for working with universally unique identifiers:
 
@@ -550,8 +550,8 @@ The ``Uuid`` and ``Ulid`` classes provide methods for working with universally u
     // Convert to string
     $string = $ulid->toString();
 
-Numeric Usage
-~~~~~~~~~~~
+Numeric
+~~~~~~~
 
 The ``Numeric`` class provides methods for working with numeric values with precision control:
 
@@ -603,8 +603,8 @@ The ``Numeric`` class provides methods for working with numeric values with prec
     // Get absolute value
     $absolute = Numeric::of(-123.45, 2)->abs(); // 123.45
 
-Locale Usage
-~~~~~~~~~~~
+Locale
+~~~~~~
 
 The ``Locale`` class provides methods for working with locales:
 
