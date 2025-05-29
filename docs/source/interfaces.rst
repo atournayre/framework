@@ -284,16 +284,21 @@ The Framework provides interfaces for sending emails:
 Null Interfaces
 ~~~~~~~~~~~~~
 
-The Framework provides interfaces for null objects:
+The Framework provides interfaces for implementing the Null Object Pattern:
 
 .. code-block:: php
 
     <?php
 
-    use Atournayre\Contracts\Null\NullInterface;
+    use Atournayre\Contracts\Null\NullableInterface;
 
     // Interface methods
-    // (Methods for null objects)
+    public function toNullable(): self; // Convert an object to a nullable version
+    public function isNull(): bool; // Check if the object is null
+    public function isNotNull(): bool; // Check if the object is not null
+    public static function asNull(): self; // Create a null instance
+    public function orNull(): ?self; // Return the object if not null, otherwise return a null instance
+    public function orThrow($throwable): self; // Return the object if not null, otherwise throw an exception
 
 Response Interfaces
 ~~~~~~~~~~~~~~~~~
