@@ -27,6 +27,7 @@ To get started with the Library, follow these steps:
    introduction
    installation
    usage
+   interfaces
 
 Indices and tables
 ==================
