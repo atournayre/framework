@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Collection;
 
-use Atournayre\Contracts\Exception\ThrowableInterface;
-
+/**
+ * Interface MapInterface.
+ */
 interface MapInterface
 {
     /**
-     * @param array<string, mixed> $collection
+     * Applies a callback to each element and returns the results.
      *
-     * @return static
-     *
-     * @throws ThrowableInterface
+     * @api
      */
-    public static function asMap(array $collection);
+    public function map(callable $callback): self;
 }

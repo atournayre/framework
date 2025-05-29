@@ -13,7 +13,9 @@ services:
           excludedPaths:
               - %currentWorkingDirectory%/src/PHPStan
               - %currentWorkingDirectory%/src/Primitives/Collection.php
-              - '%currentWorkingDirectory%/tests'
+              - %currentWorkingDirectory%/src/Primitives/StringType.php
+              - %currentWorkingDirectory%/src/Rector
+              - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule
 
@@ -30,6 +32,8 @@ services:
       class: Atournayre\PHPStan\ElegantObject\Rules\BeImmutableRule
       arguments:
         excludedPaths:
+            - %currentWorkingDirectory%/src/Common/VO/Uri.php
+            - %currentWorkingDirectory%/src/Rector
             - %currentWorkingDirectory%/tests/Fixtures
       tags:
         - phpstan.rules.rule
@@ -38,11 +42,11 @@ services:
       class: Atournayre\PHPStan\ElegantObject\Rules\DontUseStaticMethodsRule
       arguments:
         excludedPaths:
-            - '%currentWorkingDirectory%/src/Common/Assert/Assert.php'
-            - '%currentWorkingDirectory%/src/Contracts/Collection/ReadOnlyListInterface.php'
-            - '%currentWorkingDirectory%/src/Contracts/Collection/ReadOnlyMapInterface.php'
-            - '%currentWorkingDirectory%/src/Contracts/Common/Assert'
-            - '%currentWorkingDirectory%/src/Primitives/Primitive.php'
+            - %currentWorkingDirectory%/src/Common/Assert/Assert.php
+            - %currentWorkingDirectory%/src/Contracts/Collection/ReadOnlyListInterface.php
+            - %currentWorkingDirectory%/src/Contracts/Collection/ReadOnlyMapInterface.php
+            - %currentWorkingDirectory%/src/Contracts/Common/Assert
+            - %currentWorkingDirectory%/src/Primitives/Primitive.php
         allowedInterfaces:
             - Symfony\Component\EventDispatcher\EventSubscriberInterface
       tags:
@@ -85,12 +89,16 @@ services:
       arguments:
         excludedPaths:
             - %currentWorkingDirectory%/src/PHPStan
+            - %currentWorkingDirectory%/src/Rector
             - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule
 
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverUsePublicConstantsRule
+      arguments:
+          excludedPaths:
+              - %currentWorkingDirectory%/src/Rector
       tags:
         - phpstan.rules.rule
 
@@ -119,9 +127,11 @@ services:
       arguments:
           excludedPaths:
             - %currentWorkingDirectory%/src/Common/Assert/Assert.php
+            - %currentWorkingDirectory%/src/Contracts/Collection # Remove when methods no longer accept null arguments
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertAllInterface.php
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertMiscInterface.php
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertNullInterface.php
+            - %currentWorkingDirectory%/src/Primitives/Traits/Collection/Add.php
       tags:
         - phpstan.rules.rule
 

@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Collection;
 
 use Atournayre\Common\Assert\Assert;
-use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Contracts\Collection\AsListInterface;
 use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
-final class DateTimeCollection implements ListInterface
+final class DateTimeCollection implements AsListInterface
 {
     use CollectionTrait;
 

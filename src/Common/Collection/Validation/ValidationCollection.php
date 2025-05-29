@@ -6,13 +6,13 @@ namespace Atournayre\Common\Collection\Validation;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\Exception\RuntimeException;
-use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Contracts\Collection\AsMapInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
-final class ValidationCollection implements MapInterface
+final class ValidationCollection implements AsMapInterface
 {
     use CollectionTrait;
 

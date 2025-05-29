@@ -2856,4 +2856,29 @@ Array
             ->set('4', 4)
         ;
     }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function testAdd(): void
+    {
+        $m = Collection::of([0])
+            ->add(1)
+        ;
+
+        self::assertSame([0, 1], $m->toArray());
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function testAddWithCallback(): void
+    {
+        $m = Collection::of([0])
+            ->addWithCallback(1, fn () => false)
+            ->addWithCallback(2, fn () => true)
+        ;
+
+        self::assertSame([0, 2], $m->toArray());
+    }
 }

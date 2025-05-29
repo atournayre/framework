@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Atournayre\Component\Mailer\Collection;
 
 use Atournayre\Common\Assert\Assert;
-use Atournayre\Contracts\Collection\MapInterface;
+use Atournayre\Contracts\Collection\AsMapInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
-final class TagCollection implements LoggableInterface, MapInterface
+final class TagCollection implements LoggableInterface, AsMapInterface
 {
     use CollectionTrait;
 

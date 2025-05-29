@@ -10,38 +10,20 @@ return RectorConfig::configure()
         __DIR__.'/../src',
         __DIR__.'/../tests',
     ])
+    ->withSkipPath(__DIR__ . '/../src/Rector/Sets.php')
     ->withPhpSets(
-        \false,
-        \false,
-        \false,
-        \false,
-        \true, // Enable PHP 7.4 set
-        \false,
-        \false,
-        \false,
-        \false,
-        \false,
-        \false,
-        \false,
-        \false,
-        \false
+        php82: \true,
     )
     ->withPreparedSets(
-        \true, // Enable dead code set
-        \true, // Enable code quality set
-        \true, // Enable coding style set
-        \false,
-        \true, // Enable privatization set
-        \false,
-        \false,
-        \true, // Enable early return set
-        \false
+        deadCode: \true,
+        codeQuality: \true,
+        codingStyle: \true,
+        privatization: \true,
+        earlyReturn: \true,
     )
     ->withImportNames(
-        \true,
-        \true,
-        \false,
-        \true
+        importShortClasses: \false,
+        removeUnusedImports: \true,
     )
     ->withRootFiles()
     ->withConfiguredRule(IncreaseDeclareStrictTypesRector::class, [

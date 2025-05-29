@@ -6,14 +6,14 @@ namespace Atournayre\Component\Mailer\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Component\Mailer\VO\EmailContact;
-use Atournayre\Contracts\Collection\ListInterface;
+use Atournayre\Contracts\Collection\AsListInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
-final class EmailContactCollection implements LoggableInterface, ListInterface
+final class EmailContactCollection implements LoggableInterface, AsListInterface
 {
     use CollectionTrait;
 

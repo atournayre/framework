@@ -616,16 +616,6 @@ parameters:
 			path: ../../src/Component/Mailer/VO/Email.php
 
 		-
-			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\ListInterface\\:\\:asList\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
-			count: 1
-			path: ../../src/Contracts/Collection/ListInterface.php
-
-		-
-			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\MapInterface\\:\\:asMap\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
-			count: 1
-			path: ../../src/Contracts/Collection/MapInterface.php
-
-		-
 			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\NumericListInterface\\:\\:asList\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
 			count: 1
 			path: ../../src/Contracts/Collection/NumericListInterface.php
@@ -2951,11 +2941,6 @@ parameters:
 			path: ../../src/Primitives/Numeric.php
 
 		-
-			message: "#^Class Atournayre\\\\Primitives\\\\StringType does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/StringType.php
-
-		-
 			message: "#^Class Atournayre\\\\Primitives\\\\StringType has 49 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/StringType.php
@@ -3379,26 +3364,6 @@ parameters:
 			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Birthday\\:\\:weekday\\(\\) has default value null for parameter \\$value, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../tests/Fixtures/Birthday.php
-
-		-
-			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:add\\(\\) accepts null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../tests/Fixtures/Collection/CodeCollection.php
-
-		-
-			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:add\\(\\) has default value null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../tests/Fixtures/Collection/CodeCollection.php
-
-		-
-			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:first\\(\\) has default value null for parameter \\$default, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../tests/Fixtures/Collection/CodeCollection.php
-
-		-
-			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:last\\(\\) has default value null for parameter \\$default, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../tests/Fixtures/Collection/CodeCollection.php
 
 		-
 			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Collection\\\\CodeCollection\\:\\:set\\(\\) accepts null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
