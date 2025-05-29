@@ -19,4 +19,13 @@ interface AddInterface
      * @api
      */
     public function add(mixed $value, ?\Closure $callback = null): self;
+
+    /**
+     * Adds an element using callback.
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
+     */
+    public function addWithCallback(mixed $value, \Closure $callback): self;
 }

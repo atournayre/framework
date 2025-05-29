@@ -2875,8 +2875,8 @@ Array
     public function testAddWithCallback(): void
     {
         $m = Collection::of([0])
-            ->add(1, fn () => false)
-            ->add(2, fn () => true)
+            ->addWithCallback(1, fn () => false)
+            ->addWithCallback(2, fn () => true)
         ;
 
         self::assertSame([0, 2], $m->toArray());

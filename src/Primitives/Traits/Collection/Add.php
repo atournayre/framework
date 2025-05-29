@@ -35,4 +35,26 @@ trait Add
 
         return self::of($newCollection);
     }
+
+    /**
+     * Adds an element using callback.
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
+     */
+    public function addWithCallback(mixed $value, \Closure $callback): self
+    {
+        $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
+
+        if (!$callback($value)) {
+            return $this;
+        }
+
+        $newCollection = $this
+            ->collection->push($value)
+        ;
+
+        return self::of($newCollection);
+    }
 }
