@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Atournayre\Primitives\Traits\Collection;
 
 use Atournayre\Common\Exception\MutableException;
-use Atournayre\Contracts\Collection\SetInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
@@ -31,7 +30,8 @@ trait Add
         }
 
         $newCollection = $this
-            ->collection->push($value);
+            ->collection->push($value)
+        ;
 
         return self::of($newCollection);
     }

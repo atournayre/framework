@@ -2863,7 +2863,8 @@ Array
     public function testAdd(): void
     {
         $m = Collection::of([0])
-            ->add(1);
+            ->add(1)
+        ;
 
         self::assertSame([0, 1], $m->toArray());
     }
@@ -2875,7 +2876,8 @@ Array
     {
         $m = Collection::of([0])
             ->add(1, fn () => false)
-            ->add(2, fn () => true);
+            ->add(2, fn () => true)
+        ;
 
         self::assertSame([0, 2], $m->toArray());
     }
