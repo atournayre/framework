@@ -1,13 +1,11 @@
-Introduction
-============
+# Introduction
 
-.. warning::
-   This documentation is being written and may therefore be incomplete or contain errors.
+!!! warning
+    This documentation is being written and may therefore be incomplete or contain errors.
 
 This is the introduction to the Framework. The Framework is a business-oriented framework for Symfony applications designed to help developers build robust and scalable applications.
 
-Features
---------
+## Features
 
 * Common utilities (Assert, Collection, Exception, Factory, Log, Model, Types, Value Objects)
 * Components (Mailer)
@@ -19,8 +17,7 @@ Features
 * Useful traits
 * File wrappers
 
-Philosophy
----------
+## Philosophy
 
 The Framework is a business-oriented framework for Symfony applications that uses an Elegant Object approach inspired by Yegor Bugayenko. It is built with the following principles in mind:
 
