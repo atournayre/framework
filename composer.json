@@ -37,7 +37,8 @@
         "twig/twig": "^2.13|^3.0.4",
         "webmozart/assert": "^1.11",
         "nyholm/psr7": "^1.8",
-        "archtechx/enums": "^1.1"
+        "archtechx/enums": "^1.1",
+        "symfony/messenger": "^6.4 || ^7.0"
     },
     "autoload": {
         "psr-4": {

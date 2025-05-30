@@ -6,13 +6,29 @@ namespace Atournayre\Common\Collection;
 
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\VO\Event;
+use Atournayre\Contracts\Collection\AddInterface;
 use Atournayre\Contracts\Collection\AsMapInterface;
+use Atournayre\Contracts\Collection\AtLeastOneElementInterface;
+use Atournayre\Contracts\Collection\ContainsInterface;
+use Atournayre\Contracts\Collection\CountInterface;
+use Atournayre\Contracts\Collection\EachInterface;
+use Atournayre\Contracts\Collection\FirstInterface;
+use Atournayre\Contracts\Collection\HasNoElementInterface;
+use Atournayre\Contracts\Collection\HasOneElementInterface;
+use Atournayre\Contracts\Collection\HasSeveralElementsInterface;
+use Atournayre\Contracts\Collection\HasXElementsInterface;
+use Atournayre\Contracts\Collection\KeysInterface;
+use Atournayre\Contracts\Collection\LastInterface;
+use Atournayre\Contracts\Collection\SearchInterface;
+use Atournayre\Contracts\Collection\ToArrayInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
+use Symfony\Component\Messenger\MessageBusInterface;
 
-final class EventCollection implements AsMapInterface
+final class EventCollection implements AsMapInterface, AddInterface, ContainsInterface, SearchInterface, CountInterface, ToArrayInterface, FirstInterface, LastInterface, EachInterface, KeysInterface, HasXElementsInterface, HasNoElementInterface, HasOneElementInterface, HasSeveralElementsInterface, AtLeastOneElementInterface
 {
     use CollectionTrait;
 
@@ -74,6 +90,19 @@ final class EventCollection implements AsMapInterface
     }
 
     /**
+     * @throws ThrowableInterface
+     *
+     * @api
+     */
+    public function addWithCallback(mixed $value, \Closure $callback): self
+    {
+        $key = $value->_identifier();
+        $this->set($key, $value, $callback);
+
+        return $this;
+    }
+
+    /**
      * @api
      */
     public function contains(mixed $key, ?string $operator = null, mixed $value = null): BoolEnum
@@ -112,6 +141,28 @@ final class EventCollection implements AsMapInterface
         $this
             ->collection
             ->offsetUnset($index)
+        ;
+    }
+
+    /**
+     * @api
+     */
+    public function dispatch(
+        LoggerInterface $logger,
+        MessageBusInterface $messageBus,
+    ): void {
+        $this
+            ->collection
+            ->each(
+                function (Event $event) use ($logger, $messageBus): void {
+                    $logger->info(sprintf('Dispatching %s event', $event->_type()), $event->toLog());
+
+                    $messageBus->dispatch($event);
+                    $this->remove($event);
+
+                    $logger->info(sprintf('Event %s dispatched', $event->_type()), $event->toLog());
+                },
+            )
         ;
     }
 }
