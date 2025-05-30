@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Class Atournayre\\\\Common\\\\Collection\\\\EventCollection has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Common\\\\Collection\\\\EventCollection has 9 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Collection/EventCollection.php
 

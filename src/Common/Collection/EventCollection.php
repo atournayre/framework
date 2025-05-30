@@ -144,11 +144,13 @@ final class EventCollection implements AsMapInterface, AddInterface, ContainsInt
         ;
     }
 
+    /**
+     * @api
+     */
     public function dispatch(
         LoggerInterface $logger,
         MessageBusInterface $messageBus,
-    ): void
-    {
+    ): void {
         $this
             ->collection
             ->each(
