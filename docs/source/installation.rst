@@ -18,6 +18,30 @@ Add the library to your existing project using Composer:
 
    composer require atournayre/framework
 
+Automatic Upgrades
+-----------------
+
+The framework provides Rector sets for automatic updates during version upgrades. 
+To use these sets, you can install the ``atournayre/rector-auto-upgrade`` package:
+
+.. code-block:: bash
+
+   composer require --dev atournayre/rector-auto-upgrade
+
+You may need to add an entry in the ``config.allow-plugins`` section of your ``composer.json`` if it's not done automatically:
+
+.. code-block:: json
+
+   {
+       "config": {
+           "allow-plugins": {
+               "atournayre/rector-auto-upgrade": true
+           }
+       }
+   }
+
+This package will help you automatically upgrade your code when updating to a new version of the framework.
+
 Usage
 -----
 
