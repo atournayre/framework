@@ -1,0 +1,86 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Atournayre\TryCatch;
+
+use Atournayre\Common\Exception\InvalidArgumentException;
+use Atournayre\TryCatch\Contracts\ThrowableHandlerCollectionInterface;
+use Atournayre\TryCatch\Contracts\ThrowableHandlerInterface;
+
+/**
+ * Class ThrowableHandlerCollection.
+ *
+ * Collection of throwable handlers.
+ */
+final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInterface
+{
+    /**
+     * @var array<ThrowableHandlerInterface> The collection of handlers
+     */
+    private array $handlers = [];
+
+    /**
+     * {@inheritdoc}
+     */
+    public function add(mixed $value, ?\Closure $callback = null): self
+    {
+        if (!$value instanceof ThrowableHandlerInterface) {
+            throw InvalidArgumentException::new('Value must be an instance of ThrowableHandlerInterface');
+        }
+
+        $this->handlers[] = $value;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addWithCallback(mixed $value, \Closure $callback): self
+    {
+        return $this->add($value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function remove($keys): self
+    {
+        if (is_int($keys)) {
+            unset($this->handlers[$keys]);
+            return $this;
+        }
+
+        if (is_array($keys) || $keys instanceof \Traversable) {
+            foreach ($keys as $key) {
+                unset($this->handlers[$key]);
+            }
+            return $this;
+        }
+
+        throw InvalidArgumentException::new('Keys must be an integer, array, or Traversable');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findHandlerFor(\Throwable $throwable): ?ThrowableHandlerInterface
+    {
+        foreach ($this->handlers as $handler) {
+            if ($handler->canHandle($throwable)) {
+                return $handler;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasHandlerFor(\Throwable $throwable): bool
+    {
+        return $this->findHandlerFor($throwable) !== null;
+    }
+}
