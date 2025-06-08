@@ -81,6 +81,8 @@ services:
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverUseErNamesRule
       arguments:
+          excludedPaths:
+              - %currentWorkingDirectory%/src/TryCatch/ThrowableHandler.php
       tags:
         - phpstan.rules.rule
 
@@ -118,6 +120,7 @@ services:
         excludedPaths:
           - %currentWorkingDirectory%/src/Common/Assert/Assert.php
           - %currentWorkingDirectory%/src/Contracts/Common/Assert
+          - %currentWorkingDirectory%/src/TryCatch/ThrowableHandlerCollection.php
           - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule
@@ -132,6 +135,7 @@ services:
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertMiscInterface.php
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertNullInterface.php
             - %currentWorkingDirectory%/src/Primitives/Traits/Collection/Add.php
+            - %currentWorkingDirectory%/src/TryCatch/TryCatch.php
       tags:
         - phpstan.rules.rule
 

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Atournayre\TryCatch;
 
-use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
 use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
+use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -24,9 +24,8 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
         /**
          * @var \Closure|null The finally block
          */
-        private ?\Closure $finallyBlock = null
-    )
-    {
+        private ?\Closure $finallyBlock = null,
+    ) {
     }
 
     public static function new(
@@ -73,7 +72,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
         $newHandlers = clone $this->handlers;
         $newHandlers->add(ThrowableHandler::new($throwableClass, $handler));
 
-        return new self(
+        return self::new(
             tryBlock: $this->tryBlock,
             handlers: $newHandlers,
             logger: $this->logger,
@@ -85,10 +84,12 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      * Sets the finally block.
      *
      * @param \Closure $finallyBlock The finally block
+     *
+     * @api
      */
     public function finally(\Closure $finallyBlock): self
     {
-        return new self(
+        return self::new(
             tryBlock: $this->tryBlock,
             handlers: $this->handlers,
             logger: $this->logger,
@@ -103,14 +104,6 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      * @return mixed The result of the try block execution
      *
      * @throws \Throwable If an exception is thrown and not handled
-     */
-    public function run(): mixed
-    {
-        return $this->execute();
-    }
-
-    /**
-     * @throws \Throwable
      */
     public function execute(): mixed
     {

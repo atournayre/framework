@@ -19,6 +19,9 @@ final readonly class CreateUserTryCatch implements ExecutableTryCatchInterface
     ) {
     }
 
+    /**
+     * @api
+     */
     public static function new(
         string $email,
         string $name,
@@ -45,8 +48,8 @@ final readonly class CreateUserTryCatch implements ExecutableTryCatchInterface
             throwableClass: InvalidEmailException::class,
             handler: function (InvalidEmailException $exception) {
                 // Log the exception or perform other actions
-                // Return a default user or null
-                return null;
+                // Return a default user
+                return User::create('no@email.com', 'No Name');
             },
         )->execute();
     }

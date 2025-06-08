@@ -28,7 +28,7 @@ $result = TryCatch::with(
 ->finally(function() {
     // Code that will always run
 })
-->run();
+->execute();
 ```
 
 ## TryCatch
@@ -39,7 +39,6 @@ The main class that implements the try-catch-finally pattern.
 - `with(tryBlock: \Closure, logger: LoggerInterface): self`
 - `catch(throwableClass: string, handler: \Closure): self`
 - `finally(finallyBlock: \Closure): self`
-- `run(): mixed`
 - `execute(): mixed`
 
 ## ThrowableHandlerCollection
@@ -91,7 +90,7 @@ $result = TryCatch::new(
     finallyBlock: function() {
         // Code that will always run
     }
-)->run();
+)->execute();
 ```
 
 ### Real-world Example: User Creation

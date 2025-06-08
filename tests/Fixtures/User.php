@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Tests\Fixtures;
 
 use Atournayre\Tests\Fixtures\Exception\InvalidEmailException;
+use Random\RandomException;
 
 /**
  * Class User.
@@ -40,6 +41,8 @@ final class User
 
     /**
      * Gets the user's ID.
+     *
+     * @api
      */
     public function getId(): string
     {
@@ -48,6 +51,8 @@ final class User
 
     /**
      * Gets the user's email.
+     *
+     * @api
      */
     public function getEmail(): string
     {
@@ -56,6 +61,8 @@ final class User
 
     /**
      * Gets the user's name.
+     *
+     * @api
      */
     public function getName(): string
     {
@@ -66,6 +73,7 @@ final class User
      * Creates a new user with the given email and name.
      *
      * @throws InvalidEmailException If the email is invalid
+     * @throws RandomException
      */
     public static function create(string $email, string $name): self
     {
@@ -73,6 +81,6 @@ final class User
             throw InvalidEmailException::new('Invalid email address');
         }
 
-        return new self(uniqid('user_'), $email, $name);
+        return new self(random_bytes(16), $email, $name);
     }
 }

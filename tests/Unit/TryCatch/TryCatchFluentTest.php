@@ -32,7 +32,7 @@ class TryCatchFluentTest extends TestCase
             ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
             ->catch(RuntimeException::class, fn ($e) => 'runtime error: '.$e->getMessage())
             ->finally(fn () => $this->logger->info('Finally reached'))
-            ->run()
+            ->execute()
         ;
 
         self::assertSame('Processed: hello', $result);
@@ -48,7 +48,7 @@ class TryCatchFluentTest extends TestCase
             ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
             ->catch(RuntimeException::class, fn ($e) => 'runtime error: '.$e->getMessage())
             ->finally(fn () => $this->logger->info('Finally reached'))
-            ->run()
+            ->execute()
         ;
 
         self::assertSame('invalid argument: Input cannot be empty', $result);
@@ -64,7 +64,7 @@ class TryCatchFluentTest extends TestCase
             ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
             ->catch(RuntimeException::class, fn ($e) => 'runtime error: '.$e->getMessage())
             ->finally(fn () => $this->logger->info('Finally reached'))
-            ->run()
+            ->execute()
         ;
 
         self::assertSame('runtime error: Runtime exception triggered', $result);
@@ -83,7 +83,7 @@ class TryCatchFluentTest extends TestCase
             ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
             // No handler for RuntimeException
             ->finally(fn () => $this->logger->info('Finally reached'))
-            ->run()
+            ->execute()
         ;
     }
 }
@@ -93,9 +93,12 @@ class TryCatchFluentTest extends TestCase
  */
 class ExampleService
 {
+    /**
+     * @api
+     */
     public function doSomething(string $input): string
     {
-        if (empty($input)) {
+        if ('' === $input) {
             throw InvalidArgumentException::new('Input cannot be empty');
         }
 

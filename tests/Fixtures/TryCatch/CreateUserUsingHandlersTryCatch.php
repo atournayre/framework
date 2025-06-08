@@ -21,6 +21,9 @@ final readonly class CreateUserUsingHandlersTryCatch implements ExecutableTryCat
     ) {
     }
 
+    /**
+     * @api
+     */
     public static function new(
         string $email,
         string $name,
@@ -36,7 +39,7 @@ final readonly class CreateUserUsingHandlersTryCatch implements ExecutableTryCat
     /**
      * @throws \Throwable
      */
-    public function execute(): ?User
+    public function execute(): User
     {
         $handlers = ThrowableHandlerCollection::asList()
             ->add(
@@ -44,8 +47,8 @@ final readonly class CreateUserUsingHandlersTryCatch implements ExecutableTryCat
                     throwableClass: InvalidEmailException::class,
                     handlerFunction: function (InvalidEmailException $exception) {
                         // Log the exception or perform other actions
-                        // Return a default user or null
-                        return null;
+                        // Return a default user
+                        return User::create('no@email.com', 'No Name');
                     },
                 ),
             )

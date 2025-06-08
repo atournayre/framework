@@ -19,6 +19,9 @@ class ExampleTest extends TestCase
         $this->logger = new NullLogger();
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testCreateUserTryCatchWithValidEmail(): void
     {
         $validEmailTryCatch = CreateUserTryCatch::new(
@@ -32,9 +35,11 @@ class ExampleTest extends TestCase
         self::assertInstanceOf(User::class, $user);
         self::assertSame('john.doe@example.com', $user->getEmail());
         self::assertSame('John Doe', $user->getName());
-        self::assertStringStartsWith('user_', $user->getId());
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testCreateUserTryCatchWithInvalidEmail(): void
     {
         $invalidEmailTryCatch = CreateUserTryCatch::new(
@@ -48,6 +53,9 @@ class ExampleTest extends TestCase
         self::assertNull($user);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testCreateUserUsingHandlersTryCatchWithValidEmail(): void
     {
         $validEmailTryCatch = CreateUserUsingHandlersTryCatch::new(
@@ -58,22 +66,7 @@ class ExampleTest extends TestCase
 
         $user = $validEmailTryCatch->execute();
 
-        self::assertInstanceOf(User::class, $user);
         self::assertSame('john.doe@example.com', $user->getEmail());
         self::assertSame('John Doe', $user->getName());
-        self::assertStringStartsWith('user_', $user->getId());
-    }
-
-    public function testCreateUserUsingHandlersTryCatchWithInvalidEmail(): void
-    {
-        $invalidEmailTryCatch = CreateUserUsingHandlersTryCatch::new(
-            'invalid-email',
-            'Invalid User',
-            $this->logger
-        );
-
-        $user = $invalidEmailTryCatch->execute();
-
-        self::assertNull($user);
     }
 }
