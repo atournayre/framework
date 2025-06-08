@@ -6,7 +6,7 @@ namespace Atournayre\Tests\Fixtures\TryCatch;
 
 use Atournayre\Tests\Fixtures\Exception\InvalidEmailException;
 use Atournayre\Tests\Fixtures\User;
-use Atournayre\TryCatch\Contracts\ExecutableTryCatchInterface;
+use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
 use Atournayre\TryCatch\TryCatch;
 use Psr\Log\LoggerInterface;
 

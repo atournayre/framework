@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\TryCatch;
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
-use Atournayre\TryCatch\Contracts\ExecutableTryCatchInterface;
-use Atournayre\TryCatch\Contracts\ThrowableHandlerCollectionInterface;
+use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
+use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
 use Psr\Log\LoggerInterface;
 
 /**

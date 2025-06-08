@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\TryCatch\Contracts;
+namespace Atournayre\Contracts\TryCatch;
 
 /**
  * Interface ThrowableHandlerInterface.

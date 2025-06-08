@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\TryCatch;
 
-use Atournayre\TryCatch\Contracts\ThrowableHandlerInterface;
+use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
 
 /**
  * Class ThrowableHandler.

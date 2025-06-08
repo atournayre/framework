@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atournayre\TryCatch\Contracts;
+namespace Atournayre\Contracts\TryCatch;
 
 use Atournayre\Contracts\Collection\AddInterface;
 use Atournayre\Contracts\Collection\RemoveInterface;

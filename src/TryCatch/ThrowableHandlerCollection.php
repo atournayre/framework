@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Atournayre\TryCatch;
 
 use Atournayre\Common\Exception\InvalidArgumentException;
-use Atournayre\TryCatch\Contracts\ThrowableHandlerCollectionInterface;
-use Atournayre\TryCatch\Contracts\ThrowableHandlerInterface;
+use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
+use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
 
 /**
  * Class ThrowableHandlerCollection.
