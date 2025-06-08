@@ -28,7 +28,7 @@ class TryCatchFluentTest extends TestCase
      */
     public function testSuccessfulExecution(): void
     {
-        $result = TryCatch::with(fn() => $this->service->doSomething('hello'))
+        $result = TryCatch::with(fn() => $this->service->doSomething('hello'), $this->logger)
             ->catch(InvalidArgumentException::class, fn($e) => 'invalid argument: ' . $e->getMessage())
             ->catch(RuntimeException::class, fn($e) => 'runtime error: ' . $e->getMessage())
             ->finally(fn() => $this->logger->info('Finally reached'))
@@ -43,7 +43,7 @@ class TryCatchFluentTest extends TestCase
      */
     public function testInvalidArgumentException(): void
     {
-        $result = TryCatch::with(fn() => $this->service->doSomething(''))
+        $result = TryCatch::with(fn() => $this->service->doSomething(''), $this->logger)
             ->catch(InvalidArgumentException::class, fn($e) => 'invalid argument: ' . $e->getMessage())
             ->catch(RuntimeException::class, fn($e) => 'runtime error: ' . $e->getMessage())
             ->finally(fn() => $this->logger->info('Finally reached'))
@@ -58,7 +58,7 @@ class TryCatchFluentTest extends TestCase
      */
     public function testRuntimeException(): void
     {
-        $result = TryCatch::with(fn() => $this->service->doSomething('trigger_runtime'))
+        $result = TryCatch::with(fn() => $this->service->doSomething('trigger_runtime'), $this->logger)
             ->catch(InvalidArgumentException::class, fn($e) => 'invalid argument: ' . $e->getMessage())
             ->catch(RuntimeException::class, fn($e) => 'runtime error: ' . $e->getMessage())
             ->finally(fn() => $this->logger->info('Finally reached'))
@@ -76,7 +76,7 @@ class TryCatchFluentTest extends TestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Runtime exception triggered');
 
-        TryCatch::with(fn() => $this->service->doSomething('trigger_runtime'))
+        TryCatch::with(fn() => $this->service->doSomething('trigger_runtime'), $this->logger)
             ->catch(InvalidArgumentException::class, fn($e) => 'invalid argument: ' . $e->getMessage())
             // No handler for RuntimeException
             ->finally(fn() => $this->logger->info('Finally reached'))

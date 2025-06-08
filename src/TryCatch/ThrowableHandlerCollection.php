@@ -16,9 +16,25 @@ use Atournayre\TryCatch\Contracts\ThrowableHandlerInterface;
 final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInterface
 {
     /**
-     * @var array<ThrowableHandlerInterface> The collection of handlers
+     * @param array<ThrowableHandlerInterface> $handlers The collection of handlers
      */
-    private array $handlers = [];
+    public function __construct(
+        private array $handlers = [],
+    )
+    {
+    }
+
+    /**
+     * @param array<ThrowableHandlerInterface> $handlers The collection of handlers
+     */
+    public static function new(
+        array $handlers = [],
+    ): self
+    {
+        return new self(
+            handlers: $handlers,
+        );
+    }
 
     /**
      * {@inheritdoc}

@@ -8,7 +8,6 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\TryCatch\Contracts\ExecutableTryCatchInterface;
 use Atournayre\TryCatch\Contracts\ThrowableHandlerCollectionInterface;
 use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 
 /**
  * Class TryCatch.
@@ -22,7 +21,7 @@ final class TryCatch implements ExecutableTryCatchInterface
      */
     private ?\Closure $finallyBlock;
 
-    public function __construct(
+    private function __construct(
         private readonly \Closure                            $tryBlock,
         private readonly ThrowableHandlerCollectionInterface $handlers,
         private readonly LoggerInterface                     $logger,
@@ -32,18 +31,36 @@ final class TryCatch implements ExecutableTryCatchInterface
         $this->finallyBlock = $finallyBlock;
     }
 
+    public static function new(
+        \Closure $tryBlock,
+        ThrowableHandlerCollectionInterface $handlers,
+        LoggerInterface $logger,
+        ?\Closure $finallyBlock = null,
+    ): self
+    {
+        return new self(
+            tryBlock: $tryBlock,
+            handlers: $handlers,
+            logger: $logger,
+            finallyBlock: $finallyBlock,
+        );
+    }
+
     /**
      * Creates a new TryCatch instance with the given try block.
      *
      * @param \Closure $tryBlock The try block
      * @return self
      */
-    public static function with(\Closure $tryBlock): self
+    public static function with(
+        \Closure $tryBlock,
+        LoggerInterface $logger,
+    ): self
     {
         return new self(
             tryBlock: $tryBlock,
-            handlers: new ThrowableHandlerCollection(),
-            logger: new NullLogger(),
+            handlers: ThrowableHandlerCollection::new(),
+            logger: $logger,
             finallyBlock: null,
         );
     }
