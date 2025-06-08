@@ -41,7 +41,7 @@ final readonly class CreateUserUsingHandlersTryCatch implements ExecutableTryCat
      */
     public function execute(): ?User
     {
-        $handlers = ThrowableHandlerCollection::new()
+        $handlers = ThrowableHandlerCollection::asList()
             ->add(
                 ThrowableHandler::new(
                     throwableClass: InvalidEmailException::class,

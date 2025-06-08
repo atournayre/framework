@@ -59,7 +59,7 @@ final class TryCatch implements ExecutableTryCatchInterface
     {
         return new self(
             tryBlock: $tryBlock,
-            handlers: ThrowableHandlerCollection::new(),
+            handlers: ThrowableHandlerCollection::asList(),
             logger: $logger,
             finallyBlock: null,
         );

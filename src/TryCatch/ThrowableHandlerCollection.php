@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\TryCatch;
 
 use Atournayre\Common\Exception\InvalidArgumentException;
+use Atournayre\Contracts\Collection\AsListInterface;
 use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
 use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
 
@@ -13,26 +14,26 @@ use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
  *
  * Collection of throwable handlers.
  */
-final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInterface
+final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInterface, AsListInterface
 {
     /**
-     * @param array<ThrowableHandlerInterface> $handlers The collection of handlers
+     * @param array<ThrowableHandlerInterface> $collection The collection of handlers
      */
     public function __construct(
-        private array $handlers = [],
+        private array $collection = [],
     )
     {
     }
 
     /**
-     * @param array<ThrowableHandlerInterface> $handlers The collection of handlers
+     * @param array<ThrowableHandlerInterface> $collection
      */
-    public static function new(
-        array $handlers = [],
+    public static function asList(
+        array $collection = [],
     ): self
     {
         return new self(
-            handlers: $handlers,
+            collection: $collection,
         );
     }
 
@@ -45,7 +46,7 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
             throw InvalidArgumentException::new('Value must be an instance of ThrowableHandlerInterface');
         }
 
-        $this->handlers[] = $value;
+        $this->collection[] = $value;
 
         return $this;
     }
@@ -64,13 +65,13 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
     public function remove($keys): self
     {
         if (is_int($keys)) {
-            unset($this->handlers[$keys]);
+            unset($this->collection[$keys]);
             return $this;
         }
 
         if (is_array($keys) || $keys instanceof \Traversable) {
             foreach ($keys as $key) {
-                unset($this->handlers[$key]);
+                unset($this->collection[$key]);
             }
             return $this;
         }
@@ -83,7 +84,7 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
      */
     public function findHandlerFor(\Throwable $throwable): ?ThrowableHandlerInterface
     {
-        foreach ($this->handlers as $handler) {
+        foreach ($this->collection as $handler) {
             if ($handler->canHandle($throwable)) {
                 return $handler;
             }
