@@ -28,11 +28,12 @@ class TryCatchFluentTest extends TestCase
      */
     public function testSuccessfulExecution(): void
     {
-        $result = TryCatch::with(fn() => $this->service->doSomething('hello'), $this->logger)
-            ->catch(InvalidArgumentException::class, fn($e) => 'invalid argument: ' . $e->getMessage())
-            ->catch(RuntimeException::class, fn($e) => 'runtime error: ' . $e->getMessage())
-            ->finally(fn() => $this->logger->info('Finally reached'))
-            ->run();
+        $result = TryCatch::with(fn () => $this->service->doSomething('hello'), $this->logger)
+            ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
+            ->catch(RuntimeException::class, fn ($e) => 'runtime error: '.$e->getMessage())
+            ->finally(fn () => $this->logger->info('Finally reached'))
+            ->run()
+        ;
 
         self::assertSame('Processed: hello', $result);
     }
@@ -43,11 +44,12 @@ class TryCatchFluentTest extends TestCase
      */
     public function testInvalidArgumentException(): void
     {
-        $result = TryCatch::with(fn() => $this->service->doSomething(''), $this->logger)
-            ->catch(InvalidArgumentException::class, fn($e) => 'invalid argument: ' . $e->getMessage())
-            ->catch(RuntimeException::class, fn($e) => 'runtime error: ' . $e->getMessage())
-            ->finally(fn() => $this->logger->info('Finally reached'))
-            ->run();
+        $result = TryCatch::with(fn () => $this->service->doSomething(''), $this->logger)
+            ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
+            ->catch(RuntimeException::class, fn ($e) => 'runtime error: '.$e->getMessage())
+            ->finally(fn () => $this->logger->info('Finally reached'))
+            ->run()
+        ;
 
         self::assertSame('invalid argument: Input cannot be empty', $result);
     }
@@ -58,11 +60,12 @@ class TryCatchFluentTest extends TestCase
      */
     public function testRuntimeException(): void
     {
-        $result = TryCatch::with(fn() => $this->service->doSomething('trigger_runtime'), $this->logger)
-            ->catch(InvalidArgumentException::class, fn($e) => 'invalid argument: ' . $e->getMessage())
-            ->catch(RuntimeException::class, fn($e) => 'runtime error: ' . $e->getMessage())
-            ->finally(fn() => $this->logger->info('Finally reached'))
-            ->run();
+        $result = TryCatch::with(fn () => $this->service->doSomething('trigger_runtime'), $this->logger)
+            ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
+            ->catch(RuntimeException::class, fn ($e) => 'runtime error: '.$e->getMessage())
+            ->finally(fn () => $this->logger->info('Finally reached'))
+            ->run()
+        ;
 
         self::assertSame('runtime error: Runtime exception triggered', $result);
     }
@@ -76,11 +79,12 @@ class TryCatchFluentTest extends TestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Runtime exception triggered');
 
-        TryCatch::with(fn() => $this->service->doSomething('trigger_runtime'), $this->logger)
-            ->catch(InvalidArgumentException::class, fn($e) => 'invalid argument: ' . $e->getMessage())
+        TryCatch::with(fn () => $this->service->doSomething('trigger_runtime'), $this->logger)
+            ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
             // No handler for RuntimeException
-            ->finally(fn() => $this->logger->info('Finally reached'))
-            ->run();
+            ->finally(fn () => $this->logger->info('Finally reached'))
+            ->run()
+        ;
     }
 }
 
@@ -94,11 +98,11 @@ class ExampleService
         if (empty($input)) {
             throw InvalidArgumentException::new('Input cannot be empty');
         }
-        
-        if ($input === 'trigger_runtime') {
+
+        if ('trigger_runtime' === $input) {
             throw RuntimeException::new('Runtime exception triggered');
         }
-        
+
         return "Processed: $input";
     }
 }

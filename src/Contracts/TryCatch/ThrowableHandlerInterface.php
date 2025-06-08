@@ -20,6 +20,7 @@ interface ThrowableHandlerInterface
      * Handles the given throwable.
      *
      * @template T
+     *
      * @return T The result of handling the throwable
      */
     public function handle(\Throwable $throwable): mixed;

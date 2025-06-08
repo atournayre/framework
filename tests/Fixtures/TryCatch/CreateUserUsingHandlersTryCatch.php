@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Tests\Fixtures\TryCatch;
 
+use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
 use Atournayre\Tests\Fixtures\Exception\InvalidEmailException;
 use Atournayre\Tests\Fixtures\User;
-use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
 use Atournayre\TryCatch\ThrowableHandler;
 use Atournayre\TryCatch\ThrowableHandlerCollection;
 use Atournayre\TryCatch\TryCatch;
@@ -15,19 +15,17 @@ use Psr\Log\LoggerInterface;
 final readonly class CreateUserUsingHandlersTryCatch implements ExecutableTryCatchInterface
 {
     private function __construct(
-        private string          $email,
-        private string          $name,
+        private string $email,
+        private string $name,
         private LoggerInterface $logger,
-    )
-    {
+    ) {
     }
 
     public static function new(
-        string          $email,
-        string          $name,
+        string $email,
+        string $name,
         LoggerInterface $logger,
-    ): self
-    {
+    ): self {
         return new self(
             email: $email,
             name: $name,
@@ -36,7 +34,6 @@ final readonly class CreateUserUsingHandlersTryCatch implements ExecutableTryCat
     }
 
     /**
-     * {@inheritdoc}
      * @throws \Throwable
      */
     public function execute(): ?User
@@ -51,7 +48,8 @@ final readonly class CreateUserUsingHandlersTryCatch implements ExecutableTryCat
                         return null;
                     },
                 ),
-            );
+            )
+        ;
 
         return TryCatch::new(
             tryBlock: function () {

@@ -14,31 +14,23 @@ use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
 final readonly class ThrowableHandler implements ThrowableHandlerInterface
 {
     private function __construct(
-        private string   $throwableClass,
+        private string $throwableClass,
         private \Closure $handlerFunction,
-    )
-    {
+    ) {
     }
 
     public static function new(
-        string   $throwableClass,
+        string $throwableClass,
         \Closure $handlerFunction,
-    ): self
-    {
+    ): self {
         return new self($throwableClass, $handlerFunction);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function canHandle(\Throwable $throwable): bool
     {
         return $throwable instanceof $this->throwableClass;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function handle(\Throwable $throwable): mixed
     {
         return ($this->handlerFunction)($throwable);

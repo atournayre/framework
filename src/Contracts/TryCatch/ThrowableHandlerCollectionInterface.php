@@ -18,7 +18,7 @@ interface ThrowableHandlerCollectionInterface extends AddInterface, RemoveInterf
      * Finds a handler that can handle the given throwable.
      */
     public function findHandlerFor(\Throwable $throwable): ?ThrowableHandlerInterface;
-    
+
     /**
      * Checks if the collection has a handler for the given throwable.
      */

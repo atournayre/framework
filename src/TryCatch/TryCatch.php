@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\TryCatch;
 
+use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
 use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
@@ -14,21 +15,18 @@ use Psr\Log\LoggerInterface;
  *
  * Main implementation of the try-catch-finally pattern.
  */
-final class TryCatch implements ExecutableTryCatchInterface
+final readonly class TryCatch implements ExecutableTryCatchInterface
 {
-    /**
-     * @var \Closure|null The finally block
-     */
-    private ?\Closure $finallyBlock;
-
     private function __construct(
-        private readonly \Closure                            $tryBlock,
-        private readonly ThrowableHandlerCollectionInterface $handlers,
-        private readonly LoggerInterface                     $logger,
-        ?\Closure                                            $finallyBlock = null,
+        private \Closure $tryBlock,
+        private ThrowableHandlerCollectionInterface $handlers,
+        private LoggerInterface $logger,
+        /**
+         * @var \Closure|null The finally block
+         */
+        private ?\Closure $finallyBlock = null
     )
     {
-        $this->finallyBlock = $finallyBlock;
     }
 
     public static function new(
@@ -36,8 +34,7 @@ final class TryCatch implements ExecutableTryCatchInterface
         ThrowableHandlerCollectionInterface $handlers,
         LoggerInterface $logger,
         ?\Closure $finallyBlock = null,
-    ): self
-    {
+    ): self {
         return new self(
             tryBlock: $tryBlock,
             handlers: $handlers,
@@ -50,13 +47,11 @@ final class TryCatch implements ExecutableTryCatchInterface
      * Creates a new TryCatch instance with the given try block.
      *
      * @param \Closure $tryBlock The try block
-     * @return self
      */
     public static function with(
         \Closure $tryBlock,
         LoggerInterface $logger,
-    ): self
-    {
+    ): self {
         return new self(
             tryBlock: $tryBlock,
             handlers: ThrowableHandlerCollection::asList(),
@@ -68,10 +63,9 @@ final class TryCatch implements ExecutableTryCatchInterface
     /**
      * Adds a catch handler for the given throwable class.
      *
-     * @param string $throwableClass The throwable class to catch
-     * @param \Closure $handler The handler function
+     * @param string   $throwableClass The throwable class to catch
+     * @param \Closure $handler        The handler function
      *
-     * @return self
      * @throws ThrowableInterface
      */
     public function catch(string $throwableClass, \Closure $handler): self
@@ -91,7 +85,6 @@ final class TryCatch implements ExecutableTryCatchInterface
      * Sets the finally block.
      *
      * @param \Closure $finallyBlock The finally block
-     * @return self
      */
     public function finally(\Closure $finallyBlock): self
     {
@@ -108,6 +101,7 @@ final class TryCatch implements ExecutableTryCatchInterface
      * Alias for execute().
      *
      * @return mixed The result of the try block execution
+     *
      * @throws \Throwable If an exception is thrown and not handled
      */
     public function run(): mixed
@@ -116,7 +110,6 @@ final class TryCatch implements ExecutableTryCatchInterface
     }
 
     /**
-     * {@inheritdoc}
      * @throws \Throwable
      */
     public function execute(): mixed
@@ -126,20 +119,20 @@ final class TryCatch implements ExecutableTryCatchInterface
         try {
             $result = ($this->tryBlock)();
         } catch (\Throwable $throwable) {
-            $this->logger->error('Exception caught in TryCatch: ' . $throwable->getMessage(), [
+            $this->logger->error('Exception caught in TryCatch: '.$throwable->getMessage(), [
                 'exception' => $throwable,
             ]);
 
             $handler = $this->handlers->findHandlerFor($throwable);
 
-            if ($handler !== null) {
+            if ($handler instanceof ThrowableHandlerInterface) {
                 $result = $handler->handle($throwable);
             } else {
                 // If no handler is found, rethrow the exception
                 throw $throwable;
             }
         } finally {
-            if ($this->finallyBlock !== null) {
+            if ($this->finallyBlock instanceof \Closure) {
                 ($this->finallyBlock)();
             }
         }

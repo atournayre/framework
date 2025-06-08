@@ -21,8 +21,7 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
      */
     public function __construct(
         private array $collection = [],
-    )
-    {
+    ) {
     }
 
     /**
@@ -30,16 +29,12 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
      */
     public static function asList(
         array $collection = [],
-    ): self
-    {
+    ): self {
         return new self(
             collection: $collection,
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function add(mixed $value, ?\Closure $callback = null): self
     {
         if (!$value instanceof ThrowableHandlerInterface) {
@@ -51,37 +46,30 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addWithCallback(mixed $value, \Closure $callback): self
     {
         return $this->add($value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function remove($keys): self
     {
         if (is_int($keys)) {
             unset($this->collection[$keys]);
+
             return $this;
         }
 
-        if (is_array($keys) || $keys instanceof \Traversable) {
+        if (is_iterable($keys)) {
             foreach ($keys as $key) {
                 unset($this->collection[$key]);
             }
+
             return $this;
         }
 
         throw InvalidArgumentException::new('Keys must be an integer, array, or Traversable');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findHandlerFor(\Throwable $throwable): ?ThrowableHandlerInterface
     {
         foreach ($this->collection as $handler) {
@@ -93,11 +81,8 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasHandlerFor(\Throwable $throwable): bool
     {
-        return $this->findHandlerFor($throwable) !== null;
+        return $this->findHandlerFor($throwable) instanceof ThrowableHandlerInterface;
     }
 }
