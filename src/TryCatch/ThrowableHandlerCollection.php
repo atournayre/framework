@@ -48,9 +48,4 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
 
         return NullThrowableHandler::new();
     }
-
-    public function hasHandlerFor(\Throwable $throwable): bool
-    {
-        return !($this->findHandlerFor($throwable) instanceof NullThrowableHandler);
-    }
 }

@@ -52,7 +52,6 @@ Collection of throwable handlers.
 - `addWithCallback(value: mixed, callback: \Closure): self`
 - `remove(keys: int|array|\Traversable): self`
 - `findHandlerFor(throwable: \Throwable): ?ThrowableHandlerInterface`
-- `hasHandlerFor(throwable: \Throwable): bool`
 
 ## ThrowableHandler
 

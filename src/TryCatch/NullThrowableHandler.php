@@ -14,9 +14,12 @@ use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
  */
 final class NullThrowableHandler implements ThrowableHandlerInterface
 {
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
-    public static function new(): self {
+    public static function new(): self
+    {
         return new self();
     }
 
