@@ -81,6 +81,8 @@ services:
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverUseErNamesRule
       arguments:
+        excludedPaths:
+          - %currentWorkingDirectory%/src/Symfony/Subscriber
       tags:
         - phpstan.rules.rule
 
@@ -90,6 +92,7 @@ services:
         excludedPaths:
             - %currentWorkingDirectory%/src/PHPStan
             - %currentWorkingDirectory%/src/Rector
+            - %currentWorkingDirectory%/src/Symfony/Subscriber
             - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule

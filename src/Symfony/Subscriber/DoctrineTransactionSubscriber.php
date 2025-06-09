@@ -13,15 +13,12 @@ use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-final class DoctrineTransactionSubscriber implements EventSubscriberInterface
+final readonly class DoctrineTransactionSubscriber implements EventSubscriberInterface
 {
-    private bool $isAllowFlushController = false;
-
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-        private readonly LoggerInterface $logger,
+        private EntityManagerInterface $entityManager,
+        private LoggerInterface $logger,
     ) {
-        $this->logger->setLoggerIdentifier(self::class);
     }
 
     public static function getSubscribedEvents(): array
@@ -35,6 +32,8 @@ final class DoctrineTransactionSubscriber implements EventSubscriberInterface
 
     public function startTransaction(ControllerEvent $event): void
     {
+        $this->logger->setLoggerIdentifier(self::class);
+
         if (!$event->isMainRequest()) {
             return;
         }
@@ -46,11 +45,8 @@ final class DoctrineTransactionSubscriber implements EventSubscriberInterface
         if (is_array($controller) && isset($controller[0])) {
             $controllerInstance = $controller[0];
 
-            // Check if controller implements AllowFlushInterface
-            $this->isAllowFlushController = $controllerInstance instanceof AllowFlushInterface;
-
             // Only start transaction if controller implements AllowFlushInterface
-            if ($this->isAllowFlushController) {
+            if ($this->isAllowFlushController($controllerInstance)) {
                 $this->logger->start($context);
                 $this->entityManager->beginTransaction();
                 $this->logger->debug('Transaction started', $context);
@@ -58,10 +54,17 @@ final class DoctrineTransactionSubscriber implements EventSubscriberInterface
         }
     }
 
+    private function isAllowFlushController(object $controller): bool
+    {
+        return $controller instanceof AllowFlushInterface;
+    }
+
     /**
+     * @param array<mixed>|mixed $controller
+     *
      * @return array<string, string>
      */
-    private function controllerContext($controller): array
+    private function controllerContext(mixed $controller): array
     {
         if (is_array($controller) && isset($controller[0], $controller[1])) {
             $controllerClass = $controller[0]::class;
@@ -76,14 +79,21 @@ final class DoctrineTransactionSubscriber implements EventSubscriberInterface
         return ['controller' => 'unknown'];
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function commitTransaction(ResponseEvent $event): void
     {
-        if (!$event->isMainRequest() || !$this->isAllowFlushController) {
+        if (!$event->isMainRequest()) {
             return;
         }
 
         $controller = $event->getRequest()->attributes->get('_controller');
-        $context = $this->controllerContext(is_array($controller) ? $controller : [$controller]);
+        if (!is_array($controller) || !isset($controller[0]) || !$this->isAllowFlushController($controller[0])) {
+            return;
+        }
+
+        $context = $this->controllerContext($controller);
         $context['status_code'] = $event->getResponse()->getStatusCode();
 
         try {
@@ -102,12 +112,16 @@ final class DoctrineTransactionSubscriber implements EventSubscriberInterface
 
     public function rollbackTransaction(ExceptionEvent $event): void
     {
-        if (!$event->isMainRequest() || !$this->isAllowFlushController) {
+        if (!$event->isMainRequest()) {
             return;
         }
 
         $controller = $event->getRequest()->attributes->get('_controller');
-        $context = $this->controllerContext(is_array($controller) ? $controller : [$controller]);
+        if (!is_array($controller) || !isset($controller[0]) || !$this->isAllowFlushController($controller[0])) {
+            return;
+        }
+
+        $context = $this->controllerContext($controller);
         $context['exception'] = [
             'class' => $event->getThrowable()::class,
             'message' => $event->getThrowable()->getMessage(),

@@ -19,7 +19,6 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
         private HandlersLocatorInterface $handlersLocator,
         private LoggerInterface $logger,
     ) {
-        $this->logger->setLoggerIdentifier(self::class);
     }
 
     /**
@@ -27,6 +26,8 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
      */
     public function handle(Envelope $envelope, StackInterface $stack): Envelope
     {
+        $this->logger->setLoggerIdentifier(self::class);
+
         // Check if any handler implements AllowFlushInterface
         $shouldApplyTransaction = $this->shouldApplyTransaction($envelope);
 
