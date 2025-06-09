@@ -28,41 +28,38 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
     {
         $this->logger->setLoggerIdentifier(self::class);
 
-        // Check if any handler implements AllowFlushInterface
+        // Early return path - no transaction needed
         $shouldApplyTransaction = $this->shouldApplyTransaction($envelope);
-
-        $context = $this->messageContext($envelope);
-
-        if ($shouldApplyTransaction) {
-            $this->logger->start($context);
-            $this->logger->debug('Starting transaction for message', $context);
-            $this->entityManager->beginTransaction();
+        if (!$shouldApplyTransaction) {
+            return $stack->next()->handle($envelope, $stack);
         }
+
+        // Transaction path
+        $context = $this->messageContext($envelope);
+        $this->logger->start($context);
+        $this->logger->debug('Starting transaction for message', $context);
+        $this->entityManager->beginTransaction();
 
         try {
             $envelope = $stack->next()->handle($envelope, $stack);
 
-            if ($shouldApplyTransaction) {
-                $this->logger->debug('Flushing changes', $context);
-                $this->entityManager->flush();
-                $this->logger->debug('Committing transaction', $context);
-                $this->entityManager->commit();
-                $this->logger->success($context);
-                $this->logger->end($context);
-            }
+            $this->logger->debug('Flushing changes', $context);
+            $this->entityManager->flush();
+            $this->logger->debug('Committing transaction', $context);
+            $this->entityManager->commit();
+            $this->logger->success($context);
+            $this->logger->end($context);
 
             return $envelope;
         } catch (\Throwable $throwable) {
-            if ($shouldApplyTransaction) {
-                $context['exception'] = [
-                    'class' => $throwable::class,
-                    'message' => $throwable->getMessage(),
-                ];
-                $this->logger->exception($throwable, $context);
-                $this->rollback();
-                $this->logger->failFast($context);
-                $this->logger->end($context);
-            }
+            $context['exception'] = [
+                'class' => $throwable::class,
+                'message' => $throwable->getMessage(),
+            ];
+            $this->logger->exception($throwable, $context);
+            $this->rollback();
+            $this->logger->failFast($context);
+            $this->logger->end($context);
 
             throw $throwable;
         }
@@ -88,12 +85,12 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
         foreach ($handlers as $handlerDescriptor) {
             $handler = $handlerDescriptor->getHandler();
 
-            // If the handler is a callable array (e.g. [$object, 'method']), check the object
+            // Early return if handler is a callable array with an object implementing AllowFlushInterface
             if (is_array($handler) && isset($handler[0]) && $handler[0] instanceof AllowFlushInterface) {
                 return true;
             }
 
-            // If the handler is an object, check it directly
+            // Early return if handler is an object implementing AllowFlushInterface
             if ($handler instanceof AllowFlushInterface) {
                 return true;
             }
@@ -104,9 +101,12 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
 
     private function rollback(): void
     {
-        if ($this->entityManager->getConnection()->isTransactionActive()) {
-            $this->logger->debug('Rolling back transaction');
-            $this->entityManager->rollback();
+        // Early return if no active transaction
+        if (!$this->entityManager->getConnection()->isTransactionActive()) {
+            return;
         }
+
+        $this->logger->debug('Rolling back transaction');
+        $this->entityManager->rollback();
     }
 }
