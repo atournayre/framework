@@ -26,6 +26,36 @@ class TryCatchFluentTest extends TestCase
      * @throws ThrowableInterface
      * @throws \Throwable
      */
+    public function testFinallyBlockCanReturnValue(): void
+    {
+        $result = TryCatch::with(fn () => $this->service->doSomething('hello'), $this->logger)
+            ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
+            ->finally(fn () => 'Value from finally block')
+            ->execute()
+        ;
+
+        self::assertSame('Value from finally block', $result);
+    }
+
+    /**
+     * @throws ThrowableInterface
+     * @throws \Throwable
+     */
+    public function testFinallyBlockReturningNullDoesNotOverrideResult(): void
+    {
+        $result = TryCatch::with(fn () => $this->service->doSomething('hello'), $this->logger)
+            ->catch(InvalidArgumentException::class, fn ($e) => 'invalid argument: '.$e->getMessage())
+            ->finally(fn () => null)
+            ->execute()
+        ;
+
+        self::assertSame('Processed: hello', $result);
+    }
+
+    /**
+     * @throws ThrowableInterface
+     * @throws \Throwable
+     */
     public function testSuccessfulExecution(): void
     {
         $result = TryCatch::with(fn () => $this->service->doSomething('hello'), $this->logger)

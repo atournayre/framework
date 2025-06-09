@@ -155,7 +155,10 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
             $result = $handler->handle($throwable);
         } finally {
             if ($this->finallyBlock instanceof \Closure) {
-                ($this->finallyBlock)();
+                $finallyResult = ($this->finallyBlock)();
+                if (null !== $finallyResult) {
+                    $result = $finallyResult;
+                }
             }
         }
 

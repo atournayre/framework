@@ -48,6 +48,8 @@ $result = TryCatch::with(
 })
 ->finally(function() {
     // Code that will always run
+    // If this block returns a non-null value, it will be used as the result of execute()
+    return 'Value from finally block'; // Optional: override the result
 })
 ->execute();
 
@@ -61,7 +63,7 @@ The main class that implements the try-catch-finally pattern.
 
 - `with<TReturn>(tryBlock: \Closure(): TReturn, logger: LoggerInterface): self<TReturn>`
 - `catch(throwableClass: string, handler: \Closure): self<T>` - Preserves the generic type T
-- `finally(finallyBlock: \Closure): self<T>` - Preserves the generic type T
+- `finally(finallyBlock: \Closure): self<T>` - Preserves the generic type T. If the finally block returns a non-null value, it will be used as the result of execute()
 - `execute(): T` - Returns the type specified by the generic parameter T
 
 ## ThrowableHandlerCollection
@@ -117,6 +119,8 @@ $result = TryCatch::with(
 })
 ->finally(function() {
     // Code that will always run
+    // If this block returns a non-null value, it will be used as the result of execute()
+    return 'Value from finally block'; // Optional: override the result
 })
 ->execute();
 
