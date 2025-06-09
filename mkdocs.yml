@@ -54,3 +54,4 @@ nav:
     - Interfaces: interfaces.md
     - Null: null.md
     - Symfony: symfony.md
+    - TryCatch: try-catch.md
