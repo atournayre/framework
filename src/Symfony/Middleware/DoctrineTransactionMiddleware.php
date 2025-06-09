@@ -38,6 +38,7 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
         $context = $this->messageContext($envelope);
         $this->logger->start($context);
         $this->logger->debug('Starting transaction for message', $context);
+
         $this->entityManager->beginTransaction();
 
         try {

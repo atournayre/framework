@@ -12,6 +12,9 @@ parameters:
 
     disallowedFunctionCalls:
         -
+            function: 'empty()'
+            message: 'Construct empty() is not allowed. Use more strict comparison like $var === [].'
+        -
             function:
                 - 'trim()'
                 - 'ltrim()'

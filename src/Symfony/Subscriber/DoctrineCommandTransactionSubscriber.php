@@ -36,7 +36,7 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
         $this->logger->setLoggerIdentifier(self::class);
 
         $context = $this->contextFromEvent($event);
-        if ($context === null) {
+        if ([] === $context) {
             return;
         }
 
@@ -47,18 +47,19 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
 
     /**
      * @param ConsoleCommandEvent|ConsoleTerminateEvent|ConsoleErrorEvent $event
-     * @return array<string, mixed>|null
+     *
+     * @return array<string, mixed>
      */
-    private function contextFromEvent(object $event): ?array
+    private function contextFromEvent(object $event): array
     {
         $command = $event->getCommand();
 
         if (!$command instanceof Command) {
-            return null;
+            return [];
         }
 
         if (!$this->isAllowFlushCommand($command)) {
-            return null;
+            return [];
         }
 
         $commandName = $command->getName() ?? 'unknown';
@@ -84,7 +85,7 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
     public function commitTransaction(ConsoleTerminateEvent $event): void
     {
         $context = $this->contextFromEvent($event);
-        if ($context === null) {
+        if ([] === $context) {
             return;
         }
 
@@ -105,7 +106,7 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
     public function rollbackTransaction(ConsoleErrorEvent $event): void
     {
         $context = $this->contextFromEvent($event);
-        if ($context === null) {
+        if ([] === $context) {
             return;
         }
 
