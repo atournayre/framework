@@ -50,7 +50,9 @@ class ExampleTest extends TestCase
 
         $user = $invalidEmailTryCatch->execute();
 
-        self::assertNull($user);
+        self::assertInstanceOf(User::class, $user);
+        self::assertSame('no@email.com', $user->getEmail());
+        self::assertSame('No Name', $user->getName());
     }
 
     /**
