@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Atournayre\Symfony\Middleware;
@@ -16,7 +17,7 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
     public function __construct(
         private EntityManagerInterface $entityManager,
         private HandlersLocatorInterface $handlersLocator,
-        private LoggerInterface $logger
+        private LoggerInterface $logger,
     ) {
         $this->logger->setLoggerIdentifier(self::class);
     }
@@ -50,31 +51,31 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
             }
 
             return $envelope;
-        } catch (\Throwable $e) {
+        } catch (\Throwable $throwable) {
             if ($shouldApplyTransaction) {
                 $context['exception'] = [
-                    'class' => get_class($e),
-                    'message' => $e->getMessage(),
+                    'class' => $throwable::class,
+                    'message' => $throwable->getMessage(),
                 ];
-                $this->logger->exception($e, $context);
+                $this->logger->exception($throwable, $context);
                 $this->rollback();
                 $this->logger->failFast($context);
                 $this->logger->end($context);
             }
-            throw $e;
+
+            throw $throwable;
         }
     }
 
     /**
-     * @param Envelope $envelope
-     *
      * @return array<string, string|null>
      */
     private function messageContext(Envelope $envelope): array
     {
         $message = $envelope->getMessage();
+
         return [
-            'message_class' => get_class($message),
+            'message_class' => $message::class,
             'message_id' => method_exists($message, 'getId') ? $message->getId() : null,
         ];
     }

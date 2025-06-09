@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Atournayre\Symfony\Subscriber;
 
-use Symfony\Component\Console\Command\Command;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Persistance\AllowFlushInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\Console\Event\ConsoleCommandEvent;
 use Symfony\Component\Console\Event\ConsoleErrorEvent;
