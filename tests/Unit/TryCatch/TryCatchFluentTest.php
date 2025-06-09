@@ -13,8 +13,8 @@ use Psr\Log\NullLogger;
 
 class TryCatchFluentTest extends TestCase
 {
-    private ExampleService $service;
-    private NullLogger $logger;
+    private readonly ExampleService $service;
+    private readonly NullLogger $logger;
 
     protected function setUp(): void
     {

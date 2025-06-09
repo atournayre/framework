@@ -16,6 +16,6 @@ final class InvalidEmailException extends InvalidArgumentException implements Th
 {
     public static function new(string $message = '', int $code = 0): self
     {
-        return new self($message ?: 'Invalid email address', $code);
+        return new self('' !== $message ? $message : 'Invalid email address', $code);
     }
 }
