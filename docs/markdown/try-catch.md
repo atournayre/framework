@@ -197,3 +197,33 @@ This example shows:
 - Returning null when an exception occurs
 - Using the fluent interface to create a clean, readable implementation
 - Providing proper type information for IDE autocompletion
+
+### Void Try Block with Catch Returning a Value
+
+In some cases, you might have a try block that doesn't return anything (void), but you want the catch handler to return a value when an exception occurs. The TryCatch class handles this case automatically:
+
+```php
+<?php
+
+use Atournayre\TryCatch\TryCatch;
+use Psr\Log\LoggerInterface;
+
+// The try block performs an action but doesn't return anything
+$result = TryCatch::with(
+    tryBlock: function(): void {
+        // Your code that might throw exceptions but doesn't return anything
+        performSomeAction();
+    },
+    logger: $logger
+)
+->catch(\RuntimeException::class, function(\RuntimeException $exception): string {
+    // When an exception occurs, the catch handler can return a value
+    return 'Error occurred: ' . $exception->getMessage();
+})
+->execute();
+
+// If an exception was caught, $result will contain the value returned by the catch handler
+// If no exception was caught, $result will be null
+```
+
+This is useful for scenarios where a process doesn't normally return anything, but you want to return information about errors when they occur.

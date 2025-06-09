@@ -116,6 +116,48 @@ class TryCatchFluentTest extends TestCase
             ->execute()
         ;
     }
+
+    /**
+     * @throws ThrowableInterface
+     * @throws \Throwable
+     */
+    public function testVoidTryBlockWithCatchReturningValue(): void
+    {
+        $result = TryCatch::with(fn () => $this->service->doVoidAction(''), $this->logger)
+            ->catch(InvalidArgumentException::class, fn ($e) => 'Error handled: '.$e->getMessage())
+            ->execute()
+        ;
+
+        self::assertSame('Error handled: Input cannot be empty', $result);
+    }
+
+    /**
+     * @throws ThrowableInterface
+     * @throws \Throwable
+     */
+    public function testVoidTryBlockWithRuntimeException(): void
+    {
+        $result = TryCatch::with(fn () => $this->service->doVoidAction('trigger_runtime'), $this->logger)
+            ->catch(RuntimeException::class, fn ($e) => 'Runtime error: '.$e->getMessage())
+            ->execute()
+        ;
+
+        self::assertSame('Runtime error: Runtime exception triggered', $result);
+    }
+
+    /**
+     * @throws ThrowableInterface
+     * @throws \Throwable
+     */
+    public function testSuccessfulVoidTryBlock(): void
+    {
+        $result = TryCatch::with(fn () => $this->service->doVoidAction('hello'), $this->logger)
+            ->catch(InvalidArgumentException::class, fn ($e) => 'Error handled: '.$e->getMessage())
+            ->execute()
+        ;
+
+        self::assertNull($result);
+    }
 }
 
 /**
@@ -137,5 +179,26 @@ class ExampleService
         }
 
         return "Processed: $input";
+    }
+
+    /**
+     * A method that performs an action but doesn't return anything.
+     *
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
+     *
+     * @api
+     */
+    public function doVoidAction(string $input): void
+    {
+        if ('' === $input) {
+            throw InvalidArgumentException::new('Input cannot be empty');
+        }
+
+        if ('trigger_runtime' === $input) {
+            throw RuntimeException::new('Runtime exception triggered');
+        }
+
+        // Just do something without returning a value
     }
 }
