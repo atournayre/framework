@@ -8,6 +8,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
 use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
 use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
+use Atournayre\TryCatch\NullThrowableHandler;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -118,11 +119,11 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
 
             $handler = $this->handlers->findHandlerFor($throwable);
 
-            if ($handler instanceof ThrowableHandlerInterface) {
-                $result = $handler->handle($throwable);
-            } else {
+            if ($handler instanceof NullThrowableHandler) {
                 // If no handler is found, rethrow the exception
                 throw $throwable;
+            } else {
+                $result = $handler->handle($throwable);
             }
         } finally {
             if ($this->finallyBlock instanceof \Closure) {

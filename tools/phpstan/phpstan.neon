@@ -33,6 +33,7 @@ parameters:
         - '#Extending PHPStan\\Type\\WebMozartAssert\\AssertTypeSpecifyingExtension is not covered by backward compatibility promise. The class might change in a minor PHPStan version.#'
         - '#Property (.)*::\$logger is mutable, which violates object immutability#'
         - '#Property (.)*::\$null is mutable, which violates object immutability#'
+        - '#Method Atournayre\\TryCatch\\NullThrowableHandler\:\:handle\(\) returns null#'
         # Due to design problem
         - '#Property Atournayre\\Primitives\\Numeric::\$(.)* is mutable, which violates object immutability#'
         - '#Property Atournayre\\Component\\Mailer\\Configuration\\MailerConfiguration::\$(.)* is mutable, which violates object immutability#'
