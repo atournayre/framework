@@ -8,7 +8,7 @@ namespace Atournayre\Contracts\TryCatch;
  * Interface ThrowableHandlerInterface.
  *
  * Defines the contract for handling throwables.
- * 
+ *
  * @template T
  */
 interface ThrowableHandlerInterface

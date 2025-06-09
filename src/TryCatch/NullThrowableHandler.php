@@ -11,7 +11,7 @@ use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
  *
  * A null object implementation of ThrowableHandlerInterface.
  * Used when no specific handler is found for a throwable.
- * 
+ *
  * @implements ThrowableHandlerInterface<null>
  */
 final class NullThrowableHandler implements ThrowableHandlerInterface

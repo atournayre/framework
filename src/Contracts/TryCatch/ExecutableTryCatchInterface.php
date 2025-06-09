@@ -10,7 +10,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Interface ExecutableTryCatchInterface.
  *
  * Defines the contract for executing a try-catch block.
- * 
+ *
  * @template T
  */
 interface ExecutableTryCatchInterface

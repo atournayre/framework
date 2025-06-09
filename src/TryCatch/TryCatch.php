@@ -13,8 +13,9 @@ use Psr\Log\LoggerInterface;
  * Class TryCatch.
  *
  * Main implementation of the try-catch-finally pattern.
- * 
+ *
  * @template T
+ *
  * @implements ExecutableTryCatchInterface<T>
  */
 final readonly class TryCatch implements ExecutableTryCatchInterface
@@ -32,10 +33,9 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
 
     /**
      * @template TReturn
+     *
      * @param \Closure(): TReturn $tryBlock The try block
-     * @param ThrowableHandlerCollectionInterface $handlers
-     * @param LoggerInterface $logger
-     * @param \Closure|null $finallyBlock
+     *
      * @return self<TReturn>
      */
     public static function new(
@@ -56,9 +56,11 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      * Creates a new TryCatch instance with the given try block.
      *
      * @template TReturn
+     *
      * @param \Closure(): TReturn $tryBlock The try block
      *
      * @return self<TReturn>
+     *
      * @throws ThrowableInterface
      */
     public static function with(
@@ -78,6 +80,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      *
      * @param string   $throwableClass The throwable class to catch
      * @param \Closure $handler        The handler function
+     *
      * @return self<T>
      *
      * @throws ThrowableInterface
@@ -91,7 +94,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
         /** @var \Closure():T $tryBlock */
         $tryBlock = $this->tryBlock;
 
-        /** @var self<T> */
+        /* @var self<T> */
         return self::new(
             tryBlock: $tryBlock,
             handlers: $newHandlers,
@@ -104,6 +107,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      * Sets the finally block.
      *
      * @param \Closure $finallyBlock The finally block
+     *
      * @return self<T>
      *
      * @api
@@ -114,7 +118,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
         /** @var \Closure():T $tryBlock */
         $tryBlock = $this->tryBlock;
 
-        /** @var self<T> */
+        /* @var self<T> */
         return self::new(
             tryBlock: $tryBlock,
             handlers: $this->handlers,
@@ -148,6 +152,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
                 // If no handler is found, rethrow the exception
                 throw $throwable;
             }
+
             $result = $handler->handle($throwable);
         } finally {
             if ($this->finallyBlock instanceof \Closure) {

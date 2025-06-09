@@ -10,7 +10,7 @@ use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
  * Class ThrowableHandler.
  *
  * Implementation for throwable handlers.
- * 
+ *
  * @implements ThrowableHandlerInterface<mixed>
  */
 final readonly class ThrowableHandler implements ThrowableHandlerInterface
