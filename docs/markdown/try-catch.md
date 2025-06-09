@@ -5,6 +5,8 @@ This library provides a fluent interface for implementing the try-catch-finally 
 ## Basic Usage
 
 ```php
+<?php
+
 use Atournayre\TryCatch\TryCatch;
 use Atournayre\TryCatch\ThrowableHandlerCollection;
 use Psr\Log\LoggerInterface;
@@ -65,6 +67,8 @@ Implementation for throwable handlers.
 ### Using with Custom Exception Handlers
 
 ```php
+<?php
+
 use Atournayre\TryCatch\TryCatch;
 use Atournayre\TryCatch\ThrowableHandlerCollection;
 use Atournayre\TryCatch\ThrowableHandler;
@@ -98,6 +102,8 @@ $result = TryCatch::new(
 This example demonstrates how to use TryCatch in a real application context to handle user creation with proper exception handling:
 
 ```php
+<?php
+
 use Atournayre\Tests\Fixtures\Exception\InvalidEmailException;
 use Atournayre\Tests\Fixtures\User;
 use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
