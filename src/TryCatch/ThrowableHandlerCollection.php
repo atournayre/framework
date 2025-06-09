@@ -4,75 +4,46 @@ declare(strict_types=1);
 
 namespace Atournayre\TryCatch;
 
+use Atournayre\Common\Assert\Assert;
 use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\Collection\AsListInterface;
+use Atournayre\Contracts\Collection\ToArrayInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
 use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
+use Atournayre\Primitives\Collection;
+use Atournayre\Primitives\Traits\Collection\Add;
+use Atournayre\Primitives\Traits\Collection\ToArray;
 
 /**
  * Class ThrowableHandlerCollection.
  *
  * Collection of throwable handlers.
  */
-final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInterface, AsListInterface
+final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInterface, AsListInterface, ToArrayInterface
 {
-    /**
-     * @param array<ThrowableHandlerInterface> $collection The collection of handlers
-     */
-    public function __construct(
-        private array $collection = [],
-    ) {
-    }
+    use \Atournayre\Primitives\Traits\Collection;
+    use Add;
+    use ToArray;
 
     /**
      * @param array<ThrowableHandlerInterface> $collection
+     *
+     * @throws ThrowableInterface
      */
     public static function asList(
         array $collection = [],
     ): self {
+        Assert::allIsInstanceOf($collection, ThrowableHandlerCollectionInterface::class);
+
         return new self(
-            collection: $collection,
+            collection: Collection::of($collection),
         );
-    }
-
-    public function add(mixed $value, ?\Closure $callback = null): self
-    {
-        if (!$value instanceof ThrowableHandlerInterface) {
-            throw InvalidArgumentException::new('Value must be an instance of ThrowableHandlerInterface');
-        }
-
-        $this->collection[] = $value;
-
-        return $this;
-    }
-
-    public function addWithCallback(mixed $value, \Closure $callback): self
-    {
-        return $this->add($value);
-    }
-
-    public function remove($keys): self
-    {
-        if (is_int($keys)) {
-            unset($this->collection[$keys]);
-
-            return $this;
-        }
-
-        if (is_iterable($keys)) {
-            foreach ($keys as $key) {
-                unset($this->collection[$key]);
-            }
-
-            return $this;
-        }
-
-        throw InvalidArgumentException::new('Keys must be an integer, array, or Traversable');
     }
 
     public function findHandlerFor(\Throwable $throwable): ?ThrowableHandlerInterface
     {
-        foreach ($this->collection as $handler) {
+        foreach ($this->collection->toArray() as $handler) {
             if ($handler->canHandle($throwable)) {
                 return $handler;
             }
