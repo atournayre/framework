@@ -39,19 +39,19 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
         }
 
         $controller = $event->getController();
-        $context = $this->controllerContext($controller);
-
-        // If controller is an array, it's [ControllerClass, methodName]
-        if (is_array($controller) && isset($controller[0])) {
-            $controllerInstance = $controller[0];
-
-            // Only start transaction if controller implements AllowFlushInterface
-            if ($this->isAllowFlushController($controllerInstance)) {
-                $this->logger->start($context);
-                $this->entityManager->beginTransaction();
-                $this->logger->debug('Transaction started', $context);
-            }
+        if (!is_array($controller) || !isset($controller[0])) {
+            return;
         }
+
+        $controllerInstance = $controller[0];
+        if (!$this->isAllowFlushController($controllerInstance)) {
+            return;
+        }
+
+        $context = $this->controllerContext($controller);
+        $this->logger->start($context);
+        $this->entityManager->beginTransaction();
+        $this->logger->debug('Transaction started', $context);
     }
 
     private function isAllowFlushController(object $controller): bool
@@ -66,17 +66,14 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
      */
     private function controllerContext(mixed $controller): array
     {
-        if (is_array($controller) && isset($controller[0], $controller[1])) {
-            $controllerClass = $controller[0]::class;
-            $method = $controller[1];
-
-            return [
-                'controller' => $controllerClass,
-                'method' => $method,
-            ];
+        if (!is_array($controller) || !isset($controller[0], $controller[1])) {
+            return ['controller' => 'unknown'];
         }
 
-        return ['controller' => 'unknown'];
+        return [
+            'controller' => $controller[0]::class,
+            'method' => $controller[1],
+        ];
     }
 
     /**
@@ -89,7 +86,7 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
         }
 
         $controller = $event->getRequest()->attributes->get('_controller');
-        if (!is_array($controller) || !isset($controller[0]) || !$this->isAllowFlushController($controller[0])) {
+        if (!$this->isValidTransactionController($controller)) {
             return;
         }
 
@@ -110,6 +107,11 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
         }
     }
 
+    private function isValidTransactionController(mixed $controller): bool
+    {
+        return is_array($controller) && isset($controller[0]) && $this->isAllowFlushController($controller[0]);
+    }
+
     public function rollbackTransaction(ExceptionEvent $event): void
     {
         if (!$event->isMainRequest()) {
@@ -117,7 +119,7 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
         }
 
         $controller = $event->getRequest()->attributes->get('_controller');
-        if (!is_array($controller) || !isset($controller[0]) || !$this->isAllowFlushController($controller[0])) {
+        if (!$this->isValidTransactionController($controller)) {
             return;
         }
 
@@ -135,9 +137,11 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
 
     private function rollback(): void
     {
-        if ($this->entityManager->getConnection()->isTransactionActive()) {
-            $this->logger->debug('Rolling back transaction');
-            $this->entityManager->rollback();
+        if (!$this->entityManager->getConnection()->isTransactionActive()) {
+            return;
         }
+
+        $this->logger->debug('Rolling back transaction');
+        $this->entityManager->rollback();
     }
 }
