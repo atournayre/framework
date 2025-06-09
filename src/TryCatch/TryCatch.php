@@ -38,7 +38,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      *
      * @return self<TReturn>
      */
-    public static function new(
+    private static function createInstance(
         \Closure $tryBlock,
         ThrowableHandlerCollectionInterface $handlers,
         LoggerInterface $logger,
@@ -67,11 +67,10 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
         \Closure $tryBlock,
         LoggerInterface $logger,
     ): self {
-        return new self(
+        return self::createInstance(
             tryBlock: $tryBlock,
             handlers: ThrowableHandlerCollection::asList(),
             logger: $logger,
-            finallyBlock: null,
         );
     }
 
@@ -95,7 +94,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
         $tryBlock = $this->tryBlock;
 
         /* @var self<T> */
-        return self::new(
+        return self::createInstance(
             tryBlock: $tryBlock,
             handlers: $newHandlers,
             logger: $this->logger,
@@ -119,7 +118,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
         $tryBlock = $this->tryBlock;
 
         /* @var self<T> */
-        return self::new(
+        return self::createInstance(
             tryBlock: $tryBlock,
             handlers: $this->handlers,
             logger: $this->logger,

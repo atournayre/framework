@@ -4,7 +4,7 @@ This library provides a fluent interface for implementing the try-catch-finally 
 
 ## Type Inference
 
-The TryCatch library uses PHP's generic type system to provide better type inference and IDE autocompletion. When you use the `TryCatch::with()` or `TryCatch::new()` methods, the return type of your try block is automatically inferred and propagated to the result of the `execute()` method.
+The TryCatch library uses PHP's generic type system to provide better type inference and IDE autocompletion. When you use the `TryCatch::with()` method, the return type of your try block is automatically inferred and propagated to the result of the `execute()` method.
 
 This means your IDE can provide proper autocompletion for the result of `execute()` based on what your try block returns.
 
@@ -59,7 +59,6 @@ $uppercase = strtoupper($result); // IDE provides autocompletion for string func
 
 The main class that implements the try-catch-finally pattern.
 
-- `new<TReturn>(tryBlock: \Closure(): TReturn, handlers: ThrowableHandlerCollectionInterface, logger: LoggerInterface, [finallyBlock: \Closure|null = null]): self<TReturn>`
 - `with<TReturn>(tryBlock: \Closure(): TReturn, logger: LoggerInterface): self<TReturn>`
 - `catch(throwableClass: string, handler: \Closure): self<T>` - Preserves the generic type T
 - `finally(finallyBlock: \Closure): self<T>` - Preserves the generic type T
@@ -93,38 +92,33 @@ Interface for throwable handlers.
 
 ## Advanced Usage
 
-### Using with Custom Exception Handlers
+### Using Multiple Exception Handlers
 
 ```php
 <?php
 
 use Atournayre\TryCatch\TryCatch;
-use Atournayre\TryCatch\ThrowableHandlerCollection;
-use Atournayre\TryCatch\ThrowableHandler;
 use Psr\Log\LoggerInterface;
 
-// Create a collection of handlers
-$handlers = ThrowableHandlerCollection::asList()
-    ->add(ThrowableHandler::new(\RuntimeException::class, function(\RuntimeException $exception) {
-        return 'Handled RuntimeException';
-    }))
-    ->add(ThrowableHandler::new(\InvalidArgumentException::class, function(\InvalidArgumentException $exception) {
-        return 'Handled InvalidArgumentException';
-    }));
-
-// Create a TryCatch instance with the handlers
+// Create a TryCatch instance with multiple catch handlers
 // The return type of the try block (string) is inferred and propagated to $result
-$result = TryCatch::new(
+$result = TryCatch::with(
     tryBlock: function(): string {
         // Your code that might throw exceptions
         return 'Success';
     },
-    handlers: $handlers,
-    logger: $logger,
-    finallyBlock: function() {
-        // Code that will always run
-    }
-)->execute();
+    logger: $logger
+)
+->catch(\RuntimeException::class, function(\RuntimeException $exception): string {
+    return 'Handled RuntimeException';
+})
+->catch(\InvalidArgumentException::class, function(\InvalidArgumentException $exception): string {
+    return 'Handled InvalidArgumentException';
+})
+->finally(function() {
+    // Code that will always run
+})
+->execute();
 
 // The IDE knows that $result is a string and provides autocompletion
 $length = strlen($result); // IDE provides autocompletion for string functions

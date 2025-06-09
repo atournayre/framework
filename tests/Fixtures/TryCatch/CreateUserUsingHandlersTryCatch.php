@@ -7,8 +7,6 @@ namespace Atournayre\Tests\Fixtures\TryCatch;
 use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
 use Atournayre\Tests\Fixtures\Exception\InvalidEmailException;
 use Atournayre\Tests\Fixtures\User;
-use Atournayre\TryCatch\ThrowableHandler;
-use Atournayre\TryCatch\ThrowableHandlerCollection;
 use Atournayre\TryCatch\TryCatch;
 use Psr\Log\LoggerInterface;
 
@@ -44,25 +42,18 @@ final readonly class CreateUserUsingHandlersTryCatch implements ExecutableTryCat
      */
     public function execute(): User
     {
-        $handlers = ThrowableHandlerCollection::asList()
-            ->add(
-                ThrowableHandler::new(
-                    throwableClass: InvalidEmailException::class,
-                    handlerFunction: function (InvalidEmailException $exception) {
-                        // Log the exception or perform other actions
-                        // Return a default user
-                        return User::create('no@email.com', 'No Name');
-                    },
-                ),
-            )
-        ;
-
-        return TryCatch::new(
+        return TryCatch::with(
             tryBlock: function () {
                 return User::create($this->email, $this->name);
             },
-            handlers: $handlers,
             logger: $this->logger,
+        )->catch(
+            throwableClass: InvalidEmailException::class,
+            handler: function (InvalidEmailException $exception) {
+                // Log the exception or perform other actions
+                // Return a default user
+                return User::create('no@email.com', 'No Name');
+            },
         )->execute();
     }
 }
