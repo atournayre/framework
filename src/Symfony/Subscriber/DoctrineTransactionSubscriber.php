@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Atournayre\Symfony\Subscriber;
@@ -18,9 +19,8 @@ final class DoctrineTransactionSubscriber implements EventSubscriberInterface
 
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
-        private readonly LoggerInterface        $logger
-    )
-    {
+        private readonly LoggerInterface $logger,
+    ) {
         $this->logger->setLoggerIdentifier(self::class);
     }
 
@@ -64,8 +64,9 @@ final class DoctrineTransactionSubscriber implements EventSubscriberInterface
     private function controllerContext($controller): array
     {
         if (is_array($controller) && isset($controller[0], $controller[1])) {
-            $controllerClass = get_class($controller[0]);
+            $controllerClass = $controller[0]::class;
             $method = $controller[1];
+
             return [
                 'controller' => $controllerClass,
                 'method' => $method,
@@ -92,10 +93,10 @@ final class DoctrineTransactionSubscriber implements EventSubscriberInterface
             $this->entityManager->commit();
             $this->logger->success($context);
             $this->logger->end($context);
-        } catch (\Throwable $e) {
-            $this->logger->exception($e, $context);
+        } catch (\Throwable $throwable) {
+            $this->logger->exception($throwable, $context);
             $this->rollback();
-            throw $e;
+            throw $throwable;
         }
     }
 
@@ -108,7 +109,7 @@ final class DoctrineTransactionSubscriber implements EventSubscriberInterface
         $controller = $event->getRequest()->attributes->get('_controller');
         $context = $this->controllerContext(is_array($controller) ? $controller : [$controller]);
         $context['exception'] = [
-            'class' => get_class($event->getThrowable()),
+            'class' => $event->getThrowable()::class,
             'message' => $event->getThrowable()->getMessage(),
         ];
 

@@ -1,8 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Atournayre\Symfony\Subscriber;
 
+use Symfony\Component\Console\Command\Command;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Persistance\AllowFlushInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,7 +20,7 @@ final class DoctrineCommandTransactionSubscriber implements EventSubscriberInter
 
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
-        private readonly LoggerInterface $logger
+        private readonly LoggerInterface $logger,
     ) {
         $this->logger->setLoggerIdentifier(self::class);
     }
@@ -36,7 +38,7 @@ final class DoctrineCommandTransactionSubscriber implements EventSubscriberInter
     {
         $command = $event->getCommand();
 
-        if (null === $command) {
+        if (!$command instanceof Command) {
             return;
         }
 
@@ -61,7 +63,7 @@ final class DoctrineCommandTransactionSubscriber implements EventSubscriberInter
         }
 
         $command = $event->getCommand();
-        $commandName = $command ? ($command->getName() ?? 'unknown') : 'unknown';
+        $commandName = $command instanceof Command ? ($command->getName() ?? 'unknown') : 'unknown';
         $context = ['command' => $commandName, 'exitCode' => $event->getExitCode()];
 
         try {
@@ -71,10 +73,10 @@ final class DoctrineCommandTransactionSubscriber implements EventSubscriberInter
             $this->entityManager->commit();
             $this->logger->success($context);
             $this->logger->end($context);
-        } catch (\Throwable $e) {
-            $this->logger->exception($e, $context);
+        } catch (\Throwable $throwable) {
+            $this->logger->exception($throwable, $context);
             $this->rollback();
-            throw $e;
+            throw $throwable;
         }
     }
 
@@ -85,7 +87,7 @@ final class DoctrineCommandTransactionSubscriber implements EventSubscriberInter
         }
 
         $command = $event->getCommand();
-        $commandName = $command ? ($command->getName() ?? 'unknown') : 'unknown';
+        $commandName = $command instanceof Command ? ($command->getName() ?? 'unknown') : 'unknown';
         $context = [
             'command' => $commandName,
             'error' => $event->getError()->getMessage(),
