@@ -12,6 +12,9 @@ use Atournayre\TryCatch\ThrowableHandlerCollection;
 use Atournayre\TryCatch\TryCatch;
 use Psr\Log\LoggerInterface;
 
+/**
+ * @implements ExecutableTryCatchInterface<User>
+ */
 final readonly class CreateUserUsingHandlersTryCatch implements ExecutableTryCatchInterface
 {
     private function __construct(

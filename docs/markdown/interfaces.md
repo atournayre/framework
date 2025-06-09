@@ -369,3 +369,53 @@ use Atournayre\Contracts\Uri\UriInterface;
 // Interface methods
 // (Methods for URIs)
 ```
+
+### TryCatch Interfaces
+
+The Framework provides interfaces for implementing the try-catch-finally pattern with generic type support:
+
+```php
+<?php
+
+use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
+use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
+use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
+
+// ExecutableTryCatchInterface methods
+/**
+ * @template T
+ */
+interface ExecutableTryCatchInterface
+{
+    /**
+     * @return T The result of the try block execution
+     * @throws ThrowableInterface If an exception is thrown and not handled
+     */
+    public function execute(): mixed;
+}
+
+// ThrowableHandlerInterface methods
+/**
+ * @template T
+ */
+interface ThrowableHandlerInterface
+{
+    public function canHandle(\Throwable $throwable): bool;
+
+    /**
+     * @return T The result of handling the throwable
+     */
+    public function handle(\Throwable $throwable): mixed;
+}
+
+// ThrowableHandlerCollectionInterface methods
+interface ThrowableHandlerCollectionInterface extends AddInterface
+{
+    /**
+     * @return ThrowableHandlerInterface<mixed>|null
+     */
+    public function findHandlerFor(\Throwable $throwable): ?ThrowableHandlerInterface;
+}
+```
+
+For more detailed information about the TryCatch functionality, see the [TryCatch documentation](try-catch.md).

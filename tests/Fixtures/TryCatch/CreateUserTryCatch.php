@@ -10,6 +10,9 @@ use Atournayre\Tests\Fixtures\User;
 use Atournayre\TryCatch\TryCatch;
 use Psr\Log\LoggerInterface;
 
+/**
+ * @implements ExecutableTryCatchInterface<User|null>
+ */
 final readonly class CreateUserTryCatch implements ExecutableTryCatchInterface
 {
     private function __construct(

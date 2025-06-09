@@ -10,13 +10,13 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Interface ExecutableTryCatchInterface.
  *
  * Defines the contract for executing a try-catch block.
+ * 
+ * @template T
  */
 interface ExecutableTryCatchInterface
 {
     /**
      * Executes the try-catch block and returns the result.
-     *
-     * @template T
      *
      * @return T The result of the try block execution
      *
