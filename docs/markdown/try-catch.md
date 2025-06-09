@@ -9,6 +9,8 @@ The TryCatch library uses PHP's generic type system to provide better type infer
 This means your IDE can provide proper autocompletion for the result of `execute()` based on what your try block returns.
 
 ```php
+<?php
+
 // The IDE knows that $result is a string
 $result = TryCatch::with(fn () => "Hello world", $logger)->execute();
 $result->length; // IDE shows error: string doesn't have a length property
