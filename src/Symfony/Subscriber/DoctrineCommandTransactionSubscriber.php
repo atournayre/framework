@@ -35,18 +35,42 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
     {
         $this->logger->setLoggerIdentifier(self::class);
 
-        $command = $event->getCommand();
-
-        if (!$command instanceof Command) {
+        $context = $this->contextFromEvent($event);
+        if ($context === null) {
             return;
         }
 
-        // Only start transaction if command implements AllowFlushInterface
-        if ($this->isAllowFlushCommand($command)) {
-            $this->logger->start(['command' => $command->getName() ?? 'unknown']);
-            $this->entityManager->beginTransaction();
-            $this->logger->debug('Transaction started', ['command' => $command->getName() ?? 'unknown']);
+        $this->logger->start($context);
+        $this->entityManager->beginTransaction();
+        $this->logger->debug('Transaction started', $context);
+    }
+
+    /**
+     * @param ConsoleCommandEvent|ConsoleTerminateEvent|ConsoleErrorEvent $event
+     * @return array<string, mixed>|null
+     */
+    private function contextFromEvent(object $event): ?array
+    {
+        $command = $event->getCommand();
+
+        if (!$command instanceof Command) {
+            return null;
         }
+
+        if (!$this->isAllowFlushCommand($command)) {
+            return null;
+        }
+
+        $commandName = $command->getName() ?? 'unknown';
+        $context = ['command' => $commandName];
+
+        if ($event instanceof ConsoleTerminateEvent) {
+            $context['exitCode'] = $event->getExitCode();
+        } elseif ($event instanceof ConsoleErrorEvent) {
+            $context['error'] = $event->getError()->getMessage();
+        }
+
+        return $context;
     }
 
     private function isAllowFlushCommand(Command $command): bool
@@ -59,14 +83,10 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
      */
     public function commitTransaction(ConsoleTerminateEvent $event): void
     {
-        $command = $event->getCommand();
-
-        if (!$command instanceof Command || !$this->isAllowFlushCommand($command)) {
+        $context = $this->contextFromEvent($event);
+        if ($context === null) {
             return;
         }
-
-        $commandName = $command->getName() ?? 'unknown';
-        $context = ['command' => $commandName, 'exitCode' => $event->getExitCode()];
 
         try {
             $this->logger->debug('Flushing changes', $context);
@@ -84,17 +104,10 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
 
     public function rollbackTransaction(ConsoleErrorEvent $event): void
     {
-        $command = $event->getCommand();
-
-        if (!$command instanceof Command || !$this->isAllowFlushCommand($command)) {
+        $context = $this->contextFromEvent($event);
+        if ($context === null) {
             return;
         }
-
-        $commandName = $command->getName() ?? 'unknown';
-        $context = [
-            'command' => $commandName,
-            'error' => $event->getError()->getMessage(),
-        ];
 
         $this->logger->error('Rolling back transaction due to error', $context);
         $this->rollback();
@@ -104,9 +117,11 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
 
     private function rollback(): void
     {
-        if ($this->entityManager->getConnection()->isTransactionActive()) {
-            $this->logger->debug('Rolling back transaction');
-            $this->entityManager->rollback();
+        if (!$this->entityManager->getConnection()->isTransactionActive()) {
+            return;
         }
+
+        $this->logger->debug('Rolling back transaction');
+        $this->entityManager->rollback();
     }
 }
