@@ -65,7 +65,7 @@ class DoctrineTransactionSubscriberTest extends TestCase
 
     public function testStartTransactionSkipsNonArrayControllers(): void
     {
-        $event = $this->createControllerEvent(true, function() {});
+        $event = $this->createControllerEvent(true, function () {});
 
         $this->entityManager->expects(self::never())->method('beginTransaction');
 
@@ -74,8 +74,10 @@ class DoctrineTransactionSubscriberTest extends TestCase
 
     public function testStartTransactionSkipsNonAllowFlushControllers(): void
     {
-        $controller = new class() {
-            public function method() {}
+        $controller = new class {
+            public function method()
+            {
+            }
         };
         $event = $this->createControllerEvent(true, [$controller, 'method']);
 
@@ -131,10 +133,12 @@ class DoctrineTransactionSubscriberTest extends TestCase
         $event = $this->createResponseEvent(true, [$controller, 'method']);
 
         $this->entityManager->expects(self::once())->method('flush')
-            ->willThrowException(new \Exception('Test exception'));
+            ->willThrowException(new \Exception('Test exception'))
+        ;
 
         $this->connection->expects(self::once())->method('isTransactionActive')
-            ->willReturn(true);
+            ->willReturn(true)
+        ;
 
         $this->entityManager->expects(self::once())->method('rollback');
 
@@ -168,7 +172,8 @@ class DoctrineTransactionSubscriberTest extends TestCase
         $event = $this->createExceptionEvent(true, [$controller, 'method']);
 
         $this->connection->expects(self::once())->method('isTransactionActive')
-            ->willReturn(true);
+            ->willReturn(true)
+        ;
 
         $this->entityManager->expects(self::once())->method('rollback');
 
@@ -181,7 +186,8 @@ class DoctrineTransactionSubscriberTest extends TestCase
         $event = $this->createExceptionEvent(true, [$controller, 'method']);
 
         $this->connection->expects(self::once())->method('isTransactionActive')
-            ->willReturn(false);
+            ->willReturn(false)
+        ;
 
         $this->entityManager->expects(self::never())->method('rollback');
 
@@ -195,7 +201,7 @@ class DoctrineTransactionSubscriberTest extends TestCase
 
         $event = new ControllerEvent(
             $kernel,
-            $controller ?? function() {},
+            $controller ?? function () {},
             $request,
             $isMainRequest ? HttpKernelInterface::MAIN_REQUEST : HttpKernelInterface::SUB_REQUEST
         );
@@ -209,7 +215,7 @@ class DoctrineTransactionSubscriberTest extends TestCase
         $request = new Request();
         $response = new Response();
 
-        if ($controller !== null) {
+        if (null !== $controller) {
             $request->attributes->set('_controller', $controller);
         }
 
@@ -229,7 +235,7 @@ class DoctrineTransactionSubscriberTest extends TestCase
         $request = new Request();
         $throwable = new \Exception('Test exception');
 
-        if ($controller !== null) {
+        if (null !== $controller) {
             $request->attributes->set('_controller', $controller);
         }
 
