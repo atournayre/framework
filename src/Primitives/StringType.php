@@ -567,8 +567,9 @@ final readonly class StringType implements \Stringable
      *
      * @api
      *
-     * @param bool $condition The condition to check
-     * @param callable $callback The callback to execute if the condition is true
+     * @param bool     $condition The condition to check
+     * @param callable $callback  The callback to execute if the condition is true
+     *
      * @return self The modified string if the condition is true, otherwise the original string
      */
     public function when(bool $condition, callable $callback): self

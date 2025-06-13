@@ -885,7 +885,7 @@ final class StringTypeTest extends TestCase
         $string = StringType::of('Hello');
         $result = $string->when(
             true,
-            fn(StringType $str) => $str->append(' World')
+            fn (StringType $str) => $str->append(' World')
         );
         self::assertEquals('Hello World', $result->toString());
     }
@@ -895,7 +895,7 @@ final class StringTypeTest extends TestCase
         $string = StringType::of('Hello');
         $result = $string->when(
             false,
-            fn(StringType $str) => $str->append(' World')
+            fn (StringType $str) => $str->append(' World')
         );
         self::assertEquals('Hello', $result->toString());
     }
@@ -905,7 +905,7 @@ final class StringTypeTest extends TestCase
         $string = StringType::of('Hello');
         $string->when(
             true,
-            fn(StringType $str) => $str->append(' World')
+            fn (StringType $str) => $str->append(' World')
         );
         self::assertEquals('Hello', $string->toString());
     }
