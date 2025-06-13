@@ -232,6 +232,6 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
 
         $finallyResult = ($this->finallyBlock)();
 
-        return null === $finallyResult ? $currentResult : $finallyResult;
+        return $finallyResult ?? $currentResult;
     }
 }
