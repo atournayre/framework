@@ -211,14 +211,27 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
 
             $result = $handler->handle($throwable);
         } finally {
-            if ($this->finallyBlock instanceof \Closure) {
-                $finallyResult = ($this->finallyBlock)();
-                if (null !== $finallyResult) {
-                    $result = $finallyResult;
-                }
-            }
+            $result = $this->executeFinallyBlock($result);
         }
 
         return $result;
+    }
+
+    /**
+     * Executes the finally block if it exists and returns the appropriate result.
+     *
+     * @param mixed $currentResult The current result from try or catch block
+     *
+     * @return mixed The final result after executing the finally block
+     */
+    private function executeFinallyBlock(mixed $currentResult): mixed
+    {
+        if (!$this->finallyBlock instanceof \Closure) {
+            return $currentResult;
+        }
+
+        $finallyResult = ($this->finallyBlock)();
+
+        return null === $finallyResult ? $currentResult : $finallyResult;
     }
 }
