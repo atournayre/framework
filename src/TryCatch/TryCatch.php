@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\TryCatch;
 
+use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
 use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
@@ -123,6 +124,47 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
             handlers: $this->handlers,
             logger: $this->logger,
             finallyBlock: $finallyBlock
+        );
+    }
+
+    /**
+     * Logs and rethrows the caught exception wrapped in a ThrowableInterface.
+     *
+     * @param string $throwableClass The ThrowableInterface implementation class to use
+     * @param string $message        The message for the new exception
+     * @param int    $code           The code for the new exception
+     *
+     * @return self<T>
+     *
+     * @throws ThrowableInterface
+     *
+     * @api
+     */
+    public function reThrow(string $throwableClass, string $message = '', int $code = 0): self
+    {
+        // We need to use the same try block to preserve the template type T
+        /** @var \Closure():T $tryBlock */
+        $tryBlock = $this->tryBlock;
+
+        $newHandlers = clone $this->handlers;
+        $newHandlers->add(ThrowableHandler::new(\Throwable::class, function (\Throwable $throwable) use ($throwableClass, $message, $code) {
+            $this->logger->error('Exception caught in TryCatch::reThrow: '.$throwable->getMessage(), [
+                'exception' => $throwable,
+            ]);
+
+            if (!is_a($throwableClass, ThrowableInterface::class, true)) {
+                throw InvalidArgumentException::new(sprintf('Class "%s" must implement "%s"', $throwableClass, ThrowableInterface::class));
+            }
+
+            throw $throwableClass::new(message: '' !== $message ? $message : $throwable->getMessage(), code: 0 !== $code ? $code : $throwable->getCode())->withPrevious($throwable);
+        }));
+
+        /* @var self<T> */
+        return self::createInstance(
+            tryBlock: $tryBlock,
+            handlers: $newHandlers,
+            logger: $this->logger,
+            finallyBlock: $this->finallyBlock
         );
     }
 

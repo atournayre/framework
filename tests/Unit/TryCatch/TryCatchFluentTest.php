@@ -158,6 +158,62 @@ class TryCatchFluentTest extends TestCase
 
         self::assertNull($result);
     }
+
+    /**
+     * @throws \Throwable
+     */
+    public function testReThrowWithCustomMessage(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Custom message for reThrow');
+
+        TryCatch::with(fn () => $this->service->doSomething('trigger_runtime'), $this->logger)
+            ->reThrow(RuntimeException::class, 'Custom message for reThrow')
+            ->execute()
+        ;
+    }
+
+    /**
+     * @throws \Throwable
+     */
+    public function testReThrowWithRuntimeException(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Runtime exception triggered');
+
+        TryCatch::with(fn () => $this->service->doSomething('trigger_runtime'), $this->logger)
+            ->reThrow(RuntimeException::class)
+            ->execute()
+        ;
+    }
+
+    /**
+     * @throws \Throwable
+     */
+    public function testReThrow(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Custom message for reThrow');
+
+        TryCatch::with(fn () => $this->service->doSomething(''), $this->logger)
+            ->reThrow(InvalidArgumentException::class, 'Custom message for reThrow')
+            ->execute()
+        ;
+    }
+
+    /**
+     * @throws \Throwable
+     */
+    public function testReThrowWithOriginalMessage(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Input cannot be empty');
+
+        TryCatch::with(fn () => $this->service->doSomething(''), $this->logger)
+            ->reThrow(InvalidArgumentException::class)
+            ->execute()
+        ;
+    }
 }
 
 /**
