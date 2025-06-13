@@ -130,13 +130,28 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
     /**
      * Logs and rethrows the caught exception wrapped in a ThrowableInterface.
      *
-     * @param string $throwableClass The ThrowableInterface implementation class to use
-     * @param string $message        The message for the new exception
-     * @param int    $code           The code for the new exception
+     * This method adds a handler that catches any exception thrown in the try block,
+     * logs it, and then rethrows it wrapped in a new exception of the specified class.
+     * The new exception will preserve the original exception as its previous exception,
+     * allowing for proper exception chaining.
+     *
+     * If no message is provided (or an empty string), the original exception's message will be used.
+     * If no code is provided (or 0), the original exception's code will be used.
+     *
+     * Example usage:
+     * ```php
+     * $result = TryCatch::with(fn () => $service->doSomething(), $logger)
+     *     ->reThrow(CustomException::class, 'Custom error message')
+     *     ->execute();
+     * ```
+     *
+     * @param string $throwableClass The ThrowableInterface implementation class to use for the new exception
+     * @param string $message        The message for the new exception (defaults to the original exception's message if empty)
+     * @param int    $code           The code for the new exception (defaults to the original exception's code if 0)
      *
      * @return self<T>
      *
-     * @throws ThrowableInterface
+     * @throws ThrowableInterface If the throwable class doesn't implement ThrowableInterface
      *
      * @api
      */

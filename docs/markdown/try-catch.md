@@ -64,6 +64,7 @@ The main class that implements the try-catch-finally pattern.
 - `with<TReturn>(tryBlock: \Closure(): TReturn, logger: LoggerInterface): self<TReturn>`
 - `catch(throwableClass: string, handler: \Closure): self<T>` - Preserves the generic type T
 - `finally(finallyBlock: \Closure): self<T>` - Preserves the generic type T. If the finally block returns a non-null value, it will be used as the result of execute()
+- `reThrow(throwableClass: string, message: string = '', code: int = 0): self<T>` - Logs and rethrows the caught exception wrapped in a ThrowableInterface
 - `execute(): T` - Returns the type specified by the generic parameter T
 
 ## ThrowableHandlerCollection
@@ -227,3 +228,52 @@ $result = TryCatch::with(
 ```
 
 This is useful for scenarios where a process doesn't normally return anything, but you want to return information about errors when they occur.
+
+### Using reThrow to Wrap Exceptions
+
+The `reThrow()` method allows you to catch any exception thrown in the try block, log it, and then rethrow it wrapped in a new exception of a specified class. This is useful for converting low-level exceptions into domain-specific exceptions while preserving the original exception information.
+
+```php
+<?php
+
+use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\TryCatch\TryCatch;
+use Psr\Log\LoggerInterface;
+
+try {
+    // The try block might throw various exceptions
+    $result = TryCatch::with(
+        tryBlock: function() {
+            // Code that might throw exceptions
+            return callExternalService();
+        },
+        logger: $logger
+    )
+    ->reThrow(
+        // Specify the exception class to use for wrapping
+        // This class must implement ThrowableInterface
+        throwableClass: RuntimeException::class,
+        // Optional: Provide a custom message (if empty, the original message will be used)
+        message: 'An error occurred while calling the external service',
+        // Optional: Provide a custom code (if 0, the original code will be used)
+        code: 500
+    )
+    ->execute();
+} catch (RuntimeException $exception) {
+    // Handle the wrapped exception
+    // The original exception is available as $exception->getPrevious()
+    $originalException = $exception->getPrevious();
+
+    // Log or handle the exception as needed
+    echo "Error: " . $exception->getMessage();
+    echo "Original error: " . $originalException->getMessage();
+}
+```
+
+Key points about `reThrow()`:
+- It logs the original exception before rethrowing
+- It wraps the original exception in a new exception of the specified class
+- The original exception is preserved as the "previous" exception
+- If no message is provided (or an empty string), the original exception's message is used
+- If no code is provided (or 0), the original exception's code is used
+- The specified throwable class must implement ThrowableInterface
