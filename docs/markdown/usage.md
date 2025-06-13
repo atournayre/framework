@@ -366,6 +366,12 @@ $kebabCase = StringType::of('helloWorld')->kebab(); // hello-world
 
 // Convert to string
 $value = $string->toString(); // Hello, World!
+
+// Conditionally modify string
+$conditionalString = $string->when(
+    true,
+    fn(StringType $str) => $str->append(' How are you?')
+); // Hello, World! How are you?
 ```
 
 ### Collection

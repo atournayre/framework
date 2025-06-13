@@ -879,4 +879,34 @@ final class StringTypeTest extends TestCase
         self::expectException(\InvalidArgumentException::class);
         StringType::fromPattern('Welcome %s %s %s', 'to', 1, 'World');
     }
+
+    public function testWhenAppliesCallbackWhenConditionIsTrue(): void
+    {
+        $string = StringType::of('Hello');
+        $result = $string->when(
+            true,
+            fn(StringType $str) => $str->append(' World')
+        );
+        self::assertEquals('Hello World', $result->toString());
+    }
+
+    public function testWhenDoesNotApplyCallbackWhenConditionIsFalse(): void
+    {
+        $string = StringType::of('Hello');
+        $result = $string->when(
+            false,
+            fn(StringType $str) => $str->append(' World')
+        );
+        self::assertEquals('Hello', $result->toString());
+    }
+
+    public function testWhenDoesNotChangeOriginalString(): void
+    {
+        $string = StringType::of('Hello');
+        $string->when(
+            true,
+            fn(StringType $str) => $str->append(' World')
+        );
+        self::assertEquals('Hello', $string->toString());
+    }
 }

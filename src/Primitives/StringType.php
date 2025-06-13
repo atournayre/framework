@@ -561,4 +561,22 @@ final readonly class StringType implements \Stringable
 
         return self::of($u->toString());
     }
+
+    /**
+     * Conditionally executes a callback on the string.
+     *
+     * @api
+     *
+     * @param bool $condition The condition to check
+     * @param callable $callback The callback to execute if the condition is true
+     * @return self The modified string if the condition is true, otherwise the original string
+     */
+    public function when(bool $condition, callable $callback): self
+    {
+        if ($condition) {
+            return $callback($this);
+        }
+
+        return $this;
+    }
 }
