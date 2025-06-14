@@ -191,8 +191,49 @@ The Framework provides interfaces for working with exceptions:
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
-// Interface methods
-// (Methods for working with exceptions)
+/**
+ * Interface for throwable objects in the framework.
+ * 
+ * This interface extends PHP's native \Throwable interface and provides
+ * additional methods for creating and manipulating exceptions in a fluent way.
+ */
+interface ThrowableInterface extends \Throwable
+{
+    /**
+     * Creates a new instance of the throwable.
+     *
+     * @param string $message The exception message
+     * @param int $code The exception code
+     * 
+     * @return self The new throwable instance
+     */
+    public static function new(string $message = '', int $code = 0): self;
+
+    /**
+     * Creates a new instance from an existing throwable.
+     *
+     * @param \Throwable $throwable The original throwable to convert
+     * 
+     * @return self The new throwable instance
+     */
+    public static function fromThrowable(\Throwable $throwable): self;
+
+    /**
+     * Sets the previous throwable.
+     *
+     * @param \Throwable $previous The previous throwable
+     * 
+     * @return self A new instance with the previous throwable set
+     */
+    public function withPrevious(\Throwable $previous): self;
+
+    /**
+     * Throws this throwable.
+     *
+     * @throws ThrowableInterface Always throws this throwable
+     */
+    public function throw(): void;
+}
 ```
 
 ### Filesystem Interfaces
@@ -369,3 +410,53 @@ use Atournayre\Contracts\Uri\UriInterface;
 // Interface methods
 // (Methods for URIs)
 ```
+
+### TryCatch Interfaces
+
+The Framework provides interfaces for implementing the try-catch-finally pattern with generic type support:
+
+```php
+<?php
+
+use Atournayre\Contracts\TryCatch\ExecutableTryCatchInterface;
+use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
+use Atournayre\Contracts\TryCatch\ThrowableHandlerCollectionInterface;
+
+// ExecutableTryCatchInterface methods
+/**
+ * @template T
+ */
+interface ExecutableTryCatchInterface
+{
+    /**
+     * @return T The result of the try block execution
+     * @throws ThrowableInterface If an exception is thrown and not handled
+     */
+    public function execute(): mixed;
+}
+
+// ThrowableHandlerInterface methods
+/**
+ * @template T
+ */
+interface ThrowableHandlerInterface
+{
+    public function canHandle(\Throwable $throwable): bool;
+
+    /**
+     * @return T The result of handling the throwable
+     */
+    public function handle(\Throwable $throwable): mixed;
+}
+
+// ThrowableHandlerCollectionInterface methods
+interface ThrowableHandlerCollectionInterface extends AddInterface
+{
+    /**
+     * @return ThrowableHandlerInterface<mixed>|null
+     */
+    public function findHandlerFor(\Throwable $throwable): ?ThrowableHandlerInterface;
+}
+```
+
+For more detailed information about the TryCatch functionality, see the [TryCatch documentation](try-catch.md).

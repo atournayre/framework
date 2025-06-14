@@ -172,3 +172,135 @@ use Atournayre\Symfony\Contracts\SomeInterface;
 // Example usage of the Contracts component
 // (Documentation to be expanded based on the actual implementation)
 ```
+
+## Middleware
+
+### DoctrineTransactionMiddleware
+
+The `DoctrineTransactionMiddleware` provides automatic transaction management for Symfony Messenger messages. It starts a transaction before handling a message, commits it after successful processing, and rolls back in case of exceptions.
+
+#### Configuration
+
+To use the `DoctrineTransactionMiddleware` in your Symfony application, you need to:
+
+1. Create a service definition in your `services.yaml`:
+
+```yaml
+# config/services.yaml
+services:
+    Atournayre\Symfony\Middleware\DoctrineTransactionMiddleware:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@messenger.handlers_locator'
+            - '@your_logger_service'
+        tags: ['messenger.middleware']
+```
+
+2. Ensure your message handlers implement the `AllowFlushInterface` to enable transaction management:
+
+```php
+<?php
+
+namespace App\MessageHandler;
+
+use Atournayre\Contracts\Persistance\AllowFlushInterface;
+use App\Message\YourMessage;
+
+final class YourMessageHandler implements AllowFlushInterface
+{
+    public function __invoke(YourMessage $message)
+    {
+        // Your handler logic here
+        // Changes to entities will be automatically committed or rolled back
+    }
+}
+```
+
+## Subscribers
+
+### DoctrineTransactionSubscriber
+
+The `DoctrineTransactionSubscriber` provides automatic transaction management for HTTP requests. It starts a transaction when a controller is called, commits it after a successful response, and rolls back in case of exceptions.
+
+#### Configuration
+
+To use the `DoctrineTransactionSubscriber` in your Symfony application, you need to:
+
+1. Create a service definition in your `services.yaml`:
+
+```yaml
+# config/services.yaml
+services:
+    Atournayre\Symfony\Subscriber\DoctrineTransactionSubscriber:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@your_logger_service'
+        tags: ['kernel.event_subscriber']
+```
+
+2. Ensure your controllers implement the `AllowFlushInterface` to enable transaction management:
+
+```php
+<?php
+
+namespace App\Controller;
+
+use Atournayre\Contracts\Persistance\AllowFlushInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+
+final class YourController extends AbstractController implements AllowFlushInterface
+{
+    public function yourAction(): Response
+    {
+        // Your controller logic here
+        // Changes to entities will be automatically committed or rolled back
+
+        return new Response('Success');
+    }
+}
+```
+
+### DoctrineCommandTransactionSubscriber
+
+The `DoctrineCommandTransactionSubscriber` provides automatic transaction management for Symfony Console commands. It starts a transaction when a command is executed, commits it after successful execution, and rolls back in case of exceptions.
+
+#### Configuration
+
+To use the `DoctrineCommandTransactionSubscriber` in your Symfony application, you need to:
+
+1. Create a service definition in your `services.yaml`:
+
+```yaml
+# config/services.yaml
+services:
+    Atournayre\Symfony\Subscriber\DoctrineCommandTransactionSubscriber:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@your_logger_service'
+        tags: ['kernel.event_subscriber']
+```
+
+2. Ensure your commands implement the `AllowFlushInterface` to enable transaction management:
+
+```php
+<?php
+
+namespace App\Command;
+
+use Atournayre\Contracts\Persistance\AllowFlushInterface;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+final class YourCommand extends Command implements AllowFlushInterface
+{
+    protected function execute(InputInterface $input, OutputInterface $output): int
+    {
+        // Your command logic here
+        // Changes to entities will be automatically committed or rolled back
+
+        return Command::SUCCESS;
+    }
+}
+```
