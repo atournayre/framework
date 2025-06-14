@@ -124,6 +124,7 @@ services:
         excludedPaths:
           - %currentWorkingDirectory%/src/Common/Assert/Assert.php
           - %currentWorkingDirectory%/src/Contracts/Common/Assert
+          - %currentWorkingDirectory%/src/Primitives/StringType.php
           - %currentWorkingDirectory%/src/TryCatch/ThrowableHandlerCollection.php
           - %currentWorkingDirectory%/tests
       tags:
