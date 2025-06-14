@@ -81,10 +81,11 @@ services:
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverUseErNamesRule
       arguments:
-          excludedPaths:
-              - %currentWorkingDirectory%/src/TryCatch/NullThrowableHandler.php
-              - %currentWorkingDirectory%/src/TryCatch/ThrowableHandler.php
-              - %currentWorkingDirectory%/tests/Fixtures/User.php
+        excludedPaths:
+          - %currentWorkingDirectory%/src/Symfony/Subscriber
+          - %currentWorkingDirectory%/src/TryCatch/NullThrowableHandler.php
+          - %currentWorkingDirectory%/src/TryCatch/ThrowableHandler.php
+          - %currentWorkingDirectory%/tests/Fixtures/User.php
       tags:
         - phpstan.rules.rule
 
@@ -94,6 +95,7 @@ services:
         excludedPaths:
             - %currentWorkingDirectory%/src/PHPStan
             - %currentWorkingDirectory%/src/Rector
+            - %currentWorkingDirectory%/src/Symfony/Subscriber
             - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule
