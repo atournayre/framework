@@ -61,26 +61,30 @@ services:
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverReturnNullRule
       arguments:
           excludedPaths:
-              - %currentWorkingDirectory%/src/Primitives/Collection.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/AccessCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/AddCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/AggregateCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CollectionAsListTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CollectionAsMapTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CountableCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CreateCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/DebugCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/MiscCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/OrderCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/ShortenCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/TestCollectionTrait.php'
-              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/TransformCollectionTrait.php'
+              - %currentWorkingDirectory%/src/Primitives/Collection.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/AccessCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/AddCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/AggregateCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CollectionAsListTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CollectionAsMapTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CountableCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/CreateCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/DebugCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/MiscCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/OrderCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/ShortenCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/TestCollectionTrait.php
+              - %currentWorkingDirectory%/src/Primitives/Traits/Collection/TransformCollectionTrait.php
       tags:
         - phpstan.rules.rule
 
     -
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverUseErNamesRule
       arguments:
+          excludedPaths:
+              - %currentWorkingDirectory%/src/TryCatch/NullThrowableHandler.php
+              - %currentWorkingDirectory%/src/TryCatch/ThrowableHandler.php
+              - %currentWorkingDirectory%/tests/Fixtures/User.php
       tags:
         - phpstan.rules.rule
 
@@ -118,6 +122,7 @@ services:
         excludedPaths:
           - %currentWorkingDirectory%/src/Common/Assert/Assert.php
           - %currentWorkingDirectory%/src/Contracts/Common/Assert
+          - %currentWorkingDirectory%/src/TryCatch/ThrowableHandlerCollection.php
           - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule
@@ -132,6 +137,7 @@ services:
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertMiscInterface.php
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertNullInterface.php
             - %currentWorkingDirectory%/src/Primitives/Traits/Collection/Add.php
+            - %currentWorkingDirectory%/src/TryCatch/TryCatch.php
       tags:
         - phpstan.rules.rule
 

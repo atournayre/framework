@@ -13,6 +13,7 @@ The documentation is organized into the following files:
 - `interfaces.md`: Documentation for the Framework's interfaces
 - `null.md`: Documentation for the Null components
 - `symfony.md`: Documentation for the Symfony integration components
+- `try-catch.md`: Documentation for the TryCatch pattern implementation with generic type support
 
 ## Building the Documentation
 
