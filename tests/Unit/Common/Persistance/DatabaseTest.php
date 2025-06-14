@@ -14,9 +14,9 @@ use PHPUnit\Framework\TestCase;
  */
 class DatabaseTest extends TestCase
 {
-    private EntityManagerInterface|MockObject $entityManager;
-    private object $object;
-    private Database $database;
+    private readonly EntityManagerInterface|MockObject $entityManager;
+    private readonly object $object;
+    private readonly Database $database;
 
     protected function setUp(): void
     {
@@ -60,13 +60,21 @@ class DatabaseTest extends TestCase
         $this->database->remove();
     }
 
-    public function testNewCreatesInstance(): void
+    public function testNewCreatesMethodChaining(): void
     {
+        $this->entityManager
+            ->expects(self::once())
+            ->method('persist')
+            ->with($this->object)
+        ;
+
         $database = Database::new(
             entityManager: $this->entityManager,
             object: $this->object,
         );
 
-        self::assertInstanceOf(Database::class, $database);
+        // Test that method chaining works
+        $result = $database->persist();
+        self::assertSame($database, $result);
     }
 }
