@@ -53,5 +53,6 @@ nav:
     - Usage: usage.md
     - Interfaces: interfaces.md
     - Null: null.md
+    - Database: database.md
     - Symfony: symfony.md
     - TryCatch: try-catch.md
