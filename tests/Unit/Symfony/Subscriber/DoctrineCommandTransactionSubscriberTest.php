@@ -21,10 +21,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DoctrineCommandTransactionSubscriberTest extends TestCase
 {
-    private EntityManagerInterface|MockObject $entityManager;
-    private LoggerInterface|MockObject $logger;
-    private Connection|MockObject $connection;
-    private DoctrineCommandTransactionSubscriber $subscriber;
+    private readonly EntityManagerInterface|MockObject $entityManager;
+    private readonly LoggerInterface|MockObject $logger;
+    private readonly Connection|MockObject $connection;
+    private readonly DoctrineCommandTransactionSubscriber $subscriber;
 
     protected function setUp(): void
     {
@@ -56,7 +56,7 @@ class DoctrineCommandTransactionSubscriberTest extends TestCase
 
     public function testStartTransactionSkipsNonCommandEvents(): void
     {
-        $event = $this->createConsoleCommandEvent(null);
+        $event = $this->createEmptyConsoleCommandEvent();
 
         $this->entityManager->expects(self::never())->method('beginTransaction');
 
@@ -95,7 +95,7 @@ class DoctrineCommandTransactionSubscriberTest extends TestCase
 
     public function testCommitTransactionSkipsNonCommandEvents(): void
     {
-        $event = $this->createConsoleTerminateEvent(null);
+        $event = $this->createEmptyConsoleTerminateEvent();
 
         $this->entityManager->expects(self::never())->method('flush');
         $this->entityManager->expects(self::never())->method('commit');
@@ -120,6 +120,7 @@ class DoctrineCommandTransactionSubscriberTest extends TestCase
         $command->method('getName')->willReturn('test:command');
         $event = $this->createConsoleTerminateEvent($command, 0);
 
+        // @phpstan-ignore-next-line
         $this->logger->expects(self::exactly(2))->method('debug')
             ->withConsecutive(
                 ['Flushing changes', ['command' => 'test:command', 'exitCode' => 0]],
@@ -171,7 +172,7 @@ class DoctrineCommandTransactionSubscriberTest extends TestCase
 
     public function testRollbackTransactionSkipsNonCommandEvents(): void
     {
-        $event = $this->createConsoleErrorEvent(null);
+        $event = $this->createEmptyConsoleErrorEvent();
 
         $this->entityManager->expects(self::never())->method('rollback');
 
@@ -181,7 +182,7 @@ class DoctrineCommandTransactionSubscriberTest extends TestCase
     public function testRollbackTransactionSkipsNonAllowFlushCommands(): void
     {
         $command = $this->createMock(Command::class);
-        $event = $this->createConsoleErrorEvent($command);
+        $event = $this->createConsoleErrorEvent($command, new \Exception('Test error'));
 
         $this->entityManager->expects(self::never())->method('rollback');
 
@@ -231,7 +232,7 @@ class DoctrineCommandTransactionSubscriberTest extends TestCase
         $this->subscriber->rollbackTransaction($event);
     }
 
-    private function createConsoleCommandEvent(?Command $command): ConsoleCommandEvent
+    private function createConsoleCommandEvent(Command $command): ConsoleCommandEvent
     {
         $input = $this->createMock(InputInterface::class);
         $output = $this->createMock(OutputInterface::class);
@@ -239,26 +240,46 @@ class DoctrineCommandTransactionSubscriberTest extends TestCase
         return new ConsoleCommandEvent($command, $input, $output);
     }
 
-    private function createConsoleTerminateEvent(?Command $command, int $exitCode = 0): ConsoleTerminateEvent
+    private function createEmptyConsoleCommandEvent(): ConsoleCommandEvent
     {
         $input = $this->createMock(InputInterface::class);
         $output = $this->createMock(OutputInterface::class);
 
-        // ConsoleTerminateEvent requires a non-null Command
-        if (null === $command) {
-            $command = $this->createMock(Command::class);
-        }
+        return new ConsoleCommandEvent(null, $input, $output);
+    }
+
+    private function createConsoleTerminateEvent(Command $command, int $exitCode = 0): ConsoleTerminateEvent
+    {
+        $input = $this->createMock(InputInterface::class);
+        $output = $this->createMock(OutputInterface::class);
 
         return new ConsoleTerminateEvent($command, $input, $output, $exitCode);
     }
 
-    private function createConsoleErrorEvent(?Command $command, ?\Throwable $error = null): ConsoleErrorEvent
+    private function createEmptyConsoleTerminateEvent(int $exitCode = 0): ConsoleTerminateEvent
     {
         $input = $this->createMock(InputInterface::class);
         $output = $this->createMock(OutputInterface::class);
-        $error = $error ?? new \Exception('Test error');
+        $command = $this->createMock(Command::class);
+
+        return new ConsoleTerminateEvent($command, $input, $output, $exitCode);
+    }
+
+    private function createConsoleErrorEvent(Command $command, \Throwable $error): ConsoleErrorEvent
+    {
+        $input = $this->createMock(InputInterface::class);
+        $output = $this->createMock(OutputInterface::class);
 
         return new ConsoleErrorEvent($input, $output, $error, $command);
+    }
+
+    private function createEmptyConsoleErrorEvent(): ConsoleErrorEvent
+    {
+        $input = $this->createMock(InputInterface::class);
+        $output = $this->createMock(OutputInterface::class);
+        $error = new \Exception('Test error');
+
+        return new ConsoleErrorEvent($input, $output, $error, null);
     }
 }
 

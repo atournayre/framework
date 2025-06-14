@@ -33,6 +33,7 @@ parameters:
         - '#Extending PHPStan\\Type\\WebMozartAssert\\AssertTypeSpecifyingExtension is not covered by backward compatibility promise. The class might change in a minor PHPStan version.#'
         - '#Property (.)*::\$logger is mutable, which violates object immutability#'
         - '#Property (.)*::\$null is mutable, which violates object immutability#'
+        - '#Method Atournayre\\TryCatch\\NullThrowableHandler\:\:handle\(\) returns null#'
         # Due to design problem
         - '#Property Atournayre\\Primitives\\Numeric::\$(.)* is mutable, which violates object immutability#'
         - '#Property Atournayre\\Component\\Mailer\\Configuration\\MailerConfiguration::\$(.)* is mutable, which violates object immutability#'
@@ -43,6 +44,7 @@ parameters:
         - '#Constructor Atournayre\\Tests\\Fixtures\\Title::__construct\(\) contains code other than property assignments or assertions, which violates the "code-free constructor" principle#'
         - '#Property Atournayre\\(.)*::\$(null|plainPassword) is not private, which violates object encapsulation#'
         - '#Method Atournayre\\Primitives\\Collection\:\:add\(\)#'
+        - '#Method Atournayre\\TryCatch\\ThrowableHandlerCollection\:\:add\(\)#'
         # To be compliant with PSR7 UriInterface
         - '#Interface Atournayre\\Contracts\\Uri\\UriInterface has 19 methods, which exceeds the maximum of 5 \(Elegant Object principle\)(.)*#'
         # To be compliant with Symfony Event

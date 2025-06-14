@@ -2941,11 +2941,6 @@ parameters:
 			path: ../../src/Primitives/Numeric.php
 
 		-
-			message: "#^Class Atournayre\\\\Primitives\\\\StringType has 49 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
-			count: 1
-			path: ../../src/Primitives/StringType.php
-
-		-
 			message: "#^Class Atournayre\\\\Primitives\\\\StringType has a public constant NFC, which violates encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/StringType.php

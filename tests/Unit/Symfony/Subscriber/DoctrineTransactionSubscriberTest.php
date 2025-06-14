@@ -21,10 +21,10 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class DoctrineTransactionSubscriberTest extends TestCase
 {
-    private EntityManagerInterface|MockObject $entityManager;
-    private LoggerInterface|MockObject $logger;
-    private Connection|MockObject $connection;
-    private DoctrineTransactionSubscriber $subscriber;
+    private readonly EntityManagerInterface|MockObject $entityManager;
+    private readonly LoggerInterface|MockObject $logger;
+    private readonly Connection|MockObject $connection;
+    private readonly DoctrineTransactionSubscriber $subscriber;
 
     protected function setUp(): void
     {
@@ -56,7 +56,7 @@ class DoctrineTransactionSubscriberTest extends TestCase
 
     public function testStartTransactionSkipsNonMainRequests(): void
     {
-        $event = $this->createControllerEvent(false);
+        $event = $this->createDefaultControllerEvent(false);
 
         $this->entityManager->expects(self::never())->method('beginTransaction');
 
@@ -75,7 +75,8 @@ class DoctrineTransactionSubscriberTest extends TestCase
     public function testStartTransactionSkipsNonAllowFlushControllers(): void
     {
         $controller = new class {
-            public function method()
+            /** @phpstan-ignore-next-line */
+            public function method(): void
             {
             }
         };
@@ -98,7 +99,7 @@ class DoctrineTransactionSubscriberTest extends TestCase
 
     public function testCommitTransactionSkipsNonMainRequests(): void
     {
-        $event = $this->createResponseEvent(false);
+        $event = $this->createDefaultResponseEvent(false);
 
         $this->entityManager->expects(self::never())->method('flush');
         $this->entityManager->expects(self::never())->method('commit');
@@ -150,7 +151,7 @@ class DoctrineTransactionSubscriberTest extends TestCase
 
     public function testRollbackTransactionSkipsNonMainRequests(): void
     {
-        $event = $this->createExceptionEvent(false);
+        $event = $this->createDefaultExceptionEvent(false);
 
         $this->entityManager->expects(self::never())->method('rollback');
 
@@ -194,14 +195,14 @@ class DoctrineTransactionSubscriberTest extends TestCase
         $this->subscriber->rollbackTransaction($event);
     }
 
-    private function createControllerEvent(bool $isMainRequest, mixed $controller = null): ControllerEvent
+    private function createControllerEvent(bool $isMainRequest, mixed $controller): ControllerEvent
     {
         $kernel = $this->createMock(HttpKernelInterface::class);
         $request = $this->createMock(Request::class);
 
         $event = new ControllerEvent(
             $kernel,
-            $controller ?? function () {},
+            $controller,
             $request,
             $isMainRequest ? HttpKernelInterface::MAIN_REQUEST : HttpKernelInterface::SUB_REQUEST
         );
@@ -209,15 +210,18 @@ class DoctrineTransactionSubscriberTest extends TestCase
         return $event;
     }
 
-    private function createResponseEvent(bool $isMainRequest, mixed $controller = null): ResponseEvent
+    private function createDefaultControllerEvent(bool $isMainRequest): ControllerEvent
+    {
+        return $this->createControllerEvent($isMainRequest, function () {});
+    }
+
+    private function createResponseEvent(bool $isMainRequest, mixed $controller): ResponseEvent
     {
         $kernel = $this->createMock(HttpKernelInterface::class);
         $request = new Request();
         $response = new Response();
 
-        if (null !== $controller) {
-            $request->attributes->set('_controller', $controller);
-        }
+        $request->attributes->set('_controller', $controller);
 
         $event = new ResponseEvent(
             $kernel,
@@ -229,15 +233,45 @@ class DoctrineTransactionSubscriberTest extends TestCase
         return $event;
     }
 
-    private function createExceptionEvent(bool $isMainRequest, mixed $controller = null): ExceptionEvent
+    private function createDefaultResponseEvent(bool $isMainRequest): ResponseEvent
+    {
+        $kernel = $this->createMock(HttpKernelInterface::class);
+        $request = new Request();
+        $response = new Response();
+
+        $event = new ResponseEvent(
+            $kernel,
+            $request,
+            $isMainRequest ? HttpKernelInterface::MAIN_REQUEST : HttpKernelInterface::SUB_REQUEST,
+            $response
+        );
+
+        return $event;
+    }
+
+    private function createExceptionEvent(bool $isMainRequest, mixed $controller): ExceptionEvent
     {
         $kernel = $this->createMock(HttpKernelInterface::class);
         $request = new Request();
         $throwable = new \Exception('Test exception');
 
-        if (null !== $controller) {
-            $request->attributes->set('_controller', $controller);
-        }
+        $request->attributes->set('_controller', $controller);
+
+        $event = new ExceptionEvent(
+            $kernel,
+            $request,
+            $isMainRequest ? HttpKernelInterface::MAIN_REQUEST : HttpKernelInterface::SUB_REQUEST,
+            $throwable
+        );
+
+        return $event;
+    }
+
+    private function createDefaultExceptionEvent(bool $isMainRequest): ExceptionEvent
+    {
+        $kernel = $this->createMock(HttpKernelInterface::class);
+        $request = new Request();
+        $throwable = new \Exception('Test exception');
 
         $event = new ExceptionEvent(
             $kernel,
