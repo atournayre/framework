@@ -54,5 +54,6 @@ nav:
     - Interfaces: interfaces.md
     - Null: null.md
     - Database: database.md
+    - Event: event.md
     - Symfony: symfony.md
     - TryCatch: try-catch.md
