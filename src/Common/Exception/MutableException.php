@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Exception;
 
+use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
 class MutableException extends \RuntimeException implements ThrowableInterface
@@ -36,5 +37,10 @@ class MutableException extends \RuntimeException implements ThrowableInterface
     public static function becauseMustBeImmutable(): self
     {
         return self::new('Must be immutable.');
+    }
+
+    public function log(LoggerInterface $logger, array $context = []): void
+    {
+        $logger->exception($this, $context);
     }
 }

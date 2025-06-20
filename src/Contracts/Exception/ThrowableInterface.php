@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Exception;
 
+use Atournayre\Contracts\Log\LoggerInterface;
+
 /**
  * Interface for throwable objects in the framework.
  *
@@ -46,4 +48,12 @@ interface ThrowableInterface extends \Throwable
      * @throws ThrowableInterface Always throws this throwable
      */
     public function throw(): void;
+
+    /**
+     * Logs this throwable using the provided logger.
+     *
+     * @param LoggerInterface $logger  The logger to use
+     * @param array           $context Additional context information
+     */
+    public function log(LoggerInterface $logger, array $context = []): void;
 }

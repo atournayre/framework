@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Exception;
 
+use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
 class UnexpectedValueException extends \UnexpectedValueException implements ThrowableInterface
@@ -31,5 +32,10 @@ class UnexpectedValueException extends \UnexpectedValueException implements Thro
     public function throw(): void
     {
         throw $this;
+    }
+
+    public function log(LoggerInterface $logger, array $context = []): void
+    {
+        $logger->exception($this, $context);
     }
 }

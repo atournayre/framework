@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Exception;
 
+use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
 class NullException extends \Exception implements ThrowableInterface
@@ -39,5 +40,10 @@ class NullException extends \Exception implements ThrowableInterface
     public static function null(): self
     {
         return self::new('Empty exception.');
+    }
+
+    public function log(LoggerInterface $logger, array $context = []): void
+    {
+        $logger->exception($this, $context);
     }
 }

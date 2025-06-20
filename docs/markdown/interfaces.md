@@ -191,6 +191,8 @@ The Framework provides interfaces for working with exceptions:
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
+use Atournayre\Contracts\Log\LoggerInterface;
+
 /**
  * Interface for throwable objects in the framework.
  * 
@@ -233,6 +235,16 @@ interface ThrowableInterface extends \Throwable
      * @throws ThrowableInterface Always throws this throwable
      */
     public function throw(): void;
+
+    /**
+     * Logs this throwable using the provided logger.
+     *
+     * @param \Atournayre\Contracts\Log\LoggerInterface $logger  The logger to use
+     * @param array                                     $context Additional context information
+     *
+     * @return void
+     */
+    public function log(\LoggerInterface $logger, array $context = []): void;
 }
 ```
 

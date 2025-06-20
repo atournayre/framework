@@ -6,6 +6,7 @@ namespace Atournayre\Tests\Unit\Exception;
 
 use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Contracts\Log\LoggerInterface;
 use PHPUnit\Framework\TestCase;
 
 class InvalidArgumentExceptionTest extends TestCase
@@ -51,5 +52,24 @@ class InvalidArgumentExceptionTest extends TestCase
     {
         $exception = InvalidArgumentException::new('Test message');
         self::assertInstanceOf(\InvalidArgumentException::class, $exception); // @phpstan-ignore-line
+    }
+
+    public function testLog(): void
+    {
+        // Create a mock for LoggerInterface
+        $logger = $this->createMock(LoggerInterface::class);
+
+        // Set up expectations
+        $context = ['key' => 'value'];
+        $exception = InvalidArgumentException::new('Test message');
+
+        // Expect the exception method to be called once with the exception and context
+        $logger->expects(self::once())
+            ->method('exception')
+            ->with($exception, $context)
+        ;
+
+        // Call the log method
+        $exception->log($logger, $context);
     }
 }
