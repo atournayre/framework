@@ -52,6 +52,7 @@ nav:
     - Installation: installation.md
     - Usage: usage.md
     - Interfaces: interfaces.md
+    - Exceptions: exceptions.md
     - Null: null.md
     - Database: database.md
     - Symfony: symfony.md

@@ -54,7 +54,7 @@ class InvalidArgumentExceptionTest extends TestCase
         self::assertInstanceOf(\InvalidArgumentException::class, $exception); // @phpstan-ignore-line
     }
 
-    public function testLog(): void
+    public function testThrowWithLogger(): void
     {
         // Create a mock for LoggerInterface
         $logger = $this->createMock(LoggerInterface::class);
@@ -69,7 +69,10 @@ class InvalidArgumentExceptionTest extends TestCase
             ->with($exception, $context)
         ;
 
-        // Call the log method
-        $exception->log($logger, $context);
+        // We need to expect the exception to be thrown
+        $this->expectException(InvalidArgumentException::class);
+
+        // Call the throw method with logger and context
+        $exception->throw($logger, $context);
     }
 }

@@ -6,7 +6,6 @@ namespace Atournayre\Tests\Fixtures\Exception;
 
 use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
-use Atournayre\Contracts\Log\LoggerInterface;
 
 /**
  * Class InvalidEmailException.
@@ -18,10 +17,5 @@ final class InvalidEmailException extends InvalidArgumentException implements Th
     public static function new(string $message = '', int $code = 0): self
     {
         return new self('' !== $message ? $message : 'Invalid email address', $code);
-    }
-
-    public function log(LoggerInterface $logger, array $context = []): void
-    {
-        $logger->exception($this, $context);
     }
 }

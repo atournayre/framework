@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Exception;
 
-use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Contracts\Log\LoggerInterface;
 
 class RuntimeException extends \RuntimeException implements ThrowableInterface
 {
@@ -29,13 +29,10 @@ class RuntimeException extends \RuntimeException implements ThrowableInterface
     /**
      * @throws ThrowableInterface
      */
-    public function throw(): void
+    public function throw(?LoggerInterface $logger = null, array $context = []): void
     {
-        throw $this;
-    }
+        $logger?->exception($this, $context);
 
-    public function log(LoggerInterface $logger, array $context = []): void
-    {
-        $logger->exception($this, $context);
+        throw $this;
     }
 }

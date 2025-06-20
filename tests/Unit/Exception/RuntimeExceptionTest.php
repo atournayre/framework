@@ -54,7 +54,7 @@ class RuntimeExceptionTest extends TestCase
         self::assertInstanceOf(\RuntimeException::class, $exception); // @phpstan-ignore-line
     }
 
-    public function testLog(): void
+    public function testThrowWithLogger(): void
     {
         // Create a mock for LoggerInterface
         $logger = $this->createMock(LoggerInterface::class);
@@ -69,7 +69,10 @@ class RuntimeExceptionTest extends TestCase
             ->with($exception, $context)
         ;
 
-        // Call the log method
-        $exception->log($logger, $context);
+        // We need to expect the exception to be thrown
+        $this->expectException(RuntimeException::class);
+
+        // Call the throw method with logger and context
+        $exception->throw($logger, $context);
     }
 }
