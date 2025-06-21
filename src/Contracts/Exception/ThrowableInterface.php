@@ -47,8 +47,8 @@ interface ThrowableInterface extends \Throwable
      *
      * If a logger is provided, logs the exception before throwing it.
      *
-     * @param LoggerInterface|null $logger  The logger to use for logging the exception
-     * @param array                $context Additional context information for logging
+     * @param LoggerInterface|null    $logger  The logger to use for logging the exception
+     * @param array<array-key, mixed> $context Additional context information for logging
      *
      * @throws ThrowableInterface Always throws this throwable
      */

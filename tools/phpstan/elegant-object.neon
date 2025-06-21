@@ -135,10 +135,12 @@ services:
       arguments:
           excludedPaths:
             - %currentWorkingDirectory%/src/Common/Assert/Assert.php
+            - %currentWorkingDirectory%/src/Common/Exception/ThrowableTrait.php
             - %currentWorkingDirectory%/src/Contracts/Collection # Remove when methods no longer accept null arguments
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertAllInterface.php
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertMiscInterface.php
             - %currentWorkingDirectory%/src/Contracts/Common/Assert/AssertNullInterface.php
+            - %currentWorkingDirectory%/src/Contracts/Exception/ThrowableInterface.php
             - %currentWorkingDirectory%/src/Primitives/Traits/Collection/Add.php
             - %currentWorkingDirectory%/src/TryCatch/TryCatch.php
       tags:
