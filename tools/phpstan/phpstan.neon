@@ -34,6 +34,7 @@ parameters:
         - '#Property (.)*::\$logger is mutable, which violates object immutability#'
         - '#Property (.)*::\$null is mutable, which violates object immutability#'
         - '#Method Atournayre\\TryCatch\\NullThrowableHandler\:\:handle\(\) returns null#'
+        - '#Method Atournayre\\Common\\Exception\\(.)*\:\:throw\(\) (.)* null for parameter \$logger, which violates the rule of never accepting null arguments#'
         # Due to design problem
         - '#Property Atournayre\\Primitives\\Numeric::\$(.)* is mutable, which violates object immutability#'
         - '#Property Atournayre\\Component\\Mailer\\Configuration\\MailerConfiguration::\$(.)* is mutable, which violates object immutability#'

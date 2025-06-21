@@ -6,6 +6,7 @@ namespace Atournayre\Tests\Unit\Exception;
 
 use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Contracts\Log\LoggerInterface;
 use PHPUnit\Framework\TestCase;
 
 class RuntimeExceptionTest extends TestCase
@@ -51,5 +52,27 @@ class RuntimeExceptionTest extends TestCase
     {
         $exception = RuntimeException::new('Test message');
         self::assertInstanceOf(\RuntimeException::class, $exception); // @phpstan-ignore-line
+    }
+
+    public function testThrowWithLogger(): void
+    {
+        // Create a mock for LoggerInterface
+        $logger = $this->createMock(LoggerInterface::class);
+
+        // Set up expectations
+        $context = ['key' => 'value'];
+        $exception = RuntimeException::new('Test message');
+
+        // Expect the exception method to be called once with the exception and context
+        $logger->expects(self::once())
+            ->method('exception')
+            ->with($exception, $context)
+        ;
+
+        // We need to expect the exception to be thrown
+        $this->expectException(RuntimeException::class);
+
+        // Call the throw method with logger and context
+        $exception->throw($logger, $context);
     }
 }
