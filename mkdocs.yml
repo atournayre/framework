@@ -1,6 +1,7 @@
 site_name: Framework
 site_author: 'Aurélien Tournayre'
 copyright: '2025, Aurélien Tournayre'
+repo_url: https://github.com/atournayre/framework
 repo_name: 'framework'
 docs_dir: 'docs/markdown'
 
@@ -51,6 +52,7 @@ nav:
     - Introduction: introduction.md
     - Installation: installation.md
     - Usage: usage.md
+  - Documentation:
     - Interfaces: interfaces.md
     - Null: null.md
     - Database: database.md
