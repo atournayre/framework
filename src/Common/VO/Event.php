@@ -4,15 +4,21 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\VO;
 
+use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Common\Traits\ContextTrait;
 use Atournayre\Contracts\Context\HasContextInterface;
+use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Psr\EventDispatcher\StoppableEventInterface;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 class Event implements StoppableEventInterface, HasContextInterface, LoggableInterface
 {
     use ContextTrait;
 
+    /**
+     * @api
+     */
     public function _identifier(): string
     {
         return \spl_object_hash($this);
@@ -36,6 +42,9 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
         $this->propagationStopped = true;
     }
 
+    /**
+     * @api
+     */
     public function _type(): string
     {
         return static::class;
@@ -58,5 +67,19 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
         return $log + [
             'context' => $this->context()->toLog(),
         ];
+    }
+
+    /**
+     * @api
+     *
+     * @throws ThrowableInterface
+     */
+    public function dispatch(MessageBusInterface $messageBus): void
+    {
+        try {
+            $messageBus->dispatch($this);
+        } catch (\Throwable $throwable) {
+            RuntimeException::fromThrowable($throwable)->throw();
+        }
     }
 }
