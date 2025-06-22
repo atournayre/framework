@@ -123,12 +123,21 @@ class TryCatchFluentTest extends TestCase
      */
     public function testVoidTryBlockWithCatchReturningValue(): void
     {
-        $result = TryCatch::with(fn () => $this->service->doVoidAction(''), $this->logger)
-            ->catch(InvalidArgumentException::class, fn ($e) => 'Error handled: '.$e->getMessage())
+        $expectedResult = null;
+        $exceptionHandled = false;
+
+        TryCatch::with(fn () => $this->service->doVoidAction(''), $this->logger)
+            ->catch(InvalidArgumentException::class, function ($e) use (&$expectedResult, &$exceptionHandled) {
+                $expectedResult = 'Error handled: '.$e->getMessage();
+                $exceptionHandled = true;
+
+                return $expectedResult;
+            })
             ->execute()
         ;
 
-        self::assertSame('Error handled: Input cannot be empty', $result);
+        self::assertTrue($exceptionHandled);
+        self::assertSame('Error handled: Input cannot be empty', $expectedResult);
     }
 
     /**
@@ -137,12 +146,21 @@ class TryCatchFluentTest extends TestCase
      */
     public function testVoidTryBlockWithRuntimeException(): void
     {
-        $result = TryCatch::with(fn () => $this->service->doVoidAction('trigger_runtime'), $this->logger)
-            ->catch(RuntimeException::class, fn ($e) => 'Runtime error: '.$e->getMessage())
+        $expectedResult = null;
+        $exceptionHandled = false;
+
+        TryCatch::with(fn () => $this->service->doVoidAction('trigger_runtime'), $this->logger)
+            ->catch(RuntimeException::class, function ($e) use (&$expectedResult, &$exceptionHandled) {
+                $expectedResult = 'Runtime error: '.$e->getMessage();
+                $exceptionHandled = true;
+
+                return $expectedResult;
+            })
             ->execute()
         ;
 
-        self::assertSame('Runtime error: Runtime exception triggered', $result);
+        self::assertTrue($exceptionHandled);
+        self::assertSame('Runtime error: Runtime exception triggered', $expectedResult);
     }
 
     /**
@@ -151,12 +169,18 @@ class TryCatchFluentTest extends TestCase
      */
     public function testSuccessfulVoidTryBlock(): void
     {
-        $result = TryCatch::with(fn () => $this->service->doVoidAction('hello'), $this->logger)
-            ->catch(InvalidArgumentException::class, fn ($e) => 'Error handled: '.$e->getMessage())
+        $exceptionHandled = false;
+
+        TryCatch::with(fn () => $this->service->doVoidAction('hello'), $this->logger)
+            ->catch(InvalidArgumentException::class, function ($e) use (&$exceptionHandled) {
+                $exceptionHandled = true;
+
+                return 'Error handled: '.$e->getMessage();
+            })
             ->execute()
         ;
 
-        self::assertNull($result);
+        self::assertFalse($exceptionHandled, 'No exception should have been handled');
     }
 
     /**
