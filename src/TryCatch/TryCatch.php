@@ -187,7 +187,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      * Executes the try-catch block and returns the result.
      * Alias for execute().
      *
-     * @return mixed The result of the try block execution
+     * @return T The result of the try block execution
      *
      * @throws \Throwable If an exception is thrown and not handled
      */
@@ -220,9 +220,9 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
     /**
      * Executes the finally block if it exists and returns the appropriate result.
      *
-     * @param mixed $currentResult The current result from try or catch block
+     * @param T $currentResult The current result from try or catch block
      *
-     * @return mixed The final result after executing the finally block
+     * @return T The final result after executing the finally block
      */
     private function executeFinallyBlock(mixed $currentResult): mixed
     {
