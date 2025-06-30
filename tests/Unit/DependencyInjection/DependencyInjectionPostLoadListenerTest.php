@@ -1,0 +1,97 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Atournayre\Tests\Unit\DependencyInjection;
+
+use Atournayre\Contracts\CommandBus\CommandBusInterface;
+use Atournayre\Contracts\CommandBus\QueryBusInterface;
+use Atournayre\Contracts\DependencyInjection\DependencyInjectionAwareInterface;
+use Atournayre\DependencyInjection\DependencyInjectionPostLoadListener;
+use Atournayre\DependencyInjection\EntityDependencyInjection;
+use Atournayre\Traits\DependencyInjectionTrait;
+use Doctrine\ORM\Event\PostLoadEventArgs;
+use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
+
+final class DependencyInjectionPostLoadListenerTest extends TestCase
+{
+    private EntityDependencyInjection $entityDependencyInjection;
+    private DependencyInjectionPostLoadListener $listener;
+
+    protected function setUp(): void
+    {
+        // Create real EntityDependencyInjection with mocked dependencies
+        $commandBus = $this->createMock(CommandBusInterface::class);
+        $queryBus = $this->createMock(QueryBusInterface::class);
+        $logger = $this->createMock(LoggerInterface::class);
+
+        $this->entityDependencyInjection = new EntityDependencyInjection(
+            $commandBus,
+            $queryBus,
+            $logger
+        );
+
+        $this->listener = new DependencyInjectionPostLoadListener($this->entityDependencyInjection);
+    }
+
+    public function testInjectsDependenciesIntoAwareEntity(): void
+    {
+        // Arrange
+        $entity = new TestEntityWithDependencyInjection();
+        $eventArgs = new TestPostLoadEventArgs($entity);
+
+        // Act
+        ($this->listener)($eventArgs);
+
+        // Assert
+        $this->assertSame($this->entityDependencyInjection, $entity->dependencyInjection());
+    }
+
+    public function testIgnoresEntityThatIsNotDependencyInjectionAware(): void
+    {
+        // Arrange
+        $entity = new TestEntityWithoutDependencyInjection();
+        $eventArgs = new TestPostLoadEventArgs($entity);
+
+        // Act & Assert - should not throw any exception
+        ($this->listener)($eventArgs);
+
+        // The test passes if no exception is thrown
+        $this->assertTrue(true);
+    }
+}
+
+/**
+ * Test entity that implements DependencyInjectionAwareInterface.
+ */
+final class TestEntityWithDependencyInjection implements DependencyInjectionAwareInterface
+{
+    use DependencyInjectionTrait;
+}
+
+/**
+ * Test entity that does not implement DependencyInjectionAwareInterface.
+ */
+final class TestEntityWithoutDependencyInjection
+{
+    // This entity intentionally does not implement DependencyInjectionAwareInterface
+}
+
+/**
+ * Test stub for PostLoadEventArgs.
+ */
+final class TestPostLoadEventArgs
+{
+    private object $entity;
+
+    public function __construct(object $entity)
+    {
+        $this->entity = $entity;
+    }
+
+    public function getObject(): object
+    {
+        return $this->entity;
+    }
+}
