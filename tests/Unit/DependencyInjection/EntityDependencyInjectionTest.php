@@ -36,7 +36,7 @@ final class EntityDependencyInjectionTest extends TestCase
         $result = $this->entityDependencyInjection->commandBus();
 
         // Assert
-        $this->assertSame($this->commandBus, $result);
+        self::assertSame($this->commandBus, $result);
     }
 
     public function testQueryBusReturnsInjectedQueryBus(): void
@@ -45,7 +45,7 @@ final class EntityDependencyInjectionTest extends TestCase
         $result = $this->entityDependencyInjection->queryBus();
 
         // Assert
-        $this->assertSame($this->queryBus, $result);
+        self::assertSame($this->queryBus, $result);
     }
 
     public function testLoggerReturnsInjectedLogger(): void
@@ -54,6 +54,6 @@ final class EntityDependencyInjectionTest extends TestCase
         $result = $this->entityDependencyInjection->logger();
 
         // Assert
-        $this->assertSame($this->logger, $result);
+        self::assertSame($this->logger, $result);
     }
 }

@@ -19,9 +19,9 @@ final class QueryMessageTraitTest extends TestCase
         $expectedResult = 'test result';
 
         // Assert
-        $queryBus->expects($this->once())
+        $queryBus->expects(self::once())
             ->method('ask')
-            ->with($this->identicalTo($query))
+            ->with(self::identicalTo($query))
             ->willReturn($expectedResult)
         ;
 
@@ -29,7 +29,7 @@ final class QueryMessageTraitTest extends TestCase
         $result = $query->query($queryBus);
 
         // Assert
-        $this->assertSame($expectedResult, $result);
+        self::assertSame($expectedResult, $result);
     }
 }
 

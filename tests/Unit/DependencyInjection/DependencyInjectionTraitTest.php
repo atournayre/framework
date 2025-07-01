@@ -23,7 +23,7 @@ final class DependencyInjectionTraitTest extends TestCase
         $result = $testObject->dependencyInjection();
 
         // Assert
-        $this->assertSame($dependencyInjection, $result);
+        self::assertSame($dependencyInjection, $result);
     }
 
     public function testDependencyInjectionThrowsExceptionWhenNotSet(): void

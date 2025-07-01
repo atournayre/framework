@@ -47,7 +47,7 @@ final class DependencyInjectionPostLoadTest extends TestCase
         ($this->listener)($eventArgs);
 
         // Assert
-        $this->assertSame($this->entityDependencyInjection, $entity->dependencyInjection());
+        self::assertSame($this->entityDependencyInjection, $entity->dependencyInjection());
     }
 
     public function testIgnoresEntityThatIsNotDependencyInjectionAware(): void
@@ -61,7 +61,7 @@ final class DependencyInjectionPostLoadTest extends TestCase
         ($this->listener)($eventArgs);
 
         // The test passes if no exception is thrown
-        $this->assertTrue(true);
+        $this->expectNotToPerformAssertions();
     }
 }
 
