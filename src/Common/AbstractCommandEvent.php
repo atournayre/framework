@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common;
 
-use Atournayre\Contracts\CommandBus\CommandBusInterface;
+use Atournayre\Contracts\CommandBus\CommandInterface;
 use Atournayre\Traits\CommandMessageTrait;
 
 /**
@@ -14,7 +14,7 @@ use Atournayre\Traits\CommandMessageTrait;
  * Instead of using $commandBus->dispatch(new MyCommand()), you can now use
  * MyCommand::new()->dispatch($commandBus).
  */
-abstract class AbstractCommandEvent implements CommandBusInterface
+abstract class AbstractCommandEvent implements CommandInterface
 {
     use CommandMessageTrait;
 }

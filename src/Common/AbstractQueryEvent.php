@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Common;
 
-use Atournayre\Contracts\CommandBus\QueryBusInterface;
+use Atournayre\Contracts\CommandBus\QueryInterface;
 use Atournayre\Traits\QueryMessageTrait;
 
 /**
@@ -14,7 +14,7 @@ use Atournayre\Traits\QueryMessageTrait;
  * Instead of using $queryBus->ask(new MyQuery()), you can now use
  * MyQuery::new()->dispatch($queryBus).
  */
-abstract class AbstractQueryEvent implements QueryBusInterface
+abstract class AbstractQueryEvent implements QueryInterface
 {
     use QueryMessageTrait;
 }

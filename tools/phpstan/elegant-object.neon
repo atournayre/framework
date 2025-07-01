@@ -34,7 +34,8 @@ services:
         excludedPaths:
             - %currentWorkingDirectory%/src/Common/VO/Uri.php
             - %currentWorkingDirectory%/src/Rector
-            - %currentWorkingDirectory%/tests/Fixtures
+            - %currentWorkingDirectory%/src/Traits/DependencyInjectionTrait.php
+            - %currentWorkingDirectory%/tests
       tags:
         - phpstan.rules.rule
 
@@ -47,6 +48,7 @@ services:
             - %currentWorkingDirectory%/src/Contracts/Collection/ReadOnlyMapInterface.php
             - %currentWorkingDirectory%/src/Contracts/Common/Assert
             - %currentWorkingDirectory%/src/Primitives/Primitive.php
+            - %currentWorkingDirectory%/tests
         allowedInterfaces:
             - Symfony\Component\EventDispatcher\EventSubscriberInterface
       tags:
@@ -93,6 +95,7 @@ services:
       class: Atournayre\PHPStan\ElegantObject\Rules\NeverUseGettersAndSettersRule
       arguments:
         excludedPaths:
+            - %currentWorkingDirectory%/src/Contracts/DependencyInjection/DependencyInjectionAwareInterface.php
             - %currentWorkingDirectory%/src/PHPStan
             - %currentWorkingDirectory%/src/Rector
             - %currentWorkingDirectory%/src/Symfony/Subscriber

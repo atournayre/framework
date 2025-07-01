@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace Atournayre\DependencyInjection;
 
 use Atournayre\Contracts\DependencyInjection\DependencyInjectionAwareInterface;
+use Atournayre\Contracts\DependencyInjection\PostLoadHandlerInterface;
 use Doctrine\ORM\Event\PostLoadEventArgs;
 
 /**
- * Doctrine PostLoad listener for dependency injection.
+ * Doctrine PostLoad handler for dependency injection.
  *
- * This listener automatically injects dependencies into entities
+ * This handler automatically injects dependencies into entities
  * that implement DependencyInjectionAwareInterface after they are loaded from the database.
  */
-final readonly class DependencyInjectionPostLoadListener
+final readonly class DependencyInjectionPostLoad implements PostLoadHandlerInterface
 {
     public function __construct(
         private EntityDependencyInjection $entityDependencyInjection,

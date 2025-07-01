@@ -7,7 +7,7 @@ namespace Atournayre\Tests\Unit\DependencyInjection;
 use Atournayre\Contracts\CommandBus\CommandBusInterface;
 use Atournayre\Contracts\CommandBus\QueryBusInterface;
 use Atournayre\Contracts\DependencyInjection\DependencyInjectionAwareInterface;
-use Atournayre\DependencyInjection\DependencyInjectionPostLoadListener;
+use Atournayre\DependencyInjection\DependencyInjectionPostLoad;
 use Atournayre\DependencyInjection\EntityDependencyInjection;
 use Atournayre\Traits\DependencyInjectionTrait;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,10 +15,10 @@ use Doctrine\ORM\Event\PostLoadEventArgs;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
-final class DependencyInjectionPostLoadListenerTest extends TestCase
+final class DependencyInjectionPostLoadTest extends TestCase
 {
     private EntityDependencyInjection $entityDependencyInjection;
-    private DependencyInjectionPostLoadListener $listener;
+    private DependencyInjectionPostLoad $listener;
 
     protected function setUp(): void
     {
@@ -33,7 +33,7 @@ final class DependencyInjectionPostLoadListenerTest extends TestCase
             $logger
         );
 
-        $this->listener = new DependencyInjectionPostLoadListener($this->entityDependencyInjection);
+        $this->listener = new DependencyInjectionPostLoad($this->entityDependencyInjection);
     }
 
     public function testInjectsDependenciesIntoAwareEntity(): void
