@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Atournayre\Traits;
 
-use Atournayre\Contracts\DependencyInjection\DependencyInjectionInterface;
 use Atournayre\Common\Exception\RuntimeException;
+use Atournayre\Contracts\DependencyInjection\DependencyInjectionInterface;
 
 /**
  * Trait for dependency injection functionality.
@@ -21,8 +21,6 @@ trait DependencyInjectionTrait
      * Sets the dependency injection container.
      *
      * @param DependencyInjectionInterface $dependencyInjection The dependency injection container
-     *
-     * @return void
      */
     public function setDependencyInjection(DependencyInjectionInterface $dependencyInjection): void
     {
@@ -38,7 +36,7 @@ trait DependencyInjectionTrait
      */
     public function dependencyInjection(): DependencyInjectionInterface
     {
-        if ($this->dependencyInjection === null) {
+        if (null === $this->dependencyInjection) {
             throw RuntimeException::new('Dependency injection has not been set');
         }
 

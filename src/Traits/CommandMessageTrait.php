@@ -18,8 +18,6 @@ trait CommandMessageTrait
      * Dispatches this command through the provided command bus.
      *
      * @param CommandBusInterface $bus The command bus to use for dispatching
-     *
-     * @return void
      */
     public function command(CommandBusInterface $bus): void
     {

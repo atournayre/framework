@@ -16,8 +16,6 @@ interface CommandBusInterface
      * Dispatches a command to its handler.
      *
      * @param CommandInterface $command The command to dispatch
-     *
-     * @return void
      */
     public function dispatch(CommandInterface $command): void;
 }

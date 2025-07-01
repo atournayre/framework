@@ -13,10 +13,10 @@ use Doctrine\ORM\Event\PostLoadEventArgs;
  * This listener automatically injects dependencies into entities
  * that implement DependencyInjectionAwareInterface after they are loaded from the database.
  */
-final class DependencyInjectionPostLoadListener
+final readonly class DependencyInjectionPostLoadListener
 {
     public function __construct(
-        private readonly EntityDependencyInjection $entityDependencyInjection,
+        private EntityDependencyInjection $entityDependencyInjection,
     ) {
     }
 
@@ -24,8 +24,6 @@ final class DependencyInjectionPostLoadListener
      * Handles the PostLoad event.
      *
      * @param PostLoadEventArgs $args The event arguments
-     *
-     * @return void
      */
     public function __invoke(PostLoadEventArgs $args): void
     {

@@ -22,7 +22,8 @@ final class QueryMessageTraitTest extends TestCase
         $queryBus->expects($this->once())
             ->method('ask')
             ->with($this->identicalTo($query))
-            ->willReturn($expectedResult);
+            ->willReturn($expectedResult)
+        ;
 
         // Act
         $result = $query->query($queryBus);

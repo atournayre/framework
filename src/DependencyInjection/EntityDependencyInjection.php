@@ -15,12 +15,12 @@ use Psr\Log\LoggerInterface;
  * This class provides access to commonly used services
  * that can be injected into entities and other objects.
  */
-final class EntityDependencyInjection implements DependencyInjectionInterface
+final readonly class EntityDependencyInjection implements DependencyInjectionInterface
 {
     public function __construct(
-        private readonly CommandBusInterface $commandBus,
-        private readonly QueryBusInterface $queryBus,
-        private readonly LoggerInterface $logger,
+        private CommandBusInterface $commandBus,
+        private QueryBusInterface $queryBus,
+        private LoggerInterface $logger,
     ) {
     }
 

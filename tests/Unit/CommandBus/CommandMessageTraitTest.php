@@ -20,7 +20,8 @@ final class CommandMessageTraitTest extends TestCase
         // Assert
         $commandBus->expects($this->once())
             ->method('dispatch')
-            ->with($this->identicalTo($command));
+            ->with($this->identicalTo($command))
+        ;
 
         // Act
         $command->command($commandBus);

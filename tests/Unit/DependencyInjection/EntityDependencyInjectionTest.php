@@ -22,7 +22,7 @@ final class EntityDependencyInjectionTest extends TestCase
         $this->commandBus = $this->createMock(CommandBusInterface::class);
         $this->queryBus = $this->createMock(QueryBusInterface::class);
         $this->logger = $this->createMock(LoggerInterface::class);
-        
+
         $this->entityDependencyInjection = new EntityDependencyInjection(
             $this->commandBus,
             $this->queryBus,

@@ -18,8 +18,6 @@ interface DependencyInjectionAwareInterface
      * Sets the dependency injection container.
      *
      * @param DependencyInjectionInterface $dependencyInjection The dependency injection container
-     *
-     * @return void
      */
     public function setDependencyInjection(DependencyInjectionInterface $dependencyInjection): void;
 

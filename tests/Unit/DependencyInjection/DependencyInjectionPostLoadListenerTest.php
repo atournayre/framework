@@ -10,6 +10,7 @@ use Atournayre\Contracts\DependencyInjection\DependencyInjectionAwareInterface;
 use Atournayre\DependencyInjection\DependencyInjectionPostLoadListener;
 use Atournayre\DependencyInjection\EntityDependencyInjection;
 use Atournayre\Traits\DependencyInjectionTrait;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\PostLoadEventArgs;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -39,7 +40,8 @@ final class DependencyInjectionPostLoadListenerTest extends TestCase
     {
         // Arrange
         $entity = new TestEntityWithDependencyInjection();
-        $eventArgs = new TestPostLoadEventArgs($entity);
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $eventArgs = new PostLoadEventArgs($entity, $entityManager);
 
         // Act
         ($this->listener)($eventArgs);
@@ -52,7 +54,8 @@ final class DependencyInjectionPostLoadListenerTest extends TestCase
     {
         // Arrange
         $entity = new TestEntityWithoutDependencyInjection();
-        $eventArgs = new TestPostLoadEventArgs($entity);
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $eventArgs = new PostLoadEventArgs($entity, $entityManager);
 
         // Act & Assert - should not throw any exception
         ($this->listener)($eventArgs);
@@ -76,22 +79,4 @@ final class TestEntityWithDependencyInjection implements DependencyInjectionAwar
 final class TestEntityWithoutDependencyInjection
 {
     // This entity intentionally does not implement DependencyInjectionAwareInterface
-}
-
-/**
- * Test stub for PostLoadEventArgs.
- */
-final class TestPostLoadEventArgs
-{
-    private object $entity;
-
-    public function __construct(object $entity)
-    {
-        $this->entity = $entity;
-    }
-
-    public function getObject(): object
-    {
-        return $this->entity;
-    }
 }
