@@ -88,6 +88,8 @@ services:
           - %currentWorkingDirectory%/src/TryCatch/NullThrowableHandler.php
           - %currentWorkingDirectory%/src/TryCatch/ThrowableHandler.php
           - %currentWorkingDirectory%/tests/Fixtures/User.php
+        excludedSuffixes:
+          - 'Adapter'
       tags:
         - phpstan.rules.rule
 

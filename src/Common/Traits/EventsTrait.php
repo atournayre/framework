@@ -13,6 +13,9 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  *
  * When loading an entity, the events collection is not initialized.
  * Add a PostLoadListener to initialize the events collection on postLoad (Doctrine).
+ *
+ * @deprecated This trait is deprecated and will be removed in a future version.
+ *             Use the Domain Events Management system with DependencyInjectionTrait instead.
  */
 trait EventsTrait
 {

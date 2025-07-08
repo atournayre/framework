@@ -57,6 +57,7 @@ nav:
     - Exceptions: exceptions.md
     - Null: null.md
     - Database: database.md
-    - Event: event.md
+    - Domain Events: domain-events.md
+    - Event (Deprecated): event.md
     - Symfony: symfony.md
     - TryCatch: try-catch.md
