@@ -12,6 +12,10 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Psr\EventDispatcher\StoppableEventInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
+/**
+ * @deprecated This class is deprecated and will be removed in a future version.
+ *             Use the Domain Events Management system with AbstractCommandEvent/AbstractQueryEvent instead.
+ */
 class Event implements StoppableEventInterface, HasContextInterface, LoggableInterface
 {
     use ContextTrait;

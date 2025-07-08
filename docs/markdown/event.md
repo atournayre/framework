@@ -1,5 +1,8 @@
 # Event Component
 
+!!! warning "Deprecated"
+    The Event component is deprecated and will be removed in a future version. Please use the [Domain Events Management](domain-events.md) system instead, which provides a more robust and feature-rich approach to handling commands, queries, and domain events.
+
 This guide provides documentation for the Event component in the Framework. This component provides a base class for creating events that can be dispatched using Symfony's Messenger component.
 
 ## Event Class

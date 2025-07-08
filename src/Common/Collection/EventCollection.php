@@ -28,6 +28,10 @@ use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 
+/**
+ * @deprecated This class is deprecated and will be removed in a future version.
+ *             Use the Domain Events Management system instead.
+ */
 final class EventCollection implements AsMapInterface, AddInterface, ContainsInterface, SearchInterface, CountInterface, ToArrayInterface, FirstInterface, LastInterface, EachInterface, KeysInterface, HasXElementsInterface, HasNoElementInterface, HasOneElementInterface, HasSeveralElementsInterface, AtLeastOneElementInterface
 {
     use CollectionTrait;
