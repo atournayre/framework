@@ -191,7 +191,7 @@ class User implements DependencyInjectionAwareInterface
         // Dispatch commands or queries
         SomeCommand::new()
             ->dispatch($this->dependencyInjection()->commandBus());
-        
+
         $result = SomeQuery::new()
             ->query($this->dependencyInjection()->queryBus());
     }
@@ -238,20 +238,24 @@ Configure the dependency injection services:
 services:
     # Command and Query buses
     Atournayre\Contracts\CommandBus\CommandBusInterface:
-        alias: command.bus
+        class: Atournayre\Symfony\CommandBus\SymfonyCommandBusAdapter
+        arguments:
+            $messageBus: '@command.bus'
 
     Atournayre\Contracts\CommandBus\QueryBusInterface:
-        alias: query.bus
+        class: Atournayre\Symfony\CommandBus\SymfonyQueryBusAdapter
+        arguments:
+            $messageBus: '@query.bus'
 
     # Entity dependency injection
     Atournayre\DependencyInjection\EntityDependencyInjection:
         arguments:
             $commandBus: '@Atournayre\Contracts\CommandBus\CommandBusInterface'
             $queryBus: '@Atournayre\Contracts\CommandBus\QueryBusInterface'
-            $logger: '@logger'
+            $logger: '@Atournayre\Contracts\Log\LoggerInterface'
 
     # Doctrine PostLoad listener
-    Atournayre\DependencyInjection\DependencyInjectionPostLoadListener:
+    Atournayre\DependencyInjection\DependencyInjectionPostLoad:
         arguments:
             $entityDependencyInjection: '@Atournayre\DependencyInjection\EntityDependencyInjection'
         tags:
