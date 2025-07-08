@@ -53,3 +53,7 @@ parameters:
         - '#Class Atournayre\\Common\\VO\\Event has [0-9]+ public methods, which exceeds the maximum of 5 \(Elegant Object principle\)#'
         # To use constants for sets
         - '#Constant Atournayre\\Rector\\Sets\:\:VERSION_(.)* is unused.#'
+        # Ignore deprecation warnings for backward compatibility
+        - '#(.)*deprecated class Atournayre\\Common\\VO\\Event(.)*#'
+        - '#(.)*deprecated class Atournayre\\Common\\Collection\\EventCollection(.)*#'
+        - '#(.)*deprecated trait Atournayre\\Common\\Traits\\EventsTrait(.)*#'
