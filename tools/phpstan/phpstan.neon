@@ -53,5 +53,3 @@ parameters:
         - '#Class Atournayre\\Common\\VO\\Event has [0-9]+ public methods, which exceeds the maximum of 5 \(Elegant Object principle\)#'
         # To use constants for sets
         - '#Constant Atournayre\\Rector\\Sets\:\:VERSION_(.)* is unused.#'
-        # Test properties
-        - '#Property Atournayre\\Tests\\Unit\\Common\\VO\\EventTest::\$(messageBus|event) is mutable, which violates object immutability#'
