@@ -13,6 +13,11 @@ use Doctrine\ORM\Event\PostLoadEventArgs;
  *
  * This handler automatically injects dependencies into entities
  * that implement DependencyInjectionAwareInterface after they are loaded from the database.
+ *
+ * This handler uses setDependencyInjection() because Doctrine's PostLoad event works
+ * with existing entity instances that cannot be replaced with new instances.
+ * The immutable withDependencyInjection() method is not suitable for this use case
+ * as it returns a new instance.
  */
 final readonly class DependencyInjectionPostLoad implements PostLoadHandlerInterface
 {

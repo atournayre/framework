@@ -148,6 +148,8 @@ class GetUserQuery implements QueryInterface
 
 ## Dependency Injection System
 
+The dependency injection system is **primarily designed for entities** to enable domain-driven design patterns. It automatically injects dependencies into entities when they are loaded from the database using Doctrine's PostLoad event.
+
 ### DependencyInjectionInterface
 
 The main interface for accessing injected services:
@@ -197,6 +199,61 @@ class User implements DependencyInjectionAwareInterface
     }
 }
 ```
+
+### Immutable Dependency Injection (Recommended)
+
+For entities that need to be treated as immutable objects, use the `withDependencyInjection()` method which returns a new instance:
+
+```php
+<?php
+
+use Atournayre\Contracts\DependencyInjection\DependencyInjectionAwareInterface;
+use Atournayre\Contracts\DependencyInjection\DependencyInjectionInterface;
+use Atournayre\Traits\DependencyInjectionTrait;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity]
+class Product implements DependencyInjectionAwareInterface
+{
+    use DependencyInjectionTrait;
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    private int $id;
+
+    #[ORM\Column]
+    private string $name;
+
+    public function createImmutableCopyWithDependencies(DependencyInjectionInterface $di): self
+    {
+        // Create a new instance with dependency injection
+        $productWithDI = $this->withDependencyInjection($di);
+
+        // Use the new instance for domain operations
+        $productWithDI->dependencyInjection()->logger()->info('Product accessed', [
+            'product_id' => $this->id,
+            'product_name' => $this->name
+        ]);
+
+        return $productWithDI;
+    }
+
+    public function publishProductUpdatedEvent(): void
+    {
+        ProductUpdatedCommand::new($this->id)
+            ->dispatch($this->dependencyInjection()->commandBus());
+    }
+}
+```
+
+**Important Notes:**
+- **Two Injection Methods**: The system provides two methods for dependency injection:
+  - `setDependencyInjection()`: Modifies the current instance, used by the framework for PostLoad events
+  - `withDependencyInjection()`: Returns a new instance, recommended for immutable patterns in application code
+- **Automatic Injection**: When entities are loaded from the database, dependencies are automatically injected via Doctrine's PostLoad event using the `setDependencyInjection()` method.
+- **Manual Injection**: Use `withDependencyInjection()` when you need to create new instances with dependencies outside of the normal entity loading process.
+- **Entity Focus**: While the trait can be used with any class, the system is specifically designed for entities and includes automatic Doctrine integration.
+- **Framework vs Application Use**: `setDependencyInjection()` is primarily used by the framework for scenarios like Doctrine's PostLoad events where entity instances cannot be replaced. For application code that follows immutable patterns, prefer `withDependencyInjection()`.
 
 ## Symfony Configuration
 
