@@ -38,6 +38,50 @@ final class DependencyInjectionTraitTest extends TestCase
         // Act
         $testObject->dependencyInjection();
     }
+
+    public function testWithDependencyInjectionReturnsNewInstance(): void
+    {
+        // Arrange
+        $dependencyInjection = $this->createMock(DependencyInjectionInterface::class);
+        $originalObject = new TestObjectWithDependencyInjection();
+
+        // Act
+        $newObject = $originalObject->withDependencyInjection($dependencyInjection);
+
+        // Assert
+        self::assertNotSame($originalObject, $newObject);
+        self::assertSame($dependencyInjection, $newObject->dependencyInjection());
+    }
+
+    public function testWithDependencyInjectionDoesNotModifyOriginal(): void
+    {
+        // Arrange
+        $dependencyInjection = $this->createMock(DependencyInjectionInterface::class);
+        $originalObject = new TestObjectWithDependencyInjection();
+
+        // Act
+        $newObject = $originalObject->withDependencyInjection($dependencyInjection);
+
+        // Assert
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Dependency injection has not been set');
+        $originalObject->dependencyInjection(); // Should still throw exception
+    }
+
+    public function testWithDependencyInjectionPreservesOtherProperties(): void
+    {
+        // Arrange
+        $dependencyInjection = $this->createMock(DependencyInjectionInterface::class);
+        $originalObject = new TestObjectWithDependencyInjection();
+        $originalObject->setTestProperty('test value');
+
+        // Act
+        $newObject = $originalObject->withDependencyInjection($dependencyInjection);
+
+        // Assert
+        self::assertSame('test value', $newObject->getTestProperty());
+        self::assertSame($dependencyInjection, $newObject->dependencyInjection());
+    }
 }
 
 /**
@@ -46,4 +90,22 @@ final class DependencyInjectionTraitTest extends TestCase
 final class TestObjectWithDependencyInjection implements DependencyInjectionAwareInterface
 {
     use DependencyInjectionTrait;
+
+    private string $testProperty = '';
+
+    /**
+     * @api
+     */
+    public function getTestProperty(): string
+    {
+        return $this->testProperty;
+    }
+
+    /**
+     * @api
+     */
+    public function setTestProperty(string $testProperty): void
+    {
+        $this->testProperty = $testProperty;
+    }
 }
