@@ -41,7 +41,7 @@ final readonly class Database implements DatabasePersistenceInterface
      * Private constructor to enforce usage of the factory method.
      *
      * @param CommandBusInterface $commandBus The command bus for dispatching database operations
-     * @param object             $object     The object to be managed by the database
+     * @param object              $object     The object to be managed by the database
      */
     private function __construct(
         private CommandBusInterface $commandBus,
@@ -53,7 +53,7 @@ final readonly class Database implements DatabasePersistenceInterface
      * Creates a new Database instance.
      *
      * @param CommandBusInterface $commandBus The command bus for dispatching database operations
-     * @param object             $object     The object to be managed by the database
+     * @param object              $object     The object to be managed by the database
      *
      * @return self A new Database instance
      *
@@ -81,7 +81,8 @@ final readonly class Database implements DatabasePersistenceInterface
     public function persist(): self
     {
         DatabasePersistCommand::new(object: $this->object)
-            ->command(bus: $this->commandBus);
+            ->command(bus: $this->commandBus)
+        ;
 
         return $this;
     }
@@ -96,7 +97,8 @@ final readonly class Database implements DatabasePersistenceInterface
     public function flush(): void
     {
         DatabaseFlushCommand::new()
-            ->command(bus: $this->commandBus);
+            ->command(bus: $this->commandBus)
+        ;
     }
 
     /**
@@ -112,7 +114,8 @@ final readonly class Database implements DatabasePersistenceInterface
     public function remove(): self
     {
         DatabaseRemoveCommand::new(object: $this->object)
-            ->command(bus: $this->commandBus);
+            ->command(bus: $this->commandBus)
+        ;
 
         return $this;
     }
