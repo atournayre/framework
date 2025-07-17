@@ -58,6 +58,7 @@ nav:
     - Null: null.md
     - Database: database.md
     - Domain Events: domain-events.md
+    - Dependency Injection: dependency-injection.md
     - Event (Deprecated): event.md
     - Symfony: symfony.md
     - TryCatch: try-catch.md
