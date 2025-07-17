@@ -39,6 +39,16 @@ final readonly class Numeric
     }
 
     /**
+     * @api
+     *
+     * @throws ThrowableInterface
+     */
+    public static function zero(int $precision = 0): self
+    {
+        return self::of(0, $precision);
+    }
+
+    /**
      * @throws ThrowableInterface
      */
     private function __construct(
