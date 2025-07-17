@@ -2921,7 +2921,7 @@ parameters:
 			path: ../../src/Primitives/Numeric.php
 
 		-
-			message: "#^Class Atournayre\\\\Primitives\\\\Numeric has 15 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Class Atournayre\\\\Primitives\\\\Numeric has 16 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Numeric.php
 
