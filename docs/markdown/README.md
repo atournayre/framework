@@ -15,6 +15,7 @@ The documentation is organized into the following files:
 - `symfony.md`: Documentation for the Symfony integration components
 - `try-catch.md`: Documentation for the TryCatch pattern implementation with generic type support
 - `domain-events.md`: Documentation for using domain events
+- `dependency-injection.md`: Documentation for the dependency injection system
 
 ## Building the Documentation
 
