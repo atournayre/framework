@@ -25,10 +25,10 @@ trait DatabaseTrait
     public function database(): DatabasePersistenceInterface
     {
         Assertion::notNull($this->dependencyInjection, 'Dependency injection is not available. Did you forget to add the $dependencyInjection property to your class?');
-        Assertion::true(isset($this->dependencyInjection->entityManager), 'Entity manager is not available. Did you forget to add the EntityManagerInterface to your dependency injection class?');
+        Assertion::true(isset($this->dependencyInjection->commandBus), 'Command Bus is not available.');
 
         return Database::new(
-            entityManager: $this->dependencyInjection->entityManager,
+            commandBus: $this->dependencyInjection->commandBus,
             object: $this,
         );
     }
