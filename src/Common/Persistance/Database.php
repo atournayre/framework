@@ -4,18 +4,21 @@ declare(strict_types=1);
 
 namespace Atournayre\Common\Persistance;
 
+use Atournayre\Common\Persistance\Command\DatabaseFlushCommand;
+use Atournayre\Common\Persistance\Command\DatabasePersistCommand;
+use Atournayre\Common\Persistance\Command\DatabaseRemoveCommand;
+use Atournayre\Contracts\CommandBus\CommandBusInterface;
 use Atournayre\Contracts\Persistance\DatabasePersistenceInterface;
-use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Database class provides a simple wrapper around Doctrine's EntityManager.
+ * Database class provides a simple wrapper around Symfony's MessageBus for database operations.
  *
  * This class implements the DatabasePersistenceInterface and provides methods
- * to persist, flush, and remove objects from the database.
+ * to persist, flush, and remove objects from the database using command messages.
  *
  * Usage with direct instantiation:
  * ```php
- * $database = Database::new($entityManager, $entity);
+ * $database = Database::new($commandBus, $entity);
  * $database->persist();
  * $database->flush();
  * ```
@@ -37,11 +40,11 @@ final readonly class Database implements DatabasePersistenceInterface
     /**
      * Private constructor to enforce usage of the factory method.
      *
-     * @param EntityManagerInterface $entityManager The Doctrine entity manager
-     * @param object                 $object        The object to be managed by the entity manager
+     * @param CommandBusInterface $commandBus The command bus for dispatching database operations
+     * @param object              $object     The object to be managed by the database
      */
     private function __construct(
-        private EntityManagerInterface $entityManager,
+        private CommandBusInterface $commandBus,
         private object $object,
     ) {
     }
@@ -49,19 +52,19 @@ final readonly class Database implements DatabasePersistenceInterface
     /**
      * Creates a new Database instance.
      *
-     * @param EntityManagerInterface $entityManager The Doctrine entity manager
-     * @param object                 $object        The object to be managed by the entity manager
+     * @param CommandBusInterface $commandBus The command bus for dispatching database operations
+     * @param object              $object     The object to be managed by the database
      *
      * @return self A new Database instance
      *
      * @api
      */
     public static function new(
-        EntityManagerInterface $entityManager,
+        CommandBusInterface $commandBus,
         object $object,
     ): self {
         return new self(
-            entityManager: $entityManager,
+            commandBus: $commandBus,
             object: $object,
         );
     }
@@ -69,16 +72,17 @@ final readonly class Database implements DatabasePersistenceInterface
     /**
      * Persists the object to the database.
      *
-     * This method tells Doctrine to "manage" the object, making it aware of the object
-     * without actually executing the SQL INSERT/UPDATE statement.
+     * This method dispatches a DatabasePersistCommand to handle the persistence operation.
      *
      * @return self For method chaining
      *
-     * @see EntityManagerInterface::persist
+     * @see DatabasePersistCommand
      */
     public function persist(): self
     {
-        $this->entityManager->persist($this->object);
+        DatabasePersistCommand::new(object: $this->object)
+            ->command(bus: $this->commandBus)
+        ;
 
         return $this;
     }
@@ -86,28 +90,32 @@ final readonly class Database implements DatabasePersistenceInterface
     /**
      * Flushes all changes to the database.
      *
-     * This method executes all SQL statements needed to persist the changes to the database.
+     * This method dispatches a DatabaseFlushCommand to handle the flush operation.
      *
-     * @see EntityManagerInterface::flush
+     * @see DatabaseFlushCommand
      */
     public function flush(): void
     {
-        $this->entityManager->flush();
+        DatabaseFlushCommand::new()
+            ->command(bus: $this->commandBus)
+        ;
     }
 
     /**
      * Removes the object from the database.
      *
-     * This method tells Doctrine to remove the object from the database.
+     * This method dispatches a DatabaseRemoveCommand to handle the removal operation.
      * The actual DELETE statement will be executed when flush() is called.
      *
      * @return self For method chaining
      *
-     * @see EntityManagerInterface::remove
+     * @see DatabaseRemoveCommand
      */
     public function remove(): self
     {
-        $this->entityManager->remove($this->object);
+        DatabaseRemoveCommand::new(object: $this->object)
+            ->command(bus: $this->commandBus)
+        ;
 
         return $this;
     }
