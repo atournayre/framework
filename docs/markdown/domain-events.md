@@ -1,6 +1,6 @@
 # Domain Events Management
 
-This guide provides documentation for the Domain Events Management system in the Framework. This system enables Command Query Responsibility Segregation (CQRS) patterns and dependency injection in entities using Symfony's Messenger component.
+This guide provides documentation for the Domain Events Management system in the Framework. This system enables Command Query Responsibility Segregation (CQRS) patterns using Symfony's Messenger component.
 
 ## Architecture Overview
 
@@ -8,8 +8,7 @@ The domain events management system consists of several key components:
 
 - **Command Bus**: For dispatching commands (write operations)
 - **Query Bus**: For dispatching queries (read operations)
-- **Dependency Injection**: For injecting services into entities
-- **Doctrine Integration**: Automatic dependency injection after entity loading
+- **Message Handlers**: For processing commands and queries
 
 ## Command Bus System
 
@@ -155,114 +154,6 @@ class GetUserQuery implements QueryInterface
 }
 ```
 
-## Dependency Injection System
-
-The dependency injection system is **primarily designed for entities** to enable domain-driven design patterns. It automatically injects dependencies into entities when they are loaded from the database using Doctrine's PostLoad event.
-
-### DependencyInjectionInterface
-
-The main interface for accessing injected services:
-
-```php
-<?php
-
-use Atournayre\Contracts\DependencyInjection\DependencyInjectionInterface;
-
-// Access services through dependency injection
-$commandBus = $dependencyInjection->commandBus();
-$queryBus = $dependencyInjection->queryBus();
-$logger = $dependencyInjection->logger();
-```
-
-### Making Entities Dependency Injection Aware
-
-Use the trait and interface to enable dependency injection in your entities:
-
-```php
-<?php
-
-use Atournayre\Contracts\DependencyInjection\DependencyInjectionAwareInterface;
-use Atournayre\Traits\DependencyInjectionTrait;
-use Doctrine\ORM\Mapping as ORM;
-
-#[ORM\Entity]
-class User implements DependencyInjectionAwareInterface
-{
-    use DependencyInjectionTrait;
-
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    private int $id;
-
-    public function doSomething(): void
-    {
-        // Access injected services
-        $this->dependencyInjection()->logger()->info('User action performed');
-
-        // Dispatch commands or queries
-        SomeCommand::new()
-            ->dispatch($this->dependencyInjection()->commandBus());
-
-        $result = SomeQuery::new()
-            ->query($this->dependencyInjection()->queryBus());
-    }
-}
-```
-
-### Immutable Dependency Injection (Recommended)
-
-For entities that need to be treated as immutable objects, use the `withDependencyInjection()` method which returns a new instance:
-
-```php
-<?php
-
-use Atournayre\Contracts\DependencyInjection\DependencyInjectionAwareInterface;
-use Atournayre\Contracts\DependencyInjection\DependencyInjectionInterface;
-use Atournayre\Traits\DependencyInjectionTrait;
-use Doctrine\ORM\Mapping as ORM;
-
-#[ORM\Entity]
-class Product implements DependencyInjectionAwareInterface
-{
-    use DependencyInjectionTrait;
-
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    private int $id;
-
-    #[ORM\Column]
-    private string $name;
-
-    public function createImmutableCopyWithDependencies(DependencyInjectionInterface $di): self
-    {
-        // Create a new instance with dependency injection
-        $productWithDI = $this->withDependencyInjection($di);
-
-        // Use the new instance for domain operations
-        $productWithDI->dependencyInjection()->logger()->info('Product accessed', [
-            'product_id' => $this->id,
-            'product_name' => $this->name
-        ]);
-
-        return $productWithDI;
-    }
-
-    public function publishProductUpdatedEvent(): void
-    {
-        ProductUpdatedCommand::new($this->id)
-            ->dispatch($this->dependencyInjection()->commandBus());
-    }
-}
-```
-
-**Important Notes:**
-- **Two Injection Methods**: The system provides two methods for dependency injection:
-  - `setDependencyInjection()`: Modifies the current instance, used by the framework for PostLoad events
-  - `withDependencyInjection()`: Returns a new instance, recommended for immutable patterns in application code
-- **Automatic Injection**: When entities are loaded from the database, dependencies are automatically injected via Doctrine's PostLoad event using the `setDependencyInjection()` method.
-- **Manual Injection**: Use `withDependencyInjection()` when you need to create new instances with dependencies outside of the normal entity loading process.
-- **Entity Focus**: While the trait can be used with any class, the system is specifically designed for entities and includes automatic Doctrine integration.
-- **Framework vs Application Use**: `setDependencyInjection()` is primarily used by the framework for scenarios like Doctrine's PostLoad events where entity instances cannot be replaced. For application code that follows immutable patterns, prefer `withDependencyInjection()`.
 
 ## Symfony Configuration
 
@@ -299,7 +190,7 @@ framework:
 
 ### Service Configuration
 
-Configure the dependency injection services:
+Configure the command and query bus services:
 
 ```yaml
 # config/services.yaml
@@ -314,20 +205,6 @@ services:
         class: Atournayre\Symfony\CommandBus\SymfonyQueryBusAdapter
         arguments:
             $messageBus: '@query.bus'
-
-    # Entity dependency injection
-    Atournayre\DependencyInjection\EntityDependencyInjection:
-        arguments:
-            $commandBus: '@Atournayre\Contracts\CommandBus\CommandBusInterface'
-            $queryBus: '@Atournayre\Contracts\CommandBus\QueryBusInterface'
-            $logger: '@Atournayre\Contracts\Log\LoggerInterface'
-
-    # Doctrine PostLoad listener
-    Atournayre\DependencyInjection\DependencyInjectionPostLoad:
-        arguments:
-            $entityDependencyInjection: '@Atournayre\DependencyInjection\EntityDependencyInjection'
-        tags:
-            - { name: doctrine.event_listener, event: postLoad }
 ```
 
 ### Environment Variables
@@ -401,34 +278,6 @@ class GetUserQueryHandler
 $user = GetUserQuery::new(123)->query($queryBus);
 ```
 
-### Using in Entities
-
-```php
-<?php
-
-use Atournayre\Contracts\DependencyInjection\DependencyInjectionAwareInterface;
-use Atournayre\Traits\DependencyInjectionTrait;
-use Doctrine\ORM\Mapping as ORM;
-
-#[ORM\Entity]
-class Order implements DependencyInjectionAwareInterface
-{
-    use DependencyInjectionTrait;
-
-    public function complete(): void
-    {
-        $this->status = 'completed';
-
-        SendOrderConfirmationCommand::new($this->id)
-            ->dispatch($this->dependencyInjection()->commandBus());
-
-        $this->dependencyInjection()->logger()->info(
-            'Order completed',
-            ['order_id' => $this->id]
-        );
-    }
-}
-```
 
 ## Best Practices
 

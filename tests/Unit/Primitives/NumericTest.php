@@ -213,4 +213,101 @@ final class NumericTest extends TestCase
         $number = Numeric::fromInt(272, 0);
         self::assertEquals(272, $number->abs()->intValue(), 'Absolute value of 272 is 272');
     }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function testZeroWithPrecisionZero(): void
+    {
+        $zero = Numeric::zero(0);
+
+        self::assertEquals(0.0, $zero->value());
+        self::assertEquals(0, $zero->intValue());
+        self::assertEquals(0, $zero->precision());
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function testZeroWithPositivePrecision(): void
+    {
+        $zero = Numeric::zero(2);
+
+        self::assertEquals(0.0, $zero->value());
+        self::assertEquals(0, $zero->intValue());
+        self::assertEquals(2, $zero->precision());
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function testZeroWithPrecisionThree(): void
+    {
+        $zero = Numeric::zero(3);
+
+        self::assertEquals(0.0, $zero->value());
+        self::assertEquals(0, $zero->intValue());
+        self::assertEquals(3, $zero->precision());
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function testZeroWithDefaultPrecision(): void
+    {
+        $zero = Numeric::zero();
+
+        self::assertEquals(0.0, $zero->value());
+        self::assertEquals(0, $zero->intValue());
+        self::assertEquals(0, $zero->precision());
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function testZeroWithPrecisionOne(): void
+    {
+        $zero = Numeric::zero(1);
+
+        self::assertEquals(0.0, $zero->value());
+        self::assertEquals(0, $zero->intValue());
+        self::assertEquals(1, $zero->precision());
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function testZeroReturnsNewInstance(): void
+    {
+        $zero1 = Numeric::zero(2);
+        $zero2 = Numeric::zero(2);
+
+        self::assertNotSame($zero1, $zero2);
+        self::assertEquals(0.0, $zero1->value());
+        self::assertEquals(0.0, $zero2->value());
+        self::assertEquals(2, $zero1->precision());
+        self::assertEquals(2, $zero2->precision());
+    }
+
+    /**
+     * @throws ThrowableInterface
+     */
+    public function testZeroIsZero(): void
+    {
+        // Test with default precision
+        $zero = Numeric::zero();
+        self::assertTrue($zero->isZero()->yes());
+
+        // Test with precision 0
+        $zero = Numeric::zero(0);
+        self::assertTrue($zero->isZero()->yes());
+
+        // Test with positive precision
+        $zero = Numeric::zero(2);
+        self::assertTrue($zero->isZero()->yes());
+
+        // Test with higher precision
+        $zero = Numeric::zero(5);
+        self::assertTrue($zero->isZero()->yes());
+    }
 }
