@@ -248,14 +248,14 @@ The framework enforces strict Elegant Object principles via PHPStan:
 - **Memory Limit**: 4GB for PHPStan analysis
 - **Test Coverage**: Configured in PHPUnit
 
-## Specialized Elegant Object Agent
+## Specialized Elegant Object Agents
 
-### Description
+### Elegant Object Auditor
 Specialized agent for auditing, validating and improving code according to Yegor256's Elegant Object principles, complementing existing PHPStan rules. 
 
 **Agent Definition**: `.claude/agents/elegant-object-auditor.md`
 
-### Usage via Task Tool
+#### Usage via Task Tool
 ```
 Task(
   subagent_type: "elegant-object-auditor", 
@@ -264,15 +264,70 @@ Task(
 )
 ```
 
-### Available Commands
-- **Complete Audit**: Full compliance check with detailed report
-- **New Code Validation**: Pre-integration validation  
-- **Refactoring Assistance**: Concrete improvement suggestions
-- **Rule-Specific Checks**: Focus on specific principle violations
-
-### Key Features
+#### Key Features
 - ✅ Verifies all existing PHPStan rules compliance
 - 🔍 Adds Yegor256-specific rules (attribute count, method naming, CQRS)
 - 📊 Generates actionable compliance reports  
 - 🔧 Provides concrete refactoring suggestions
 - 🎯 Integrates with existing quality pipeline
+
+### Elegant Object Refactor
+Specialized agent for refactoring PHP code to Elegant Object principles while minimizing breaking changes. Prioritizes backward compatibility and gradual migration strategies.
+
+**Agent Definition**: `.claude/agents/elegant-object-refactor.md`
+
+#### Usage via Task Tool
+```
+Task(
+  subagent_type: "elegant-object-refactor", 
+  description: "Conservative EO refactoring",
+  prompt: "Refactor src/Common/Assert/Assert.php to Elegant Object principles with minimal breaking changes"
+)
+```
+
+#### Key Features
+- 🔄 Conservative refactoring approach (minimizes breaking changes)
+- 📋 Phase-based migration strategy (internal → new methods → deprecation → breaking)
+- 🛡️ Backward compatibility preservation
+- 📚 Automatic migration documentation
+- ⚙️ Integration with Rector for unavoidable changes
+
+### Rector Agent
+Specialized agent for creating and managing Rector migration rules for automated code transformations and framework upgrades.
+
+**Agent Definition**: `.claude/agents/rector-agent.md`
+
+#### Usage via Task Tool
+```
+Task(
+  subagent_type: "rector-agent", 
+  description: "Create migration rule",
+  prompt: "Create Rector rule for migrating Assert::isArray() to Assert::new()->validate() in rector/sets/3.0.0.php for version 3.0.0"
+)
+```
+
+#### Key Features
+- 🔧 Custom Rector rule generation
+- 📦 Version-based rule set organization
+- 🧪 Comprehensive testing framework
+- 🔄 Complex transformation handling
+- 📖 Migration documentation automation
+
+### Agent Integration Workflow
+
+#### Complete Elegant Object Transformation
+```bash
+# 1. Audit current compliance
+Task(subagent_type: "elegant-object-auditor", ...)
+
+# 2. Plan conservative refactoring  
+Task(subagent_type: "elegant-object-refactor", ...)
+
+# 3. Create migration rules for breaking changes
+Task(subagent_type: "rector-agent", ...)
+```
+
+#### Breaking Change Management
+- **elegant-object-refactor**: Minimizes breaking changes, provides migration strategy
+- **rector-agent**: Creates automated migration rules when breaking changes are unavoidable
+- **Integration**: Seamless handoff between agents for complete migration pipeline
