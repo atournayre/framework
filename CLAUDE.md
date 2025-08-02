@@ -247,3 +247,32 @@ The framework enforces strict Elegant Object principles via PHPStan:
 - **Strict Types**: Required (`declare(strict_types=1);`)
 - **Memory Limit**: 4GB for PHPStan analysis
 - **Test Coverage**: Configured in PHPUnit
+
+## Specialized Elegant Object Agent
+
+### Description
+Specialized agent for auditing, validating and improving code according to Yegor256's Elegant Object principles, complementing existing PHPStan rules. 
+
+**Agent Definition**: `.claude/agents/elegant-object-auditor.md`
+
+### Usage via Task Tool
+```
+Task(
+  subagent_type: "elegant-object-auditor", 
+  description: "Elegant Object audit",
+  prompt: "Audit src/Common/VO/User.php according to Yegor256's Elegant Object principles"
+)
+```
+
+### Available Commands
+- **Complete Audit**: Full compliance check with detailed report
+- **New Code Validation**: Pre-integration validation  
+- **Refactoring Assistance**: Concrete improvement suggestions
+- **Rule-Specific Checks**: Focus on specific principle violations
+
+### Key Features
+- ✅ Verifies all existing PHPStan rules compliance
+- 🔍 Adds Yegor256-specific rules (attribute count, method naming, CQRS)
+- 📊 Generates actionable compliance reports  
+- 🔧 Provides concrete refactoring suggestions
+- 🎯 Integrates with existing quality pipeline

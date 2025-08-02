@@ -7,3 +7,5 @@ composer.lock
 
 var/
 vendor/
+
+.claude/settings.local.json
