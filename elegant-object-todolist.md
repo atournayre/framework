@@ -22,128 +22,128 @@ This todolist contains **ALL** 481 PHP files from the framework (`src/`) that ne
 ## 📁 Comprehensive File List (481 files)
 
 ### Common (37 files)
-- [ ] `src/Common/AbstractCommandEvent.php`
-- [ ] `src/Common/AbstractQueryEvent.php`
-- [ ] `src/Common/Assert/Assert.php`
-- [ ] `src/Common/Collection/EventCollection.php`
-- [ ] `src/Common/Collection/TemplateContextCollection.php`
-- [ ] `src/Common/Collection/Validation/ValidationCollection.php`
-- [ ] `src/Common/Exception/BadMethodCallException.php`
-- [ ] `src/Common/Exception/InvalidArgumentException.php`
-- [ ] `src/Common/Exception/MutableException.php`
-- [ ] `src/Common/Exception/NullException.php`
-- [ ] `src/Common/Exception/RuntimeException.php`
-- [ ] `src/Common/Exception/ThrowableTrait.php`
-- [ ] `src/Common/Exception/UnexpectedValueException.php`
-- [ ] `src/Common/Factory/Context/ContextFactory.php`
-- [ ] `src/Common/Log/AbstractLogger.php`
-- [ ] `src/Common/Log/DefaultLogger.php`
-- [ ] `src/Common/Log/NullLogger.php`
-- [ ] `src/Common/Model/AbstractUser.php`
-- [ ] `src/Common/Model/DefaultUser.php`
-- [ ] `src/Common/Persistance/Database.php`
-- [ ] `src/Common/Persistance/DatabaseTrait.php`
-- [ ] `src/Common/Traits/ContextTrait.php`
-- [ ] `src/Common/Traits/EventsTrait.php`
-- [ ] `src/Common/Traits/IsTrait.php`
-- [ ] `src/Common/Types/DirectoryOrFile.php`
-- [ ] `src/Common/Types/Domain.php`
-- [ ] `src/Common/Types/File/Content.php`
-- [ ] `src/Common/Types/File/Extension.php`
-- [ ] `src/Common/Types/File/Filename.php`
-- [ ] `src/Common/Types/File/Path.php`
-- [ ] `src/Common/Types/HtmlTemplatePath.php`
-- [ ] `src/Common/Types/TextTemplatePath.php`
-- [ ] `src/Common/VO/Context/Context.php`
-- [ ] `src/Common/VO/Duration.php`
-- [ ] `src/Common/VO/Event.php`
-- [ ] `src/Common/VO/Memory.php`
-- [ ] `src/Common/VO/Security/PlainPassword.php`
-- [ ] `src/Common/VO/Uri.php`
+- [ ] `src/Common/AbstractCommandEvent.php` [AUDITED]
+- [ ] `src/Common/AbstractQueryEvent.php` [AUDITED]
+- [ ] `src/Common/Assert/Assert.php` [AUDITED]
+- [ ] `src/Common/Collection/EventCollection.php` [AUDITED]
+- [ ] `src/Common/Collection/TemplateContextCollection.php` [AUDITED]
+- [ ] `src/Common/Collection/Validation/ValidationCollection.php` [AUDITED]
+- [ ] `src/Common/Exception/BadMethodCallException.php` [AUDITED]
+- [ ] `src/Common/Exception/InvalidArgumentException.php` [AUDITED]
+- [ ] `src/Common/Exception/MutableException.php` [AUDITED]
+- [ ] `src/Common/Exception/NullException.php` [AUDITED]
+- [ ] `src/Common/Exception/RuntimeException.php` [AUDITED]
+- [ ] `src/Common/Exception/ThrowableTrait.php` [AUDITED]
+- [ ] `src/Common/Exception/UnexpectedValueException.php` [AUDITED]
+- [ ] `src/Common/Factory/Context/ContextFactory.php` [AUDITED]
+- [ ] `src/Common/Log/AbstractLogger.php` [AUDITED]
+- [ ] `src/Common/Log/DefaultLogger.php` [AUDITED]
+- [ ] `src/Common/Log/NullLogger.php` [AUDITED]
+- [ ] `src/Common/Model/AbstractUser.php` [AUDITED]
+- [ ] `src/Common/Model/DefaultUser.php` [AUDITED]
+- [ ] `src/Common/Persistance/Database.php` [AUDITED]
+- [ ] `src/Common/Persistance/DatabaseTrait.php` [AUDITED]
+- [ ] `src/Common/Traits/ContextTrait.php` [AUDITED]
+- [ ] `src/Common/Traits/EventsTrait.php` [AUDITED]
+- [ ] `src/Common/Traits/IsTrait.php` [AUDITED]
+- [ ] `src/Common/Types/DirectoryOrFile.php` [AUDITED]
+- [ ] `src/Common/Types/Domain.php` [AUDITED]
+- [ ] `src/Common/Types/File/Content.php` [AUDITED]
+- [ ] `src/Common/Types/File/Extension.php` [AUDITED]
+- [ ] `src/Common/Types/File/Filename.php` [AUDITED]
+- [ ] `src/Common/Types/File/Path.php` [AUDITED]
+- [ ] `src/Common/Types/HtmlTemplatePath.php` [AUDITED]
+- [ ] `src/Common/Types/TextTemplatePath.php` [AUDITED]
+- [ ] `src/Common/VO/Context/Context.php` [AUDITED]
+- [ ] `src/Common/VO/Duration.php` [AUDITED]
+- [ ] `src/Common/VO/Event.php` [AUDITED]
+- [ ] `src/Common/VO/Memory.php` [AUDITED]
+- [ ] `src/Common/VO/Security/PlainPassword.php` [AUDITED]
+- [ ] `src/Common/VO/Uri.php` [AUDITED]
 
 ### Component/Mailer (12 files)
-- [ ] `src/Component/Mailer/Collection/EmailAddressCollection.php`
-- [ ] `src/Component/Mailer/Collection/EmailContactCollection.php`
-- [ ] `src/Component/Mailer/Collection/TagCollection.php`
-- [ ] `src/Component/Mailer/Configuration/MailerConfiguration.php`
-- [ ] `src/Component/Mailer/Service/MailService.php`
-- [ ] `src/Component/Mailer/Types/AttachmentMaxSize.php`
-- [ ] `src/Component/Mailer/Types/EmailAddress.php`
-- [ ] `src/Component/Mailer/Types/EmailHtml.php`
-- [ ] `src/Component/Mailer/Types/EmailName.php`
-- [ ] `src/Component/Mailer/Types/EmailSubject.php`
-- [ ] `src/Component/Mailer/Types/EmailText.php`
-- [ ] `src/Component/Mailer/Types/EmailUserName.php`
-- [ ] `src/Component/Mailer/VO/Email.php`
-- [ ] `src/Component/Mailer/VO/EmailContact.php`
-- [ ] `src/Component/Mailer/VO/TemplatedEmail.php`
+- [ ] `src/Component/Mailer/Collection/EmailAddressCollection.php` [AUDITED]
+- [ ] `src/Component/Mailer/Collection/EmailContactCollection.php` [AUDITED]
+- [ ] `src/Component/Mailer/Collection/TagCollection.php` [AUDITED]
+- [ ] `src/Component/Mailer/Configuration/MailerConfiguration.php` [AUDITED]
+- [ ] `src/Component/Mailer/Service/MailService.php` [AUDITED]
+- [ ] `src/Component/Mailer/Types/AttachmentMaxSize.php` [AUDITED]
+- [ ] `src/Component/Mailer/Types/EmailAddress.php` [AUDITED]
+- [ ] `src/Component/Mailer/Types/EmailHtml.php` [AUDITED]
+- [ ] `src/Component/Mailer/Types/EmailName.php` [AUDITED]
+- [ ] `src/Component/Mailer/Types/EmailSubject.php` [AUDITED]
+- [ ] `src/Component/Mailer/Types/EmailText.php` [AUDITED]
+- [ ] `src/Component/Mailer/Types/EmailUserName.php` [AUDITED]
+- [ ] `src/Component/Mailer/VO/Email.php` [AUDITED]
+- [ ] `src/Component/Mailer/VO/EmailContact.php` [AUDITED]
+- [ ] `src/Component/Mailer/VO/TemplatedEmail.php` [AUDITED]
 
 ### Contracts (163 files)
 
 #### Collection Interfaces (135 files)
-- [ ] `src/Contracts/Collection/AddInterface.php`
-- [ ] `src/Contracts/Collection/AfterInterface.php`
-- [ ] `src/Contracts/Collection/AllInterface.php`
-- [ ] `src/Contracts/Collection/ArsortInterface.php`
-- [ ] `src/Contracts/Collection/AsListInterface.php`
-- [ ] `src/Contracts/Collection/AsMapInterface.php`
-- [ ] `src/Contracts/Collection/AsortInterface.php`
-- [ ] `src/Contracts/Collection/AsReadOnlyListInterface.php`
-- [ ] `src/Contracts/Collection/AsReadOnlyMapInterface.php`
-- [ ] `src/Contracts/Collection/AtInterface.php`
-- [ ] `src/Contracts/Collection/AtLeastOneElementInterface.php`
-- [ ] `src/Contracts/Collection/AvgInterface.php`
-- [ ] `src/Contracts/Collection/BeforeInterface.php`
-- [ ] `src/Contracts/Collection/BoolInterface.php`
-- [ ] `src/Contracts/Collection/CallInterface.php`
-- [ ] `src/Contracts/Collection/CastInterface.php`
-- [ ] `src/Contracts/Collection/ChunkInterface.php`
-- [ ] `src/Contracts/Collection/ClearInterface.php`
-- [ ] `src/Contracts/Collection/CloneInterface.php`
-- [ ] `src/Contracts/Collection/ColInterface.php`
-- [ ] `src/Contracts/Collection/CollapseInterface.php`
-- [ ] `src/Contracts/Collection/CollectionValidationInterface.php`
-- [ ] `src/Contracts/Collection/CombineInterface.php`
-- [ ] `src/Contracts/Collection/CompareInterface.php`
-- [ ] `src/Contracts/Collection/ConcatInterface.php`
-- [ ] `src/Contracts/Collection/ContainsInterface.php`
-- [ ] `src/Contracts/Collection/CopyInterface.php`
-- [ ] `src/Contracts/Collection/CountByInterface.php`
-- [ ] `src/Contracts/Collection/CountInterface.php`
-- [ ] `src/Contracts/Collection/DdInterface.php`
-- [ ] `src/Contracts/Collection/DelimiterInterface.php`
-- [ ] `src/Contracts/Collection/DiffAssocInterface.php`
-- [ ] `src/Contracts/Collection/DiffInterface.php`
-- [ ] `src/Contracts/Collection/DiffKeysInterface.php`
-- [ ] `src/Contracts/Collection/DumpInterface.php`
-- [ ] `src/Contracts/Collection/DuplicatesInterface.php`
-- [ ] `src/Contracts/Collection/EachInterface.php`
-- [ ] `src/Contracts/Collection/EmptyInterface.php`
-- [ ] `src/Contracts/Collection/EqualsInterface.php`
-- [ ] `src/Contracts/Collection/EveryInterface.php`
-- [ ] `src/Contracts/Collection/ExceptInterface.php`
-- [ ] `src/Contracts/Collection/ExplodeInterface.php`
-- [ ] `src/Contracts/Collection/FilterInterface.php`
-- [ ] `src/Contracts/Collection/FindInterface.php`
-- [ ] `src/Contracts/Collection/FirstInterface.php`
-- [ ] `src/Contracts/Collection/FirstKeyInterface.php`
-- [ ] `src/Contracts/Collection/FlatInterface.php`
-- [ ] `src/Contracts/Collection/FlipInterface.php`
-- [ ] `src/Contracts/Collection/FloatInterface.php`
-- [ ] `src/Contracts/Collection/FromInterface.php`
-- [ ] `src/Contracts/Collection/FromJsonInterface.php`
-- [ ] `src/Contracts/Collection/GetInterface.php`
-- [ ] `src/Contracts/Collection/GetIteratorInterface.php`
-- [ ] `src/Contracts/Collection/GrepInterface.php`
-- [ ] `src/Contracts/Collection/GroupByInterface.php`
-- [ ] `src/Contracts/Collection/HasInterface.php`
-- [ ] `src/Contracts/Collection/HasNoElementInterface.php`
-- [ ] `src/Contracts/Collection/HasOneElementInterface.php`
-- [ ] `src/Contracts/Collection/HasSeveralElementsInterface.php`
-- [ ] `src/Contracts/Collection/HasXElementsInterface.php`
-- [ ] `src/Contracts/Collection/IfAnyInterface.php`
-- [ ] `src/Contracts/Collection/IfEmptyInterface.php`
-- [ ] `src/Contracts/Collection/IfInterface.php`
+- [ ] `src/Contracts/Collection/AddInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AfterInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AllInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/ArsortInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AsListInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AsMapInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AsortInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AsReadOnlyListInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AsReadOnlyMapInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AtInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AtLeastOneElementInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/AvgInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/BeforeInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/BoolInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CallInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CastInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/ChunkInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/ClearInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CloneInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/ColInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CollapseInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CollectionValidationInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CombineInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CompareInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/ConcatInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/ContainsInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CopyInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CountByInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/CountInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/DdInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/DelimiterInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/DiffAssocInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/DiffInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/DiffKeysInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/DumpInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/DuplicatesInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/EachInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/EmptyInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/EqualsInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/EveryInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/ExceptInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/ExplodeInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/FilterInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/FindInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/FirstInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/FirstKeyInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/FlatInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/FlipInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/FloatInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/FromInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/FromJsonInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/GetInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/GetIteratorInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/GrepInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/GroupByInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/HasInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/HasNoElementInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/HasOneElementInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/HasSeveralElementsInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/HasXElementsInterface.php` [AUDITED]
+- [ ] `src/Contracts/Collection/IfAnyInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/IfEmptyInterface.php` [AUDITED]
+- [x] `src/Contracts/Collection/IfInterface.php` [AUDITED]
 - [ ] `src/Contracts/Collection/ImplementsInterface.php`
 - [ ] `src/Contracts/Collection/IncludesInterface.php`
 - [ ] `src/Contracts/Collection/IndexInterface.php`
