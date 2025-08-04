@@ -292,34 +292,34 @@ This todolist contains **ALL** 481 PHP files from the framework (`src/`) that ne
 - [x] `src/Contracts/Uri/UriInterface.php` [AUDITED]
 
 ### DependencyInjection (2 files)
-- [ ] `src/DependencyInjection/DependencyInjectionPostLoad.php`
-- [ ] `src/DependencyInjection/EntityDependencyInjection.php`
+- [x] `src/DependencyInjection/DependencyInjectionPostLoad.php` [AUDITED]
+- [x] `src/DependencyInjection/EntityDependencyInjection.php` [AUDITED]
 
 ### Null (2 files)
-- [ ] `src/Null/NullEnum.php`
-- [ ] `src/Null/NullTrait.php`
+- [x] `src/Null/NullEnum.php` [AUDITED]
+- [x] `src/Null/NullTrait.php` [AUDITED]
 
 ### PHPStan (1 file)
-- [ ] `src/PHPStan/Extension/AssertTypeSpecifyingExtension.php`
+- [x] `src/PHPStan/Extension/AssertTypeSpecifyingExtension.php` [AUDITED]
 
 ### Primitives (193 files)
 
 #### Core Primitives (12 files)
-- [ ] `src/Primitives/BoolEnum.php`
-- [ ] `src/Primitives/Collection.php`
-- [ ] `src/Primitives/Collection/DateTimeCollection.php`
-- [ ] `src/Primitives/Collection/FileCollection.php`
-- [ ] `src/Primitives/DateTime.php`
-- [ ] `src/Primitives/Int_.php`
-- [ ] `src/Primitives/Locale.php`
-- [ ] `src/Primitives/Numeric.php`
-- [ ] `src/Primitives/Primitive.php`
-- [ ] `src/Primitives/StringType.php`
-- [ ] `src/Primitives/Ulid.php`
-- [ ] `src/Primitives/Uuid.php`
+- [x] `src/Primitives/BoolEnum.php` [AUDITED]
+- [AUDITED] `src/Primitives/Collection.php`
+- [AUDITED] `src/Primitives/Collection/DateTimeCollection.php`
+- [AUDITED] `src/Primitives/Collection/FileCollection.php`
+- [AUDITED] `src/Primitives/DateTime.php`
+- [AUDITED] `src/Primitives/Int_.php`
+- [AUDITED] `src/Primitives/Locale.php`
+- [AUDITED] `src/Primitives/Numeric.php`
+- [AUDITED] `src/Primitives/Primitive.php`
+- [ ] `src/Primitives/StringType.php` [AUDITED]
+- [ ] `src/Primitives/Ulid.php` [AUDITED]
+- [ ] `src/Primitives/Uuid.php` [AUDITED]
 
 #### Base Traits (11 files)
-- [ ] `src/Primitives/Traits/Collection.php`
+- [ ] `src/Primitives/Traits/Collection.php` [AUDITED]
 - [ ] `src/Primitives/Traits/CollectionCommonTrait.php`
 - [ ] `src/Primitives/Traits/CollectionTrait.php`
 - [ ] `src/Primitives/Traits/DateTimeTrait.php`
@@ -349,7 +349,7 @@ This todolist contains **ALL** 481 PHP files from the framework (`src/`) that ne
 - [ ] `src/Primitives/Traits/Collection/Chunk.php`
 - [ ] `src/Primitives/Traits/Collection/Clear.php`
 - [ ] `src/Primitives/Traits/Collection/Clone_.php`
-- [ ] `src/Primitives/Traits/Collection/Col.php`
+- [ ] `src/Primitives/Traits/Collection/Col.php` [AUDITED]
 - [ ] `src/Primitives/Traits/Collection/Collapse.php`
 - [ ] `src/Primitives/Traits/Collection/Combine.php`
 - [ ] `src/Primitives/Traits/Collection/Compare.php`
