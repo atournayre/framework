@@ -79,8 +79,9 @@ For each rule:
 - Score out of 10
 - Analysis of existing code only
 
-**MANDATORY**: Use Write tool to save report to audit/[Module]-[ClassName].md
+**MANDATORY**: You MUST use the Write tool to physically save the report to audit/[Module]-[ClassName].md
 Example: Write(file_path: "audit/src_Primitives_StringType.md", content: "full report")
+**CRITICAL**: The Write tool call must appear in your response - no exceptions
 ```
 
 ### Analysis Only (No Implementation)
@@ -118,16 +119,18 @@ Check [file/directory] specifically for [rule name]:
 5. Focus on analysis, not implementation suggestions
 
 ### Tool Usage Requirements
-1. **MANDATORY**: Always use Write tool to save audit reports
+1. **MANDATORY**: ALWAYS use Write tool to save audit reports - NO EXCEPTIONS
 2. **FILE PATH**: Use format "audit/src_Module_ClassName.md" (replace slashes with underscores)
 3. **VERIFICATION**: After creating report, the file MUST exist on disk
 4. **EXAMPLE**: Write(file_path: "audit/src_Primitives_StringType.md", content: "full_report_content")
+5. **CRITICAL**: You MUST use the Write tool in your response - the report must be physically saved
+6. **NO ALTERNATIVES**: Do not mention creating reports without actually using Write tool
 
 ### Report Format Requirements
 1. Use relative paths (src/Module/ClassName.php) not absolute paths
 2. Create structured compliance reports with scores
 3. Document findings without proposing code changes
-4. **ALWAYS use Write tool** to save all reports to audit/ directory with consistent naming
+4. **ALWAYS use Write tool** to save all reports to audit/ directory with consistent naming - YOU MUST ACTUALLY USE THE WRITE TOOL IN YOUR RESPONSE
 5. Provide clear compliance status for each rule category
 
 ### Analysis Guidelines

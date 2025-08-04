@@ -320,9 +320,9 @@ This todolist contains **ALL** 481 PHP files from the framework (`src/`) that ne
 
 #### Base Traits (11 files)
 - [ ] `src/Primitives/Traits/Collection.php` [AUDITED]
-- [ ] `src/Primitives/Traits/CollectionCommonTrait.php`
-- [ ] `src/Primitives/Traits/CollectionTrait.php`
-- [ ] `src/Primitives/Traits/DateTimeTrait.php`
+- [ ] `src/Primitives/Traits/CollectionCommonTrait.php` [AUDITED]
+- [ ] `src/Primitives/Traits/CollectionTrait.php` [AUDITED]
+- [ ] `src/Primitives/Traits/DateTimeTrait.php` [AUDITED]
 - [ ] `src/Primitives/Traits/IntegerTrait.php`
 - [ ] `src/Primitives/Traits/NumericCollectionTrait.php`
 - [ ] `src/Primitives/Traits/NumericTrait.php`
