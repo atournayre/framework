@@ -67,6 +67,7 @@ Use these interfaces to tag your messages for Symfony Messenger:
 
 use Atournayre\Contracts\CommandBus\CommandInterface;
 use Atournayre\Contracts\CommandBus\QueryInterface;
+use Atournayre\Contracts\CommandBus\SyncCommandInterface;
 
 // Command for async processing
 class CreateUserCommand implements CommandInterface
@@ -74,6 +75,14 @@ class CreateUserCommand implements CommandInterface
     public function __construct(
         public readonly string $email,
         public readonly string $name
+    ) {}
+}
+
+// Synchronous command for immediate execution
+class DatabasePersistCommand implements SyncCommandInterface
+{
+    public function __construct(
+        public readonly object $object
     ) {}
 }
 
@@ -173,6 +182,8 @@ framework:
         routing:
             # Route commands to async transport
             'Atournayre\Contracts\CommandBus\CommandInterface': async
+            # Route synchronous commands to sync transport
+            'Atournayre\Contracts\CommandBus\SyncCommandInterface': sync
             # Route queries to sync transport
             'Atournayre\Contracts\CommandBus\QueryInterface': sync
 ```
