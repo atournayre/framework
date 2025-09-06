@@ -7,3 +7,6 @@ composer.lock
 
 var/
 vendor/
+
+# Claude Code local settings
+.claude/settings.local.json

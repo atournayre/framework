@@ -626,7 +626,7 @@ parameters:
 			path: ../../src/Contracts/Collection/NumericMapInterface.php
 
 		-
-			message: "#^Interface Atournayre\\\\Contracts\\\\DateTime\\\\DateTimeInterface has 470 methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			message: "#^Interface Atournayre\\\\Contracts\\\\DateTime\\\\DateTimeInterface has 410 methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Contracts/DateTime/DateTimeInterface.php
 
