@@ -70,8 +70,7 @@ class SomeController
         $collection = Collection::of(['foo', 'bar']);
     }
 }
-CODE_SAMPLE
-                    ,
+CODE_SAMPLE,
                     // Code after the rector run
                     <<<'CODE_SAMPLE'
 use MyPackage\Collection as Collection_;
@@ -85,8 +84,7 @@ class SomeController
         $collection = Collection_::of(['foo', 'bar']);
     }
 }
-CODE_SAMPLE
-                    ,
+CODE_SAMPLE,
                     [
                         self::OLD_TRAIT_NAME => 'MyPackage\CollectionTrait',
                         self::NEW_TRAIT_NAME => 'MyPackage\Collection',
