@@ -7,3 +7,8 @@ composer.lock
 
 var/
 vendor/
+
+.claude/data
+.claude/logs
+
+logs/
