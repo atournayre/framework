@@ -12,6 +12,9 @@ The documentation is organized into the following files:
 - `usage.md`: Usage examples for the Framework's components
 - `interfaces.md`: Documentation for the Framework's interfaces
 - `null.md`: Documentation for the Null components
+- `exceptions.md`: Documentation for exception handling
+- `database.md`: Documentation for database components
+- `event.md`: Documentation for the Event component (deprecated)
 - `symfony.md`: Documentation for the Symfony integration components
 - `try-catch.md`: Documentation for the TryCatch pattern implementation with generic type support
 - `domain-events.md`: Documentation for using domain events

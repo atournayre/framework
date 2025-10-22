@@ -232,19 +232,14 @@ interface ThrowableInterface extends \Throwable
     /**
      * Throws this throwable.
      *
+     * If a logger is provided, logs the exception before throwing it.
+     *
+     * @param LoggerInterface|null $logger  The logger to use for logging the exception
+     * @param array                $context Additional context information for logging
+     *
      * @throws ThrowableInterface Always throws this throwable
      */
-    public function throw(): void;
-
-    /**
-     * Logs this throwable using the provided logger.
-     *
-     * @param \Atournayre\Contracts\Log\LoggerInterface $logger  The logger to use
-     * @param array                                     $context Additional context information
-     *
-     * @return void
-     */
-    public function log(\LoggerInterface $logger, array $context = []): void;
+    public function throw(?LoggerInterface $logger = null, array $context = []): void;
 }
 ```
 

@@ -557,6 +557,10 @@ $float = Numeric::fromFloat(123.45); // Automatically detects precision
 // Create from integer
 $int = Numeric::fromInt(123, 0); // 123 with 0 decimal places
 
+// Create a zero value
+$zero = Numeric::zero(); // 0 with 0 decimal places
+$zero = Numeric::zero(2); // 0.00 with 2 decimal places
+
 // Get value
 $value = $number->value(); // 123.45
 
@@ -574,17 +578,17 @@ $formatted = $number->format(Locale::of(Locale::FR_FR)); // "123,45"
 $rounded = $number->round(); // 123.45 (no change if already rounded)
 $rounded = Numeric::of(123.456, 2)->round(); // 123.46
 
-// Compare numbers
-$greaterThan = $number->greaterThan(100); // true
-$lessThan = $number->lessThan(200); // true
-$equalTo = $number->equalTo(123.45); // true
+// Compare numbers (returns BoolEnum)
+$greaterThan = $number->greaterThan(100)->isTrue(); // true
+$lessThan = $number->lessThan(200)->isTrue(); // true
+$equalTo = $number->equalTo(123.45)->isTrue(); // true
 
-// Check if between values
-$between = $number->between(100, 200); // true
-$betweenOrEqual = $number->betweenOrEqual(123.45, 200); // true
+// Check if between values (returns BoolEnum)
+$between = $number->between(100, 200)->isTrue(); // true
+$betweenOrEqual = $number->betweenOrEqual(123.45, 200)->isTrue(); // true
 
-// Check if zero
-$isZero = $number->isZero(); // false
+// Check if zero (returns BoolEnum)
+$isZero = $number->isZero()->isTrue(); // false
 
 // Get absolute value
 $absolute = Numeric::of(-123.45, 2)->abs(); // 123.45
