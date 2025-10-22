@@ -1,21 +1,21 @@
 # Database Components
 
-This guide provides documentation for the Database components in the Framework. These components provide a simple wrapper around Doctrine's EntityManager to manage database operations.
+This guide provides documentation for the Database components in the Framework. These components provide a simple wrapper around Symfony's MessageBus to manage database operations through command messages.
 
 ## Database Class
 
-The `Database` class is a wrapper around Doctrine's EntityManager that implements the `DatabasePersistenceInterface`:
+The `Database` class is a wrapper around Symfony's MessageBus that implements the `DatabasePersistenceInterface`. It uses command messages to handle database operations:
 
 ```php
 <?php
 
 use Atournayre\Common\Persistance\Database;
-use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 // Create a new Database instance
 $database = Database::new(
-    entityManager: $entityManager, // Instance of EntityManagerInterface
-    object: $entity,               // The entity to be managed
+    bus: $commandBus, // Instance of CommandBusInterface
+    object: $entity,  // The entity to be managed
 );
 
 // Persist the entity and flush changes in one chain
@@ -28,6 +28,48 @@ $database->flush();
 // Remove the entity and flush changes in one chain
 $database->remove()->flush();
 ```
+
+## Command Messages
+
+The Database class internally uses synchronous command messages to handle database operations:
+
+### DatabasePersistCommand
+
+```php
+<?php
+
+use Atournayre\Common\Persistance\Command\DatabasePersistCommand;
+
+// The persist() method dispatches this command
+$command = DatabasePersistCommand::new(object: $entity);
+$command->dispatch($commandBus);
+```
+
+### DatabaseRemoveCommand
+
+```php
+<?php
+
+use Atournayre\Common\Persistance\Command\DatabaseRemoveCommand;
+
+// The remove() method dispatches this command
+$command = DatabaseRemoveCommand::new(object: $entity);
+$command->dispatch($commandBus);
+```
+
+### DatabaseFlushCommand
+
+```php
+<?php
+
+use Atournayre\Common\Persistance\Command\DatabaseFlushCommand;
+
+// The flush() method dispatches this command
+$command = DatabaseFlushCommand::new();
+$command->dispatch($commandBus);
+```
+
+All these commands implement `SyncCommandInterface` to ensure they are executed synchronously.
 
 ## DatabaseEntityInterface
 
@@ -70,12 +112,14 @@ class MyEntity implements DatabaseEntityInterface
     public function save(): void
     {
         // Get a Database instance for this entity and use fluent interface
+        // This will dispatch DatabasePersistCommand and DatabaseFlushCommand
         $this->database()->persist()->flush();
     }
 
     public function delete(): void
     {
         // Get a Database instance for this entity and use fluent interface
+        // This will dispatch DatabaseRemoveCommand and DatabaseFlushCommand
         $this->database()->remove()->flush();
     }
 }
@@ -93,17 +137,20 @@ $entity = new MyEntity();
 $entity->setName('Example');
 
 // Persist and flush directly from the entity using fluent interface
+// This dispatches DatabasePersistCommand and DatabaseFlushCommand
 $entity->database()->persist()->flush();
 
 // Update an entity
 $entity->setName('Updated Example');
+// This dispatches DatabaseFlushCommand
 $entity->database()->flush();
 
 // Remove an entity using fluent interface
+// This dispatches DatabaseRemoveCommand and DatabaseFlushCommand
 $entity->database()->remove()->flush();
 ```
 
-This approach provides a cleaner and more intuitive developer experience, allowing you to work directly with your entities without creating separate database instances.
+This approach provides a cleaner and more intuitive developer experience, allowing you to work directly with your entities without creating separate database instances. All operations are now handled through command messages for better architecture and testability.
 
 ## DatabasePersistenceInterface
 

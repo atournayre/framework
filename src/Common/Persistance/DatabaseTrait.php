@@ -7,6 +7,7 @@ namespace Atournayre\Common\Persistance;
 use Atournayre\Common\Assert\Assert as Assertion;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Persistance\DatabasePersistenceInterface;
+use Atournayre\DependencyInjection\EntityDependencyInjection;
 
 /**
  * Trait that provides database persistence functionality.
@@ -24,11 +25,12 @@ trait DatabaseTrait
      */
     public function database(): DatabasePersistenceInterface
     {
-        Assertion::notNull($this->dependencyInjection, 'Dependency injection is not available. Did you forget to add the $dependencyInjection property to your class?');
-        Assertion::true(isset($this->dependencyInjection->entityManager), 'Entity manager is not available. Did you forget to add the EntityManagerInterface to your dependency injection class?');
+        /** @var EntityDependencyInjection $dependencyInjection */
+        $dependencyInjection = $this->dependencyInjection;
+        Assertion::notNull($dependencyInjection, 'Dependency injection is not available. Did you forget to add the $dependencyInjection property to your class?');
 
         return Database::new(
-            entityManager: $this->dependencyInjection->entityManager,
+            commandBus: $dependencyInjection->commandBus(),
             object: $this,
         );
     }
