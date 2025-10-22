@@ -4,12 +4,22 @@ This directory contains the Markdown files for the Framework documentation. The 
 
 ## Structure
 
-The documentation is organized into the following files:
+The documentation is organized into the following sections:
 
+### Getting Started
 - `index.md`: The main landing page
 - `introduction.md`: Introduction to the Framework
 - `installation.md`: Installation instructions
 - `usage.md`: Usage examples for the Framework's components
+
+### Core Components
+- `primitives.md`: Primitives system with Collection and type wrappers (StringType, Int_, Numeric, DateTime, Uuid, Ulid)
+- `common.md`: Common utilities including Assert, custom exceptions, and value objects (Context, Duration, Memory, Uri, PlainPassword)
+- `contracts.md`: 165+ granular interfaces following Interface Segregation Principle
+- `component.md`: High-level components (Mailer with value objects and validation)
+- `wrapper-traits.md`: Wrappers (SplFileInfo) and traits for composition (DependencyInjection, CommandMessage, QueryMessage, Enum)
+
+### Documentation
 - `interfaces.md`: Documentation for the Framework's interfaces
 - `null.md`: Documentation for the Null components
 - `exceptions.md`: Documentation for exception handling
@@ -19,6 +29,9 @@ The documentation is organized into the following files:
 - `try-catch.md`: Documentation for the TryCatch pattern implementation with generic type support
 - `domain-events.md`: Documentation for using domain events
 - `dependency-injection.md`: Documentation for the dependency injection system
+
+### Development
+- `phpstan-rector.md`: PHPStan extensions and Rector rules for static analysis and automated refactoring
 
 ## Building the Documentation
 

@@ -52,6 +52,12 @@ nav:
     - Introduction: introduction.md
     - Installation: installation.md
     - Usage: usage.md
+  - Core Components:
+    - Primitives: primitives.md
+    - Common: common.md
+    - Contracts: contracts.md
+    - Component: component.md
+    - Wrapper & Traits: wrapper-traits.md
   - Documentation:
     - Interfaces: interfaces.md
     - Exceptions: exceptions.md
@@ -62,3 +68,5 @@ nav:
     - Event (Deprecated): event.md
     - Symfony: symfony.md
     - TryCatch: try-catch.md
+  - Development:
+    - PHPStan & Rector: phpstan-rector.md
