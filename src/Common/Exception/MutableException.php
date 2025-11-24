@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Atournayre\Common\Exception;
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
+use Atournayre\Contracts\Log\LoggableInterface;
 
-class MutableException extends \RuntimeException implements ThrowableInterface
+class MutableException extends \RuntimeException implements ThrowableInterface, LoggableInterface
 {
-    use ThrowableTrait;
+    use LoggableThrowableTrait;
 
     public static function becauseMustBeImmutable(): self
     {
