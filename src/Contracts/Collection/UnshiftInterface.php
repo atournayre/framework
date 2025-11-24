@@ -21,5 +21,5 @@ interface UnshiftInterface
      *
      * @api
      */
-    public function unshift(mixed $value, $key = null): self;
+    public function unshift(mixed $value, int|string|null $key = null): self;
 }
