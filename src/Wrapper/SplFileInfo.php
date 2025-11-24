@@ -40,8 +40,11 @@ final readonly class SplFileInfo implements LoggableInterface
     public function toLog(): array
     {
         return [
-            'pathname' => $this->pathname(),
+            'filename' => $this->filename()->toString(),
+            'extension' => $this->extension()->toString(),
             'size' => $this->size()->humanReadable(),
+            'relativePath' => $this->relativePath()->toString(),
+            'relativePathname' => $this->relativePathname()->toString(),
         ];
     }
 
