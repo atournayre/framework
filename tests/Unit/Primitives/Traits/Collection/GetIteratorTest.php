@@ -19,11 +19,8 @@ class GetIteratorTest extends TestCase
     public function testGetIteratorAllowsForeach(): void
     {
         $collection = Collection::of([1, 2, 3]);
-        $result = [];
 
-        foreach ($collection as $value) {
-            $result[] = $value;
-        }
+        $result = iterator_to_array($collection->getIterator(), false);
 
         self::assertSame([1, 2, 3], $result);
     }
@@ -43,11 +40,8 @@ class GetIteratorTest extends TestCase
     public function testGetIteratorPreservesKeys(): void
     {
         $collection = Collection::of(['a' => 1, 'b' => 2, 'c' => 3]);
-        $result = [];
 
-        foreach ($collection as $key => $value) {
-            $result[$key] = $value;
-        }
+        $result = iterator_to_array($collection->getIterator(), true);
 
         self::assertSame(['a' => 1, 'b' => 2, 'c' => 3], $result);
     }
@@ -58,11 +52,8 @@ class GetIteratorTest extends TestCase
             'user1' => ['name' => 'Alice'],
             'user2' => ['name' => 'Bob'],
         ]);
-        $result = [];
 
-        foreach ($collection as $key => $value) {
-            $result[$key] = $value;
-        }
+        $result = iterator_to_array($collection->getIterator(), true);
 
         self::assertSame([
             'user1' => ['name' => 'Alice'],
