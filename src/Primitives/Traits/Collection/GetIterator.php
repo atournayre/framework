@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Atournayre\Primitives\Traits\Collection;
 
-use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Contracts\Collection\GetIteratorInterface;
-use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Trait GetIterator.
@@ -18,13 +16,12 @@ trait GetIterator
     /**
      * Returns an iterator for the elements.
      *
-     * @throws ThrowableInterface
+     * @return \Traversable<array-key, mixed>
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
-        RuntimeException::new('Not implemented yet!')->throw();
+        return $this->collection->getIterator();
     }
 }
