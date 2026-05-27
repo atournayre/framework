@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\ToJsonInterface;
  * Trait ToJson.
  *
  * @see ToJsonInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait ToJson
 {
@@ -18,7 +19,7 @@ trait ToJson
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toJson(int $options = 0): ?string
     {
         return $this->collection->toJson($options);

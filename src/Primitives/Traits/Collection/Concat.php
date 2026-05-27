@@ -13,6 +13,7 @@ use Atournayre\Primitives\Collection;
  * Trait Concat.
  *
  * @see ConcatInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Concat
 {
@@ -25,7 +26,7 @@ trait Concat
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function concat($elements): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

@@ -6,6 +6,7 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface RandomInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface RandomInterface
 {
@@ -16,6 +17,6 @@ interface RandomInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function random(int $max = 1): self;
 }

@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\KrsortInterface;
  * Trait Krsort.
  *
  * @see KrsortInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Krsort
 {
@@ -18,7 +19,7 @@ trait Krsort
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function krsort(int $options = SORT_REGULAR): self
     {
         $clone = $this->collection;

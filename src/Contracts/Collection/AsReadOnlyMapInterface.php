@@ -6,6 +6,9 @@ namespace Atournayre\Contracts\Collection;
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 interface AsReadOnlyMapInterface
 {
     /**
@@ -13,6 +16,6 @@ interface AsReadOnlyMapInterface
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asReadOnlyMap(array $collection): self;
 }

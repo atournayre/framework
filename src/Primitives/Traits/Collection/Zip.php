@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\ZipInterface;
  * Trait Zip.
  *
  * @see ZipInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Zip
 {
@@ -20,7 +21,7 @@ trait Zip
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function zip(...$arrays): self
     {
         $zip = $this->collection->zip(...$arrays);

@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\UniqueInterface;
  * Trait Unique.
  *
  * @see UniqueInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Unique
 {
@@ -18,7 +19,7 @@ trait Unique
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function unique(?string $key = null): self
     {
         $unique = $this->collection->unique($key);

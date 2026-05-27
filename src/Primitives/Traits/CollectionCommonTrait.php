@@ -11,10 +11,11 @@ use Atournayre\Primitives\Int_;
 
 /**
  * @internal
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait CollectionCommonTrait
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function count(): Int_
     {
         return $this->collection
@@ -25,7 +26,7 @@ trait CollectionCommonTrait
     /**
      * @return array<int|string, mixed>
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toArray(): array
     {
         return $this->collection->toArray();
@@ -38,7 +39,7 @@ trait CollectionCommonTrait
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function first($default = null)
     {
         try {
@@ -55,7 +56,7 @@ trait CollectionCommonTrait
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function last($default = null)
     {
         try {
@@ -70,7 +71,7 @@ trait CollectionCommonTrait
      *
      * @return mixed|null
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function offsetGet($offset)
     {
         return $this->collection->offsetGet($offset);
@@ -79,7 +80,7 @@ trait CollectionCommonTrait
     /**
      * @param array-key $offset
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function offsetUnset($offset): void
     {
         $this->collection->offsetUnset($offset);
@@ -88,7 +89,7 @@ trait CollectionCommonTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function atLeastOneElement(): BoolEnum
     {
         return $this->count()
@@ -99,7 +100,7 @@ trait CollectionCommonTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function hasSeveralElements(): BoolEnum
     {
         return $this->count()
@@ -110,7 +111,7 @@ trait CollectionCommonTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function hasNoElement(): BoolEnum
     {
         return $this->count()
@@ -121,7 +122,7 @@ trait CollectionCommonTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function hasOneElement(): BoolEnum
     {
         return $this->count()
@@ -132,7 +133,7 @@ trait CollectionCommonTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function hasXElements(int $int): BoolEnum
     {
         return $this->count()
@@ -145,7 +146,7 @@ trait CollectionCommonTrait
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function add($value, ?\Closure $callback = null): self
     {
         $this->ensureMutable('add');
@@ -162,7 +163,7 @@ trait CollectionCommonTrait
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function set($key, $value, ?\Closure $callback = null): self
     {
         $this->ensureMutable('set');
@@ -173,7 +174,7 @@ trait CollectionCommonTrait
         return $clone;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function map(\Closure $callback): self
     {
         $clone = clone $this;
@@ -182,7 +183,7 @@ trait CollectionCommonTrait
         return $clone;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function each(\Closure $callback): self
     {
         $clone = clone $this;
@@ -194,7 +195,7 @@ trait CollectionCommonTrait
     /**
      * @return array-key[]
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function keys(): array
     {
         return $this->collection
@@ -205,7 +206,7 @@ trait CollectionCommonTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function ensureMutable(string $operation): void
     {
         if ($this->collection->isReadOnly()->yes()) {

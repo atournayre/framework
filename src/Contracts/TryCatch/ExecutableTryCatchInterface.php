@@ -12,6 +12,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Defines the contract for executing a try-catch block.
  *
  * @template T
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ExecutableTryCatchInterface
 {
@@ -22,6 +23,6 @@ interface ExecutableTryCatchInterface
      *
      * @throws ThrowableInterface If an exception is thrown and not handled
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function execute(): mixed;
 }

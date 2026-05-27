@@ -8,6 +8,7 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface IsScalarInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface IsScalarInterface
 {
@@ -16,6 +17,6 @@ interface IsScalarInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isScalar(): BoolEnum;
 }

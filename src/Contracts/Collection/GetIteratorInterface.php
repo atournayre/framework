@@ -8,6 +8,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface GetIteratorInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface GetIteratorInterface
 {
@@ -18,6 +19,6 @@ interface GetIteratorInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function getIterator();
 }

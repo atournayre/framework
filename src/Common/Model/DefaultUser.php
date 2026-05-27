@@ -6,41 +6,44 @@ namespace Atournayre\Common\Model;
 
 use Atournayre\Null\NullTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class DefaultUser extends AbstractUser
 {
     use NullTrait;
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function getRoles(): array
     {
         return [];
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function getPassword(): string
     {
         return '';
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function getSalt(): string
     {
         return '';
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function getUsername(): string
     {
         return '';
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function identifier(): string
     {
         return '';
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asNull(): self
     {
         return (new self())

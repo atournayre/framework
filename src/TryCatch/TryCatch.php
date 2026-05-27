@@ -18,10 +18,11 @@ use Psr\Log\LoggerInterface;
  * @template T
  *
  * @implements ExecutableTryCatchInterface<T>
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final readonly class TryCatch implements ExecutableTryCatchInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         private \Closure $tryBlock,
         private ThrowableHandlerCollectionInterface $handlers,
@@ -40,7 +41,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      *
      * @return self<TReturn>
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private static function createInstance(
         \Closure $tryBlock,
         ThrowableHandlerCollectionInterface $handlers,
@@ -66,7 +67,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function with(
         \Closure $tryBlock,
         LoggerInterface $logger,
@@ -158,7 +159,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function reThrow(string $throwableClass, string $message = '', int $code = 0): self
     {
         // We need to use the same try block to preserve the template type T
@@ -195,7 +196,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      *
      * @throws \Throwable If an exception is thrown and not handled
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function execute(): mixed
     {
         $result = null;
@@ -229,7 +230,7 @@ final readonly class TryCatch implements ExecutableTryCatchInterface
      *
      * @return mixed The final result after executing the finally block
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function executeFinallyBlock(mixed $currentResult): mixed
     {
         if (!$this->finallyBlock instanceof \Closure) {

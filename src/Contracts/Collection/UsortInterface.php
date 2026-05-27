@@ -6,6 +6,7 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface UsortInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface UsortInterface
 {
@@ -14,6 +15,6 @@ interface UsortInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function usort(callable $callback): self;
 }

@@ -15,6 +15,7 @@ use Atournayre\DependencyInjection\EntityDependencyInjection;
  * Classes using this trait should implement the DatabaseEntityInterface.
  * This trait provides a database() method that returns a DatabasePersistenceInterface
  * for database operations on the entity.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait DatabaseTrait
 {
@@ -23,7 +24,7 @@ trait DatabaseTrait
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function database(): DatabasePersistenceInterface
     {
         /** @var EntityDependencyInjection $dependencyInjection */

@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace Atournayre\Null;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class NullEnum
 {
     private const YES = 'yes';
 
     private const NO = 'no';
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         private string $value,
     ) {
@@ -19,7 +22,7 @@ final readonly class NullEnum
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isNull(): bool
     {
         return self::YES === $this->value;
@@ -28,7 +31,7 @@ final readonly class NullEnum
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isNotNull(): bool
     {
         return self::NO === $this->value;
@@ -37,7 +40,7 @@ final readonly class NullEnum
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function fromBool(bool $bool): self
     {
         return $bool ? new self(self::YES) : new self(self::NO);
@@ -46,7 +49,7 @@ final readonly class NullEnum
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function yes(): self
     {
         return new self(self::YES);
@@ -55,7 +58,7 @@ final readonly class NullEnum
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function no(): self
     {
         return new self(self::NO);
@@ -64,7 +67,7 @@ final readonly class NullEnum
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function value(): string
     {
         return $this->value;

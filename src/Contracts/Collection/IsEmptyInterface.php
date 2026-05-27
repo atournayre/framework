@@ -8,6 +8,7 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface IsEmptyInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface IsEmptyInterface
 {
@@ -16,6 +17,6 @@ interface IsEmptyInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isEmpty(): BoolEnum;
 }

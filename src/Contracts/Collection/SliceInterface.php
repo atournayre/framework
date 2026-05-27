@@ -6,6 +6,7 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface SliceInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface SliceInterface
 {
@@ -17,6 +18,6 @@ interface SliceInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function slice(int $offset, ?int $length = null): self;
 }

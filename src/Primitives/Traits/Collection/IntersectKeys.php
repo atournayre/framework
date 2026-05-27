@@ -11,6 +11,7 @@ use Atournayre\Primitives\Collection;
  * Trait IntersectKeys.
  *
  * @see IntersectKeysInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait IntersectKeys
 {
@@ -21,7 +22,7 @@ trait IntersectKeys
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function intersectKeys($elements, ?callable $callback = null): self
     {
         if ($elements instanceof self) {

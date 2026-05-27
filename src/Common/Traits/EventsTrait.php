@@ -14,8 +14,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * When loading an entity, the events collection is not initialized.
  * Add a PostLoadListener to initialize the events collection on postLoad (Doctrine).
  *
- * @deprecated This trait is deprecated and will be removed in a future version.
- *             Use the Domain Events Management system with DependencyInjectionTrait instead.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait EventsTrait
 {
@@ -24,13 +23,13 @@ trait EventsTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function initializeEvents(): void
     {
         $this->events = EventCollection::empty();
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function events(): EventCollection
     {
         return $this->events;

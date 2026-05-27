@@ -6,6 +6,7 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface SkipInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface SkipInterface
 {
@@ -16,6 +17,6 @@ interface SkipInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function skip($offset): self;
 }

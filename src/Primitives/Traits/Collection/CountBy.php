@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\CountByInterface;
  * Trait CountBy.
  *
  * @see CountByInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait CountBy
 {
@@ -20,7 +21,7 @@ trait CountBy
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function countBy(?callable $callback = null): self
     {
         $countBy = $this->collection->countBy($callback);

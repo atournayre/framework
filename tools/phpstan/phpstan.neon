@@ -8,6 +8,10 @@ services:
         class: Atournayre\PHPStan\Extension\AssertTypeSpecifyingExtension
         tags:
             - phpstan.typeSpecifier.staticMethodTypeSpecifyingExtension
+    -
+        class: Atournayre\PHPStan\Rules\DeprecationConventionRule
+        tags:
+            - phpstan.rules.rule
 
 parameters:
     phpVersion: 80200

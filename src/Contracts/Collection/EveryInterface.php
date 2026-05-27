@@ -8,6 +8,7 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface EveryInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface EveryInterface
 {
@@ -16,6 +17,6 @@ interface EveryInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function every(\Closure $callback): BoolEnum;
 }

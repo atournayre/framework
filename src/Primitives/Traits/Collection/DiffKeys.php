@@ -11,6 +11,7 @@ use Atournayre\Primitives\Collection;
  * Trait DiffKeys.
  *
  * @see DiffKeysInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait DiffKeys
 {
@@ -22,7 +23,7 @@ trait DiffKeys
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function diffKeys($elements, ?callable $callback = null): self
     {
         if ($elements instanceof self) {

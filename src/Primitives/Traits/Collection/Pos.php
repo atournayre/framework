@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\PosInterface;
  * Trait Pos.
  *
  * @see PosInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Pos
 {
@@ -20,7 +21,7 @@ trait Pos
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function pos($value): ?int
     {
         return $this->collection->pos($value);

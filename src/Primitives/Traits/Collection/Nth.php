@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\NthInterface;
  * Trait Nth.
  *
  * @see NthInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Nth
 {
@@ -18,7 +19,7 @@ trait Nth
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function nth(int $step, int $offset = 0): self
     {
         $nth = $this->collection->nth($step, $offset);

@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\TransposeInterface;
  * Trait Transpose.
  *
  * @see TransposeInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Transpose
 {
@@ -18,7 +19,7 @@ trait Transpose
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function transpose(): self
     {
         $transpose = $this->collection->transpose();

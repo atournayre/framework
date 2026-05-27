@@ -13,10 +13,11 @@ use Atournayre\Contracts\TryCatch\ThrowableHandlerInterface;
  * Used when no specific handler is found for a throwable.
  *
  * @implements ThrowableHandlerInterface<null>
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final class NullThrowableHandler implements ThrowableHandlerInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct()
     {
     }
@@ -29,7 +30,7 @@ final class NullThrowableHandler implements ThrowableHandlerInterface
     /**
      * Always returns false as this is a null handler.
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function canHandle(\Throwable $throwable): bool
     {
         return false;
@@ -38,7 +39,7 @@ final class NullThrowableHandler implements ThrowableHandlerInterface
     /**
      * Does nothing and returns null.
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function handle(\Throwable $throwable): null
     {
         return null;

@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\RejectInterface;
  * Trait Reject.
  *
  * @see RejectInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Reject
 {
@@ -20,7 +21,7 @@ trait Reject
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function reject($callback = true): self
     {
         $reject = $this->collection->reject($callback);

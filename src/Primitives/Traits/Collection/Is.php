@@ -12,6 +12,7 @@ use Atournayre\Primitives\Collection;
  * Trait Is.
  *
  * @see IsInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Is
 {
@@ -23,7 +24,7 @@ trait Is
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function is($list, bool $strict = false): BoolEnum
     {
         if ($list instanceof self) {

@@ -11,6 +11,7 @@ use Atournayre\Primitives\BoolEnum;
  * Trait IsScalar.
  *
  * @see IsScalarInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait IsScalar
 {
@@ -19,7 +20,7 @@ trait IsScalar
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isScalar(): BoolEnum
     {
         $isScalar = $this->collection->isScalar();

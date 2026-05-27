@@ -6,6 +6,7 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface RsortInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface RsortInterface
 {
@@ -14,6 +15,6 @@ interface RsortInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function rsort(int $options = SORT_REGULAR): self;
 }

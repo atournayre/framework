@@ -11,6 +11,7 @@ use Atournayre\Primitives\BoolEnum;
  * Trait StrContains.
  *
  * @see StrContainsInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait StrContains
 {
@@ -22,7 +23,7 @@ trait StrContains
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function strContains(mixed $value, string $encoding = 'UTF-8'): BoolEnum
     {
         $strContains = $this->collection->strContains($value, $encoding);

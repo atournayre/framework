@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\ShiftInterface;
  * Trait Shift.
  *
  * @see ShiftInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Shift
 {
@@ -20,7 +21,7 @@ trait Shift
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function shift()
     {
         return $this->collection->shift();

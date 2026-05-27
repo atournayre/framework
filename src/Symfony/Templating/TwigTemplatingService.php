@@ -12,9 +12,12 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class TwigTemplatingService implements TemplatingInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __construct(
         private Environment $twigEnvironment,
     ) {
@@ -23,7 +26,7 @@ final readonly class TwigTemplatingService implements TemplatingInterface
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function render(string $template, array $parameters = []): string
     {
         try {

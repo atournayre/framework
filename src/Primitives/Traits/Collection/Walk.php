@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\WalkInterface;
  * Trait Walk.
  *
  * @see WalkInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Walk
 {
@@ -22,7 +23,7 @@ trait Walk
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function walk(callable $callback, mixed $data = null, bool $recursive = true): self
     {
         $walk = $this->collection->walk($callback, $data, $recursive);

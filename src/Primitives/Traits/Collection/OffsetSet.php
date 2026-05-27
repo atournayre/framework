@@ -11,6 +11,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait OffsetSet.
  *
  * @see OffsetSetInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait OffsetSet
 {
@@ -24,7 +25,7 @@ trait OffsetSet
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function offsetSet($key, $value, ?\Closure $callback = null): void
     {
         $this->set($key, $value, $callback);

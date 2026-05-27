@@ -11,9 +11,12 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class EntityEventDispatcher implements EntityEventDispatcherInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __construct(
         private EventDispatcherInterface $eventDispatcher,
         private LoggerInterface $logger,
@@ -23,7 +26,7 @@ final readonly class EntityEventDispatcher implements EntityEventDispatcherInter
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function dispatch(EventCollection $eventCollection, ?string $type = null): void
     {
         if (null === $type) {
@@ -35,7 +38,7 @@ final readonly class EntityEventDispatcher implements EntityEventDispatcherInter
         $this->dispatchEventsByType($eventCollection, $type);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function dispatchAllEvents(EventCollection $eventCollection): void
     {
         $eventCollection
@@ -48,7 +51,7 @@ final readonly class EntityEventDispatcher implements EntityEventDispatcherInter
         ;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function dispatchEvent(Event $event): void
     {
         $this->logger->info(sprintf('Dispatching %s event', $event->_type()), $event->toLog());
@@ -61,7 +64,7 @@ final readonly class EntityEventDispatcher implements EntityEventDispatcherInter
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function dispatchEventsByType(EventCollection $eventCollection, string $type): void
     {
         $eventCollection = $eventCollection->filterByType($type);

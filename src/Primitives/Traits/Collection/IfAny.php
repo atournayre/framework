@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\IfAnyInterface;
  * Trait IfAny.
  *
  * @see IfAnyInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait IfAny
 {
@@ -18,7 +19,7 @@ trait IfAny
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function ifAny(?\Closure $then = null, ?\Closure $else = null): self
     {
         $ifAny = $this->collection->ifAny($then, $else);

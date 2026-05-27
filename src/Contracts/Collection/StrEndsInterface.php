@@ -8,6 +8,7 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface StrEndsInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface StrEndsInterface
 {
@@ -19,6 +20,6 @@ interface StrEndsInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function strEnds($value, string $encoding = 'UTF-8'): BoolEnum;
 }

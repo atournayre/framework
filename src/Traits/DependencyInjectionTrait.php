@@ -14,6 +14,7 @@ use Atournayre\Contracts\DependencyInjection\DependencyInjectionInterface;
  * that can be used by classes that need dependency injection capabilities.
  *
  * For immutable usage, prefer the withDependencyInjection() method over setDependencyInjection().
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait DependencyInjectionTrait
 {
@@ -29,7 +30,7 @@ trait DependencyInjectionTrait
      *
      * @return static A new instance with the dependency injection container set
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withDependencyInjection(DependencyInjectionInterface $dependencyInjection): static
     {
         $clone = clone $this;
@@ -48,7 +49,7 @@ trait DependencyInjectionTrait
      *
      * @param DependencyInjectionInterface $dependencyInjection The dependency injection container
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function setDependencyInjection(DependencyInjectionInterface $dependencyInjection): void
     {
         $this->dependencyInjection = $dependencyInjection;
@@ -61,7 +62,7 @@ trait DependencyInjectionTrait
      *
      * @throws RuntimeException When dependency injection has not been set
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function dependencyInjection(): DependencyInjectionInterface
     {
         if (null === $this->dependencyInjection) {

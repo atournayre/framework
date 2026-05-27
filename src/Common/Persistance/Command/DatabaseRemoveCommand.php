@@ -9,10 +9,11 @@ use Atournayre\Contracts\CommandBus\SyncCommandInterface;
 
 /**
  * Command to remove an object from the database.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final class DatabaseRemoveCommand extends AbstractCommandEvent implements SyncCommandInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(private readonly object $object)
     {
     }
@@ -22,7 +23,7 @@ final class DatabaseRemoveCommand extends AbstractCommandEvent implements SyncCo
         return new self(object: $object);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function object(): object
     {
         return $this->object;

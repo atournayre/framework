@@ -8,6 +8,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface IfEmptyInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface IfEmptyInterface
 {
@@ -18,6 +19,6 @@ interface IfEmptyInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function ifEmpty();
 }

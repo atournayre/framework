@@ -12,6 +12,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait Prepend.
  *
  * @see PrependInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Prepend
 {
@@ -25,7 +26,7 @@ trait Prepend
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function prepend(mixed $value, $key = null): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

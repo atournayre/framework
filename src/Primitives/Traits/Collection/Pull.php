@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\PullInterface;
  * Trait Pull.
  *
  * @see PullInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Pull
 {
@@ -23,7 +24,7 @@ trait Pull
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function pull($key, mixed $default = null)
     {
         return $this->collection->pull($key, $default);

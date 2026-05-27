@@ -8,9 +8,10 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface HasXElementsInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface HasXElementsInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function hasXElements(int $int): BoolEnum;
 }

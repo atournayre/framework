@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\StrAfterInterface;
  * Trait StrAfter.
  *
  * @see StrAfterInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait StrAfter
 {
@@ -22,7 +23,7 @@ trait StrAfter
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function strAfter(string $value, bool $case = false, string $encoding = 'UTF-8'): self
     {
         $strAfter = $this->collection->strAfter($value, $case, $encoding);

@@ -8,6 +8,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface PutInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface PutInterface
 {
@@ -21,6 +22,6 @@ interface PutInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function put($key, mixed $value): self;
 }

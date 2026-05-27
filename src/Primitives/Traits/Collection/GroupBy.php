@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\GroupByInterface;
  * Trait GroupBy.
  *
  * @see GroupByInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait GroupBy
 {
@@ -20,7 +21,7 @@ trait GroupBy
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function groupBy($key): self
     {
         $groupBy = $this->collection->groupBy($key);

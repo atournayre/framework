@@ -8,9 +8,10 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface HasNoElementInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface HasNoElementInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function hasNoElement(): BoolEnum;
 }

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Collection;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 interface NumericListInterface
 {
     /**
@@ -11,6 +14,6 @@ interface NumericListInterface
      *
      * @return static
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asList(array $collection, int $precision);
 }

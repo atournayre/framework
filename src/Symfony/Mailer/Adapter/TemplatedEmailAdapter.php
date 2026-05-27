@@ -9,6 +9,9 @@ use Atournayre\Component\Mailer\VO\TemplatedEmail;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail as SymfonyTemplatedEmail;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class TemplatedEmailAdapter extends EmailAdapter
 {
     /**
@@ -16,7 +19,7 @@ final class TemplatedEmailAdapter extends EmailAdapter
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function fromMessage($email): SymfonyTemplatedEmail
     {
         $symfonyEmail = parent::fromMessage($email);

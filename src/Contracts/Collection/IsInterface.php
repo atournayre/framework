@@ -9,6 +9,7 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface IsInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface IsInterface
 {
@@ -20,6 +21,6 @@ interface IsInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function is($list, bool $strict = false): BoolEnum;
 }

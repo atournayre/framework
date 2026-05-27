@@ -10,6 +10,7 @@ use Atournayre\Primitives\Traits\StringTypeTrait;
 
 /**
  * Represents a text template path.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final class TextTemplatePath
 {
@@ -20,7 +21,7 @@ final class TextTemplatePath
         return new self(StringType::of(''));
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isEmpty(): BoolEnum
     {
         return $this->value->equalsTo('');

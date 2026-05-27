@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\PluckInterface;
  * Trait Pluck.
  *
  * @see PluckInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Pluck
 {
@@ -18,7 +19,7 @@ trait Pluck
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function pluck(?string $valuecol = null, ?string $indexcol = null): self
     {
         $pluck = $this->collection->pluck($valuecol, $indexcol);

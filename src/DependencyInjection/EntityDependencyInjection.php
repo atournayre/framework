@@ -14,10 +14,11 @@ use Psr\Log\LoggerInterface;
  *
  * This class provides access to commonly used services
  * that can be injected into entities and other objects.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final readonly class EntityDependencyInjection implements DependencyInjectionInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __construct(
         private CommandBusInterface $commandBus,
         private QueryBusInterface $queryBus,
@@ -30,7 +31,7 @@ final readonly class EntityDependencyInjection implements DependencyInjectionInt
      *
      * @return CommandBusInterface The command bus instance
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function commandBus(): CommandBusInterface
     {
         return $this->commandBus;
@@ -41,7 +42,7 @@ final readonly class EntityDependencyInjection implements DependencyInjectionInt
      *
      * @return QueryBusInterface The query bus instance
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function queryBus(): QueryBusInterface
     {
         return $this->queryBus;
@@ -52,7 +53,7 @@ final readonly class EntityDependencyInjection implements DependencyInjectionInt
      *
      * @return LoggerInterface The logger instance
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function logger(): LoggerInterface
     {
         return $this->logger;

@@ -8,6 +8,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface FindInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface FindInterface
 {
@@ -24,6 +25,6 @@ interface FindInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function find(\Closure $callback, mixed $default = null, bool $reverse = false);
 }

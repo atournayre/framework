@@ -8,6 +8,7 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface IntersectAssocInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface IntersectAssocInterface
 {
@@ -18,6 +19,6 @@ interface IntersectAssocInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function intersectAssoc($elements, ?callable $callback = null): self;
 }

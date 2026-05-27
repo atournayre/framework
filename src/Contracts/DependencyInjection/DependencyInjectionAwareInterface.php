@@ -13,6 +13,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * and can access the dependency injection container.
  *
  * For immutable usage, prefer the withDependencyInjection() method over setDependencyInjection().
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface DependencyInjectionAwareInterface
 {
@@ -26,7 +27,7 @@ interface DependencyInjectionAwareInterface
      *
      * @return static A new instance with the dependency injection container set
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withDependencyInjection(DependencyInjectionInterface $dependencyInjection): static;
 
     /**
@@ -39,7 +40,7 @@ interface DependencyInjectionAwareInterface
      *
      * @param DependencyInjectionInterface $dependencyInjection The dependency injection container
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function setDependencyInjection(DependencyInjectionInterface $dependencyInjection): void;
 
     /**
@@ -49,6 +50,6 @@ interface DependencyInjectionAwareInterface
      *
      * @throws ThrowableInterface When dependency injection has not been set
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function dependencyInjection(): DependencyInjectionInterface;
 }

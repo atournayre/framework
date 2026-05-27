@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\ReverseInterface;
  * Trait Reverse.
  *
  * @see ReverseInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Reverse
 {
@@ -18,7 +19,7 @@ trait Reverse
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function reverse(): self
     {
         $reverse = $this->collection->reverse();

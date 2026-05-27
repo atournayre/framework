@@ -9,7 +9,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 
 /**
- * @deprecated Use Collection::readOnly())
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait StaticCollectionTrait
 {
@@ -17,7 +17,7 @@ trait StaticCollectionTrait
 
     protected Collection $collection;
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(Collection $collection)
     {
         $this->collection = $collection;
@@ -28,7 +28,7 @@ trait StaticCollectionTrait
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function add($value, ?\Closure $callback = null): self
     {
         throw BadMethodCallException::new('Static collections cannot be modified.');
@@ -40,7 +40,7 @@ trait StaticCollectionTrait
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function set($key, $value, ?\Closure $callback = null): self
     {
         throw BadMethodCallException::new('Static collections cannot be modified.');
@@ -51,7 +51,7 @@ trait StaticCollectionTrait
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function offsetUnset($offset): void
     {
         throw BadMethodCallException::new('Static collections cannot be modified.');

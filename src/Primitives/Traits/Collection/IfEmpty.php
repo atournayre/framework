@@ -12,6 +12,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait IfEmpty.
  *
  * @see IfEmptyInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait IfEmpty
 {
@@ -22,7 +23,7 @@ trait IfEmpty
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function ifEmpty()
     {
         RuntimeException::new('Not implemented yet!')->throw();

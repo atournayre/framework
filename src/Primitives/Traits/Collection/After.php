@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\AfterInterface;
  * Trait After.
  *
  * @see AfterInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait After
 {
@@ -20,7 +21,7 @@ trait After
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function after($value): self
     {
         $after = $this->collection->after($value);

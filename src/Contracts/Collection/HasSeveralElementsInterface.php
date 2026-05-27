@@ -8,9 +8,10 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface HasSeveralElementsInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface HasSeveralElementsInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function hasSeveralElements(): BoolEnum;
 }

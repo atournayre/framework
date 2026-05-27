@@ -11,6 +11,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait Add.
  *
  * @see AddInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Add
 {
@@ -21,7 +22,7 @@ trait Add
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function add(mixed $value, ?\Closure $callback = null): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());
@@ -44,7 +45,7 @@ trait Add
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function addWithCallback(mixed $value, \Closure $callback): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

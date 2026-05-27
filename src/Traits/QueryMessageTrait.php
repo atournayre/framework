@@ -11,6 +11,7 @@ use Atournayre\Contracts\CommandBus\QueryBusInterface;
  *
  * This trait provides a query() method that can be used by classes
  * implementing QueryInterface to ask themselves through a query bus.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait QueryMessageTrait
 {
@@ -21,7 +22,7 @@ trait QueryMessageTrait
      *
      * @return mixed The result of the query
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function query(QueryBusInterface $bus): mixed
     {
         return $bus->ask($this);

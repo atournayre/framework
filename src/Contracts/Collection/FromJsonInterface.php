@@ -8,6 +8,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface FromJsonInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface FromJsonInterface
 {
@@ -18,6 +19,6 @@ interface FromJsonInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function fromJson();
 }

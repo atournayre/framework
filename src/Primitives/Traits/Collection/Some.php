@@ -11,6 +11,7 @@ use Atournayre\Primitives\BoolEnum;
  * Trait Some.
  *
  * @see SomeInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Some
 {
@@ -21,7 +22,7 @@ trait Some
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function some($values, bool $strict = false): BoolEnum
     {
         $some = $this->collection->some($values, $strict);

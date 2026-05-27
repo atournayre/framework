@@ -6,6 +6,9 @@ namespace Atournayre\Contracts\Templating;
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 interface TemplatingInterface
 {
     /**
@@ -13,6 +16,6 @@ interface TemplatingInterface
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function render(string $template, array $parameters = []): string;
 }

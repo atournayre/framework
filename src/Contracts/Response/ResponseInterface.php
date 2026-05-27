@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atournayre\Contracts\Response;
 
 /**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ResponseInterface
 {

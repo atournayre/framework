@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\SkipInterface;
  * Trait Skip.
  *
  * @see SkipInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Skip
 {
@@ -20,7 +21,7 @@ trait Skip
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function skip($offset): self
     {
         $skip = $this->collection->skip($offset);

@@ -11,6 +11,7 @@ use Atournayre\Primitives\Collection;
  * Trait Diff.
  *
  * @see DiffInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Diff
 {
@@ -22,7 +23,7 @@ trait Diff
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function diff($elements, ?callable $callback = null): self
     {
         if ($elements instanceof self) {

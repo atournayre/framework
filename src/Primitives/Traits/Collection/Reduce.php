@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\ReduceInterface;
  * Trait Reduce.
  *
  * @see ReduceInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Reduce
 {
@@ -23,7 +24,7 @@ trait Reduce
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function reduce(callable $callback, mixed $initial = null)
     {
         return $this->collection->reduce($callback, $initial);

@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\UsortInterface;
  * Trait Usort.
  *
  * @see UsortInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Usort
 {
@@ -18,7 +19,7 @@ trait Usort
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function usort(callable $callback): self
     {
         $this->collection->usort($callback);

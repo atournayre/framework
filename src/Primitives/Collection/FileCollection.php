@@ -14,6 +14,9 @@ use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 use Atournayre\Wrapper\SplFileInfo;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class FileCollection implements LoggableInterface, AsListInterface, AsMapInterface
 {
     use CollectionTrait;
@@ -21,7 +24,7 @@ final class FileCollection implements LoggableInterface, AsListInterface, AsMapI
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asList(array $collection): self
     {
         Assert::isListOf($collection, SplFileInfo::class);
@@ -32,7 +35,7 @@ final class FileCollection implements LoggableInterface, AsListInterface, AsMapI
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asMap(array $collection): self
     {
         Assert::isMapOf($collection, SplFileInfo::class);
@@ -45,7 +48,7 @@ final class FileCollection implements LoggableInterface, AsListInterface, AsMapI
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function filterByExtension(string $extension): self
     {
         $array = $this
@@ -62,7 +65,7 @@ final class FileCollection implements LoggableInterface, AsListInterface, AsMapI
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function filterBySize(int $size): self
     {
         $array = $this
@@ -79,7 +82,7 @@ final class FileCollection implements LoggableInterface, AsListInterface, AsMapI
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function filterByContent(string $content): FileCollection
     {
         $array = $this
@@ -94,7 +97,7 @@ final class FileCollection implements LoggableInterface, AsListInterface, AsMapI
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function totalSize(): Memory
     {
         $sizeInBytes = $this
@@ -110,7 +113,7 @@ final class FileCollection implements LoggableInterface, AsListInterface, AsMapI
     /**
      * @return array<array<string, mixed>>
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toLog(): array
     {
         return $this->collection

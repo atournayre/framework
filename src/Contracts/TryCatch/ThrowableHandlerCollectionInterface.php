@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\AddInterface;
  * Interface ThrowableHandlerCollectionInterface.
  *
  * Defines the contract for a collection of throwable handlers.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ThrowableHandlerCollectionInterface extends AddInterface
 {
@@ -18,6 +19,6 @@ interface ThrowableHandlerCollectionInterface extends AddInterface
      *
      * @return ThrowableHandlerInterface<mixed>|null
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function findHandlerFor(\Throwable $throwable): ?ThrowableHandlerInterface;
 }

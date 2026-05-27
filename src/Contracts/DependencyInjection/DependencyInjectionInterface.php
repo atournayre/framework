@@ -13,6 +13,7 @@ use Psr\Log\LoggerInterface;
  *
  * This interface provides access to commonly used services
  * that can be injected into entities and other objects.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface DependencyInjectionInterface
 {
@@ -21,7 +22,7 @@ interface DependencyInjectionInterface
      *
      * @return CommandBusInterface The command bus instance
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function commandBus(): CommandBusInterface;
 
     /**
@@ -29,7 +30,7 @@ interface DependencyInjectionInterface
      *
      * @return QueryBusInterface The query bus instance
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function queryBus(): QueryBusInterface;
 
     /**
@@ -37,6 +38,6 @@ interface DependencyInjectionInterface
      *
      * @return LoggerInterface The logger instance
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function logger(): LoggerInterface;
 }

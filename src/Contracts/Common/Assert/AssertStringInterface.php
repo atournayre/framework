@@ -6,17 +6,20 @@ namespace Atournayre\Contracts\Common\Assert;
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 interface AssertStringInterface
 {
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function string(mixed $value, string $message = ''): void;
 
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function stringNotEmpty(mixed $value, string $message = ''): void;
 }

@@ -7,6 +7,9 @@ namespace Atournayre\Common\Types\File;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Traits\StringTypeTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class Content
 {
     use StringTypeTrait;
@@ -14,7 +17,7 @@ final class Content
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function containsAny(string $needle): BoolEnum
     {
         return $this->value->containsAny($needle);

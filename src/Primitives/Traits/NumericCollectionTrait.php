@@ -10,11 +10,14 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection as Collection_;
 use Atournayre\Primitives\Numeric;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 trait NumericCollectionTrait
 {
     use CollectionCommonTrait;
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         protected Collection_ $collection,
         protected int $precision,
@@ -26,7 +29,7 @@ trait NumericCollectionTrait
      *
      *@api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     protected static function of(Collection_|AimeosMap|array $collection = [], int $precision = 2): self
     {
         return new self(Collection_::of($collection), $precision);
@@ -37,7 +40,7 @@ trait NumericCollectionTrait
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function add(mixed $numeric): self
     {
         Assert::same($numeric->precision(), $this->precision, 'Precisions must be the same.');
@@ -55,7 +58,7 @@ trait NumericCollectionTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function sum(): Numeric
     {
         if ($this->hasNoElement()->isTrue()) {
@@ -79,7 +82,7 @@ trait NumericCollectionTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function avg(): Numeric
     {
         if ($this->hasNoElement()->isTrue()) {
@@ -105,7 +108,7 @@ trait NumericCollectionTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function max(): Numeric
     {
         if ($this->hasNoElement()->isTrue()) {
@@ -131,7 +134,7 @@ trait NumericCollectionTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function min(): Numeric
     {
         if ($this->hasNoElement()->isTrue()) {
@@ -157,7 +160,7 @@ trait NumericCollectionTrait
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function _validateCollection(): void
     {
         $every = $this->collection

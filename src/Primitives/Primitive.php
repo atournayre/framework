@@ -9,6 +9,9 @@ use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Traits\EnumTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 enum Primitive: string
 {
     use EnumTrait;
@@ -29,7 +32,7 @@ enum Primitive: string
 
     case MIXED = 'mixed';
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private static function types(): Collection
     {
         return Collection::of([
@@ -43,7 +46,7 @@ enum Primitive: string
         ]);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isMixed(): BoolEnum
     {
         $isMixed = $this->is(self::MIXED);
@@ -51,7 +54,7 @@ enum Primitive: string
         return BoolEnum::fromBool($isMixed);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isPrimitive(): BoolEnum
     {
         return self::types()
@@ -62,7 +65,7 @@ enum Primitive: string
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function assert(self $primitive, mixed $value, string $message = ''): void
     {
         $this

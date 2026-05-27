@@ -11,6 +11,7 @@ use Atournayre\Primitives\BoolEnum;
  * Trait StrStarts.
  *
  * @see StrStartsInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait StrStarts
 {
@@ -22,7 +23,7 @@ trait StrStarts
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function strStarts($value, string $encoding = 'UTF-8'): BoolEnum
     {
         $strStarts = $this->collection->strStarts($value, $encoding);

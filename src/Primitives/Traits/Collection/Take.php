@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\TakeInterface;
  * Trait Take.
  *
  * @see TakeInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Take
 {
@@ -21,7 +22,7 @@ trait Take
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function take(int $size, $offset = 0): self
     {
         $take = $this->collection->take($size, $offset);

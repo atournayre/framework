@@ -6,6 +6,9 @@ namespace Atournayre\Common\VO;
 
 use Atournayre\Primitives\Collection;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class Duration
 {
     private const MILLISECONDS_IN_SECOND = 1000;
@@ -16,7 +19,7 @@ final readonly class Duration
 
     private const HOURS_IN_DAY = 24;
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         private float|int $milliseconds,
     ) {
@@ -25,7 +28,7 @@ final readonly class Duration
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function of(float|int $milliseconds): self
     {
         return new self($milliseconds);
@@ -36,7 +39,7 @@ final readonly class Duration
      *
      * @return int|float
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function asIs()
     {
         return $this->milliseconds;
@@ -47,7 +50,7 @@ final readonly class Duration
      *
      * @return int|float
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function milliseconds()
     {
         return $this->milliseconds;
@@ -56,7 +59,7 @@ final readonly class Duration
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function inSeconds(): float
     {
         return $this->milliseconds / self::MILLISECONDS_IN_SECOND;
@@ -65,7 +68,7 @@ final readonly class Duration
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function inMinutes(): float
     {
         return $this->milliseconds / self::MILLISECONDS_IN_SECOND / self::SECONDS_IN_MINUTE;
@@ -74,7 +77,7 @@ final readonly class Duration
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function inHours(): float
     {
         return $this->milliseconds / self::MILLISECONDS_IN_SECOND / self::SECONDS_IN_MINUTE / self::MINUTES_IN_HOUR;
@@ -83,7 +86,7 @@ final readonly class Duration
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function inDays(): float
     {
         return $this->milliseconds / self::MILLISECONDS_IN_SECOND / self::SECONDS_IN_MINUTE / self::MINUTES_IN_HOUR / self::HOURS_IN_DAY;
@@ -92,7 +95,7 @@ final readonly class Duration
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function humanReadable(string $glue = ' '): string
     {
         $days = floor($this->milliseconds / self::MILLISECONDS_IN_SECOND / self::SECONDS_IN_MINUTE / self::MINUTES_IN_HOUR / self::HOURS_IN_DAY);

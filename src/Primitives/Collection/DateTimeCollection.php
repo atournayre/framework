@@ -11,6 +11,9 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class DateTimeCollection implements AsListInterface
 {
     use CollectionTrait;
@@ -18,7 +21,7 @@ final class DateTimeCollection implements AsListInterface
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asList(array $collection): self
     {
         Assert::isListOf($collection, DateTimeInterface::class);
@@ -31,7 +34,7 @@ final class DateTimeCollection implements AsListInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function sortAsc(): self
     {
         $clone = clone $this;
@@ -50,7 +53,7 @@ final class DateTimeCollection implements AsListInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function sortDesc(): self
     {
         $clone = clone $this;
@@ -69,7 +72,7 @@ final class DateTimeCollection implements AsListInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function mostRecent(): DateTimeInterface
     {
         return $this
@@ -84,7 +87,7 @@ final class DateTimeCollection implements AsListInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function oldest(): DateTimeInterface
     {
         return $this
@@ -99,7 +102,7 @@ final class DateTimeCollection implements AsListInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function between(DateTimeInterface $start, DateTimeInterface $end): self
     {
         $clone = clone $this;
@@ -118,7 +121,7 @@ final class DateTimeCollection implements AsListInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function before(DateTimeInterface $date): self
     {
         $clone = clone $this;
@@ -137,7 +140,7 @@ final class DateTimeCollection implements AsListInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function after(DateTimeInterface $date): self
     {
         $clone = clone $this;

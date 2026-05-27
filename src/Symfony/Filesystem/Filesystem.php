@@ -15,9 +15,12 @@ use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class Filesystem implements FilesystemInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         private DirectoryOrFile $directoryOrFile,
         private Finder $finder,
@@ -25,7 +28,7 @@ final readonly class Filesystem implements FilesystemInterface
     ) {
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function from(string $directoryOrFile): self
     {
         return new self(
@@ -35,7 +38,7 @@ final readonly class Filesystem implements FilesystemInterface
         );
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function createDirectory(string $directory): void
     {
         $directoryToCreate = $this->concatWithDirectoryOrFile($directory);
@@ -46,7 +49,7 @@ final readonly class Filesystem implements FilesystemInterface
         ;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function concatWithDirectoryOrFile(string $directoryOrFile): string
     {
         return $this->directoryOrFile
@@ -55,7 +58,7 @@ final readonly class Filesystem implements FilesystemInterface
         ;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function removeDirectory(string $directory): void
     {
         $directoryToRemove = $this->concatWithDirectoryOrFile($directory);
@@ -66,7 +69,7 @@ final readonly class Filesystem implements FilesystemInterface
         ;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function removeFile(string $file): void
     {
         $fileToRemove = $this->concatWithDirectoryOrFile($file);
@@ -77,7 +80,7 @@ final readonly class Filesystem implements FilesystemInterface
         ;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function createFile(string $file, string $content): void
     {
         $file = $this->directoryOrFile
@@ -91,7 +94,7 @@ final readonly class Filesystem implements FilesystemInterface
         ;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function copyFile(string $source, string $destination): void
     {
         $source = $this->directoryOrFile
@@ -110,7 +113,7 @@ final readonly class Filesystem implements FilesystemInterface
         ;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function copyDirectory(string $source, string $destination): void
     {
         $source = $this->directoryOrFile
@@ -129,7 +132,7 @@ final readonly class Filesystem implements FilesystemInterface
         ;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function moveFile(string $source, string $destination): void
     {
         $source = $this->directoryOrFile
@@ -148,25 +151,25 @@ final readonly class Filesystem implements FilesystemInterface
         ;
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function moveDirectory(string $source, string $destination): void
     {
         $this->moveFile($source, $destination);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function renameFile(string $source, string $destination): void
     {
         $this->moveFile($source, $destination);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function renameDirectory(string $source, string $destination): void
     {
         $this->moveFile($source, $destination);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function exists(): BoolEnum
     {
         $exists = $this
@@ -177,7 +180,7 @@ final readonly class Filesystem implements FilesystemInterface
         return BoolEnum::fromBool($exists);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isFile(): BoolEnum
     {
         $filename = $this->directoryOrFile->toString();
@@ -186,7 +189,7 @@ final readonly class Filesystem implements FilesystemInterface
         return BoolEnum::fromBool($isFile);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isDirectory(): BoolEnum
     {
         $filename = $this->directoryOrFile->toString();
@@ -198,7 +201,7 @@ final readonly class Filesystem implements FilesystemInterface
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isNotEmpty(): BoolEnum
     {
         $isNotEmpty = $this->isEmpty()
@@ -211,7 +214,7 @@ final readonly class Filesystem implements FilesystemInterface
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isEmpty(): BoolEnum
     {
         $isEmpty = $this->listFiles()->hasNoElement()->isTrue()
@@ -223,7 +226,7 @@ final readonly class Filesystem implements FilesystemInterface
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function countFiles(): int
     {
         return $this->listFiles()
@@ -235,7 +238,7 @@ final readonly class Filesystem implements FilesystemInterface
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function listFiles(): FileCollection
     {
         $finder = $this->finder
@@ -252,7 +255,7 @@ final readonly class Filesystem implements FilesystemInterface
      *
      * @return array<int|string, SplFileInfo>
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function fromIteratorToSplFileInfos(iterable $files): array
     {
         return Collection::of($files)
@@ -268,7 +271,7 @@ final readonly class Filesystem implements FilesystemInterface
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function countDirectories(): int
     {
         return $this->listDirectories()
@@ -280,7 +283,7 @@ final readonly class Filesystem implements FilesystemInterface
     /**
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function listDirectories(): FileCollection
     {
         $finder = $this->finder
@@ -292,7 +295,7 @@ final readonly class Filesystem implements FilesystemInterface
         return FileCollection::asMap($files);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isReadable(): BoolEnum
     {
         $filename = $this->directoryOrFile->toString();
@@ -301,7 +304,7 @@ final readonly class Filesystem implements FilesystemInterface
         return BoolEnum::fromBool($isReadable);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isWritable(): BoolEnum
     {
         $filename = $this->directoryOrFile->toString();
@@ -310,7 +313,7 @@ final readonly class Filesystem implements FilesystemInterface
         return BoolEnum::fromBool($isWritable);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isExecutable(): BoolEnum
     {
         $filename = $this->directoryOrFile->toString();
@@ -319,7 +322,7 @@ final readonly class Filesystem implements FilesystemInterface
         return BoolEnum::fromBool($isExecutable);
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isLink(): BoolEnum
     {
         $filename = $this->directoryOrFile->toString();

@@ -11,10 +11,11 @@ use Atournayre\Primitives\BoolEnum;
  * Trait HasXElements.
  *
  * @see HasXElementsInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait HasXElements
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function hasXElements(int $int): BoolEnum
     {
         return $this->count()->equalsTo($int);

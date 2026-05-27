@@ -12,6 +12,7 @@ use Atournayre\Primitives\Numeric;
  * Trait Sum.
  *
  * @see SumInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Sum
 {
@@ -22,7 +23,7 @@ trait Sum
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function sum(?string $key = null): Numeric
     {
         $sum = $this->collection->sum($key);

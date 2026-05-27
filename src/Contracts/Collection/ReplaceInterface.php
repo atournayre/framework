@@ -8,6 +8,7 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface ReplaceInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ReplaceInterface
 {
@@ -19,6 +20,6 @@ interface ReplaceInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function replace($elements, bool $recursive = true): self;
 }

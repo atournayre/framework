@@ -12,6 +12,7 @@ use Atournayre\Primitives\Collection;
  * Trait Equals.
  *
  * @see EqualsInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Equals
 {
@@ -22,7 +23,7 @@ trait Equals
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function equals($elements): BoolEnum
     {
         if ($elements instanceof self) {

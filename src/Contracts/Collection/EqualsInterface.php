@@ -9,6 +9,7 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface EqualsInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface EqualsInterface
 {
@@ -19,6 +20,6 @@ interface EqualsInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function equals($elements): BoolEnum;
 }

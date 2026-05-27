@@ -13,14 +13,17 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
  * Handler for DatabasePersistCommand.
  */
 #[AsMessageHandler]
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class DatabasePersistHandler implements DatabasePersistHandlerInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __construct(private EntityManagerInterface $entityManager)
     {
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __invoke(DatabasePersistCommand $command): void
     {
         $this->entityManager->persist($command->object());

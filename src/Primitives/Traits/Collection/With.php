@@ -12,6 +12,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait With.
  *
  * @see WithInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait With
 {
@@ -25,7 +26,7 @@ trait With
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function with($key, mixed $value): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

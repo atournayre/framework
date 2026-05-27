@@ -9,12 +9,15 @@ use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\Traits\StringTypeTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class PlainPassword implements NullableInterface
 {
     use StringTypeTrait;
     use NullTrait;
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asNull(): self
     {
         return (new self(StringType::of('')))

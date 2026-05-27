@@ -12,6 +12,9 @@ use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class ValidationCollection implements AsMapInterface
 {
     use CollectionTrait;
@@ -21,7 +24,7 @@ final class ValidationCollection implements AsMapInterface
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asMap(array $collection): self
     {
         Assert::isMapOf($collection, 'string');
@@ -29,7 +32,7 @@ final class ValidationCollection implements AsMapInterface
         return new self(Collection::of($collection));
     }
 
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isValid(): BoolEnum
     {
         return $this->hasNoElement();
@@ -38,7 +41,7 @@ final class ValidationCollection implements AsMapInterface
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toString(string $glue = ', '): string
     {
         return $this->collection
@@ -51,7 +54,7 @@ final class ValidationCollection implements AsMapInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function throwException(string $glue = ', '): void
     {
         if ($this->hasNoElement()->yes()) {

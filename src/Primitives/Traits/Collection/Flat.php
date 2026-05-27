@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\FlatInterface;
  * Trait Flat.
  *
  * @see FlatInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Flat
 {
@@ -18,7 +19,7 @@ trait Flat
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function flat(?int $depth = null): self
     {
         $flat = $this->collection->flat($depth);

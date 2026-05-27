@@ -15,9 +15,12 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\StringType;
 use Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class SplFileInfo implements LoggableInterface
 {
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         private SymfonySplFileInfo $splFileInfo,
     ) {
@@ -26,7 +29,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function of(string $file, string $relativePath, string $relativePathname): self
     {
         $splFileInfo = new SymfonySplFileInfo($file, $relativePath, $relativePathname);
@@ -39,7 +42,7 @@ final readonly class SplFileInfo implements LoggableInterface
      *
      * @throws ThrowableInterface
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toLog(): array
     {
         return [
@@ -51,7 +54,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function relativePath(): Path
     {
         $relativePath = $this->splFileInfo->getRelativePath();
@@ -62,7 +65,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function relativePathname(): Path
     {
         $relativePathname = $this->splFileInfo->getRelativePathname();
@@ -73,7 +76,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function filenameWithoutExtension(): StringType
     {
         $filename = $this->splFileInfo->getFilenameWithoutExtension();
@@ -84,7 +87,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function contents(): Content
     {
         $contents = $this->splFileInfo->getContents();
@@ -95,7 +98,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function extension(): Extension
     {
         $extension = $this->splFileInfo->getExtension();
@@ -108,7 +111,7 @@ final readonly class SplFileInfo implements LoggableInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function size(): Memory
     {
         $size = $this->splFileInfo->getSize();
@@ -121,7 +124,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function filename(): Filename
     {
         $filename = $this->splFileInfo->getFilename();
@@ -132,7 +135,7 @@ final readonly class SplFileInfo implements LoggableInterface
     /**
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function pathname(): Path
     {
         $pathname = $this->splFileInfo->getPathname();

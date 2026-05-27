@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\RemoveInterface;
  * Trait Remove.
  *
  * @see RemoveInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Remove
 {
@@ -20,7 +21,7 @@ trait Remove
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function remove($keys): self
     {
         $remove = $this->collection->remove($keys);

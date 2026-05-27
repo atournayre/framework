@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\CastInterface;
  * Trait Cast.
  *
  * @see CastInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Cast
 {
@@ -18,7 +19,7 @@ trait Cast
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function cast(string $type = 'string'): self
     {
         $cast = $this->collection->cast($type);

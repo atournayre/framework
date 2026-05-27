@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\RandomInterface;
  * Trait Random.
  *
  * @see RandomInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Random
 {
@@ -20,7 +21,7 @@ trait Random
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function random(int $max = 1): self
     {
         $random = $this->collection->random($max);

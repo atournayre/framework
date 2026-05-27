@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\FilterInterface;
  * Trait Filter.
  *
  * @see FilterInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Filter
 {
@@ -18,7 +19,7 @@ trait Filter
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function filter(?callable $callback = null): self
     {
         $filtered = $this->collection->filter($callback);

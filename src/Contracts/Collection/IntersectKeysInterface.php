@@ -8,6 +8,7 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface IntersectKeysInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface IntersectKeysInterface
 {
@@ -18,6 +19,6 @@ interface IntersectKeysInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function intersectKeys($elements, ?callable $callback = null): self;
 }

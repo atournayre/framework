@@ -9,6 +9,7 @@ use Atournayre\Primitives\Numeric;
 
 /**
  * Interface SumInterface.
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface SumInterface
 {
@@ -19,6 +20,6 @@ interface SumInterface
      *
      * @api
      */
-    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function sum(?string $key = null): Numeric;
 }
