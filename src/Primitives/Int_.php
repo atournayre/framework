@@ -7,8 +7,15 @@ namespace Atournayre\Primitives;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class Int_
 {
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         private int $value,
     ) {
@@ -18,7 +25,10 @@ final readonly class Int_
      * @param int|string|Int_ $value
      *
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function of($value): self
     {
         if ($value instanceof self) {
@@ -32,7 +42,10 @@ final readonly class Int_
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function value(): int
     {
         return $this->value;
@@ -40,7 +53,10 @@ final readonly class Int_
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toString(): string
     {
         return (string) $this->value;
@@ -48,7 +64,10 @@ final readonly class Int_
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isPositive(): BoolEnum
     {
         $isPositive = $this->value > 0;
@@ -58,7 +77,10 @@ final readonly class Int_
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isNegative(): BoolEnum
     {
         $isNegative = $this->value < 0;
@@ -70,7 +92,10 @@ final readonly class Int_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isZero(): BoolEnum
     {
         return $this->equalsTo(0);
@@ -80,7 +105,10 @@ final readonly class Int_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function abs(): self
     {
         return Int_::of(abs($this->value));
@@ -93,7 +121,10 @@ final readonly class Int_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function between($of, $of1): BoolEnum
     {
         $of = self::of($of);
@@ -112,7 +143,10 @@ final readonly class Int_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function betweenOrEqual($of, $of1): BoolEnum
     {
         $of = self::of($of);
@@ -126,7 +160,10 @@ final readonly class Int_
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isEven(): BoolEnum
     {
         $isEven = 0 === $this->value % 2;
@@ -136,7 +173,10 @@ final readonly class Int_
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isOdd(): BoolEnum
     {
         $isOdd = 0 !== $this->value % 2;
@@ -150,7 +190,10 @@ final readonly class Int_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function greaterThan($of): BoolEnum
     {
         $of = self::of($of);
@@ -165,7 +208,10 @@ final readonly class Int_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function greaterThanOrEqual($of): BoolEnum
     {
         $of = self::of($of);
@@ -180,7 +226,10 @@ final readonly class Int_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function lessThan($of): BoolEnum
     {
         $of = self::of($of);
@@ -195,7 +244,10 @@ final readonly class Int_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function lessThanOrEqual($of): BoolEnum
     {
         $of = self::of($of);
@@ -210,7 +262,10 @@ final readonly class Int_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function equalsTo($of): BoolEnum
     {
         $of = self::of($of);

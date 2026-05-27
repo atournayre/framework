@@ -9,12 +9,19 @@ use Atournayre\Component\Mailer\Types\AttachmentMaxSize;
 use Atournayre\Component\Mailer\VO\EmailContact;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class MailerConfiguration
 {
     private EmailContact $from;
 
     private AttachmentMaxSize $attachmentsMaxSize;
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         private EmailContactCollection $replyTos,
     ) {
@@ -24,7 +31,10 @@ final class MailerConfiguration
      * @api
      *
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function create(): self
     {
         return new self(
@@ -34,7 +44,10 @@ final class MailerConfiguration
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withFrom(EmailContact $from): self
     {
         $clone = clone $this;
@@ -45,7 +58,10 @@ final class MailerConfiguration
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function from(): EmailContact
     {
         return $this->from;
@@ -55,7 +71,10 @@ final class MailerConfiguration
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withReplyTo(EmailContact $replyToAddress): self
     {
         $clone = clone $this;
@@ -68,7 +87,10 @@ final class MailerConfiguration
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withReplyTos(EmailContactCollection $replyToCollection): self
     {
         $clone = clone $this;
@@ -79,7 +101,10 @@ final class MailerConfiguration
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function replyTos(): EmailContactCollection
     {
         return $this->replyTos;
@@ -87,7 +112,10 @@ final class MailerConfiguration
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withAttachmentsMaxSize(AttachmentMaxSize $attachmentsMaxSize): self
     {
         $clone = clone $this;
@@ -98,7 +126,10 @@ final class MailerConfiguration
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function attachmentsMaxSize(): AttachmentMaxSize
     {
         return $this->attachmentsMaxSize;

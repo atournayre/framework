@@ -1,10 +1,13 @@
 {
     "name": "atournayre/framework",
-    "description": "A framework and helpers on top of Symfony",
+    "description": "DEPRECATED: Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework",
     "type": "library",
     "keywords": [
         "framework",
-        "dev"
+        "dev",
+        "deprecated",
+        "migration",
+        "tournayrelabs"
     ],
     "license": "MIT",
     "authors": [

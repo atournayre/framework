@@ -7,14 +7,19 @@ namespace Atournayre\Null;
 use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 trait NullTrait
 {
     protected NullEnum $null;
 
     /**
      * @param array<int, mixed> $arguments
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    // @phpstan-ignore-next-line
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __call(string $name, array $arguments)
     {
         if ('__construct' === $name) {
@@ -24,6 +29,10 @@ trait NullTrait
         return null;
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function initializeNull(?bool $isNull = null): void
     {
         $this->null = NullEnum::fromBool($isNull ?? false);
@@ -31,7 +40,10 @@ trait NullTrait
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toNullable(): self
     {
         $clone = clone $this;
@@ -42,7 +54,10 @@ trait NullTrait
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isNull(): bool
     {
         return $this->null->isNull();
@@ -50,7 +65,10 @@ trait NullTrait
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isNotNull(): bool
     {
         return $this->null->isNotNull();
@@ -58,7 +76,10 @@ trait NullTrait
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asNull(): self
     {
         $self = new self();
@@ -69,7 +90,10 @@ trait NullTrait
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function orNull(): self
     {
         if ($this->null->isNull()) {
@@ -83,7 +107,10 @@ trait NullTrait
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function orThrow($throwable): self
     {
         if ($this->null->isNotNull()) {

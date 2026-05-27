@@ -11,6 +11,9 @@ use Atournayre\Null\NullTrait;
 use Atournayre\Primitives\StringType;
 use Atournayre\Primitives\Traits\StringTypeTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class EmailText implements NullableInterface
 {
     use NullTrait;
@@ -18,7 +21,10 @@ final class EmailText implements NullableInterface
 
     /**
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function of(string $value): self
     {
         Assert::stringNotEmpty($value, 'Email text cannot be empty.');
@@ -26,6 +32,10 @@ final class EmailText implements NullableInterface
         return new self(StringType::of($value));
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asNull(): self
     {
         return (new self(StringType::of('')))

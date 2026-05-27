@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\ShuffleInterface;
  * Trait Shuffle.
  *
  * @see ShuffleInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Shuffle
 {
@@ -17,7 +18,10 @@ trait Shuffle
      * Randomizes the element order.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function shuffle(bool $assoc = false): self
     {
         $shuffle = $this->collection->shuffle($assoc);

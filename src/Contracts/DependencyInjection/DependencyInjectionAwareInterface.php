@@ -13,6 +13,8 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * and can access the dependency injection container.
  *
  * For immutable usage, prefer the withDependencyInjection() method over setDependencyInjection().
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface DependencyInjectionAwareInterface
 {
@@ -25,7 +27,10 @@ interface DependencyInjectionAwareInterface
      * @param DependencyInjectionInterface $dependencyInjection The dependency injection container
      *
      * @return static A new instance with the dependency injection container set
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withDependencyInjection(DependencyInjectionInterface $dependencyInjection): static;
 
     /**
@@ -37,7 +42,10 @@ interface DependencyInjectionAwareInterface
      * For application code that follows immutable patterns, prefer withDependencyInjection().
      *
      * @param DependencyInjectionInterface $dependencyInjection The dependency injection container
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function setDependencyInjection(DependencyInjectionInterface $dependencyInjection): void;
 
     /**
@@ -46,6 +54,9 @@ interface DependencyInjectionAwareInterface
      * @return DependencyInjectionInterface The dependency injection container
      *
      * @throws ThrowableInterface When dependency injection has not been set
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function dependencyInjection(): DependencyInjectionInterface;
 }

@@ -8,6 +8,8 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface LastInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface LastInterface
 {
@@ -21,6 +23,9 @@ interface LastInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function last($default = null);
 }

@@ -6,6 +6,8 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface CombineInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface CombineInterface
 {
@@ -15,6 +17,9 @@ interface CombineInterface
      * @param iterable<int|string,mixed> $values
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function combine(iterable $values): self;
 }

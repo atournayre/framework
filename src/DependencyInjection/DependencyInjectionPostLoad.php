@@ -18,9 +18,15 @@ use Doctrine\ORM\Event\PostLoadEventArgs;
  * with existing entity instances that cannot be replaced with new instances.
  * The immutable withDependencyInjection() method is not suitable for this use case
  * as it returns a new instance.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final readonly class DependencyInjectionPostLoad implements PostLoadHandlerInterface
 {
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __construct(
         private EntityDependencyInjection $entityDependencyInjection,
     ) {
@@ -30,7 +36,10 @@ final readonly class DependencyInjectionPostLoad implements PostLoadHandlerInter
      * Handles the PostLoad event.
      *
      * @param PostLoadEventArgs $args The event arguments
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __invoke(PostLoadEventArgs $args): void
     {
         $entity = $args->getObject();

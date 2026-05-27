@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\BeforeInterface;
  * Trait Before.
  *
  * @see BeforeInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Before
 {
@@ -19,7 +20,10 @@ trait Before
      * @param \Closure|int|string $value
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function before($value): self
     {
         $before = $this->collection->before($value);

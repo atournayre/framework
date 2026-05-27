@@ -8,6 +8,8 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface JsonSerializeInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface JsonSerializeInterface
 {
@@ -17,7 +19,9 @@ interface JsonSerializeInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function jsonSerialize();
 }

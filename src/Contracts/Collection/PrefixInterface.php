@@ -6,6 +6,8 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface PrefixInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface PrefixInterface
 {
@@ -16,6 +18,9 @@ interface PrefixInterface
      * @param int|null        $depth  Maximum depth to dive into multi-dimensional arrays starting from "1"
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function prefix($prefix, ?int $depth = null): self;
 }

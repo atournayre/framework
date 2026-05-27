@@ -11,13 +11,19 @@ use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class TemplateContextCollection implements AsMapInterface
 {
     use CollectionTrait;
 
     /**
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asMap(array $collection): self
     {
         Assert::isMapOf($collection, 'mixed');
@@ -29,7 +35,10 @@ final class TemplateContextCollection implements AsMapInterface
      * @api
      *
      * @param mixed|null $offset
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function has($offset): BoolEnum
     {
         return $this->collection

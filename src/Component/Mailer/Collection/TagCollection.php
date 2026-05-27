@@ -11,6 +11,9 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class TagCollection implements LoggableInterface, AsMapInterface
 {
     use CollectionTrait;
@@ -23,7 +26,10 @@ final class TagCollection implements LoggableInterface, AsMapInterface
      * @param array<string, mixed> $collection
      *
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asMap(array $collection): self
     {
         Assert::isMapOf($collection, 'string');
@@ -37,7 +43,10 @@ final class TagCollection implements LoggableInterface, AsMapInterface
 
     /**
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private static function validateElement(string $value): void
     {
         Assert::lengthBetween(
@@ -50,7 +59,10 @@ final class TagCollection implements LoggableInterface, AsMapInterface
 
     /**
      * @return array<string>
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toLog(): array
     {
         return $this->collection

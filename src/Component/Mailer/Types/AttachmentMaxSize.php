@@ -7,13 +7,19 @@ namespace Atournayre\Component\Mailer\Types;
 use Atournayre\Common\VO\Memory;
 use Atournayre\Primitives\Traits\NumericTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class AttachmentMaxSize
 {
     use NumericTrait;
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function memory(): Memory
     {
         return Memory::fromBytes($this->value->intValue());

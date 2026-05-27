@@ -6,6 +6,8 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface ReverseInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ReverseInterface
 {
@@ -13,6 +15,9 @@ interface ReverseInterface
      * Reverses the array order preserving keys.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function reverse(): self;
 }

@@ -13,6 +13,8 @@ use Atournayre\Traits\CommandMessageTrait;
  * This class provides a fluent interface for command creation and dispatching.
  * Instead of using $commandBus->dispatch(new MyCommand()), you can now use
  * MyCommand::new()->dispatch($commandBus).
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 abstract class AbstractCommandEvent implements CommandInterface
 {

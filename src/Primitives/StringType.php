@@ -10,6 +10,9 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 use function Symfony\Component\String\u;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class StringType implements \Stringable
 {
     /** @api */
@@ -24,6 +27,10 @@ final readonly class StringType implements \Stringable
     /** @api */
     public const NFKD = \Normalizer::NFKD;
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         private string $value,
     ) {
@@ -33,7 +40,10 @@ final readonly class StringType implements \Stringable
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function fromPattern(string $string, mixed ...$arg): self
     {
         Assert::allString([...$arg], 'The arguments must be strings');
@@ -42,6 +52,10 @@ final readonly class StringType implements \Stringable
         return self::of($string);
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function of(string $value): self
     {
         return new self($value);
@@ -49,7 +63,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function append(string ...$suffix): self
     {
         $u = u($this->value)->append(...$suffix);
@@ -65,7 +82,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string[]|\Transliterator[]|\Closure[] $rules See "*-Latin" rules from Transliterator::listIDs()
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function ascii(array $rules = []): self
     {
         $u = u($this->value)->ascii($rules);
@@ -75,7 +95,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function camel(): self
     {
         $u = u($this->value)->camel();
@@ -87,7 +110,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @return self[]
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function chunk(int $length = 1): array
     {
         $chunks = u($this->value)->chunk($length);
@@ -99,7 +125,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @return int[]
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function codePointsAt(int $offset): array
     {
         return u($this->value)->codePointsAt($offset);
@@ -109,7 +138,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string|string[] $needle
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function containsAny($needle): BoolEnum
     {
         $containsAny = u($this->value)->containsAny($needle);
@@ -121,7 +153,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string|string[] $suffix
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function endsWith($suffix): BoolEnum
     {
         $endsWith = u($this->value)->endsWith($suffix);
@@ -133,7 +168,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string|string[] $string
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function equalsTo($string): BoolEnum
     {
         $equalsTo = u($this->value)->equalsTo($string);
@@ -143,8 +181,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    // @phpstan-ignore-next-line
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function filterVar(int $filter = FILTER_DEFAULT, $options = null): self
     {
         $filterVar = filter_var($this->value, $filter, $options ?? []);
@@ -162,7 +202,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function folded(bool $compat = true): self
     {
         $u = u($this->value)->folded($compat);
@@ -174,7 +217,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string|string[] $needle
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function indexOf($needle, int $offset = 0): ?int
     {
         return u($this->value)->indexOf($needle, $offset);
@@ -184,7 +230,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string|string[] $needle
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function indexOfLast($needle, int $offset = 0): ?int
     {
         return u($this->value)->indexOfLast($needle, $offset);
@@ -192,8 +241,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    // @phpstan-ignore-next-line
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function join(array $strings, ?string $lastGlue = null): self
     {
         $u = u($this->value)->join($strings, $lastGlue);
@@ -203,7 +254,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function kebab(): self
     {
         $u = u($this->value)->snake()->replace('_', '-');
@@ -213,7 +267,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function length(): Numeric
     {
         $length = u($this->value)->length();
@@ -225,7 +282,10 @@ final readonly class StringType implements \Stringable
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function lengthIsBetween(int $start, int $end): BoolEnum
     {
         return self::of($this->value)
@@ -236,7 +296,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function lower(): self
     {
         $u = u($this->value)->lower();
@@ -247,7 +310,6 @@ final readonly class StringType implements \Stringable
     /**
      * @api
      */
-    // @phpstan-ignore-next-line
     public function match(string $regexp, int $flags = 0, int $offset = 0): array
     {
         return u($this->value)->match($regexp, $flags, $offset);
@@ -255,7 +317,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function normalize(int $form = self::NFC): self
     {
         $u = u($this->value)->normalize($form);
@@ -265,7 +330,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function padBoth(int $length, string $padStr = ' '): self
     {
         $u = u($this->value)->padBoth($length, $padStr);
@@ -275,7 +343,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function padEnd(int $length, string $padStr = ' '): self
     {
         $u = u($this->value)->padEnd($length, $padStr);
@@ -285,7 +356,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function padStart(int $length, string $padStr = ' '): self
     {
         $u = u($this->value)->padStart($length, $padStr);
@@ -295,7 +369,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function prepend(string ...$prefix): self
     {
         $u = u($this->value)->prepend(...$prefix);
@@ -305,7 +382,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function repeat(int $multiplier): self
     {
         $u = u($this->value)->repeat($multiplier);
@@ -315,7 +395,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function replace(string $from, string $to): self
     {
         $u = u($this->value)->replace($from, $to);
@@ -327,7 +410,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string|callable $to
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function replaceMatches(string $fromRegexp, $to): self
     {
         $u = u($this->value)->replaceMatches($fromRegexp, $to);
@@ -337,7 +423,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function reverse(): self
     {
         $u = u($this->value)->reverse();
@@ -347,7 +436,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function screamingKebab(): self
     {
         return self::of($this->value)->kebab()->upper();
@@ -355,7 +447,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function screamingSnake(): self
     {
         return self::of($this->value)->snake()->upper();
@@ -363,7 +458,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function slice(int $start = 0, ?int $length = null): self
     {
         $u = u($this->value)->slice($start, $length);
@@ -373,7 +471,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function snake(): self
     {
         $u = u($this->value)->snake();
@@ -383,7 +484,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function splice(string $replacement, int $start = 0, ?int $length = null): self
     {
         $u = u($this->value)->splice($replacement, $start, $length);
@@ -395,7 +499,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @return self[]
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function split(string $delimiter, ?int $limit = null, ?int $flags = null): array
     {
         $splits = u($this->value)->split($delimiter, $limit, $flags);
@@ -407,7 +514,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string|string[] $prefix
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function startsWith($prefix): BoolEnum
     {
         $startsWith = u($this->value)->startsWith($prefix);
@@ -417,7 +527,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function title(bool $allWords = false): self
     {
         $u = u($this->value)->title($allWords);
@@ -427,7 +540,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function trim(string $chars = " \t\n\r\0\x0B\x0C\u{A0}\u{FEFF}"): self
     {
         $u = u($this->value)->trim($chars);
@@ -437,7 +553,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function trimEnd(string $chars = " \t\n\r\0\x0B\x0C\u{A0}\u{FEFF}"): self
     {
         $u = u($this->value)->trimEnd($chars);
@@ -449,7 +568,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string|string[] $prefix
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function trimPrefix($prefix): self
     {
         $u = u($this->value)->trimPrefix($prefix);
@@ -459,7 +581,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function trimStart(string $chars = " \t\n\r\0\x0B\x0C\u{A0}\u{FEFF}"): self
     {
         $u = u($this->value)->trimStart($chars);
@@ -471,7 +596,10 @@ final readonly class StringType implements \Stringable
      * @api
      *
      * @param string|string[] $suffix
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function trimSuffix($suffix): self
     {
         $u = u($this->value)->trimSuffix($suffix);
@@ -481,7 +609,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function upper(): self
     {
         $u = u($this->value)->upper();
@@ -491,7 +622,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toString(): string
     {
         return $this->value;
@@ -499,7 +633,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function width(bool $ignoreAnsiDecoration = true): Numeric
     {
         $width = u($this->value)->width($ignoreAnsiDecoration);
@@ -507,6 +644,10 @@ final readonly class StringType implements \Stringable
         return Numeric::of($width);
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __toString(): string
     {
         return $this->value;
@@ -514,7 +655,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function ensureEnd(string $string): self
     {
         $u = u($this->value)->ensureEnd($string);
@@ -524,7 +668,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function ensureStart(string $string): self
     {
         $u = u($this->value)->ensureStart($string);
@@ -534,7 +681,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function beforeLast(string $string): self
     {
         $u = u($this->value)->beforeLast($string);
@@ -544,7 +694,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function afterLast(string $string): self
     {
         $u = u($this->value)->afterLast($string);
@@ -554,7 +707,10 @@ final readonly class StringType implements \Stringable
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function truncate(int $int): self
     {
         $u = u($this->value)->truncate($int);
@@ -571,7 +727,10 @@ final readonly class StringType implements \Stringable
      * @param callable $callback  The callback to execute if the condition is true
      *
      * @return self The modified string if the condition is true, otherwise the original string
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function when(bool $condition, callable $callback): self
     {
         if ($condition) {

@@ -12,6 +12,8 @@ namespace Atournayre\Contracts\Persistance;
  * - Controllers via DoctrineTransactionSubscriber
  * - Console commands via DoctrineCommandTransactionSubscriber
  * - Messenger handlers via DoctrineTransactionMiddleware
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface AllowFlushInterface
 {

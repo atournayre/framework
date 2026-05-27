@@ -6,6 +6,8 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface ArsortInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ArsortInterface
 {
@@ -13,6 +15,9 @@ interface ArsortInterface
      * Reverse sort elements preserving keys.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function arsort(int $options = SORT_REGULAR): self;
 }

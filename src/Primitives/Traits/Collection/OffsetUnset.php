@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\OffsetUnsetInterface;
  * Trait OffsetUnset.
  *
  * @see OffsetUnsetInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait OffsetUnset
 {
@@ -19,7 +20,10 @@ trait OffsetUnset
      * @api
      *
      * @param array-key $key
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function offsetUnset($key): void
     {
         $this->collection->offsetUnset($key);

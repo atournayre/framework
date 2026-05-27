@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\ChunkInterface;
  * Trait Chunk.
  *
  * @see ChunkInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Chunk
 {
@@ -17,7 +18,10 @@ trait Chunk
      * Splits the map into chunks.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function chunk(int $size, bool $preserve = false): self
     {
         $chunk = $this->collection->chunk($size, $preserve);

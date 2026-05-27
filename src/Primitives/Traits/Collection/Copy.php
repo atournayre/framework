@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\CopyInterface;
  * Trait Copy.
  *
  * @see CopyInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Copy
 {
@@ -17,7 +18,10 @@ trait Copy
      * Creates a new copy.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function copy(): self
     {
         $clone = $this->collection->copy();

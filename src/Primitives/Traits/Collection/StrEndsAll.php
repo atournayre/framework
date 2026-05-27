@@ -11,6 +11,7 @@ use Atournayre\Primitives\BoolEnum;
  * Trait StrEndsAll.
  *
  * @see StrEndsAllInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait StrEndsAll
 {
@@ -21,7 +22,10 @@ trait StrEndsAll
      * @param string                        $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function strEndsAll($value, string $encoding = 'UTF-8'): BoolEnum
     {
         $strEndsAll = $this->collection->strEndsAll($value, $encoding);

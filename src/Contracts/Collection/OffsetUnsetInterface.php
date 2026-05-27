@@ -6,6 +6,8 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface OffsetUnsetInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface OffsetUnsetInterface
 {
@@ -15,6 +17,9 @@ interface OffsetUnsetInterface
      * @api
      *
      * @param array-key $key
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function offsetUnset($key): void;
 }

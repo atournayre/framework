@@ -8,6 +8,8 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface BoolInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface BoolInterface
 {
@@ -18,6 +20,9 @@ interface BoolInterface
      * @param mixed      $default Default value if key isn't found (will be casted to bool)
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function bool($key, mixed $default = false): BoolEnum;
 }

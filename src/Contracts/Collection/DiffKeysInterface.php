@@ -8,6 +8,8 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface DiffKeysInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface DiffKeysInterface
 {
@@ -18,6 +20,9 @@ interface DiffKeysInterface
      * @param callable|null                         $callback Function with (valueA, valueB) parameters and returns -1 (<), 0 (=) and 1 (>)
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function diffKeys($elements, ?callable $callback = null): self;
 }

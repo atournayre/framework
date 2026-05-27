@@ -6,13 +6,18 @@ namespace Atournayre\Contracts\Mailer;
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 interface SendMailInterface
 {
     /**
      * @api
      *
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    // @phpstan-ignore-next-line
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function send($message, $envelope = null): void;
 }

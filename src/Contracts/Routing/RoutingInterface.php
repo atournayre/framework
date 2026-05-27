@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Routing;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 interface RoutingInterface
 {
     /**
@@ -33,6 +36,9 @@ interface RoutingInterface
 
     /**
      * @param array<string, mixed> $parameters
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function generate(string $name, array $parameters = [], int $referenceType = self::ABSOLUTE_PATH): string;
 }

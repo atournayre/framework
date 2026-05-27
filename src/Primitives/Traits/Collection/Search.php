@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\SearchInterface;
  * Trait Search.
  *
  * @see SearchInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Search
 {
@@ -21,7 +22,10 @@ trait Search
      * @return int|string|null Key associated to the value or null if not found
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function search($value, bool $strict = true)
     {
         return $this->collection->search($value, $strict);

@@ -14,14 +14,25 @@ use Symfony\Component\Console\Event\ConsoleErrorEvent;
 use Symfony\Component\Console\Event\ConsoleTerminateEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class DoctrineCommandTransactionSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __construct(
         private EntityManagerInterface $entityManager,
         private LoggerInterface $logger,
     ) {
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function getSubscribedEvents(): array
     {
         return [
@@ -31,6 +42,10 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
         ];
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function startTransaction(ConsoleCommandEvent $event): void
     {
         $this->logger->setLoggerIdentifier(self::class);
@@ -49,7 +64,10 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
      * @param ConsoleCommandEvent|ConsoleTerminateEvent|ConsoleErrorEvent $event
      *
      * @return array<string, mixed>
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function contextFromEvent(object $event): array
     {
         $command = $event->getCommand();
@@ -74,6 +92,10 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
         return $context;
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function isAllowFlushCommand(Command $command): bool
     {
         return $command instanceof AllowFlushInterface;
@@ -81,7 +103,10 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
 
     /**
      * @throws \Throwable
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function commitTransaction(ConsoleTerminateEvent $event): void
     {
         $context = $this->contextFromEvent($event);
@@ -103,6 +128,10 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
         }
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function rollbackTransaction(ConsoleErrorEvent $event): void
     {
         $context = $this->contextFromEvent($event);
@@ -116,6 +145,10 @@ final readonly class DoctrineCommandTransactionSubscriber implements EventSubscr
         $this->logger->end($context);
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function rollback(): void
     {
         if (!$this->entityManager->getConnection()->isTransactionActive()) {

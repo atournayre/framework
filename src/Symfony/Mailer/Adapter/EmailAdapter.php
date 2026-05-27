@@ -11,13 +11,19 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 class EmailAdapter
 {
     /**
      * @api
      *
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function fromMessage(Email $email): SymfonyEmail
     {
         $email->isValid()->throwIfFalse('Email is not valid.');
@@ -56,7 +62,10 @@ class EmailAdapter
 
     /**
      * @return array|Address[]
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private static function collectionToAddresses(EmailContactCollection $emailContactCollection): array
     {
         if ($emailContactCollection->hasNoElement()->isTrue()) {

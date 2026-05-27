@@ -322,6 +322,9 @@ use Atournayre\Primitives\Traits\Collection\Where;
 use Atournayre\Primitives\Traits\Collection\With;
 use Atournayre\Primitives\Traits\Collection\Zip;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class Collection implements AddInterface, AllInterface, AtInterface, BoolInterface, CallInterface, FindInterface, FirstInterface, FirstKeyInterface, GetInterface, IndexInterface, IntInterface, FloatInterface, KeysInterface, LastInterface, LastKeyInterface, PopInterface, PosInterface, PullInterface, RandomInterface, SearchInterface, ShiftInterface, StringInterface, ToArrayInterface, UniqueInterface, ValuesInterface, ConcatInterface, InsertAfterInterface, InsertAtInterface, InsertBeforeInterface, MergeInterface, PadInterface, PrependInterface, PushInterface, PutInterface, SetInterface, UnionInterface, UnshiftInterface, WithInterface, AvgInterface, MaxInterface, MinInterface, SumInterface, CountInterface, CountByInterface, AtLeastOneElementInterface, HasSeveralElementsInterface, HasNoElementInterface, HasOneElementInterface, HasXElementsInterface, CloneInterface, CopyInterface, ExplodeInterface, FromInterface, FromJsonInterface, TreeInterface, DdInterface, DumpInterface, TapInterface, DelimiterInterface, GetIteratorInterface, JsonSerializeInterface, OffsetExistsInterface, OffsetGetInterface, OffsetSetInterface, OffsetUnsetInterface, SepInterface, ArsortInterface, AsortInterface, KrsortInterface, KsortInterface, OrderInterface, ReverseInterface, RsortInterface, ShuffleInterface, SortInterface, UasortInterface, UksortInterface, UsortInterface, AfterInterface, BeforeInterface, ClearInterface, DiffInterface, DiffAssocInterface, DiffKeysInterface, ExceptInterface, FilterInterface, GrepInterface, IntersectInterface, IntersectAssocInterface, IntersectKeysInterface, NthInterface, OnlyInterface, RejectInterface, RemoveInterface, SkipInterface, SliceInterface, TakeInterface, WhereInterface, CompareInterface, ContainsInterface, EachInterface, EmptyInterface, EqualsInterface, EveryInterface, HasInterface, IfInterface, IfAnyInterface, IfEmptyInterface, InInterface, IncludesInterface, IsInterface, IsEmptyInterface, IsNumericInterface, IsObjectInterface, IsScalarInterface, ImplementsInterface, NoneInterface, SomeInterface, StrContainsInterface, StrContainsAllInterface, StrEndsInterface, StrEndsAllInterface, StrStartsInterface, StrStartsAllInterface, StrBeforeInterface, CastInterface, ChunkInterface, ColInterface, CollapseInterface, CombineInterface, FlatInterface, FlipInterface, GroupByInterface, JoinInterface, LtrimInterface, MapInterface, PartitionInterface, PipeInterface, PluckInterface, PrefixInterface, ReduceInterface, RekeyInterface, ReplaceInterface, RtrimInterface, SpliceInterface, StrAfterInterface, StrLowerInterface, StrReplaceInterface, StrUpperInterface, SuffixInterface, ToJsonInterface, ToUrlInterface, TransposeInterface, TraverseInterface, TrimInterface, WalkInterface, ZipInterface, DuplicatesInterface
 {
     use Add;
@@ -483,6 +486,10 @@ final readonly class Collection implements AddInterface, AllInterface, AtInterfa
     use With;
     use Zip;
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         private AimeosMap $collection,
         private BoolEnum $isReadOnly,
@@ -503,7 +510,10 @@ final readonly class Collection implements AddInterface, AllInterface, AtInterfa
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function asReadOnly(): self
     {
         return new self(
@@ -516,7 +526,10 @@ final readonly class Collection implements AddInterface, AllInterface, AtInterfa
      * @param array<int|string, mixed>|Collection|AimeosMap|string|null $collection
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function of(Collection|AimeosMap|array|string|null $collection = []): self
     {
         return match (true) {
@@ -536,6 +549,10 @@ final readonly class Collection implements AddInterface, AllInterface, AtInterfa
         };
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isReadOnly(): BoolEnum
     {
         return $this->isReadOnly;

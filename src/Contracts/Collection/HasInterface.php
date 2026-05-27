@@ -8,6 +8,8 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface HasInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface HasInterface
 {
@@ -17,6 +19,9 @@ interface HasInterface
      * @param array<int|string>|int|string $key Key of the requested item or list of keys
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function has($key): BoolEnum;
 }

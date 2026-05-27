@@ -9,9 +9,15 @@ use Atournayre\Contracts\CommandBus\SyncCommandInterface;
 
 /**
  * Command to flush all changes to the database.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final class DatabaseFlushCommand extends AbstractCommandEvent implements SyncCommandInterface
 {
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct()
     {
     }

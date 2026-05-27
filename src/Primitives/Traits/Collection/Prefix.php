@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\PrefixInterface;
  * Trait Prefix.
  *
  * @see PrefixInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Prefix
 {
@@ -20,7 +21,10 @@ trait Prefix
      * @param int|null        $depth  Maximum depth to dive into multi-dimensional arrays starting from "1"
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function prefix($prefix, ?int $depth = null): self
     {
         $prefix = $this->collection->prefix($prefix, $depth);

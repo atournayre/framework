@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\CombineInterface;
  * Trait Combine.
  *
  * @see CombineInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Combine
 {
@@ -19,7 +20,10 @@ trait Combine
      * @param iterable<int|string,mixed> $values
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function combine(iterable $values): self
     {
         $combine = $this->collection->combine($values);

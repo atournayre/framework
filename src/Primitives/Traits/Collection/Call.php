@@ -12,6 +12,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait Call.
  *
  * @see CallInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Call
 {
@@ -21,8 +22,10 @@ trait Call
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function call()
     {
         RuntimeException::new('Not implemented yet!')->throw();

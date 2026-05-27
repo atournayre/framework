@@ -6,10 +6,17 @@ namespace Atournayre\Primitives\Traits;
 
 use Atournayre\Primitives\Int_;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 trait IntegerTrait
 {
     protected Int_ $integer;
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(Int_ $integer)
     {
         $this->integer = $integer;
@@ -17,7 +24,10 @@ trait IntegerTrait
 
     /**
      * @param int|string|Int_ $value
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function of($value): self
     {
         return new self(Int_::of($value));

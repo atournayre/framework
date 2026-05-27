@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\IndexInterface;
  * Trait Index.
  *
  * @see IndexInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Index
 {
@@ -21,7 +22,10 @@ trait Index
      * @return int|null Position of the found value (zero based) or NULL if not found
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function index($value): ?int
     {
         return $this->collection->index($value);

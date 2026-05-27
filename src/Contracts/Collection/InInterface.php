@@ -8,6 +8,8 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface InInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface InInterface
 {
@@ -17,6 +19,9 @@ interface InInterface
      * @param mixed|array $element Element or elements to search for in the map
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function in($element, bool $strict = false): BoolEnum;
 }

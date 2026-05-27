@@ -6,7 +6,14 @@ namespace Atournayre\Contracts\Event;
 
 use Atournayre\Common\Collection\EventCollection;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 interface EntityEventDispatcherInterface
 {
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function dispatch(EventCollection $eventCollection, ?string $type = null): void;
 }

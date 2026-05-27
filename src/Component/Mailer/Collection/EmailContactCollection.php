@@ -13,13 +13,19 @@ use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class EmailContactCollection implements LoggableInterface, AsListInterface
 {
     use CollectionTrait;
 
     /**
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asList(array $collection): self
     {
         Assert::isListOf($collection, EmailContact::class);
@@ -29,7 +35,10 @@ final class EmailContactCollection implements LoggableInterface, AsListInterface
 
     /**
      * @return array<array<string, string>>
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toLog(): array
     {
         return $this->collection
@@ -43,7 +52,10 @@ final class EmailContactCollection implements LoggableInterface, AsListInterface
      *
      * @param mixed|null $key
      * @param mixed|null $value
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function contains($key, ?string $operator = null, $value = null): BoolEnum
     {
         return $this->collection->contains($key, $operator, $value);

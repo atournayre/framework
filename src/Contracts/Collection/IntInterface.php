@@ -9,6 +9,8 @@ use Atournayre\Primitives\Int_;
 
 /**
  * Interface IntInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface IntInterface
 {
@@ -21,6 +23,9 @@ interface IntInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function int($key, mixed $default = 0): Int_;
 }

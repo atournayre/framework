@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\DumpInterface;
  * Trait Dump.
  *
  * @see DumpInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Dump
 {
@@ -17,7 +18,10 @@ trait Dump
      * Prints the map content.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function dump(?callable $callback = null): self
     {
         $dump = $this->collection->dump($callback);

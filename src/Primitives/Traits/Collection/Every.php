@@ -11,6 +11,7 @@ use Atournayre\Primitives\BoolEnum;
  * Trait Every.
  *
  * @see EveryInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Every
 {
@@ -18,7 +19,10 @@ trait Every
      * Verifies that all elements pass the test of the given callback.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function every(\Closure $callback): BoolEnum
     {
         $every = $this->collection->every($callback);

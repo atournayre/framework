@@ -12,6 +12,7 @@ use Atournayre\Primitives\Numeric;
  * Trait Min.
  *
  * @see MinInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Min
 {
@@ -21,7 +22,10 @@ trait Min
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function min(?string $key = null): Numeric
     {
         if ($this->isEmpty()->isTrue()) {

@@ -8,6 +8,9 @@ use Atournayre\Common\Exception\InvalidArgumentException;
 use Atournayre\Common\Exception\RuntimeException;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class Numeric
 {
     private float $value;
@@ -18,7 +21,10 @@ final readonly class Numeric
 
     /**
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function fromFloat(float $float): self
     {
         $precision = StringType::of((string) $float)
@@ -32,7 +38,10 @@ final readonly class Numeric
 
     /**
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function of(float|int|string $value, int $precision = 0): self
     {
         return new self($value, $precision);
@@ -42,7 +51,10 @@ final readonly class Numeric
      * @api
      *
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function zero(int $precision = 0): self
     {
         return self::of(0, $precision);
@@ -50,7 +62,10 @@ final readonly class Numeric
 
     /**
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     private function __construct(
         float|int|string $value,
         int $precision,
@@ -85,7 +100,10 @@ final readonly class Numeric
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function value(): float
     {
         return $this->value;
@@ -93,7 +111,10 @@ final readonly class Numeric
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function intValue(): int
     {
         return $this->intValue;
@@ -101,7 +122,10 @@ final readonly class Numeric
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function precision(): int
     {
         return $this->precision;
@@ -111,7 +135,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function format(Locale $locale): string
     {
         $fmt = new \NumberFormatter($locale->code(), \NumberFormatter::DECIMAL);
@@ -128,7 +155,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function round(int $mode = PHP_ROUND_HALF_UP): self
     {
         return match ($mode) {
@@ -146,7 +176,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function greaterThan($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
@@ -161,7 +194,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function greaterThanOrEqual($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
@@ -176,7 +212,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function lessThan($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
@@ -191,7 +230,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function lessThanOrEqual($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
@@ -206,7 +248,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function equalTo($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
@@ -221,7 +266,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function notEqualTo($numeric): BoolEnum
     {
         $that = $numeric instanceof self ? $numeric : self::of($numeric);
@@ -237,7 +285,10 @@ final readonly class Numeric
      * @param int|Numeric $max
      *
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function between($min, $max): BoolEnum
     {
         Numeric::of($min)
@@ -258,7 +309,10 @@ final readonly class Numeric
      * @param int|Numeric $max
      *
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function betweenOrEqual($min, $max): BoolEnum
     {
         Numeric::of($min)
@@ -276,7 +330,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function fromInt(int $value, int $precision): Numeric
     {
         return Numeric::of($value, $precision);
@@ -286,7 +343,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function isZero(): BoolEnum
     {
         $isZero = $this->equalTo(0)
@@ -300,7 +360,10 @@ final readonly class Numeric
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function abs(): self
     {
         $abs = abs($this->value);

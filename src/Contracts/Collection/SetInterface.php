@@ -8,6 +8,8 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface SetInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface SetInterface
 {
@@ -20,6 +22,9 @@ interface SetInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function set($key, $value, ?\Closure $callback = null): void;
 }

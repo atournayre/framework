@@ -8,6 +8,8 @@ use Atournayre\Primitives\Int_;
 
 /**
  * Interface CountInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface CountInterface
 {
@@ -15,6 +17,9 @@ interface CountInterface
      * Returns the total number of elements.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function count(): Int_;
 }

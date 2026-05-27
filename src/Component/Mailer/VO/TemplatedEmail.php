@@ -17,8 +17,15 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Contracts\Types\TypeValidationInterface;
 use Atournayre\Primitives\Collection\FileCollection;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class TemplatedEmail extends Email implements TypeValidationInterface
 {
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     protected function __construct(
         EmailSubject $subject,
         EmailContact $from,
@@ -48,6 +55,10 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
         );
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function create(
         EmailSubject $subject,
         EmailContact $from,
@@ -71,7 +82,10 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function htmlTemplatePath(): HtmlTemplatePath
     {
         return $this->htmlTemplatePath;
@@ -79,7 +93,10 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function textTemplatePath(): TextTemplatePath
     {
         return $this->textTemplatePath;
@@ -87,7 +104,10 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function templateContextCollection(): TemplateContextCollection
     {
         return $this->templateContextCollection;
@@ -95,7 +115,10 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withHtmlTemplatePath(HtmlTemplatePath $htmlTemplatePath): self
     {
         $clone = clone $this;
@@ -106,7 +129,10 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withTextTemplatePath(TextTemplatePath $textTemplatePath): self
     {
         $clone = clone $this;
@@ -117,7 +143,10 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
 
     /**
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function withContext(TemplateContextCollection $templateContextCollection): self
     {
         $clone = clone $this;
@@ -130,7 +159,10 @@ final class TemplatedEmail extends Email implements TypeValidationInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function validate(): ValidationCollection
     {
         return ValidationCollection::asMap([])

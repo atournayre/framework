@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Atournayre\Rector;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class Sets
 {
     /** @api */

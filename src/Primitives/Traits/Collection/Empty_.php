@@ -11,6 +11,7 @@ use Atournayre\Primitives\BoolEnum;
  * Trait Empty.
  *
  * @see EmptyInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Empty_
 {

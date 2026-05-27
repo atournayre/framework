@@ -13,6 +13,8 @@ use Atournayre\Traits\QueryMessageTrait;
  * This class provides a fluent interface for query creation and dispatching.
  * Instead of using $queryBus->ask(new MyQuery()), you can now use
  * MyQuery::new()->dispatch($queryBus).
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 abstract class AbstractQueryEvent implements QueryInterface
 {

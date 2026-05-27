@@ -9,6 +9,8 @@ use Atournayre\Primitives\Numeric;
 
 /**
  * Interface AvgInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface AvgInterface
 {
@@ -18,6 +20,9 @@ interface AvgInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function avg(?string $key = null): Numeric;
 }

@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\TapInterface;
  * Trait Tap.
  *
  * @see TapInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Tap
 {
@@ -19,7 +20,10 @@ trait Tap
      * @param callable $callback Function receiving ($map) parameter
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function tap(callable $callback): self
     {
         $tap = $this->collection->tap($callback);

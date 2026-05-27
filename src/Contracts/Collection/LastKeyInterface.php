@@ -8,6 +8,8 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface LastKeyInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface LastKeyInterface
 {
@@ -19,6 +21,9 @@ interface LastKeyInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function lastKey();
 }

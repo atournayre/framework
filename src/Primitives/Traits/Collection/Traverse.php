@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\TraverseInterface;
  * Trait Traverse.
  *
  * @see TraverseInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Traverse
 {
@@ -20,7 +21,10 @@ trait Traverse
      * @param string        $nestKey  Key to the children of each item
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function traverse(?\Closure $callback = null, string $nestKey = 'children'): self
     {
         $traverse = $this->collection->traverse($callback, $nestKey);

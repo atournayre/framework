@@ -9,6 +9,8 @@ use Atournayre\Primitives\Numeric;
 
 /**
  * Interface MaxInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface MaxInterface
 {
@@ -18,6 +20,9 @@ interface MaxInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function max(?string $key = null): Numeric;
 }

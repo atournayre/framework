@@ -12,6 +12,7 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait JsonSerialize.
  *
  * @see JsonSerializeInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait JsonSerialize
 {
@@ -21,8 +22,10 @@ trait JsonSerialize
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function jsonSerialize()
     {
         RuntimeException::new('Not implemented yet!')->throw();

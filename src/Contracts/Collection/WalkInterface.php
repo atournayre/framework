@@ -6,6 +6,8 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface WalkInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface WalkInterface
 {
@@ -17,6 +19,9 @@ interface WalkInterface
      * @param bool     $recursive TRUE to traverse sub-arrays recursively (default), FALSE to iterate Map elements only
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function walk(callable $callback, mixed $data = null, bool $recursive = true): self;
 }

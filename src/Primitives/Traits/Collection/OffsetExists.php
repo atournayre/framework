@@ -11,6 +11,7 @@ use Atournayre\Primitives\BoolEnum;
  * Trait OffsetExists.
  *
  * @see OffsetExistsInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait OffsetExists
 {
@@ -20,7 +21,10 @@ trait OffsetExists
      * @param int|string $key Key to check for
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function offsetExists($key): BoolEnum
     {
         $exists = $this->collection->offsetExists($key);

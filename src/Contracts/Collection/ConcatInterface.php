@@ -9,6 +9,8 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface ConcatInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ConcatInterface
 {
@@ -20,6 +22,9 @@ interface ConcatInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function concat($elements): self;
 }

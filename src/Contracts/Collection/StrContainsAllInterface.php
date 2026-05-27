@@ -8,6 +8,8 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface StrContainsAllInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface StrContainsAllInterface
 {
@@ -18,6 +20,9 @@ interface StrContainsAllInterface
      * @param string $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function strContainsAll(mixed $value, string $encoding = 'UTF-8'): BoolEnum;
 }

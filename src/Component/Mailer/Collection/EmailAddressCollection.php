@@ -12,13 +12,19 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 use Atournayre\Primitives\Collection;
 use Atournayre\Primitives\Traits\CollectionTrait;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final class EmailAddressCollection implements AsListInterface, AsMapInterface
 {
     use CollectionTrait;
 
     /**
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asList(array $collection): self
     {
         Assert::isListOf($collection, EmailAddress::class);
@@ -28,7 +34,10 @@ final class EmailAddressCollection implements AsListInterface, AsMapInterface
 
     /**
      * @throws ThrowableInterface
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function asMap(array $collection): self
     {
         Assert::isMapOf($collection, EmailAddress::class);
@@ -42,7 +51,10 @@ final class EmailAddressCollection implements AsListInterface, AsMapInterface
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public static function fromArray(array $emails): self
     {
         $map = Collection::of($emails)

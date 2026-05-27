@@ -7,8 +7,15 @@ namespace Atournayre\Symfony\Routing;
 use Atournayre\Contracts\Routing\RoutingInterface;
 use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 final readonly class RoutingService implements RoutingInterface
 {
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __construct(
         private RouterInterface $router,
     ) {
@@ -16,7 +23,10 @@ final readonly class RoutingService implements RoutingInterface
 
     /**
      * @param array<string, mixed> $parameters
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function generate(string $name, array $parameters = [], int $referenceType = RoutingInterface::ABSOLUTE_PATH): string
     {
         return $this->router->generate($name, $parameters, $referenceType);

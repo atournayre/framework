@@ -13,6 +13,7 @@ use Atournayre\Primitives\Numeric;
  * Trait Float.
  *
  * @see FloatInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Float_
 {
@@ -25,7 +26,10 @@ trait Float_
      * @throws ThrowableInterface
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function float($key, mixed $default = 0.0): Numeric
     {
         $float = $this->collection->float($key, $default);

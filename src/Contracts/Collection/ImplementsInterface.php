@@ -9,6 +9,8 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface ImplementsInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ImplementsInterface
 {

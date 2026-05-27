@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\DuplicatesInterface;
  * Trait Duplicates.
  *
  * @see DuplicatesInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Duplicates
 {
@@ -20,7 +21,10 @@ trait Duplicates
      * array which should be used to check for duplicates.
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function duplicates(?string $key = null): self
     {
         $duplicates = $this->collection->duplicates($key);

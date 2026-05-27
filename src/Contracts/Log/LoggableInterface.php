@@ -4,8 +4,14 @@ declare(strict_types=1);
 
 namespace Atournayre\Contracts\Log;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 interface LoggableInterface
 {
-    // @phpstan-ignore-next-line
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function toLog(): array;
 }

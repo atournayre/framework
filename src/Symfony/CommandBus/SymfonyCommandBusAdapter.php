@@ -12,14 +12,24 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
  * Adapter that bridges Symfony's MessageBus to CommandBusInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final readonly class SymfonyCommandBusAdapter implements CommandBusInterface
 {
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function __construct(
         private MessageBusInterface $messageBus,
     ) {
     }
 
+    /**
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+     */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function dispatch(CommandInterface $command): void
     {
         try {

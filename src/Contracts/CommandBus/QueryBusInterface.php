@@ -9,6 +9,8 @@ namespace Atournayre\Contracts\CommandBus;
  *
  * The query bus is responsible for dispatching queries to their appropriate handlers.
  * Queries are typically used for read operations and data retrieval.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface QueryBusInterface
 {
@@ -18,6 +20,9 @@ interface QueryBusInterface
      * @param QueryInterface $query The query to ask
      *
      * @return mixed The result of the query
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function ask(QueryInterface $query): mixed;
 }

@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\TreeInterface;
  * Trait Tree.
  *
  * @see TreeInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Tree
 {
@@ -21,7 +22,10 @@ trait Tree
      * @param string $nestKey   Name of the key with will contain the children of the node
      *
      * @api
+     *
+     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
+    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function tree(string $idKey, string $parentKey, string $nestKey = 'children'): self
     {
         $tree = $this->collection->tree($idKey, $parentKey, $nestKey);
