@@ -20,6 +20,7 @@ trait Shift
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function shift()
     {
         return $this->collection->shift();

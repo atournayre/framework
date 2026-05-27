@@ -22,6 +22,7 @@ trait StrContainsAll
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strContainsAll(mixed $value, string $encoding = 'UTF-8'): BoolEnum
     {
         $strContainsAll = $this->collection->strContainsAll($value, $encoding);

@@ -12,6 +12,7 @@ use Atournayre\Contracts\CommandBus\SyncCommandInterface;
  */
 final class DatabaseFlushCommand extends AbstractCommandEvent implements SyncCommandInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct()
     {
     }

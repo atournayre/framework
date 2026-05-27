@@ -8,5 +8,6 @@ use Atournayre\Common\Collection\Validation\ValidationCollection;
 
 interface TypeValidationInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function validate(): ValidationCollection;
 }

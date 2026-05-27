@@ -22,6 +22,7 @@ trait OffsetGet
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function offsetGet($offset)
     {
         return $this->collection->offsetGet($offset);

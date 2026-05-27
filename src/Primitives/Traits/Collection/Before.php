@@ -20,6 +20,7 @@ trait Before
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function before($value): self
     {
         $before = $this->collection->before($value);

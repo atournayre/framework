@@ -12,6 +12,9 @@ use ArchTech\Enums\Names;
 use ArchTech\Enums\Options;
 use ArchTech\Enums\Values;
 
+/**
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+ */
 trait EnumTrait
 {
     use Comparable;

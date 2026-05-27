@@ -25,6 +25,7 @@ trait With
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function with($key, mixed $value): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

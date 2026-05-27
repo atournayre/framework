@@ -10,6 +10,7 @@ use Atournayre\Primitives\Collection as Collection_;
 
 trait Collection
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(
         protected Collection_ $collection,
     ) {
@@ -20,6 +21,7 @@ trait Collection
      *
      *@api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     protected static function of(Collection_|AimeosMap|array $collection = []): self
     {
         return new self(Collection_::of($collection));
@@ -35,6 +37,7 @@ trait Collection
         return new self(Collection_::readOnly($collection));
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isReadOnly(): BoolEnum
     {
         return $this->collection->isReadOnly();

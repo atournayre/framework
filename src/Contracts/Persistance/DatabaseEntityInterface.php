@@ -15,5 +15,6 @@ interface DatabaseEntityInterface
     /**
      * Get a database persistence interface for this entity.
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function database(): DatabasePersistenceInterface;
 }

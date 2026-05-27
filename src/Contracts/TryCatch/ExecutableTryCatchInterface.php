@@ -22,5 +22,6 @@ interface ExecutableTryCatchInterface
      *
      * @throws ThrowableInterface If an exception is thrown and not handled
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function execute(): mixed;
 }

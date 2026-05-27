@@ -16,6 +16,7 @@ final class TemplatedEmailAdapter extends EmailAdapter
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function fromMessage($email): SymfonyTemplatedEmail
     {
         $symfonyEmail = parent::fromMessage($email);

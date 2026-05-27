@@ -18,6 +18,7 @@ trait Filter
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function filter(?callable $callback = null): self
     {
         $filtered = $this->collection->filter($callback);

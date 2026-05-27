@@ -14,5 +14,6 @@ interface CastInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function cast(string $type = 'string'): self;
 }

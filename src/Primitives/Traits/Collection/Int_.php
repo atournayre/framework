@@ -25,6 +25,7 @@ trait Int_
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function int($key, mixed $default = 0): PrimitiveInt_
     {
         $int = $this->collection->int($key, $default);

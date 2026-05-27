@@ -16,5 +16,6 @@ interface TapInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function tap(callable $callback): self;
 }

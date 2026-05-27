@@ -11,5 +11,6 @@ use Atournayre\Primitives\BoolEnum;
  */
 interface HasXElementsInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function hasXElements(int $int): BoolEnum;
 }

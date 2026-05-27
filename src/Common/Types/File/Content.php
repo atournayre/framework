@@ -14,6 +14,7 @@ final class Content
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function containsAny(string $needle): BoolEnum
     {
         return $this->value->containsAny($needle);

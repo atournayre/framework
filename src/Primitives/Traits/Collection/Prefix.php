@@ -21,6 +21,7 @@ trait Prefix
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function prefix($prefix, ?int $depth = null): self
     {
         $prefix = $this->collection->prefix($prefix, $depth);

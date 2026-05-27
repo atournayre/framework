@@ -19,6 +19,7 @@ trait IsEmpty
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isEmpty(): BoolEnum
     {
         $isEmpty = $this->collection->isEmpty();

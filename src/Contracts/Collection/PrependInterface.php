@@ -21,5 +21,6 @@ interface PrependInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function prepend(mixed $value, $key = null): self;
 }

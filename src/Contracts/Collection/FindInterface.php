@@ -24,5 +24,6 @@ interface FindInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function find(\Closure $callback, mixed $default = null, bool $reverse = false);
 }

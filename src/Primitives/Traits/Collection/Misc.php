@@ -6,6 +6,8 @@ namespace Atournayre\Primitives\Traits\Collection;
 
 /**
  * Trait Misc.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Misc
 {

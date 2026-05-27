@@ -591,6 +591,7 @@ final class Locale
         self::ZH_TW => 'Chinese (Taiwan)',
     ];
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(
         private readonly string $value,
     ) {
@@ -599,6 +600,7 @@ final class Locale
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function of(string $value): self
     {
         return new self($value);
@@ -607,6 +609,7 @@ final class Locale
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function code(): string
     {
         return $this->value;
@@ -617,6 +620,7 @@ final class Locale
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function fullName(): string
     {
         Assert::notNull(self::$NAMES[$this->value] ?? null, 'Invalid locale');

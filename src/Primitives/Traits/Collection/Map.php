@@ -18,6 +18,7 @@ trait Map
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function map(callable $callback): self
     {
         $map = $this->collection->map($callback);

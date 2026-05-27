@@ -19,5 +19,6 @@ interface AvgInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function avg(?string $key = null): Numeric;
 }

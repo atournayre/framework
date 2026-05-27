@@ -14,5 +14,6 @@ interface SortInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function sort(int $options = SORT_REGULAR): self;
 }

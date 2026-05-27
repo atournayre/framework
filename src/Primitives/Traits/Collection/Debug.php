@@ -6,6 +6,8 @@ namespace Atournayre\Primitives\Traits\Collection;
 
 /**
  * Trait Debug.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Debug
 {

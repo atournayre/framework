@@ -21,6 +21,7 @@ trait In
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function in($element, bool $strict = false): BoolEnum
     {
         $in = $this->collection->in($element, $strict);

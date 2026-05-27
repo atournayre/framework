@@ -22,6 +22,7 @@ trait StrBefore
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strBefore(string $value, bool $case = false, string $encoding = 'UTF-8'): self
     {
         $strBefore = $this->collection->strBefore($value, $case, $encoding);

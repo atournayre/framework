@@ -18,6 +18,7 @@ trait Flat
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function flat(?int $depth = null): self
     {
         $flat = $this->collection->flat($depth);

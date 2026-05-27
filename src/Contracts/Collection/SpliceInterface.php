@@ -18,5 +18,6 @@ interface SpliceInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function splice(int $offset, ?int $length = null, mixed $replacement = []): self;
 }

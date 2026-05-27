@@ -22,6 +22,7 @@ trait Equals
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function equals($elements): BoolEnum
     {
         if ($elements instanceof self) {

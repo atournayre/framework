@@ -6,6 +6,8 @@ namespace Atournayre\Primitives\Traits\Collection;
 
 /**
  * Trait Countable.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Countable
 {

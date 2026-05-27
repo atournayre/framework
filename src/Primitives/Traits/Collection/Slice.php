@@ -21,6 +21,7 @@ trait Slice
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function slice(int $offset, ?int $length = null): self
     {
         $slice = $this->collection->slice($offset, $length);

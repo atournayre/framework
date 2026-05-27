@@ -18,5 +18,6 @@ interface IntersectAssocInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function intersectAssoc($elements, ?callable $callback = null): self;
 }

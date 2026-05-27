@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final readonly class ResponseService implements ResponseInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private TemplatingInterface $templating,
         private RoutingInterface $routing,
@@ -23,6 +24,7 @@ final readonly class ResponseService implements ResponseInterface
     ) {
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function redirectToRoute(string $route, array $parameters = []): RedirectResponse
     {
         $url = $this->routing->generate($route, $parameters);
@@ -31,6 +33,7 @@ final readonly class ResponseService implements ResponseInterface
         return $this->redirectToUrl($url);
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function redirectToUrl(string $url): RedirectResponse
     {
         $this->logger->info('Redirecting to URL: '.$url);
@@ -41,6 +44,7 @@ final readonly class ResponseService implements ResponseInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function render(string $view, array $parameters = []): Response
     {
         try {
@@ -58,6 +62,7 @@ final readonly class ResponseService implements ResponseInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function error(string $view, array $parameters = [], int $status = 500): Response
     {
         $this->logger->info('Returning error response', ['view' => $view, 'parameters' => $parameters, 'status' => $status]);
@@ -66,6 +71,7 @@ final readonly class ResponseService implements ResponseInterface
         return new Response($render, $status);
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function json(array $data, int $status = 200, array $headers = [], bool $json = false): JsonResponse
     {
         try {
@@ -79,6 +85,7 @@ final readonly class ResponseService implements ResponseInterface
         }
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function jsonError(array $data, int $status = 400, array $headers = [], bool $json = false): JsonResponse
     {
         $this->logger->error('Returning JSON error response', ['data' => $data, 'status' => $status, 'headers' => $headers]);
@@ -86,6 +93,7 @@ final readonly class ResponseService implements ResponseInterface
         return new JsonResponse($data, $status, $headers, $json);
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function file(string $file, string $filename, array $headers = []): BinaryFileResponse
     {
         $contentDisposition = $headers['Content-Disposition'] ?? 'attachment';

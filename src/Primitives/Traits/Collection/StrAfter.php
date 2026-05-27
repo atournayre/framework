@@ -22,6 +22,7 @@ trait StrAfter
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strAfter(string $value, bool $case = false, string $encoding = 'UTF-8'): self
     {
         $strAfter = $this->collection->strAfter($value, $case, $encoding);

@@ -22,6 +22,7 @@ trait Bool_
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function bool($key, mixed $default = false): BoolEnum
     {
         $bool = $this->collection->bool($key, $default);

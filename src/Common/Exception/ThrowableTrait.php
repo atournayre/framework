@@ -22,6 +22,7 @@ trait ThrowableTrait
      *
      * @return self The new throwable instance
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function fromThrowable(\Throwable $throwable): self
     {
         return self::new($throwable->getMessage(), $throwable->getCode())
@@ -36,6 +37,7 @@ trait ThrowableTrait
      *
      * @return self A new instance with the previous throwable set
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withPrevious(\Throwable $previous): self
     {
         return new self($this->message, $this->code, $previous);

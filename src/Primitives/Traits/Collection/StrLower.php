@@ -18,6 +18,7 @@ trait StrLower
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strLower(string $encoding = 'UTF-8'): self
     {
         $strLower = $this->collection->strLower($encoding);

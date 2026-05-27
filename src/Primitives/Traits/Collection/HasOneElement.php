@@ -14,6 +14,7 @@ use Atournayre\Primitives\BoolEnum;
  */
 trait HasOneElement
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function hasOneElement(): BoolEnum
     {
         return $this->count()->equalsTo(1);

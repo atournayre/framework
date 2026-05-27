@@ -21,5 +21,6 @@ interface InsertBeforeInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function insertBefore(mixed $element, mixed $value): self;
 }

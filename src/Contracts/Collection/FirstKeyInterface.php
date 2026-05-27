@@ -20,5 +20,6 @@ interface FirstKeyInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function firstKey();
 }

@@ -18,5 +18,6 @@ interface WalkInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function walk(callable $callback, mixed $data = null, bool $recursive = true): self;
 }

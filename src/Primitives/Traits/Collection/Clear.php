@@ -18,6 +18,7 @@ trait Clear
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function clear(): self
     {
         $clear = $this->collection->clear();

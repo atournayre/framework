@@ -19,6 +19,7 @@ trait IsScalar
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isScalar(): BoolEnum
     {
         $isScalar = $this->collection->isScalar();

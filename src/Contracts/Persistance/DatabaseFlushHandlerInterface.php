@@ -14,5 +14,6 @@ interface DatabaseFlushHandlerInterface
     /**
      * Handles the database flush command.
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __invoke(DatabaseFlushCommand $command): void;
 }

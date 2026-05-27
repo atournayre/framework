@@ -14,5 +14,6 @@ interface UasortInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function uasort(callable $callback): self;
 }

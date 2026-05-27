@@ -23,6 +23,7 @@ trait Pull
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function pull($key, mixed $default = null)
     {
         return $this->collection->pull($key, $default);

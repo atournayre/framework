@@ -14,7 +14,7 @@ trait NullTrait
     /**
      * @param array<int, mixed> $arguments
      */
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __call(string $name, array $arguments)
     {
         if ('__construct' === $name) {
@@ -24,6 +24,7 @@ trait NullTrait
         return null;
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function initializeNull(?bool $isNull = null): void
     {
         $this->null = NullEnum::fromBool($isNull ?? false);
@@ -32,6 +33,7 @@ trait NullTrait
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toNullable(): self
     {
         $clone = clone $this;
@@ -43,6 +45,7 @@ trait NullTrait
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isNull(): bool
     {
         return $this->null->isNull();
@@ -51,6 +54,7 @@ trait NullTrait
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isNotNull(): bool
     {
         return $this->null->isNotNull();
@@ -59,6 +63,7 @@ trait NullTrait
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function asNull(): self
     {
         $self = new self();
@@ -70,6 +75,7 @@ trait NullTrait
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function orNull(): self
     {
         if ($this->null->isNull()) {
@@ -84,6 +90,7 @@ trait NullTrait
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function orThrow($throwable): self
     {
         if ($this->null->isNotNull()) {

@@ -21,6 +21,7 @@ trait Intersect
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function intersect($elements, ?callable $callback = null): self
     {
         if ($elements instanceof self) {

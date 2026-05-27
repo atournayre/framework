@@ -20,6 +20,7 @@ trait Order
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function order(iterable $keys): self
     {
         $order = $this->collection->order($keys);

@@ -20,6 +20,7 @@ trait Remove
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function remove($keys): self
     {
         $remove = $this->collection->remove($keys);

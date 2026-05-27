@@ -19,5 +19,6 @@ interface StrStartsAllInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strStartsAll($value, string $encoding = 'UTF-8'): BoolEnum;
 }

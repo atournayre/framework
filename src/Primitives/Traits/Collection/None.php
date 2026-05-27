@@ -21,6 +21,7 @@ trait None
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function none($element, bool $strict = false): BoolEnum
     {
         $none = $this->collection->none($element, $strict);

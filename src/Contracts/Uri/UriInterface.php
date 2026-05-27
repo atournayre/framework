@@ -46,6 +46,7 @@ interface UriInterface
      *
      * @return string the URI scheme
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function scheme(): string;
 
     /**
@@ -67,6 +68,7 @@ interface UriInterface
      *
      * @return string the URI authority, in "[user-info@]host[:port]" format
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function authority(): string;
 
     /**
@@ -84,6 +86,7 @@ interface UriInterface
      *
      * @return string the URI user information, in "username[:password]" format
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function userInfo(): string;
 
     /**
@@ -98,6 +101,7 @@ interface UriInterface
      *
      * @return string the URI host
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function host(): string;
 
     /**
@@ -115,6 +119,7 @@ interface UriInterface
      *
      * @return int|null the URI port
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function port(): ?int;
 
     /**
@@ -143,6 +148,7 @@ interface UriInterface
      *
      * @return string the URI path
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function path(): string;
 
     /**
@@ -166,6 +172,7 @@ interface UriInterface
      *
      * @return string the URI query string
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function query(): string;
 
     /**
@@ -185,6 +192,7 @@ interface UriInterface
      *
      * @return string the URI fragment
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function fragment(): string;
 
     /**
@@ -204,6 +212,7 @@ interface UriInterface
      *
      * @throws ThrowableInterface for invalid or unsupported schemes
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withScheme(string $scheme): UriInterface;
 
     /**
@@ -218,6 +227,7 @@ interface UriInterface
      *
      * @return static a new instance with the specified user information
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withUserInfo(string $user): UriInterface;
 
     /**
@@ -231,6 +241,7 @@ interface UriInterface
      *
      * @return static a new instance with the specified user information
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withUserAndPassword(string $user, string $password): UriInterface;
 
     /**
@@ -247,6 +258,7 @@ interface UriInterface
      *
      * @throws ThrowableInterface for invalid hostnames
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withHost(string $host): UriInterface;
 
     /**
@@ -268,8 +280,10 @@ interface UriInterface
      *
      * @throws ThrowableInterface for invalid ports
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withPort(int $port): UriInterface;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withoutPort(): UriInterface;
 
     /**
@@ -296,6 +310,7 @@ interface UriInterface
      *
      * @throws ThrowableInterface for invalid paths
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withPath(string $path): UriInterface;
 
     /**
@@ -315,6 +330,7 @@ interface UriInterface
      *
      * @throws ThrowableInterface for invalid query strings
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withQuery(string $query): UriInterface;
 
     /**
@@ -332,6 +348,7 @@ interface UriInterface
      *
      * @return static a new instance with the specified fragment
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withFragment(string $fragment): UriInterface;
 
     /**
@@ -356,7 +373,9 @@ interface UriInterface
      *
      * @see http://tools.ietf.org/html/rfc3986#section-4.1
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __toString(): string;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toString(): string;
 }

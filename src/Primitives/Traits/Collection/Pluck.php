@@ -18,6 +18,7 @@ trait Pluck
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function pluck(?string $valuecol = null, ?string $indexcol = null): self
     {
         $pluck = $this->collection->pluck($valuecol, $indexcol);

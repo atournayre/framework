@@ -18,6 +18,7 @@ trait Ltrim
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function ltrim(string $chars = " \n\r\t\v\x00"): self
     {
         $ltrim = $this->collection->ltrim($chars);

@@ -22,6 +22,7 @@ trait Splice
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function splice(int $offset, ?int $length = null, mixed $replacement = []): self
     {
         $splice = $this->collection->splice($offset, $length, $replacement);

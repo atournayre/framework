@@ -20,6 +20,7 @@ final class HtmlTemplatePath
         return new self(StringType::of(''));
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isEmpty(): BoolEnum
     {
         return $this->value->equalsTo('');

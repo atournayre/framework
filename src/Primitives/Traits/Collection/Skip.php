@@ -20,6 +20,7 @@ trait Skip
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function skip($offset): self
     {
         $skip = $this->collection->skip($offset);

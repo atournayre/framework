@@ -18,6 +18,7 @@ trait Copy
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function copy(): self
     {
         $clone = $this->collection->copy();

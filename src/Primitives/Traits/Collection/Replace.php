@@ -22,6 +22,7 @@ trait Replace
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function replace($elements, bool $recursive = true): self
     {
         if ($elements instanceof self) {

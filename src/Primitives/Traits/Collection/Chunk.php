@@ -18,6 +18,7 @@ trait Chunk
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function chunk(int $size, bool $preserve = false): self
     {
         $chunk = $this->collection->chunk($size, $preserve);

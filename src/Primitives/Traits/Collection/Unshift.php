@@ -25,6 +25,7 @@ trait Unshift
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function unshift(mixed $value, $key = null): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

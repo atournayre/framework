@@ -20,6 +20,7 @@ trait Pos
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function pos($value): ?int
     {
         return $this->collection->pos($value);

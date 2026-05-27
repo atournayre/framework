@@ -25,6 +25,7 @@ trait Set
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function set($key, $value, ?\Closure $callback = null): void
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

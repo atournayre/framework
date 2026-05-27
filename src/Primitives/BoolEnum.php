@@ -18,11 +18,13 @@ final class BoolEnum
 
     private ?LoggerInterface $logger = null;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(
         private readonly string $value,
     ) {
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function fromBool(bool $value): self
     {
         return $value ? self::true() : self::false();
@@ -31,6 +33,7 @@ final class BoolEnum
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withLogger(LoggerInterface $logger): self
     {
         $clone = clone $this;
@@ -42,6 +45,7 @@ final class BoolEnum
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function asString(): string
     {
         return u($this->value)->lower()->toString();
@@ -50,6 +54,7 @@ final class BoolEnum
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function asInt(): int
     {
         return self::TRUE === $this->value ? 1 : 0;
@@ -58,6 +63,7 @@ final class BoolEnum
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function asBool(): bool
     {
         return self::TRUE === $this->value;
@@ -66,6 +72,7 @@ final class BoolEnum
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isTrue(): bool
     {
         return self::TRUE === $this->value;
@@ -74,6 +81,7 @@ final class BoolEnum
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isFalse(): bool
     {
         return self::FALSE === $this->value;
@@ -82,6 +90,7 @@ final class BoolEnum
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function yes(): bool
     {
         return $this->isTrue();
@@ -90,16 +99,19 @@ final class BoolEnum
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function no(): bool
     {
         return $this->isFalse();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private static function true(): self
     {
         return new self(self::TRUE);
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private static function false(): self
     {
         return new self(self::FALSE);
@@ -110,6 +122,7 @@ final class BoolEnum
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function throwIfFalse(string|\Exception $message): void
     {
         if ($this->isTrue()) {
@@ -138,6 +151,7 @@ final class BoolEnum
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function throwIfTrue(string|\Exception $message): void
     {
         if ($this->isFalse()) {

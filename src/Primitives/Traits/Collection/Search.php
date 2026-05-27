@@ -22,6 +22,7 @@ trait Search
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function search($value, bool $strict = true)
     {
         return $this->collection->search($value, $strict);

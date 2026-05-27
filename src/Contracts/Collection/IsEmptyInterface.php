@@ -16,5 +16,6 @@ interface IsEmptyInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isEmpty(): BoolEnum;
 }

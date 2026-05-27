@@ -17,5 +17,6 @@ interface CommandBusInterface
      *
      * @param CommandInterface $command The command to dispatch
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function dispatch(CommandInterface $command): void;
 }

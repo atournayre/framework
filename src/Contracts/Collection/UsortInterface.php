@@ -14,5 +14,6 @@ interface UsortInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function usort(callable $callback): self;
 }

@@ -20,6 +20,7 @@ trait After
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function after($value): self
     {
         $after = $this->collection->after($value);

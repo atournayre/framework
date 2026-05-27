@@ -22,7 +22,7 @@ trait Call
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function call()
     {
         RuntimeException::new('Not implemented yet!')->throw();

@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\CloneInterface;
  * Trait Clone.
  *
  * @see CloneInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Clone_
 {

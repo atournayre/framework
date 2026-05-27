@@ -21,6 +21,7 @@ use Doctrine\ORM\Event\PostLoadEventArgs;
  */
 final readonly class DependencyInjectionPostLoad implements PostLoadHandlerInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private EntityDependencyInjection $entityDependencyInjection,
     ) {
@@ -31,6 +32,7 @@ final readonly class DependencyInjectionPostLoad implements PostLoadHandlerInter
      *
      * @param PostLoadEventArgs $args The event arguments
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __invoke(PostLoadEventArgs $args): void
     {
         $entity = $args->getObject();

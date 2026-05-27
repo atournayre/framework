@@ -13,5 +13,6 @@ interface AsMapInterface
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function asMap(array $collection): self;
 }

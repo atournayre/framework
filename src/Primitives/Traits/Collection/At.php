@@ -20,6 +20,7 @@ trait At
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function at(int $pos)
     {
         return $this->collection->at($pos);

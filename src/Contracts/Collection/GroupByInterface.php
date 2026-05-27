@@ -16,5 +16,6 @@ interface GroupByInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function groupBy($key): self;
 }

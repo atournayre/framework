@@ -9,5 +9,6 @@ interface ToJsonInterface
     /**
      * @param array<string, mixed> $options
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function json(array $options = []): string;
 }

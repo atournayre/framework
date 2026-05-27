@@ -13,6 +13,7 @@ class NullException extends \Exception implements ThrowableInterface
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function null(): self
     {
         return self::new('Empty exception.');

@@ -8,6 +8,8 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface EmptyInterface.
+ *
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface EmptyInterface
 {

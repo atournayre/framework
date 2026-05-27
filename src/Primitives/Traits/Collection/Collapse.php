@@ -18,6 +18,7 @@ trait Collapse
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function collapse(?int $depth = null): self
     {
         $collapse = $this->collection->collapse($depth);

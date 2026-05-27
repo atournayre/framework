@@ -22,6 +22,7 @@ trait Index
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function index($value): ?int
     {
         return $this->collection->index($value);

@@ -14,6 +14,7 @@ final class PlainPassword implements NullableInterface
     use StringTypeTrait;
     use NullTrait;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function asNull(): self
     {
         return (new self(StringType::of('')))

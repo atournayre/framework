@@ -17,6 +17,7 @@ use Symfony\Component\Mime\RawMessage;
 
 final readonly class SendMailService implements SendMailInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private MailerInterface $mailer,
     ) {
@@ -27,7 +28,7 @@ final readonly class SendMailService implements SendMailInterface
      *
      * @throws ThrowableInterface
      */
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function send($message, $envelope = null): void
     {
         try {
@@ -44,6 +45,7 @@ final readonly class SendMailService implements SendMailInterface
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function adaptMessage($message): RawMessage
     {
         if ($message instanceof TemplatedEmail) {

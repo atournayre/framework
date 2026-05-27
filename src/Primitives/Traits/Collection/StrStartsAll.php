@@ -22,6 +22,7 @@ trait StrStartsAll
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strStartsAll($value, string $encoding = 'UTF-8'): BoolEnum
     {
         $strStartsAll = $this->collection->strStartsAll($value, $encoding);

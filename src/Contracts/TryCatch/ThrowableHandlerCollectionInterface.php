@@ -18,5 +18,6 @@ interface ThrowableHandlerCollectionInterface extends AddInterface
      *
      * @return ThrowableHandlerInterface<mixed>|null
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function findHandlerFor(\Throwable $throwable): ?ThrowableHandlerInterface;
 }

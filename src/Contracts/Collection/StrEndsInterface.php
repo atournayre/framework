@@ -19,5 +19,6 @@ interface StrEndsInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strEnds($value, string $encoding = 'UTF-8'): BoolEnum;
 }

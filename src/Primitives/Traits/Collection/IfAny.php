@@ -18,6 +18,7 @@ trait IfAny
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function ifAny(?\Closure $then = null, ?\Closure $else = null): self
     {
         $ifAny = $this->collection->ifAny($then, $else);

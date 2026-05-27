@@ -20,5 +20,6 @@ interface IsInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function is($list, bool $strict = false): BoolEnum;
 }

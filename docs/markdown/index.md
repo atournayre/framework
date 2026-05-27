@@ -1,5 +1,8 @@
 # Framework Documentation
 
+!!! danger "Deprecated"
+    Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
+
 Welcome to the Framework documentation. This documentation provides information about the framework's components and usage.
 
 !!! warning

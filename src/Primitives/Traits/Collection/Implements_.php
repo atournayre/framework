@@ -13,6 +13,7 @@ use Atournayre\Primitives\BoolEnum;
  * Trait Implements.
  *
  * @see ImplementsInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Implements_
 {

@@ -10,6 +10,7 @@ class MutableException extends \RuntimeException implements ThrowableInterface
 {
     use ThrowableTrait;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function becauseMustBeImmutable(): self
     {
         return self::new('Must be immutable.');

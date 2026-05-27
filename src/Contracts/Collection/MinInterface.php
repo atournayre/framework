@@ -19,5 +19,6 @@ interface MinInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function min(?string $key = null): Numeric;
 }

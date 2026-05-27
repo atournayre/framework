@@ -21,6 +21,7 @@ trait Has
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function has($key): BoolEnum
     {
         $has = $this->collection->has($key);

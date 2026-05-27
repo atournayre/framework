@@ -20,6 +20,7 @@ trait Zip
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function zip(...$arrays): self
     {
         $zip = $this->collection->zip(...$arrays);

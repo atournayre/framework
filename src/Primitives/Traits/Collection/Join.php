@@ -18,6 +18,7 @@ trait Join
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function join(string $glue = ''): string
     {
         return $this->collection->values()->join($glue);

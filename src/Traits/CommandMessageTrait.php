@@ -19,6 +19,7 @@ trait CommandMessageTrait
      *
      * @param CommandBusInterface $bus The command bus to use for dispatching
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function command(CommandBusInterface $bus): void
     {
         $bus->dispatch($this);

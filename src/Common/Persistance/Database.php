@@ -43,6 +43,7 @@ final readonly class Database implements DatabasePersistenceInterface
      * @param CommandBusInterface $commandBus The command bus for dispatching database operations
      * @param object              $object     The object to be managed by the database
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(
         private CommandBusInterface $commandBus,
         private object $object,
@@ -78,6 +79,7 @@ final readonly class Database implements DatabasePersistenceInterface
      *
      * @see DatabasePersistCommand
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function persist(): self
     {
         DatabasePersistCommand::new(object: $this->object)
@@ -94,6 +96,7 @@ final readonly class Database implements DatabasePersistenceInterface
      *
      * @see DatabaseFlushCommand
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function flush(): void
     {
         DatabaseFlushCommand::new()
@@ -111,6 +114,7 @@ final readonly class Database implements DatabasePersistenceInterface
      *
      * @see DatabaseRemoveCommand
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function remove(): self
     {
         DatabaseRemoveCommand::new(object: $this->object)

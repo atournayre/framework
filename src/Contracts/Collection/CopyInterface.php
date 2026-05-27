@@ -14,5 +14,6 @@ interface CopyInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function copy(): self;
 }

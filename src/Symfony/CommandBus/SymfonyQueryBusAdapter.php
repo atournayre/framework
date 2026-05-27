@@ -16,11 +16,13 @@ use Symfony\Component\Messenger\Stamp\HandledStamp;
  */
 final readonly class SymfonyQueryBusAdapter implements QueryBusInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private MessageBusInterface $messageBus,
     ) {
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function ask(QueryInterface $query): mixed
     {
         try {

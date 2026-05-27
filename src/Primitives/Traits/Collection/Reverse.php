@@ -18,6 +18,7 @@ trait Reverse
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function reverse(): self
     {
         $reverse = $this->collection->reverse();

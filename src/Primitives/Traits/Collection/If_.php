@@ -10,6 +10,7 @@ use Atournayre\Contracts\Collection\IfInterface;
  * Trait If.
  *
  * @see IfInterface
+ * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait If_
 {

@@ -19,5 +19,6 @@ interface ContainsInterface
      * @param mixed|null $key
      * @param mixed|null $value
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function contains($key, ?string $operator = null, $value = null): BoolEnum;
 }

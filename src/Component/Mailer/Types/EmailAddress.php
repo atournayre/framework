@@ -23,6 +23,7 @@ final class EmailAddress
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function of(string $value): self
     {
         Assert::email($value, 'Expected a value to be a valid e-mail address. Got: %s');
@@ -35,6 +36,7 @@ final class EmailAddress
      *
      * @param string|EmailAddress $email
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function is($email): BoolEnum
     {
         return $this->equalsTo($email);
@@ -43,6 +45,7 @@ final class EmailAddress
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function username(): EmailUserName
     {
         $emailUserName = $this->value
@@ -55,6 +58,7 @@ final class EmailAddress
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function usernameIs(string $username): BoolEnum
     {
         return EmailUserName::of($username)
@@ -65,6 +69,7 @@ final class EmailAddress
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function domain(): Domain
     {
         $domain = $this->value
@@ -77,6 +82,7 @@ final class EmailAddress
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function domainIs(string $domain): BoolEnum
     {
         return Domain::of($domain)
@@ -87,6 +93,7 @@ final class EmailAddress
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isDeliverable(): BoolEnum
     {
         $domain = $this->domain()->toString();
@@ -98,6 +105,7 @@ final class EmailAddress
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toCanonical(): self
     {
         // remove the string after the '+' character including it and before the '@' character, using a regular expression

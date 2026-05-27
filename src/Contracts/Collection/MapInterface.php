@@ -14,5 +14,6 @@ interface MapInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function map(callable $callback): self;
 }

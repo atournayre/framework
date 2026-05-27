@@ -18,5 +18,6 @@ interface NoneInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function none($element, bool $strict = false): BoolEnum;
 }

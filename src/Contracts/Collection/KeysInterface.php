@@ -16,5 +16,6 @@ interface KeysInterface
      *
      * @return array-key[]
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function keys(): array;
 }

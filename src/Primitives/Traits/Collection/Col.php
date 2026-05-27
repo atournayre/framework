@@ -18,6 +18,7 @@ trait Col
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function col(?string $valuecol = null, ?string $indexcol = null): self
     {
         $col = $this->collection->col($valuecol, $indexcol);

@@ -22,6 +22,7 @@ trait Sum
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function sum(?string $key = null): Numeric
     {
         $sum = $this->collection->sum($key);

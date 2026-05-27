@@ -18,6 +18,7 @@ trait Flip
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function flip(): self
     {
         $flip = $this->collection->flip();

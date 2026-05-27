@@ -21,6 +21,7 @@ trait Some
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function some($values, bool $strict = false): BoolEnum
     {
         $some = $this->collection->some($values, $strict);

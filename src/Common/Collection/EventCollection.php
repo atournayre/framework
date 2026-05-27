@@ -41,6 +41,7 @@ final class EventCollection implements AsMapInterface, AddInterface, ContainsInt
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function asMap(array $collection = []): self
     {
         Assert::isMapOf($collection, Event::class);
@@ -63,6 +64,7 @@ final class EventCollection implements AsMapInterface, AddInterface, ContainsInt
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function filterByType(string $type): self
     {
         $clone = clone $this;
@@ -85,6 +87,7 @@ final class EventCollection implements AsMapInterface, AddInterface, ContainsInt
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function add(mixed $value, ?\Closure $callback = null): self
     {
         $key = $value->_identifier();
@@ -98,6 +101,7 @@ final class EventCollection implements AsMapInterface, AddInterface, ContainsInt
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function addWithCallback(mixed $value, \Closure $callback): self
     {
         $key = $value->_identifier();
@@ -109,6 +113,7 @@ final class EventCollection implements AsMapInterface, AddInterface, ContainsInt
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function contains(mixed $key, ?string $operator = null, mixed $value = null): BoolEnum
     {
         return $this
@@ -120,6 +125,7 @@ final class EventCollection implements AsMapInterface, AddInterface, ContainsInt
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function search(mixed $value, bool $strict = true): int|string|null
     {
         return $this
@@ -131,6 +137,7 @@ final class EventCollection implements AsMapInterface, AddInterface, ContainsInt
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function remove(Event $event): void
     {
         $index = $this
@@ -151,6 +158,7 @@ final class EventCollection implements AsMapInterface, AddInterface, ContainsInt
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function dispatch(
         LoggerInterface $logger,
         MessageBusInterface $messageBus,

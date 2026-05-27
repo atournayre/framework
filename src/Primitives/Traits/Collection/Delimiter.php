@@ -22,7 +22,7 @@ trait Delimiter
      *
      * @api
      */
-    // @phpstan-ignore-next-line Remove this line when the method is implemented
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function delimiter()
     {
         RuntimeException::new('Not implemented yet!')->throw();

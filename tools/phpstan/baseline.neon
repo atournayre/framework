@@ -121,6 +121,21 @@ parameters:
 			path: ../../src/Common/Log/AbstractLogger.php
 
 		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:end\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/AbstractLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:exception\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/AbstractLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:failFast\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/AbstractLogger.php
+
+		-
 			message: "#^Method Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:getLoggerIdentifier\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Log/AbstractLogger.php
@@ -141,6 +156,16 @@ parameters:
 			path: ../../src/Common/Log/AbstractLogger.php
 
 		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:start\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/AbstractLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\AbstractLogger\\:\\:success\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/AbstractLogger.php
+
+		-
 			message: "#^Class Atournayre\\\\Common\\\\Log\\\\DefaultLogger has 14 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Log/DefaultLogger.php
@@ -151,12 +176,62 @@ parameters:
 			path: ../../src/Common/Log/DefaultLogger.php
 
 		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\DefaultLogger\\:\\:end\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/DefaultLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\DefaultLogger\\:\\:exception\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/DefaultLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\DefaultLogger\\:\\:failFast\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/DefaultLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\DefaultLogger\\:\\:start\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/DefaultLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\DefaultLogger\\:\\:success\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/DefaultLogger.php
+
+		-
 			message: "#^Class Atournayre\\\\Common\\\\Log\\\\NullLogger has 14 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/Log/NullLogger.php
 
 		-
 			message: "#^Class Atournayre\\\\Common\\\\Log\\\\NullLogger has a name ending with \"er\", which violates object naming principles \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Common/Log/NullLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\NullLogger\\:\\:end\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/NullLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\NullLogger\\:\\:exception\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/NullLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\NullLogger\\:\\:failFast\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/NullLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\NullLogger\\:\\:start\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Common/Log/NullLogger.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Log\\\\NullLogger\\:\\:success\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/Common/Log/NullLogger.php
 
@@ -172,6 +247,16 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Common\\\\Model\\\\AbstractUser\\:\\:getPassword\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Common/Model/AbstractUser.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Model\\\\AbstractUser\\:\\:getRoles\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Common/Model/AbstractUser.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Model\\\\AbstractUser\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/Common/Model/AbstractUser.php
 
@@ -201,7 +286,17 @@ parameters:
 			path: ../../src/Common/Model/DefaultUser.php
 
 		-
+			message: "#^Method Atournayre\\\\Common\\\\Model\\\\DefaultUser\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Common/Model/DefaultUser.php
+
+		-
 			message: "#^Method Atournayre\\\\Common\\\\Model\\\\DefaultUser\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Common/Model/DefaultUser.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\Model\\\\DefaultUser\\:\\:getRoles\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/Common/Model/DefaultUser.php
 
@@ -286,6 +381,11 @@ parameters:
 			path: ../../src/Common/Types/TextTemplatePath.php
 
 		-
+			message: "#^Method Atournayre\\\\Common\\\\VO\\\\Context\\\\Context\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Common/VO/Context/Context.php
+
+		-
 			message: "#^Method Atournayre\\\\Common\\\\VO\\\\Context\\\\Context\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Context/Context.php
@@ -339,6 +439,11 @@ parameters:
 			message: "#^Class Atournayre\\\\Common\\\\VO\\\\Memory has 7 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Common/VO/Memory.php
+
+		-
+			message: "#^Method Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Common/VO/Security/PlainPassword.php
 
 		-
 			message: "#^Method Atournayre\\\\Common\\\\VO\\\\Security\\\\PlainPassword\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
@@ -491,6 +596,26 @@ parameters:
 			path: ../../src/Component/Mailer/Service/MailService.php
 
 		-
+			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Service\\\\MailService\\:\\:logSendingEmail\\(\\) has parameter \\$message with no type specified\\.$#"
+			count: 1
+			path: ../../src/Component/Mailer/Service/MailService.php
+
+		-
+			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Service\\\\MailService\\:\\:send\\(\\) has default value null for parameter \\$envelope, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Component/Mailer/Service/MailService.php
+
+		-
+			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Service\\\\MailService\\:\\:send\\(\\) has parameter \\$envelope with no type specified\\.$#"
+			count: 1
+			path: ../../src/Component/Mailer/Service/MailService.php
+
+		-
+			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Service\\\\MailService\\:\\:send\\(\\) has parameter \\$message with no type specified\\.$#"
+			count: 1
+			path: ../../src/Component/Mailer/Service/MailService.php
+
+		-
 			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\Types\\\\AttachmentMaxSize does not implement any interfaces, which violates the \"always use interface\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/AttachmentMaxSize.php
@@ -519,6 +644,11 @@ parameters:
 			message: "#^The operator new is used in Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailAddress\\:\\:toCanonical\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailAddress.php
+
+		-
+			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailHtml\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Component/Mailer/Types/EmailHtml.php
 
 		-
 			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailHtml\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
@@ -551,6 +681,11 @@ parameters:
 			path: ../../src/Component/Mailer/Types/EmailName.php
 
 		-
+			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailSubject\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Component/Mailer/Types/EmailSubject.php
+
+		-
 			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailSubject\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailSubject.php
@@ -574,6 +709,11 @@ parameters:
 			message: "#^The operator new is used in Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailSubject\\:\\:asNull\\(\\) for class self, which violates object encapsulation\\. Use secondary constructors \\(static factory methods\\) instead\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/Types/EmailSubject.php
+
+		-
+			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailText\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Component/Mailer/Types/EmailText.php
 
 		-
 			message: "#^Method Atournayre\\\\Component\\\\Mailer\\\\Types\\\\EmailText\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
@@ -614,6 +754,56 @@ parameters:
 			message: "#^Class Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email is not final neither abstract, which violates the \"be either final or abstract\" principle \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Component/Mailer/VO/Email.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: ../../src/Component/Mailer/VO/Email.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\CallInterface\\:\\:call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Collection/CallInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\DdInterface\\:\\:dd\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Collection/DdInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\DelimiterInterface\\:\\:delimiter\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Collection/DelimiterInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\FromInterface\\:\\:from\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Collection/FromInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\FromJsonInterface\\:\\:fromJson\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Collection/FromJsonInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\GetIteratorInterface\\:\\:getIterator\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Contracts/Collection/GetIteratorInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\GetIteratorInterface\\:\\:getIterator\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Collection/GetIteratorInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\IfEmptyInterface\\:\\:ifEmpty\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Collection/IfEmptyInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\JsonSerializeInterface\\:\\:jsonSerialize\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Collection/JsonSerializeInterface.php
 
 		-
 			message: "#^Method Atournayre\\\\Contracts\\\\Collection\\\\NumericListInterface\\:\\:asList\\(\\) is static, which violates object encapsulation \\(Elegant Object principle\\)\\. Only secondary constructors \\(factory methods\\) can be static\\.$#"
@@ -1111,7 +1301,27 @@ parameters:
 			path: ../../src/Contracts/Filesystem/FilesystemInterface.php
 
 		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Log\\\\LoggableInterface\\:\\:toLog\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Contracts/Log/LoggableInterface.php
+
+		-
 			message: "#^Interface Atournayre\\\\Contracts\\\\Log\\\\LoggerInterface has 15 methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Contracts/Log/LoggerInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Log\\\\LoggerInterface\\:\\:end\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Contracts/Log/LoggerInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Log\\\\LoggerInterface\\:\\:exception\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Contracts/Log/LoggerInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Log\\\\LoggerInterface\\:\\:failFast\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/Contracts/Log/LoggerInterface.php
 
@@ -1124,6 +1334,31 @@ parameters:
 			message: "#^Method Atournayre\\\\Contracts\\\\Log\\\\LoggerInterface\\:\\:setLoggerIdentifier\\(\\) appears to be a setter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Contracts/Log/LoggerInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Log\\\\LoggerInterface\\:\\:start\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Contracts/Log/LoggerInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Log\\\\LoggerInterface\\:\\:success\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Contracts/Log/LoggerInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Mailer\\\\SendMailInterface\\:\\:send\\(\\) has default value null for parameter \\$envelope, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Contracts/Mailer/SendMailInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Mailer\\\\SendMailInterface\\:\\:send\\(\\) has parameter \\$envelope with no type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Mailer/SendMailInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Mailer\\\\SendMailInterface\\:\\:send\\(\\) has parameter \\$message with no type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Mailer/SendMailInterface.php
 
 		-
 			message: "#^Interface Atournayre\\\\Contracts\\\\Null\\\\NullableInterface has 6 methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
@@ -1157,6 +1392,51 @@ parameters:
 
 		-
 			message: "#^Interface Atournayre\\\\Contracts\\\\Security\\\\UserInterface has 6 methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Contracts/Security/UserInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\UserInterface\\:\\:eraseCredentials\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Security/UserInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\UserInterface\\:\\:getPassword\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Contracts/Security/UserInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\UserInterface\\:\\:getPassword\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Security/UserInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\UserInterface\\:\\:getRoles\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Contracts/Security/UserInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\UserInterface\\:\\:getRoles\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Security/UserInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\UserInterface\\:\\:getSalt\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Contracts/Security/UserInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\UserInterface\\:\\:getSalt\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Contracts/Security/UserInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\UserInterface\\:\\:getUsername\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Contracts/Security/UserInterface.php
+
+		-
+			message: "#^Method Atournayre\\\\Contracts\\\\Security\\\\UserInterface\\:\\:getUsername\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: ../../src/Contracts/Security/UserInterface.php
 
@@ -1226,6 +1506,11 @@ parameters:
 			path: ../../src/Primitives/Collection.php
 
 		-
+			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Primitives/Collection.php
+
+		-
 			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:col\\(\\) accepts null for parameter \\$indexcol, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Collection.php
@@ -1277,6 +1562,16 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:countBy\\(\\) has default value null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Primitives/Collection.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:dd\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Primitives/Collection.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:delimiter\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: ../../src/Primitives/Collection.php
 
@@ -1361,7 +1656,27 @@ parameters:
 			path: ../../src/Primitives/Collection.php
 
 		-
+			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:from\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Primitives/Collection.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:fromJson\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Primitives/Collection.php
+
+		-
 			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:get\\(\\) has default value null for parameter \\$default, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Primitives/Collection.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:getIterator\\(\\) appears to be a getter, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Primitives/Collection.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:getIterator\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: ../../src/Primitives/Collection.php
 
@@ -1406,6 +1721,11 @@ parameters:
 			path: ../../src/Primitives/Collection.php
 
 		-
+			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:ifEmpty\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Primitives/Collection.php
+
+		-
 			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:insertAt\\(\\) has default value null for parameter \\$key, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Collection.php
@@ -1437,6 +1757,11 @@ parameters:
 
 		-
 			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:intersectKeys\\(\\) has default value null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Primitives/Collection.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\:\\:jsonSerialize\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: ../../src/Primitives/Collection.php
 
@@ -1684,6 +2009,11 @@ parameters:
 			message: "#^Method Atournayre\\\\Primitives\\\\Collection\\\\FileCollection\\:\\:set\\(\\) has default value null for parameter \\$callback, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/Collection/FileCollection.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\DateTime\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/Primitives/DateTime.php
 
 		-
 			message: "#^Method Atournayre\\\\Primitives\\\\DateTime\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
@@ -2961,6 +3291,36 @@ parameters:
 			path: ../../src/Primitives/StringType.php
 
 		-
+			message: "#^Method Atournayre\\\\Primitives\\\\StringType\\:\\:filterVar\\(\\) has default value null for parameter \\$options, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Primitives/StringType.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\StringType\\:\\:filterVar\\(\\) has parameter \\$options with no type specified\\.$#"
+			count: 1
+			path: ../../src/Primitives/StringType.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\StringType\\:\\:join\\(\\) accepts null for parameter \\$lastGlue, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Primitives/StringType.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\StringType\\:\\:join\\(\\) has default value null for parameter \\$lastGlue, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Primitives/StringType.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\StringType\\:\\:join\\(\\) has parameter \\$strings with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Primitives/StringType.php
+
+		-
+			message: "#^Method Atournayre\\\\Primitives\\\\StringType\\:\\:match\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/Primitives/StringType.php
+
+		-
 			message: "#^Method Atournayre\\\\Primitives\\\\StringType\\:\\:slice\\(\\) accepts null for parameter \\$length, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Primitives/StringType.php
@@ -3066,6 +3426,21 @@ parameters:
 			path: ../../src/Symfony/Mailer/Adapter/TemplatedEmailAdapter.php
 
 		-
+			message: "#^Method Atournayre\\\\Symfony\\\\Mailer\\\\Service\\\\SendMailService\\:\\:send\\(\\) has default value null for parameter \\$envelope, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
+			count: 1
+			path: ../../src/Symfony/Mailer/Service/SendMailService.php
+
+		-
+			message: "#^Method Atournayre\\\\Symfony\\\\Mailer\\\\Service\\\\SendMailService\\:\\:send\\(\\) has parameter \\$envelope with no type specified\\.$#"
+			count: 1
+			path: ../../src/Symfony/Mailer/Service/SendMailService.php
+
+		-
+			message: "#^Parameter \\#1 \\$message \\(Atournayre\\\\Component\\\\Mailer\\\\VO\\\\Email\\) of method Atournayre\\\\Symfony\\\\Mailer\\\\Service\\\\SendMailService\\:\\:send\\(\\) should be contravariant with parameter \\$message \\(mixed\\) of method Atournayre\\\\Contracts\\\\Mailer\\\\SendMailInterface\\:\\:send\\(\\)$#"
+			count: 1
+			path: ../../src/Symfony/Mailer/Service/SendMailService.php
+
+		-
 			message: "#^Class Atournayre\\\\Symfony\\\\Response\\\\ResponseService has 8 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Symfony/Response/ResponseService.php
@@ -3114,6 +3489,11 @@ parameters:
 			message: "#^Class Atournayre\\\\Wrapper\\\\SplFileInfo has 9 public methods, which exceeds the maximum of 5 \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../src/Wrapper/SplFileInfo.php
+
+		-
+			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Birthday\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../tests/Fixtures/Birthday.php
 
 		-
 			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Birthday\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
@@ -3376,6 +3756,11 @@ parameters:
 			path: ../../tests/Fixtures/Collection/PriceCollection.php
 
 		-
+			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Title\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../tests/Fixtures/Title.php
+
+		-
 			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Title\\:\\:__call\\(\\) returns null, which violates object encapsulation \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../tests/Fixtures/Title.php
@@ -3389,3 +3774,19 @@ parameters:
 			message: "#^Method Atournayre\\\\Tests\\\\Fixtures\\\\Title\\:\\:initializeNull\\(\\) has default value null for parameter \\$isNull, which violates the rule of never accepting null arguments \\(Elegant Object principle\\)\\.$#"
 			count: 1
 			path: ../../tests/Fixtures/Title.php
+
+		-
+			message: """
+				#^Casting class Atournayre\\\\Common\\\\VO\\\\Uri to string is deprecated\\.\\:
+				Deprecated immediately\\. Migrate to https\\://github\\.com/TournayreLabs/framework$#
+			"""
+			count: 16
+			path: ../../tests/Unit/Common/Uri/UriTest.php
+
+		-
+			message: """
+				#^Casting class Atournayre\\\\Contracts\\\\Uri\\\\UriInterface to string is deprecated\\.\\:
+				Deprecated immediately\\. Migrate to https\\://github\\.com/TournayreLabs/framework$#
+			"""
+			count: 1
+			path: ../../tests/Unit/Common/Uri/UriTest.php

@@ -483,6 +483,7 @@ final readonly class Collection implements AddInterface, AllInterface, AtInterfa
     use With;
     use Zip;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(
         private AimeosMap $collection,
         private BoolEnum $isReadOnly,
@@ -504,6 +505,7 @@ final readonly class Collection implements AddInterface, AllInterface, AtInterfa
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function asReadOnly(): self
     {
         return new self(
@@ -517,6 +519,7 @@ final readonly class Collection implements AddInterface, AllInterface, AtInterfa
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function of(Collection|AimeosMap|array|string|null $collection = []): self
     {
         return match (true) {
@@ -536,6 +539,7 @@ final readonly class Collection implements AddInterface, AllInterface, AtInterfa
         };
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isReadOnly(): BoolEnum
     {
         return $this->isReadOnly;

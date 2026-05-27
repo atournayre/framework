@@ -8,7 +8,9 @@ use Atournayre\Common\Collection\EventCollection;
 
 interface HasEventsInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function initializeEvents(): void;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function events(): EventCollection;
 }

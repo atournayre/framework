@@ -12,6 +12,7 @@ final class DirectoryOrFile
 {
     use StringTypeTrait;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function of(string $value): self
     {
         Assert::startsWith($value, '/', 'The path must start with a slash');
@@ -22,6 +23,7 @@ final class DirectoryOrFile
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function suffixWith(string $suffix): self
     {
         $suffixString = StringType::of($suffix)
@@ -42,6 +44,7 @@ final class DirectoryOrFile
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function prefixWith(string $prefix): self
     {
         $prefixString = StringType::of($prefix)

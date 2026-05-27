@@ -20,6 +20,7 @@ trait Combine
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function combine(iterable $values): self
     {
         $combine = $this->collection->combine($values);

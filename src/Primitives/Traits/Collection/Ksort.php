@@ -18,6 +18,7 @@ trait Ksort
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function ksort(int $options = SORT_REGULAR): self
     {
         $clone = $this->collection;

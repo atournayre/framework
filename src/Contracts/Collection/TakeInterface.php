@@ -17,5 +17,6 @@ interface TakeInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function take(int $size, $offset = 0): self;
 }

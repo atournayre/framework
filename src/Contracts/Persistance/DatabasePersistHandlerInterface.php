@@ -14,5 +14,6 @@ interface DatabasePersistHandlerInterface
     /**
      * Handles the database persist command.
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __invoke(DatabasePersistCommand $command): void;
 }

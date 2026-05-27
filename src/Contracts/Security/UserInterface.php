@@ -8,20 +8,21 @@ use Atournayre\Contracts\Null\NullableInterface;
 
 interface UserInterface extends NullableInterface
 {
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function getRoles();
 
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function getPassword();
 
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function getSalt();
 
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function getUsername();
 
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function eraseCredentials();
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function identifier(): string;
 }

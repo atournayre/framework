@@ -17,5 +17,6 @@ interface DuplicatesInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function duplicates(?string $key = null): self;
 }

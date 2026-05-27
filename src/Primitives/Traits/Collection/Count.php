@@ -19,6 +19,7 @@ trait Count
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function count(): Int_
     {
         $count = $this->collection->count();

@@ -13,5 +13,6 @@ interface AsReadOnlyListInterface
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function asReadOnlyList(array $collection): self;
 }

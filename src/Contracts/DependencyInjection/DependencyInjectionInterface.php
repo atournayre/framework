@@ -21,6 +21,7 @@ interface DependencyInjectionInterface
      *
      * @return CommandBusInterface The command bus instance
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function commandBus(): CommandBusInterface;
 
     /**
@@ -28,6 +29,7 @@ interface DependencyInjectionInterface
      *
      * @return QueryBusInterface The query bus instance
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function queryBus(): QueryBusInterface;
 
     /**
@@ -35,5 +37,6 @@ interface DependencyInjectionInterface
      *
      * @return LoggerInterface The logger instance
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function logger(): LoggerInterface;
 }

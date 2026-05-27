@@ -19,5 +19,6 @@ interface BoolInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function bool($key, mixed $default = false): BoolEnum;
 }

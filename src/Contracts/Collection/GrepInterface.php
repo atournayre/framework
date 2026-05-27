@@ -14,5 +14,6 @@ interface GrepInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function grep(string $pattern, int $flags = 0): self;
 }

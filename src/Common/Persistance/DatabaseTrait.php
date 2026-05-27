@@ -23,6 +23,7 @@ trait DatabaseTrait
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function database(): DatabasePersistenceInterface
     {
         /** @var EntityDependencyInjection $dependencyInjection */

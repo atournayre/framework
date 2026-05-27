@@ -24,6 +24,7 @@ trait Push
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function push($value, ?\Closure $callback = null): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

@@ -18,6 +18,7 @@ trait Each
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function each(\Closure $callback): self
     {
         $collection = $this->collection->each($callback);

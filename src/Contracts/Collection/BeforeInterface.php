@@ -16,5 +16,6 @@ interface BeforeInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function before($value): self;
 }

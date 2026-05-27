@@ -11,17 +11,22 @@ abstract class AbstractUser implements UserInterface
 {
     protected PlainPassword $plainPassword;
 
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     abstract public function getRoles(): array;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     abstract public function getPassword(): string;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     abstract public function getSalt(): string;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     abstract public function getUsername(): string;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     abstract public function identifier(): string;
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function eraseCredentials(): void
     {
         $this->plainPassword = PlainPassword::asNull();

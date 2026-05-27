@@ -17,5 +17,6 @@ interface TraverseInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function traverse(?\Closure $callback = null, string $nestKey = 'children'): self;
 }

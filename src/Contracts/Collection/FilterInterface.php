@@ -14,5 +14,6 @@ interface FilterInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function filter(?callable $callback = null): self;
 }

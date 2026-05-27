@@ -14,6 +14,7 @@ use Twig\Error\SyntaxError;
 
 final readonly class TwigTemplatingService implements TemplatingInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private Environment $twigEnvironment,
     ) {
@@ -22,6 +23,7 @@ final readonly class TwigTemplatingService implements TemplatingInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function render(string $template, array $parameters = []): string
     {
         try {

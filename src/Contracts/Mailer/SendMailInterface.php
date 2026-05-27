@@ -13,6 +13,6 @@ interface SendMailInterface
      *
      * @throws ThrowableInterface
      */
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function send($message, $envelope = null): void;
 }

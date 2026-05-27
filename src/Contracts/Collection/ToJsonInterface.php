@@ -14,5 +14,6 @@ interface ToJsonInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toJson(int $options = 0): ?string;
 }

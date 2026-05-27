@@ -18,6 +18,7 @@ trait Nth
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function nth(int $step, int $offset = 0): self
     {
         $nth = $this->collection->nth($step, $offset);

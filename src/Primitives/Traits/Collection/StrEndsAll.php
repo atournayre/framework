@@ -22,6 +22,7 @@ trait StrEndsAll
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strEndsAll($value, string $encoding = 'UTF-8'): BoolEnum
     {
         $strEndsAll = $this->collection->strEndsAll($value, $encoding);

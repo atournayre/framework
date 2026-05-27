@@ -21,6 +21,7 @@ trait QueryMessageTrait
      *
      * @return mixed The result of the query
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function query(QueryBusInterface $bus): mixed
     {
         return $bus->ask($this);

@@ -19,6 +19,7 @@ trait Every
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function every(\Closure $callback): BoolEnum
     {
         $every = $this->collection->every($callback);

@@ -11,16 +11,19 @@ interface AssertMiscInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function boolean(mixed $value, string $message = ''): void;
 
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function scalar(mixed $value, string $message = ''): void;
 
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function object(mixed $value, string $message = ''): void;
 
     /**
@@ -28,5 +31,6 @@ interface AssertMiscInterface
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function resource(mixed $value, ?string $type = null, string $message = ''): void;
 }

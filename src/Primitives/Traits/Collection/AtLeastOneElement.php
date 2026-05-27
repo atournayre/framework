@@ -14,6 +14,7 @@ use Atournayre\Primitives\BoolEnum;
  */
 trait AtLeastOneElement
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function atLeastOneElement(): BoolEnum
     {
         return $this->count()->greaterThan(0);

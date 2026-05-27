@@ -18,5 +18,6 @@ interface PipeInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function pipe(\Closure $callback);
 }

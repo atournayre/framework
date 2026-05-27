@@ -19,5 +19,6 @@ interface PostLoadHandlerInterface
      *
      * @param PostLoadEventArgs $args The event arguments
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __invoke(PostLoadEventArgs $args): void;
 }

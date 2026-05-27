@@ -24,6 +24,7 @@ final class TagCollection implements LoggableInterface, AsMapInterface
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function asMap(array $collection): self
     {
         Assert::isMapOf($collection, 'string');
@@ -38,6 +39,7 @@ final class TagCollection implements LoggableInterface, AsMapInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private static function validateElement(string $value): void
     {
         Assert::lengthBetween(
@@ -51,6 +53,7 @@ final class TagCollection implements LoggableInterface, AsMapInterface
     /**
      * @return array<string>
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toLog(): array
     {
         return $this->collection

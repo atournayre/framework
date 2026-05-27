@@ -24,6 +24,7 @@ trait Pad
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function pad(int $size, mixed $value = null): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

@@ -21,6 +21,7 @@ trait OffsetExists
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function offsetExists($key): BoolEnum
     {
         $exists = $this->collection->offsetExists($key);

@@ -12,6 +12,7 @@ use Atournayre\Contracts\CommandBus\SyncCommandInterface;
  */
 final class DatabaseRemoveCommand extends AbstractCommandEvent implements SyncCommandInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(private readonly object $object)
     {
     }
@@ -21,6 +22,7 @@ final class DatabaseRemoveCommand extends AbstractCommandEvent implements SyncCo
         return new self(object: $object);
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function object(): object
     {
         return $this->object;

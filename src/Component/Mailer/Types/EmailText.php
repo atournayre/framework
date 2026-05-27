@@ -19,6 +19,7 @@ final class EmailText implements NullableInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function of(string $value): self
     {
         Assert::stringNotEmpty($value, 'Email text cannot be empty.');
@@ -26,6 +27,7 @@ final class EmailText implements NullableInterface
         return new self(StringType::of($value));
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function asNull(): self
     {
         return (new self(StringType::of('')))

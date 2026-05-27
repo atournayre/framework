@@ -17,5 +17,6 @@ interface StringInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function string($key, mixed $default = ''): string;
 }

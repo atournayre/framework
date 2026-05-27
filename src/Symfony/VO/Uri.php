@@ -14,6 +14,7 @@ final readonly class Uri implements UriInterface
     /**
      * @param array<array-key, mixed> $params
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
         private string $route,
@@ -38,6 +39,7 @@ final readonly class Uri implements UriInterface
         );
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function generateUri(): UriInterface
     {
         $url = $this
@@ -48,41 +50,49 @@ final readonly class Uri implements UriInterface
         return \Atournayre\Common\VO\Uri::of($url);
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function scheme(): string
     {
         return $this->generateUri()->scheme();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function authority(): string
     {
         return $this->generateUri()->authority();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function userInfo(): string
     {
         return $this->generateUri()->userInfo();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function host(): string
     {
         return $this->generateUri()->host();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function port(): ?int
     {
         return $this->generateUri()->port();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function path(): string
     {
         return $this->generateUri()->path();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function query(): string
     {
         return $this->generateUri()->query();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function fragment(): string
     {
         return $this->generateUri()->fragment();
@@ -91,6 +101,7 @@ final readonly class Uri implements UriInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withScheme(string $scheme): UriInterface
     {
         try {
@@ -104,6 +115,7 @@ final readonly class Uri implements UriInterface
         }
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withUserInfo(string $user): UriInterface
     {
         return self::new(
@@ -113,6 +125,7 @@ final readonly class Uri implements UriInterface
         )->withUserInfo($user);
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withUserAndPassword(string $user, string $password): UriInterface
     {
         return self::new(
@@ -125,6 +138,7 @@ final readonly class Uri implements UriInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withHost(string $host): UriInterface
     {
         try {
@@ -141,6 +155,7 @@ final readonly class Uri implements UriInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withPort(int $port): UriInterface
     {
         try {
@@ -154,6 +169,7 @@ final readonly class Uri implements UriInterface
         }
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withoutPort(): UriInterface
     {
         return self::new(
@@ -163,6 +179,7 @@ final readonly class Uri implements UriInterface
         )->withoutPort();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withPath(string $path): UriInterface
     {
         try {
@@ -179,6 +196,7 @@ final readonly class Uri implements UriInterface
     /**
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withQuery(string $query): UriInterface
     {
         try {
@@ -192,6 +210,7 @@ final readonly class Uri implements UriInterface
         }
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withFragment(string $fragment): UriInterface
     {
         return self::new(
@@ -201,11 +220,13 @@ final readonly class Uri implements UriInterface
         )->withFragment($fragment);
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __toString(): string
     {
         return $this->generateUri()->__toString();
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toString(): string
     {
         return $this->generateUri()->toString();

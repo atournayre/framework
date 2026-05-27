@@ -14,5 +14,6 @@ interface NthInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function nth(int $step, int $offset = 0): self;
 }

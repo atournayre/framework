@@ -6,6 +6,6 @@ namespace Atournayre\Contracts\Log;
 
 interface LoggableInterface
 {
-    // @phpstan-ignore-next-line
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toLog(): array;
 }

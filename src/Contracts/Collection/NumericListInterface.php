@@ -11,5 +11,6 @@ interface NumericListInterface
      *
      * @return static
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function asList(array $collection, int $precision);
 }

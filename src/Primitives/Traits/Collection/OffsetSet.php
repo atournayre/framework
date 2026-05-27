@@ -24,6 +24,7 @@ trait OffsetSet
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function offsetSet($key, $value, ?\Closure $callback = null): void
     {
         $this->set($key, $value, $callback);

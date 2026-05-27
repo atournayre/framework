@@ -22,5 +22,6 @@ interface IntInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function int($key, mixed $default = 0): Int_;
 }

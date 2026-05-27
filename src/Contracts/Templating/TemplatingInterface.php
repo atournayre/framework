@@ -13,5 +13,6 @@ interface TemplatingInterface
      *
      * @throws ThrowableInterface
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function render(string $template, array $parameters = []): string;
 }

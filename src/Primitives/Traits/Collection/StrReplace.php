@@ -22,6 +22,7 @@ trait StrReplace
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strReplace($search, $replace, bool $case = false): self
     {
         $strReplace = $this->collection->strReplace($search, $replace, $case);

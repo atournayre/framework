@@ -18,6 +18,7 @@ trait ToJson
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toJson(int $options = 0): ?string
     {
         return $this->collection->toJson($options);

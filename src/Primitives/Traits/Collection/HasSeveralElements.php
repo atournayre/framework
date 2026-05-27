@@ -14,6 +14,7 @@ use Atournayre\Primitives\BoolEnum;
  */
 trait HasSeveralElements
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function hasSeveralElements(): BoolEnum
     {
         return $this->count()->greaterThan(1);

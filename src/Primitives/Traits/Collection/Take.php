@@ -21,6 +21,7 @@ trait Take
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function take(int $size, $offset = 0): self
     {
         $take = $this->collection->take($size, $offset);

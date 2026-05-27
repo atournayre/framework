@@ -22,6 +22,7 @@ trait Pipe
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function pipe(\Closure $callback)
     {
         return $this->collection->pipe($callback);

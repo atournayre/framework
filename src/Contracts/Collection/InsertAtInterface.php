@@ -22,5 +22,6 @@ interface InsertAtInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function insertAt(int $pos, mixed $element, $key = null): self;
 }

@@ -18,6 +18,7 @@ trait Rekey
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function rekey(callable $callback): self
     {
         $map = $this->collection->rekey($callback);

@@ -20,6 +20,7 @@ trait GroupBy
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function groupBy($key): self
     {
         $groupBy = $this->collection->groupBy($key);

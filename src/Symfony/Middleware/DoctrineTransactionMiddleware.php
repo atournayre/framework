@@ -14,6 +14,7 @@ use Symfony\Component\Messenger\Middleware\StackInterface;
 
 final readonly class DoctrineTransactionMiddleware implements MiddlewareInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private EntityManagerInterface $entityManager,
         private HandlersLocatorInterface $handlersLocator,
@@ -24,6 +25,7 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
     /**
      * @throws \Throwable
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function handle(Envelope $envelope, StackInterface $stack): Envelope
     {
         $this->logger->setLoggerIdentifier(self::class);
@@ -69,6 +71,7 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
     /**
      * @return array<string, string|null>
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function messageContext(Envelope $envelope): array
     {
         $message = $envelope->getMessage();
@@ -79,6 +82,7 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
         ];
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function shouldApplyTransaction(Envelope $envelope): bool
     {
         $handlers = $this->handlersLocator->getHandlers($envelope);
@@ -100,6 +104,7 @@ final readonly class DoctrineTransactionMiddleware implements MiddlewareInterfac
         return false;
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function rollback(): void
     {
         // Early return if no active transaction

@@ -21,6 +21,7 @@ trait Suffix
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function suffix($suffix, ?int $depth = null): self
     {
         $suffix = $this->collection->suffix($suffix, $depth);

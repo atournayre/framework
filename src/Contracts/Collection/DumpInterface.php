@@ -14,5 +14,6 @@ interface DumpInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function dump(?callable $callback = null): self;
 }

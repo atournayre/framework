@@ -21,5 +21,6 @@ interface UnshiftInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function unshift(mixed $value, $key = null): self;
 }

@@ -18,6 +18,7 @@ trait Cast
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function cast(string $type = 'string'): self
     {
         $cast = $this->collection->cast($type);

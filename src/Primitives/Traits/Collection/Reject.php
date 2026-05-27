@@ -20,6 +20,7 @@ trait Reject
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function reject($callback = true): self
     {
         $reject = $this->collection->reject($callback);

@@ -59,3 +59,5 @@ parameters:
         - '#(.)*deprecated class Atournayre\\Common\\VO\\Event(.)*#'
         - '#(.)*deprecated class Atournayre\\Common\\Collection\\EventCollection(.)*#'
         - '#(.)*deprecated trait Atournayre\\Common\\Traits\\EventsTrait(.)*#'
+        # Global deprecation campaign: keep checks, but ignore deprecation-usage noise.
+        - '#(.)*deprecated (class|method|trait|interface|enum)(.)*#'

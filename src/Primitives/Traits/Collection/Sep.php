@@ -20,6 +20,7 @@ trait Sep
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function sep(string $char): self
     {
         $sep = $this->collection->sep($char);

@@ -19,5 +19,6 @@ interface DiffAssocInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function diffAssoc($elements, ?callable $callback = null): self;
 }

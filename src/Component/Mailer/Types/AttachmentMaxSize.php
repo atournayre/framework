@@ -14,6 +14,7 @@ final class AttachmentMaxSize
     /**
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function memory(): Memory
     {
         return Memory::fromBytes($this->value->intValue());

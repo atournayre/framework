@@ -11,5 +11,6 @@ use Atournayre\Primitives\BoolEnum;
  */
 interface AtLeastOneElementInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function atLeastOneElement(): BoolEnum;
 }

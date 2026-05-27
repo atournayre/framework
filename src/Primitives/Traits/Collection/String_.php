@@ -21,6 +21,7 @@ trait String_
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function string($key, mixed $default = ''): string
     {
         return $this->collection->string($key, $default);

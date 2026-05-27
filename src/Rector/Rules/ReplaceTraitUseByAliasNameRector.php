@@ -51,6 +51,7 @@ final class ReplaceTraitUseByAliasNameRector extends AbstractRector implements C
      */
     private array $configuration = [];
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function getRuleDefinition(): RuleDefinition
     {
         return new RuleDefinition(
@@ -99,6 +100,7 @@ CODE_SAMPLE,
     /**
      * @return array<class-string<Node>>
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function getNodeTypes(): array
     {
         return [
@@ -111,6 +113,7 @@ CODE_SAMPLE,
     /**
      * @param Use_|TraitUse|StaticCall $node
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function refactor(Node $node): ?Node
     {
         // Skip if configuration is not provided
@@ -132,6 +135,7 @@ CODE_SAMPLE,
     /**
      * @param array<string, string> $configuration
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function configure(array $configuration): void
     {
         $this->configuration = $configuration;
@@ -142,6 +146,7 @@ CODE_SAMPLE,
         Assert::keyExists($this->configuration, self::SHORT_NAME_TO_REPLACE);
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function refactorUseStatement(Use_ $node): ?Use_
     {
         foreach ($node->uses as $use) {
@@ -156,6 +161,7 @@ CODE_SAMPLE,
         return null;
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function refactorTraitUse(TraitUse $node): ?TraitUse
     {
         $hasChanged = false;
@@ -174,6 +180,7 @@ CODE_SAMPLE,
         return $hasChanged ? $node : null;
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function refactorStaticCall(StaticCall $node): ?StaticCall
     {
         if ($this->isName($node->class, $this->configuration[self::SHORT_NAME_TO_REPLACE])) {

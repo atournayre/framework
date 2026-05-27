@@ -25,6 +25,7 @@ trait InsertAfter
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function insertAfter($element, $value): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

@@ -15,10 +15,12 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 #[AsMessageHandler]
 final readonly class DatabaseFlushHandler implements DatabaseFlushHandlerInterface
 {
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(private EntityManagerInterface $entityManager)
     {
     }
 
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __invoke(DatabaseFlushCommand $command): void
     {
         $this->entityManager->flush();

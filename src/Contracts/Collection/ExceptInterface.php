@@ -16,5 +16,6 @@ interface ExceptInterface
      *
      * @api
      */
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function except($keys): self;
 }
