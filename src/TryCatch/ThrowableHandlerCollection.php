@@ -18,8 +18,6 @@ use Atournayre\Primitives\Traits\Collection\ToArray;
  * Class ThrowableHandlerCollection.
  *
  * Collection of throwable handlers.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInterface, AsListInterface, ToArrayInterface
 {
@@ -29,10 +27,8 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
 
     /**
      * @throws ThrowableInterface
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function asList(
         array $collection = [],
     ): self {
@@ -45,10 +41,8 @@ final class ThrowableHandlerCollection implements ThrowableHandlerCollectionInte
 
     /**
      * @return ThrowableHandlerInterface<mixed>
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function findHandlerFor(\Throwable $throwable): ThrowableHandlerInterface
     {
         foreach ($this->collection->toArray() as $handler) {

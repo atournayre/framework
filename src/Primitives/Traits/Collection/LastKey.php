@@ -12,7 +12,6 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait LastKey.
  *
  * @see LastKeyInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait LastKey
 {
@@ -24,10 +23,8 @@ trait LastKey
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function lastKey()
     {
         try {

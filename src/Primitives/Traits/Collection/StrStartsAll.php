@@ -11,7 +11,6 @@ use Atournayre\Primitives\BoolEnum;
  * Trait StrStartsAll.
  *
  * @see StrStartsAllInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait StrStartsAll
 {
@@ -22,10 +21,8 @@ trait StrStartsAll
      * @param string                        $encoding Character encoding of the strings, e.g. "UTF-8" (default), "ASCII", "ISO-8859-1", etc.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strStartsAll($value, string $encoding = 'UTF-8'): BoolEnum
     {
         $strStartsAll = $this->collection->strStartsAll($value, $encoding);

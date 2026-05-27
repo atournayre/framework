@@ -6,8 +6,6 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface KeysInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface KeysInterface
 {
@@ -17,9 +15,7 @@ interface KeysInterface
      * @api
      *
      * @return array-key[]
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function keys(): array;
 }

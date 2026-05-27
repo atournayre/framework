@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\FlipInterface;
  * Trait Flip.
  *
  * @see FlipInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Flip
 {
@@ -18,10 +17,8 @@ trait Flip
      * Exchanges keys with their values.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function flip(): self
     {
         $flip = $this->collection->flip();

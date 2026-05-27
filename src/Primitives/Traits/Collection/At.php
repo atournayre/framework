@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\AtInterface;
  * Trait At.
  *
  * @see AtInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait At
 {
@@ -20,10 +19,8 @@ trait At
      * @return mixed|null
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function at(int $pos)
     {
         return $this->collection->at($pos);

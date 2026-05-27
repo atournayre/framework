@@ -9,16 +9,12 @@ namespace Atournayre\Contracts\Persistance;
  *
  * Entities implementing this interface must provide a database() method
  * that returns a DatabasePersistenceInterface instance for database operations.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface DatabaseEntityInterface
 {
     /**
      * Get a database persistence interface for this entity.
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function database(): DatabasePersistenceInterface;
 }

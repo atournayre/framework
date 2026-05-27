@@ -11,7 +11,6 @@ use Atournayre\Primitives\BoolEnum;
  * Trait IsNumeric.
  *
  * @see IsNumericInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait IsNumeric
 {
@@ -19,10 +18,8 @@ trait IsNumeric
      * Tests if all entries are numeric values.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isNumeric(): BoolEnum
     {
         $isNumeric = $this->collection->isNumeric();

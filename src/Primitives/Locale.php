@@ -7,9 +7,6 @@ namespace Atournayre\Primitives;
 use Atournayre\Common\Assert\Assert;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 final class Locale
 {
     /** @api */
@@ -594,10 +591,7 @@ final class Locale
         self::ZH_TW => 'Chinese (Taiwan)',
     ];
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(
         private readonly string $value,
     ) {
@@ -605,10 +599,8 @@ final class Locale
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function of(string $value): self
     {
         return new self($value);
@@ -616,10 +608,8 @@ final class Locale
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function code(): string
     {
         return $this->value;
@@ -629,10 +619,8 @@ final class Locale
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function fullName(): string
     {
         Assert::notNull(self::$NAMES[$this->value] ?? null, 'Invalid locale');

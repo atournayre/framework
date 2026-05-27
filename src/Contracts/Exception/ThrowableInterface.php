@@ -11,8 +11,6 @@ use Atournayre\Contracts\Log\LoggerInterface;
  *
  * This interface extends PHP's native \Throwable interface and provides
  * additional methods for creating and manipulating exceptions in a fluent way.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ThrowableInterface extends \Throwable
 {
@@ -32,10 +30,8 @@ interface ThrowableInterface extends \Throwable
      * @param \Throwable $throwable The original throwable to convert
      *
      * @return self The new throwable instance
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function fromThrowable(\Throwable $throwable): self;
 
     /**
@@ -44,10 +40,8 @@ interface ThrowableInterface extends \Throwable
      * @param \Throwable $previous The previous throwable
      *
      * @return self A new instance with the previous throwable set
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withPrevious(\Throwable $previous): self;
 
     /**

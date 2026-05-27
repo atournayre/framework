@@ -9,15 +9,10 @@ use Atournayre\Contracts\CommandBus\SyncCommandInterface;
 
 /**
  * Command to persist an object to the database.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final class DatabasePersistCommand extends AbstractCommandEvent implements SyncCommandInterface
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(private readonly object $object)
     {
     }
@@ -27,10 +22,7 @@ final class DatabasePersistCommand extends AbstractCommandEvent implements SyncC
         return new self(object: $object);
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function object(): object
     {
         return $this->object;

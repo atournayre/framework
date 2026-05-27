@@ -8,16 +8,12 @@ use Atournayre\Common\Persistance\Command\DatabaseRemoveCommand;
 
 /**
  * Interface for database remove handlers.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface DatabaseRemoveHandlerInterface
 {
     /**
      * Handles the database remove command.
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __invoke(DatabaseRemoveCommand $command): void;
 }

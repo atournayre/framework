@@ -8,8 +8,6 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface NoneInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface NoneInterface
 {
@@ -19,9 +17,7 @@ interface NoneInterface
      * @param mixed|null $element Element or elements to search for in the map
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function none($element, bool $strict = false): BoolEnum;
 }

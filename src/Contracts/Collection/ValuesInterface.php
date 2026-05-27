@@ -6,8 +6,6 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface ValuesInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ValuesInterface
 {
@@ -15,9 +13,7 @@ interface ValuesInterface
      * Returns all elements with new keys.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function values(): self;
 }

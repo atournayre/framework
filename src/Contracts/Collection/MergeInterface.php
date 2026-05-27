@@ -9,8 +9,6 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface MergeInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface MergeInterface
 {
@@ -22,9 +20,7 @@ interface MergeInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function merge($elements, bool $recursive = false): self;
 }

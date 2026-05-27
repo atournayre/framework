@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\PopInterface;
  * Trait Pop.
  *
  * @see PopInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Pop
 {
@@ -20,10 +19,8 @@ trait Pop
      * @return mixed Last element of the map or null if empty
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function pop()
     {
         return $this->collection->pop();

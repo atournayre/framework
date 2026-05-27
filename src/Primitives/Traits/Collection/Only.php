@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\OnlyInterface;
  * Trait Only.
  *
  * @see OnlyInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Only
 {
@@ -20,10 +19,8 @@ trait Only
      * @param iterable<mixed>|array<mixed>|string|int $keys Keys of the elements that should be returned
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function only($keys): self
     {
         $only = $this->collection->only($keys);

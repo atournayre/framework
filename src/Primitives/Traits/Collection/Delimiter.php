@@ -12,7 +12,6 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait Delimiter.
  *
  * @see DelimiterInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Delimiter
 {
@@ -22,10 +21,8 @@ trait Delimiter
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function delimiter()
     {
         RuntimeException::new('Not implemented yet!')->throw();

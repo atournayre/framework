@@ -12,7 +12,6 @@ use Atournayre\Primitives\Int_ as PrimitiveInt_;
  * Trait Int.
  *
  * @see IntInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Int_
 {
@@ -25,10 +24,8 @@ trait Int_
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function int($key, mixed $default = 0): PrimitiveInt_
     {
         $int = $this->collection->int($key, $default);

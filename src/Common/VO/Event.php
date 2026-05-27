@@ -22,10 +22,8 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function _identifier(): string
     {
         return \spl_object_hash($this);
@@ -35,10 +33,8 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isPropagationStopped(): bool
     {
         return $this->propagationStopped;
@@ -46,10 +42,8 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function stopPropagation(): void
     {
         $this->propagationStopped = true;
@@ -57,10 +51,8 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function _type(): string
     {
         return static::class;
@@ -68,10 +60,8 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
 
     /**
      * @return array<string, mixed>
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toLog(): array
     {
         $log = [
@@ -92,10 +82,8 @@ class Event implements StoppableEventInterface, HasContextInterface, LoggableInt
      * @api
      *
      * @throws ThrowableInterface
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function dispatch(MessageBusInterface $messageBus): void
     {
         try {

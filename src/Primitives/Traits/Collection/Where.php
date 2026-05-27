@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\WhereInterface;
  * Trait Where.
  *
  * @see WhereInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Where
 {
@@ -22,10 +21,8 @@ trait Where
      * @param mixed  $value Value used for comparison
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function where(string $key, string $op, mixed $value): self
     {
         $where = $this->collection->where($key, $op, $value);

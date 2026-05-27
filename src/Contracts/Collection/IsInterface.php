@@ -9,8 +9,6 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface IsInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface IsInterface
 {
@@ -21,9 +19,7 @@ interface IsInterface
      * @param bool                                  $strict TRUE for comparing order of elements too, FALSE for key/values only
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function is($list, bool $strict = false): BoolEnum;
 }

@@ -12,7 +12,6 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait First.
  *
  * @see FirstInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait First
 {
@@ -26,10 +25,8 @@ trait First
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function first($default = null)
     {
         try {

@@ -11,8 +11,6 @@ use Atournayre\Contracts\CommandBus\CommandBusInterface;
  *
  * This trait provides a command() method that can be used by classes
  * implementing CommandInterface to dispatch themselves through a command bus.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait CommandMessageTrait
 {
@@ -20,10 +18,8 @@ trait CommandMessageTrait
      * Dispatches this command through the provided command bus.
      *
      * @param CommandBusInterface $bus The command bus to use for dispatching
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function command(CommandBusInterface $bus): void
     {
         $bus->dispatch($this);

@@ -121,21 +121,32 @@ function addDeprecationOperations(string $code, array $tokens, array $offsets, i
 
     $scan = inspectLeadingMetadata($tokens, $offsets, $declStartIndex);
 
-    if ($scan['docIndex'] === null) {
-        $docInsertOffset = $scan['firstAttributeOffset'] ?? $lineOffset;
-        $operations[] = [
-            'offset' => $docInsertOffset,
-            'length' => 0,
-            'priority' => 2,
-            'text' => "{$indent}/**\n{$indent} * @deprecated " . DEPRECATION_MESSAGE . "\n{$indent} */\n",
-        ];
-    } elseif (!$scan['hasDeprecatedDoc']) {
+    if ($classLike) {
+        if ($scan['docIndex'] === null) {
+            $docInsertOffset = $scan['firstAttributeOffset'] ?? $lineOffset;
+            $operations[] = [
+                'offset' => $docInsertOffset,
+                'length' => 0,
+                'priority' => 2,
+                'text' => "{$indent}/**\n{$indent} * @deprecated " . DEPRECATION_MESSAGE . "\n{$indent} */\n",
+            ];
+        } elseif (!$scan['hasDeprecatedDoc']) {
+            $doc = $tokens[$scan['docIndex']][1];
+            $operations[] = [
+                'offset' => $offsets[$scan['docIndex']],
+                'length' => strlen($doc),
+                'priority' => 1,
+                'text' => appendDeprecatedTagToDoc($doc, $indent),
+            ];
+        }
+    } elseif ($scan['docIndex'] !== null && $scan['hasDeprecatedDoc']) {
         $doc = $tokens[$scan['docIndex']][1];
+        $newDoc = removeDeprecatedTagFromDoc($doc, $indent);
         $operations[] = [
             'offset' => $offsets[$scan['docIndex']],
             'length' => strlen($doc),
             'priority' => 1,
-            'text' => appendDeprecatedTagToDoc($doc, $indent),
+            'text' => $newDoc,
         ];
     }
 
@@ -236,6 +247,26 @@ function appendDeprecatedTagToDoc(string $doc, string $indent): string
     $trimmed = rtrim($trimmed);
 
     return $trimmed . "\n{$indent} * @deprecated " . DEPRECATION_MESSAGE . "\n{$indent} */";
+}
+
+function removeDeprecatedTagFromDoc(string $doc, string $indent): string
+{
+    $lines = preg_split('/\R/', $doc) ?: [];
+    $filtered = [];
+
+    foreach ($lines as $line) {
+        if (preg_match('/^\s*\*\s*@deprecated\b/', $line) === 1) {
+            continue;
+        }
+        $filtered[] = $line;
+    }
+
+    // Drop the whole PHPDoc if it only carried @deprecated.
+    if (count($filtered) <= 2) {
+        return '';
+    }
+
+    return implode("\n", $filtered) . "\n";
 }
 
 function detectIndent(string $code, int $offset): string

@@ -8,15 +8,9 @@ use Aimeos\Map as AimeosMap;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection as Collection_;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 trait Collection
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(
         protected Collection_ $collection,
     ) {
@@ -26,10 +20,8 @@ trait Collection
      * @param array<int|string, mixed>|AimeosMap|Collection_ $collection
      *
      *@api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     protected static function of(Collection_|AimeosMap|array $collection = []): self
     {
         return new self(Collection_::of($collection));
@@ -45,10 +37,7 @@ trait Collection
         return new self(Collection_::readOnly($collection));
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isReadOnly(): BoolEnum
     {
         return $this->collection->isReadOnly();

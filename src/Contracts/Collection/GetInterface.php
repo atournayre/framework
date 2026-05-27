@@ -8,8 +8,6 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface GetInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface GetInterface
 {
@@ -24,9 +22,7 @@ interface GetInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function get($key, $default = null);
 }

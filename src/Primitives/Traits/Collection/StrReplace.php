@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\StrReplaceInterface;
  * Trait StrReplace.
  *
  * @see StrReplaceInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait StrReplace
 {
@@ -22,10 +21,8 @@ trait StrReplace
      * @param bool                           $case    TRUE if replacements should be case insensitive, FALSE if case-sensitive
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function strReplace($search, $replace, bool $case = false): self
     {
         $strReplace = $this->collection->strReplace($search, $replace, $case);

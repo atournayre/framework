@@ -12,7 +12,6 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait Set.
  *
  * @see SetInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Set
 {
@@ -25,10 +24,8 @@ trait Set
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function set($key, $value, ?\Closure $callback = null): void
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

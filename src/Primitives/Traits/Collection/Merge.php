@@ -13,7 +13,6 @@ use Atournayre\Primitives\Collection;
  * Trait Merge.
  *
  * @see MergeInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Merge
 {
@@ -25,10 +24,8 @@ trait Merge
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function merge($elements, bool $recursive = false): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

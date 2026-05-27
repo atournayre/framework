@@ -11,7 +11,6 @@ use Atournayre\Primitives\BoolEnum;
  * Trait Contains.
  *
  * @see ContainsInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Contains
 {
@@ -22,10 +21,8 @@ trait Contains
      *
      * @param mixed|null $key
      * @param mixed|null $value
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function contains($key, ?string $operator = null, $value = null): BoolEnum
     {
         $contains = $this->collection->contains($key, $operator, $value);

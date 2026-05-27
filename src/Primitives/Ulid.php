@@ -8,15 +8,9 @@ use Atournayre\Contracts\DateTime\DateTimeInterface;
 use Atournayre\Contracts\Exception\ThrowableInterface;
 use Symfony\Component\Uid\Ulid as SymfonyUlid;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 final readonly class Ulid
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(
         private SymfonyUlid $ulid,
     ) {
@@ -24,10 +18,8 @@ final readonly class Ulid
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function of(?string $string = null): Ulid
     {
         return new self(new SymfonyUlid($string));
@@ -35,10 +27,8 @@ final readonly class Ulid
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toString(): string
     {
         return $this->ulid->toBase32();
@@ -46,10 +36,8 @@ final readonly class Ulid
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function equalsTo(self $ulid): BoolEnum
     {
         $equalsTo = $this->ulid->equals($ulid->ulid);
@@ -59,10 +47,8 @@ final readonly class Ulid
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toRfc4122(): StringType
     {
         $rfc4122 = $this->ulid->toRfc4122();
@@ -74,10 +60,8 @@ final readonly class Ulid
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function dateTime(): DateTimeInterface
     {
         return DateTime::of($this->ulid->getDateTime());

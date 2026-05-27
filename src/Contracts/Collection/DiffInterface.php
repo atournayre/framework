@@ -8,8 +8,6 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface DiffInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface DiffInterface
 {
@@ -20,9 +18,7 @@ interface DiffInterface
      * @param callable|null                         $callback Function with (valueA, valueB) parameters and returns -1 (<), 0 (=) and 1 (>)
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function diff($elements, ?callable $callback = null): self;
 }

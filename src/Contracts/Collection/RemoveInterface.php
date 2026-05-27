@@ -6,8 +6,6 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface RemoveInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface RemoveInterface
 {
@@ -17,9 +15,7 @@ interface RemoveInterface
      * @param iterable<string|int>|array<string|int>|string|int $keys List of keys to remove
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function remove($keys): self;
 }

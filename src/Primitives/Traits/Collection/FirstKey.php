@@ -12,7 +12,6 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
  * Trait FirstKey.
  *
  * @see FirstKeyInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait FirstKey
 {
@@ -24,10 +23,8 @@ trait FirstKey
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function firstKey()
     {
         try {

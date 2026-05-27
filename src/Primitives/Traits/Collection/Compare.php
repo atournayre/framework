@@ -11,7 +11,6 @@ use Atournayre\Primitives\BoolEnum;
  * Trait Compare.
  *
  * @see CompareInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Compare
 {
@@ -19,10 +18,8 @@ trait Compare
      * Compares the value against all map elements.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function compare(string $value, bool $case = true): BoolEnum
     {
         $compare = $this->collection->strCompare($value, $case);

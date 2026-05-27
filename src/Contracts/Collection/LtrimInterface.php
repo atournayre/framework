@@ -6,8 +6,6 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface LtrimInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface LtrimInterface
 {
@@ -15,9 +13,7 @@ interface LtrimInterface
      * Removes the passed characters from the left of all strings.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function ltrim(string $chars = " \n\r\t\v\x00"): self;
 }

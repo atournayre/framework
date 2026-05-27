@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\AllInterface;
  * Trait All.
  *
  * @see AllInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait All
 {
@@ -20,10 +19,8 @@ trait All
      * @return array<int|string, mixed>
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function all(): array
     {
         return $this->collection->all();

@@ -13,15 +13,10 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface as SymfonyF
  *     Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface:
  *         class: Symfony\Component\HttpFoundation\Session\Flash\FlashBag
  *         public: true
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 final readonly class FlashBagService implements FlashBagInterface
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private SymfonyFlashBagInterface $symfonyFlashBag,
     ) {
@@ -29,10 +24,8 @@ final readonly class FlashBagService implements FlashBagInterface
 
     /**
      * @param string|array<string> $message
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function success($message): void
     {
         $this->displayMessages(FlashBagInterface::SUCCESS, $message);
@@ -40,10 +33,8 @@ final readonly class FlashBagService implements FlashBagInterface
 
     /**
      * @param string|array<string> $message
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function warning($message): void
     {
         $this->displayMessages(FlashBagInterface::WARNING, $message);
@@ -51,10 +42,8 @@ final readonly class FlashBagService implements FlashBagInterface
 
     /**
      * @param string|array<string> $message
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function error($message): void
     {
         $this->displayMessages(FlashBagInterface::ERROR, $message);
@@ -62,19 +51,14 @@ final readonly class FlashBagService implements FlashBagInterface
 
     /**
      * @param string|array<string> $message
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function info($message): void
     {
         $this->displayMessages(FlashBagInterface::INFO, $message);
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function fromException(\Exception $exception): void
     {
         $this->error($exception->getMessage());
@@ -82,10 +66,8 @@ final readonly class FlashBagService implements FlashBagInterface
 
     /**
      * @param string|array<string> $message
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function displayMessages(string $type, $message): void
     {
         $messages = is_string($message) ? [$message] : $message;

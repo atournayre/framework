@@ -9,8 +9,6 @@ use Atournayre\Primitives\Numeric;
 
 /**
  * Interface MinInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface MinInterface
 {
@@ -20,9 +18,7 @@ interface MinInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function min(?string $key = null): Numeric;
 }

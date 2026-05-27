@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\RsortInterface;
  * Trait Rsort.
  *
  * @see RsortInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Rsort
 {
@@ -18,10 +17,8 @@ trait Rsort
      * Reverse sort elements using new keys.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function rsort(int $options = SORT_REGULAR): self
     {
         $clone = $this->collection;

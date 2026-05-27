@@ -6,8 +6,6 @@ namespace Atournayre\Contracts\Collection;
 
 /**
  * Interface FlipInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface FlipInterface
 {
@@ -15,9 +13,7 @@ interface FlipInterface
      * Exchanges keys with their values.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function flip(): self;
 }

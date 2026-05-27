@@ -9,15 +9,9 @@ use Atournayre\Component\Mailer\Types\EmailName;
 use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Primitives\BoolEnum;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 final readonly class EmailContact implements LoggableInterface
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function __construct(
         private EmailAddress $email,
         private EmailName $name,
@@ -26,10 +20,8 @@ final readonly class EmailContact implements LoggableInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function create(EmailAddress $emailAddress, EmailName $emailName): self
     {
         return new self($emailAddress, $emailName);
@@ -37,10 +29,8 @@ final readonly class EmailContact implements LoggableInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function email(): EmailAddress
     {
         return $this->email;
@@ -48,10 +38,8 @@ final readonly class EmailContact implements LoggableInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function name(): EmailName
     {
         return $this->name;
@@ -59,10 +47,8 @@ final readonly class EmailContact implements LoggableInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function equalsTo(EmailContact $emailContact): BoolEnum
     {
         $emailAddressSameAsContact = $this->email
@@ -83,10 +69,8 @@ final readonly class EmailContact implements LoggableInterface
 
     /**
      * @return array<string, string>
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toLog(): array
     {
         return [

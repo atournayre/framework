@@ -5,26 +5,20 @@ declare(strict_types=1);
 namespace Atournayre\Contracts\Response;
 
 /**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ResponseInterface
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
     #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function redirectToUrl(string $url);
 
     /**
      * @param array<string, mixed> $parameters
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
     #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function redirectToRoute(string $route, array $parameters = []);
 
     /**
      * @param array<string, mixed> $parameters
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
     #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function render(string $view, array $parameters = []);
@@ -32,7 +26,6 @@ interface ResponseInterface
     /**
      * @param array<string|int, mixed> $data
      * @param array<string, mixed>     $headers
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
     #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function json(array $data, int $status = 200, array $headers = [], bool $json = false);
@@ -40,14 +33,12 @@ interface ResponseInterface
     /**
      * @param array<string|int, mixed> $data
      * @param array<string, mixed>     $headers
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
     #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function jsonError(array $data, int $status = 400, array $headers = [], bool $json = false);
 
     /**
      * @param array<string, mixed> $headers
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
     #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function file(string $file, string $filename, array $headers = []);
@@ -59,7 +50,6 @@ interface ResponseInterface
 
     /**
      * @param array<string, mixed> $parameters
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
     #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
     public function error(string $view, array $parameters = [], int $status = 500);

@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\RekeyInterface;
  * Trait Rekey.
  *
  * @see RekeyInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Rekey
 {
@@ -18,10 +17,8 @@ trait Rekey
      * Changes the keys according to the passed function.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function rekey(callable $callback): self
     {
         $map = $this->collection->rekey($callback);

@@ -11,7 +11,6 @@ use Atournayre\Primitives\BoolEnum;
  * Trait IsEmpty.
  *
  * @see IsEmptyInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait IsEmpty
 {
@@ -19,10 +18,8 @@ trait IsEmpty
      * Tests if map is empty.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isEmpty(): BoolEnum
     {
         $isEmpty = $this->collection->isEmpty();

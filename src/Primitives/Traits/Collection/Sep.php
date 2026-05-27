@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\SepInterface;
  * Trait Sep.
  *
  * @see SepInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Sep
 {
@@ -20,10 +19,8 @@ trait Sep
      * @param string $char Separator character, e.g. "." for "key.to.value" instead of "key/to/value"
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function sep(string $char): self
     {
         $sep = $this->collection->sep($char);

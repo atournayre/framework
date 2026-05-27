@@ -11,7 +11,6 @@ use Atournayre\Primitives\BoolEnum;
  * Trait Includes.
  *
  * @see IncludesInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Includes
 {
@@ -22,10 +21,8 @@ trait Includes
      * @param bool        $strict  TRUE to check the type too, using FALSE '1' and 1 will be the same
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function includes($element, bool $strict = false): BoolEnum
     {
         $includes = $this->collection->includes($element, $strict);

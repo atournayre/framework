@@ -11,15 +11,9 @@ use Atournayre\Contracts\Security\SecurityInterface;
 use Atournayre\Contracts\Security\UserInterface;
 use Psr\Clock\ClockInterface;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 final readonly class ContextFactory
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private SecurityInterface $security,
         private ClockInterface $clock,
@@ -30,10 +24,8 @@ final readonly class ContextFactory
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function fromUser(UserInterface $user): ContextInterface
     {
         $dateTime = $this->clock->now();
@@ -45,10 +37,8 @@ final readonly class ContextFactory
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function fromDateTime(\DateTimeInterface $dateTime): ContextInterface
     {
         $user = $this->security->user();
@@ -60,10 +50,8 @@ final readonly class ContextFactory
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function create(UserInterface $user, \DateTimeInterface $dateTime): ContextInterface
     {
         return Context::create($user, $dateTime);

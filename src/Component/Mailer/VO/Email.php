@@ -16,15 +16,9 @@ use Atournayre\Contracts\Types\TypeValidationInterface;
 use Atournayre\Primitives\BoolEnum;
 use Atournayre\Primitives\Collection\FileCollection;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 class Email implements LoggableInterface, TypeValidationInterface
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     protected function __construct(
         private readonly EmailSubject $subject,
         private readonly EmailContact $from,
@@ -45,10 +39,8 @@ class Email implements LoggableInterface, TypeValidationInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function create(EmailSubject $subject, EmailContact $from): self
     {
         return new static(
@@ -69,10 +61,8 @@ class Email implements LoggableInterface, TypeValidationInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function validate(): ValidationCollection
     {
         return ValidationCollection::asMap([])
@@ -84,10 +74,8 @@ class Email implements LoggableInterface, TypeValidationInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isValid(): BoolEnum
     {
         return $this->validate()->isValid();
@@ -95,10 +83,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function subject(): EmailSubject
     {
         return $this->subject;
@@ -106,10 +92,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function from(): EmailContact
     {
         return $this->from;
@@ -117,10 +101,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function to(): EmailContactCollection
     {
         return $this->to;
@@ -128,10 +110,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function cc(): EmailContactCollection
     {
         return $this->cc;
@@ -139,10 +119,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function bcc(): EmailContactCollection
     {
         return $this->bcc;
@@ -150,10 +128,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function replyTo(): EmailContactCollection
     {
         return $this->replyTo;
@@ -161,10 +137,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function attachments(): FileCollection
     {
         return $this->attachments;
@@ -172,10 +146,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function text(): EmailText
     {
         return $this->text;
@@ -183,10 +155,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function html(): EmailHtml
     {
         return $this->html;
@@ -194,10 +164,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function tags(): TagCollection
     {
         return $this->tags;
@@ -205,10 +173,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withTo(EmailContactCollection $to): self
     {
         $clone = clone $this;
@@ -219,10 +185,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withCc(EmailContactCollection $cc): self
     {
         $clone = clone $this;
@@ -233,10 +197,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withBcc(EmailContactCollection $bcc): self
     {
         $clone = clone $this;
@@ -247,10 +209,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withReplyTo(EmailContactCollection $replyTo): self
     {
         $clone = clone $this;
@@ -261,10 +221,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withAttachments(FileCollection $attachments): self
     {
         $clone = clone $this;
@@ -277,10 +235,8 @@ class Email implements LoggableInterface, TypeValidationInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withText(string $text): self
     {
         $clone = clone $this;
@@ -293,10 +249,8 @@ class Email implements LoggableInterface, TypeValidationInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withHtml(string $html): self
     {
         $clone = clone $this;
@@ -307,10 +261,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withTags(TagCollection $tags): self
     {
         $clone = clone $this;
@@ -321,10 +273,8 @@ class Email implements LoggableInterface, TypeValidationInterface
 
     /**
      * @return array<string, mixed>
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function toLog(): array
     {
         return [

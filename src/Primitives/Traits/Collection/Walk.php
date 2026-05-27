@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\WalkInterface;
  * Trait Walk.
  *
  * @see WalkInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Walk
 {
@@ -22,10 +21,8 @@ trait Walk
      * @param bool     $recursive TRUE to traverse sub-arrays recursively (default), FALSE to iterate Map elements only
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function walk(callable $callback, mixed $data = null, bool $recursive = true): self
     {
         $walk = $this->collection->walk($callback, $data, $recursive);

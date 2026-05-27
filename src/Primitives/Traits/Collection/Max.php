@@ -12,7 +12,6 @@ use Atournayre\Primitives\Numeric;
  * Trait Max.
  *
  * @see MaxInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Max
 {
@@ -22,10 +21,8 @@ trait Max
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function max(?string $key = null): Numeric
     {
         if ($this->isEmpty()->isTrue()) {

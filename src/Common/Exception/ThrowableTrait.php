@@ -12,8 +12,6 @@ use Atournayre\Contracts\Log\LoggerInterface;
  *
  * This trait provides implementations for the methods required by ThrowableInterface.
  * It can be used by exception classes to avoid code duplication.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait ThrowableTrait
 {
@@ -23,10 +21,8 @@ trait ThrowableTrait
      * @param \Throwable $throwable The original throwable to convert
      *
      * @return self The new throwable instance
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function fromThrowable(\Throwable $throwable): self
     {
         return self::new($throwable->getMessage(), $throwable->getCode())
@@ -40,10 +36,8 @@ trait ThrowableTrait
      * @param \Throwable $previous The previous throwable
      *
      * @return self A new instance with the previous throwable set
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function withPrevious(\Throwable $previous): self
     {
         return new self($this->message, $this->code, $previous);

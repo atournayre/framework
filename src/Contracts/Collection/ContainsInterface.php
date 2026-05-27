@@ -8,8 +8,6 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface ContainsInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface ContainsInterface
 {
@@ -20,9 +18,7 @@ interface ContainsInterface
      *
      * @param mixed|null $key
      * @param mixed|null $value
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function contains($key, ?string $operator = null, $value = null): BoolEnum;
 }

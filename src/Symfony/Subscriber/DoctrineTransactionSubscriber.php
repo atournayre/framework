@@ -13,25 +13,16 @@ use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 final readonly class DoctrineTransactionSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private EntityManagerInterface $entityManager,
         private LoggerInterface $logger,
     ) {
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public static function getSubscribedEvents(): array
     {
         return [
@@ -41,10 +32,7 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
         ];
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function startTransaction(ControllerEvent $event): void
     {
         $this->logger->setLoggerIdentifier(self::class);
@@ -69,10 +57,7 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
         $this->logger->debug('Transaction started', $context);
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function isAllowFlushController(object $controller): bool
     {
         return $controller instanceof AllowFlushInterface;
@@ -82,10 +67,8 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
      * @param array<mixed>|mixed $controller
      *
      * @return array<string, string>
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function controllerContext(mixed $controller): array
     {
         if (!is_array($controller) || !isset($controller[0], $controller[1])) {
@@ -100,10 +83,8 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
 
     /**
      * @throws \Throwable
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function commitTransaction(ResponseEvent $event): void
     {
         if (!$event->isMainRequest()) {
@@ -132,19 +113,13 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
         }
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function isValidTransactionController(mixed $controller): bool
     {
         return is_array($controller) && isset($controller[0]) && $this->isAllowFlushController($controller[0]);
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function rollbackTransaction(ExceptionEvent $event): void
     {
         if (!$event->isMainRequest()) {
@@ -168,10 +143,7 @@ final readonly class DoctrineTransactionSubscriber implements EventSubscriberInt
         $this->logger->end($context);
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function rollback(): void
     {
         if (!$this->entityManager->getConnection()->isTransactionActive()) {

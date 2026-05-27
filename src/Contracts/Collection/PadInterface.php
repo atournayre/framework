@@ -8,8 +8,6 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface PadInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface PadInterface
 {
@@ -21,9 +19,7 @@ interface PadInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function pad(int $size, mixed $value = null): self;
 }

@@ -12,7 +12,6 @@ use Atournayre\Primitives\Collection;
  * Trait Is.
  *
  * @see IsInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Is
 {
@@ -23,10 +22,8 @@ trait Is
      * @param bool                                  $strict TRUE for comparing order of elements too, FALSE for key/values only
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function is($list, bool $strict = false): BoolEnum
     {
         if ($list instanceof self) {

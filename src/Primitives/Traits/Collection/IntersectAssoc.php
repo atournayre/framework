@@ -11,7 +11,6 @@ use Atournayre\Primitives\Collection;
  * Trait IntersectAssoc.
  *
  * @see IntersectAssocInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait IntersectAssoc
 {
@@ -21,10 +20,8 @@ trait IntersectAssoc
      * @param iterable<int|string,mixed>|Collection $elements List of elements
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function intersectAssoc($elements, ?callable $callback = null): self
     {
         if ($elements instanceof self) {

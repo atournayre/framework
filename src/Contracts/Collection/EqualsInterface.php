@@ -9,8 +9,6 @@ use Atournayre\Primitives\Collection;
 
 /**
  * Interface EqualsInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface EqualsInterface
 {
@@ -20,9 +18,7 @@ interface EqualsInterface
      * @param iterable<int|string,mixed>|Collection $elements List of elements to test against
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function equals($elements): BoolEnum;
 }

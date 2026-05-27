@@ -8,8 +8,6 @@ use Atournayre\Contracts\Exception\ThrowableInterface;
 
 /**
  * Interface InsertAtInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface InsertAtInterface
 {
@@ -23,9 +21,7 @@ interface InsertAtInterface
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function insertAt(int $pos, mixed $element, $key = null): self;
 }

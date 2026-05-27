@@ -8,8 +8,6 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface IsNumericInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface IsNumericInterface
 {
@@ -17,9 +15,7 @@ interface IsNumericInterface
      * Tests if all entries are numeric values.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function isNumeric(): BoolEnum;
 }

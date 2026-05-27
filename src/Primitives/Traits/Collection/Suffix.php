@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\SuffixInterface;
  * Trait Suffix.
  *
  * @see SuffixInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Suffix
 {
@@ -21,10 +20,8 @@ trait Suffix
      * @param int|null        $depth  Maximum depth to dive into multi-dimensional arrays starting from "1"
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function suffix($suffix, ?int $depth = null): self
     {
         $suffix = $this->collection->suffix($suffix, $depth);

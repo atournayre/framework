@@ -13,7 +13,6 @@ use Atournayre\Primitives\Collection;
  * Trait Union.
  *
  * @see UnionInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Union
 {
@@ -25,10 +24,8 @@ trait Union
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function union($elements): self
     {
         $this->isReadOnly()->throwIfTrue(MutableException::becauseMustBeImmutable());

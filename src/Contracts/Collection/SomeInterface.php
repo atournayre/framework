@@ -8,8 +8,6 @@ use Atournayre\Primitives\BoolEnum;
 
 /**
  * Interface SomeInterface.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface SomeInterface
 {
@@ -19,9 +17,7 @@ interface SomeInterface
      * @param \Closure|iterable|mixed $values Anonymous function with (item, key) parameter, element or list of elements to test against
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function some($values, bool $strict = false): BoolEnum;
 }

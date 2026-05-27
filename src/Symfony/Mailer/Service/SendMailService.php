@@ -15,15 +15,9 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\RawMessage;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 final readonly class SendMailService implements SendMailInterface
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private MailerInterface $mailer,
     ) {
@@ -33,10 +27,8 @@ final readonly class SendMailService implements SendMailInterface
      * @param Email|TemplatedEmail $message
      *
      * @throws ThrowableInterface
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function send($message, $envelope = null): void
     {
         try {
@@ -52,10 +44,8 @@ final readonly class SendMailService implements SendMailInterface
      * @param Email|TemplatedEmail $message
      *
      * @throws ThrowableInterface
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function adaptMessage($message): RawMessage
     {
         if ($message instanceof TemplatedEmail) {

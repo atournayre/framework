@@ -6,16 +6,11 @@ namespace Atournayre\Contracts\Collection;
 
 use Atournayre\Contracts\Exception\ThrowableInterface;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 interface CollectionValidationInterface
 {
     /**
      * @throws ThrowableInterface
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function validateCollection(): void;
 }

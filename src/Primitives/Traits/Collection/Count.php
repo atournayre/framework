@@ -11,7 +11,6 @@ use Atournayre\Primitives\Int_;
  * Trait Count.
  *
  * @see CountInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Count
 {
@@ -19,10 +18,8 @@ trait Count
      * Returns the total number of elements.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function count(): Int_
     {
         $count = $this->collection->count();

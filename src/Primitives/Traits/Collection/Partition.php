@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\PartitionInterface;
  * Trait Partition.
  *
  * @see PartitionInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Partition
 {
@@ -20,10 +19,8 @@ trait Partition
      * @param \Closure|int|array<array-key,mixed> $number Function with (value, index) as arguments returning the bucket key or number of groups
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function partition($number): self
     {
         $partition = $this->collection->partition($number);

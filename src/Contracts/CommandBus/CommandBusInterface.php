@@ -9,8 +9,6 @@ namespace Atournayre\Contracts\CommandBus;
  *
  * The command bus is responsible for dispatching commands to their appropriate handlers.
  * Commands are typically used for write operations and side effects.
- *
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 interface CommandBusInterface
 {
@@ -18,9 +16,7 @@ interface CommandBusInterface
      * Dispatches a command to its handler.
      *
      * @param CommandInterface $command The command to dispatch
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function dispatch(CommandInterface $command): void;
 }

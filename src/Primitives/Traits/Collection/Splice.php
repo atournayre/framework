@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\SpliceInterface;
  * Trait Splice.
  *
  * @see SpliceInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Splice
 {
@@ -22,10 +21,8 @@ trait Splice
      * @param mixed    $replacement List of elements to insert
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function splice(int $offset, ?int $length = null, mixed $replacement = []): self
     {
         $splice = $this->collection->splice($offset, $length, $replacement);

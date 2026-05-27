@@ -10,7 +10,6 @@ use Atournayre\Contracts\Collection\ClearInterface;
  * Trait Clear.
  *
  * @see ClearInterface
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
  */
 trait Clear
 {
@@ -18,10 +17,8 @@ trait Clear
      * Removes all elements.
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function clear(): self
     {
         $clear = $this->collection->clear();

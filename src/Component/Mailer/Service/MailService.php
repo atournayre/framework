@@ -10,15 +10,9 @@ use Atournayre\Contracts\Log\LoggableInterface;
 use Atournayre\Contracts\Log\LoggerInterface;
 use Atournayre\Contracts\Mailer\SendMailInterface;
 
-/**
- * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
- */
 final readonly class MailService
 {
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function __construct(
         private LoggerInterface $logger,
         private SendMailInterface $sendMail,
@@ -30,20 +24,15 @@ final readonly class MailService
      * @throws ThrowableInterface
      *
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function send($message, $envelope = null): void
     {
         $this->logSendingEmail($message);
         $this->sendMail->send($message, $envelope);
     }
 
-    /**
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
-     */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     private function logSendingEmail($message): void
     {
         $logContext = $message instanceof LoggableInterface ? $message->toLog() : [];
@@ -52,10 +41,8 @@ final readonly class MailService
 
     /**
      * @api
-     *
-     * @deprecated Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework
      */
-    #[\Deprecated("Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework")]
+    #[\Deprecated('Deprecated immediately. Migrate to https://github.com/TournayreLabs/framework')]
     public function configuration(): MailerConfiguration
     {
         return $this->mailerConfiguration;
